@@ -1,0 +1,209 @@
+ka:
+  nav:
+    index: მთავარი
+    fleet: ავტოპარკი
+    pricing: ფასები
+    map: რუკა
+    terms: პირობები
+    faq: კითხვები
+    blog: ბლოგი
+    about: ჩვენ შესახებ
+    contact: კონტაქტი
+    software: პროგრამა
+  ui:
+    logo_sub: ავტოგაქირავება
+    nav_label: მთავარი ნავიგაცია
+    lang_label: ენის არჩევა
+    crumbs: ნავიგაციის გზა
+    skip: გადასვლა მთავარ შიგთავსზე
+    foot_about: კომპანია
+    foot_about_text: >-
+      Archi Rent — ავტომობილების გაქირავება საქართველოს მასშტაბით 2019 წლიდან. ინფორმაციული საიტი: ფასები,
+      პირობები, ავტოპარკი და კონტაქტი.
+    foot_pages: გვერდები
+    foot_contact: კონტაქტი
+    foot_langs: ენები
+    hours: ორშ.–კვ. 09:00–21:00
+    rights: ყველა უფლება დაცულია.
+    updated: განახლდა
+    more: დეტალურად
+    rent_word: გაქირავება
+    price_table: ტარიფები ვადის მიხედვით
+    book_title: ჯავშნა და კონსულტაცია
+    book_text: საიტი ინფორმაციულია — ონლაინ გადახდა არ გვაქვს. დასაჯავშნად დაგვირეკეთ ან მოგვწერეთ.
+    e404_title: გვერდი ვერ მოიძებნა (404)
+    e404_text: მისამართი შეიცვალა ან არ არსებობს. სცადეთ ქვემოთ მოცემული გვერდები.
+en:
+  nav:
+    index: Home
+    fleet: Fleet
+    pricing: Prices
+    map: Map
+    terms: Terms
+    faq: FAQ
+    blog: Blog
+    about: About us
+    contact: Contact
+    software: Software
+  ui:
+    logo_sub: Car Rental
+    nav_label: Main navigation
+    lang_label: Language selection
+    crumbs: Breadcrumb navigation
+    skip: Skip to main content
+    foot_about: Company
+    foot_about_text: >-
+      Archi Rent — car rental across Georgia since 2019. An informational website: prices, terms, fleet
+      and contact details.
+    foot_pages: Pages
+    foot_contact: Contact
+    foot_langs: Languages
+    hours: Mon–Sun 09:00–21:00
+    rights: All rights reserved.
+    updated: Updated
+    more: Details
+    rent_word: rental
+    price_table: Rates by rental length
+    book_title: Booking and enquiries
+    book_text: This site is informational — there is no online payment. Call or email us to book.
+    e404_title: Page not found (404)
+    e404_text: The address has changed or does not exist. Try the pages below.
+ru:
+  nav:
+    index: Главная
+    fleet: Автопарк
+    pricing: Цены
+    map: Карта
+    terms: Условия
+    faq: Вопросы
+    blog: Блог
+    about: О нас
+    contact: Контакты
+    software: Программа
+  ui:
+    logo_sub: Аренда авто
+    nav_label: Основная навигация
+    lang_label: Выбор языка
+    crumbs: Навигационная цепочка
+    skip: Перейти к основному содержанию
+    foot_about: Компания
+    foot_about_text: >-
+      Archi Rent — аренда автомобилей по всей Грузии с 2019 года. Информационный сайт: цены, условия,
+      автопарк и контакты.
+    foot_pages: Страницы
+    foot_contact: Контакты
+    foot_langs: Языки
+    hours: Пн–Вс 09:00–21:00
+    rights: Все права защищены.
+    updated: Обновлено
+    more: Подробнее
+    rent_word: аренда
+    price_table: Тарифы по сроку аренды
+    book_title: Бронирование и консультация
+    book_text: Сайт информационный — онлайн-оплаты нет. Для брони позвоните или напишите нам.
+    e404_title: Страница не найдена (404)
+    e404_text: Адрес изменился или не существует. Попробуйте страницы ниже.
+fa:
+  nav:
+    index: خانه
+    fleet: ناوگان
+    pricing: قیمت‌ها
+    map: نقشه
+    terms: شرایط
+    faq: پرسش‌ها
+    blog: وبلاگ
+    about: درباره ما
+    contact: تماس
+    software: نرم‌افزار
+  ui:
+    logo_sub: اجارهٔ خودرو
+    nav_label: ناوبری اصلی
+    lang_label: انتخاب زبان
+    crumbs: مسیر ناوبری
+    skip: رفتن به محتوای اصلی
+    foot_about: شرکت
+    foot_about_text: >-
+      Archi Rent — اجارهٔ خودرو در سراسر گرجستان از سال 2019. وب‌سایت اطلاع‌رسانی: قیمت‌ها، شرایط، ناوگان
+      و اطلاعات تماس.
+    foot_pages: صفحه‌ها
+    foot_contact: تماس
+    foot_langs: زبان‌ها
+    hours: دوشنبه–یکشنبه 09:00–21:00
+    rights: تمامی حقوق محفوظ است.
+    updated: به‌روزرسانی
+    more: جزئیات
+    rent_word: اجاره
+    price_table: نرخ‌ها بر اساس مدت اجاره
+    book_title: رزرو و مشاوره
+    book_text: این وب‌سایت اطلاع‌رسانی است — پرداخت آنلاین ندارد. برای رزرو با ما تماس بگیرید یا ایمیل بزنید.
+    e404_title: صفحه پیدا نشد (404)
+    e404_text: نشانی تغییر کرده یا وجود ندارد. صفحه‌های زیر را امتحان کنید.
+he:
+  nav:
+    index: ראשי
+    fleet: צי הרכב
+    pricing: מחירים
+    map: מפה
+    terms: תנאים
+    faq: שאלות
+    blog: בלוג
+    about: אודות
+    contact: צור קשר
+    software: תוכנה
+  ui:
+    logo_sub: השכרת רכב
+    nav_label: ניווט ראשי
+    lang_label: בחירת שפה
+    crumbs: נתיב ניווט
+    skip: דילוג לתוכן הראשי
+    foot_about: החברה
+    foot_about_text: >-
+      Archi Rent — השכרת רכב בכל רחבי גאורגיה מאז 2019. אתר מידע: מחירים, תנאים, צי הרכב ופרטי התקשרות.
+    foot_pages: עמודים
+    foot_contact: צור קשר
+    foot_langs: שפות
+    hours: א׳–ש׳ 09:00–21:00
+    rights: כל הזכויות שמורות.
+    updated: עודכן
+    more: פרטים
+    rent_word: השכרה
+    price_table: מחירים לפי משך ההשכרה
+    book_title: הזמנות ובירורים
+    book_text: זהו אתר מידע — אין בו תשלום מקוון. להזמנה התקשרו אלינו או שלחו אימייל.
+    e404_title: הדף לא נמצא (404)
+    e404_text: הכתובת השתנתה או שאינה קיימת. נסו את הדפים שלמטה.
+ar:
+  nav:
+    index: الرئيسية
+    fleet: الأسطول
+    pricing: الأسعار
+    map: الخريطة
+    terms: الشروط
+    faq: الأسئلة
+    blog: المدونة
+    about: من نحن
+    contact: اتصل بنا
+    software: البرنامج
+  ui:
+    logo_sub: تأجير السيارات
+    nav_label: التنقل الرئيسي
+    lang_label: اختيار اللغة
+    crumbs: مسار التصفح
+    skip: الانتقال إلى المحتوى الرئيسي
+    foot_about: الشركة
+    foot_about_text: >-
+      Archi Rent — تأجير السيارات في جميع أنحاء جورجيا منذ عام 2019. موقع معلوماتي: الأسعار والشروط والأسطول
+      وبيانات الاتصال.
+    foot_pages: الصفحات
+    foot_contact: اتصل بنا
+    foot_langs: اللغات
+    hours: الاثنين–الأحد 09:00–21:00
+    rights: جميع الحقوق محفوظة.
+    updated: آخر تحديث
+    more: التفاصيل
+    rent_word: تأجير
+    price_table: الأسعار حسب مدة التأجير
+    book_title: الحجز والاستفسارات
+    book_text: هذا الموقع معلوماتي — لا يتيح الدفع الإلكتروني. للحجز اتصل بنا أو راسلنا بالبريد الإلكتروني.
+    e404_title: الصفحة غير موجودة (404)
+    e404_text: تغيّر العنوان أو أنه غير موجود. جرّب الصفحات أدناه.

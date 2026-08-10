@@ -1,0 +1,414 @@
+ka:
+  ui:
+    regions: რეგიონები
+    routes: მარშრუტები
+    attractions: ღირსშესანიშნაობები
+    visit_time: დათვალიერების დრო
+    from_tbilisi: თბილისიდან
+    road_label: გზა
+    car_needed: საჭირო ავტომობილი
+    entry: შესვლა
+    season: სეზონი
+    elevation: სიმაღლე
+    tip_title: პრაქტიკული რჩევა
+    route_title: როგორ მივიდეთ თბილისიდან
+    nearby_title: ახლომდებარე ადგილები
+    map_hint: დააჭირეთ ნიშანს დეტალებისთვის. ფერადი ხაზები — მზა მარშრუტები.
+    legend_title: აღნიშვნები
+    days: დღე
+    nights: ღამე
+    total_km: სულ მანძილი
+    total_drive: სულ მართვაში
+    difficulty: სირთულე
+    plan_title: დღეების გეგმა
+    tips_title: რჩევები
+    waypoints_title: მარშრუტის ობიექტები
+    driving_title: მართვის პირობები
+    best_for: ვისთვის გამოდგება
+    see_on_map: რუკაზე ნახვა
+    all_attractions: ყველა ღირსშესანიშნაობა
+    in_region: ამ რეგიონში
+    hrs: სთ
+    km: კმ
+    obj: ობიექტი
+    unesco: UNESCO-ს ძეგლი
+    open_year_round: წელიწადში ღიაა
+    'yes': დიახ
+    'no': არა (სეზონური)
+    recommended_car: რეკომენდებული კატეგორია
+    view_cars: ამ კატეგორიის ავტომობილები
+  road:
+    paved: ასფალტი
+    mostly_paved: ძირითადად ასფალტი
+    gravel: გრუნტოვანი მონაკვეთებით
+    4x4_only: მხოლოდ 4x4
+  season:
+    all: მთელი წელი
+    may-october: მაისი–ოქტომბერი
+    june-september: ივნისი–სექტემბერი
+    december-march: დეკემბერი–მარტი
+  difficulty:
+    easy: მარტივი
+    moderate: საშუალო
+    hard: რთული
+  type:
+    monastery: მონასტერი
+    fortress: ციხე-სიმაგრე
+    cave: გამოქვაბული
+    canyon: კანიონი
+    waterfall: ჩანჩქერი
+    lake: ტბა
+    mountain: მთა
+    nature: ბუნება
+    town: ქალაქი
+    museum: მუზეუმი
+    winery: ღვინის მარანი
+    spa: კურორტი
+    beach: პლაჟი
+    ski: სათხილამურო
+    archaeology: არქეოლოგია
+en:
+  ui:
+    regions: Regions
+    routes: Road trips
+    attractions: Attractions
+    visit_time: Time needed
+    from_tbilisi: From Tbilisi
+    road_label: Road
+    car_needed: Car needed
+    entry: Entry
+    season: Season
+    elevation: Elevation
+    tip_title: Practical advice
+    route_title: How to get there from Tbilisi
+    nearby_title: Nearby places
+    map_hint: Click a marker for details. Coloured lines are ready-made road trips.
+    legend_title: Legend
+    days: days
+    nights: nights
+    total_km: Total distance
+    total_drive: Total driving
+    difficulty: Difficulty
+    plan_title: Day-by-day plan
+    tips_title: Tips
+    waypoints_title: Stops on this route
+    driving_title: Driving conditions
+    best_for: Best for
+    see_on_map: See on the map
+    all_attractions: All attractions
+    in_region: In this region
+    hrs: h
+    km: km
+    obj: places
+    unesco: UNESCO site
+    open_year_round: Open year-round
+    'yes': 'Yes'
+    'no': No (seasonal)
+    recommended_car: Recommended category
+    view_cars: Cars in this category
+  road:
+    paved: Paved
+    mostly_paved: Mostly paved
+    gravel: Unpaved sections
+    4x4_only: 4x4 only
+  season:
+    all: All year
+    may-october: May–October
+    june-september: June–September
+    december-march: December–March
+  difficulty:
+    easy: Easy
+    moderate: Moderate
+    hard: Hard
+  type:
+    monastery: Monastery
+    fortress: Fortress
+    cave: Cave
+    canyon: Canyon
+    waterfall: Waterfall
+    lake: Lake
+    mountain: Mountain
+    nature: Nature
+    town: Town
+    museum: Museum
+    winery: Winery
+    spa: Spa resort
+    beach: Beach
+    ski: Ski area
+    archaeology: Archaeology
+ru:
+  ui:
+    regions: Регионы
+    routes: Маршруты
+    attractions: Достопримечательности
+    visit_time: Время на осмотр
+    from_tbilisi: От Тбилиси
+    road_label: Дорога
+    car_needed: Нужен автомобиль
+    entry: Вход
+    season: Сезон
+    elevation: Высота
+    tip_title: Практический совет
+    route_title: Как добраться из Тбилиси
+    nearby_title: Рядом
+    map_hint: Нажмите на метку для подробностей. Цветные линии — готовые маршруты.
+    legend_title: Условные обозначения
+    days: дн.
+    nights: ноч.
+    total_km: Общее расстояние
+    total_drive: Всего за рулём
+    difficulty: Сложность
+    plan_title: План по дням
+    tips_title: Советы
+    waypoints_title: Остановки на маршруте
+    driving_title: Условия вождения
+    best_for: Кому подойдёт
+    see_on_map: Показать на карте
+    all_attractions: Все достопримечательности
+    in_region: В этом регионе
+    hrs: ч
+    km: км
+    obj: объектов
+    unesco: Объект ЮНЕСКО
+    open_year_round: Открыто круглый год
+    'yes': Да
+    'no': Нет (сезонно)
+    recommended_car: Рекомендуемая категория
+    view_cars: Автомобили этой категории
+  road:
+    paved: Асфальт
+    mostly_paved: В основном асфальт
+    gravel: Есть грунтовые участки
+    4x4_only: Только 4x4
+  season:
+    all: Круглый год
+    may-october: Май–октябрь
+    june-september: Июнь–сентябрь
+    december-march: Декабрь–март
+  difficulty:
+    easy: Лёгкий
+    moderate: Средний
+    hard: Сложный
+  type:
+    monastery: Монастырь
+    fortress: Крепость
+    cave: Пещера
+    canyon: Каньон
+    waterfall: Водопад
+    lake: Озеро
+    mountain: Горы
+    nature: Природа
+    town: Город
+    museum: Музей
+    winery: Винодельня
+    spa: Курорт
+    beach: Пляж
+    ski: Горнолыжный курорт
+    archaeology: Археология
+fa:
+  ui:
+    regions: مناطق
+    routes: سفرهای جاده‌ای
+    attractions: دیدنی‌ها
+    visit_time: زمان لازم
+    from_tbilisi: از تفلیس
+    road_label: جاده
+    car_needed: خودروی لازم
+    entry: ورودی
+    season: فصل
+    elevation: ارتفاع
+    tip_title: توصیهٔ کاربردی
+    route_title: چگونه از تفلیس برسیم
+    nearby_title: جاهای نزدیک
+    map_hint: برای دیدن جزئیات روی نشانگر کلیک کنید. خط‌های رنگی مسیرهای آمادهٔ سفر جاده‌ای هستند.
+    legend_title: راهنمای نقشه
+    days: روز
+    nights: شب
+    total_km: مسافت کل
+    total_drive: کل زمان رانندگی
+    difficulty: سختی
+    plan_title: برنامهٔ روزبه‌روز
+    tips_title: نکته‌ها
+    waypoints_title: توقف‌های این مسیر
+    driving_title: شرایط رانندگی
+    best_for: مناسب برای
+    see_on_map: نمایش روی نقشه
+    all_attractions: همهٔ دیدنی‌ها
+    in_region: در این منطقه
+    hrs: ساعت
+    km: کیلومتر
+    obj: مکان
+    unesco: میراث جهانی یونسکو
+    open_year_round: در تمام سال باز است
+    'yes': بله
+    'no': خیر (فصلی)
+    recommended_car: دستهٔ پیشنهادی
+    view_cars: خودروهای این دسته
+  road:
+    paved: آسفالت
+    mostly_paved: بیشتر آسفالت
+    gravel: بخش‌های خاکی
+    4x4_only: فقط 4x4
+  season:
+    all: تمام سال
+    may-october: مه–اکتبر
+    june-september: ژوئن–سپتامبر
+    december-march: دسامبر–مارس
+  difficulty:
+    easy: آسان
+    moderate: متوسط
+    hard: دشوار
+  type:
+    monastery: صومعه
+    fortress: قلعه
+    cave: غار
+    canyon: تنگه
+    waterfall: آبشار
+    lake: دریاچه
+    mountain: کوه
+    nature: طبیعت
+    town: شهر
+    museum: موزه
+    winery: کارگاه شراب‌سازی
+    spa: استراحتگاه آبگرم
+    beach: ساحل
+    ski: پیست اسکی
+    archaeology: باستان‌شناسی
+he:
+  ui:
+    regions: אזורים
+    routes: מסלולי טיול
+    attractions: אתרים
+    visit_time: זמן ביקור
+    from_tbilisi: מטביליסי
+    road_label: כביש
+    car_needed: רכב נדרש
+    entry: כניסה
+    season: עונה
+    elevation: גובה
+    tip_title: טיפ מעשי
+    route_title: איך מגיעים מטביליסי
+    nearby_title: מקומות בסביבה
+    map_hint: לחצו על סמן לפרטים. הקווים הצבעוניים הם מסלולי טיול מוכנים.
+    legend_title: מקרא
+    days: ימים
+    nights: לילות
+    total_km: מרחק כולל
+    total_drive: זמן נהיגה כולל
+    difficulty: דרגת קושי
+    plan_title: תוכנית יום-יום
+    tips_title: טיפים
+    waypoints_title: עצירות במסלול
+    driving_title: תנאי נהיגה
+    best_for: למי זה מתאים
+    see_on_map: הצגה במפה
+    all_attractions: כל האתרים
+    in_region: באזור הזה
+    hrs: ש׳
+    km: ק"מ
+    obj: אתרים
+    unesco: אתר אונסק"ו
+    open_year_round: פתוח כל השנה
+    'yes': כן
+    'no': לא (עונתי)
+    recommended_car: קטגוריה מומלצת
+    view_cars: רכבים בקטגוריה זו
+  road:
+    paved: סלול
+    mostly_paved: סלול ברובו
+    gravel: קטעים לא סלולים
+    4x4_only: 4x4 בלבד
+  season:
+    all: כל השנה
+    may-october: מאי–אוקטובר
+    june-september: יוני–ספטמבר
+    december-march: דצמבר–מרץ
+  difficulty:
+    easy: קל
+    moderate: בינוני
+    hard: קשה
+  type:
+    monastery: מנזר
+    fortress: מבצר
+    cave: מערה
+    canyon: קניון
+    waterfall: מפל
+    lake: אגם
+    mountain: הר
+    nature: טבע
+    town: עיירה
+    museum: מוזיאון
+    winery: יקב
+    spa: אתר מרפא
+    beach: חוף
+    ski: אתר סקי
+    archaeology: ארכיאולוגיה
+ar:
+  ui:
+    regions: المناطق
+    routes: رحلات برية
+    attractions: المعالم
+    visit_time: الوقت اللازم
+    from_tbilisi: من تبليسي
+    road_label: الطريق
+    car_needed: السيارة المناسبة
+    entry: الدخول
+    season: الموسم
+    elevation: الارتفاع
+    tip_title: نصيحة عملية
+    route_title: كيفية الوصول من تبليسي
+    nearby_title: أماكن قريبة
+    map_hint: انقر على العلامة لعرض التفاصيل. الخطوط الملوّنة رحلات برية جاهزة.
+    legend_title: مفتاح الخريطة
+    days: أيام
+    nights: ليالٍ
+    total_km: المسافة الإجمالية
+    total_drive: إجمالي زمن القيادة
+    difficulty: الصعوبة
+    plan_title: خطة يومًا بيوم
+    tips_title: نصائح
+    waypoints_title: محطات على هذا المسار
+    driving_title: ظروف القيادة
+    best_for: الأنسب لـ
+    see_on_map: عرض على الخريطة
+    all_attractions: جميع المعالم
+    in_region: في هذه المنطقة
+    hrs: س
+    km: كم
+    obj: موقع
+    unesco: موقع يونسكو
+    open_year_round: مفتوح طوال السنة
+    'yes': نعم
+    'no': لا (موسمي)
+    recommended_car: الفئة الموصى بها
+    view_cars: سيارات هذه الفئة
+  road:
+    paved: معبّد
+    mostly_paved: معبّد في معظمه
+    gravel: مقاطع غير معبّدة
+    4x4_only: دفع رباعي فقط
+  season:
+    all: طوال السنة
+    may-october: مايو–أكتوبر
+    june-september: يونيو–سبتمبر
+    december-march: ديسمبر–مارس
+  difficulty:
+    easy: سهل
+    moderate: متوسط
+    hard: صعب
+  type:
+    monastery: دير
+    fortress: قلعة
+    cave: كهف
+    canyon: وادٍ سحيق
+    waterfall: شلال
+    lake: بحيرة
+    mountain: جبل
+    nature: طبيعة
+    town: بلدة
+    museum: متحف
+    winery: مصنع نبيذ
+    spa: منتجع استشفائي
+    beach: شاطئ
+    ski: منطقة تزلج
+    archaeology: آثار

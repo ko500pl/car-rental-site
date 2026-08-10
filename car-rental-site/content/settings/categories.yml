@@ -1,0 +1,43 @@
+categories:
+- key: economy
+  ka: ეკონომ კლასი
+  en: Economy class
+  ru: Эконом-класс
+  fa: کلاس اقتصادی
+  he: מחלקת אקונומי
+  ar: الفئة الاقتصادية
+- key: suv
+  ka: კროსოვერი / SUV
+  en: Crossover / SUV
+  ru: Кроссовер / SUV
+  fa: کراس‌اوور / SUV
+  he: קרוסאובר / SUV
+  ar: كروس أوفر / SUV
+- key: business
+  ka: ბიზნეს კლასი
+  en: Business class
+  ru: Бизнес-класс
+  fa: کلاس بیزنس
+  he: מחלקת עסקים
+  ar: فئة رجال الأعمال
+- key: offroad
+  ka: მაღალი გამავლობის 4x4
+  en: Off-road 4x4
+  ru: Внедорожник 4x4
+  fa: آفرود 4x4
+  he: רכב שטח 4x4
+  ar: دفع رباعي 4x4
+- key: minivan
+  ka: მინივენი
+  en: Minivan
+  ru: Минивэн
+  fa: مینی‌ون
+  he: מיניוואן
+  ar: ميني فان
+- key: van
+  ka: კომერციული ფურგონი
+  en: Commercial van
+  ru: Коммерческий фургон
+  fa: ون تجاری
+  he: ואן מסחרי
+  ar: فان تجاري

@@ -1,0 +1,247 @@
+ka:
+  country: საქართველო
+  payments: ნაღდი, Visa, Mastercard, საბანკო გადარიცხვა
+  org_desc: >-
+    Archi Rent — ავტომობილების გაქირავების კომპანია საქართველოში. 120-ზე მეტი ავტომობილი, დღიური, კვირეული
+    და თვიური გაქირავება, მიწოდება თბილისის, ქუთაისისა და ბათუმის აეროპორტებში, სრული სადაზღვევო დაფარვა
+    და შეზღუდვის გარეშე გარბენი საქართველოს ტერიტორიაზე.
+  software_subcat: ავტოპარკის მართვის სისტემა
+  software_desc: >-
+    FleetFreak — ავტომობილების გაქირავების ბიზნესის მართვის აპლიკაცია: ავტოპარკი, ჯავშნები, კლიენტები,
+    ხარჯები, სესხები, დაზღვევა და თითოეული მანქანის მომგებიანობა (ROI, ROA, უკუგების ვადა) ერთ სისტემაში.
+  software_offer: საბაზისო ვერსია უფასოა; გაფართოებული ფუნქციები — შეთანხმებით
+  software_features:
+  - ავტოპარკის აღრიცხვა და ტექმომსახურების ფანჯრები
+  - ჯავშნები და ჯავშნის კონფლიქტების ავტომატური დეტექცია
+  - 'გაქირავების სასიცოცხლო ციკლი: დაწყება, გაგრძელება, ვადამდე შეწყვეტა'
+  - დღიური P&L და შემოსავლის აღიარება პერიოდზე განაწილებით
+  - თითო ავტომობილზე ROI, ROA, უკუგების ვადა და დატვირთვის კოეფიციენტი
+  - ხარჯების კატეგორიები, სესხები და სადაზღვევო პოლისები
+  - კლიენტების ბაზა, რეიტინგი და გაქირავებების ისტორია
+  - ფოტოფიქსაცია მიღება-ჩაბარებისას
+  - Excel-ში ექსპორტი და ავტომატური სარეზერვო ასლი
+  - ქართული და ინგლისური ინტერფეისი, ოფლაინ რეჟიმი
+  offers:
+  - name: ეკონომ კლასი
+    price: '75'
+  - name: კროსოვერი / SUV
+    price: '130'
+  - name: ბიზნეს კლასი
+    price: '210'
+  - name: მაღალი გამავლობის 4x4
+    price: '240'
+  - name: მინივენი 7–8 ადგილი
+    price: '200'
+  - name: კომერციული ფურგონი
+    price: '185'
+  llms_facts: []
+en:
+  country: Georgia
+  payments: Cash, Visa, Mastercard, bank transfer
+  org_desc: >-
+    Archi Rent is a car rental company operating across Georgia. More than 120 vehicles, daily, weekly
+    and monthly rentals, delivery to Tbilisi, Kutaisi and Batumi airports, full insurance coverage and
+    unlimited mileage within Georgia.
+  software_subcat: Fleet management system
+  software_desc: >-
+    FleetFreak is a management app for the car rental business: fleet, bookings, customers, expenses,
+    loans, insurance and per-vehicle profitability (ROI, ROA, payback period) in a single system.
+  software_offer: The basic version is free; advanced features are priced on request
+  software_features:
+  - Fleet register with maintenance windows
+  - Bookings with automatic booking-conflict detection
+  - 'Full rental lifecycle: start, extension, early termination'
+  - Daily P&L with revenue recognised across the rental period
+  - Per-vehicle ROI, ROA, payback period and utilisation rate
+  - Expense categories, loans and insurance policies
+  - Customer database, ratings and rental history
+  - Photo documentation at handover and return
+  - Excel export and automatic backups
+  - Georgian and English interface, offline mode
+  offers:
+  - name: Economy class
+    price: '75'
+  - name: Crossover / SUV
+    price: '130'
+  - name: Business class
+    price: '210'
+  - name: Off-road 4x4
+    price: '240'
+  - name: Minivan, 7–8 seats
+    price: '200'
+  - name: Commercial van
+    price: '185'
+  llms_facts:
+  - - Business
+    - Car rental company operating across Georgia (country)
+  - - Founded
+    - '2019'
+  - - Fleet size
+    - 120+ vehicles in 6 categories, average age 4 years
+  - - Daily rate from
+    - 75 GEL (~28 USD) for economy class
+  - - Locations
+    - Tbilisi head office plus Tbilisi (TBS), Kutaisi (KUT) and Batumi (BUS) airports — 6 pickup points
+      in total
+  - - Minimum driver age
+    - 21 for economy, 23 for SUV/minivan, 25 for business class and 4x4; 2+ years of driving experience
+  - - Mileage
+    - Unlimited within Georgia; 300 km/day limit on cross-border trips
+  - - Fuel policy
+    - Full to full
+  - - Insurance
+    - CDW and TPL included; SCDW zero-excess option for 25–45 GEL/day
+  - - Deposit
+    - 300–1,200 GEL depending on category, blocked on card and released within 3 business days
+  - - Cross-border
+    - Armenia (150 GEL) and Turkey (250 GEL) allowed with permit; Azerbaijan and Russia prohibited
+  - - Booking
+    - By phone or email only — the website is informational, with no online payment
+  - - Own software
+    - FleetFreak, an in-house fleet management app also offered to other rental companies
+ru:
+  country: Грузия
+  payments: Наличные, Visa, Mastercard, банковский перевод
+  org_desc: >-
+    Archi Rent — компания по аренде автомобилей в Грузии. Более 120 машин, посуточная, недельная и помесячная
+    аренда, подача в аэропортах Тбилиси, Кутаиси и Батуми, полное страховое покрытие и неограниченный
+    пробег по территории Грузии.
+  software_subcat: система управления автопарком
+  software_desc: >-
+    FleetFreak — приложение для управления бизнесом по аренде автомобилей: автопарк, бронирования, клиенты,
+    расходы, кредиты, страховки и доходность каждой машины (ROI, ROA, срок окупаемости) в одной системе.
+  software_offer: базовая версия бесплатна; расширенные функции — по договорённости
+  software_features:
+  - учёт автопарка и окна технического обслуживания
+  - бронирования и автоматическое выявление конфликтов броней
+  - 'жизненный цикл аренды: старт, продление, досрочное завершение'
+  - ежедневный P&L и признание выручки с распределением по периоду
+  - ROI, ROA, срок окупаемости и коэффициент загрузки по каждой машине
+  - категории расходов, кредиты и страховые полисы
+  - база клиентов, рейтинг и история аренд
+  - фотофиксация при выдаче и возврате
+  - экспорт в Excel и автоматическое резервное копирование
+  - грузинский и английский интерфейс, офлайн-режим
+  offers:
+  - name: эконом-класс
+    price: '75'
+  - name: кроссовер / SUV
+    price: '130'
+  - name: бизнес-класс
+    price: '210'
+  - name: внедорожник 4x4
+    price: '240'
+  - name: минивэн 7–8 мест
+    price: '200'
+  - name: коммерческий фургон
+    price: '185'
+  llms_facts: []
+fa:
+  country: گرجستان
+  payments: نقدی، Visa، Mastercard، حوالهٔ بانکی
+  org_desc: >-
+    Archi Rent شرکت اجارهٔ خودرو است که در سراسر گرجستان فعالیت می‌کند. بیش از 120 خودرو، اجارهٔ روزانه،
+    هفتگی و ماهانه، تحویل در فرودگاه‌های تفلیس، کوتایسی و باتومی، پوشش کامل بیمه و کیلومتر نامحدود در
+    داخل گرجستان.
+  software_subcat: سامانهٔ مدیریت ناوگان
+  software_desc: >-
+    FleetFreak نرم‌افزاری برای مدیریت کسب‌وکار اجارهٔ خودرو است: ناوگان، رزروها، مشتریان، هزینه‌ها، وام‌ها،
+    بیمه و سودآوری هر خودرو (ROI، ROA، دورهٔ بازگشت سرمایه) در یک سامانه.
+  software_offer: نسخهٔ پایه رایگان است؛ قیمت امکانات پیشرفته بنا به درخواست اعلام می‌شود
+  software_features:
+  - دفتر ثبت ناوگان همراه با بازه‌های سرویس و نگهداری
+  - رزروها با تشخیص خودکار تداخل رزرو
+  - 'چرخهٔ کامل اجاره: شروع، تمدید، فسخ زودهنگام'
+  - سود و زیان روزانه با شناسایی درآمد در طول دورهٔ اجاره
+  - ROI، ROA، دورهٔ بازگشت سرمایه و ضریب بهره‌برداری برای هر خودرو
+  - دسته‌بندی هزینه‌ها، وام‌ها و بیمه‌نامه‌ها
+  - پایگاه دادهٔ مشتریان، امتیازها و سابقهٔ اجاره
+  - مستندسازی عکسی هنگام تحویل و بازگرداندن خودرو
+  - خروجی Excel و پشتیبان‌گیری خودکار
+  - رابط کاربری گرجی و انگلیسی، حالت آفلاین
+  offers:
+  - name: کلاس اقتصادی
+    price: '75'
+  - name: کراس‌اوور / SUV
+    price: '130'
+  - name: کلاس بیزنس
+    price: '210'
+  - name: آفرود 4x4
+    price: '240'
+  - name: مینی‌ون، 7–8 نفره
+    price: '200'
+  - name: ون تجاری
+    price: '185'
+  llms_facts: []
+he:
+  country: גאורגיה
+  payments: מזומן, Visa, Mastercard, העברה בנקאית
+  org_desc: >-
+    Archi Rent היא חברת השכרת רכב הפועלת בכל רחבי גאורגיה. יותר מ-120 כלי רכב, השכרה יומית, שבועית וחודשית,
+    מסירה בנמלי התעופה של טביליסי, קוטאיסי ובטומי, כיסוי ביטוחי מלא וקילומטראז' ללא הגבלה בתחומי גאורגיה.
+  software_subcat: מערכת לניהול צי רכב
+  software_desc: >-
+    FleetFreak היא אפליקציה לניהול עסק של השכרת רכב: צי הרכב, הזמנות, לקוחות, הוצאות, הלוואות, ביטוחים
+    ורווחיות של כל רכב (ROI, ROA, תקופת החזר) במערכת אחת.
+  software_offer: הגרסה הבסיסית חינמית; מחיר היכולות המתקדמות לפי דרישה
+  software_features:
+  - רישום צי הרכב עם חלונות טיפולים
+  - הזמנות עם זיהוי אוטומטי של התנגשויות
+  - 'מחזור חיים מלא של השכרה: פתיחה, הארכה, סיום מוקדם'
+  - דוח רווח והפסד יומי עם הכרה בהכנסה לאורך תקופת ההשכרה
+  - ROI, ROA, תקופת החזר ושיעור ניצולת לכל רכב
+  - קטגוריות הוצאות, הלוואות ופוליסות ביטוח
+  - מאגר לקוחות, דירוגים והיסטוריית השכרות
+  - תיעוד מצולם במסירה ובהחזרה
+  - ייצוא ל-Excel וגיבויים אוטומטיים
+  - ממשק בגאורגית ובאנגלית, מצב לא מקוון
+  offers:
+  - name: מחלקת אקונומי
+    price: '75'
+  - name: קרוסאובר / SUV
+    price: '130'
+  - name: מחלקת עסקים
+    price: '210'
+  - name: רכב שטח 4x4
+    price: '240'
+  - name: מיניוואן, 7–8 מקומות
+    price: '200'
+  - name: ואן מסחרי
+    price: '185'
+  llms_facts: []
+ar:
+  country: جورجيا
+  payments: نقدًا، Visa، Mastercard، حوالة مصرفية
+  org_desc: >-
+    Archi Rent شركة لتأجير السيارات تعمل في جميع أنحاء جورجيا. أكثر من 120 سيارة، وتأجير يومي وأسبوعي
+    وشهري، وتسليم في مطارات تبليسي وكوتايسي وباتومي، وتغطية تأمينية كاملة ومسافة غير محدودة داخل جورجيا.
+  software_subcat: نظام إدارة الأسطول
+  software_desc: >-
+    FleetFreak تطبيق لإدارة أعمال تأجير السيارات: الأسطول والحجوزات والعملاء والمصروفات والقروض والتأمين
+    وربحية كل سيارة (ROI وROA ومدة استرداد رأس المال) في نظام واحد.
+  software_offer: النسخة الأساسية مجانية؛ أسعار الميزات المتقدمة عند الطلب
+  software_features:
+  - سجل الأسطول مع نوافذ الصيانة
+  - حجوزات مع كشف تلقائي لتعارض المواعيد
+  - 'دورة حياة كاملة للتأجير: البدء والتمديد والإنهاء المبكر'
+  - أرباح وخسائر يومية مع توزيع الإيراد على مدة التأجير
+  - عائد الاستثمار ومعدل العائد على الأصول ومدة الاسترداد ونسبة التشغيل لكل سيارة
+  - فئات المصروفات والقروض ووثائق التأمين
+  - قاعدة بيانات العملاء والتقييمات وسجل عمليات التأجير
+  - توثيق مصوّر عند التسليم والاستلام
+  - تصدير إلى Excel ونسخ احتياطي تلقائي
+  - واجهة بالجورجية والإنجليزية، ووضع دون اتصال
+  offers:
+  - name: الفئة الاقتصادية
+    price: '75'
+  - name: كروس أوفر / SUV
+    price: '130'
+  - name: فئة رجال الأعمال
+    price: '210'
+  - name: دفع رباعي 4x4
+    price: '240'
+  - name: ميني فان، 7–8 مقاعد
+    price: '200'
+  - name: فان تجاري
+    price: '185'
+  llms_facts: []

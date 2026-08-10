@@ -1,0 +1,171 @@
+labels:
+  years:
+    ka: წელი
+    en: Year
+    ru: Год
+    fa: سال
+    he: שנה
+    ar: السنة
+  engine:
+    ka: ძრავი
+    en: Engine
+    ru: Двигатель
+    fa: موتور
+    he: מנוע
+    ar: المحرك
+  transmission:
+    ka: ტრანსმისია
+    en: Transmission
+    ru: Трансмиссия
+    fa: گیربکس
+    he: תיבת הילוכים
+    ar: ناقل الحركة
+  drive:
+    ka: წამყვანი
+    en: Drivetrain
+    ru: Привод
+    fa: سیستم انتقال قدرت
+    he: הנעה
+    ar: نظام الدفع
+  seats:
+    ka: ადგილი
+    en: Seats
+    ru: Мест
+    fa: صندلی
+    he: מושבים
+    ar: المقاعد
+  luggage:
+    ka: ჩემოდანი
+    en: Luggage
+    ru: Багаж
+    fa: بار
+    he: מטען
+    ar: الأمتعة
+  fuel_100km:
+    ka: საწვავი / 100 კმ
+    en: Fuel / 100 km
+    ru: Расход / 100 км
+    fa: سوخت / 100 کیلومتر
+    he: דלק / 100 ק"מ
+    ar: الوقود / 100 كم
+  clearance:
+    ka: კლირენსი
+    en: Ground clearance
+    ru: Клиренс
+    fa: ارتفاع از زمین
+    he: מרווח גחון
+    ar: الخلوص الأرضي
+  price_1_6:
+    ka: 1–6 დღე
+    en: 1–6 days
+    ru: 1–6 суток
+    fa: 1–6 روز
+    he: 1–6 ימים
+    ar: 1–6 أيام
+  price_7_29:
+    ka: 7–29 დღე
+    en: 7–29 days
+    ru: 7–29 суток
+    fa: 7–29 روز
+    he: 7–29 ימים
+    ar: 7–29 يومًا
+  price_30:
+    ka: 30+ დღე
+    en: 30+ days
+    ru: 30+ суток
+    fa: 30+ روز
+    he: 30+ ימים
+    ar: 30+ يومًا
+  deposit:
+    ka: დეპოზიტი
+    en: Deposit
+    ru: Депозит
+    fa: ودیعه
+    he: פיקדון
+    ar: الوديعة
+values:
+  automatic:
+    ka: ავტომატი
+    en: Automatic
+    ru: Автомат
+    fa: اتوماتیک
+    he: אוטומטית
+    ar: أوتوماتيك
+  manual:
+    ka: მექანიკა
+    en: Manual
+    ru: Механика
+    fa: دستی
+    he: ידנית
+    ar: يدوي
+  fwd:
+    ka: წინა
+    en: FWD
+    ru: Передний
+    fa: جلو
+    he: קדמית
+    ar: أمامي
+  rwd:
+    ka: უკანა
+    en: RWD
+    ru: Задний
+    fa: عقب
+    he: אחורית
+    ar: خلفي
+  awd:
+    ka: სრული (AWD)
+    en: AWD
+    ru: Полный (AWD)
+    fa: تمام‌چرخ (AWD)
+    he: מלאה (AWD)
+    ar: رباعي (AWD)
+  4wd:
+    ka: სრული (4WD)
+    en: 4WD
+    ru: Полный (4WD)
+    fa: تمام‌چرخ (4WD)
+    he: מלאה (4WD)
+    ar: رباعي (4WD)
+  petrol:
+    ka: ბენზინი
+    en: petrol
+    ru: бензин
+    fa: بنزین
+    he: בנזין
+    ar: بنزين
+  diesel:
+    ka: დიზელი
+    en: diesel
+    ru: дизель
+    fa: دیزل
+    he: דיזל
+    ar: ديزل
+  hybrid:
+    ka: ჰიბრიდი
+    en: hybrid
+    ru: гибрид
+    fa: هیبریدی
+    he: היברידי
+    ar: هجين
+units:
+  mm:
+    ka: მმ
+    en: mm
+    ru: мм
+    fa: میلی‌متر
+    he: מ"מ
+    ar: مم
+  l:
+    ka: ლ
+    en: l
+    ru: л
+    fa: لیتر
+    he: ל'
+    ar: ل
+  day:
+    ka: დღე
+    en: day
+    ru: сутки
+    fa: روز
+    he: יום
+    ar: يوم

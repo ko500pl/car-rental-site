@@ -1,0 +1,25 @@
+# ═══ დიზაინის პარამეტრები — იმართება ადმინიდან: Settings → დიზაინი ═══
+# დიზაინერისგან მაკეტის მიღების შემდეგ აქ იცვლება ფერები/ტიპოგრაფიკა.
+logo_image: ""            # ცარიელი = ტექსტური ლოგო; ან ატვირთეთ SVG/PNG
+logo_height: "30"
+
+color_brand: "#0f4c81"    # ძირითადი ფერი (ღილაკები, სათაურები)
+color_brand_2: "#1567ab"  # hover / ბმულები
+color_brand_ink: "#0a3459" # მუქი ვარიანტი
+color_accent: "#c8963e"   # აქცენტი (ხაზები, ლოგოს წერტილი)
+color_ink: "#12181f"      # ძირითადი ტექსტი
+color_ink_2: "#3d4b5a"    # მეორეხარისხოვანი ტექსტი
+color_bg: "#ffffff"
+color_bg_2: "#f7f9fb"     # ალტერნატიული სექციის ფონი
+color_line: "#e2e8ef"     # ჩარჩოები
+color_ok: "#1d7a53"       # ფასის ფერი
+
+font_family: '"Noto Sans Georgian","Noto Sans","Segoe UI",system-ui,sans-serif'
+google_fonts: "Noto+Sans+Georgian:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700"
+base_font_size: "17"
+radius: "10"
+max_width: "1120"
+
+hero_style: gradient       # gradient | solid | image
+hero_image: ""             # hero_style: image-ის შემთხვევაში
+hero_overlay: "0.62"       # ფონის სურათის დაბნელება 0–1
