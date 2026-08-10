@@ -1,0 +1,186 @@
+# Archi Rent
+
+> Archi Rent is a car rental company operating across Georgia. More than 120 vehicles, daily, weekly and monthly rentals, delivery to Tbilisi, Kutaisi and Batumi airports, full insurance coverage and unlimited mileage within Georgia.
+
+## Key facts
+
+- **Business:** Car rental company operating across Georgia (country)
+- **Founded:** 2019
+- **Fleet size:** 120+ vehicles in 6 categories, average age 4 years
+- **Daily rate from:** 75 GEL (~28 USD) for economy class
+- **Locations:** Tbilisi head office plus Tbilisi (TBS), Kutaisi (KUT) and Batumi (BUS) airports — 6 pickup points in total
+- **Minimum driver age:** 21 for economy, 23 for SUV/minivan, 25 for business class and 4x4; 2+ years of driving experience
+- **Mileage:** Unlimited within Georgia; 300 km/day limit on cross-border trips
+- **Fuel policy:** Full to full
+- **Insurance:** CDW and TPL included; SCDW zero-excess option for 25–45 GEL/day
+- **Deposit:** 300–1,200 GEL depending on category, blocked on card and released within 3 business days
+- **Cross-border:** Armenia (150 GEL) and Turkey (250 GEL) allowed with permit; Azerbaijan and Russia prohibited
+- **Booking:** By phone or email only — the website is informational, with no online payment
+- **Own software:** FleetFreak, an in-house fleet management app also offered to other rental companies
+
+## Pages
+
+- [Home](https://www.example.ge/en/): Car rental in Tbilisi, Kutaisi and Batumi. 120+ vehicles, from 75 GEL per day, full insurance, unlimited mileage, airport delivery. All prices and terms on one page.
+- [Fleet](https://www.example.ge/en/fleet/): 120+ vehicles in 6 categories: economy class, crossover, business class, 4x4, minivan and van. Technical specifications, seat count and daily rate for each.
+- [Prices](https://www.example.ge/en/pricing/): The full price list: daily, weekly and monthly rates, extras, deposits, delivery charges and cross-border fees. Prices in GEL and USD.
+- [Map](https://www.example.ge/en/map/): Interactive map: 82 attractions across 11 regions, each with the time needed, distance from Tbilisi, road condition and required car category, plus 7 ready-made road trips.
+- [Terms](https://www.example.ge/en/terms/): The full car rental terms: required documents, minimum age, driving experience, deposit, fuel policy, insurance, cross-border travel and cancellation rules.
+- [FAQ](https://www.example.ge/en/faq/): 30+ answers about renting a car in Georgia: prices, documents, insurance, cross-border travel, winter driving, Svaneti and Tusheti, penalties and deposit refunds.
+- [Blog](https://www.example.ge/en/blog/): Routes, winter driving, cost comparisons and practical advice on renting and driving a car in Georgia — written from our own rates and experience.
+- [About us](https://www.example.ge/en/about/): The company's history, the structure of our fleet, how we work and our in-house fleet management system. 120+ vehicles, 6 locations.
+- [Contact](https://www.example.ge/en/contact/): Our office address in Tbilisi, phone numbers, email and opening hours. Pickup points at Tbilisi, Kutaisi and Batumi airports.
+- [Software](https://www.example.ge/en/fleet-management-software/): FleetFreak is a car rental management app: bookings, conflict detection, daily P&L, per-vehicle ROI and payback period. Android and iOS, works offline.
+
+## Fleet
+
+- [Toyota Prius (hybrid)](https://www.example.ge/en/fleet/toyota-prius/): Economy class, 2018–2022, 1.8 hybrid, 5 seats, 75 GEL/day, deposit 300 GEL
+- [Hyundai Elantra](https://www.example.ge/en/fleet/hyundai-elantra/): Economy class, 2019–2023, 1.6 petrol, 5 seats, 82 GEL/day, deposit 300 GEL
+- [Toyota Corolla](https://www.example.ge/en/fleet/toyota-corolla/): Economy class, 2020–2023, 1.6 petrol, 5 seats, 88 GEL/day, deposit 300 GEL
+- [Toyota RAV4](https://www.example.ge/en/fleet/toyota-rav4/): Crossover / SUV, 2019–2023, 2.5 hybrid, 5 seats, 145 GEL/day, deposit 600 GEL
+- [Hyundai Tucson](https://www.example.ge/en/fleet/hyundai-tucson/): Crossover / SUV, 2020–2023, 2.0 petrol, 5 seats, 130 GEL/day, deposit 600 GEL
+- [Mitsubishi Outlander](https://www.example.ge/en/fleet/mitsubishi-outlander/): Crossover / SUV, 2018–2022, 2.4 petrol, 7 seats, 138 GEL/day, deposit 600 GEL
+- [Toyota Camry](https://www.example.ge/en/fleet/toyota-camry/): Business class, 2020–2023, 2.5 hybrid, 5 seats, 210 GEL/day, deposit 1000 GEL
+- [Mercedes-Benz E-Class](https://www.example.ge/en/fleet/mercedes-benz-e-class/): Business class, 2019–2022, 2.0 diesel, 5 seats, 290 GEL/day, deposit 1000 GEL
+- [BMW 5 Series](https://www.example.ge/en/fleet/bmw-5-series/): Business class, 2019–2022, 2.0 petrol, 5 seats, 310 GEL/day, deposit 1000 GEL
+- [Toyota Land Cruiser Prado](https://www.example.ge/en/fleet/toyota-land-cruiser-prado/): Off-road 4x4, 2017–2022, 2.8 diesel, 7 seats, 330 GEL/day, deposit 1200 GEL
+- [Mitsubishi Delica D:5](https://www.example.ge/en/fleet/mitsubishi-delica-d-5/): Off-road 4x4, 2016–2021, 2.2 diesel, 8 seats, 290 GEL/day, deposit 1200 GEL
+- [Mitsubishi Pajero](https://www.example.ge/en/fleet/mitsubishi-pajero/): Off-road 4x4, 2015–2020, 3.0 petrol, 7 seats, 240 GEL/day, deposit 1200 GEL
+- [Toyota Alphard](https://www.example.ge/en/fleet/toyota-alphard/): Minivan, 2018–2022, 2.5 hybrid, 7 seats, 310 GEL/day, deposit 1000 GEL
+- [Hyundai Staria](https://www.example.ge/en/fleet/hyundai-staria/): Minivan, 2021–2024, 2.2 diesel, 9 seats, 260 GEL/day, deposit 1000 GEL
+- [Mercedes-Benz Vito](https://www.example.ge/en/fleet/mercedes-benz-vito/): Minivan, 2018–2022, 2.1 diesel, 8 seats, 200 GEL/day, deposit 1000 GEL
+- [Ford Transit](https://www.example.ge/en/fleet/ford-transit/): Commercial van, 2019–2023, 2.0 diesel, 3 seats, 185 GEL/day, deposit 800 GEL
+- [Mercedes-Benz Sprinter](https://www.example.ge/en/fleet/mercedes-benz-sprinter/): Commercial van, 2018–2022, 2.1 diesel, 3 seats, 215 GEL/day, deposit 800 GEL
+
+## Articles
+
+- [7 best road-trip routes in Georgia by car](https://www.example.ge/en/blog/avtomobilit-mogzauroba-saqartveloshi/) (2026-06-11): Kazbegi, Kakheti, Batumi, Svaneti, Vardzia, Racha and Tusheti — distance, driving time, the vehicle category each route needs, road surface and best season.
+- [Rental car vs taxi in Tbilisi: the actual numbers](https://www.example.ge/en/blog/manqanis-daqiraveba-tu-taqsi/) (2026-04-16): A rental car against Bolt on a business trip: fully loaded daily cost, worked 3-day and 5-day examples, the break-even point in rides per day, and the cost of waiting.
+- [How to rent a car in Georgia: a step-by-step guide](https://www.example.ge/en/blog/rogor-viqiravot-manqana-saqartveloshi/) (2026-03-05): Documents, IDP rules, age limits, how the deposit block works, insurance and excess explained, the handover photo protocol and cross-border rules for foreign drivers.
+- [Driving in Georgia in winter: what you need to know](https://www.example.ge/en/blog/zamtris-mgzavroba-saqartveloshi/) (2026-01-22): Winter tyres from 1 December to 1 April, Gudauri and Jvari Pass closures, snow chains, fuel and daylight planning, emergency number 112 and what our winter policy covers.
+
+## Road trips
+
+- [Georgian Military Highway and Kazbegi](https://www.example.ge/en/routes/military-highway-kazbegi/): 2 days, 340 km, 6:40 driving, suv category — Two days on Georgia's great mountain road — Zhinvali, Ananuri, Gudauri and Gergeti Trinity.
+- [Kakheti Wine Loop](https://www.example.ge/en/routes/kakheti-wine-loop/): 3 days, 420 km, 8:00 driving, economy category — Three days across the Alazani valley: Sighnaghi, Bodbe, Telavi, Tsinandali, Alaverdi and Kvareli.
+- [Vardzia and Borjomi — the Southern Route](https://www.example.ge/en/routes/vardzia-borjomi-south/): 2 days, 550 km, 9:00 driving, economy category — Two days in Samtskhe-Javakheti: Borjomi park, Rabati castle, Khertvisi and the cave city of Vardzia.
+- [Imereti: Caves and Canyons](https://www.example.ge/en/routes/imereti-caves-canyons/): 3 days, 640 km, 10:30 driving, suv category — Three days in western Georgia: Uplistsikhe, Kutaisi, Gelati, Prometheus, Sataplia and Okatse.
+- [Svaneti Expedition](https://www.example.ge/en/routes/svaneti-expedition/): 5 days, 1050 km, 21:00 driving, offroad category — Five days in Upper Svaneti: Kutaisi, Zugdidi, the Enguri dam, Mestia and Ushguli.
+- [Black Sea and Adjara](https://www.example.ge/en/routes/black-sea-adjara/): 4 days, 880 km, 14:30 driving, suv category — Four days in the west: Kutaisi, Kobuleti, Batumi, Gonio, Makhuntseti and Mtirala.
+- [Racha Mountain Loop](https://www.example.ge/en/routes/racha-mountain-loop/): 3 days, 790 km, 14:00 driving, suv category — Three days in Racha: Kutaisi, Tkibuli, Nikortsminda, Ambrolauri, Shaori and Oni.
+
+## Regions
+
+- [Tbilisi](https://www.example.ge/en/regions/tbilisi/): Georgia's capital in a narrow valley on the Mtkvari — old town, sulphur baths and the starting point of almost every route.
+- [Mtskheta-Mtianeti](https://www.example.ge/en/regions/mtskheta-mtianeti/): The ancient capital Mtskheta and the Georgian Military Highway to Kazbegi — history and high mountains on one axis.
+- [Kakheti](https://www.example.ge/en/regions/kakheti/): Georgia's wine country on the Alazani Valley — cellars, ancient churches, the hill town of Sighnaghi and the Tusheti mountains.
+- [Kvemo Kartli](https://www.example.ge/en/regions/kvemo-kartli/): South of Tbilisi — very early churches, the Dmanisi excavations and Dashbashi Canyon, all within day-trip range.
+- [Shida Kartli](https://www.example.ge/en/regions/shida-kartli/): Uplistsikhe, Gori and orchards on the Mtkvari plain — the simplest day trip west of Tbilisi.
+- [Samtskhe-Javakheti](https://www.example.ge/en/regions/samtskhe-javakheti/): Borjomi forests, the rock city of Vardzia and the high Javakheti plateau with its lakes — two climates in one region.
+- [Imereti](https://www.example.ge/en/regions/imereti/): Kutaisi, Gelati and a karst landscape — caves, canyons and waterfalls within an hour of each other.
+- [Racha-Lechkhumi](https://www.example.ge/en/regions/racha-lechkhumi/): Georgia's quietest mountain corner — Khvanchkara vineyards, Nikortsminda and the high valleys above Oni.
+- [Samegrelo-Zemo Svaneti](https://www.example.ge/en/regions/samegrelo-zemo-svaneti/): Subtropical Samegrelo with its canyons and Upper Svaneti with its towers — one region, two entirely different worlds.
+- [Guria](https://www.example.ge/en/regions/guria/): Tea plantations between the sea and the mountains — the magnetic sand of Ureki and the high resort of Bakhmaro.
+- [Adjara](https://www.example.ge/en/regions/adjara/): Batumi, the Black Sea coast and the mountains of Upper Adjara — Georgia's wettest and greenest corner.
+
+## Attractions
+
+- [Batumi Boulevard and Old Town](https://www.example.ge/en/attractions/batumi-boulevard-old-town/): A seven-kilometre seafront promenade, a nineteenth-century old quarter and modern towers in one compact city. Time needed 6 h; 370 km / 5:30 from Tbilisi; road paved; car economy; season all; entry free
+- [Batumi Botanical Garden](https://www.example.ge/en/attractions/batumi-botanical-garden/): Over a hundred hectares on a cape above the sea, with nine floristic zones of the world laid out side by side. Time needed 3 h; 380 km / 5:45 from Tbilisi; road paved; car economy; season all; entry ~15 ₾
+- [Gonio-Apsaros Fortress](https://www.example.ge/en/attractions/gonio-fortress/): A Roman military fort south of Batumi — 18 towers, active excavations and a grave traditionally linked to an apostle. Time needed 2 h; 385 km / 5:50 from Tbilisi; road paved; car economy; season all; entry ~15 ₾
+- [Makhuntseti Waterfall and Arched Bridge](https://www.example.ge/en/attractions/makhuntseti-waterfall/): A thirty-metre waterfall and a medieval stone arch bridge in the Adjaristsqali valley, an hour from Batumi. Time needed 2 h; 395 km / 6:00 from Tbilisi; road paved; car economy; season all; entry free
+- [Mtirala National Park](https://www.example.ge/en/attractions/mtirala-national-park/): Colchic rainforest behind Batumi — one of the wettest places in Europe, with trails, a waterfall and a zipline. Time needed 4 h; 385 km / 5:50 from Tbilisi; road mostly_paved; car suv; season may-october; entry free
+- [Khulo Cable Car and Upper Adjara](https://www.example.ge/en/attractions/khulo-cable-car-upper-adjara/): A Soviet-era cable car strung between Khulo and the village of Tago across a deep gorge, plus the road into Upper Adjara. Time needed 3 h; 455 km / 7:20 from Tbilisi; road mostly_paved; car suv; season may-october; entry ~2 ₾
+- [Petra Fortress, Tsikhisdziri](https://www.example.ge/en/attractions/petra-fortress/): Byzantine fortress ruins on a rocky headland above the sea, between Kobuleti and Batumi. Time needed 1 h; 355 km / 5:20 from Tbilisi; road paved; car economy; season all; entry free
+- [Kobuleti Beach and Protected Areas](https://www.example.ge/en/attractions/kobuleti/): A quieter resort town north of Batumi — a long pebble beach and a rare peat bog reserve. Time needed 4 h; 345 km / 5:10 from Tbilisi; road paved; car economy; season june-september; entry free
+- [Bakhmaro](https://www.example.ge/en/attractions/bakhmaro/): A mountain resort of wooden chalets at 1,950 m where sea and alpine air meet — open only in summer. Time needed 6 h; 355 km / 6:30 from Tbilisi; road gravel; car offroad; season june-september; entry free
+- [Ureki](https://www.example.ge/en/attractions/ureki/): A black magnetic-sand beach on the Guria coast — the region's best-known family summer resort. Time needed 4 h; 320 km / 4:40 from Tbilisi; road paved; car economy; season june-september; entry free
+- [Shemokmedi Monastery](https://www.example.ge/en/attractions/shemokmedi-monastery/): The burial monastery of the Gurieli princes near Ozurgeti, with a famous history of icons and metalwork. Time needed 1 h; 335 km / 5:00 from Tbilisi; road mostly_paved; car economy; season all; entry free
+- [Nabeghlavi](https://www.example.ge/en/attractions/nabeghlavi/): A mineral water village in the Guria foothills — springs, a green valley and the start of the Bakhmaro road. Time needed 2 h; 345 km / 5:30 from Tbilisi; road mostly_paved; car suv; season may-october; entry free
+- [Gelati Monastery](https://www.example.ge/en/attractions/gelati-monastery/): The monastery and academy founded by David the Builder, and a UNESCO World Heritage Site. Time needed 2 h; 240 km / 3:30 from Tbilisi; road paved; car economy; season all; entry free
+- [Bagrati Cathedral and central Kutaisi](https://www.example.ge/en/attractions/bagrati-cathedral/): The cathedral on Ukimerioni hill and the old streets of Kutaisi spread out below it. Time needed 3 h; 230 km / 3:20 from Tbilisi; road paved; car economy; season all; entry free
+- [Prometheus Cave](https://www.example.ge/en/attractions/prometheus-cave/): A karst cave near Tskaltubo with lit halls, stone waterfalls and an underground boat ride. Time needed 2 h; 250 km / 3:45 from Tbilisi; road paved; car economy; season all; entry ~25 ₾ (ნავი ~20 ₾ დამატებით)
+- [Sataplia Nature Reserve](https://www.example.ge/en/attractions/sataplia-nature-reserve/): Dinosaur footprints, a karst cave and a glass viewing platform, nine kilometres from Kutaisi. Time needed 2 h; 240 km / 3:30 from Tbilisi; road paved; car economy; season all; entry ~20 ₾
+- [Okatse Canyon](https://www.example.ge/en/attractions/okatse-canyon/): A metal walkway pinned to the canyon wall high above the river, beyond the Gordi forest. Time needed 3 h; 265 km / 4:00 from Tbilisi; road mostly_paved; car economy; season may-october; entry ~20 ₾ + შატლი ~5 ₾
+- [Kinchkha Waterfall](https://www.example.ge/en/attractions/kinchkha-waterfall/): A cascade waterfall roughly a hundred metres high above Okatse, at the end of a gravel road. Time needed 2 h; 275 km / 4:15 from Tbilisi; road gravel; car suv; season may-october; entry ~15 ₾ + შატლი ~5 ₾
+- [Katskhi Pillar](https://www.example.ge/en/attractions/katskhi-pillar/): A forty-metre limestone monolith with a church on top — visitors cannot climb it. Time needed 1 h; 205 km / 3:00 from Tbilisi; road paved; car economy; season all; entry free
+- [Motsameta Monastery](https://www.example.ge/en/attractions/motsameta-monastery/): A small monastery on a cliff above the Tskaltsitela gorge, holding the relics of two martyred dukes. Time needed 1 h; 235 km / 3:25 from Tbilisi; road mostly_paved; car economy; season all; entry free
+- [Sairme Resort](https://www.example.ge/en/attractions/sairme-resort/): A mineral water resort in a wooded gorge near Baghdati, at around 950 metres. Time needed 4 h; 255 km / 4:00 from Tbilisi; road paved; car economy; season may-october; entry free (წყარო)
+- [Sighnaghi](https://www.example.ge/en/attractions/sighnaghi/): A small walled town on a ridge above the Alazani Valley, with the most photographed view in Kakheti. Time needed 3 h; 110 km / 1:50 from Tbilisi; road paved; car economy; season all; entry free
+- [Bodbe Monastery](https://www.example.ge/en/attractions/bodbe-monastery/): The burial place of St Nino beside Sighnaghi — one of Kakheti's most visited shrines, with a cypress avenue and valley views. Time needed 2 h; 112 km / 1:55 from Tbilisi; road paved; car economy; season all; entry free
+- [Telavi and Batonis Tsikhe](https://www.example.ge/en/attractions/telavi-batonis-tsikhe/): The capital of Kakheti on a terrace above the Alazani Valley, with King Erekle II's residence and a nine-century-old plane tree. Time needed 3 h; 95 km / 1:45 from Tbilisi; road paved; car economy; season all; entry ~7 ₾
+- [Alaverdi Cathedral](https://www.example.ge/en/attractions/alaverdi-cathedral/): An eleventh-century cathedral rising fifty metres out of the Alazani plain — for centuries the tallest building in Georgia. Time needed 1 h; 110 km / 2:05 from Tbilisi; road paved; car economy; season all; entry free
+- [Gremi](https://www.example.ge/en/attractions/gremi/): The citadel of Kakheti's lost capital — a 1565 church and tower on a hill above the Alazani Valley. Time needed 1 h; 125 km / 2:20 from Tbilisi; road paved; car economy; season all; entry ~5 ₾
+- [Ikalto Academy](https://www.example.ge/en/attractions/ikalto-academy/): A sixth-century monastery with the ruins of a medieval academy where, by tradition, Shota Rustaveli studied. Time needed 1 h; 100 km / 1:55 from Tbilisi; road paved; car economy; season all; entry free
+- [Nekresi Monastery](https://www.example.ge/en/attractions/nekresi-monastery/): One of the oldest surviving churches in Georgia, on a wooded slope with a sweeping view over the Alazani Valley. Time needed 2 h; 135 km / 2:25 from Tbilisi; road paved; car economy; season all; entry ~3 ₾
+- [Tsinandali Estate](https://www.example.ge/en/attractions/tsinandali-estate/): The Chavchavadze family house, a landscaped English-style park and the first European-style winery in Georgia. Time needed 2 h; 100 km / 1:55 from Tbilisi; road paved; car economy; season all; entry ~15 ₾
+- [Kvareli and the Kindzmarauli zone](https://www.example.ge/en/attractions/kvareli-kindzmarauli/): Kakheti's main red-wine microzone — tunnel cellars cut into rock, two lakes and a natural base for a harvest trip. Time needed 4 h; 145 km / 2:30 from Tbilisi; road paved; car economy; season all; entry ~25 ₾
+- [David Gareja](https://www.example.ge/en/attractions/david-gareja/): Sixth-century cave monasteries carved into a semi-desert ridge — the most unusual landscape in Georgia. Time needed 3 h; 75 km / 1:50 from Tbilisi; road mostly_paved; car suv; season all; entry free
+- [Lagodekhi Protected Areas](https://www.example.ge/en/attractions/lagodekhi-protected-areas/): Georgia's oldest nature reserve on the Azerbaijani border — forest, waterfalls and the multi-day trek to Black Rock Lake. Time needed 6 h; 160 km / 2:40 from Tbilisi; road paved; car economy; season may-october; entry free
+- [Omalo and Tusheti](https://www.example.ge/en/attractions/omalo-tusheti/): Georgia's most isolated mountain region, beyond the Abano Pass — 4x4 only, and only from June to October. Time needed 8 h; 220 km / 6:30 from Tbilisi; road 4x4_only; car offroad; season june-september; entry free
+- [Birtvisi](https://www.example.ge/en/attractions/birtvisi-fortress/): A labyrinth of limestone towers and narrow gorges an hour from Tbilisi, with a medieval fortress built into natural rock. Time needed 4 h; 55 km / 1:20 from Tbilisi; road gravel; car suv; season may-october; entry free
+- [Dmanisi](https://www.example.ge/en/attractions/dmanisi/): Where the oldest hominins outside Africa were found — 1.8 million year old remains beside a medieval town and basilica. Time needed 2 h; 85 km / 1:50 from Tbilisi; road mostly_paved; car economy; season may-october; entry ~15 ₾
+- [Bolnisi Sioni](https://www.example.ge/en/attractions/bolnisi-sioni/): A basilica of 478–493 — the oldest surviving church in Georgia and home to the earliest dated Georgian inscriptions. Time needed 1 h; 70 km / 1:25 from Tbilisi; road paved; car economy; season all; entry free
+- [Algeti National Park](https://www.example.ge/en/attractions/algeti-national-park/): Spruce and fir forest an hour from Tbilisi — quiet marked trails, clean air and almost no visitors even at weekends. Time needed 4 h; 60 km / 1:20 from Tbilisi; road mostly_paved; car suv; season may-october; entry free
+- [Dashbashi Canyon](https://www.example.ge/en/attractions/dashbashi-canyon/): A basalt canyon near Tsalka with dozens of waterfalls and a glass bridge suspended across the gorge. Time needed 3 h; 100 km / 1:50 from Tbilisi; road paved; car economy; season may-october; entry ~50 ₾
+- [Jvari Monastery](https://www.example.ge/en/attractions/jvari-monastery/): A 6th-century church on a cliff above the meeting of the Aragvi and Mtkvari — the starting point of Georgian architecture. Time needed 1 h; 27 km / 0:35 from Tbilisi; road paved; car economy; season all; entry free
+- [Svetitskhoveli Cathedral](https://www.example.ge/en/attractions/svetitskhoveli-cathedral/): The 11th-century cathedral of Mtskheta, said to hold the robe of Christ — the mother church of Georgian Orthodoxy. Time needed 2 h; 25 km / 0:30 from Tbilisi; road paved; car economy; season all; entry free
+- [Ananuri Fortress](https://www.example.ge/en/attractions/ananuri-fortress/): A 17th-century castle on the shore of the Zhinvali reservoir — the most photogenic stop on the Georgian Military Highway. Time needed 1 h; 70 km / 1:20 from Tbilisi; road paved; car economy; season all; entry free
+- [Zhinvali Reservoir](https://www.example.ge/en/attractions/zhinvali-reservoir/): A turquoise artificial lake in the Aragvi valley — the first big view on the Georgian Military Highway. Time needed 1 h; 65 km / 1:15 from Tbilisi; road paved; car economy; season may-october; entry free
+- [Gudauri and the Russia–Georgia Friendship Monument](https://www.example.ge/en/attractions/gudauri/): Georgia's main ski resort below the Jvari Pass, with a mosaic-lined monument and an enormous mountain panorama. Time needed 6 h; 120 km / 2:10 from Tbilisi; road paved; car suv; season december-march; entry სკი-პასი ~80 ₾ დღეში
+- [Gergeti Trinity Church](https://www.example.ge/en/attractions/gergeti-trinity-church/): A 14th-century church at 2,170 m with Mount Kazbek behind it — the single most recognisable view in Georgia. Time needed 3 h; 160 km / 3:10 from Tbilisi; road mostly_paved; car suv; season may-october; entry free
+- [Dariali Gorge and the Gveleti Waterfalls](https://www.example.ge/en/attractions/dariali-gorge-gveleti-waterfalls/): The narrowest gorge in the Caucasus, right at the border, with two waterfalls and a short, dramatic trail. Time needed 2 h; 170 km / 3:25 from Tbilisi; road mostly_paved; car suv; season may-october; entry პარკირება ~5 ₾
+- [Truso Valley](https://www.example.ge/en/attractions/truso-valley/): A wild valley of mineral springs, travertine terraces and abandoned towers south of Kazbegi. Time needed 6 h; 145 km / 3:00 from Tbilisi; road gravel; car offroad; season june-september; entry free
+- [Shatili](https://www.example.ge/en/attractions/shatili/): A stone fortress-village in Khevsureti on the Chechen border — one of the most striking places in the Caucasus. Time needed 4 h; 155 km / 4:30 from Tbilisi; road 4x4_only; car offroad; season june-september; entry ~5 ₾
+- [Nikortsminda Cathedral](https://www.example.ge/en/attractions/nikortsminda-cathedral/): An 11th-century cathedral covered in exceptional stone carving, with late medieval frescoes inside. Time needed 1 h; 300 km / 5:10 from Tbilisi; road paved; car economy; season all; entry free
+- [Shaori Reservoir](https://www.example.ge/en/attractions/shaori-reservoir/): A pine-fringed highland reservoir near Nikortsminda, at around 1,130 metres. Time needed 3 h; 305 km / 5:15 from Tbilisi; road mostly_paved; car suv; season may-october; entry free
+- [Shovi Resort](https://www.example.ge/en/attractions/shovi-resort/): A high mountain resort above Oni in the Chanchakhi valley — strictly seasonal and partly rebuilt after the 2023 disaster. Time needed 4 h; 395 km / 6:50 from Tbilisi; road mostly_paved; car suv; season june-september; entry free
+- [Udziro Lake and Buba Glacier (Ghebi)](https://www.example.ge/en/attractions/udziro-lake-buba-glacier/): The last village in Racha and the trailhead for high mountain routes — 4x4 only, and summer only. Time needed 8 h; 410 km / 7:20 from Tbilisi; road 4x4_only; car offroad; season june-september; entry free
+- [Tsageri and Lechkhumi](https://www.example.ge/en/attractions/tsageri/): The centre of Lechkhumi in the Tskhenistskali valley — wine country, fortresses and the Lajanuri reservoir. Time needed 3 h; 325 km / 5:00 from Tbilisi; road mostly_paved; car suv; season may-october; entry free
+- [Mestia and the Svan Towers](https://www.example.ge/en/attractions/mestia/): Upper Svaneti's main town at 1,500 m — medieval stone defence towers, two strong museums and the trailhead for every route in the region. Time needed 4 h; 470 km / 8:30 from Tbilisi; road paved; car suv; season may-october; entry free
+- [Ushguli](https://www.example.ge/en/attractions/ushguli/): One of Europe's highest permanently inhabited settlements at 2,100 m, under Mount Shkhara — UNESCO-listed as part of Upper Svaneti. Time needed 4 h; 515 km / 10:30 from Tbilisi; road gravel; car offroad; season june-september; entry ~5 ₾
+- [Chalaadi Glacier](https://www.example.ge/en/attractions/chalaadi-glacier/): The most accessible glacier near Mestia — a short drive up the valley and a two-hour walk to the ice tongue. Time needed 4 h; 480 km / 8:50 from Tbilisi; road mostly_paved; car suv; season june-september; entry free
+- [Koruldi Lakes](https://www.example.ge/en/attractions/koruldi-lakes/): Small alpine pools at 2,740 m above Mestia, facing Mount Ushba — reachable only by 4x4 or on foot. Time needed 3 h; 480 km / 9:30 from Tbilisi; road 4x4_only; car offroad; season june-september; entry free
+- [Hatsvali and Tetnuldi Ski Areas](https://www.example.ge/en/attractions/hatsvali-tetnuldi/): Mestia's two ski zones — Hatsvali with sheltered forest runs, and Tetnuldi, where the lifts pass 3,000 metres. Time needed 6 h; 478 km / 8:50 from Tbilisi; road mostly_paved; car suv; season december-march; entry ~30 ₾
+- [Martvili Canyon](https://www.example.ge/en/attractions/martvili-canyon/): A turquoise river between limestone walls, with boardwalks and a short boat ride — Samegrelo's most visited natural site. Time needed 2 h; 310 km / 4:30 from Tbilisi; road paved; car economy; season all; entry ~20 ₾ + ნავი ~15 ₾
+- [Enguri Dam and Jvari Reservoir](https://www.example.ge/en/attractions/enguri-dam/): A 271-metre arch dam on the road to Mestia, with a long turquoise reservoir stretching behind it. Time needed 1 h; 350 km / 5:10 from Tbilisi; road paved; car economy; season all; entry free
+- [Dadiani Palace, Zugdidi](https://www.example.ge/en/attractions/dadiani-palace-zugdidi/): The residence of the princes of Mingrelia set in a botanical garden — Napoleon's death mask and the family collection. Time needed 2 h; 320 km / 4:40 from Tbilisi; road paved; car economy; season all; entry ~15 ₾
+- [Nokalakevi (Archaeopolis)](https://www.example.ge/en/attractions/nokalakevi/): A fortified city from the Lazic Wars above the Tekhuri river — walls, a secret tunnel and an active excavation. Time needed 2 h; 300 km / 4:30 from Tbilisi; road paved; car economy; season all; entry ~10 ₾
+- [Vardzia](https://www.example.ge/en/attractions/vardzia/): A 12th-century cave city and monastery cut into the Mtkvari gorge, the flagship monument of Queen Tamar's era. Time needed 3 h; 265 km / 4:20 from Tbilisi; road paved; car economy; season all; entry ~15 ₾ + შატლი ~3 ₾
+- [Rabati Castle (Akhaltsikhe)](https://www.example.ge/en/attractions/rabati-castle/): A restored fortress-town in the heart of Akhaltsikhe where a mosque, a church and a synagogue share one courtyard. Time needed 2 h; 205 km / 3:20 from Tbilisi; road paved; car economy; season all; entry ~20 ₾ (ზედა ეზო)
+- [Borjomi Central Park and Mineral Springs](https://www.example.ge/en/attractions/borjomi-central-park/): The historic spa park where you drink warm Borjomi water free, straight from the source. Time needed 3 h; 160 km / 2:20 from Tbilisi; road paved; car economy; season all; entry ~2 ₾
+- [Borjomi-Kharagauli National Park](https://www.example.ge/en/attractions/borjomi-kharagauli-national-park/): One of the largest protected forests in Europe, with marked trails, huts and multi-day treks. Time needed 6 h; 165 km / 2:30 from Tbilisi; road mostly_paved; car suv; season may-october; entry ~15 ₾ (ბილიკები/ღამისთევა ცალკე)
+- [Abastumani Astrophysical Observatory](https://www.example.ge/en/attractions/abastumani-observatory/): The first mountain observatory in the region, on Mount Kanobili above the old lung-cure resort of Abastumani. Time needed 2 h; 235 km / 3:50 from Tbilisi; road mostly_paved; car suv; season may-october; entry ~15 ₾ (ექსკურსია)
+- [Khertvisi Fortress](https://www.example.ge/en/attractions/khertvisi-fortress/): One of the oldest fortresses in Georgia, standing where two rivers meet on the road to Vardzia. Time needed 1 h; 250 km / 4:05 from Tbilisi; road paved; car economy; season all; entry free
+- [Lake Paravani and Lake Tabatskuri](https://www.example.ge/en/attractions/paravani-tabatskuri-lakes/): High-altitude lakes on the volcanic Javakheti plateau at around 2,000 metres, on a major bird migration route. Time needed 3 h; 175 km / 3:10 from Tbilisi; road mostly_paved; car suv; season june-september; entry free
+- [Sapara Monastery](https://www.example.ge/en/attractions/sapara-monastery/): An active monastery hidden on a cliff terrace near Akhaltsikhe, with 13th-century frescoes. Time needed 2 h; 215 km / 3:35 from Tbilisi; road mostly_paved; car suv; season all; entry free
+- [Uplistsikhe](https://www.example.ge/en/attractions/uplistsikhe/): A city carved into the rock above the Mtkvari — Georgia's oldest urban centre, with over 3,000 years of history. Time needed 2 h; 100 km / 1:25 from Tbilisi; road paved; car economy; season all; entry ~25 ₾
+- [Gori: Fortress and Stalin Museum](https://www.example.ge/en/attractions/gori-fortress-stalin-museum/): The capital of Shida Kartli — a medieval citadel on its hill and the most contested museum of the Soviet era. Time needed 3 h; 86 km / 1:10 from Tbilisi; road paved; car economy; season all; entry მუზეუმი ~20 ₾, ციხე უფასო
+- [Ateni Sioni Church](https://www.example.ge/en/attractions/ateni-sioni-church/): A 7th-century church in the Ateni gorge with outstanding 11th-century frescoes and historic vineyards. Time needed 1 h; 98 km / 1:30 from Tbilisi; road mostly_paved; car economy; season all; entry free
+- [Kintsvisi Monastery](https://www.example.ge/en/attractions/kintsvisi-monastery/): A 13th-century monastery in the woods, home to the Angel of Kintsvisi — the best-known fresco in Georgian art. Time needed 2 h; 125 km / 1:50 from Tbilisi; road mostly_paved; car suv; season may-october; entry free
+- [Samtavisi Cathedral](https://www.example.ge/en/attractions/samtavisi-cathedral/): A cathedral of 1030 near Kaspi — the benchmark of Georgian facade decoration, copied for two centuries afterwards. Time needed 1 h; 62 km / 1:00 from Tbilisi; road paved; car economy; season all; entry free
+- [Narikala Fortress](https://www.example.ge/en/attractions/narikala-fortress/): A 4th-century citadel on the ridge above the Old Town — the defining silhouette of Tbilisi and its best viewpoint. Time needed 2 h; 3 km / 0:15 from Tbilisi; road paved; car economy; season all; entry free
+- [Abanotubani and the Sulphur Baths](https://www.example.ge/en/attractions/abanotubani-sulphur-baths/): The birthplace of Tbilisi — brick-domed sulphur bathhouses in the heart of the Old Town. Time needed 2 h; 3 km / 0:15 from Tbilisi; road paved; car economy; season all; entry ნომერი 50–150 ₾ / საათი
+- [Holy Trinity Cathedral (Sameba)](https://www.example.ge/en/attractions/holy-trinity-cathedral-sameba/): The vast Sameba cathedral on Elia Hill — Georgia's largest church and the city's second landmark after Narikala. Time needed 1 h; 5 km / 0:15 from Tbilisi; road paved; car economy; season all; entry free
+- [Mtatsminda Park and Funicular](https://www.example.ge/en/attractions/mtatsminda-park/): A hilltop amusement park above the city, reached by a 1905 funicular, with the widest panorama of Tbilisi. Time needed 3 h; 6 km / 0:20 from Tbilisi; road paved; car economy; season all; entry ფუნიკულიორი ~6 ₾
+- [Georgian National Museum](https://www.example.ge/en/attractions/georgian-national-museum/): The flagship museum on Rustaveli Avenue — Colchian gold, the Dmanisi hominids and the Soviet Occupation hall. Time needed 2 h; 2 km / 0:10 from Tbilisi; road paved; car economy; season all; entry ~15 ₾
+- [Open Air Museum of Ethnography](https://www.example.ge/en/attractions/open-air-museum-of-ethnography/): A village of authentic houses from every Georgian province, rebuilt on the wooded slope below Turtle Lake. Time needed 2 h; 8 km / 0:20 from Tbilisi; road paved; car economy; season all; entry ~10 ₾
+- [Turtle Lake and Vake Park](https://www.example.ge/en/attractions/turtle-lake-vake-park/): The city's green axis — from Vake Park up by cable car to Turtle Lake, where Tbilisi actually relaxes. Time needed 2 h; 9 km / 0:20 from Tbilisi; road paved; car economy; season all; entry free
+- [The Chronicle of Georgia](https://www.example.ge/en/attractions/chronicle-of-georgia/): Tsereteli's colossal bronze pillars above the Tbilisi Sea — the city's most cinematic sunset viewpoint. Time needed 1 h; 14 km / 0:30 from Tbilisi; road paved; car economy; season all; entry free
+
+## Languages
+
+- [ქართული](https://www.example.ge/)
+- [English](https://www.example.ge/en/)
+- [Русский](https://www.example.ge/ru/)
+- [فارسی](https://www.example.ge/fa/)
+- [עברית](https://www.example.ge/he/)
+- [العربية](https://www.example.ge/ar/)
+
+## Contact
+
+- Phone: +995 32 2 000 000
+- Mobile: +995 599 00 00 00
+- Email: info@example.ge
+- Address: 71 Vazha-Pshavela Ave., Tbilisi 0186, Georgia
+
+Last updated: 2026-08-10
