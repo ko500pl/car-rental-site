@@ -1,25 +1,32 @@
 # ═══ დიზაინის პარამეტრები — იმართება ადმინიდან: Settings → დიზაინი ═══
-# დიზაინერისგან მაკეტის მიღების შემდეგ აქ იცვლება ფერები/ტიპოგრაფიკა.
-logo_image: ""            # ცარიელი = ტექსტური ლოგო; ან ატვირთეთ SVG/PNG
+# Fleet House dark — Claude Design-ის მაკეტის მიხედვით.
+logo_image: ""            # ცარიელი = ტექსტური ლოგო + "FH" ნიშანი
 logo_height: "30"
+logo_mark: "FH"           # ლოგოს კვადრატში ჩაწერილი ასოები
 
-color_brand: "#0f4c81"    # ძირითადი ფერი (ღილაკები, სათაურები)
-color_brand_2: "#1567ab"  # hover / ბმულები
-color_brand_ink: "#0a3459" # მუქი ვარიანტი
-color_accent: "#c8963e"   # აქცენტი (ხაზები, ლოგოს წერტილი)
-color_ink: "#12181f"      # ძირითადი ტექსტი
-color_ink_2: "#3d4b5a"    # მეორეხარისხოვანი ტექსტი
-color_bg: "#ffffff"
-color_bg_2: "#f7f9fb"     # ალტერნატიული სექციის ფონი
-color_line: "#e2e8ef"     # ჩარჩოები
-color_ok: "#1d7a53"       # ფასის ფერი
+theme: dark               # dark | light
+
+color_brand: "#22b8d6"    # ძირითადი ფერი (ღილაკები, აქცენტები)
+color_brand_2: "#38bdf8"  # hover / ბმულები
+color_brand_ink: "#e8f6fb" # სათაურების ფერი მუქ ფონზე
+color_accent: "#2dd4bf"   # ტეგები, ლოგოს ნიშანი
+color_accent_2: "#3b82f6" # გრადიენტის მეორე ბოლო
+color_ink: "#eef4fa"      # ძირითადი ტექსტი
+color_ink_2: "#9fb0c2"    # მეორეხარისხოვანი ტექსტი
+color_bg: "#080c11"       # გვერდის ფონი
+color_bg_2: "#0e151d"     # ბარათები / ალტერნატიული სექცია
+color_bg_3: "#141e29"     # hover, ჩიპები
+color_line: "#1e2a37"     # ჩარჩოები
+color_ok: "#34d399"       # ფასის ფერი
+color_on_brand: "#04222b" # ტექსტი ღია ღილაკზე
 
 font_family: '"Noto Sans Georgian","Noto Sans","Segoe UI",system-ui,sans-serif'
+font_mono: 'ui-monospace,"JetBrains Mono","SFMono-Regular",Consolas,"Liberation Mono",monospace'
 google_fonts: "Noto+Sans+Georgian:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700"
 base_font_size: "17"
-radius: "10"
-max_width: "1120"
+radius: "12"
+max_width: "1200"
 
 hero_style: gradient       # gradient | solid | image
-hero_image: ""             # hero_style: image-ის შემთხვევაში
-hero_overlay: "0.62"       # ფონის სურათის დაბნელება 0–1
+hero_image: ""
+hero_overlay: "0.62"

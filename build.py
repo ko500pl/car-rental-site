@@ -448,8 +448,10 @@ def header_html(lang, current):
         f'class="{"on" if l == lang else ""}" title="{E(LANG_LABEL[l])}">{LANG_SHORT[l]}</a>'
         for l in LANGS)
     logo_img = DESIGN.get("logo_image")
+    mark = DESIGN.get("logo_mark") or "".join(w[0] for w in BRAND.split()[:2]).upper()
     logo = (f'<img src="{E(logo_img)}" alt="{E(BRAND)}">' if logo_img
-            else f'<span class="dot"></span>{E(BRAND)} <small>{E(u["ui"]["logo_sub"])}</small>')
+            else f'<span class="mark" aria-hidden="true">{E(mark)}</span>'
+                 f'{E(BRAND)} <small>{E(u["ui"]["logo_sub"])}</small>')
     return f"""<header class="site-head"><div class="head-in">
 <a class="logo" href="{lang_root(lang)}">{logo}</a>
 <nav class="main" aria-label="{E(u['ui']['nav_label'])}"><ul>{lis}</ul></nav>
@@ -1091,6 +1093,39 @@ def render_region(lang, key, r):
     return shell(lang, "map", head, crumbs + f'<main id="main">{body}</main>', depth, js)
 
 
+def cheapest_price(cat):
+    """იმ კატეგორიის ყველაზე იაფი ავტომობილის დღიური ტარიფი."""
+    m = {"economy": "economy", "suv": "suv", "offroad": "offroad"}.get(cat, "economy")
+    ps = [int(c["price_1_6"]) for c in CARS.values() if c["category"] == m]
+    if not ps:
+        ps = [int(c["price_1_6"]) for c in CARS.values()]
+    return min(ps) if ps else 0
+
+
+def rent_box(lang, a):
+    """გვერდითი ბარათი — „დაიქირავე მანქანა ამ მოგზაურობისთვის“."""
+    r = TRAVEL[lang]["rent"]
+    cat = car_cat_label(a["car_category"], lang)
+    road = tl(lang, "road", a["road"]).lower()
+    day = cheapest_price(a["car_category"])
+    km = float(a["distance_tbilisi_km"]) * 2
+    lit = float(SITE.get("fuel_l_100km", 8.5))
+    gel = float(SITE.get("fuel_price_gel", 3.1))
+    fuel = int(round(km * lit / 100.0 * gel / 5.0) * 5)
+    return (
+        f'<aside class="rentbox">'
+        f'<h3>{E(r["title"])}</h3>'
+        f'<p>{E(r["text"].format(cat=cat, road=road))}</p>'
+        f'<div class="rentrow"><span>{E(r["per_day"].format(cat=cat))}</span>'
+        f'<b>{E(r["from"])} {day} ₾</b></div>'
+        f'<div class="rentrow"><span>{E(r["fuel"])}</span>'
+        f'<b>{E(r["approx"])}{fuel} ₾</b></div>'
+        f'<a class="btn" dir="ltr" href="tel:{SITE["phone_e164"]}">{E(SITE["phone"])}</a>'
+        f'<p class="rentnote">{E(r["note"].format(o=SITE["opens"], c=SITE["closes"]))}</p>'
+        f'<p class="rentnote">{E(r["est"].format(l=lit, g=gel))}</p>'
+        f'</aside>')
+
+
 def render_attraction(lang, slug, a):
     L = a[lang]
     u = UI[lang]
@@ -1103,7 +1138,9 @@ def render_attraction(lang, slug, a):
         f'<h3><a href="{attr_url(lang, n, False)}">{E(ATTRACTIONS[n][lang]["name"])}</a></h3>'
         f'<p>{E(ATTRACTIONS[n][lang]["short"])}</p></div>'
         for n in a.get("nearby", []) if n in ATTRACTIONS)
-    badge = (f'<span class="tag">{E(tu(lang,"unesco"))}</span>' if a["unesco"] else "")
+    badge = (f'<span class="tag">{E(tl(lang,"type",a["type"]))}</span>'
+             f'<span class="tag muted">{E(r[lang]["name"])}</span>'
+             + (f'<span class="tag muted">{E(tu(lang,"unesco"))}</span>' if a["unesco"] else ""))
     title = f'{L["name"]} — {tl(lang, "type", a["type"])}, {a["drive_time_tbilisi"]} {tu(lang,"from_tbilisi")}'
     title = title[:70] + f" | {BRAND}" if len(title) < 55 else title[:74]
     desc = re.sub(r"\s+", " ", f'{L["short"]} {tu(lang,"visit_time")}: {a["visit_hours"]} '
@@ -1111,10 +1148,12 @@ def render_attraction(lang, slug, a):
                                f'{a["distance_tbilisi_km"]} {tu(lang,"km")}, '
                                f'{a["drive_time_tbilisi"]}. {L["body"]}')[:178]
     body = (
-        f'<section class="page-head"><div class="wrap">{badge}<h1>{E(L["name"])}</h1>'
+        f'<section class="page-head"><div class="wrap"><div class="tagrow">{badge}</div>'
+        f'<h1>{E(L["name"])}</h1>'
         f'<p class="lead">{E(L["short"])}</p></div></section>'
         f'<section class="sec"><div class="wrap">{attr_facts(a, lang)}'
-        f'<div class="article">{render_md(L["body"], lang)}</div></div></section>'
+        f'<div class="attr-grid"><div class="article">{render_md(L["body"], lang)}</div>'
+        f'{rent_box(lang, a)}</div></div></section>'
         f'<section class="sec alt"><div class="wrap"><h2>{E(tu(lang,"tip_title"))}</h2>'
         f'<div class="note">{render_md(L["tip"], lang)}</div>'
         f'<h2>{E(tu(lang,"route_title"))}</h2>'

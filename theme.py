@@ -11,23 +11,36 @@ def css(d):
                   .format(o=d.get("hero_overlay", "0.62"), u=d.get("hero_image") or "")),
     }.get(d.get("hero_style", "gradient"), "")
 
+    dark = str(d.get("theme", "dark")).lower() == "dark"
+    mixb = "#000000" if dark else "#ffffff"
+    ink3 = ("color-mix(in srgb,{i2} 78%,{m})".format(i2=d['color_ink_2'], m=mixb))
+    grad = ("linear-gradient(100deg,{a} 0%,{b} 100%)"
+            .format(a=d['color_brand'], b=d.get('color_accent_2', d['color_brand_2'])))
+
     return f""":root{{
   --ink:{d['color_ink']};
   --ink-2:{d['color_ink_2']};
-  --ink-3:color-mix(in srgb,{d['color_ink_2']} 72%,#ffffff);
+  --ink-3:{ink3};
   --line:{d['color_line']};
-  --line-2:color-mix(in srgb,{d['color_line']} 55%,#ffffff);
+  --line-2:color-mix(in srgb,{d['color_line']} 62%,{mixb});
   --bg:{d['color_bg']};
   --bg-2:{d['color_bg_2']};
-  --bg-3:color-mix(in srgb,{d['color_brand']} 8%,#ffffff);
+  --bg-3:{d.get('color_bg_3', d['color_bg_2'])};
+  --surface:{d['color_bg_2']};
+  --surface-2:{d.get('color_bg_3', d['color_bg_2'])};
+  --mixb:{mixb};
   --brand:{d['color_brand']};
   --brand-2:{d['color_brand_2']};
   --brand-ink:{d['color_brand_ink']};
   --accent:{d['color_accent']};
+  --accent-2:{d.get('color_accent_2', d['color_brand_2'])};
+  --grad:{grad};
+  --on-brand:{d.get('color_on_brand', '#ffffff')};
   --ok:{d['color_ok']};
   --radius:{d['radius']}px;
   --maxw:{d['max_width']}px;
   --font:{d['font_family']};
+  --mono:{d.get('font_mono', 'ui-monospace,Consolas,monospace')};
 }}
 
 *,*::before,*::after{{box-sizing:border-box}}
@@ -42,10 +55,10 @@ a:focus-visible{{outline:3px solid var(--accent);outline-offset:2px;border-radiu
 
 .wrap{{max-width:var(--maxw);margin:0 auto;padding:0 20px}}
 .skip{{position:absolute;inset-inline-start:-9999px}}
-.skip:focus{{inset-inline-start:12px;top:12px;z-index:99;background:#fff;padding:10px 16px;border:2px solid var(--brand);border-radius:6px}}
+.skip:focus{{inset-inline-start:12px;top:12px;z-index:99;background:var(--surface);padding:10px 16px;border:2px solid var(--brand);border-radius:6px}}
 
 /* Header */
-.site-head{{border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:20}}
+.site-head{{border-bottom:1px solid var(--line);background:var(--surface);position:sticky;top:0;z-index:20}}
 .head-in{{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:14px 20px;max-width:var(--maxw);margin:0 auto}}
 .logo{{display:flex;align-items:center;gap:8px;font-weight:700;font-size:20px;color:var(--brand-ink);letter-spacing:-.2px}}
 .logo:hover{{text-decoration:none}}
@@ -56,7 +69,7 @@ nav.main{{margin-inline-start:auto}}
 nav.main ul{{display:flex;flex-wrap:wrap;gap:2px;list-style:none;margin:0;padding:0}}
 nav.main a{{display:block;padding:7px 10px;border-radius:7px;color:var(--ink-2);font-size:15px;font-weight:500}}
 nav.main a:hover{{background:var(--bg-3);color:var(--brand-ink);text-decoration:none}}
-nav.main a[aria-current="page"]{{background:var(--brand);color:#fff}}
+nav.main a[aria-current="page"]{{background:var(--brand);color:var(--on-brand)}}
 .langs{{display:flex;gap:4px;align-items:center;border-inline-start:1px solid var(--line);padding-inline-start:12px}}
 .langs a{{font-size:13px;font-weight:600;color:var(--ink-3);padding:5px 8px;border-radius:6px}}
 .langs a:hover{{background:var(--bg-3);text-decoration:none}}
@@ -93,17 +106,17 @@ strong{{font-weight:700;color:var(--ink)}}
 
 /* Tables */
 .tbl-wrap{{overflow-x:auto;margin:0 0 22px;border:1px solid var(--line);border-radius:var(--radius)}}
-table{{border-collapse:collapse;width:100%;font-size:15.5px;background:#fff}}
+table{{border-collapse:collapse;width:100%;font-size:15.5px;background:var(--surface)}}
 caption{{text-align:start;font-size:14px;color:var(--ink-3);padding:12px 14px;border-bottom:1px solid var(--line);background:var(--bg-2);font-weight:500}}
 th,td{{padding:11px 14px;text-align:start;border-bottom:1px solid var(--line-2);vertical-align:top}}
 thead th{{background:var(--bg-3);color:var(--brand-ink);font-weight:700;font-size:14px;white-space:nowrap}}
 tbody tr:last-child td{{border-bottom:0}}
-tbody tr:nth-child(even){{background:color-mix(in srgb,var(--bg-2) 45%,#ffffff)}}
+tbody tr:nth-child(even){{background:color-mix(in srgb,var(--bg-2) 45%,var(--mixb))}}
 td:first-child{{font-weight:600;color:var(--ink)}}
 
 /* Cards */
 .cards{{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:18px;margin:6px 0 24px}}
-.card{{border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;background:#fff}}
+.card{{border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;background:var(--surface)}}
 .card h3{{margin:0 0 8px;font-size:17.5px;color:var(--brand-ink)}}
 .card p{{font-size:15.5px;color:var(--ink-2);margin:0 0 12px}}
 .card ul{{font-size:15px;margin:0;padding-inline-start:19px;color:var(--ink-2)}}
@@ -112,7 +125,7 @@ td:first-child{{font-weight:600;color:var(--ink)}}
 
 /* Car cards */
 .cars{{display:grid;grid-template-columns:repeat(auto-fit,minmax(288px,1fr));gap:20px;margin:8px 0 26px}}
-.car{{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff;display:flex;flex-direction:column}}
+.car{{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--surface);display:flex;flex-direction:column}}
 .car .ph{{aspect-ratio:16/10;background:var(--bg-3);display:flex;align-items:center;justify-content:center;color:var(--ink-3);font-size:13px}}
 .car .ph img{{width:100%;height:100%;object-fit:cover}}
 .car .in{{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1}}
@@ -137,7 +150,7 @@ td:first-child{{font-weight:600;color:var(--ink)}}
 
 /* Facts */
 .facts{{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin:6px 0 26px}}
-.facts div{{background:#fff;padding:16px 18px}}
+.facts div{{background:var(--surface);padding:16px 18px}}
 .facts dt,.facts .k{{font-size:13px;color:var(--ink-3);margin-bottom:3px}}
 .facts dd,.facts .v{{font-size:17px;font-weight:700;color:var(--brand-ink);margin:0}}
 
@@ -150,7 +163,7 @@ td:first-child{{font-weight:600;color:var(--ink)}}
 
 /* Blog */
 .posts{{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;margin:8px 0 20px}}
-.post-c{{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff;display:flex;flex-direction:column}}
+.post-c{{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--surface);display:flex;flex-direction:column}}
 .post-c .ph{{aspect-ratio:16/9;background:var(--bg-3)}}
 .post-c .ph img{{width:100%;height:100%;object-fit:cover}}
 .post-c .in{{padding:18px 20px 20px}}
@@ -166,15 +179,15 @@ td:first-child{{font-weight:600;color:var(--ink)}}
 .meta-line{{font-size:14.5px;color:var(--ink-3);margin:0 0 22px}}
 
 /* Notes / CTA */
-.note{{border-inline-start:4px solid var(--accent);background:color-mix(in srgb,{d['color_accent']} 9%,#ffffff);padding:14px 18px;border-radius:0 8px 8px 0;margin:0 0 22px;font-size:15.5px;color:var(--ink-2);max-width:74ch}}
+.note{{border-inline-start:4px solid var(--accent);background:color-mix(in srgb,{d['color_accent']} 9%,var(--mixb));padding:14px 18px;border-radius:0 8px 8px 0;margin:0 0 22px;font-size:15.5px;color:var(--ink-2);max-width:74ch}}
 .note strong{{color:var(--brand-ink)}}
 .cta{{background:var(--bg-3);border:1px solid var(--line);border-radius:var(--radius);padding:26px 28px;margin:30px 0 0}}
 .cta h2{{margin:0 0 8px;font-size:22px}}
 .cta p{{margin:0 0 6px;color:var(--ink-2)}}
 .cta .row{{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}}
-.btn{{display:inline-block;background:var(--brand);color:#fff;padding:11px 22px;border-radius:8px;font-weight:600;font-size:15.5px}}
+.btn{{display:inline-block;background:var(--brand);color:var(--on-brand);padding:11px 22px;border-radius:8px;font-weight:600;font-size:15.5px}}
 .btn:hover{{background:var(--brand-2);text-decoration:none}}
-.btn.ghost{{background:#fff;color:var(--brand-ink);border:1px solid var(--line)}}
+.btn.ghost{{background:var(--surface);color:var(--brand-ink);border:1px solid var(--line)}}
 .btn.ghost:hover{{background:var(--bg-2)}}
 
 /* Footer */
@@ -191,7 +204,7 @@ td:first-child{{font-weight:600;color:var(--ink)}}
 .gmap{{width:100%;border:1px solid var(--line);border-radius:var(--radius);margin:0 0 10px;z-index:1}}
 .map-hint{{font-size:14.5px;color:var(--ink-3);margin:0 0 18px}}
 .legend{{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;font-size:14px;color:var(--ink-2);
-  border:1px solid var(--line);border-radius:var(--radius);padding:14px 18px;background:#fff}}
+  border:1px solid var(--line);border-radius:var(--radius);padding:14px 18px;background:var(--surface)}}
 .legend b{{color:var(--brand-ink)}}
 .lg{{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}}
 .lg i{{width:11px;height:11px;border-radius:50%;display:inline-block;border:2px solid #fff;
@@ -204,23 +217,23 @@ td:first-child{{font-weight:600;color:var(--ink)}}
 .wrap.wide{{max-width:1560px}}
 .vh{{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}
 .map-sub{{color:var(--ink-2);margin:0 0 14px;max-width:70ch}}
-.explorer{{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff}}
+.explorer{{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--surface)}}
 .expbar{{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:12px 14px;
   border-bottom:1px solid var(--line);background:var(--bg-2)}}
 .expsearch{{flex:1 1 240px;min-width:180px}}
 .expbar input,.expbar select{{font:inherit;font-size:15px;padding:9px 12px;border:1px solid var(--line);
-  border-radius:10px;background:#fff;color:var(--ink)}}
+  border-radius:10px;background:var(--surface);color:var(--ink)}}
 .expcount{{font-size:14px;color:var(--ink-3);margin-inline-start:auto}}
 .expgrid{{display:grid;grid-template-columns:352px 1fr;height:var(--exph,72vh);min-height:520px}}
 .expside{{border-inline-end:1px solid var(--line);display:flex;flex-direction:column;min-height:0;
   background:var(--bg-2)}}
-.exproutebox{{padding:12px 14px;border-bottom:1px solid var(--line);background:#fff}}
+.exproutebox{{padding:12px 14px;border-bottom:1px solid var(--line);background:var(--surface)}}
 .exppair{{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:end}}
 .exppair label{{position:relative;font-size:12.5px;color:var(--ink-3);display:block}}
 .exppair input{{width:100%;font:inherit;font-size:14.5px;padding:8px 10px;margin-top:4px;
-  border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--ink)}}
+  border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink)}}
 .expsug{{display:none;position:absolute;z-index:600;inset-inline-start:0;top:100%;width:260px;
-  background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:0 12px 30px rgba(0,0,0,.14);
+  background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:0 12px 30px rgba(0,0,0,.14);
   max-height:250px;overflow:auto}}
 .expsug.on{{display:block}}
 .expsug button{{display:block;width:100%;text-align:start;padding:8px 11px;border:0;background:none;
@@ -247,14 +260,14 @@ td:first-child{{font-weight:600;color:var(--ink)}}
 .explist{{flex:1;overflow:auto;min-height:0;padding:6px}}
 .expitem{{display:block;width:100%;text-align:start;border:0;background:none;padding:9px 10px;
   border-radius:9px;cursor:pointer;font:inherit;color:var(--ink);position:relative}}
-.expitem:hover{{background:#fff}}
+.expitem:hover{{background:var(--surface)}}
 .expitem i{{width:9px;height:9px;border-radius:50%;display:inline-block;margin-inline-end:8px;
   border:2px solid #fff;box-shadow:0 0 0 1px var(--line)}}
 .expitem-n{{font-weight:600;font-size:14.5px}}
 .expitem-m{{display:block;font-size:12.5px;color:var(--ink-3);margin-inline-start:19px}}
 .expmapwrap{{position:relative;min-height:0}}
 .expmap{{position:absolute;inset:0;z-index:1}}
-.exppanel{{position:absolute;top:0;bottom:0;inset-inline-end:0;width:min(460px,92%);background:#fff;
+.exppanel{{position:absolute;top:0;bottom:0;inset-inline-end:0;width:min(460px,92%);background:var(--surface);
   border-inline-start:1px solid var(--line);z-index:500;overflow:auto;padding:20px 22px 40px;
   transform:translateX(103%);transition:transform .22s ease;box-shadow:-14px 0 40px rgba(0,0,0,.10)}}
 [dir="rtl"] .exppanel{{transform:translateX(-103%)}}
@@ -264,15 +277,15 @@ td:first-child{{font-weight:600;color:var(--ink)}}
 .exppanel h4{{margin:18px 0 6px;font-size:16px;color:var(--brand-ink)}}
 .exppanel .article{{font-size:15px}}
 .expclose{{position:absolute;top:12px;inset-inline-end:14px;border:1px solid var(--line);
-  background:#fff;border-radius:8px;width:30px;height:30px;cursor:pointer;font-size:14px;color:var(--ink-2)}}
+  background:var(--surface);border-radius:8px;width:30px;height:30px;cursor:pointer;font-size:14px;color:var(--ink-2)}}
 .exptags{{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}}
-.exptags .tag{{background:var(--brand);color:#fff;border-radius:999px;padding:4px 11px;font-size:12.5px;
+.exptags .tag{{background:var(--brand);color:var(--on-brand);border-radius:999px;padding:4px 11px;font-size:12.5px;
   font-weight:600;display:inline-block}}
-.exptags .tag.u{{background:#7d5ba6;color:#fff}}
+.exptags .tag.u{{background:#7d5ba6;color:var(--on-brand)}}
 .exptags .tag.g{{background:var(--bg-2);color:var(--ink-2);border:1px solid var(--line)}}
 .expact{{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px}}
 .chips{{display:flex;gap:7px;flex-wrap:wrap}}
-.chip{{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 12px;font:inherit;
+.chip{{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font:inherit;
   font-size:13.5px;cursor:pointer;color:var(--ink-2)}}
 .chip:hover{{border-color:var(--brand);color:var(--brand-ink)}}
 .btn.sm{{padding:8px 14px;font-size:14px}}
@@ -305,23 +318,23 @@ td:first-child{{font-weight:600;color:var(--ink)}}
 
 /* Planner */
 .pform{{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px 18px;
-  border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;background:#fff;margin:0 0 24px}}
+  border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;background:var(--surface);margin:0 0 24px}}
 .pf{{display:flex;flex-direction:column;gap:6px;min-width:0}}
 .pf-wide{{grid-column:1/-1}}
 .pf label{{font-size:14px;font-weight:600;color:var(--brand-ink)}}
 .pf label small{{font-weight:400;color:var(--ink-3);font-size:13px;margin-inline-start:6px}}
 .pf .cnt{{color:var(--brand-2);font-weight:700}}
 .pf select{{font:inherit;font-size:15.5px;padding:9px 11px;border:1px solid var(--line);
-  border-radius:8px;background:#fff;color:var(--ink);max-width:100%}}
+  border-radius:8px;background:var(--surface);color:var(--ink);max-width:100%}}
 .pf-check label{{font-weight:500;display:flex;align-items:center;gap:8px;cursor:pointer}}
 .pf-check input{{width:17px;height:17px;accent-color:var(--brand)}}
 .prow{{display:flex;gap:10px;flex-wrap:wrap;margin-top:2px}}
 .chips{{display:flex;flex-wrap:wrap;gap:7px}}
-.chip{{font:inherit;font-size:14px;padding:6px 13px;border:1px solid var(--line);background:#fff;
+.chip{{font:inherit;font-size:14px;padding:6px 13px;border:1px solid var(--line);background:var(--surface);
   color:var(--ink-2);border-radius:20px;cursor:pointer;transition:none}}
 .chip:hover{{border-color:var(--brand-2);color:var(--brand-ink)}}
-.chip.on{{background:var(--brand);border-color:var(--brand);color:#fff;font-weight:600}}
-.pday{{border:1px solid var(--line);border-radius:var(--radius);background:#fff;padding:20px 24px;margin:0 0 18px}}
+.chip.on{{background:var(--brand);border-color:var(--brand);color:var(--on-brand);font-weight:600}}
+.pday{{border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);padding:20px 24px;margin:0 0 18px}}
 .pday h3{{margin:0 0 14px;font-size:19px;color:var(--brand-ink);display:flex;align-items:center;gap:9px;flex-wrap:wrap}}
 .pday h3 small{{font-weight:500;font-size:14px;color:var(--ink-3)}}
 .pdot{{width:12px;height:12px;border-radius:50%;display:inline-block;flex:none}}
@@ -356,4 +369,132 @@ td:first-child{{font-weight:600;color:var(--ink)}}
 }}
 @media (max-width:520px){{ .facts{{grid-template-columns:1fr}} }}
 @media print{{ .site-head,.site-foot,.cta{{display:none}} body{{font-size:12pt}} }}
+
+/* ═══════════════ Fleet House — dark design layer ═══════════════ */
+::selection{{background:color-mix(in srgb,var(--brand) 40%,transparent);color:#fff}}
+::-webkit-scrollbar{{width:11px;height:11px}}
+::-webkit-scrollbar-track{{background:var(--bg)}}
+::-webkit-scrollbar-thumb{{background:var(--line);border-radius:99px;border:3px solid var(--bg)}}
+::-webkit-scrollbar-thumb:hover{{background:var(--ink-3)}}
+input,select,textarea,button{{color-scheme:dark}}
+
+/* header */
+.site-head{{background:color-mix(in srgb,var(--bg) 86%,#000);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line)}}
+.head-in{{padding:12px 22px;gap:14px}}
+.logo{{color:var(--brand-ink);font-size:19.5px;gap:11px}}
+.logo .mark{{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:10px;
+  background:var(--grad);color:var(--on-brand);font-size:13px;font-weight:800;letter-spacing:.02em;
+  box-shadow:0 4px 14px color-mix(in srgb,var(--brand) 34%,transparent)}}
+.logo small{{color:var(--ink-3);font-size:11.5px;letter-spacing:.14em}}
+nav.main a{{color:var(--ink-2);border-radius:9px;padding:7px 11px}}
+nav.main a:hover{{background:var(--surface-2);color:#fff}}
+nav.main a[aria-current="page"]{{background:transparent;color:#fff;font-weight:700}}
+.langs{{border:0;padding:3px;background:var(--surface-2);border-radius:999px;gap:2px}}
+.langs a{{padding:5px 10px;border-radius:999px;font-size:12.5px;color:var(--ink-3);text-transform:uppercase}}
+.langs a:hover{{background:color-mix(in srgb,#fff 8%,transparent)}}
+.langs a.on{{background:var(--accent-2);color:#fff}}
+.head-tel{{margin-inline-start:2px}}
+.head-tel a{{display:inline-flex;align-items:center;gap:9px;background:var(--grad);color:var(--on-brand);
+  font-weight:700;padding:10px 18px;border-radius:999px;font-size:15px;letter-spacing:.01em;
+  box-shadow:0 6px 20px color-mix(in srgb,var(--brand) 28%,transparent)}}
+.head-tel a:hover{{text-decoration:none;filter:brightness(1.08)}}
+.head-tel a::before{{content:"";width:16px;height:16px;flex:none;background:currentColor;
+  -webkit-mask:var(--ico-tel) center/contain no-repeat;mask:var(--ico-tel) center/contain no-repeat}}
+:root{{--ico-tel:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z'/%3E%3C/svg%3E")}}
+
+/* page top glow */
+.crumbs{{position:relative}}
+main{{position:relative}}
+body::before{{content:"";position:fixed;inset-inline:0;top:0;height:420px;pointer-events:none;z-index:0;
+  background:radial-gradient(120% 100% at 50% 0%,color-mix(in srgb,var(--brand) 13%,transparent) 0%,transparent 62%)}}
+.site-head,main,.site-foot{{position:relative;z-index:1}}
+
+/* hero */
+.hero{{background:linear-gradient(165deg,color-mix(in srgb,var(--brand) 12%,var(--bg)) 0%,var(--bg) 70%);
+  border-bottom:1px solid var(--line)}}
+.hero .kicker{{color:var(--accent)}}
+.hero .lead{{color:var(--ink-2)}}
+.page-head{{padding-top:26px}}
+h1,h2,h3,h4{{color:var(--brand-ink)}}
+.lead{{color:var(--ink-2)}}
+.sec.alt{{background:color-mix(in srgb,var(--bg-2) 60%,var(--bg))}}
+
+/* tags & chips */
+.tag{{background:var(--accent);color:var(--on-brand);border-radius:999px;padding:5px 13px;
+  font-size:12.5px;font-weight:700;display:inline-block;letter-spacing:.01em}}
+.exptags .tag.g,.tag.muted{{background:var(--surface-2);color:var(--ink-2);border:1px solid var(--line)}}
+
+/* facts — mono values, like the mock */
+.facts div{{background:var(--surface);border:1px solid var(--line);border-radius:12px}}
+.facts{{gap:12px;border:0;background:none}}
+.facts .k{{font-size:12.5px;color:var(--ink-3);letter-spacing:.02em}}
+.facts .v{{font-family:var(--mono);font-size:17px;color:#fff;font-weight:600;letter-spacing:-.01em}}
+.price,.exptot b{{font-family:var(--mono)}}
+
+/* buttons */
+.btn{{background:var(--grad);color:var(--on-brand);border-radius:999px;padding:12px 24px;font-weight:700;
+  box-shadow:0 6px 20px color-mix(in srgb,var(--brand) 24%,transparent)}}
+.btn:hover{{filter:brightness(1.08);text-decoration:none}}
+.btn.ghost,.btn.alt{{background:var(--surface-2);color:var(--brand-ink);border:1px solid var(--line);
+  box-shadow:none}}
+.btn.ghost:hover,.btn.alt:hover{{border-color:var(--brand);color:#fff;filter:none}}
+
+/* surfaces */
+.card,.car,.post-c,.pday,.pform,.legend,.explorer{{background:var(--surface);border-color:var(--line)}}
+.card:hover,.car:hover,.post-c:hover{{border-color:color-mix(in srgb,var(--brand) 45%,var(--line))}}
+table{{background:var(--surface)}}
+thead th{{background:var(--surface-2);color:var(--brand-ink)}}
+tbody tr:nth-child(even){{background:color-mix(in srgb,#fff 3%,transparent)}}
+.note{{background:color-mix(in srgb,var(--accent) 10%,var(--surface));border-inline-start-color:var(--accent);
+  color:var(--ink-2)}}
+.article strong,.article b{{color:#fff}}
+.article a{{color:var(--brand-2);text-decoration:underline;text-underline-offset:3px}}
+
+/* explorer on dark */
+.expbar{{background:color-mix(in srgb,var(--bg-2) 70%,var(--bg))}}
+.expbar input,.expbar select,.exppair input,.pform input,.pform select{{background:var(--bg);
+  border-color:var(--line);color:var(--ink)}}
+.expbar input::placeholder,.exppair input::placeholder{{color:var(--ink-3)}}
+.expside{{background:color-mix(in srgb,var(--bg-2) 70%,var(--bg))}}
+.exproutebox,.exppanel,.expsug{{background:var(--surface)}}
+.expitem:hover{{background:var(--surface-2)}}
+.exptot{{background:var(--surface-2)}}
+.expclose{{background:var(--surface-2);color:var(--ink-2);border-color:var(--line)}}
+.chip{{background:var(--surface-2);color:var(--ink-2);border-color:var(--line)}}
+.chip:hover{{border-color:var(--brand);color:#fff}}
+.chip.on{{background:var(--grad);color:var(--on-brand);border-color:transparent}}
+.leaflet-container{{background:var(--bg-2)}}
+.leaflet-popup-content-wrapper,.leaflet-popup-tip{{background:var(--surface);color:var(--ink)}}
+.leaflet-tooltip{{background:var(--surface);color:var(--ink);border-color:var(--line)}}
+.leaflet-bar a{{background:var(--surface);color:var(--ink);border-color:var(--line)}}
+.leaflet-bar a:hover{{background:var(--surface-2)}}
+.leaflet-control-attribution{{background:color-mix(in srgb,var(--bg) 78%,transparent)!important;
+  color:var(--ink-3)}}
+.leaflet-control-attribution a{{color:var(--ink-2)}}
+
+/* footer */
+.site-foot{{background:color-mix(in srgb,var(--bg) 60%,#000);border-top:1px solid var(--line)}}
+
+/* the "rent a car for this trip" side card */
+.attr-grid{{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:34px;align-items:start}}
+.rentbox{{position:sticky;top:96px;background:var(--surface);border:1px solid var(--line);
+  border-radius:16px;padding:22px 24px}}
+.rentbox h3{{margin:0 0 8px;font-size:19px;color:#fff}}
+.rentbox p{{margin:0 0 16px;font-size:14.5px;color:var(--ink-2);line-height:1.6}}
+.rentrow{{display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+  font-size:14.5px;color:var(--ink-2);padding:7px 0;border-bottom:1px solid var(--line)}}
+.rentrow b{{font-family:var(--mono);color:#fff;font-weight:600;font-size:15px}}
+.rentbox .btn{{display:flex;width:100%;justify-content:center;margin-top:16px}}
+.rentnote{{font-size:12.5px;color:var(--ink-3);text-align:center;margin:10px 0 0;line-height:1.5}}
+.tagrow{{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px}}
+.maphero .wrap.wide{{max-width:var(--maxw)}}
+.maphero{{padding-top:26px}}
+.rentbox .btn::before{{content:"";width:16px;height:16px;flex:none;margin-inline-end:9px;
+  background:currentColor;-webkit-mask:var(--ico-tel) center/contain no-repeat;
+  mask:var(--ico-tel) center/contain no-repeat}}
+.rentbox .btn{{align-items:center}}
+.expitem i{{box-shadow:0 0 0 1px var(--line)}}
+.page-head .tag{{font-size:13px}}
+@media(max-width:980px){{ .attr-grid{{grid-template-columns:1fr}} .rentbox{{position:static}} }}
 """

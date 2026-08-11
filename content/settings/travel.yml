@@ -101,6 +101,15 @@ ka:
     city: ქალაქი
     airport: აეროპორტი
     towns_group: ქალაქები და აეროპორტები
+  rent:
+    title: დაიქირავე მანქანა ამ მოგზაურობისთვის
+    text: '{cat} სავსებით საკმარისია — გზა {road}. დაჯავშნა ერთი ზარით ხდება.'
+    per_day: '{cat}, დღეში'
+    from: დან
+    fuel: საწვავი, იქით-აქეთ
+    approx: '~'
+    note: ორშ–კვ {o}–{c} · ონლაინ გადახდა არ გვაქვს
+    est: 'საწვავი სავარაუდოა: {l} ლ/100 კმ, {g} ₾/ლ'
 en:
   ui:
     regions: Regions
@@ -206,6 +215,15 @@ en:
     city: City
     airport: Airport
     towns_group: Cities & airports
+  rent:
+    title: Rent a car for this trip
+    text: '{cat} is enough — the road is {road}. Booking takes one call.'
+    per_day: '{cat}, per day'
+    from: from
+    fuel: Fuel, round trip
+    approx: '~'
+    note: Mon–Sun {o}–{c} · no online payment
+    est: 'Fuel is an estimate: {l} l/100 km at ₾{g}/l'
 ru:
   ui:
     regions: Регионы
@@ -310,6 +328,15 @@ ru:
     city: Город
     airport: Аэропорт
     towns_group: Города и аэропорты
+  rent:
+    title: Возьмите машину для этой поездки
+    text: '{cat} вполне достаточно — дорога {road}. Бронь — один звонок.'
+    per_day: '{cat}, в сутки'
+    from: от
+    fuel: Топливо, туда-обратно
+    approx: '~'
+    note: Пн–Вс {o}–{c} · онлайн-оплаты нет
+    est: 'Топливо ориентировочно: {l} л/100 км, {g} ₾/л'
 fa:
   ui:
     regions: مناطق
@@ -414,6 +441,15 @@ fa:
     city: شهر
     airport: فرودگاه
     towns_group: شهرها و فرودگاه‌ها
+  rent:
+    title: برای این سفر خودرو اجاره کنید
+    text: '{cat} کافی است — جاده {road} است. رزرو با یک تماس انجام می‌شود.'
+    per_day: '{cat}، روزانه'
+    from: از
+    fuel: سوخت، رفت و برگشت
+    approx: '~'
+    note: شنبه تا جمعه {o}–{c} · بدون پرداخت آنلاین
+    est: 'سوخت تخمینی است: {l} لیتر در ۱۰۰ کیلومتر، {g} لاری بر لیتر'
 he:
   ui:
     regions: אזורים
@@ -517,6 +553,15 @@ he:
     city: עיר
     airport: נמל תעופה
     towns_group: ערים ונמלי תעופה
+  rent:
+    title: שכרו רכב לטיול הזה
+    text: '{cat} מספיקה — הדרך {road}. ההזמנה נעשית בשיחה אחת.'
+    per_day: '{cat}, ליום'
+    from: החל מ-
+    fuel: דלק, הלוך ושוב
+    approx: '~'
+    note: א׳–ש׳ {o}–{c} · אין תשלום מקוון
+    est: 'הדלק הוא הערכה: {l} ל׳/100 ק״מ, {g} ₾ לליטר'
 ar:
   ui:
     regions: المناطق
@@ -621,3 +666,12 @@ ar:
     city: مدينة
     airport: مطار
     towns_group: المدن والمطارات
+  rent:
+    title: استأجر سيارة لهذه الرحلة
+    text: '{cat} تكفي — الطريق {road}. الحجز بمكالمة واحدة.'
+    per_day: '{cat}، يومياً'
+    from: من
+    fuel: الوقود، ذهاباً وإياباً
+    approx: '~'
+    note: الأحد–السبت {o}–{c} · لا دفع إلكتروني
+    est: 'الوقود تقديري: {l} لتر/100 كم بسعر {g} ₾ لليتر'

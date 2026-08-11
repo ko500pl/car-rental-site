@@ -1,35 +1,43 @@
-# ═══ ძირითადი პარამეტრები — იმართება ადმინიდან: Settings → საიტი ═══
 site_url: https://www.example.ge
 rental_brand: Fleet House
 rental_brand_ka: ფლით ჰაუსი
 software_brand: Fleet House Manager
-
-phone: "+995 32 2 000 000"
-phone_e164: "+995322000000"
-mobile: "+995 599 00 00 00"
-mobile_e164: "+995599000000"
+phone: +995 32 2 000 000
+phone_e164: '+995322000000'
+mobile: +995 599 00 00 00
+mobile_e164: '+995599000000'
 email: info@example.ge
 software_email: hello@example.ge
-
-address_zip: "0186"
-geo_lat: "41.7245"
-geo_lon: "44.7509"
-founded: "2019"
-fleet_size: "120"
-usd_rate: 2.70
-
-opens: "09:00"
-closes: "21:00"
-
+address_zip: 0186
+geo_lat: '41.7245'
+geo_lon: '44.7509'
+founded: '2019'
+fleet_size: '120'
+usd_rate: 2.7
+opens: 09:00
+closes: '21:00'
 address:
-  ka: {street: ვაჟა-ფშაველას გამზირი 71, city: თბილისი}
-  en: {street: 71 Vazha-Pshavela Ave., city: Tbilisi}
-  ru: {street: пр. Важа-Пшавела 71, city: Тбилиси}
-  fa: {street: خیابان وژا-پشاولا 71, city: تفلیس}
-  he: {street: שדרות ואז'ה-פשאוולה 71, city: טביליסי}
-  ar: {street: جادة فاجا-بشافيلا 71, city: تبليسي}
-
+  ka:
+    street: ვაჟა-ფშაველას გამზირი 71
+    city: თბილისი
+  en:
+    street: 71 Vazha-Pshavela Ave.
+    city: Tbilisi
+  ru:
+    street: пр. Важа-Пшавела 71
+    city: Тбилиси
+  fa:
+    street: خیابان وژا-پشاولا 71
+    city: تفلیس
+  he:
+    street: שדרות ואז'ה-פשאוולה 71
+    city: טביליסי
+  ar:
+    street: جادة فاجا-بشافيلا 71
+    city: تبليسي
 social:
 - https://www.facebook.com/example
 - https://www.instagram.com/example
 - https://www.linkedin.com/company/example
+fuel_l_100km: 8.5
+fuel_price_gel: 3.1
