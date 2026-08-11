@@ -6,7 +6,7 @@ elevation: 610
 unesco: false
 featured: false
 order: 50
-image: ''
+image: /assets/photos/samtavisi-cathedral.webp
 gallery: []
 visit_hours: '1'
 best_season: all
@@ -238,3 +238,8 @@ ar:
     لافتة سامتافيسي واتبع طريقاً قروياً معبّداً خمسة أو ستة كيلومترات إضافية. المجموع 62 كم ونحو ساعة.
     تقف الكاتدرائية في وسط القرية وتُرى أسوارها من بعيد؛ والوقوف عند البوابة مجاني. المسار معبّد بالكامل
     وسيارة اقتصادية تكفي تماماً. والوقود متوفر على الطريق السريع أو في كاسبي.
+image_credit:
+  author: Yasuhiro Kojima
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:River_Lekhura_(in_Kaspi).jpg

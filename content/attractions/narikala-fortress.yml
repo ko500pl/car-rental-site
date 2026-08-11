@@ -6,7 +6,7 @@ elevation: 430
 unesco: false
 featured: true
 order: 10
-image: ''
+image: /assets/photos/narikala-fortress.webp
 gallery: []
 visit_hours: '2'
 best_season: all
@@ -246,3 +246,8 @@ ar:
     في الأزقة المرصوفة، أو اركن في حديقة ريكي واعبر النهر بالتلفريك. أما المدخل الثالث، وهو الطريق الضيق
     فوق حافة سولولاكي أعلى الحديقة النباتية، فشديد الانحدار ومزدحم بحافلات الرحلات صيفاً. وأي سيارة تفي
     بالغرض — فأنت داخل المدينة، والوقود وحالة الطريق ليسا مسألة.
+image_credit:
+  author: Marcin Konsek
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:2014_Tbilisi,_Widoki_z_Twierdzy_Narikala_(46).jpg

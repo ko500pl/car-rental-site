@@ -6,7 +6,7 @@ elevation: 1300
 unesco: false
 featured: false
 order: 45
-image: ''
+image: /assets/photos/latali-matskhvarishi.webp
 gallery: []
 visit_hours: '1'
 best_season: all
@@ -372,3 +372,8 @@ ar:
     معبّد وضيق دائم الالتواء، وسقوط الصخور شائع فيه. أما القرى نفسها فيُوصل إليها بمنعطفات حصوية قصيرة
     شديدة الانحدار وزلقة بعد المطر، فالمركبة المرتفعة أفضل. تزوّد بالوقود في زوغديدي؛ فمحطة خايشي لا تعمل
     دائماً.
+image_credit:
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Church_of_Archangels_of_Matskhvarishi.jpg

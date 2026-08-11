@@ -6,7 +6,7 @@ elevation: 1300
 unesco: false
 featured: false
 order: 40
-image: ''
+image: /assets/photos/udziro-lake-buba-glacier.webp
 gallery: []
 visit_hours: '8'
 best_season: june-september
@@ -245,3 +245,8 @@ ar:
     إلى غيبي — نحو 410 كم وأكثر من سبع ساعات. وبعد أوني ينتهي الإسفلت ويصير الطريق حصوياً حجرياً منجرفاً
     في مواضع، مع عدة مخاضات جداول. **يتطلب هذا المقطع سيارة دفع رباعي حقيقية عالية الخلوص**؛ ولا شأن للسيارة
     الصالون أو الكروس أوفر العادي به. خطط لمبيت في أوني أو غيبي بدلاً من العودة في اليوم نفسه.
+image_credit:
+  author: Boris Kuznetsov
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Stormy_Sky_over_Shovi,_Racha,_Georgia.jpg

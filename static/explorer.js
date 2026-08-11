@@ -103,6 +103,7 @@
     if (!list.length) { box.innerHTML = '<p class="muted">' + esc(U.none) + '</p>'; draw(list); return; }
     box.innerHTML = list.slice(0, 400).map(function (p) {
       return '<button class="expitem" data-s="' + esc(p.s) + '">' +
+        (p.img ? '<img class="expthumb" src="' + esc(p.img) + '" alt="" loading="lazy">' : '') +
         '<i style="background:' + esc(p.c) + '"></i>' +
         '<span class="expitem-n">' + esc(p.n) + '</span>' +
         '<span class="expitem-m">' + esc(p.t) + ' · ' + esc(p.h) + '</span></button>';
@@ -142,6 +143,10 @@
       return '<button class="chip" data-go="' + esc(x[0]) + '">' + esc(x[1]) + '</button>';
     }).join('');
     $('expbody').innerHTML =
+      (d.img ? '<figure class="photo"><img src="' + esc(d.img) + '" alt="" loading="lazy">' +
+        (d.credit ? '<figcaption>' + (d.credit_url
+          ? '<a href="' + esc(d.credit_url) + '" rel="nofollow noopener" target="_blank">' + esc(d.credit) + '</a>'
+          : esc(d.credit)) + '</figcaption>' : '') + '</figure>' : '') +
       '<div class="exptags"><span class="tag">' + esc(d.t) + '</span>' +
       (d.unesco ? '<span class="tag u">UNESCO</span>' : '') +
       '<span class="tag g">' + esc(d.gn) + '</span></div>' +

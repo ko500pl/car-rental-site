@@ -6,7 +6,7 @@ elevation: 1130
 unesco: false
 featured: true
 order: 20
-image: ''
+image: /assets/photos/shaori-reservoir.webp
 gallery: []
 visit_hours: '3'
 best_season: may-october
@@ -249,3 +249,8 @@ ar:
     الجبلي إلى راتشا. وبعد نيكورتسميندا انعطف شرقاً وقُد نحو عشرين كيلومتراً حتى البحيرة — أي نحو 305
     كم وخمس ساعات وخمس عشرة دقيقة إجمالاً. المقطع الأخير حصوي جزئياً ويصير طينياً بعد المطر، وهنا يفيد
     الخلوص الأرضي الإضافي فعلاً. وفي الشتاء يغلق الثلج الطريق، ولا بديل آخر تجري صيانته.
+image_credit:
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Vil._Nikortsminda_apple_orchard_-_panoramio.jpg

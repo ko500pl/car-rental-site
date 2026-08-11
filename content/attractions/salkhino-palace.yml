@@ -6,7 +6,7 @@ elevation: 200
 unesco: false
 featured: false
 order: 70
-image: ''
+image: /assets/photos/salkhino-palace.webp
 gallery: []
 visit_hours: '1'
 best_season: all
@@ -355,3 +355,8 @@ ar:
     الأخير ضيق ومتهالك في مواضع، وإن كانت السيارة المنخفضة تجتازه في الجو الجاف. اللافتات قليلة، فكن مستعداً
     للسؤال في القرية. تزوّد بالوقود في أباشا أو مارتفيلي. وفي الجو الجاف تكفي السيارة الاقتصادية، أما
     بعد الأمطار الغزيرة فالأفضل مركبة أعلى.
+image_credit:
+  author: Kober
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Salkhino_mansion_(3).jpg

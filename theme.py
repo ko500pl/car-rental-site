@@ -495,6 +495,54 @@ tbody tr:nth-child(even){{background:color-mix(in srgb,#fff 3%,transparent)}}
   mask:var(--ico-tel) center/contain no-repeat}}
 .rentbox .btn{{align-items:center}}
 .expitem i{{box-shadow:0 0 0 1px var(--line)}}
+
+/* ── photos ─────────────────────────────────────────────────────── */
+.photo{{margin:0 0 22px;border-radius:14px;overflow:hidden;background:var(--surface-2);
+  border:1px solid var(--line)}}
+.photo img{{width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover}}
+.photo figcaption{{font-size:12px;color:var(--ink-3);padding:8px 12px;line-height:1.4}}
+.photo figcaption a{{color:var(--ink-2)}}
+.hero-photo img{{aspect-ratio:21/9}}
+.card-img{{display:block;margin:-20px -22px 14px;overflow:hidden}}
+.card-img img{{width:100%;height:170px;object-fit:cover;display:block;
+  transition:transform .35s ease}}
+.card:hover .card-img img{{transform:scale(1.04)}}
+.expthumb{{width:46px;height:34px;object-fit:cover;border-radius:6px;float:inline-start;
+  margin-inline-end:9px}}
+.expitem{{overflow:hidden}}
+.exppanel .photo{{margin-bottom:16px}}
+
+/* ── planner: styles, photos, car recommendation ────────────────── */
+.chips.styles{{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:10px}}
+.chip.style{{display:block;text-align:start;padding:12px 15px;border-radius:12px;line-height:1.4;
+  background:var(--surface);border:1px solid var(--line)}}
+.chip.style b{{display:block;font-size:15px;color:var(--brand-ink);font-weight:700;margin-bottom:3px}}
+.chip.style small{{display:block;font-size:12.5px;color:var(--ink-3);line-height:1.45}}
+.chip.style.on{{border-color:var(--brand);background:color-mix(in srgb,var(--brand) 12%,var(--surface))}}
+.chip.style.on b{{color:#fff}}
+.carmode{{display:flex;gap:10px;flex-wrap:wrap;align-items:center}}
+.tog{{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);
+  border-radius:999px;padding:9px 16px;font-size:14.5px;cursor:pointer;color:var(--ink-2)}}
+.tog:has(input:checked){{border-color:var(--brand);color:#fff;
+  background:color-mix(in srgb,var(--brand) 14%,var(--surface))}}
+.tog input{{accent-color:var(--brand)}}
+.pstop{{display:flex;gap:14px;align-items:flex-start}}
+.pstop-t{{flex:1;min-width:0}}
+.pthumb{{width:112px;height:84px;object-fit:cover;border-radius:10px;flex:none}}
+.carrec{{display:grid;grid-template-columns:260px 1fr;gap:22px;align-items:center;
+  background:var(--surface);border:1px solid var(--line);border-radius:16px;
+  padding:20px 24px;margin:0 0 26px}}
+.carrec img{{width:100%;height:auto;border-radius:12px}}
+.carrec-ph{{width:100%;aspect-ratio:16/10;border-radius:12px;background:var(--surface-2)}}
+.carrec h3{{margin:8px 0 4px;font-size:21px;color:#fff}}
+.carrec .rentrow:last-of-type{{border-bottom:0}}
+.carrec .why{{margin:10px 0 14px;font-size:13px;color:var(--ink-3)}}
+.carrec .btn{{margin-top:2px}}
+@media(max-width:760px){{
+  .carrec{{grid-template-columns:1fr}}
+  .pthumb{{width:78px;height:60px}}
+  .card-img img{{height:140px}}
+}}
 .page-head .tag{{font-size:13px}}
 @media(max-width:980px){{ .attr-grid{{grid-template-columns:1fr}} .rentbox{{position:static}} }}
 """

@@ -6,7 +6,7 @@ elevation: 590
 unesco: false
 featured: true
 order: 10
-image: ''
+image: /assets/photos/uplistsikhe.webp
 gallery: []
 visit_hours: '2'
 best_season: all
@@ -236,3 +236,8 @@ ar:
     مخرج أوبليستسيخي المعلَّم واتبع طريقاً ضيقاً لكنه معبّد مسافة 14 كم فوق سلسلة كفيرناكي ونزولاً إلى
     ضفة النهر. في المجموع نحو 100 كم وساعة وخمس وعشرين دقيقة. عند المدخل موقف كبير مجاني. الوقود والمتاجر
     متوفرة بكثرة على الطريق السريع وفي غوري. والسيارة الاقتصادية كافية تماماً في أي فصل.
+image_credit:
+  author: Marcin Konsek
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:2016_Uplisciche,_Rezerwat_historyczno-architektoniczny_(066).jpg

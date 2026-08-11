@@ -6,7 +6,7 @@ elevation: 480
 unesco: false
 featured: false
 order: 50
-image: ''
+image: /assets/photos/tsageri.webp
 gallery: []
 visit_hours: '3'
 best_season: may-october
@@ -243,3 +243,8 @@ ar:
     ساعات إجمالاً. بعد كوتايسي يضيق الطريق ويتبع مضيق تسخينيستسكالي: الإسفلت موجود في معظمه لكنه متآكل
     في مواضع، وعدة تفرعات نحو القرى حصوية. والخلوص الأرضي الإضافي يحسّن القيادة كثيراً. وفي الشتاء يبقى
     الطريق سالكاً لكنه يتجمد. املأ الخزان في كوتايسي حيث الخيارات أوفر بكثير.
+image_credit:
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Unnamed_Road,_Tsageri,_Georgia_-_panoramio.jpg

@@ -6,7 +6,7 @@ elevation: 800
 unesco: false
 featured: false
 order: 30
-image: ''
+image: /assets/photos/borjomi-central-park.webp
 gallery: []
 visit_hours: '3'
 best_season: all
@@ -293,3 +293,8 @@ ar:
     الشتاء. والوقود وفير حتى خاشوري وفي بورجومي نفسها. وسيارة اقتصادية مناسبة. وإن كنت تخطط لمواصلة الصعود
     إلى باكورياني في اليوم نفسه، فالطريق الجبلي الملتوي أكثر راحة بسيارة ذات خلوص أرضي، خاصة بين ديسمبر
     ومارس.
+image_credit:
+  author: Henri Bergius from Finland
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Borjomi_water.jpg

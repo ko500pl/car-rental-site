@@ -775,6 +775,27 @@ def car_cat_label(cat, lang):
     return cat_label({"economy": "economy", "suv": "suv", "offroad": "offroad"}[cat], lang)
 
 
+def photo_html(a, lang, cls="photo"):
+    """სურათი + ავტორის მითითება — ლიცენზიის მოთხოვნაა."""
+    img = a.get("image")
+    if not img:
+        return ""
+    c = a.get("image_credit") or {}
+    who = c.get("author") or "Wikimedia Commons"
+    lic = c.get("license") or ""
+    src = c.get("source") or ""
+    lurl = c.get("license_url") or ""
+    cap = f'{E(te(lang, "photo_by") if "photo_by" in TRAVEL[lang]["exp"] else "Photo")}: '
+    bits = [f'<a href="{E(src)}" rel="nofollow noopener" target="_blank">{E(who)}</a>' if src
+            else E(who)]
+    if lic:
+        bits.append(f'<a href="{E(lurl)}" rel="license nofollow noopener" target="_blank">{E(lic)}</a>'
+                    if lurl else E(lic))
+    return (f'<figure class="{cls}"><img src="{E(img)}" alt="{E(a[lang]["name"])}" '
+            f'loading="lazy" decoding="async">'
+            f'<figcaption>{cap}{" · ".join(bits)}</figcaption></figure>')
+
+
 def attr_facts(a, lang):
     u = TRAVEL[lang]["ui"]
     items = [
@@ -871,6 +892,7 @@ def explorer_points(lang):
             "d": f'{a["distance_tbilisi_km"]} {u["km"]} · {a["drive_time_tbilisi"]}',
             "u": attr_url(lang, s, False), "f": f, "v": v,
             "un": bool(a["unesco"]), "fe": bool(a["featured"]),
+            "img": a.get("image") or "",
         })
     pts.sort(key=lambda p: p["n"])
     return pts
@@ -910,6 +932,10 @@ def attr_detail(lang, slug, a):
             [u["entry"], str(a["entry_fee"])],
             [u["elevation"], f'{a["elevation"]} m'],
         ],
+        "img": a.get("image") or "",
+        "credit": (lambda c: (f'{c.get("author","")} · {c.get("license","")}' if c else ""))(
+            a.get("image_credit")),
+        "credit_url": (a.get("image_credit") or {}).get("source", ""),
         "body": render_md(L["body"], lang),
         "tip": render_md(L["tip"], lang),
         "route": render_md(L["route"], lang),
@@ -1052,7 +1078,10 @@ def render_region(lang, key, r):
     mp, js = map_block(lang, 420, (r["center_lat"], r["center_lon"]), r["zoom"],
                        attractions=sub, routes={})
     cards = "".join(
-        f'<div class="card"><span class="tag">{E(tl(lang,"type",a["type"]))}</span>'
+        f'<div class="card">'
+        + (f'<a class="card-img" href="{attr_url(lang, s, False)}">'
+           f'<img src="{E(a["image"])}" alt="" loading="lazy"></a>' if a.get("image") else "")
+        + f'<span class="tag">{E(tl(lang,"type",a["type"]))}</span>'
         f'<h3><a href="{attr_url(lang, s, False)}">{E(a[lang]["name"])}</a></h3>'
         f'<p>{E(a[lang]["short"])}</p><ul>'
         f'<li>{E(tu(lang,"visit_time"))}: {E(a["visit_hours"])} {E(tu(lang,"hrs"))}</li>'
@@ -1134,7 +1163,11 @@ def render_attraction(lang, slug, a):
     mp, js = map_block(lang, 360, (a["lat"], a["lon"]), 12,
                        attractions={slug: a}, routes={})
     near = "".join(
-        f'<div class="card"><span class="tag">{E(tl(lang,"type",ATTRACTIONS[n]["type"]))}</span>'
+        f'<div class="card">'
+        + (f'<a class="card-img" href="{attr_url(lang, n, False)}">'
+           f'<img src="{E(ATTRACTIONS[n]["image"])}" alt="" loading="lazy"></a>'
+           if ATTRACTIONS[n].get("image") else "")
+        + f'<span class="tag">{E(tl(lang,"type",ATTRACTIONS[n]["type"]))}</span>'
         f'<h3><a href="{attr_url(lang, n, False)}">{E(ATTRACTIONS[n][lang]["name"])}</a></h3>'
         f'<p>{E(ATTRACTIONS[n][lang]["short"])}</p></div>'
         for n in a.get("nearby", []) if n in ATTRACTIONS)
@@ -1151,7 +1184,8 @@ def render_attraction(lang, slug, a):
         f'<section class="page-head"><div class="wrap"><div class="tagrow">{badge}</div>'
         f'<h1>{E(L["name"])}</h1>'
         f'<p class="lead">{E(L["short"])}</p></div></section>'
-        f'<section class="sec"><div class="wrap">{attr_facts(a, lang)}'
+        f'<section class="sec"><div class="wrap">{photo_html(a, lang, "photo hero-photo")}'
+        f'{attr_facts(a, lang)}'
         f'<div class="attr-grid"><div class="article">{render_md(L["body"], lang)}</div>'
         f'{rent_box(lang, a)}</div></div></section>'
         f'<section class="sec alt"><div class="wrap"><h2>{E(tu(lang,"tip_title"))}</h2>'
@@ -1169,6 +1203,7 @@ def render_attraction(lang, slug, a):
     graph = [org_node(lang), website_node(lang),
              {"@type": "TouristAttraction", "@id": attr_url(lang, slug) + "#attraction",
               "name": L["name"], "description": L["short"], "url": attr_url(lang, slug),
+              **({"image": SITE_URL + a["image"]} if a.get("image") else {}),
               "geo": {"@type": "GeoCoordinates", "latitude": a["lat"], "longitude": a["lon"],
                       "elevation": a["elevation"]},
               "address": {"@type": "PostalAddress", "addressRegion": r[lang]["name"],
@@ -1185,7 +1220,8 @@ def render_attraction(lang, slug, a):
     head = head_html(lang, "map", title, desc,
                      f'{L["name"]}, {tl(lang,"type",a["type"])}, {r[lang]["name"]}',
                      attr_url(lang, slug), {l: attr_url(l, slug) for l in LANGS},
-                     depth, {"@context": "https://schema.org", "@graph": graph}, leaflet=True)
+                     depth, {"@context": "https://schema.org", "@graph": graph}, leaflet=True,
+                     image=(SITE_URL + a["image"]) if a.get("image") else None)
     crumbs = crumbs_html(lang, [(u["nav"]["index"], page_url(lang, "index", False)),
                                 (u["nav"]["map"], page_url(lang, "map", False)),
                                 (r[lang]["name"], region_url(lang, a["region"], False)),
@@ -1308,6 +1344,31 @@ CITY_NAME = {
                                    "fa": "اوشگولی", "he": "אושגולי", "ar": "أوشغولي"},
 }
 
+
+# ავტომობილის შერჩევის რიგი: რაც უფრო მაღალია, მით უფრო „უხეშ“ გზას უძლებს
+ROAD_RANK = {"paved": 0, "mostly_paved": 1, "gravel": 2, "4x4_only": 3}
+CAT_RANK = {"economy": 0, "business": 0, "minivan": 1, "van": 1, "suv": 2, "offroad": 3}
+
+
+def fleet_for_planner(lang):
+    """მანქანების მსუბუქი სია — დამგეგმავი აქედან ირჩევს."""
+    out = []
+    for s, c in CARS.items():
+        out.append({
+            "s": s, "n": c[lang]["name"], "cat": c["category"],
+            "rank": CAT_RANK.get(c["category"], 1),
+            "seats": int(str(c["seats"]).split("-")[0].split("+")[0] or 5),
+            "price": int(c["price_1_6"]), "price7": int(c["price_7_29"]),
+            "fuel": str(c.get("fuel_100km", "")),
+            "cl": int(c.get("clearance") or 150),
+            "img": c.get("image") or "",
+            "u": car_url(lang, s, False),
+            "cat_n": cat_label(c["category"], lang),
+        })
+    out.sort(key=lambda x: (x["rank"], x["price"]))
+    return out
+
+
 def planner_data(lang):
     P = PLANNER[lang]
     items = []
@@ -1320,6 +1381,7 @@ def planner_data(lang):
             "season": a["best_season"], "f": f, "v": v,
             "u": attr_url(lang, s, False), "fe": bool(a["featured"]), "un": bool(a["unesco"]),
             "c": CITY_NAME.get(s, {}).get(lang, ""),
+            "img": a.get("image") or "", "road": a["road"],
         })
     towns = [i for i in items if i["ty"] == "town"]
     starts = [{"n": P["starts"][0], "lat": TB_LAT, "lon": TB_LON, "f": 1.4, "v": 55}]
@@ -1333,6 +1395,9 @@ def planner_data(lang):
         "types": [{"k": t, "n": tl(lang, "type", t)}
                   for t in sorted({a["type"] for a in ATTRACTIONS.values()})],
         "car": {c: cat_label(c, lang) for c in ("economy", "suv", "offroad")},
+        "styles": P.get("styles", []),
+        "roads": {k: tl(lang, "road", k) for k in ("paved", "mostly_paved", "gravel", "4x4_only")},
+        "fleet": fleet_for_planner(lang),
         "starts": starts,
         "t": P["ui"],
         "nav": {"contact": UI[lang]["nav"]["contact"], "fleet": UI[lang]["nav"]["fleet"]},
@@ -1356,13 +1421,24 @@ def render_planner(lang):
 {"".join(f'<option value="{d}"{" selected" if d == 3 else ""}>{d}</option>' for d in range(1, 11))}
 </select></div>
 <div class="pf"><label for="month">{E(t['month'])}</label><select id="month"></select></div>
-<div class="pf"><label for="car">{E(t['car'])}</label><select id="car">
+<div class="pf"><label for="party">{E(t['party'])}</label><select id="party">
+{"".join(f'<option value="{n}"{" selected" if n == 2 else ""}>{n}</option>' for n in range(1, 9))}
+</select></div>
+<div class="pf pf-wide carmode">
+<label class="tog"><input type="radio" name="carmode" id="carauto" value="auto" checked>
+<span>{E(t['car_auto'])}</span></label>
+<label class="tog"><input type="radio" name="carmode" id="carown" value="own">
+<span>{E(t['own_car'])}</span></label>
+<label class="tog"><input type="radio" name="carmode" id="carpick" value="pick">
+<span>{E(t['car_pick'])}</span></label>
+<select id="car" hidden>
 <option value="economy">{E(cat_label('economy', lang))}</option>
 <option value="suv" selected>{E(cat_label('suv', lang))}</option>
 <option value="offroad">{E(cat_label('offroad', lang))}</option>
 </select></div>
 <div class="pf"><label for="pace">{E(t['pace'])}</label><select id="pace">{opt_pace()}</select></div>
 <div class="pf pf-check"><label><input type="checkbox" id="back" checked> {E(t['return'])}</label></div>
+<div class="pf pf-wide"><label>{E(t['style'])}</label><div id="styles" class="chips styles"></div></div>
 <div class="pf pf-wide"><label>{E(t['regions'])} <span id="regions-count" class="cnt"></span>
 <small>{E(t['all_regions'])}</small></label><div id="regions" class="chips"></div></div>
 <div class="pf pf-wide"><label>{E(t['interests'])} <span id="interests-count" class="cnt"></span>

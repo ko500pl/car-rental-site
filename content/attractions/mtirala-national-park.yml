@@ -6,7 +6,7 @@ elevation: 400
 unesco: false
 featured: false
 order: 50
-image: ''
+image: /assets/photos/mtirala-national-park.webp
 gallery: []
 visit_hours: '4'
 best_season: may-october
@@ -243,3 +243,8 @@ ar:
     ومعظم الطريق معبّد، لكن المقطع الأخير حصى ضيق يصبح زلقاً بعد المطر. ولهذا فالمركبة الأعلى خلوصاً هي
     الخيار المعقول هنا؛ وإصعاد سيارة سيدان في الطقس الممطر لا يستحق العناء. املأ الخزان في باتومي أو تشاكفي
     قبل الانعطاف نحو الداخل.
+image_credit:
+  author: Philipp Weigell
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0
+  source: https://commons.wikimedia.org/wiki/File:Idaea_mancipiata_(1).JPG

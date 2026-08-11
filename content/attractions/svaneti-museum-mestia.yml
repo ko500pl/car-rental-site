@@ -6,7 +6,7 @@ elevation: 1450
 unesco: false
 featured: false
 order: 35
-image: ''
+image: /assets/photos/svaneti-museum-mestia.webp
 gallery: []
 visit_hours: '1.5'
 best_season: all
@@ -378,3 +378,8 @@ ar:
     كم وثماني ساعات ونصف. الطريق من زوغديدي إلى مستيا معبّد وبحالة جيدة عموماً، لكنه ضيق دائم الالتواء
     ويتجمد في الشتاء، وسقوط الصخور شائع فيه. المتحف في وسط مستيا وأمامه موقف. تزوّد بالوقود في زوغديدي؛
     فالمحطة التالية في خايشي وهي لا تعمل دائماً. ويُفضل مركبة مرتفعة أو دفع رباعي، وخاصة في الشتاء.
+image_credit:
+  author: Алла Лебедева
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Georgia_(630).jpg

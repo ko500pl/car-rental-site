@@ -6,7 +6,7 @@ elevation: 2170
 unesco: false
 featured: true
 order: 60
-image: ''
+image: /assets/photos/gergeti-trinity-church.webp
 gallery: []
 visit_hours: '3'
 best_season: may-october
@@ -237,3 +237,8 @@ ar:
     تصعد 6 كم أخرى على طريق خرساني حاد وضيق. وسيارة منخفضة تستطيع تقنياً اجتيازه في الجو الجاف، لكن ما
     تريده فعلاً كروس أوفر أو دفع رباعي، لأن تجاوز سيارة قادمة يعني وضع عجلتين على التراب. وفي الشتاء السلاسل
     والدفع الرباعي ضروريان. والوقود في باسانوري أو كازبيغي.
+image_credit:
+  author: Jonathan Cardy
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Gergeti_from_Church_02.jpg

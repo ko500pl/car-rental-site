@@ -6,7 +6,7 @@ elevation: 500
 unesco: false
 featured: false
 order: 50
-image: ''
+image: /assets/photos/okatse-canyon.webp
 gallery: []
 visit_hours: '3'
 best_season: may-october
@@ -240,3 +240,8 @@ ar:
     وأربع ساعات إجمالاً. طريق سريع حتى كوتايسي، ثم إسفلت عادي، وآخر عشرة إلى خمسة عشر كيلومتراً ضيقة ومرقّعة
     في مواضع، وإن كانت سيارة اقتصادية تتدبرها. وتترك السيارة في موقف مركز الزوار ولا تتقدم أبعد من ذلك
     بالطريق. املأ الخزان في كوتايسي أو خوني؛ فلا محطة وقود في غوردي نفسها.
+image_credit:
+  author: Paata vardanashvili
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Okatse_27.jpg

@@ -6,7 +6,7 @@ elevation: 100
 unesco: false
 featured: false
 order: 80
-image: ''
+image: /assets/photos/dadiani-palace-zugdidi.webp
 gallery: []
 visit_hours: '2'
 best_season: all
@@ -238,3 +238,8 @@ ar:
     جيدة على امتداده، فسيارة اقتصادية تكفي تماماً. املأ الخزان في كوتايسي أو سامتريديا؛ وفي زوغديدي أيضاً
     خيارات معقولة من المحطات. ويقع القصر في وسط البلدة وعليه لافتات من مدخلها الرئيسي، مع موقف أمام البوابات
     مباشرة.
+image_credit:
+  author: Gaga.vaa
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Zugdidi,_Dadiani_palace.jpg

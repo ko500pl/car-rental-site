@@ -6,7 +6,7 @@ elevation: 1300
 unesco: false
 featured: true
 order: 10
-image: ''
+image: /assets/photos/vardzia.webp
 gallery: []
 visit_hours: '3'
 best_season: all
@@ -253,3 +253,8 @@ ar:
     بحصن خيرتفيسي حتى فاردزيا. الإسفلت جيد طوال المسافة، لكن آخر 30 كم ضيقة وفيها منعطفات عمياء. تزود
     بالوقود في خاشوري أو أخالتسيخي — فمحطات الوقود تنقطع عملياً بعد أسبيندزا. السيارة الاقتصادية تتدبر
     هذا الطريق جيداً؛ وفي الشتاء يُرحَّب بخلوص أرضي إضافي.
+image_credit:
+  author: Tony Bowden
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Vardzia_fresco_detail.jpg

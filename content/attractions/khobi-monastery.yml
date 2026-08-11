@@ -6,7 +6,7 @@ elevation: 30
 unesco: false
 featured: false
 order: 75
-image: ''
+image: /assets/photos/khobi-monastery.webp
 gallery: []
 visit_hours: '1'
 best_season: all
@@ -347,3 +347,8 @@ ar:
     ساعات ونصف. ومن خوبي إلى الدير ثلاثة كيلومترات أخرى شمالاً نحو قرية نوجيخيفي. هذا المقطع الأخير إسفلت
     ضيق فيه حفر، لكن السيارة المنخفضة تجتازه دون عناء. اللافتات متواضعة، فاهتدِ ببرج الأجراس. الوقوف عند
     البوابة مجاني. تزوّد بالوقود في سيناكي أو زوغديدي. والسيارة الاقتصادية كافية تماماً.
+image_credit:
+  author: Jelger Groeneveld
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Main_street_through_Khobi.jpg

@@ -6,7 +6,7 @@ elevation: 900
 unesco: false
 featured: true
 order: 10
-image: ''
+image: /assets/photos/birtvisi-fortress.webp
 gallery: []
 visit_hours: '4'
 best_season: may-october
@@ -216,3 +216,8 @@ ar:
     معظم الطريق معبّد، لكن الكيلومترات الخمسة الأخيرة تقريباً حصوية ومحفّرة ووعرة حتى في الجو الجاف. والسيارة
     الاقتصادية غير مستحسنة هنا؛ فالكروس أوفر بخلوص أرضي حقيقي أكثر أماناً بكثير، وبعد المطر قد يتعذر سلوك
     المسلك بسيارة منخفضة. وآخر محطة وقود ومتجر في تيتريتسكارو، فتزود قبل الانعطاف.
+image_credit:
+  author: Luka Adikashvili (https://imaggeo.egu.eu/user/ladikashvili/)
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0
+  source: https://commons.wikimedia.org/wiki/File:Normal_Fault_in_Georgia.jpg

@@ -6,7 +6,7 @@ elevation: 570
 unesco: false
 featured: false
 order: 80
-image: ''
+image: /assets/photos/chronicle-of-georgia.webp
 gallery: []
 visit_hours: '1'
 best_season: all
@@ -224,3 +224,8 @@ ar:
     وتقترح تطبيقات الملاحة أحياناً منعطفاً سيئاً، فاتخذ طريق شاطئ بحر تبليسي وفرعه العلوي مرجعاً لك. والوقوف
     مجاني عند الأعمدة مباشرة. وسيارة اقتصادية تفي بالغرض، وإن كانت الكروس أوفر تجعل المقطع الأخير أكثر
     راحة.
+image_credit:
+  author: ben van der ploeg from devizes, uk
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Litter_at_Tbilisi_Sea_Reservoir.jpg

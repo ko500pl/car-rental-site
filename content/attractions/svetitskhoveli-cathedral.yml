@@ -6,7 +6,7 @@ elevation: 470
 unesco: true
 featured: true
 order: 20
-image: ''
+image: /assets/photos/svetitskhoveli-cathedral.webp
 gallery: []
 visit_hours: '2'
 best_season: all
@@ -244,3 +244,8 @@ ar:
     أسوارها من بعيد. الحركة داخل النواة التاريخية مقيدة، فاترك السيارة في الموقف المدفوع خارج الأسوار
     أو في موقف ضفة النهر وامشِ خمس دقائق. الطريق كله إسفلت وأي فئة سيارة تفي بالغرض. محطات الوقود والمتاجر
     تصطف على طريق الوصول.
+image_credit:
+  author: Joonas Plaan from Tallinn, Estonia
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Samtvro_chappel.jpg

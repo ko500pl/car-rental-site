@@ -6,7 +6,7 @@ elevation: 1400
 unesco: false
 featured: false
 order: 48
-image: ''
+image: /assets/photos/khada-valley.webp
 gallery: []
 visit_hours: '3'
 best_season: may-october
@@ -275,3 +275,8 @@ ar:
     وادي خادا. ومن هناك نحو 8 كم من طريق غير معبّد حتى أولى قرى الأبراج، وأكثر من ذلك بكثير حتى رأس الوادي.
     ينتهي الإسفلت سريعاً؛ والسطح حجر وأخاديد مع مخاضات. السيارة الصحيحة دفع رباعي بخلوص أرضي معقول، وعلى
     السيارات المنخفضة أن تقف عند مدخل الوادي. وآخر وقود في باسانائوري.
+image_credit:
+  author: Earth Science and Remote Sensing Unit, NASA Johnson Space Center
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:ISS054-E-36338_-_View_of_Earth.jpg

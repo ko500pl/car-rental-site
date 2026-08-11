@@ -6,7 +6,7 @@ elevation: 560
 unesco: false
 featured: false
 order: 80
-image: ''
+image: /assets/photos/tsinandali-estate.webp
 gallery: []
 visit_hours: '2'
 best_season: all
@@ -210,3 +210,8 @@ ar:
     قليلاً من ساعتين إجمالاً. تقع الضيعة على الطريق مباشرة، بموقف كبير ومدخل معلَّم بلافتة. الطريق كله
     إسفلت والسيارة الاقتصادية كافية تماماً. تزود بالوقود في تيلافي. وفي الشتاء، إن أُغلق غومبوري، اسلك
     بدلاً منه طريق كاخيتي السريع عبر ساغاريجو وغورجاني، وهو يضيف نحو خمسة وعشرين كيلومتراً.
+image_credit:
+  author: შალვა მინდაძე 11
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Village_Tsinandali_Saint%27s_George_Church.jpg

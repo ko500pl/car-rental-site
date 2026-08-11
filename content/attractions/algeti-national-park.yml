@@ -6,7 +6,7 @@ elevation: 1200
 unesco: false
 featured: false
 order: 40
-image: ''
+image: /assets/photos/algeti-national-park.webp
 gallery: []
 visit_hours: '4'
 best_season: may-october
@@ -214,3 +214,8 @@ ar:
     الإسفلت جيد لكنه ضيق وكثير المنعطفات مع صعود ملموس. أما الكيلومترات الأخيرة إلى مركز زوار المنتزه
     فحصوية وتتحول إلى طين بعد المطر، لذا تُفضَّل سيارة كروس أوفر بخلوص أرضي معقول على سيارة اقتصادية منخفضة.
     الوقود والمتاجر متوفرة في كوجوري ومانغليسي، ولا شيء بعدهما.
+image_credit:
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Tbilisi-Kojori-Tsalka-Ninotsminda,_Georgia_-_panoramio.jpg

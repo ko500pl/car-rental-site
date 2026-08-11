@@ -6,7 +6,7 @@ elevation: 1400
 unesco: false
 featured: false
 order: 90
-image: ''
+image: /assets/photos/shatili.webp
 gallery: []
 visit_hours: '4'
 best_season: june-september
@@ -238,3 +238,8 @@ ar:
     وصخور سائبة. المجموع 155 كم وأربع ساعات ونصف على الأقل، وأكثر بعد المطر. ولا يصلح لهذا الطريق إلا
     دفع رباعي حقيقي بإطارات جيدة؛ أما الكروس أوفر العادي فمقامرة. تزوّد بالوقود آخر مرة في جينفالي أو
     باريساخو، فلا محطة في شاتيلي.
+image_credit:
+  author: Mutichou
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Shatili_2016.jpg

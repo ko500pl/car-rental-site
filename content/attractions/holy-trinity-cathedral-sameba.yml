@@ -6,7 +6,7 @@ elevation: 440
 unesco: false
 featured: false
 order: 30
-image: ''
+image: /assets/photos/holy-trinity-cathedral-sameba.webp
 gallery: []
 visit_hours: '1'
 best_season: all
@@ -275,3 +275,8 @@ ar:
     موقف مجاني عند البوابة السفلى للمجمع، غير أنه يمتلئ سريعاً في الأعياد؛ والبديل هو الشوارع الجانبية
     حول ساحة أفلاباري. وطريق الوصول معبّد بالكامل بصعود لطيف، فأي فئة سيارة تفي بالغرض. وأقرب محطات الوقود
     المريحة تقع في شارع كيتيفان ديدوبالي.
+image_credit:
+  author: Serouj
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0
+  source: https://commons.wikimedia.org/wiki/File:Armenian_Pantheon_of_Tbilisi.JPG

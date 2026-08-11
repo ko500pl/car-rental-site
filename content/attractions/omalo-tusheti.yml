@@ -6,7 +6,7 @@ elevation: 1880
 unesco: false
 featured: true
 order: 120
-image: ''
+image: /assets/photos/omalo-tusheti.webp
 gallery: []
 visit_hours: '8'
 best_season: june-september
@@ -211,3 +211,8 @@ ar:
     يبدأ المقطع الحقيقي: سبعون كيلومتراً من الحصى فوق ممر أبانو، تستغرق واقعياً أربع ساعات أو أكثر. وهذا
     يعطي 220 كم ونحو ست ساعات ونصف إجمالاً من دون توقف. وآخر محطة وقود في أخميتا؛ ولا توجد أي محطة بينها
     وبين أومالو، فانطلق بخزان ممتلئ. وبعد المطر يتدهور سطح الطريق بحدة وتكثر الانهيارات الأرضية.
+image_credit:
+  author: Abramia Giorgi
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:View_on_Lower_Omalo.JPG

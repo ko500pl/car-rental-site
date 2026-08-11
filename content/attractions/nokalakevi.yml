@@ -6,7 +6,7 @@ elevation: 90
 unesco: false
 featured: false
 order: 90
-image: ''
+image: /assets/photos/nokalakevi.webp
 gallery: []
 visit_hours: '2'
 best_season: all
@@ -238,3 +238,8 @@ ar:
     وكوتايسي وسامتريديا، ثم انعطف نحو سيناكي وتابع بضعة كيلومترات شمالاً حتى الموقع. الطريق كله معبّد؛
     والمقطع الأخير طريق قروي ضيق لكنه بحالة سليمة، فسيارة اقتصادية تكفي. املأ الخزان في سامتريديا أو سيناكي.
     ويتكامل الموقع جيداً مع وادي مارتفيلي في يوم واحد، إذ يبعد أحدهما عن الآخر نحو أربعين دقيقة.
+image_credit:
+  author: G.N
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Riv._Tekhura.jpg

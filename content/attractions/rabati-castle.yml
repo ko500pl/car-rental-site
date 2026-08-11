@@ -6,7 +6,7 @@ elevation: 1000
 unesco: false
 featured: true
 order: 20
-image: ''
+image: /assets/photos/rabati-castle.webp
 gallery: []
 visit_hours: '2'
 best_season: all
@@ -232,3 +232,8 @@ ar:
     حتى أخالتسيخي — نحو ثلاث ساعات ونصف إجمالاً. الطريق معبّد وبحال جيدة على امتداده، وإن كان مقطع بورجومي-أخالتسيخي
     ضيقاً ومتعرجاً ويتجمد في الشتاء. الوقود والصرافات متوفرة في بورجومي وأخالتسيخي معاً. وسيارة اقتصادية
     تكفي تماماً؛ أما الكروس أوفر فيمر على طريق الشتاء براحة أكبر فحسب.
+image_credit:
+  author: t.przechlewski
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0
+  source: https://commons.wikimedia.org/wiki/File:Unnamed2_-_panoramio_(2122).jpg

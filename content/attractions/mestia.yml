@@ -6,7 +6,7 @@ elevation: 1500
 unesco: false
 featured: true
 order: 10
-image: ''
+image: /assets/photos/mestia.webp
 gallery: []
 visit_hours: '4'
 best_season: may-october
@@ -267,3 +267,8 @@ ar:
     معبّدة بالكامل لكنها ضيقة وشديدة التعرج — احسب ثلاث ساعات لهذا المقطع وحده. ويمكن قطع الطريق كله في
     يوم واحد، لكن مبيتاً في كوتايسي أو زوغديدي يجعل الرحلة أمتع بكثير. وآخر محطات الوقود التي يُعتمد عليها
     في زوغديدي وجفاري. وسيارة كروس أوفر أريح على المنعطفات الطويلة، وإن كانت السيدان تتدبر الأمر.
+image_credit:
+  author: გრიგოლ
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:%E1%83%9B%E1%83%94%E1%83%A1%E1%83%A2%E1%83%98%E1%83%90,_2009.jpg

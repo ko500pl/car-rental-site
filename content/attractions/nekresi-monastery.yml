@@ -6,7 +6,7 @@ elevation: 600
 unesco: false
 featured: false
 order: 70
-image: ''
+image: /assets/photos/nekresi-monastery.webp
 gallery: []
 visit_hours: '2'
 best_season: all
@@ -210,3 +210,8 @@ ar:
     ونصف. الطريق كله معبّد وسيارة اقتصادية تكفي، لأن الحافلة الناقلة تتولى المقطع الحاد. والمنعطف إلى
     نيكريسي على يسار الطريق الرئيسي ومُشار إليه باللافتات. والوقود متوفر في تيلافي وكفاريلي. أما البديل
     المستوي فهو طريق كاخيتي السريع عبر ساغاريجو وغورجاني، وهو أطول بنحو ثلاثين كيلومتراً لكن بلا ممر جبلي.
+image_credit:
+  author: levan varamishvili
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0
+  source: https://commons.wikimedia.org/wiki/File:Kakheti,_Georgia_-_panoramio_(1).jpg

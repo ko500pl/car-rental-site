@@ -6,7 +6,7 @@ elevation: 2740
 unesco: false
 featured: false
 order: 40
-image: ''
+image: /assets/photos/koruldi-lakes.webp
 gallery: []
 visit_hours: '3'
 best_season: june-september
@@ -262,3 +262,8 @@ ar:
     دقيقة في كل اتجاه. وسيارة 4x4 بخلوص أرضي عالٍ وناقل تخفيض هي الأداة الصحيحة؛ وبعد المطر تسوء الأخاديد
     كثيراً ويصير السطح زلقاً. والوقود متوفر في ميستيا ولا شيء فوقها. وإن كانت فئة سيارتك المستأجرة لا
     تغطي مثل هذا السطح، فاستئجار جيب محلي هو الخيار المعقول.
+image_credit:
+  author: Alexey Komarov
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Zemo_Svaneti,_June,_2018-15.jpg

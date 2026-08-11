@@ -6,7 +6,7 @@ elevation: 3
 unesco: false
 featured: false
 order: 65
-image: ''
+image: /assets/photos/poti.webp
 gallery: []
 visit_hours: '2'
 best_season: all
@@ -357,3 +357,8 @@ ar:
     عند دخول المدينة اقصد الميدان الدائري: كل الشوارع الرئيسية تتفرع منه، وهو أسهل معلم للاهتداء. تزوّد
     بالوقود في سامتريديا أو سيناكي، وإن كانت في بوتي نفسها محطات. والسيارة الاقتصادية كافية تماماً للطريق
     كله في أي فصل.
+image_credit:
+  author: Berdo Maghularia from Kutaisi, Gerogia
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Cathedral_in_Poti.jpg

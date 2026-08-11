@@ -6,7 +6,7 @@ elevation: 600
 unesco: false
 featured: false
 order: 60
-image: ''
+image: /assets/photos/kinchkha-waterfall.webp
 gallery: []
 visit_hours: '2'
 best_season: may-october
@@ -282,3 +282,8 @@ ar:
     وانجرافات بعد المطر. والسيدان خيار سيئ في ذلك المقطع؛ وسيارة كروس أوفر أو حافلة النقل أفضل بكثير.
     وفي الشتاء يتعذر سلوك الطريق غالباً. املأ الخزان في كوتايسي أو خوني. ويمكنك مقارنة فئات السيارات في
     صفحة /fleet/.
+image_credit:
+  author: Alexey Komarov
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Trail_to_Oniore_Waterfall_2023-08-27-2.jpg

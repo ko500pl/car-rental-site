@@ -6,7 +6,7 @@ elevation: 470
 unesco: true
 featured: false
 order: 15
-image: ''
+image: /assets/photos/samtavro-monastery.webp
 gallery: []
 visit_hours: '1'
 best_season: all
@@ -288,3 +288,8 @@ ar:
     سفيتيتسخوفيلي ثم تابع شمالاً 400 متر؛ سامتافرو على اليمين خلف سور حجري، قبيل تقاطع الطريق العسكري.
     أوقف السيارة في الشارع أو في الموقف الكبير المدفوع قرب سفيتيتسخوفيلي وامشِ صعوداً. وسيارة اقتصادية
     تكفي طوال العام، والتزود بالوقود أسهل في تبليسي.
+image_credit:
+  author: George Yakovlev
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Samtavro_(47).jpg

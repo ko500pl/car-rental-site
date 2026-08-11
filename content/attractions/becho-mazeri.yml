@@ -6,7 +6,7 @@ elevation: 1600
 unesco: false
 featured: false
 order: 30
-image: ''
+image: /assets/photos/becho-mazeri.webp
 gallery: []
 visit_hours: '6'
 best_season: may-october
@@ -370,3 +370,8 @@ ar:
     الرئيسي معبّد؛ أما العشرة كيلومترات من بيتشو إلى مازيري فحصوية مليئة بالحفر وفيها معبران لجداول. في
     الجو الجاف تتدبر المركبة المرتفعة أمرها؛ وفي الربيع أو بعد المطر تحتاج دفعاً رباعياً. تزوّد بالوقود
     في زوغديدي، فلا محطة موثوقة بعده.
+image_credit:
+  author: Soshial
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Road_sign_in_Svan_language,_Tvebishi_village,_late_October_2020.jpg

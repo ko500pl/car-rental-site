@@ -6,7 +6,7 @@ elevation: 3
 unesco: false
 featured: false
 order: 45
-image: ''
+image: /assets/photos/anaklia.webp
 gallery: []
 visit_hours: '3'
 best_season: june-september
@@ -342,3 +342,8 @@ ar:
     365 كم إجمالاً وخمس ساعات ونصف. ويمكن أيضاً الاختصار شمالاً غرباً من خوبي، وهو أقصر قليلاً لكنه أبطأ.
     الطريق معبّد بكامله وبحالة جيدة؛ والمقطع الأخير مستوٍ مستقيم، وإن شاركتك فيه شاحنات بناء الميناء.
     الوقوف قرب الكورنيش والجسر مجاني وغير معبّد. تزوّد بالوقود في زوغديدي. والسيارة الاقتصادية كافية تماماً.
+image_credit:
+  author: Sarah Murray from South Bend, IN, USA
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Anaklia_(14667619556).jpg

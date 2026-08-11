@@ -6,7 +6,7 @@ elevation: 1900
 unesco: false
 featured: false
 order: 30
-image: ''
+image: /assets/photos/chalaadi-glacier.webp
 gallery: []
 visit_hours: '4'
 best_season: june-september
@@ -238,3 +238,8 @@ ar:
     والكيلومترات الأخيرة حصوية بحفر ومجارٍ ضحلة لتصريف المياه. وفي الطقس الجاف تتعامل معها سيارة كروس
     أوفر بسهولة، أما بسيارة منخفضة فالأفضل التوقف قبل كيلومتر ومواصلة المشي. املأ الخزان في ميستيا، فلا
     وقود في الوادي. ويشغّل سائقون محليون رحلات نقل من وسط البلدة إن كنت تفضل ألا تصعد بسيارتك.
+image_credit:
+  author: Martin Cígler
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Z%C3%A1v%C4%9Br_doliny_pod_ledovcem_Murkvami_-_panoramio.jpg

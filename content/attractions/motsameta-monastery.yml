@@ -6,7 +6,7 @@ elevation: 250
 unesco: false
 featured: false
 order: 80
-image: ''
+image: /assets/photos/motsameta-monastery.webp
 gallery: []
 visit_hours: '1'
 best_season: all
@@ -225,3 +225,8 @@ ar:
     إسفلت ضيق شديد الانحدار وكثير المنعطفات، تكاد سيارتان لا تتجاوزان فيه، وتسبب الحافلات ازدحاماً حقيقياً.
     وسيارة اقتصادية تتدبر الأمر، لكن انتبه عندما يكون الطريق مبللاً. املأ الخزان واسحب نقداً في كوتايسي،
     فلا شيء على طول الطريق.
+image_credit:
+  author: G.N
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Kutaisi_(G.N._2012).jpg

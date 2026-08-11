@@ -6,7 +6,7 @@ elevation: 220
 unesco: false
 featured: true
 order: 30
-image: ''
+image: /assets/photos/prometheus-cave.webp
 gallery: []
 visit_hours: '2'
 best_season: all
@@ -250,3 +250,8 @@ ar:
     ساعات وخمس وأربعين دقيقة إجمالاً. المسار كله معبّد وبحال جيدة؛ والكيلومترات العشرة الأخيرة تضيق لكنها
     لا تمثل صعوبة. وسيارة اقتصادية تكفي تماماً. الوقود والصرافات متوفرة في كوتايسي وتسكالتوبو. ومحمية
     ساتابليا في الاتجاه نفسه، فالجمع بينهما في يوم واحد لا يكلفك قيادة إضافية تُذكر.
+image_credit:
+  author: Zysko serhii
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Prometheus_Cave_Natural_Monument._Foto_3.jpg

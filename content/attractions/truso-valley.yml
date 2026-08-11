@@ -6,7 +6,7 @@ elevation: 2100
 unesco: false
 featured: false
 order: 80
-image: ''
+image: /assets/photos/truso-valley.webp
 gallery: []
 visit_hours: '6'
 best_season: june-september
@@ -237,3 +237,8 @@ ar:
     ليست خياراً هنا؛ فأنت تحتاج خلوصاً أرضياً حقيقياً ويفضَّل دفعاً رباعياً. وبعد المطر الغزير ترتفع المخاضات
     وقد يصير المسلك غير سالك تماماً. تزود بالوقود في باسانوري أو غوداوري، فلا وقود في الوادي. اختر السيارة
     مسبقاً من [أسطولنا](/fleet/).
+image_credit:
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Jvari_pass_(G.N._2011).jpg

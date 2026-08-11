@@ -6,7 +6,7 @@ elevation: 450
 unesco: false
 featured: false
 order: 110
-image: ''
+image: /assets/photos/lagodekhi-protected-areas.webp
 gallery: []
 visit_hours: '6'
 best_season: may-october
@@ -214,3 +214,8 @@ ar:
     — نحو 160 كم وساعتين وأربعين دقيقة. الطريق معبّد طوال المسافة وتحسّن كثيراً في السنوات الأخيرة، لذا
     فسيارة اقتصادية كافية تماماً. ومركز الزوار مُشار إليه باللافتات عند الطرف الشمالي للبلدة. الوقود والمتاجر
     متوفرة في لاغوديخي نفسها. وانتبه إلى أن العبور إلى أذربيجان غير مسموح به بسيارة مستأجرة جورجية.
+image_credit:
+  author: Peretz Partensky from San Francisco, USA
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:This_looks_like_a_fairy_tale_to_me._(3847022916).jpg

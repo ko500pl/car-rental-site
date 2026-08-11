@@ -6,7 +6,7 @@ elevation: 686
 unesco: false
 featured: false
 order: 70
-image: ''
+image: /assets/photos/turtle-lake-vake-park.webp
 gallery: []
 visit_hours: '2'
 best_season: all
@@ -240,3 +240,8 @@ ar:
     البحيرة مواقف مجانية، وإن كانت تمتلئ في أمسيات الصيف ويجعل الطريق الضيق التجاوز عسيراً. السطح إسفلت
     طوال المسافة. وفي الشتاء يحتاج الصعود قيادة حذرة حين يتجمد، لكن لا حاجة إلى دفع رباعي؛ فالسيارة الاقتصادية
     تكفي.
+image_credit:
+  author: viralbus
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Archil_Mishveladze_Street,_1997.jpg

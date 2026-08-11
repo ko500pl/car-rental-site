@@ -6,7 +6,7 @@ elevation: 10
 unesco: false
 featured: false
 order: 30
-image: ''
+image: /assets/photos/gonio-fortress.webp
 gallery: []
 visit_hours: '2'
 best_season: all
@@ -228,3 +228,8 @@ ar:
     الطريق الساحلي عابراً جسر تشوروخي: فمن باتومي إلى غونيو 12 كم فقط، عشرون إلى خمس وعشرون دقيقة بحسب
     الازدحام. والطريق إسفلت جيد على امتداده وسيارة اقتصادية تكفي تماماً. ويقع الحصن بجوار الطريق السريع
     مباشرة ولا يمكن أن يفوتك. املأ الخزان في باتومي أو غونيو؛ ولا حاجة للقيادة نحو المعبر الحدودي نفسه.
+image_credit:
+  author: Martin Cígler
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Pevnost_Gonio_(Apsaros)_-_panoramio.jpg

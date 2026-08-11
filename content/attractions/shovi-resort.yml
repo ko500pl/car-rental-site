@@ -6,7 +6,7 @@ elevation: 1520
 unesco: false
 featured: false
 order: 30
-image: ''
+image: /assets/photos/shovi-resort.webp
 gallery: []
 visit_hours: '4'
 best_season: june-september
@@ -241,3 +241,8 @@ ar:
     وهو ما يجعلها يوم قيادة كاملاً بحد ذاته. الإسفلت مقبول في معظمه حتى أوني؛ وفوقها مقاطع حصوية وأخرى
     أُصلحت منذ الكارثة. ويُنصح بخلوص أرضي حقيقي. وخطط لمبيت في أمبرولاوري أو أوني بدل محاولة الذهاب والعودة
     في يوم واحد.
+image_credit:
+  author: Boris Kuznetsov
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Stormy_Sky_over_Shovi,_Racha,_Georgia.jpg

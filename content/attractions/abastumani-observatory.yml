@@ -6,7 +6,7 @@ elevation: 1650
 unesco: false
 featured: false
 order: 50
-image: ''
+image: /assets/photos/abastumani-observatory.webp
 gallery: []
 visit_hours: '2'
 best_season: may-october
@@ -285,3 +285,9 @@ ar:
     وإن كان مرقّعاً في مواضع. أما الكيلومترات الثمانية الأخيرة صعوداً إلى المرصد فطريق ملتوٍ حاد وضيق
     بسطح وعر، ولهذا تكون سيارة الكروس أوفر الخيار المعقول. وفي الشتاء قد يُغلق هذا المقطع بالثلج. املأ
     الخزان في أخالتسيخي.
+image_credit:
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: >-
+    https://commons.wikimedia.org/wiki/File:%E1%83%90%E1%83%91%E1%83%90%E1%83%A1%E1%83%97%E1%83%A3%E1%83%9B%E1%83%9C%E1%83%98%E1%83%A1_%E1%83%9B%E1%83%97%E1%83%94%E1%83%91%E1%83%98_-_panoramio.jpg

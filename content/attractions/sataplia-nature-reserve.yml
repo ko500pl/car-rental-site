@@ -6,7 +6,7 @@ elevation: 500
 unesco: false
 featured: false
 order: 40
-image: ''
+image: /assets/photos/sataplia-nature-reserve.webp
 gallery: []
 visit_hours: '2'
 best_season: all
@@ -246,3 +246,8 @@ ar:
     واقطع الكيلومترات التسعة الأخيرة إلى ساتابليا؛ واللافتات واضحة. الطريق معبّد على امتداده ومريح تماماً
     لسيارة اقتصادية. والوقود والصرافات وفيرة في كوتايسي. ويقع كهف بروميثيوس في الاتجاه نفسه على بعد نحو
     خمسة عشر كيلومتراً أبعد، فالجمع بينهما في جولة واحدة هو الخطة البديهية.
+image_credit:
+  author: Rainer Burkard
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Buxus_colchica_1.jpg

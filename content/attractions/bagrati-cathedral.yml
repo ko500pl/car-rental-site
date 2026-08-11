@@ -6,7 +6,7 @@ elevation: 180
 unesco: false
 featured: false
 order: 20
-image: ''
+image: /assets/photos/bagrati-cathedral.webp
 gallery: []
 visit_hours: '3'
 best_season: all
@@ -289,3 +289,8 @@ ar:
     الآن عبر أنفاق ريكوتي الجديدة، وهو ما اختصر جزءاً كبيراً من هذه الرحلة. وعند دخول المدينة تظهر باغراتي
     بوضوح على التل إلى يمينك، فالملاحة سهلة. ووسط كوتايسي فيه شوارع باتجاه واحد وتمتلئ مواقفه خلال النهار.
     الطريق كله معبّد وسيارة اقتصادية مناسبة. والوقود ومحطات الخدمة وأجهزة الصراف منتشرة في المدينة كلها.
+image_credit:
+  author: Marcin Konsek
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:2014_Kutaisi,_Katedra_Bagrati_(13).jpg

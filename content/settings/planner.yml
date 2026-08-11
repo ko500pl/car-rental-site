@@ -69,11 +69,49 @@ ka:
     - დეკემბერი
     book_cta: ამ მარშრუტისთვის ავტომობილი
     book_text: შეარჩიეთ შესაფერისი კატეგორია და დაგვირეკეთ — ონლაინ გადახდა არ გვაქვს.
+    style: ტურის სტილი
+    party: რამდენი ხართ
+    own_car: ჩემი მანქანით ვარ
+    car_pick: მანქანას თქვენ ირჩევთ
+    car_auto: შემოგვთავაზეთ მანქანა
+    car_rec: შემოთავაზებული ავტომობილი
+    seats: ადგილი
+    per_day: დღეში
+    for_days: '{n} დღეში'
+    why: რატომ ეს
+    see_car: ავტომობილის გვერდი
+    roughest: ყველაზე რთული გზა მარშრუტზე
+    photo_by: ფოტო
   starts:
   - თბილისი, ქალაქის ცენტრი
   - თბილისის აეროპორტი (TBS)
   - ქუთაისის აეროპორტი (KUT)
   - ბათუმის აეროპორტი (BUS)
+  styles:
+  - key: classic
+    name: კლასიკა
+    desc: საქართველოს მთავარი სანახაობები — პირველად ჩამოსულთათვის
+  - key: family
+    name: ბავშვებთან ერთად
+    desc: მოკლე გადასვლები, გამოქვაბულები, პარკები, საბაგირო; რთული გზების გარეშე
+  - key: history
+    name: ისტორია და ეკლესიები
+    desc: მონასტრები, ციხეები, არქეოლოგია და მუზეუმები
+  - key: nature
+    name: ბუნება და ლაშქრობა
+    desc: კანიონები, ჩანჩქერები, ტბები, ეროვნული პარკები
+  - key: wine
+    name: ღვინო და გემო
+    desc: მარნები, კახეთი, პატარა ქალაქები
+  - key: mountains
+    name: მთები და 4x4
+    desc: სვანეთი, ხევსურეთი, თუშეთი — მაღალი გამავლობის გზები
+  - key: beach
+    name: ზღვა და დასვენება
+    desc: შავი ზღვის სანაპირო, კურორტები, სპა
+  - key: slow
+    name: ნელი ტემპი
+    desc: დღეში 2–3 ადგილი, გრძელი შესვენებები, ნაკლები საჭესთან
 en:
   title: Trip planner — build your route around Georgia | Fleet House
   desc: >-
@@ -144,11 +182,49 @@ en:
     - December
     book_cta: A car for this route
     book_text: Pick the right category and call us — there is no online payment.
+    style: Trip style
+    party: How many of you
+    own_car: I have my own car
+    car_pick: You choose the car
+    car_auto: Suggest a car for me
+    car_rec: Suggested car
+    seats: seats
+    per_day: per day
+    for_days: for {n} days
+    why: Why this one
+    see_car: Car page
+    roughest: Roughest road on the route
+    photo_by: Photo
   starts:
   - Tbilisi, city centre
   - Tbilisi Airport (TBS)
   - Kutaisi Airport (KUT)
   - Batumi Airport (BUS)
+  styles:
+  - key: classic
+    name: The classics
+    desc: Georgia's headline sights — best for a first visit
+  - key: family
+    name: With children
+    desc: Short drives, caves, parks, cable cars; no rough roads
+  - key: history
+    name: History and churches
+    desc: Monasteries, fortresses, archaeology and museums
+  - key: nature
+    name: Nature and walking
+    desc: Canyons, waterfalls, lakes, national parks
+  - key: wine
+    name: Wine and food
+    desc: Wineries, Kakheti, small towns
+  - key: mountains
+    name: Mountains and 4x4
+    desc: Svaneti, Khevsureti, Tusheti — high roads that need clearance
+  - key: beach
+    name: Coast and rest
+    desc: The Black Sea shore, resorts, spa towns
+  - key: slow
+    name: Slow pace
+    desc: Two or three places a day, long breaks, less time at the wheel
 ru:
   title: Планировщик тура — составьте маршрут по Грузии | Fleet House
   desc: >-
@@ -221,11 +297,49 @@ ru:
     - декабрь
     book_cta: Автомобиль для этого маршрута
     book_text: Выберите подходящую категорию и позвоните нам — онлайн-оплаты нет.
+    style: Стиль поездки
+    party: Сколько вас
+    own_car: Я на своей машине
+    car_pick: Машину выбираете вы
+    car_auto: Подберите машину
+    car_rec: Подобранная машина
+    seats: мест
+    per_day: в сутки
+    for_days: за {n} дней
+    why: Почему она
+    see_car: Страница машины
+    roughest: Самая сложная дорога на маршруте
+    photo_by: Фото
   starts:
   - Тбилиси, центр города
   - Аэропорт Тбилиси (TBS)
   - Аэропорт Кутаиси (KUT)
   - Аэропорт Батуми (BUS)
+  styles:
+  - key: classic
+    name: Классика
+    desc: Главные достопримечательности — для первой поездки
+  - key: family
+    name: С детьми
+    desc: Короткие переезды, пещеры, парки, канатные дороги; без трудных дорог
+  - key: history
+    name: История и церкви
+    desc: Монастыри, крепости, археология и музеи
+  - key: nature
+    name: Природа и прогулки
+    desc: Каньоны, водопады, озёра, национальные парки
+  - key: wine
+    name: Вино и вкус
+    desc: Винодельни, Кахетия, маленькие города
+  - key: mountains
+    name: Горы и 4x4
+    desc: Сванетия, Хевсуретия, Тушетия — дороги для внедорожника
+  - key: beach
+    name: Море и отдых
+    desc: Черноморское побережье, курорты, спа
+  - key: slow
+    name: Медленный темп
+    desc: 2–3 места в день,長 перерывы, меньше за рулём
 fa:
   title: برنامه‌ریز سفر — مسیر خود را در گرجستان بسازید | Fleet House
   desc: >-
@@ -302,6 +416,44 @@ fa:
     - دسامبر
     book_cta: خودرو برای این مسیر
     book_text: دسته مناسب را انتخاب کنید و با ما تماس بگیرید — پرداخت آنلاین نداریم.
+    style: سبک سفر
+    party: چند نفر هستید
+    own_car: خودروی خودم را دارم
+    car_pick: خودرو را خودتان انتخاب می‌کنید
+    car_auto: خودرو پیشنهاد بده
+    car_rec: خودروی پیشنهادی
+    seats: نفره
+    per_day: روزانه
+    for_days: برای {n} روز
+    why: چرا این خودرو
+    see_car: صفحهٔ خودرو
+    roughest: سخت‌ترین جادهٔ مسیر
+    photo_by: عکس
+  styles:
+  - key: classic
+    name: کلاسیک
+    desc: شاخص‌ترین دیدنی‌های گرجستان — مناسب سفر نخست
+  - key: family
+    name: همراه کودکان
+    desc: مسیرهای کوتاه، غارها، پارک‌ها، تله‌کابین؛ بدون جاده‌های سخت
+  - key: history
+    name: تاریخ و کلیساها
+    desc: صومعه‌ها، قلعه‌ها، باستان‌شناسی و موزه‌ها
+  - key: nature
+    name: طبیعت و پیاده‌روی
+    desc: دره‌ها، آبشارها، دریاچه‌ها، پارک‌های ملی
+  - key: wine
+    name: شراب و خوراک
+    desc: کارگاه‌های شراب، کاخِتی، شهرهای کوچک
+  - key: mountains
+    name: کوهستان و آفرود
+    desc: سوانتی، خِوسورتی، توشتی — جاده‌های مرتفع
+  - key: beach
+    name: ساحل و استراحت
+    desc: کرانهٔ دریای سیاه، تفرجگاه‌ها، آبگرم‌ها
+  - key: slow
+    name: ریتم آرام
+    desc: روزی دو تا سه مکان، توقف‌های طولانی، رانندگی کمتر
 he:
   title: מתכנן טיולים — בנו מסלול בגאורגיה | Fleet House
   desc: >-
@@ -377,6 +529,44 @@ he:
     - דצמבר
     book_cta: רכב למסלול הזה
     book_text: בחרו את הקטגוריה המתאימה והתקשרו אלינו — אין תשלום מקוון.
+    style: סגנון הטיול
+    party: כמה אתם
+    own_car: יש לי רכב משלי
+    car_pick: אתם בוחרים את הרכב
+    car_auto: הציעו לי רכב
+    car_rec: הרכב המומלץ
+    seats: מקומות
+    per_day: ליום
+    for_days: ל-{n} ימים
+    why: למה דווקא הוא
+    see_car: עמוד הרכב
+    roughest: הדרך הקשה ביותר במסלול
+    photo_by: צילום
+  styles:
+  - key: classic
+    name: הקלאסיקה
+    desc: האתרים המרכזיים של גאורגיה — מתאים לביקור ראשון
+  - key: family
+    name: עם ילדים
+    desc: נסיעות קצרות, מערות, פארקים, רכבלים; בלי דרכים קשות
+  - key: history
+    name: היסטוריה וכנסיות
+    desc: מנזרים, מבצרים, ארכיאולוגיה ומוזיאונים
+  - key: nature
+    name: טבע והליכה
+    desc: קניונים, מפלים, אגמים, פארקים לאומיים
+  - key: wine
+    name: יין ואוכל
+    desc: יקבים, קאחתי, עיירות קטנות
+  - key: mountains
+    name: הרים ו-4x4
+    desc: סוואנטי, חבסורתי, תושתי — דרכים גבוהות
+  - key: beach
+    name: חוף ומנוחה
+    desc: חוף הים השחור, אתרי נופש, מרחצאות
+  - key: slow
+    name: קצב איטי
+    desc: שניים־שלושה מקומות ביום, הפסקות ארוכות, פחות נהיגה
 ar:
   title: مخطط الرحلة — ارسم مسارك في جورجيا | Fleet House
   desc: >-
@@ -452,3 +642,41 @@ ar:
     - ديسمبر
     book_cta: سيارة لهذا المسار
     book_text: اختر الفئة المناسبة واتصل بنا — لا توجد مدفوعات إلكترونية.
+    style: نمط الرحلة
+    party: كم عددكم
+    own_car: لديّ سيارتي الخاصة
+    car_pick: تختار السيارة بنفسك
+    car_auto: اقترح لي سيارة
+    car_rec: السيارة المقترحة
+    seats: مقاعد
+    per_day: يومياً
+    for_days: لمدة {n} أيام
+    why: لماذا هذه
+    see_car: صفحة السيارة
+    roughest: أصعب طريق في المسار
+    photo_by: صورة
+  styles:
+  - key: classic
+    name: الكلاسيكيات
+    desc: أبرز معالم جورجيا — الأنسب لزيارة أولى
+  - key: family
+    name: مع الأطفال
+    desc: مسافات قصيرة وكهوف وحدائق وتلفريك؛ بلا طرق وعرة
+  - key: history
+    name: التاريخ والكنائس
+    desc: الأديرة والقلاع والآثار والمتاحف
+  - key: nature
+    name: الطبيعة والمشي
+    desc: الأخاديد والشلالات والبحيرات والحدائق الوطنية
+  - key: wine
+    name: النبيذ والطعام
+    desc: المعاصر وكاخيتي والبلدات الصغيرة
+  - key: mountains
+    name: الجبال والدفع الرباعي
+    desc: سفانيتي وخفسورتي وتوشيتي — طرق مرتفعة
+  - key: beach
+    name: الساحل والراحة
+    desc: ساحل البحر الأسود والمنتجعات والحمامات
+  - key: slow
+    name: إيقاع بطيء
+    desc: موقعان أو ثلاثة يومياً، استراحات طويلة، قيادة أقل

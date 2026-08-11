@@ -6,7 +6,7 @@ elevation: 180
 unesco: false
 featured: false
 order: 40
-image: ''
+image: /assets/photos/makhuntseti-waterfall.webp
 gallery: []
 visit_hours: '2'
 best_season: all
@@ -214,3 +214,9 @@ ar:
     جيدة لكنه ضيق وكثير المنعطفات، والرؤية محدودة عند المنحنيات؛ وسيارة اقتصادية كافية تماماً. املأ الخزان
     في باتومي، فمحطات الوقود في الوادي متباعدة. والمنعطف نحو الشلال مُشار إليه باللافتات، وموقف السيارات
     عند الموقع مباشرة.
+image_credit:
+  author: Андрей Бобровский
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0
+  source: >-
+    https://commons.wikimedia.org/wiki/File:%D0%91%D0%B0%D1%82%D1%83%D0%BC%D0%B8,_%D0%90%D0%B4%D0%B6%D0%B0%D1%80%D0%B8%D1%8F_-_panoramio_(55).jpg

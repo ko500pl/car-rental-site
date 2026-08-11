@@ -6,7 +6,7 @@ elevation: 520
 unesco: false
 featured: false
 order: 18
-image: ''
+image: /assets/photos/armaztsikhe-bagineti.webp
 gallery: []
 visit_hours: '1.5'
 best_season: may-october
@@ -308,3 +308,8 @@ ar:
     ينتهي بساحة ترابية غير مستوية أسفل المصطبة، وفي الشتاء يتجمع فيها الطين. وفي الجو الجاف تمر سيارة
     اقتصادية دون عناء. اترك السيارة في نهاية الممر واصعد خمس دقائق سيراً. لا وقود ولا متاجر في هذا القسم
     الأخير، فتزود في متسخيتا أو تبليسي.
+image_credit:
+  author: Thomas Depenbusch from Waldbröl, Germany
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Bridge_in_Mtskheta,_Georgia.jpg

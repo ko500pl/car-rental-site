@@ -6,7 +6,7 @@ elevation: 450
 unesco: false
 featured: false
 order: 90
-image: ''
+image: /assets/photos/kvareli-kindzmarauli.webp
 gallery: []
 visit_hours: '4'
 best_season: all
@@ -217,3 +217,9 @@ ar:
     في الشتاء حين قد يُغلق الممر. والمساران معبّدان من طرف إلى طرف وسيارة اقتصادية كافية تماماً. والوقود
     متوفر في تيلافي وغورجاني وكفاريلي نفسها. أما الكيلومترات الخمسة الأخيرة صعوداً إلى البحيرة فمعبّدة
     لكنها صعود متواصل.
+image_credit:
+  author: Adam Jones from Kelowna, BC, Canada
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: >-
+    https://commons.wikimedia.org/wiki/File:Traditional_Clay_Pot_for_Wine_-_Kindzmarauli_Winery_-_Near_Telavi_-_Georgia_(18237050090).jpg

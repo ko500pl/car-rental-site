@@ -6,7 +6,7 @@ elevation: 620
 unesco: false
 featured: false
 order: 60
-image: ''
+image: /assets/photos/ikalto-academy.webp
 gallery: []
 visit_hours: '1'
 best_season: all
@@ -209,3 +209,8 @@ ar:
     يساراً نحو قرية إيكالتو — أي نحو 100 كم وأقل قليلاً من ساعتين إجمالاً. والمسار كله معبّد؛ والكيلومتران
     الأخيران شارع قروي ضيق يصعد بلطف. وسيارة اقتصادية تتولى الأمر دون أي عناء. املأ الخزان في تيلافي.
     وفي الشتاء، إن أُغلق ممر غومبوري بالثلج، استخدم بدلاً منه طريق ساغاريجو–غورجاني المستوي.
+image_credit:
+  author: Daibo Taku
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0
+  source: https://commons.wikimedia.org/wiki/File:Ozhio,_Georgia_-_panoramio_(2).jpg

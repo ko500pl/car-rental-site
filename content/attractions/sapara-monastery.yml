@@ -6,7 +6,7 @@ elevation: 1300
 unesco: false
 featured: false
 order: 80
-image: ''
+image: /assets/photos/sapara-monastery.webp
 gallery: []
 visit_hours: '2'
 best_season: all
@@ -249,3 +249,8 @@ ar:
     الإسفلت موجود لكنه منهار في مواضع، وتكاد سيارتان لا تتجاوزان بعضهما عند المنعطفات، ولهذا فالكروس أوفر
     هو الخيار الأفضل. وبعد المطر أو في الشتاء يصبح هذا المقطع أصعب بوضوح. املأ الخزان في أخالتسيخي، فلا
     شيء إطلاقاً فوق البلدة.
+image_credit:
+  author: Sarah Murray from South Bend, IN, USA
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:St._George,_Georgia.jpg

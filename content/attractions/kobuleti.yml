@@ -6,7 +6,7 @@ elevation: 5
 unesco: false
 featured: false
 order: 80
-image: ''
+image: /assets/photos/kobuleti.webp
 gallery: []
 visit_hours: '4'
 best_season: june-september
@@ -216,3 +216,8 @@ ar:
     نحو باتومي والوصول إليها معبّد طوال المسافة، فسيارة اقتصادية كافية تماماً. والوقود متوفر في كل مكان
     على الطريق. وفي عطلات نهاية الأسبوع الصيفية تتكدس الحركة على المقطع الساحلي كثيراً، فالانطلاق في الصباح
     الباكر يوفر وقتاً حقيقياً.
+image_credit:
+  author: Андрей Бобровский
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0
+  source: https://commons.wikimedia.org/wiki/File:%D0%93%D1%80%D1%83%D0%B7%D0%B8%D1%8F_-_panoramio_(43).jpg

@@ -6,7 +6,7 @@ elevation: 150
 unesco: false
 featured: false
 order: 30
-image: ''
+image: /assets/photos/shemokmedi-monastery.webp
 gallery: []
 visit_hours: '1'
 best_season: all
@@ -234,3 +234,8 @@ ar:
     انعطف نحو لانتشخوتي وأوزورغيتي. ومن أوزورغيتي لا يبعد الدير سوى بضعة كيلومترات: طريق الوصول إسفلت
     ضيق، ومقطعه الأخير حاد ومتهالك في مواضع. وفي الطقس الجاف تتدبره سيارة اقتصادية بلا صعوبة، فقط خذ المنعطفات
     الأخيرة ببطء. املأ الخزان في أوزورغيتي، فلا محطات وقود على الطريق القروي بعدها.
+image_credit:
+  author: Aleksey Muhranoff
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Natanebi_river_valley._View_from_Shemokmedi_monastery.jpg

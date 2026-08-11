@@ -35,6 +35,26 @@
     return String(Math.floor(m / 60)).padStart(2, "0") + ":" + String(m % 60).padStart(2, "0");
   }
 
+
+  /* ── ტურის სტილები ────────────────────────────────────────────────────
+     types  — რომელ ტიპებს ვამჯობინებთ (ცარიელი = ყველა)
+     boost  — ქულის ბონუსი ამ ტიპებზე
+     maxRoad— ყველაზე უხეში გზა, რომელსაც ეს სტილი უშვებს
+     pace   — რეკომენდებული ტემპი წუთებში (თუ მომხმარებელს არ შეუცვლია)  */
+  var ROAD_RANK = { paved: 0, mostly_paved: 1, gravel: 2, "4x4_only": 3 };
+  var STYLE_RULES = {
+    classic:   { types: [], boost: 3.5, flags: true, maxRoad: 2, pace: 480 },
+    family:    { types: ["cave", "lake", "nature", "museum", "town", "beach", "waterfall", "spa"],
+                 boost: 3, maxRoad: 1, pace: 400, maxVisit: 3 },
+    history:   { types: ["monastery", "fortress", "archaeology", "museum"], boost: 3, maxRoad: 2, pace: 480 },
+    nature:    { types: ["nature", "canyon", "waterfall", "lake", "cave", "mountain"], boost: 3, maxRoad: 2, pace: 500 },
+    wine:      { types: ["winery", "town", "monastery"], boost: 3.5, maxRoad: 1, pace: 420 },
+    mountains: { types: ["mountain", "ski", "lake", "nature"], boost: 3, maxRoad: 3, pace: 540 },
+    beach:     { types: ["beach", "spa", "town", "nature"], boost: 3.5, maxRoad: 1, pace: 400 },
+    slow:      { types: ["spa", "winery", "town", "lake", "museum"], boost: 2.5, maxRoad: 1, pace: 360, maxPerDay: 3 }
+  };
+  var curStyle = "classic";
+
   // ─── ფილტრაცია ──────────────────────────────────────────────────────────
   var CAR_RANK = { economy: 0, suv: 1, offroad: 2 };
   function seasonOK(a, month) {
@@ -44,13 +64,24 @@
     if (a.season === "december-march") return month === 12 || month <= 3;
     return true;
   }
+  function carMode() {
+    var el = document.querySelector('input[name="carmode"]:checked');
+    return el ? el.value : "auto";
+  }
   function pick() {
     var regions = chips("regions"), types = chips("interests"),
-        car = EL("car").value, month = parseInt(EL("month").value, 10);
+        month = parseInt(EL("month").value, 10);
+    var st = STYLE_RULES[curStyle] || STYLE_RULES.classic;
+    var mode = carMode();
+    /* "pick" — მომხმარებელი თვითონ ირჩევს კლასს და ეს ზღუდავს ადგილებს.
+       "auto"/"own" — ადგილებს სტილი ზღუდავს, მანქანას მერე ვარჩევთ.        */
+    var carCap = mode === "pick" ? CAR_RANK[EL("car").value] : 2;
     return D.a.filter(function (a) {
       if (regions.length && regions.indexOf(a.r) < 0) return false;
       if (types.length && types.indexOf(a.ty) < 0) return false;
-      if (CAR_RANK[a.car] > CAR_RANK[car]) return false;
+      if (mode === "pick" && CAR_RANK[a.car] > carCap) return false;
+      if (ROAD_RANK[a.road] > st.maxRoad) return false;
+      if (st.maxVisit && a.h > st.maxVisit) return false;
       if (!seasonOK(a, month)) return false;
       return true;
     });
@@ -96,9 +127,10 @@
   }
   /* ობიექტების შერჩევა: ჯერ გამორჩეულები და UNESCO, მერე „ღირებულება დროზე“ */
   function score(a, start) {
-    var s = 0;
-    if (a.fe) s += 3;
-    if (a.un) s += 3;
+    var s = 0, st = STYLE_RULES[curStyle] || {};
+    if (st.types && st.types.length && st.types.indexOf(a.ty) >= 0) s += st.boost || 3;
+    if (a.fe) s += st.flags ? 3.5 : 2;
+    if (a.un) s += st.flags ? 3.5 : 2;
     s += 2 / Math.max(a.h, 0.5);                 // მოკლე ვიზიტი — მეტი ეტევა
     s -= hav(start, a) / 220;                    // შორეული — ნაკლებად
     return s;
@@ -212,6 +244,8 @@
       f(T.driving_time, fmtH(totDrive)) + f(T.visiting_time, fmtH(totVisit)) +
       f(T.need_car, D.car[maxCar]) + "</dl>";
 
+    h += carCard(res, maxCar);
+
     h += '<div class="cta" style="margin:0 0 26px"><h2>' + T.book_cta + "</h2><p>" + T.book_text +
          '</p><div class="row"><a class="btn" href="' + D.url.contact + '">' + D.nav.contact +
          '</a><a class="btn ghost" href="' + D.url.fleet + '">' + D.nav.fleet + "</a></div></div>";
@@ -227,10 +261,13 @@
       d.items.forEach(function (it, ii) {
         h += "<li><div class=\"pleg\">" + T.drive + " " + Math.round(it.legKm) + " " + T.km +
              " · " + fmtH(it.legMin) + "</div>" +
-             '<div class="pstop"><b><a href="' + it.a.u + '">' + esc(it.a.n) + "</a></b>" +
+             '<div class="pstop">' +
+             (it.a.img ? '<img class="pthumb" src="' + esc(it.a.img) + '" alt="" loading="lazy" ' +
+                         'width="112" height="84">' : '') +
+             '<div class="pstop-t"><b><a href="' + it.a.u + '">' + esc(it.a.n) + "</a></b>" +
              '<span class="pmeta">' + T.arrive + " " + clock(it.arrive) + " · " + T.visit + " " +
              fmtH(it.visit) + " · " + T.depart + " " + clock(it.depart) + "</span>" +
-             '<span class="pshort">' + esc(it.a.sh) + "</span></div>";
+             '<span class="pshort">' + esc(it.a.sh) + "</span></div></div>";
         var opt = alongTheWay(prev, it.a, planSlugs(res), pool);
         if (opt.length) {
           h += '<div class="popt">' + T.optional + ": " +
@@ -258,6 +295,54 @@
     drawMap(res.days, start);
     box.scrollIntoView({ behavior: "smooth", block: "start" });
   }
+
+  /* ── ავტომობილის შერჩევა მარშრუტისა და ხალხის რაოდენობის მიხედვით ──── */
+  function roughestRoad(res) {
+    var worst = "paved";
+    res.days.forEach(function (d) {
+      d.items.forEach(function (it) {
+        if (ROAD_RANK[it.a.road] > ROAD_RANK[worst]) worst = it.a.road;
+      });
+    });
+    return worst;
+  }
+  function recommendCar(res) {
+    var party = parseInt(EL("party").value, 10) || 2;
+    var road = roughestRoad(res);
+    var needRank = ROAD_RANK[road] >= 3 ? 3 : (ROAD_RANK[road] >= 2 ? 2 : 0);
+    var fleet = (D.fleet || []).filter(function (c) {
+      return c.seats >= party + 0 && c.rank >= needRank;
+    });
+    if (!fleet.length) {
+      fleet = (D.fleet || []).filter(function (c) { return c.seats >= party; });
+    }
+    if (!fleet.length) fleet = (D.fleet || []).slice();
+    /* ყველაზე იაფი, რომელიც ორივე პირობას აკმაყოფილებს */
+    fleet.sort(function (a, b) { return (a.rank - b.rank) || (a.price - b.price); });
+    return { car: fleet[0], road: road, party: party };
+  }
+  function carCard(res, maxCar) {
+    var mode = carMode();
+    if (mode === "own") return "";
+    var r = recommendCar(res);
+    if (!r.car) return "";
+    var days = res.days.length;
+    var rate = days >= 7 ? r.car.price7 : r.car.price;
+    var total = rate * days;
+    var roadName = (D.roads && D.roads[r.road]) || r.road;
+    return '<div class="carrec">' +
+      (r.car.img ? '<img src="' + esc(r.car.img) + '" alt="" loading="lazy">' : '<div class="carrec-ph"></div>') +
+      '<div class="carrec-b"><span class="tag">' + esc(T.car_rec) + '</span>' +
+      '<h3>' + esc(r.car.n) + '</h3>' +
+      '<p class="pshort">' + esc(r.car.cat_n) + ' · ' + r.car.seats + ' ' + esc(T.seats) +
+      (r.car.fuel ? ' · ' + esc(r.car.fuel) + ' l/100' : '') + '</p>' +
+      '<div class="rentrow"><span>' + esc(T.per_day) + '</span><b>' + rate + ' ₾</b></div>' +
+      '<div class="rentrow"><span>' + esc(T.for_days.replace("{n}", days)) + '</span><b>' + total + ' ₾</b></div>' +
+      '<p class="pshort why">' + esc(T.why) + ': ' + r.party + ' × ' + esc(T.seats) +
+      ' · ' + esc(T.roughest) + ' — ' + esc(roadName) + '</p>' +
+      '<a class="btn sm" href="' + esc(r.car.u) + '">' + esc(T.see_car) + '</a></div></div>';
+  }
+
   function f(k, v) { return "<div><dt class=\"k\">" + k + '</dt><dd class="v">' + v + "</dd></div>"; }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) {
     return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
@@ -314,6 +399,37 @@
     });
     chipRow("regions", D.regions);
     chipRow("interests", D.types);
+    styleRow();
+    var pickSel = EL("car");
+    document.querySelectorAll('input[name="carmode"]').forEach(function (r) {
+      r.onchange = function () { pickSel.hidden = carMode() !== "pick"; };
+    });
+  }
+  function styleRow() {
+    var box = EL("styles");
+    if (!box || !D.styles) return;
+    D.styles.forEach(function (st, i) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "chip style" + (i === 0 ? " on" : "");
+      b.dataset.style = st.key;
+      b.innerHTML = "<b>" + esc(st.name) + "</b><small>" + esc(st.desc) + "</small>";
+      b.onclick = function () {
+        box.querySelectorAll(".chip").forEach(function (c) { c.classList.remove("on"); });
+        b.classList.add("on");
+        curStyle = st.key;
+        var rule = STYLE_RULES[st.key];
+        if (rule && rule.pace) {
+          var pace = EL("pace");
+          var want = String(rule.pace <= 400 ? 360 : rule.pace >= 520 ? 600 : 480);
+          for (var k = 0; k < pace.options.length; k++) {
+            if (pace.options[k].value === want) pace.selectedIndex = k;
+          }
+        }
+        run();
+      };
+      box.appendChild(b);
+    });
   }
   function chipRow(name, items) {
     var box = EL(name);

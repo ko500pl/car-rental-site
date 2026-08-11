@@ -6,7 +6,7 @@ elevation: 1300
 unesco: false
 featured: true
 order: 50
-image: ''
+image: /assets/photos/dashbashi-canyon.webp
 gallery: []
 visit_hours: '3'
 best_season: may-october
@@ -202,3 +202,8 @@ ar:
     دقيقة إجمالاً. أُعيد بناء الطريق بالكامل في السنوات الأخيرة والإسفلت جيد، فسيارة اقتصادية تكفي تماماً؛
     والإزعاج الوحيد رياح جانبية قوية في الصعود إلى الهضبة. والوقود متوفر في مارنيولي وتتريتسكارو وتسالكا.
     وفي الشتاء يكثر الثلج والجليد على الهضبة، وإطارات الشتاء ضرورية.
+image_credit:
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Tbeti,_Georgia_-_panoramio.jpg

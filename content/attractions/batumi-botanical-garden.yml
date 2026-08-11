@@ -6,7 +6,7 @@ elevation: 100
 unesco: false
 featured: true
 order: 20
-image: ''
+image: /assets/photos/batumi-botanical-garden.webp
 gallery: []
 visit_hours: '3'
 best_season: all
@@ -257,3 +257,8 @@ ar:
     شمالاً على طريق الساحل نحو الرأس الأخضر: من وسط المدينة إلى الحديقة 9 كم فقط، أي نحو عشرين دقيقة.
     الطريق معبّد على امتداده، وإن كان المقطع الأخير ضيقاً وكثير المنعطفات مع فرص تجاوز محدودة. وسيارة
     اقتصادية تكفي تماماً. املأ الخزان في باتومي. وفي أيام الصيف يمتلئ الموقف، فالوصول مبكراً يستحق العناء.
+image_credit:
+  author: Mikhail Kryshen from Petrozavodsk, Russia
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Makhinjauri,_Adjara,_Georgia.jpg

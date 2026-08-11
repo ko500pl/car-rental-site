@@ -6,7 +6,7 @@ elevation: 755
 unesco: false
 featured: false
 order: 30
-image: ''
+image: /assets/photos/telavi-batonis-tsikhe.webp
 gallery: []
 visit_hours: '3'
 best_season: all
@@ -213,3 +213,8 @@ ar:
     البديل هو طريق كاخيتي السريع عبر ساغاريجو وغورجاني — 120 كم وأكثر من ساعتين، لكنه مستوٍ ومريح. السيارة
     الاقتصادية تكفي في الحالتين. تزود بالوقود في ساغاريجو أو في تيلافي نفسها، حيث تقع عدة محطات على طريق
     الوصول.
+image_credit:
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Telavi_(G.N._2014).jpg

@@ -6,7 +6,7 @@ elevation: 2380
 unesco: false
 featured: false
 order: 55
-image: ''
+image: /assets/photos/jvari-pass-friendship-monument.webp
 gallery: []
 visit_hours: '1'
 best_season: all
@@ -254,3 +254,8 @@ ar:
     بما يكفي، لكن مقطع مليتا-غودااوري صعود متواصل بشاحنات ثقيلة وبلا مجال للتجاوز. الوقود في باسانائوري
     وغودااوري. ومن أيار إلى تشرين الأول تكفي سيارة اقتصادية؛ أما في الشتاء فتلزم إطارات شتوية وسلاسل في
     الصندوق واستعداد للعودة أدراجك.
+image_credit:
+  author: Lingliang Zhang
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Scenery_in_Khevi,_Georgia.jpg

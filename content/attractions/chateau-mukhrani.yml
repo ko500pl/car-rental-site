@@ -6,7 +6,7 @@ elevation: 470
 unesco: false
 featured: false
 order: 28
-image: ''
+image: /assets/photos/chateau-mukhrani.webp
 gallery: []
 visit_hours: '2'
 best_season: all
@@ -325,3 +325,8 @@ ar:
     الطريق المحلي شمالاً إلى داخل القرية — نحو 42 كم و50 دقيقة، معبّد بالكامل وسهل لأي سيارة. بوابة الضيعة
     عليها لافتة عند طرف القرية، وفي الداخل موقف كبير مجاني. تزود بالوقود في ناتاختاري أو متسخيتا، فمحطات
     القرية قليلة. وتتابع الطريق نفسها نحو سامتافيسي إن أردت الجمع بين الموقعين في أصيل واحد.
+image_credit:
+  author: Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:ISS053-E-214901_-_View_of_Earth.jpg

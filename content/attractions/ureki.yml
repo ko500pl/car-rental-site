@@ -6,7 +6,7 @@ elevation: 5
 unesco: false
 featured: true
 order: 20
-image: ''
+image: /assets/photos/ureki.webp
 gallery: []
 visit_hours: '4'
 best_season: june-september
@@ -227,3 +227,8 @@ ar:
     والوصول معبّد طوال المسافة، فالسيارة الاقتصادية كافية تماماً. تزود بالوقود في سامتريديا أو لانتشخوتي.
     وفي عطلات نهاية الأسبوع الصيفية تتكدس الحركة نحو باتومي بشدة، فالانطلاق المبكر يُحدث فرقاً ملموساً
     في زمن القيادة.
+image_credit:
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Guria,_Georgia_-_panoramio.jpg

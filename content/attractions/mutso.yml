@@ -6,7 +6,7 @@ elevation: 1880
 unesco: false
 featured: false
 order: 88
-image: ''
+image: /assets/photos/mutso.webp
 gallery: []
 visit_hours: '2.5'
 best_season: june-september
@@ -324,3 +324,8 @@ ar:
     وحده معبّد؛ وبعد باريساخو يصير الطريق حصوياً ضيقاً بلا حواجز فوق هبوط طويل، ويحتفظ الممر بالثلج من
     تشرين الأول إلى أواخر أيار حين يكون الطريق مغلقاً رسمياً. وسيارة دفع رباعي بخلوص عالٍ ليست خياراً
     بل شرطاً. آخر وقود في جينفالي.
+image_credit:
+  author: Earth Science and Remote Sensing Unit, NASA Johnson Space Center
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:ISS054-E-36347_-_View_of_Earth.jpg

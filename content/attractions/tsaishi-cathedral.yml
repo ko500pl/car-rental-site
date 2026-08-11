@@ -6,7 +6,7 @@ elevation: 55
 unesco: false
 featured: false
 order: 85
-image: ''
+image: /assets/photos/tsaishi-cathedral.webp
 gallery: []
 visit_hours: '0.5'
 best_season: all
@@ -354,3 +354,8 @@ ar:
     والمقطع الأخير درب ريفي ضيق فيه حفر لكنه سالك تماماً لسيارة منخفضة. اهتدِ ببرج الأجراس فهو ظاهر فوق
     الحقول من مسافة بعيدة. تزوّد بالوقود في سيناكي أو زوغديدي. والسيارة الاقتصادية كافية في كل فصل، والوقوف
     عند البوابة مباشرة.
+image_credit:
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:View_from_Urta_mt._-_panoramio.jpg

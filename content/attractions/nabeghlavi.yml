@@ -6,7 +6,7 @@ elevation: 480
 unesco: false
 featured: false
 order: 40
-image: ''
+image: /assets/photos/nabeghlavi.webp
 gallery: []
 visit_hours: '2'
 best_season: may-october
@@ -231,3 +231,9 @@ ar:
     على طريق معبّد في معظمه، وإن كان ضيقاً ومتصدعاً في مواضع بالحفر. وسيارة اقتصادية تتدبر الأمر في الطقس
     الجاف، لكن مركبة أعلى خلوصاً أريح بوضوح في هذا المقطع. املأ الخزان في تشوخاتاوري قبل الانعطاف نحو
     الداخل.
+image_credit:
+  author: Akakijabua
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: >-
+    https://commons.wikimedia.org/wiki/File:%E1%83%A1%E1%83%9D%E1%83%A4%E1%83%94%E1%83%9A%E1%83%98_%E1%83%96%E1%83%94%E1%83%9C%E1%83%9D%E1%83%91%E1%83%90%E1%83%9C%E1%83%98_%E1%83%AC%E1%83%9B%E1%83%98%E1%83%9C%E1%83%93%E1%83%90_%E1%83%92%E1%83%98%E1%83%9D%E1%83%A0%E1%83%92%E1%83%98%E1%83%A1_%E1%83%A1%E1%83%90%E1%83%AE%E1%83%94%E1%83%9A%E1%83%9D%E1%83%91%E1%83%98%E1%83%A1_%E1%83%94%E1%83%99%E1%83%9A%E1%83%94%E1%83%A1%E1%83%98%E1%83%90.jpg

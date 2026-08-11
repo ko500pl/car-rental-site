@@ -6,7 +6,7 @@ elevation: 300
 unesco: true
 featured: true
 order: 10
-image: ''
+image: /assets/photos/gelati-monastery.webp
 gallery: []
 visit_hours: '2'
 best_season: all
@@ -259,3 +259,8 @@ ar:
     وعشرين دقيقة. ومن كوتايسي اتجه شمالاً شرقاً واقطع الكيلومترات الأحد عشر الأخيرة إلى غيلاتي. المسار
     كله معبّد، ومقطعه الأخير ضيق لكنه بحالة جيدة. وسيارة اقتصادية تكفي تماماً. والوقود وأجهزة الصراف وفيرة
     في كوتايسي. ودير موتساميتا على الطريق نفسه، فضم الموقعين في جولة واحدة لا يضيف قيادة تُذكر.
+image_credit:
+  author: David Holt
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Gelati_Cathedral_Georgia_July_2007_-_panoramio.jpg

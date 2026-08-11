@@ -6,7 +6,7 @@ elevation: 300
 unesco: false
 featured: false
 order: 70
-image: ''
+image: /assets/photos/enguri-dam.webp
 gallery: []
 visit_hours: '1'
 best_season: all
@@ -231,3 +231,8 @@ ar:
     شمالاً شرقاً نحو جفاري: فمن زوغديدي إلى السد 30 كم فقط، نحو أربعين دقيقة. والطريق معبّد على امتداده
     وسيارة اقتصادية تكفي تماماً. املأ الخزان في زوغديدي، آخر مكان فيه خيارات حقيقية من المحطات قبل الجبال.
     وإن كنت متجهاً إلى ميستيا فالسد على مسارك مباشرة ولا يلزم أي التفاف — اكتفِ بإدراج وقفة قصيرة.
+image_credit:
+  author: Donovan Driver from Texarkana, Texas, USA
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Enguri_Dam_006.jpg

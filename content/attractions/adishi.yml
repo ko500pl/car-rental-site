@@ -6,7 +6,7 @@ elevation: 2040
 unesco: false
 featured: false
 order: 35
-image: ''
+image: /assets/photos/adishi.webp
 gallery: []
 visit_hours: '3'
 best_season: june-september
@@ -384,3 +384,8 @@ ar:
     منعطف أديشي على نحو خمسة عشر كيلومتراً قبل أوشغولي، ومنه سبعة كيلومترات تقريباً من درب حصوي صاعد.
     نحو 505 كم إجمالاً وعشر ساعات وخمس عشرة دقيقة. الإسفلت يمتد حتى مستيا؛ وبعدها يسوء السطح، ومقطع أديشي
     للدفع الرباعي وحده. تزوّد بالوقود في زوغديدي أو مستيا، فلا شيء في الأعلى.
+image_credit:
+  author: hr.icio
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Svaneti,_Georgia._2018_33.jpg

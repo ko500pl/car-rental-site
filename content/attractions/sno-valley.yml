@@ -6,7 +6,7 @@ elevation: 1650
 unesco: false
 featured: false
 order: 62
-image: ''
+image: /assets/photos/sno-valley.webp
 gallery: []
 visit_hours: '1.5'
 best_season: may-october
@@ -261,3 +261,8 @@ ar:
     معبّد كما ينبغي حتى القرية، أي 152 كم ونحو ثلاث ساعات إجمالاً. وحتى سنو نفسها تكفي سيارة اقتصادية.
     الوقود في غودااوري أو ستيبانتسميندا، إذ لا وقود في الوادي. وفي الشتاء يتأخر كسح الطريق الجانبي عن
     الطريق الرئيسي.
+image_credit:
+  author: Jeremy Teigen from USA
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Watchtower_Tourists.jpg

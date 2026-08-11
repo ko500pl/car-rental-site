@@ -6,7 +6,7 @@ elevation: 1550
 unesco: false
 featured: false
 order: 70
-image: ''
+image: /assets/photos/dariali-gorge-gveleti-waterfalls.webp
 gallery: []
 visit_hours: '2'
 best_season: may-october
@@ -228,3 +228,9 @@ ar:
     هنا. ومنعطف غفيليتي على اليسار بعد الجسر، والكيلومتران الأخيران حصويان، ولهذا بالضبط تُفضَّل سيارة
     كروس أوفر على السيارة المنخفضة. ولا تقد حتى المعبر الحدودي نفسه: فإخراج سيارة مستأجرة من جورجيا غير
     مسموح.
+image_credit:
+  author: G.N
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: >-
+    https://commons.wikimedia.org/wiki/File:%E1%83%A9%E1%83%90%E1%83%9C%E1%83%A9%E1%83%A5%E1%83%94%E1%83%A0%E1%83%98_%E1%83%93%E1%83%90%E1%83%A0%E1%83%98%E1%83%90%E1%83%9A%E1%83%98%E1%83%A1_%E1%83%AE%E1%83%94%E1%83%9D%E1%83%91%E1%83%90%E1%83%A8%E1%83%98.jpg

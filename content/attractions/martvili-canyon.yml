@@ -6,7 +6,7 @@ elevation: 200
 unesco: false
 featured: false
 order: 60
-image: ''
+image: /assets/photos/martvili-canyon.webp
 gallery: []
 visit_hours: '2'
 best_season: all
@@ -240,3 +240,8 @@ ar:
     جيد طوال المسافة، وآخر 20 كم طريق إقليمي ضيق لكنه سليم تماماً. وسيارة اقتصادية كافية تماماً. املأ
     الخزان في كوتايسي أو سامتريديا؛ وفي بلدة مارتفيلي وقود أيضاً لكن خيارات المحطات محدودة. والمنعطف مُشار
     إليه باللافتات ومن السهل تتبعه.
+image_credit:
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Riv._Tskhenistskali_(G.N._2011).jpg

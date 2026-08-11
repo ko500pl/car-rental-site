@@ -6,7 +6,7 @@ elevation: 1100
 unesco: false
 featured: false
 order: 38
-image: ''
+image: /assets/photos/tianeti.webp
 gallery: []
 visit_hours: '3'
 best_season: may-october
@@ -315,3 +315,8 @@ ar:
     شرقاً عن الطريق العسكري الجورجي عند جينفالي ويقطع سلسلة مشجرة: مسافة مشابهة لكنه أبطأ وأضيق وأخلى
     بكثير. تزود بالوقود في ساغاريجو أو جينفالي قبل الانطلاق، فمحطات تيانيتي قليلة. وفي الجو الجاف تتدبر
     سيارة اقتصادية أياً من المسارين.
+image_credit:
+  author: G.N
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Tianeti_(G.N._2012).jpg

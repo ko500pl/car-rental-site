@@ -6,7 +6,7 @@ elevation: 1870
 unesco: false
 featured: false
 order: 50
-image: ''
+image: /assets/photos/hatsvali-tetnuldi.webp
 gallery: []
 visit_hours: '6'
 best_season: december-march
@@ -266,3 +266,9 @@ ar:
     أكثر من نصف ساعة: جزء من الطريق إسفلت وجزء حصى يتفكك ويسوء في الشتاء. ولهذا فسيارة بخلوص أرضي عالٍ
     على إطارات شتوية هي الخيار المعقول هنا. املأ الخزان في ميستيا، إذ لا وقود في أي من القاعدتين. وفي
     الطقس السيئ يبقى النقل المنظَّم من البلدة الخيار الأسهل.
+image_credit:
+  author: deguonis from Lithuania
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: >-
+    https://commons.wikimedia.org/wiki/File:Svaneti_View_from_Mestia%27s_TV_Tower-Vaizdas_nuo_Mestijos_TV_bok%C5%A1to_(3872445854).jpg

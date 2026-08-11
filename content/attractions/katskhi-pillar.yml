@@ -6,7 +6,7 @@ elevation: 500
 unesco: false
 featured: false
 order: 70
-image: ''
+image: /assets/photos/katskhi-pillar.webp
 gallery: []
 visit_hours: '1'
 best_season: all
@@ -226,3 +226,8 @@ ar:
     حتى كاتسخي — أي نحو 205 كم وثلاث ساعات. والمسار معبّد طوال المسافة. وطريق تشياتورا ضيق ومتضرر في مواضع
     بسبب حركة شاحنات المناجم، لكنه لا يشكل أي مشكلة لسيارة اقتصادية. والوقود متوفر في زيستافوني وتشياتورا.
     وعند العمود موقف صغير بمساحة محدودة للحافلات.
+image_credit:
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Katskhi_Pillar3.jpg

@@ -6,7 +6,7 @@ elevation: 470
 unesco: false
 featured: false
 order: 50
-image: ''
+image: /assets/photos/gremi.webp
 gallery: []
 visit_hours: '1'
 best_season: all
@@ -209,3 +209,8 @@ ar:
     — نحو 125 كم وساعتين وعشرين دقيقة إجمالاً. الطريق معبّد طوال المسافة وسيارة اقتصادية كافية تماماً؛
     فغريمي تقع مباشرة إلى جانب الطريق الرئيسي، ولا مُنعطف تبحث عنه. والوقود متوفر في تيلافي وكفاريلي.
     أما المسار البديل عبر ساغاريجو وغورجاني فأكثر استواءً، لكنه أطول بنحو ثلاثين كيلومتراً.
+image_credit:
+  author: Sarah Murray from South Bend, IN, USA
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Kakheti_15466_(9121868947).jpg

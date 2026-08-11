@@ -6,7 +6,7 @@ elevation: 790
 unesco: false
 featured: true
 order: 10
-image: ''
+image: /assets/photos/sighnaghi.webp
 gallery: []
 visit_hours: '3'
 best_season: all
@@ -216,3 +216,8 @@ ar:
     تكفي تماماً، وإن كان الصعود الأخير سلسلة من المنعطفات الضيقة. والوقود متاح بسهولة في ساغاريجو وغورجاني
     وتسنوري. ويمكنك العودة عبر ممر غومبوري ومروراً بتيلافي لقيادة أجمل منظراً؛ وهو يكلفك نحو نصف ساعة
     إضافية ويُغلق عند تساقط الثلوج الكثيفة.
+image_credit:
+  author: Sarah Murray from South Bend, IN, USA
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Kakheti_15409_(9106027013).jpg

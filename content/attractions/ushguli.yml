@@ -6,7 +6,7 @@ elevation: 2100
 unesco: true
 featured: true
 order: 20
-image: ''
+image: /assets/photos/ushguli.webp
 gallery: []
 visit_hours: '4'
 best_season: june-september
@@ -245,3 +245,9 @@ ar:
     المطر. ولهذا بالضبط تُشترط هنا سيارة عالية الخلوص — فالسيارة المنخفضة ليست آمنة في هذا المقطع ولا
     يغطيها تأمين الإيجار. آخر وقود في ميستيا، فاملأ الخزان قبل الانطلاق وتحقق من الطقس، إذ قد يبطئ المطر
     الغزير عبور المخاضات.
+image_credit:
+  author: კოლხი
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: >-
+    https://commons.wikimedia.org/wiki/File:%E1%83%A9%E1%83%90%E1%83%9F%E1%83%90%E1%83%A8%E1%83%98_%E1%83%9B%E1%83%90%E1%83%AA%E1%83%AE%E1%83%9D%E1%83%95%E1%83%A0%E1%83%98%E1%83%A1_%E1%83%94%E1%83%99%E1%83%9A%E1%83%94%E1%83%A1%E1%83%98%E1%83%90_,,%E1%83%9B%E1%83%90%E1%83%AA%E1%83%AE%E1%83%95%E1%83%90%E1%83%A0%22.jpg

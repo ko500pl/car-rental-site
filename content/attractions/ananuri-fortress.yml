@@ -6,7 +6,7 @@ elevation: 830
 unesco: false
 featured: false
 order: 30
-image: ''
+image: /assets/photos/ananuri-fortress.webp
 gallery: []
 visit_hours: '1'
 best_season: all
@@ -254,3 +254,8 @@ ar:
     وعشرين دقيقة. الطريق معبّد على امتداده وبحالة جيدة، غير أنه بعد جينفالي يضيق ويصبح محفوراً في الجرف،
     فتجاوز بحذر. القلعة على يمين الطريق مباشرة، بلافتة واضحة وموقف كبير. والوقود متوفر في ناتاختاري وجينفالي.
     وسيارة اقتصادية تكفي تماماً على مدار السنة.
+image_credit:
+  author: Stefano Bolognini
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Ananuri,_Georgia_%E2%80%94_Interior_of_Ananuri_Deity_Church.jpg

@@ -6,7 +6,7 @@ elevation: 400
 unesco: false
 featured: false
 order: 65
-image: ''
+image: /assets/photos/oniore-waterfall.webp
 gallery: []
 visit_hours: '2'
 best_season: may-october
@@ -372,3 +372,8 @@ ar:
     318 كم إجمالاً وخمس ساعات وعشر دقائق. الإسفلت يمتد حتى مارتفيلي؛ وبعده يبدأ طريق حرجي حصوي ضيق عميق
     الأخاديد. في الجو الجاف تجتازه سيارة مرتفعة ولا تجتازه المنخفضة؛ وبعد المطر لا يصلح إلا الدفع الرباعي.
     اترك السيارة حيث يبدأ الدرب وتابع سيراً. تزوّد بالوقود في أباشا أو مارتفيلي، فلا شيء بعدهما.
+image_credit:
+  author: Alexey Komarov
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:A_waterfall_seen_from_the_trail_to_Oniore_Waterfall.jpg

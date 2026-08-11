@@ -6,7 +6,7 @@ elevation: 2
 unesco: true
 featured: false
 order: 55
-image: ''
+image: /assets/photos/kolkheti-national-park.webp
 gallery: []
 visit_hours: '3'
 best_season: all
@@ -316,3 +316,8 @@ ar:
     325 كم وأقل قليلاً من خمس ساعات، معظمها طريق مزدوج. إدارة الحديقة والرصيف الرئيسي على الشاطئ الشمالي
     لبالياستومي، على بعد كيلومترات جنوب وسط بوتي، والمنعطف مُعلَّم من طريق بوتي–كوبوليتي. المقطع الأخير
     إسفلت ضيق يعبر المستنقع. تزوّد بالوقود في سامتريديا أو في بوتي نفسها. السيارة الاقتصادية كافية تماماً.
+image_credit:
+  author: Paata vardanashvili
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Kolkheti.jpg

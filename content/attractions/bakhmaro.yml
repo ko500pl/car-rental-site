@@ -6,7 +6,7 @@ elevation: 1950
 unesco: false
 featured: true
 order: 10
-image: ''
+image: /assets/photos/bakhmaro.webp
 gallery: []
 visit_hours: '6'
 best_season: june-september
@@ -260,3 +260,8 @@ ar:
     حاد وضيق وكثير الحفر، ويستغرق وحده ساعتين إلى ثلاث. السيارة السيدان ليست خياراً هنا — يلزم دفع رباعي
     بخلوص أرضي عالٍ، وحتى معه يتطلب سطح الطريق صبراً. ولا تنطلق في يوم ممطر، فبعض المقاطع تتحول سريعاً
     إلى وحل عميق.
+image_credit:
+  author: M.
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Bakhmaro_Davitiani_Street.jpg

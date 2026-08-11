@@ -6,7 +6,7 @@ elevation: 2150
 unesco: false
 featured: false
 order: 65
-image: ''
+image: /assets/photos/juta-chaukhi.webp
 gallery: []
 visit_hours: '6'
 best_season: june-september
@@ -266,3 +266,8 @@ ar:
     وأربعون دقيقة. الخيار الصحيح دفع رباعي حقيقي بخلوص أرضي؛ وإلا فاترك السيارة في سنو وخذ إحدى سيارات
     الجيب المحلية من ستيبانتسميندا. وآخر وقود في ستيبانتسميندا. ومن أواخر الخريف إلى الربيع يغلق الثلج
     المسلك.
+image_credit:
+  author: Tadeáš Gregor
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Dzhuta_Valley_-_panoramio.jpg

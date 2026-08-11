@@ -6,7 +6,7 @@ elevation: 750
 unesco: false
 featured: false
 order: 22
-image: ''
+image: /assets/photos/shiomghvime-monastery.webp
 gallery: []
 visit_hours: '1.5'
 best_season: all
@@ -319,3 +319,8 @@ ar:
     المقبرة والصاعد إلى الوادي. تلك 12 كم إضافية، أي 35 كم ونحو 50 دقيقة إجمالاً. السطح معبّد لكنه قديم
     وضيق ومرقّع، وفي مواضع بلا حواجز، ويكاد لا يتسع لتجاوز حافلة. في الجو الجاف تكفي سيارة اقتصادية؛ وبعد
     المطر الغزير أو الثلج يُترك القسم الأخير لسيارة دفع رباعي. الوقود والمتاجر في متسخيتا، وبعدها لا شيء.
+image_credit:
+  author: Yasuhiro Kojima
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Kviratskhoveli_Church,_Skhaltba_1.jpg

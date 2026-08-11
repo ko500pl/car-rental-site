@@ -6,7 +6,7 @@ elevation: 90
 unesco: false
 featured: false
 order: 80
-image: ''
+image: /assets/photos/rukhi-fortress.webp
 gallery: []
 visit_hours: '0.5'
 best_season: all
@@ -325,3 +325,8 @@ ar:
     330 كم إجمالاً وأقل قليلاً من خمس ساعات. الطريق الرئيسي معبّد وبحالة جيدة. وفي قرية روخي يتفرع درب
     قصير نحو التل؛ والمئات الأخيرة من الأمتار غير معبّدة وموحلة بعد المطر. اترك السيارة على جانب الطريق
     أو في آخر القرية واصعد سيراً. تزوّد بالوقود في زوغديدي. وفي الجو الجاف تكفي السيارة الاقتصادية.
+image_credit:
+  author: Jelger Groeneveld
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Rukhi_fortress_-_outer_wall.jpg

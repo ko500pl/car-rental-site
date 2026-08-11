@@ -6,7 +6,7 @@ elevation: 60
 unesco: false
 featured: false
 order: 70
-image: ''
+image: /assets/photos/petra-fortress.webp
 gallery: []
 visit_hours: '1'
 best_season: all
@@ -227,3 +227,8 @@ ar:
     وكوتايسي وسامتريديا، ثم نزولاً على الساحل نحو كوبوليتي. وتقع تسيخيسدزيري على طريق كوبوليتي–باتومي
     مباشرة، فلا حاجة إلى انعطاف أو رجوع. الوصول معبّد وسيارة اقتصادية تكفي تماماً. املأ الخزان في كوبوليتي
     أو باتومي؛ كلتاهما على بعد عشرة إلى خمسة عشر كيلومتراً، وهناك محطة على الطريق الرئيسي قريبة.
+image_credit:
+  author: Андрей Бобровский
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0
+  source: https://commons.wikimedia.org/wiki/File:%D0%93%D1%80%D1%83%D0%B7%D0%B8%D1%8F_-_panoramio_(33).jpg

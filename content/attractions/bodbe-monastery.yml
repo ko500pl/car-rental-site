@@ -6,7 +6,7 @@ elevation: 710
 unesco: false
 featured: false
 order: 20
-image: ''
+image: /assets/photos/bodbe-monastery.webp
 gallery: []
 visit_hours: '2'
 best_season: all
@@ -214,3 +214,8 @@ ar:
     وأقل قليلاً من ساعتين. ويأتي منعطف بودبي قبل سيغناغي بقليل وعليه لافتة واضحة؛ والكيلومتران الأخيران
     طريق ضيق لكنه معبّد جيداً. وسيارة اقتصادية مناسبة طوال الطريق. املأ الخزان في تسنوري أو غورجاني حيث
     المحطات كثيرة. وسيغناغي على بعد خمس دقائق أبعد، فيجمع الجميع تقريباً بين الموقعين في رحلة واحدة.
+image_credit:
+  author: Daibo Taku
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0
+  source: https://commons.wikimedia.org/wiki/File:Sighnaghi,_Georgia_-_panoramio_(26).jpg
