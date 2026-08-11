@@ -504,7 +504,7 @@ def shell(lang, current, head, body, depth, tail=""):
 
 # ══════════════════════════════════════════════════════════════ page renders
 def render_static_page(lang, page):
-    p = PAGES[page][lang]
+    p = {k: counts_sub(v) for k, v in PAGES[page][lang].items()}
     u = UI[lang]
     depth = 0 if page == "index" else 1
     if lang != "ka":
@@ -987,8 +987,18 @@ def explorer_block(lang, depth, height="72vh", hero=False):
     return html, js
 
 
+def counts_sub(s):
+    """{attractions} / {regions} / {routes} — რიცხვები არასდროს ძველდება."""
+    if not isinstance(s, str):
+        return s
+    return (s.replace("{attractions}", str(len(ATTRACTIONS)))
+             .replace("{regions}", str(len(REGIONS)))
+             .replace("{routes}", str(len(ROUTES)))
+             .replace("{cars}", str(len(CARS))))
+
+
 def render_map_page(lang):
-    p = PAGES["map"][lang]
+    p = {k: counts_sub(v) for k, v in PAGES["map"][lang].items()}
     u = UI[lang]
     depth = 1 if lang == "ka" else 2
     mp, js = explorer_block(lang, depth, "78vh")
