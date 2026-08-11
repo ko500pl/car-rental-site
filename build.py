@@ -28,11 +28,11 @@ LANG_FONT_STACK = {"fa": '"Vazirmatn","Noto Sans Arabic",',
                    "he": '"Noto Sans Hebrew","Noto Sans",',
                    "ar": '"Noto Kufi Arabic","Noto Sans Arabic",'}
 
-PAGE_ORDER = ["index", "fleet", "pricing", "map", "terms", "faq", "blog",
+PAGE_ORDER = ["index", "fleet", "pricing", "map", "planner", "terms", "faq", "blog",
               "about", "contact", "software"]
 PAGE_SLUG = {"index": "", "fleet": "fleet/", "pricing": "pricing/", "map": "map/",
-             "terms": "terms/", "faq": "faq/", "blog": "blog/", "about": "about/",
-             "contact": "contact/", "software": "fleet-management-software/"}
+             "planner": "planner/", "terms": "terms/", "faq": "faq/", "blog": "blog/",
+             "about": "about/", "contact": "contact/", "software": "fleet-management-software/"}
 
 TODAY = date.today().isoformat()
 E = lambda s: html.escape(str(s), quote=True)                # noqa: E731
@@ -49,6 +49,7 @@ DESIGN = load("content/settings/design.yml")
 UI = load("content/settings/ui.yml")
 META = load("content/settings/meta.yml")
 SPECS = load("content/settings/specs.yml")
+PLANNER_LANGS = set(load("content/settings/planner.yml"))
 CATS = load("content/settings/categories.yml")["categories"]
 
 PAGES = {os.path.splitext(os.path.basename(p))[0]: load(p)
@@ -74,7 +75,8 @@ ROUTES = {os.path.splitext(os.path.basename(p))[0]: load(p)
 ROUTES = dict(sorted(ROUTES.items(), key=lambda kv: kv[1].get("order", 999)))
 
 # რეალურად ხელმისაწვდომი ენები (თარგმანის მიხედვით)
-LANGS = [l for l in ALL_LANGS if l in UI and l in META and all(l in p for p in PAGES.values())]
+LANGS = [l for l in ALL_LANGS if l in UI and l in META and l in PLANNER_LANGS
+         and all(l in p for p in PAGES.values())]
 
 SITE_URL = SITE["site_url"].rstrip("/")
 BRAND = SITE["rental_brand"]
@@ -508,13 +510,21 @@ def render_static_page(lang, page):
     if lang != "ka":
         depth += 1
     body = []
+    tail_js = ""
     if page == "index":
         h = p["hero"]
-        facts = "".join(f"<div><b>{E(x['v'])}</b><span>{E(x['k'])}</span></div>"
-                        for x in h["facts"])
-        body.append(f'<section class="hero"><div class="wrap">'
+        x = TRAVEL[lang]["exp"]
+        facts = "".join(f"<div><b>{E(x2['v'])}</b><span>{E(x2['k'])}</span></div>"
+                        for x2 in h["facts"])
+        mp, tail_js = explorer_block(lang, depth, "70vh", hero=True)
+        body.append(f'<section class="hero tight"><div class="wrap">'
                     f'<span class="kicker">{E(h["kicker"])}</span><h1>{E(p["h1"])}</h1>'
-                    f'<p class="lead">{inline(h["lead"], lang)}</p>'
+                    f'<p class="lead">{inline(h["lead"], lang)}</p></div></section>'
+                    f'<section class="sec wide maphero"><div class="wrap wide">'
+                    f'<h2 class="vh">{E(x["explore_h"])}</h2>'
+                    f'<p class="map-sub">{E(x["explore_sub"])}</p>'
+                    f'{mp}{legend_html(lang)}</div></section>'
+                    f'<section class="sec"><div class="wrap">'
                     f'<div class="hero-facts">{facts}</div></div></section>')
     else:
         body.append(f'<section class="page-head"><div class="wrap"><h1>{E(p["h1"])}</h1>'
@@ -547,6 +557,13 @@ def render_static_page(lang, page):
         graph.append(f)
     if page in ("index", "software"):
         graph.append(software_node(lang))
+    if page == "index":
+        graph.append({"@type": "ItemList", "name": TRAVEL[lang]["exp"]["explore_h"],
+                      "numberOfItems": len(ATTRACTIONS),
+                      "itemListElement": [
+                          {"@type": "ListItem", "position": i + 1,
+                           "url": attr_url(lang, s), "name": a[lang]["name"]}
+                          for i, (s, a) in enumerate(ATTRACTIONS.items())]})
     if page == "pricing":
         graph.append(offer_catalog(lang))
     if page == "fleet":
@@ -557,11 +574,13 @@ def render_static_page(lang, page):
     head = head_html(lang, page, p["title"], p["desc"], p.get("keywords", ""),
                      page_url(lang, page),
                      {l: page_url(l, page) for l in LANGS}, depth,
-                     {"@context": "https://schema.org", "@graph": graph})
+                     {"@context": "https://schema.org", "@graph": graph},
+                     leaflet=(page == "index"))
     crumbs = crumbs_html(lang, [] if page == "index" else
                          [(u["nav"]["index"], page_url(lang, "index", False)),
                           (u["nav"][page], None)])
-    return shell(lang, page, head, crumbs + '<main id="main">' + "".join(body) + "</main>", depth)
+    return shell(lang, page, head, crumbs + '<main id="main">' + "".join(body) + "</main>",
+                 depth, tail_js)
 
 
 def render_car(lang, slug, c):
@@ -727,6 +746,9 @@ def render_post(lang, slug, post):
 
 # ══════════════════════════════════════════════════════════════ travel pages
 TRAVEL = load("content/settings/travel.yml")
+PLACES = load("content/settings/places.yml")["places"]
+SLOW_TOWNS = {"stepantsminda", "mestia-town", "khulo", "oni", "bakuriani",
+              "ambrolauri", "akhalkalaki", "tkibuli", "sachkhere", "chiatura"}
 TB = (41.7151, 44.8271)          # თბილისი — მარშრუტების საწყისი წერტილი
 
 TYPE_COLOR = {
@@ -827,11 +849,149 @@ def legend_html(lang):
     return f'<div class="legend"><b>{E(tu(lang,"legend_title"))}:</b> {items}</div>'
 
 
+def te(lang, key):
+    return TRAVEL[lang]["exp"].get(key, key)
+
+
+# ══════════════════════════════════════════════ interactive map explorer
+def explorer_points(lang):
+    """მსუბუქი მონაცემები რუკის მარკერებისთვის — ყველა ღირსშესანიშნაობა."""
+    u = TRAVEL[lang]["ui"]
+    pts = []
+    for s, a in ATTRACTIONS.items():
+        f, v = road_model(a)
+        pts.append({
+            "s": s, "n": a[lang]["name"], "la": a["lat"], "lo": a["lon"],
+            "t": tl(lang, "type", a["type"]), "ty": a["type"],
+            "c": TYPE_COLOR.get(a["type"], "#0f4c81"),
+            "g": a["region"], "gn": REGIONS[a["region"]][lang]["name"],
+            "h": f'{a["visit_hours"]} {u["hrs"]}', "hh": float(a["visit_hours"]),
+            "d": f'{a["distance_tbilisi_km"]} {u["km"]} · {a["drive_time_tbilisi"]}',
+            "u": attr_url(lang, s, False), "f": f, "v": v,
+            "un": bool(a["unesco"]), "fe": bool(a["featured"]),
+        })
+    pts.sort(key=lambda p: p["n"])
+    return pts
+
+
+def explorer_towns(lang):
+    """ქალაქები და აეროპორტები — ათვლის/დანიშნულების წერტილებად."""
+    out = []
+    for p in PLACES:
+        slow = p["key"] in SLOW_TOWNS
+        out.append({
+            "s": "town:" + p["key"], "n": p[lang], "la": p["lat"], "lo": p["lon"],
+            "t": te(lang, p["kind"]), "k": p["kind"], "hh": 0.0,
+            "c": "#37485c" if p["kind"] == "city" else "#8a6d3b",
+            "f": 1.8 if slow else 1.4, "v": 38.0 if slow else 62.0,
+            "gn": "", "h": "",
+        })
+    out.sort(key=lambda x: x["n"])
+    return out
+
+
+def attr_detail(lang, slug, a):
+    """სრული აღწერა, რომელიც რუკის პანელში იტვირთება."""
+    L = a[lang]
+    u = TRAVEL[lang]["ui"]
+    return {
+        "s": slug, "n": L["name"], "t": tl(lang, "type", a["type"]),
+        "gn": REGIONS[a["region"]][lang]["name"], "unesco": bool(a["unesco"]),
+        "u": attr_url(lang, slug, False),
+        "short": L["short"],
+        "facts": [
+            [u["visit_time"], f'{a["visit_hours"]} {u["hrs"]}'],
+            [u["from_tbilisi"], f'{a["distance_tbilisi_km"]} {u["km"]} · {a["drive_time_tbilisi"]}'],
+            [u["road_label"], tl(lang, "road", a["road"])],
+            [u["car_needed"], car_cat_label(a["car_category"], lang)],
+            [u["season"], tl(lang, "season", a["best_season"])],
+            [u["entry"], str(a["entry_fee"])],
+            [u["elevation"], f'{a["elevation"]} m'],
+        ],
+        "body": render_md(L["body"], lang),
+        "tip": render_md(L["tip"], lang),
+        "route": render_md(L["route"], lang),
+        "near": [[n, ATTRACTIONS[n][lang]["name"]]
+                 for n in a.get("nearby", []) if n in ATTRACTIONS],
+    }
+
+
+EXPLORER_JS = """
+<script src="%(js)s"></script>
+<script>window.EXP=%(cfg)s;</script>
+<script src="%(exp)s"></script>"""
+
+
+def explorer_block(lang, depth, height="72vh", hero=False):
+    """ინტერაქტიული რუკა ძებნით, ფილტრებით, დეტალური პანელით და
+       „საიდან → სად + გზად სანახავი“ ბლოკით."""
+    x = TRAVEL[lang]["exp"]
+    u = TRAVEL[lang]["ui"]
+    base = rel_prefix(depth)
+    types = sorted({a["type"] for a in ATTRACTIONS.values()},
+                   key=lambda t: tl(lang, "type", t))
+    topts = "".join(f'<option value="{E(t)}">{E(tl(lang,"type",t))}</option>' for t in types)
+    ropts = "".join(f'<option value="{E(k)}">{E(r[lang]["name"])}</option>'
+                    for k, r in REGIONS.items())
+    cfg = J({
+        "pts": explorer_points(lang),
+        "towns": explorer_towns(lang),
+        "lang": lang, "base": base, "center": [42.15, 43.6], "zoom": 7,
+        "planner": page_url(lang, "planner", False),
+        "ui": {**{k: v for k, v in x.items()},
+               "hrs": u["hrs"], "km": u["km"], "h_short": u["hrs"], "days": u["days"],
+               "tip_title": u["tip_title"], "route_title": u["route_title"],
+               "nearby_title": u["nearby_title"]},
+    })
+    js = EXPLORER_JS % {"js": LEAFLET_JS, "cfg": cfg, "exp": base + "assets/explorer.js"}
+    html = f'''<div class="explorer{" hero" if hero else ""}">
+  <div class="expbar">
+    <input id="expq" class="expsearch" type="search" placeholder="{E(x["search_ph"])}"
+           aria-label="{E(x["search_ph"])}">
+    <select id="exptype" aria-label="{E(x["all_types"])}"><option value="">{E(x["all_types"])}</option>{topts}</select>
+    <select id="expregion" aria-label="{E(x["all_regions"])}"><option value="">{E(x["all_regions"])}</option>{ropts}</select>
+    <button id="expreset" class="btn sm ghost" type="button">{E(x["reset"])}</button>
+    <span id="expcount" class="expcount"></span>
+  </div>
+  <div class="expgrid" style="--exph:{height}">
+    <div class="expside">
+      <div class="exproutebox">
+        <div class="exppair">
+          <label>{E(x["from_label"])}
+            <input id="expfrom" type="text" autocomplete="off" placeholder="{E(x["pick_start"])}">
+            <div id="expfromlist" class="expsug"></div>
+          </label>
+          <button id="expswap" class="btn sm ghost" type="button" title="{E(x["swap"])}">⇅</button>
+          <label>{E(x["to_label"])}
+            <input id="expto" type="text" autocomplete="off" placeholder="{E(x["pick_end"])}">
+            <div id="exptolist" class="expsug"></div>
+          </label>
+        </div>
+        <label class="expslider">{E(x["detour"])} ≤ <span id="expdetourv">15 {E(u["km"])}</span>
+          <input id="expdetour" type="range" min="5" max="80" step="5" value="15">
+        </label>
+        <div id="exproute" class="exprouteout"></div>
+      </div>
+      <div id="explist" class="explist"></div>
+    </div>
+    <div class="expmapwrap">
+      <div id="expmap" class="expmap"></div>
+      <aside id="exppanel" class="exppanel" aria-hidden="true">
+        <button id="expclose" class="expclose" type="button" aria-label="{E(x["close"])}">✕</button>
+        <h3 id="exptitle"></h3>
+        <div id="expbody"></div>
+      </aside>
+    </div>
+  </div>
+</div>'''
+    return html, js
+
+
 def render_map_page(lang):
     p = PAGES["map"][lang]
     u = UI[lang]
     depth = 1 if lang == "ka" else 2
-    mp, js = map_block(lang)
+    mp, js = explorer_block(lang, depth, "78vh")
     regions = "".join(
         f'<div class="card"><h3><a href="{region_url(lang, k, False)}">{E(r[lang]["name"])}</a></h3>'
         f'<p>{E(r[lang]["short"])}</p>'
@@ -848,7 +1008,7 @@ def render_map_page(lang):
     body = (
         f'<section class="page-head"><div class="wrap"><h1>{E(p["h1"])}</h1>'
         f'<p class="lead">{inline(p["lead"], lang)}</p></div></section>'
-        f'<section class="sec"><div class="wrap">{mp}{legend_html(lang)}</div></section>'
+        f'<section class="sec wide"><div class="wrap wide">{mp}{legend_html(lang)}</div></section>'
         f'<section class="sec alt"><div class="wrap"><h2>{E(tu(lang,"routes"))}</h2>'
         f'<div class="cards">{routes}</div></div></section>'
         f'<section class="sec"><div class="wrap"><h2>{E(tu(lang,"regions"))}</h2>'
@@ -1050,6 +1210,145 @@ def render_route(lang, slug, r):
     return shell(lang, "map", head, crumbs + f'<main id="main">{body}</main>', depth, js)
 
 
+# ══════════════════════════════════════════════════════════════ ტურის დამგეგმავი
+PLANNER = load("content/settings/planner.yml")
+TB_LAT, TB_LON = 41.7151, 44.8271
+AIRPORTS = [(41.6692, 44.9547), (42.1783, 42.4826), (41.6103, 41.5997)]  # TBS, KUT, BUS
+
+
+def _hav(lat1, lon1, lat2, lon2):
+    import math
+    r = 6371.0
+    p1, p2 = math.radians(lat1), math.radians(lat2)
+    dp, dl = p2 - p1, math.radians(lon2 - lon1)
+    h = (math.sin(dp / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dl / 2) ** 2)
+    return 2 * r * math.asin(math.sqrt(h))
+
+
+def road_model(a):
+    """f — გზის კლაკნილობა, v — საშუალო სიჩქარე. აღებულია თბილისიდან
+    რეალური მანძილისა და დროის შეფარდებით, ანუ რელიეფი ჩაშენებულია."""
+    d = _hav(TB_LAT, TB_LON, a["lat"], a["lon"])
+    km = float(a["distance_tbilisi_km"])
+    hh, mm = str(a["drive_time_tbilisi"]).split(":")
+    minutes = int(hh) * 60 + int(mm)
+    if d < 6 or minutes <= 0:
+        return 1.5, 26.0
+    f = min(2.9, max(1.15, km / d))
+    v = min(80.0, max(18.0, km / (minutes / 60.0)))
+    return round(f, 3), round(v, 1)
+
+
+# ღამის გასათევის ქალაქები — მოკლე სახელი (ობიექტის სრული სახელი გრძელია)
+CITY_NAME = {
+    "bagrati-cathedral":          {"ka": "ქუთაისი", "en": "Kutaisi", "ru": "Кутаиси",
+                                   "fa": "کوتایسی", "he": "קוטאיסי", "ar": "كوتايسي"},
+    "batumi-boulevard-old-town":  {"ka": "ბათუმი", "en": "Batumi", "ru": "Батуми",
+                                   "fa": "باتومی", "he": "בטומי", "ar": "باتومي"},
+    "gori-fortress-stalin-museum":{"ka": "გორი", "en": "Gori", "ru": "Гори",
+                                   "fa": "گوری", "he": "גורי", "ar": "غوري"},
+    "mestia":                     {"ka": "მესტია", "en": "Mestia", "ru": "Местиа",
+                                   "fa": "مستیا", "he": "מסטיה", "ar": "ميستيا"},
+    "sighnaghi":                  {"ka": "სიღნაღი", "en": "Sighnaghi", "ru": "Сигнахи",
+                                   "fa": "سیغناغی", "he": "סיגנאגי", "ar": "سيغناغي"},
+    "telavi-batonis-tsikhe":      {"ka": "თელავი", "en": "Telavi", "ru": "Телави",
+                                   "fa": "تلاوی", "he": "טלאווי", "ar": "تيلافي"},
+    "tsageri":                    {"ka": "ცაგერი", "en": "Tsageri", "ru": "Цагери",
+                                   "fa": "تساگری", "he": "צאגרי", "ar": "تساغيري"},
+    "ushguli":                    {"ka": "უშგული", "en": "Ushguli", "ru": "Ушгули",
+                                   "fa": "اوشگولی", "he": "אושגולי", "ar": "أوشغولي"},
+}
+
+def planner_data(lang):
+    P = PLANNER[lang]
+    items = []
+    for s, a in ATTRACTIONS.items():
+        f, v = road_model(a)
+        items.append({
+            "s": s, "n": a[lang]["name"], "sh": a[lang]["short"],
+            "lat": a["lat"], "lon": a["lon"], "r": a["region"], "ty": a["type"],
+            "h": float(a["visit_hours"]), "car": a["car_category"],
+            "season": a["best_season"], "f": f, "v": v,
+            "u": attr_url(lang, s, False), "fe": bool(a["featured"]), "un": bool(a["unesco"]),
+            "c": CITY_NAME.get(s, {}).get(lang, ""),
+        })
+    towns = [i for i in items if i["ty"] == "town"]
+    starts = [{"n": P["starts"][0], "lat": TB_LAT, "lon": TB_LON, "f": 1.4, "v": 55}]
+    for i, (la, lo) in enumerate(AIRPORTS):
+        starts.append({"n": P["starts"][i + 1], "lat": la, "lon": lo, "f": 1.4, "v": 60})
+    for t in towns:
+        starts.append({"n": t["n"], "lat": t["lat"], "lon": t["lon"], "f": t["f"], "v": t["v"]})
+    return {
+        "a": items,
+        "regions": [{"k": k, "n": r[lang]["name"]} for k, r in REGIONS.items()],
+        "types": [{"k": t, "n": tl(lang, "type", t)}
+                  for t in sorted({a["type"] for a in ATTRACTIONS.values()})],
+        "car": {c: cat_label(c, lang) for c in ("economy", "suv", "offroad")},
+        "starts": starts,
+        "t": P["ui"],
+        "nav": {"contact": UI[lang]["nav"]["contact"], "fleet": UI[lang]["nav"]["fleet"]},
+        "url": {"contact": page_url(lang, "contact", False), "fleet": page_url(lang, "fleet", False)},
+    }
+
+
+def render_planner(lang):
+    P = PLANNER[lang]
+    u, t = UI[lang], P["ui"]
+    depth = 1 if lang == "ka" else 2
+
+    def opt_pace():
+        return "".join(
+            f'<option value="{v}"{" selected" if v == 480 else ""}>{E(lbl)}</option>'
+            for v, lbl in ((360, t["pace_easy"]), (480, t["pace_normal"]), (600, t["pace_full"])))
+
+    form = f"""<div class="pform">
+<div class="pf"><label for="start">{E(t['start'])}</label><select id="start"></select></div>
+<div class="pf"><label for="days">{E(t['days'])}</label><select id="days">
+{"".join(f'<option value="{d}"{" selected" if d == 3 else ""}>{d}</option>' for d in range(1, 11))}
+</select></div>
+<div class="pf"><label for="month">{E(t['month'])}</label><select id="month"></select></div>
+<div class="pf"><label for="car">{E(t['car'])}</label><select id="car">
+<option value="economy">{E(cat_label('economy', lang))}</option>
+<option value="suv" selected>{E(cat_label('suv', lang))}</option>
+<option value="offroad">{E(cat_label('offroad', lang))}</option>
+</select></div>
+<div class="pf"><label for="pace">{E(t['pace'])}</label><select id="pace">{opt_pace()}</select></div>
+<div class="pf pf-check"><label><input type="checkbox" id="back" checked> {E(t['return'])}</label></div>
+<div class="pf pf-wide"><label>{E(t['regions'])} <span id="regions-count" class="cnt"></span>
+<small>{E(t['all_regions'])}</small></label><div id="regions" class="chips"></div></div>
+<div class="pf pf-wide"><label>{E(t['interests'])} <span id="interests-count" class="cnt"></span>
+<small>{E(t['all_interests'])}</small></label><div id="interests" class="chips"></div></div>
+<div class="pf pf-wide prow">
+<button type="button" class="btn" id="build">{E(t['build'])}</button>
+<button type="button" class="btn ghost" id="reset">{E(t['reset'])}</button></div>
+</div>"""
+
+    body = (f'<section class="page-head"><div class="wrap"><h1>{E(P["h1"])}</h1>'
+            f'<p class="lead">{inline(P["lead"], lang)}</p></div></section>'
+            f'<section class="sec"><div class="wrap">{form}</div></section>'
+            f'<section class="sec alt"><div class="wrap">'
+            f'<div id="pmap" class="gmap" style="height:460px"></div>'
+            f'<div id="result"></div></div></section>')
+
+    graph = [org_node(lang), website_node(lang),
+             {"@type": "WebApplication", "@id": page_url(lang, "planner") + "#app",
+              "name": P["h1"], "description": P["desc"], "url": page_url(lang, "planner"),
+              "applicationCategory": "TravelApplication", "operatingSystem": "Web browser",
+              "inLanguage": lang, "isAccessibleForFree": True,
+              "offers": {"@type": "Offer", "price": "0", "priceCurrency": "GEL"},
+              "provider": {"@id": SITE_URL + "/#organization"}},
+             crumbs_node(lang, [(u["nav"]["index"], page_url(lang, "index")),
+                                (u["nav"]["planner"], page_url(lang, "planner"))])]
+    head = head_html(lang, "planner", P["title"], P["desc"], P.get("keywords", ""),
+                     page_url(lang, "planner"), {l: page_url(l, "planner") for l in LANGS},
+                     depth, {"@context": "https://schema.org", "@graph": graph}, leaflet=True)
+    tail = (f'<script>window.PLANNER_DATA={J(planner_data(lang))};</script>\n'
+            f'<script src="{LEAFLET_JS}"></script>\n<script src="/assets/planner.js"></script>')
+    crumbs = crumbs_html(lang, [(u["nav"]["index"], page_url(lang, "index", False)),
+                                (u["nav"]["planner"], None)])
+    return shell(lang, "planner", head, crumbs + f'<main id="main">{body}</main>', depth, tail)
+
+
 # ══════════════════════════════════════════════════════════════ sitemap etc.
 def sitemap():
     urls = []
@@ -1114,7 +1413,8 @@ def llms_txt():
         out.append(f"- **{k}:** {v}")
     out += ["", "## Pages", ""]
     for p in PAGE_ORDER:
-        out.append(f"- [{u['nav'][p]}]({page_url('en', p)}): {PAGES[p]['en']['desc']}")
+        d = (PLANNER["en"] if p == "planner" else PAGES[p]["en"])["desc"]
+        out.append(f"- [{u['nav'][p]}]({page_url('en', p)}): {d}")
     out += ["", "## Fleet", ""]
     for s, c in CARS.items():
         L = c["en"]
@@ -1150,7 +1450,7 @@ def llms_txt():
 def llms_full_txt():
     out = [f"# {BRAND} — full site content (English)", ""]
     for p in PAGE_ORDER:
-        pg = PAGES[p]["en"]
+        pg = PLANNER["en"] if p == "planner" else PAGES[p]["en"]
         out += [f"\n## {pg['title']}", f"URL: {page_url('en', p)}", "", pg.get("lead", ""), ""]
         for b in pg.get("blocks", []):
             t = b["type"]
@@ -1248,7 +1548,10 @@ def write(path, data):
 def main():
     out = sys.argv[1] if len(sys.argv) > 1 else "dist"
     if os.path.isdir(out):
-        shutil.rmtree(out)
+        try:
+            shutil.rmtree(out)
+        except OSError:
+            pass          # ზოგ ფაილურ სისტემაზე წაშლა აკრძალულია — ვაწერთ ზემოდან
     os.makedirs(os.path.join(out, "assets"), exist_ok=True)
 
     write(os.path.join(out, "assets", "style.css"), build_css(DESIGN))
@@ -1272,6 +1575,8 @@ def main():
                 write(os.path.join(out, rel, "index.html"), render_blog_index(lang))
             elif page == "map":
                 write(os.path.join(out, rel, "index.html"), render_map_page(lang))
+            elif page == "planner":
+                write(os.path.join(out, rel, "index.html"), render_planner(lang))
             else:
                 write(os.path.join(out, rel, "index.html"), render_static_page(lang, page))
             n += 1
@@ -1295,6 +1600,13 @@ def main():
             write(os.path.join(out, post_url(lang, slug, False).lstrip("/"), "index.html"),
                   render_post(lang, slug, p))
             n += 1
+
+    for lang in LANGS:
+        write(os.path.join(out, "data", f"points-{lang}.json"),
+              J({"pts": explorer_points(lang)}))
+        for slug, a in ATTRACTIONS.items():
+            write(os.path.join(out, "data", "attr", lang, f"{slug}.json"),
+                  J(attr_detail(lang, slug, a)))
 
     for name, data in [("sitemap.xml", sitemap()), ("robots.txt", robots()),
                        ("llms.txt", llms_txt()), ("llms-full.txt", llms_full_txt()),

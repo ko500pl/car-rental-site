@@ -4,9 +4,10 @@
 # ═══════════════════════════════════════════════════════════════════════════
 backend:
   name: github
-  repo: USERNAME/REPO          # <<< შეცვალეთ: მაგ. archi-ge/car-rental-site
+  repo: ko500pl/car-rental-site
   branch: main
   base_url: https://api.netlify.com    # Netlify-ის GitHub OAuth შუამავალი
+                                       # (Netlify → Site configuration → Access & security → OAuth → Install provider: GitHub)
   auth_endpoint: auth
   commit_messages:
     create: 'ადმინი: შეიქმნა {{collection}} "{{slug}}"'
@@ -16,7 +17,7 @@ backend:
     deleteMedia: 'ადმინი: წაშლილია {{path}}'
 
 # ლოკალური ტესტირება:  npx decap-server  +  python3 -m http.server (dist)
-local_backend: true
+# local_backend: true   # ჩართეთ მხოლოდ ლოკალური ტესტირებისას (npx decap-server)
 
 media_folder: static/uploads
 public_folder: /uploads
@@ -235,7 +236,7 @@ collections:
                  {label: "შესავალი", name: lead, widget: text, i18n: true}, *blocks]
 
       - name: software
-        label: "პროგრამა (FleetFreak)"
+        label: "პროგრამა (Fleet House Manager)"
         file: content/pages/software.yml
         i18n: true
         fields: [*seo_title, *seo_desc, *seo_kw, {label: "H1", name: h1, widget: string, i18n: true},

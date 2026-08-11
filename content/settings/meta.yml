@@ -2,12 +2,12 @@ ka:
   country: საქართველო
   payments: ნაღდი, Visa, Mastercard, საბანკო გადარიცხვა
   org_desc: >-
-    Archi Rent — ავტომობილების გაქირავების კომპანია საქართველოში. 120-ზე მეტი ავტომობილი, დღიური, კვირეული
+    Fleet House — ავტომობილების გაქირავების კომპანია საქართველოში. 120-ზე მეტი ავტომობილი, დღიური, კვირეული
     და თვიური გაქირავება, მიწოდება თბილისის, ქუთაისისა და ბათუმის აეროპორტებში, სრული სადაზღვევო დაფარვა
     და შეზღუდვის გარეშე გარბენი საქართველოს ტერიტორიაზე.
   software_subcat: ავტოპარკის მართვის სისტემა
   software_desc: >-
-    FleetFreak — ავტომობილების გაქირავების ბიზნესის მართვის აპლიკაცია: ავტოპარკი, ჯავშნები, კლიენტები,
+    Fleet House Manager — ავტომობილების გაქირავების ბიზნესის მართვის აპლიკაცია: ავტოპარკი, ჯავშნები, კლიენტები,
     ხარჯები, სესხები, დაზღვევა და თითოეული მანქანის მომგებიანობა (ROI, ROA, უკუგების ვადა) ერთ სისტემაში.
   software_offer: საბაზისო ვერსია უფასოა; გაფართოებული ფუნქციები — შეთანხმებით
   software_features:
@@ -39,12 +39,12 @@ en:
   country: Georgia
   payments: Cash, Visa, Mastercard, bank transfer
   org_desc: >-
-    Archi Rent is a car rental company operating across Georgia. More than 120 vehicles, daily, weekly
+    Fleet House is a car rental company operating across Georgia. More than 120 vehicles, daily, weekly
     and monthly rentals, delivery to Tbilisi, Kutaisi and Batumi airports, full insurance coverage and
     unlimited mileage within Georgia.
   software_subcat: Fleet management system
   software_desc: >-
-    FleetFreak is a management app for the car rental business: fleet, bookings, customers, expenses,
+    Fleet House Manager is a management app for the car rental business: fleet, bookings, customers, expenses,
     loans, insurance and per-vehicle profitability (ROI, ROA, payback period) in a single system.
   software_offer: The basic version is free; advanced features are priced on request
   software_features:
@@ -98,17 +98,17 @@ en:
   - - Booking
     - By phone or email only — the website is informational, with no online payment
   - - Own software
-    - FleetFreak, an in-house fleet management app also offered to other rental companies
+    - Fleet House Manager, an in-house fleet management app also offered to other rental companies
 ru:
   country: Грузия
   payments: Наличные, Visa, Mastercard, банковский перевод
   org_desc: >-
-    Archi Rent — компания по аренде автомобилей в Грузии. Более 120 машин, посуточная, недельная и помесячная
+    Fleet House — компания по аренде автомобилей в Грузии. Более 120 машин, посуточная, недельная и помесячная
     аренда, подача в аэропортах Тбилиси, Кутаиси и Батуми, полное страховое покрытие и неограниченный
     пробег по территории Грузии.
   software_subcat: система управления автопарком
   software_desc: >-
-    FleetFreak — приложение для управления бизнесом по аренде автомобилей: автопарк, бронирования, клиенты,
+    Fleet House Manager — приложение для управления бизнесом по аренде автомобилей: автопарк, бронирования, клиенты,
     расходы, кредиты, страховки и доходность каждой машины (ROI, ROA, срок окупаемости) в одной системе.
   software_offer: базовая версия бесплатна; расширенные функции — по договорённости
   software_features:
@@ -140,12 +140,12 @@ fa:
   country: گرجستان
   payments: نقدی، Visa، Mastercard، حوالهٔ بانکی
   org_desc: >-
-    Archi Rent شرکت اجارهٔ خودرو است که در سراسر گرجستان فعالیت می‌کند. بیش از 120 خودرو، اجارهٔ روزانه،
+    Fleet House شرکت اجارهٔ خودرو است که در سراسر گرجستان فعالیت می‌کند. بیش از 120 خودرو، اجارهٔ روزانه،
     هفتگی و ماهانه، تحویل در فرودگاه‌های تفلیس، کوتایسی و باتومی، پوشش کامل بیمه و کیلومتر نامحدود در
     داخل گرجستان.
   software_subcat: سامانهٔ مدیریت ناوگان
   software_desc: >-
-    FleetFreak نرم‌افزاری برای مدیریت کسب‌وکار اجارهٔ خودرو است: ناوگان، رزروها، مشتریان، هزینه‌ها، وام‌ها،
+    Fleet House Manager نرم‌افزاری برای مدیریت کسب‌وکار اجارهٔ خودرو است: ناوگان، رزروها، مشتریان، هزینه‌ها، وام‌ها،
     بیمه و سودآوری هر خودرو (ROI، ROA، دورهٔ بازگشت سرمایه) در یک سامانه.
   software_offer: نسخهٔ پایه رایگان است؛ قیمت امکانات پیشرفته بنا به درخواست اعلام می‌شود
   software_features:
@@ -177,11 +177,11 @@ he:
   country: גאורגיה
   payments: מזומן, Visa, Mastercard, העברה בנקאית
   org_desc: >-
-    Archi Rent היא חברת השכרת רכב הפועלת בכל רחבי גאורגיה. יותר מ-120 כלי רכב, השכרה יומית, שבועית וחודשית,
+    Fleet House היא חברת השכרת רכב הפועלת בכל רחבי גאורגיה. יותר מ-120 כלי רכב, השכרה יומית, שבועית וחודשית,
     מסירה בנמלי התעופה של טביליסי, קוטאיסי ובטומי, כיסוי ביטוחי מלא וקילומטראז' ללא הגבלה בתחומי גאורגיה.
   software_subcat: מערכת לניהול צי רכב
   software_desc: >-
-    FleetFreak היא אפליקציה לניהול עסק של השכרת רכב: צי הרכב, הזמנות, לקוחות, הוצאות, הלוואות, ביטוחים
+    Fleet House Manager היא אפליקציה לניהול עסק של השכרת רכב: צי הרכב, הזמנות, לקוחות, הוצאות, הלוואות, ביטוחים
     ורווחיות של כל רכב (ROI, ROA, תקופת החזר) במערכת אחת.
   software_offer: הגרסה הבסיסית חינמית; מחיר היכולות המתקדמות לפי דרישה
   software_features:
@@ -213,11 +213,11 @@ ar:
   country: جورجيا
   payments: نقدًا، Visa، Mastercard، حوالة مصرفية
   org_desc: >-
-    Archi Rent شركة لتأجير السيارات تعمل في جميع أنحاء جورجيا. أكثر من 120 سيارة، وتأجير يومي وأسبوعي
+    Fleet House شركة لتأجير السيارات تعمل في جميع أنحاء جورجيا. أكثر من 120 سيارة، وتأجير يومي وأسبوعي
     وشهري، وتسليم في مطارات تبليسي وكوتايسي وباتومي، وتغطية تأمينية كاملة ومسافة غير محدودة داخل جورجيا.
   software_subcat: نظام إدارة الأسطول
   software_desc: >-
-    FleetFreak تطبيق لإدارة أعمال تأجير السيارات: الأسطول والحجوزات والعملاء والمصروفات والقروض والتأمين
+    Fleet House Manager تطبيق لإدارة أعمال تأجير السيارات: الأسطول والحجوزات والعملاء والمصروفات والقروض والتأمين
     وربحية كل سيارة (ROI وROA ومدة استرداد رأس المال) في نظام واحد.
   software_offer: النسخة الأساسية مجانية؛ أسعار الميزات المتقدمة عند الطلب
   software_features:

@@ -1,8 +1,8 @@
 # ═══ ძირითადი პარამეტრები — იმართება ადმინიდან: Settings → საიტი ═══
 site_url: https://www.example.ge
-rental_brand: Archi Rent
-rental_brand_ka: არჩი რენტი
-software_brand: FleetFreak
+rental_brand: Fleet House
+rental_brand_ka: ფლით ჰაუსი
+software_brand: Fleet House Manager
 
 phone: "+995 32 2 000 000"
 phone_e164: "+995322000000"

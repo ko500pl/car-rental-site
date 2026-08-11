@@ -67,6 +67,40 @@ ka:
     beach: პლაჟი
     ski: სათხილამურო
     archaeology: არქეოლოგია
+  exp:
+    search_ph: მოძებნეთ ადგილი…
+    all_types: ყველა ტიპი
+    all_regions: ყველა რეგიონი
+    found: ნაპოვნია
+    none: ვერაფერი მოიძებნა
+    full_page: სრული გვერდი
+    close: დახურვა
+    set_start: აქედან ვიწყებ
+    set_end: აქ მინდა წასვლა
+    along: გზად სანახავი
+    plan_btn: მარშრუტის დაგეგმვა
+    reset: გასუფთავება
+    filters: ფილტრები
+    from_label: საიდან
+    to_label: სად
+    swap: შებრუნება
+    loading: იტვირთება…
+    explore_h: საქართველო რუკაზე
+    explore_sub: აირჩიეთ ადგილი რუკაზე ან მოძებნეთ — გამოჩნდება დეტალური აღწერა, საჭირო დრო და გზა.
+    detour: გადახვევა
+    open_planner: სრული დამგეგმავი
+    add_stop: დამატება
+    drive: მგზავრობა
+    total: სულ
+    direct: პირდაპირი გზა
+    with_stops: გაჩერებებით
+    pick_start: აირჩიეთ საიდან იწყებთ
+    pick_end: აირჩიეთ სად მიდიხართ
+    stops_on_way: გზაზე შემოთავაზებული გაჩერებები
+    min_short: წთ
+    city: ქალაქი
+    airport: აეროპორტი
+    towns_group: ქალაქები და აეროპორტები
 en:
   ui:
     regions: Regions
@@ -136,6 +170,42 @@ en:
     beach: Beach
     ski: Ski area
     archaeology: Archaeology
+  exp:
+    search_ph: Search a place…
+    all_types: All types
+    all_regions: All regions
+    found: found
+    none: Nothing found
+    full_page: Full page
+    close: Close
+    set_start: Start here
+    set_end: Go here
+    along: Worth stopping on the way
+    plan_btn: Plan the route
+    reset: Clear
+    filters: Filters
+    from_label: From
+    to_label: To
+    swap: Swap
+    loading: Loading…
+    explore_h: Georgia on the map
+    explore_sub: >-
+      Pick a place on the map or search for one — you get the full description, the time it takes and
+      how to drive there.
+    detour: detour
+    open_planner: Full planner
+    add_stop: Add
+    drive: driving
+    total: total
+    direct: Direct route
+    with_stops: With stops
+    pick_start: Choose where you start
+    pick_end: Choose where you are going
+    stops_on_way: Suggested stops along the way
+    min_short: min
+    city: City
+    airport: Airport
+    towns_group: Cities & airports
 ru:
   ui:
     regions: Регионы
@@ -205,6 +275,41 @@ ru:
     beach: Пляж
     ski: Горнолыжный курорт
     archaeology: Археология
+  exp:
+    search_ph: Найти место…
+    all_types: Все типы
+    all_regions: Все регионы
+    found: найдено
+    none: Ничего не найдено
+    full_page: Полная страница
+    close: Закрыть
+    set_start: Отсюда еду
+    set_end: Хочу сюда
+    along: Что посмотреть по дороге
+    plan_btn: Построить маршрут
+    reset: Сбросить
+    filters: Фильтры
+    from_label: Откуда
+    to_label: Куда
+    swap: Поменять
+    loading: Загрузка…
+    explore_h: Грузия на карте
+    explore_sub: Выберите точку на карте или найдите её поиском — откроется подробное описание, нужное
+      время и дорога.
+    detour: крюк
+    open_planner: Полный планировщик
+    add_stop: Добавить
+    drive: в пути
+    total: всего
+    direct: Прямая дорога
+    with_stops: С остановками
+    pick_start: Выберите, откуда едете
+    pick_end: Выберите, куда едете
+    stops_on_way: Остановки по дороге
+    min_short: мин
+    city: Город
+    airport: Аэропорт
+    towns_group: Города и аэропорты
 fa:
   ui:
     regions: مناطق
@@ -274,6 +379,41 @@ fa:
     beach: ساحل
     ski: پیست اسکی
     archaeology: باستان‌شناسی
+  exp:
+    search_ph: جست‌وجوی مکان…
+    all_types: همهٔ گونه‌ها
+    all_regions: همهٔ استان‌ها
+    found: یافت شد
+    none: چیزی یافت نشد
+    full_page: صفحهٔ کامل
+    close: بستن
+    set_start: شروع از اینجا
+    set_end: مقصد اینجا
+    along: دیدنی‌های میان راه
+    plan_btn: برنامه‌ریزی مسیر
+    reset: پاک کردن
+    filters: فیلترها
+    from_label: از
+    to_label: به
+    swap: جابه‌جایی
+    loading: در حال بارگذاری…
+    explore_h: گرجستان روی نقشه
+    explore_sub: مکانی را روی نقشه انتخاب کنید یا جست‌وجو کنید — شرح کامل، زمان لازم و مسیر رانندگی را
+      می‌بینید.
+    detour: انحراف
+    open_planner: برنامه‌ریز کامل
+    add_stop: افزودن
+    drive: رانندگی
+    total: مجموع
+    direct: مسیر مستقیم
+    with_stops: با توقف‌ها
+    pick_start: انتخاب کنید از کجا شروع می‌کنید
+    pick_end: انتخاب کنید به کجا می‌روید
+    stops_on_way: توقف‌های پیشنهادی میان راه
+    min_short: دقیقه
+    city: شهر
+    airport: فرودگاه
+    towns_group: شهرها و فرودگاه‌ها
 he:
   ui:
     regions: אזורים
@@ -343,6 +483,40 @@ he:
     beach: חוף
     ski: אתר סקי
     archaeology: ארכיאולוגיה
+  exp:
+    search_ph: חיפוש מקום…
+    all_types: כל הסוגים
+    all_regions: כל האזורים
+    found: נמצאו
+    none: לא נמצא דבר
+    full_page: עמוד מלא
+    close: סגירה
+    set_start: יוצאים מכאן
+    set_end: רוצים לכאן
+    along: מה שווה לעצור בדרך
+    plan_btn: תכנון המסלול
+    reset: ניקוי
+    filters: מסננים
+    from_label: מאיפה
+    to_label: לאן
+    swap: החלפה
+    loading: טוען…
+    explore_h: גאורגיה על המפה
+    explore_sub: בחרו מקום על המפה או חפשו אותו — תקבלו תיאור מלא, כמה זמן צריך ואיך נוסעים.
+    detour: עיקוף
+    open_planner: מתכנן מלא
+    add_stop: הוספה
+    drive: נסיעה
+    total: סה״כ
+    direct: מסלול ישיר
+    with_stops: עם עצירות
+    pick_start: בחרו מאיפה יוצאים
+    pick_end: בחרו לאן נוסעים
+    stops_on_way: עצירות מוצעות בדרך
+    min_short: דק׳
+    city: עיר
+    airport: נמל תעופה
+    towns_group: ערים ונמלי תעופה
 ar:
   ui:
     regions: المناطق
@@ -412,3 +586,38 @@ ar:
     beach: شاطئ
     ski: منطقة تزلج
     archaeology: آثار
+  exp:
+    search_ph: ابحث عن مكان…
+    all_types: كل الأنواع
+    all_regions: كل المناطق
+    found: نتيجة
+    none: لا توجد نتائج
+    full_page: الصفحة الكاملة
+    close: إغلاق
+    set_start: أنطلق من هنا
+    set_end: أريد الذهاب إلى هنا
+    along: ما يستحق التوقف في الطريق
+    plan_btn: خطّط المسار
+    reset: مسح
+    filters: عوامل التصفية
+    from_label: من
+    to_label: إلى
+    swap: تبديل
+    loading: جارٍ التحميل…
+    explore_h: جورجيا على الخريطة
+    explore_sub: اختر مكاناً على الخريطة أو ابحث عنه — تحصل على الوصف الكامل والوقت اللازم وطريقة الوصول
+      بالسيارة.
+    detour: انعطاف
+    open_planner: المخطط الكامل
+    add_stop: إضافة
+    drive: قيادة
+    total: الإجمالي
+    direct: الطريق المباشر
+    with_stops: مع التوقفات
+    pick_start: اختر نقطة الانطلاق
+    pick_end: اختر وجهتك
+    stops_on_way: توقفات مقترحة على الطريق
+    min_short: د
+    city: مدينة
+    airport: مطار
+    towns_group: المدن والمطارات

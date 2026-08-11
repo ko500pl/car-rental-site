@@ -3,3 +3,8 @@ __pycache__/
 shot-*.png
 .mvtest/
 car-rental-site/
+_to_delete/
+preview/
+dist/
+*.zip
+*.zip.done

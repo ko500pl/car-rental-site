@@ -1,3 +1,6 @@
+# ═══════════════════════════════════════════════════════════════════════
+#  Netlify — Fleet House. საიტს თავად Netlify აწყობს content/*.yml-იდან.
+# ═══════════════════════════════════════════════════════════════════════
 [build]
   command = "pip install -r requirements.txt && python3 build.py dist"
   publish = "dist"
@@ -15,6 +18,11 @@
   [headers.values]
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
 
 [[headers]]
   for = "/llms.txt"

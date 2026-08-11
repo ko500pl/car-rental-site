@@ -1,0 +1,454 @@
+ka:
+  title: ტურის დამგეგმავი — შეადგინეთ მარშრუტი საქართველოში | Fleet House
+  desc: >-
+    აირჩიეთ საიდან იწყებთ, რომელი რეგიონები გაინტერესებთ და რამდენი დღე გაქვთ — მიიღებთ მზა მარშრუტს დღეების
+    მიხედვით, დროებით, მანძილებით და რუკაზე დახაზული გზით.
+  keywords: ტურის დაგეგმვა საქართველო, მარშრუტის შედგენა, რა ვნახო საქართველოში, მოგზაურობის გეგმა
+  h1: ტურის დამგეგმავი
+  lead: >-
+    მიუთითეთ საიდან იწყებთ, სად გინდათ სიარული და რამდენი დღე გაქვთ. დამგეგმავი შეარჩევს ღირსშესანიშნაობებს,
+    დაალაგებს ოპტიმალური თანმიმდევრობით, დაანაწილებს დღეებად და დაითვლის, რამდენ დროს წაიღებს თითოეული
+    გაჩერება.
+  ui:
+    start: საიდან იწყებთ
+    days: რამდენი დღე
+    regions: რომელი რეგიონები
+    all_regions: ყველგან
+    interests: რა გაინტერესებთ
+    all_interests: ყველაფერი
+    car: ავტომობილი
+    month: როდის მოგზაურობთ
+    pace: ტემპი
+    pace_easy: მშვიდი (6 სთ დღეში)
+    pace_normal: ჩვეულებრივი (8 სთ)
+    pace_full: დატვირთული (10 სთ)
+    return: დაბრუნება საწყის წერტილში
+    build: მარშრუტის შედგენა
+    reset: თავიდან
+    day: დღე
+    drive: გზაში
+    visit: დათვალიერება
+    total: სულ
+    overnight: ღამის გასათევი
+    start_time: გასვლა
+    arrive: ჩასვლა
+    depart: გამგზავრება
+    back_to: დაბრუნება
+    summary: შეჯამება
+    stops: გაჩერება
+    distance: მანძილი
+    driving_time: მართვაში
+    visiting_time: ობიექტებზე
+    add_stop: დამატება
+    remove: მოხსნა
+    optional: გზაში შეგიძლიათ შეიაროთ
+    no_results: ამ პარამეტრებით ობიექტი ვერ მოიძებნა. სცადეთ მეტი რეგიონი, მეტი დღე ან სხვა ინტერესები.
+    too_far: 'შენიშვნა: ზოგი არჩეული ადგილი ძალიან შორსაა — გეგმაში მხოლოდ ის შევიდა, რაც დროში ეტევა.'
+    car_note: ამ მარშრუტს სჭირდება
+    print: ბეჭდვა
+    hours: სთ
+    min: წთ
+    km: კმ
+    recalc: ხელახლა დათვლა
+    day_plan: დღეების გეგმა
+    download: გეგმის შენახვა
+    season_warn: სეზონურად დახურული ობიექტები გამოირიცხა
+    need_car: საჭირო ავტომობილი
+    months:
+    - იანვარი
+    - თებერვალი
+    - მარტი
+    - აპრილი
+    - მაისი
+    - ივნისი
+    - ივლისი
+    - აგვისტო
+    - სექტემბერი
+    - ოქტომბერი
+    - ნოემბერი
+    - დეკემბერი
+    book_cta: ამ მარშრუტისთვის ავტომობილი
+    book_text: შეარჩიეთ შესაფერისი კატეგორია და დაგვირეკეთ — ონლაინ გადახდა არ გვაქვს.
+  starts:
+  - თბილისი, ქალაქის ცენტრი
+  - თბილისის აეროპორტი (TBS)
+  - ქუთაისის აეროპორტი (KUT)
+  - ბათუმის აეროპორტი (BUS)
+en:
+  title: Trip planner — build your route around Georgia | Fleet House
+  desc: >-
+    Choose where you start, which regions interest you and how many days you have. Get a ready itinerary
+    broken into days, with times, distances and the route drawn on the map.
+  keywords: georgia trip planner, itinerary builder georgia, what to see in georgia, road trip planner
+  h1: Trip planner
+  lead: >-
+    Tell us where you start, where you want to go and how many days you have. The planner picks the sights,
+    puts them in an efficient order, splits them into days and works out how long each stop takes.
+  ui:
+    start: Starting from
+    days: How many days
+    regions: Which regions
+    all_regions: Anywhere
+    interests: What interests you
+    all_interests: Everything
+    car: Car
+    month: When are you travelling
+    pace: Pace
+    pace_easy: Relaxed (6 h a day)
+    pace_normal: Normal (8 h)
+    pace_full: Packed (10 h)
+    return: Return to the starting point
+    build: Build the route
+    reset: Reset
+    day: Day
+    drive: Driving
+    visit: Visit
+    total: Total
+    overnight: Overnight
+    start_time: Depart
+    arrive: Arrive
+    depart: Leave
+    back_to: Back to
+    summary: Summary
+    stops: stops
+    distance: Distance
+    driving_time: Driving
+    visiting_time: At the sights
+    add_stop: Add
+    remove: Remove
+    optional: You could also stop at
+    no_results: Nothing matches these settings. Try more regions, more days or different interests.
+    too_far: 'Note: some selected places are far away — only what fits in the time is included.'
+    car_note: This route needs
+    print: Print
+    hours: h
+    min: min
+    km: km
+    recalc: Recalculate
+    day_plan: Day by day
+    download: Save the plan
+    season_warn: Seasonally closed sights were excluded
+    need_car: Car needed
+    months:
+    - January
+    - February
+    - March
+    - April
+    - May
+    - June
+    - July
+    - August
+    - September
+    - October
+    - November
+    - December
+    book_cta: A car for this route
+    book_text: Pick the right category and call us — there is no online payment.
+  starts:
+  - Tbilisi, city centre
+  - Tbilisi Airport (TBS)
+  - Kutaisi Airport (KUT)
+  - Batumi Airport (BUS)
+ru:
+  title: Планировщик тура — составьте маршрут по Грузии | Fleet House
+  desc: >-
+    Укажите, откуда стартуете, какие регионы интересуют и сколько у вас дней — получите готовый маршрут
+    по дням, со временем, расстояниями и линией на карте.
+  keywords: планировщик маршрута грузия, что посмотреть в грузии, маршрут по грузии на машине
+  h1: Планировщик тура
+  lead: >-
+    Укажите точку старта, интересующие регионы и количество дней. Планировщик подберёт достопримечательности,
+    выстроит их в оптимальном порядке, разобьёт по дням и посчитает, сколько времени займёт каждая остановка.
+  ui:
+    start: Откуда стартуете
+    days: Сколько дней
+    regions: Какие регионы
+    all_regions: Везде
+    interests: Что интересует
+    all_interests: Всё
+    car: Автомобиль
+    month: Когда поедете
+    pace: Темп
+    pace_easy: Спокойный (6 ч в день)
+    pace_normal: Обычный (8 ч)
+    pace_full: Плотный (10 ч)
+    return: Вернуться в точку старта
+    build: Построить маршрут
+    reset: Сбросить
+    day: День
+    drive: В пути
+    visit: Осмотр
+    total: Всего
+    overnight: Ночёвка
+    start_time: Выезд
+    arrive: Прибытие
+    depart: Отъезд
+    back_to: Возврат в
+    summary: Итого
+    stops: остановок
+    distance: Расстояние
+    driving_time: За рулём
+    visiting_time: На объектах
+    add_stop: Добавить
+    remove: Убрать
+    optional: По пути можно заехать
+    no_results: С такими параметрами ничего не найдено. Попробуйте больше регионов, больше дней или другие
+      интересы.
+    too_far: 'Примечание: некоторые выбранные места слишком далеко — в план вошло только то, что укладывается
+      по времени.'
+    car_note: Для этого маршрута нужен
+    print: Печать
+    hours: ч
+    min: мин
+    km: км
+    recalc: Пересчитать
+    day_plan: План по дням
+    download: Сохранить план
+    season_warn: Сезонно закрытые объекты исключены
+    need_car: Нужен автомобиль
+    months:
+    - январь
+    - февраль
+    - март
+    - апрель
+    - май
+    - июнь
+    - июль
+    - август
+    - сентябрь
+    - октябрь
+    - ноябрь
+    - декабрь
+    book_cta: Автомобиль для этого маршрута
+    book_text: Выберите подходящую категорию и позвоните нам — онлайн-оплаты нет.
+  starts:
+  - Тбилиси, центр города
+  - Аэропорт Тбилиси (TBS)
+  - Аэропорт Кутаиси (KUT)
+  - Аэропорт Батуми (BUS)
+fa:
+  title: برنامه‌ریز سفر — مسیر خود را در گرجستان بسازید | Fleet House
+  desc: >-
+    مبدأ حرکت، مناطق مورد علاقه و تعداد روزها را انتخاب کنید تا برنامه سفر آماده به تفکیک روز، با زمان‌ها،
+    مسافت‌ها و مسیر رسم‌شده روی نقشه دریافت کنید.
+  keywords: برنامه ریزی سفر گرجستان, مسیر سفر گرجستان, دیدنی های گرجستان, سفر با ماشین گرجستان
+  h1: برنامه‌ریز سفر
+  lead: >-
+    بگویید از کجا شروع می‌کنید، کجا می‌خواهید بروید و چند روز وقت دارید. برنامه‌ریز جاذبه‌ها را انتخاب
+    می‌کند، آن‌ها را به ترتیب بهینه می‌چیند، به روزها تقسیم می‌کند و زمان لازم برای هر توقف را حساب می‌کند.
+  starts:
+  - تفلیس، مرکز شهر
+  - فرودگاه تفلیس (TBS)
+  - فرودگاه کوتایسی (KUT)
+  - فرودگاه باتومی (BUS)
+  ui:
+    start: شروع از
+    days: چند روز
+    regions: کدام مناطق
+    all_regions: همه جا
+    interests: به چه چیزی علاقه دارید
+    all_interests: همه چیز
+    car: خودرو
+    month: چه زمانی سفر می‌کنید
+    pace: ریتم سفر
+    pace_easy: آرام (۶ ساعت در روز)
+    pace_normal: معمولی (۸ ساعت)
+    pace_full: فشرده (۱۰ ساعت)
+    return: بازگشت به نقطه شروع
+    build: ساخت مسیر
+    reset: از نو
+    day: روز
+    drive: رانندگی
+    visit: بازدید
+    total: مجموع
+    overnight: اقامت شبانه
+    start_time: حرکت
+    arrive: رسیدن
+    depart: خروج
+    back_to: بازگشت به
+    summary: خلاصه
+    stops: توقف
+    distance: مسافت
+    driving_time: پشت فرمان
+    visiting_time: در جاذبه‌ها
+    add_stop: افزودن
+    remove: حذف
+    optional: در مسیر می‌توانید سری بزنید به
+    no_results: با این تنظیمات چیزی پیدا نشد. مناطق بیشتر، روزهای بیشتر یا علاقه‌مندی دیگری را امتحان
+      کنید.
+    too_far: 'توجه: بعضی از مکان‌های انتخابی بسیار دورند — فقط آنچه در زمان می‌گنجد در برنامه آمده است.'
+    car_note: این مسیر نیاز دارد به
+    print: چاپ
+    hours: ساعت
+    min: دقیقه
+    km: کیلومتر
+    recalc: محاسبه دوباره
+    day_plan: برنامه روزبه‌روز
+    download: ذخیره برنامه
+    season_warn: جاذبه‌های فصلی بسته کنار گذاشته شدند
+    need_car: خودروی لازم
+    months:
+    - ژانویه
+    - فوریه
+    - مارس
+    - آوریل
+    - مه
+    - ژوئن
+    - ژوئیه
+    - اوت
+    - سپتامبر
+    - اکتبر
+    - نوامبر
+    - دسامبر
+    book_cta: خودرو برای این مسیر
+    book_text: دسته مناسب را انتخاب کنید و با ما تماس بگیرید — پرداخت آنلاین نداریم.
+he:
+  title: מתכנן טיולים — בנו מסלול בגאורגיה | Fleet House
+  desc: >-
+    בחרו מאיפה אתם יוצאים, אילו אזורים מעניינים אתכם וכמה ימים יש לכם — ותקבלו מסלול מוכן לפי ימים, עם
+    זמנים, מרחקים והדרך משורטטת על המפה.
+  keywords: מתכנן טיול גאורגיה, מסלול בגאורגיה, מה לראות בגאורגיה, טיול ברכב בגאורגיה
+  h1: מתכנן טיולים
+  lead: >-
+    ספרו לנו מאיפה אתם מתחילים, לאן בא לכם לנסוע וכמה ימים יש לכם. המתכנן יבחר את האתרים, יסדר אותם ביעילות,
+    יחלק אותם לימים ויחשב כמה זמן לוקחת כל עצירה.
+  starts:
+  - טביליסי, מרכז העיר
+  - נמל התעופה טביליסי (TBS)
+  - נמל התעופה קוטאיסי (KUT)
+  - נמל התעופה בטומי (BUS)
+  ui:
+    start: יוצאים מ
+    days: כמה ימים
+    regions: אילו אזורים
+    all_regions: בכל מקום
+    interests: מה מעניין אתכם
+    all_interests: הכול
+    car: רכב
+    month: מתי אתם נוסעים
+    pace: קצב
+    pace_easy: רגוע (6 שעות ביום)
+    pace_normal: רגיל (8 שעות)
+    pace_full: עמוס (10 שעות)
+    return: חזרה לנקודת המוצא
+    build: בניית המסלול
+    reset: איפוס
+    day: יום
+    drive: נסיעה
+    visit: ביקור
+    total: סה"כ
+    overnight: לינה
+    start_time: יציאה
+    arrive: הגעה
+    depart: יציאה
+    back_to: חזרה ל
+    summary: סיכום
+    stops: עצירות
+    distance: מרחק
+    driving_time: מאחורי ההגה
+    visiting_time: באתרים
+    add_stop: הוספה
+    remove: הסרה
+    optional: בדרך אפשר לעצור גם ב
+    no_results: לא נמצא כלום עם ההגדרות האלה. נסו יותר אזורים, יותר ימים או תחומי עניין אחרים.
+    too_far: 'לתשומת לבכם: חלק מהמקומות שנבחרו רחוקים מדי — בתוכנית נכלל רק מה שנכנס בזמן.'
+    car_note: למסלול הזה צריך
+    print: הדפסה
+    hours: ש'
+    min: דק'
+    km: ק"מ
+    recalc: חישוב מחדש
+    day_plan: תוכנית יום‑יום
+    download: שמירת התוכנית
+    season_warn: אתרים שסגורים עונתית הוצאו
+    need_car: רכב נדרש
+    months:
+    - ינואר
+    - פברואר
+    - מרץ
+    - אפריל
+    - מאי
+    - יוני
+    - יולי
+    - אוגוסט
+    - ספטמבר
+    - אוקטובר
+    - נובמבר
+    - דצמבר
+    book_cta: רכב למסלול הזה
+    book_text: בחרו את הקטגוריה המתאימה והתקשרו אלינו — אין תשלום מקוון.
+ar:
+  title: مخطط الرحلة — ارسم مسارك في جورجيا | Fleet House
+  desc: >-
+    اختر نقطة الانطلاق والمناطق التي تهمك وعدد الأيام، واحصل على برنامج جاهز موزع على الأيام مع الأوقات
+    والمسافات والمسار مرسوماً على الخريطة.
+  keywords: تخطيط رحلة جورجيا, مسارات جورجيا, السياحة في جورجيا, رحلة بالسيارة في جورجيا
+  h1: مخطط الرحلة
+  lead: >-
+    أخبرنا من أين تبدأ، وإلى أين تريد الذهاب، وكم يوماً لديك. يختار المخطط المعالم، ويرتبها بأفضل تسلسل،
+    ويوزعها على الأيام، ويحسب الوقت الذي تستغرقه كل محطة.
+  starts:
+  - تبليسي، وسط المدينة
+  - مطار تبليسي (TBS)
+  - مطار كوتايسي (KUT)
+  - مطار باتومي (BUS)
+  ui:
+    start: الانطلاق من
+    days: كم يوماً
+    regions: أي المناطق
+    all_regions: كل المناطق
+    interests: ما الذي يهمك
+    all_interests: كل شيء
+    car: السيارة
+    month: متى ستسافر
+    pace: الإيقاع
+    pace_easy: هادئ (6 ساعات يومياً)
+    pace_normal: عادي (8 ساعات)
+    pace_full: مكثف (10 ساعات)
+    return: العودة إلى نقطة الانطلاق
+    build: إنشاء المسار
+    reset: إعادة الضبط
+    day: اليوم
+    drive: القيادة
+    visit: الزيارة
+    total: الإجمالي
+    overnight: المبيت
+    start_time: المغادرة
+    arrive: الوصول
+    depart: الانطلاق
+    back_to: العودة إلى
+    summary: الملخص
+    stops: محطات
+    distance: المسافة
+    driving_time: خلف المقود
+    visiting_time: عند المعالم
+    add_stop: إضافة
+    remove: إزالة
+    optional: يمكنك التوقف في الطريق عند
+    no_results: لا توجد نتائج بهذه الإعدادات. جرّب مناطق أكثر أو أياماً أكثر أو اهتمامات مختلفة.
+    too_far: 'ملاحظة: بعض الأماكن المختارة بعيدة جداً — أُدرج في الخطة ما يتسع له الوقت فقط.'
+    car_note: هذا المسار يحتاج إلى
+    print: طباعة
+    hours: س
+    min: د
+    km: كم
+    recalc: إعادة الحساب
+    day_plan: البرنامج يوماً بيوم
+    download: حفظ الخطة
+    season_warn: استُبعدت المعالم المغلقة موسمياً
+    need_car: السيارة المطلوبة
+    months:
+    - يناير
+    - فبراير
+    - مارس
+    - أبريل
+    - مايو
+    - يونيو
+    - يوليو
+    - أغسطس
+    - سبتمبر
+    - أكتوبر
+    - نوفمبر
+    - ديسمبر
+    book_cta: سيارة لهذا المسار
+    book_text: اختر الفئة المناسبة واتصل بنا — لا توجد مدفوعات إلكترونية.

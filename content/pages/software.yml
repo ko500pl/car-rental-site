@@ -1,14 +1,14 @@
 ka:
-  title: FleetFreak — ავტოპარკის მართვის პროგრამა გაქირავების ბიზნესისთვის
+  title: Fleet House Manager — ავტოპარკის მართვის პროგრამა გაქირავების ბიზნესისთვის
   desc: >-
-    FleetFreak — ავტოგაქირავების ბიზნესის მართვის აპლიკაცია: ჯავშნები, კონფლიქტების დეტექცია, დღიური P&L,
+    Fleet House Manager — ავტოგაქირავების ბიზნესის მართვის აპლიკაცია: ჯავშნები, კონფლიქტების დეტექცია, დღიური P&L,
     ROI და უკუგების ვადა თითო ავტომობილზე. Android და iOS.
   keywords: >-
     ავტოპარკის მართვის პროგრამა, car rental software, fleet management georgia, გაქირავების აღრიცხვის
     სისტემა, rent a car crm
-  h1: FleetFreak — ავტოპარკის მართვის სისტემა
+  h1: Fleet House Manager — ავტოპარკის მართვის სისტემა
   lead: >-
-    FleetFreak არის აპლიკაცია, რომლითაც ჩვენ თვითონ ვმართავთ 120-ავტომობილიან პარკს. იგივე სისტემა ხელმისაწვდომია
+    Fleet House Manager არის აპლიკაცია, რომლითაც ჩვენ თვითონ ვმართავთ 120-ავტომობილიან პარკს. იგივე სისტემა ხელმისაწვდომია
     სხვა გაქირავების კომპანიებისთვის — მცირე, 5-მანქანიანი ბიზნესიდან რამდენიმე ასეულამდე.
   blocks:
   - type: h2
@@ -17,7 +17,7 @@ ka:
     text: >-
       გაქირავების მცირე და საშუალო ბიზნესი, როგორც წესი, Excel-ით და ტელეფონის ჩანაწერებით მუშაობს. შედეგად
       ჩნდება სამი ტიპური პრობლემა: ორმაგი ჯავშანი, დაუფიქსირებელი ხარჯი და უცოდინრობა იმისა, თუ რომელი
-      ავტომობილი იხდის თავს და რომელი — არა. FleetFreak სამივეს ერთ ბაზაში კეტავს.
+      ავტომობილი იხდის თავს და რომელი — არა. Fleet House Manager სამივეს ერთ ბაზაში კეტავს.
   - type: cards
     items:
     - tag: პრობლემა 1
@@ -116,7 +116,7 @@ ka:
     text: ხშირად დასმული კითხვები პროგრამაზე
   - type: faq
     items:
-    - q: რა ღირს FleetFreak?
+    - q: რა ღირს Fleet House Manager?
       a: >-
         საბაზისო ვერსია უფასოა. გაფართოებული ფუნქციები (მრავალმომხმარებლიანი რეჟიმი, ცენტრალიზებული სინქრონიზაცია,
         ინტეგრაციები) ინდივიდუალური შეთანხმებით ფასდება ავტოპარკის ზომის მიხედვით.
@@ -134,7 +134,7 @@ ka:
     - q: ჩემი მონაცემები თქვენთან ხვდება?
       a: არა. ბაზა მოწყობილობაზეა და სარეზერვო ასლი მიდის მხოლოდ იმ ელფოსტაზე, რომელსაც თქვენ მიუთითებთ.
   - type: cta
-    title: FleetFreak-ის დემონსტრაცია
+    title: Fleet House Manager-ის დემონსტრაცია
     text: მოგვწერეთ ავტოპარკის ზომა და გამოგიგზავნით დემო ვერსიას და დანერგვის გეგმას.
     actions:
     - label: კონტაქტი
@@ -142,16 +142,16 @@ ka:
     - label: ჩვენ შესახებ
       href: /about/
 en:
-  title: FleetFreak — fleet management software for car rental businesses
+  title: Fleet House Manager — fleet management software for car rental businesses
   desc: >-
-    FleetFreak is a car rental management app: bookings, conflict detection, daily P&L, per-vehicle ROI
+    Fleet House Manager is a car rental management app: bookings, conflict detection, daily P&L, per-vehicle ROI
     and payback period. Android and iOS, works offline.
   keywords: >-
     fleet management software, car rental software, fleet management georgia, rental accounting system,
     rent a car crm
-  h1: FleetFreak — fleet management system
+  h1: Fleet House Manager — fleet management system
   lead: >-
-    FleetFreak is the app we use ourselves to run a 120-vehicle fleet. The same system is available to
+    Fleet House Manager is the app we use ourselves to run a 120-vehicle fleet. The same system is available to
     other rental companies — from a small five-car operation up to a few hundred vehicles.
   blocks:
   - type: h2
@@ -160,7 +160,7 @@ en:
     text: >-
       Small and mid-sized rental businesses usually run on Excel and notes on a phone. That produces three
       familiar problems: double bookings, unrecorded expenses, and no idea which vehicle is paying for
-      itself and which is not. FleetFreak closes all three in a single database.
+      itself and which is not. Fleet House Manager closes all three in a single database.
   - type: cards
     items:
     - tag: Problem 1
@@ -259,7 +259,7 @@ en:
     text: Frequently asked questions about the software
   - type: faq
     items:
-    - q: How much does FleetFreak cost?
+    - q: How much does Fleet House Manager cost?
       a: >-
         The basic version is free. Advanced features (multi-user mode, centralised synchronisation, integrations)
         are priced individually according to the size of your fleet.
@@ -276,7 +276,7 @@ en:
     - q: Do you get access to my data?
       a: No. The database sits on your device and backups go only to the email address you specify yourself.
   - type: cta
-    title: See FleetFreak in action
+    title: See Fleet House Manager in action
     text: Tell us the size of your fleet and we will send you a demo version and a rollout plan.
     actions:
     - label: Contact
@@ -284,16 +284,16 @@ en:
     - label: About us
       href: /about/
 ru:
-  title: FleetFreak — программа управления автопарком для прокатного бизнеса
+  title: Fleet House Manager — программа управления автопарком для прокатного бизнеса
   desc: >-
-    FleetFreak — приложение для управления прокатом авто: бронирования, выявление конфликтов, ежедневный
+    Fleet House Manager — приложение для управления прокатом авто: бронирования, выявление конфликтов, ежедневный
     P&L, ROI и срок окупаемости по каждой машине.
   keywords: >-
     программа управления автопарком, car rental software, fleet management georgia, система учёта проката,
     rent a car crm
-  h1: FleetFreak — система управления автопарком
+  h1: Fleet House Manager — система управления автопарком
   lead: >-
-    FleetFreak — приложение, с помощью которого мы сами управляем парком из 120 автомобилей. Эта же система
+    Fleet House Manager — приложение, с помощью которого мы сами управляем парком из 120 автомобилей. Эта же система
     доступна другим прокатным компаниям — от маленького бизнеса на 5 машин до парков в несколько сотен.
   blocks:
   - type: h2
@@ -302,7 +302,7 @@ ru:
     text: >-
       Малый и средний прокатный бизнес, как правило, работает в Excel и в заметках на телефоне. В результате
       возникают три типовые проблемы: двойная бронь, незафиксированные расходы и непонимание того, какая
-      машина себя окупает, а какая — нет. FleetFreak закрывает все три в одной базе.
+      машина себя окупает, а какая — нет. Fleet House Manager закрывает все три в одной базе.
   - type: cards
     items:
     - tag: Проблема 1
@@ -401,7 +401,7 @@ ru:
     text: Частые вопросы о программе
   - type: faq
     items:
-    - q: Сколько стоит FleetFreak?
+    - q: Сколько стоит Fleet House Manager?
       a: >-
         Базовая версия бесплатна. Расширенные функции (многопользовательский режим, централизованная синхронизация,
         интеграции) оцениваются индивидуально в зависимости от размера автопарка.
@@ -420,7 +420,7 @@ ru:
       a: Нет. База находится на устройстве, а резервная копия уходит только на ту почту, которую укажете
         вы.
   - type: cta
-    title: Демонстрация FleetFreak
+    title: Демонстрация Fleet House Manager
     text: Напишите нам размер автопарка, и мы пришлём демоверсию и план внедрения.
     actions:
     - label: Контакты
@@ -428,16 +428,16 @@ ru:
     - label: О нас
       href: /about/
 fa:
-  title: FleetFreak — نرم‌افزار مدیریت ناوگان برای شرکت‌های اجارهٔ خودرو
+  title: Fleet House Manager — نرم‌افزار مدیریت ناوگان برای شرکت‌های اجارهٔ خودرو
   desc: >-
-    FleetFreak اپلیکیشن مدیریت اجارهٔ خودرو است: رزرو، تشخیص تداخل، P&L روزانه، ROI و دورهٔ بازگشت سرمایه
+    Fleet House Manager اپلیکیشن مدیریت اجارهٔ خودرو است: رزرو، تشخیص تداخل، P&L روزانه، ROI و دورهٔ بازگشت سرمایه
     برای هر خودرو. اندروید و iOS، بدون نیاز به اینترنت.
   keywords: >-
     نرم‌افزار مدیریت ناوگان, نرم‌افزار اجاره خودرو, مدیریت ناوگان در گرجستان, سامانه حسابداری اجاره خودرو,
     CRM اجاره خودرو
-  h1: FleetFreak — سامانهٔ مدیریت ناوگان
+  h1: Fleet House Manager — سامانهٔ مدیریت ناوگان
   lead: >-
-    FleetFreak همان اپلیکیشنی است که خودمان برای ادارهٔ ناوگانی 120 خودرویی به کار می‌بریم. همین سامانه
+    Fleet House Manager همان اپلیکیشنی است که خودمان برای ادارهٔ ناوگانی 120 خودرویی به کار می‌بریم. همین سامانه
     در اختیار دیگر شرکت‌های اجاره نیز هست — از یک کسب‌وکار کوچک پنج‌خودرویی تا چند صد خودرو.
   blocks:
   - type: h2
@@ -446,7 +446,7 @@ fa:
     text: >-
       کسب‌وکارهای کوچک و متوسط اجارهٔ خودرو معمولاً با Excel و یادداشت روی گوشی کار می‌کنند. همین سه مشکل
       آشنا را می‌سازد: رزروهای دوگانه، هزینه‌های ثبت‌نشده، و بی‌خبری از اینکه کدام خودرو خرج خود را درمی‌آورد
-      و کدام نه. FleetFreak هر سه را در یک پایگاه دادهٔ واحد می‌بندد.
+      و کدام نه. Fleet House Manager هر سه را در یک پایگاه دادهٔ واحد می‌بندد.
   - type: cards
     items:
     - tag: مسئلهٔ 1
@@ -545,7 +545,7 @@ fa:
     text: پرسش‌های متداول دربارهٔ نرم‌افزار
   - type: faq
     items:
-    - q: FleetFreak چقدر هزینه دارد؟
+    - q: Fleet House Manager چقدر هزینه دارد؟
       a: >-
         نسخهٔ پایه رایگان است. قابلیت‌های پیشرفته (حالت چندکاربره، همگام‌سازی متمرکز، یکپارچه‌سازی‌ها)
         بر پایهٔ اندازهٔ ناوگان شما جداگانه قیمت‌گذاری می‌شود.
@@ -564,7 +564,7 @@ fa:
         خیر. پایگاه داده روی دستگاه شماست و نسخه‌های پشتیبان تنها به نشانی ایمیلی فرستاده می‌شود که خودتان
         تعیین می‌کنید.
   - type: cta
-    title: FleetFreak را در عمل ببینید
+    title: Fleet House Manager را در عمل ببینید
     text: اندازهٔ ناوگان خود را به ما بگویید تا نسخهٔ دمو و برنامهٔ راه‌اندازی را برایتان بفرستیم.
     actions:
     - label: تماس
@@ -572,15 +572,15 @@ fa:
     - label: دربارهٔ ما
       href: /about/
 he:
-  title: FleetFreak — תוכנת ניהול צי לחברות השכרת רכב
+  title: Fleet House Manager — תוכנת ניהול צי לחברות השכרת רכב
   desc: >-
-    FleetFreak היא אפליקציה לניהול השכרת רכב: הזמנות, זיהוי התנגשויות, P&L יומי, ROI ותקופת החזר לכל רכב.
+    Fleet House Manager היא אפליקציה לניהול השכרת רכב: הזמנות, זיהוי התנגשויות, P&L יומי, ROI ותקופת החזר לכל רכב.
     אנדרואיד ו-iOS, עובדת גם ללא אינטרנט.
   keywords: תוכנת ניהול צי, תוכנה להשכרת רכב, ניהול צי בגאורגיה, מערכת הנהלת חשבונות להשכרת רכב, CRM להשכרת
     רכב
-  h1: FleetFreak — מערכת לניהול צי
+  h1: Fleet House Manager — מערכת לניהול צי
   lead: >-
-    FleetFreak היא האפליקציה שאנחנו עצמנו מנהלים בעזרתה צי של 120 רכבים. אותה מערכת זמינה גם לחברות השכרה
+    Fleet House Manager היא האפליקציה שאנחנו עצמנו מנהלים בעזרתה צי של 120 רכבים. אותה מערכת זמינה גם לחברות השכרה
     אחרות — מעסק קטן של חמישה רכבים ועד כמה מאות רכבים.
   blocks:
   - type: h2
@@ -588,7 +588,7 @@ he:
   - type: p
     text: >-
       עסקי השכרה קטנים ובינוניים מתנהלים לרוב על Excel ופתקים בטלפון. מכאן נולדות שלוש בעיות מוכרות: הזמנות
-      כפולות, הוצאות שלא נרשמו, וחוסר ידיעה איזה רכב מחזיר את ההשקעה ואיזה לא. FleetFreak סוגרת את שלושתן
+      כפולות, הוצאות שלא נרשמו, וחוסר ידיעה איזה רכב מחזיר את ההשקעה ואיזה לא. Fleet House Manager סוגרת את שלושתן
       במסד נתונים אחד.
   - type: cards
     items:
@@ -681,7 +681,7 @@ he:
     text: שאלות נפוצות על התוכנה
   - type: faq
     items:
-    - q: כמה עולה FleetFreak?
+    - q: כמה עולה Fleet House Manager?
       a: הגרסה הבסיסית חינם. יכולות מתקדמות (מצב רב-משתמשים, סנכרון מרכזי, אינטגרציות) מתומחרות בנפרד
         לפי גודל הצי.
     - q: האם היא עובדת בלי חיבור לאינטרנט?
@@ -694,7 +694,7 @@ he:
     - q: האם אתם מקבלים גישה לנתונים שלי?
       a: לא. מסד הנתונים יושב במכשיר שלכם, והגיבויים נשלחים רק לכתובת הדוא"ל שאתם מגדירים בעצמכם.
   - type: cta
-    title: לראות את FleetFreak בפעולה
+    title: לראות את Fleet House Manager בפעולה
     text: ספרו לנו על גודל הצי שלכם ונשלח לכם גרסת דמו ותוכנית הטמעה.
     actions:
     - label: צור קשר
@@ -702,16 +702,16 @@ he:
     - label: עלינו
       href: /about/
 ar:
-  title: FleetFreak — برنامج إدارة الأساطيل لشركات تأجير السيارات
+  title: Fleet House Manager — برنامج إدارة الأساطيل لشركات تأجير السيارات
   desc: >-
-    FleetFreak تطبيق لإدارة تأجير السيارات: الحجوزات، كشف التعارضات، P&L اليومي، وROI ومدة الاسترداد لكل
+    Fleet House Manager تطبيق لإدارة تأجير السيارات: الحجوزات، كشف التعارضات، P&L اليومي، وROI ومدة الاسترداد لكل
     سيارة. يعمل على أندرويد وiOS ومن دون إنترنت.
   keywords: >-
     برنامج إدارة الأساطيل, برنامج تأجير السيارات, إدارة الأساطيل في جورجيا, نظام محاسبة تأجير السيارات,
     CRM تأجير السيارات
-  h1: FleetFreak — نظام إدارة الأسطول
+  h1: Fleet House Manager — نظام إدارة الأسطول
   lead: >-
-    FleetFreak هو التطبيق الذي نستخدمه بأنفسنا لإدارة أسطول من 120 سيارة. والنظام نفسه متاح لشركات التأجير
+    Fleet House Manager هو التطبيق الذي نستخدمه بأنفسنا لإدارة أسطول من 120 سيارة. والنظام نفسه متاح لشركات التأجير
     الأخرى — من نشاط صغير بخمس سيارات وحتى بضع مئات من السيارات.
   blocks:
   - type: h2
@@ -720,7 +720,7 @@ ar:
     text: >-
       تعتمد شركات التأجير الصغيرة والمتوسطة عادةً على Excel وعلى ملاحظات في الهاتف. وينتج عن ذلك ثلاث
       مشكلات مألوفة: الحجوزات المزدوجة، والمصاريف غير المسجَّلة، وعدم معرفة أي سيارة تغطّي تكلفتها وأيها
-      لا. ويعالج FleetFreak هذه المشكلات الثلاث في قاعدة بيانات واحدة.
+      لا. ويعالج Fleet House Manager هذه المشكلات الثلاث في قاعدة بيانات واحدة.
   - type: cards
     items:
     - tag: المشكلة 1
@@ -815,7 +815,7 @@ ar:
     text: أسئلة شائعة عن البرنامج
   - type: faq
     items:
-    - q: كم يكلّف FleetFreak؟
+    - q: كم يكلّف Fleet House Manager؟
       a: >-
         الإصدار الأساسي مجاني. أما الميزات المتقدّمة (وضع تعدّد المستخدمين، المزامنة المركزية، عمليات
         الربط) فتُسعَّر بشكل فردي بحسب حجم أسطولك.
@@ -833,7 +833,7 @@ ar:
         لا. قاعدة البيانات موجودة على جهازك، والنسخ الاحتياطية تُرسَل فقط إلى عنوان البريد الإلكتروني
         الذي تحدّده بنفسك.
   - type: cta
-    title: شاهد FleetFreak أثناء العمل
+    title: شاهد Fleet House Manager أثناء العمل
     text: أخبرنا بحجم أسطولك وسنرسل إليك نسخة تجريبية وخطة تطبيق.
     actions:
     - label: اتصل بنا
