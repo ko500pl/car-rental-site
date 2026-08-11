@@ -1,0 +1,10 @@
+enabled: false
+note: >-
+  Firebase Console -> Project settings -> Your apps -> Web app -> ჩააკოპირეთ მნიშვნელობები. ეს გასაღებები
+  საჯაროა და უსაფრთხოა — დაცვა Firestore-ის წესებით ხდება (იხ. FIREBASE.md).
+apiKey: ''
+authDomain: ''
+projectId: ''
+storageBucket: ''
+messagingSenderId: ''
+appId: ''

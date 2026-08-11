@@ -538,6 +538,73 @@ tbody tr:nth-child(even){{background:color-mix(in srgb,#fff 3%,transparent)}}
 .carrec .rentrow:last-of-type{{border-bottom:0}}
 .carrec .why{{margin:10px 0 14px;font-size:13px;color:var(--ink-3)}}
 .carrec .btn{{margin-top:2px}}
+/* ── account & auth ─────────────────────────────────────────────── */
+.authbox{{margin-inline-start:6px}}
+.authlink{{display:inline-flex;align-items:center;gap:8px;background:var(--surface-2);
+  border:1px solid var(--line);border-radius:999px;padding:7px 14px;font:inherit;font-size:14px;
+  color:var(--ink-2);cursor:pointer}}
+.authlink:hover{{border-color:var(--brand);color:#fff;text-decoration:none}}
+.ava{{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:12px;
+  font-weight:700;background:var(--grad);color:var(--on-brand)}}
+.authdlg{{position:fixed;inset:0;z-index:900;background:rgba(2,6,12,.72);display:grid;
+  place-items:center;padding:20px;backdrop-filter:blur(3px)}}
+.authcard{{position:relative;width:min(420px,100%);background:var(--surface);
+  border:1px solid var(--line);border-radius:18px;padding:26px 26px 22px;
+  box-shadow:0 30px 80px rgba(0,0,0,.5);max-height:92vh;overflow:auto}}
+.authcard h3{{margin:0 0 6px;font-size:22px;color:#fff}}
+.authcard label{{display:block;font-size:13px;color:var(--ink-3);margin:0 0 10px}}
+.authcard input{{width:100%;font:inherit;font-size:15px;padding:10px 12px;margin-top:4px;
+  border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink)}}
+.authx{{position:absolute;top:12px;inset-inline-end:14px;background:var(--surface-2);
+  border:1px solid var(--line);border-radius:8px;width:30px;height:30px;cursor:pointer;
+  color:var(--ink-2)}}
+.btn.goog{{width:100%;justify-content:center;display:flex;align-items:center;gap:10px;
+  background:#fff;color:#1f2937;margin:14px 0 4px;box-shadow:none}}
+.gicon{{width:20px;height:20px;border-radius:50%;display:grid;place-items:center;
+  background:#4285f4;color:#fff;font-weight:700;font-size:13px}}
+.author{{display:flex;align-items:center;gap:10px;color:var(--ink-3);font-size:12.5px;margin:14px 0}}
+.author::before,.author::after{{content:"";flex:1;height:1px;background:var(--line)}}
+.authrow{{display:flex;gap:9px;margin:6px 0 10px}}
+.authrow .btn{{flex:1;justify-content:center;display:flex}}
+.autherr{{color:#fca5a5;font-size:13px;min-height:18px;margin:2px 0 6px}}
+.authnote{{font-size:11.5px;color:var(--ink-3);margin:10px 0 0;line-height:1.5}}
+.acchead{{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 20px;
+  margin:0 0 22px}}
+.acchead b{{display:block;color:#fff;font-size:17px}}
+.acchead span{{font-size:13.5px;color:var(--ink-3)}}
+.tripcard{{background:var(--surface);border:1px solid var(--line);border-radius:14px;
+  padding:16px 20px;margin:0 0 12px}}
+.tripcard.done{{opacity:.72;border-inline-start:3px solid var(--ok)}}
+.tripmeta b{{color:#fff;font-size:17px;display:block}}
+.tripmeta span{{font-size:13px;color:var(--ink-3);font-family:var(--mono)}}
+.triprow{{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}}
+.btn.sm.ghost{{padding:7px 13px}}
+
+.expdate{{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:var(--ink-3)}}
+.expdate input{{font:inherit;font-size:14px;padding:7px 10px;border:1px solid var(--line);
+  border-radius:9px;background:var(--bg);color:var(--ink)}}
+.expfind{{padding:12px 14px;border-bottom:1px solid var(--line);background:var(--surface)}}
+.expfindrow{{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:9px}}
+.expfindrow .btn.on{{border-color:var(--accent);color:#fff;
+  background:color-mix(in srgb,var(--accent) 18%,var(--surface))}}
+.expmodes{{display:flex;gap:7px;margin-bottom:8px}}
+.tog.sm{{padding:6px 12px;font-size:13px}}
+.expnear{{margin-top:10px;font-size:14px;max-height:260px;overflow:auto}}
+.expmap.drawing{{cursor:crosshair}}
+.wx{{display:inline-flex;align-items:baseline;gap:4px;font-family:var(--mono);font-size:14px;
+  color:#fff;white-space:nowrap}}
+.wx small{{color:var(--ink-3);font-size:12px}}
+.wxr{{color:#7dd3fc;font-size:12px}}
+.wxbox{{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--surface-2);
+  border:1px solid var(--line);border-radius:10px;padding:9px 13px;margin:0 0 14px;font-size:13.5px}}
+.wxbox b{{color:var(--ink-3);font-weight:600;font-size:12.5px}}
+.wxbox small{{color:var(--ink-3);font-size:11.5px;margin-inline-start:auto}}
+.wxrow{{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 10px;font-size:13px}}
+.wxrow b{{color:var(--ink-3);font-size:12.5px;font-weight:600;width:100%}}
+.wxcell{{background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:4px 9px}}
+.wxrow small{{color:var(--ink-3);font-size:11.5px;width:100%}}
+.pwx{{display:inline-flex;gap:6px;align-items:center;margin-inline-start:10px}}
 @media(max-width:760px){{
   .carrec{{grid-template-columns:1fr}}
   .pthumb{{width:78px;height:60px}}

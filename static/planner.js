@@ -231,6 +231,7 @@
     var box = EL("result");
     if (!res.days.length) { box.innerHTML = '<div class="note">' + T.no_results + "</div>"; drawMap([], start); return; }
     var totKm = 0, totDrive = 0, totVisit = 0, stops = 0, maxCar = "economy";
+    var wxDays = [];
     res.days.forEach(function (d) {
       totKm += d.km; totDrive += d.drive; totVisit += d.visit; stops += d.items.length;
       d.items.forEach(function (it) {
@@ -286,13 +287,44 @@
       }
       h += "</ol>";
       var lastA = d.items.slice(-1)[0].a;
+      wxDays.push({ i: di, la: d.items[0].a.lat, lo: d.items[0].a.lon });
       if (di < res.days.length - 1) h += '<div class="pnight">' + T.overnight + ": " + esc(nearestTown(lastA).c) + "</div>";
       h += "</div>";
     });
     if (res.dropped.length) h += '<div class="note">' + T.too_far + "</div>";
-    h += '<p><button class="btn ghost" onclick="window.print()">' + T.print + "</button></p>";
+    h += '<p class="prow">' +
+         (window.FH ? '<button class="btn" type="button" id="savetrip">' +
+            esc(T.save_trip || "Save") + "</button>" : "") +
+         '<button class="btn ghost" type="button" onclick="window.print()">' + T.print + "</button></p>";
     box.innerHTML = h;
+    var sv = document.getElementById("savetrip");
+    if (sv) sv.onclick = function () {
+      var stops = [];
+      res.days.forEach(function (d) { d.items.forEach(function (i) { stops.push({ s: i.a.s, n: i.a.n }); }); });
+      var when = prompt(T.when + " (YYYY-MM-DD)", (window.WX ? WX.iso(7) : ""));
+      if (when === null) return;
+      var title = prompt(T.trip_name, start.n + " · " + res.days.length + " " + T.day);
+      if (title === null) return;
+      sv.disabled = true;
+      window.FH.saveTrip({
+        title: title, date: when, days: res.days.length, stops: stops,
+        km: Math.round(totKm), url: location.pathname
+      }).then(function () { sv.textContent = T.saved; })
+        .catch(function () { sv.disabled = false; });
+    };
     drawMap(res.days, start);
+    if (window.WX && wxDays.length) {
+      var d0 = WX.iso(0);
+      wxDays.slice(0, 16).forEach(function (w, k) {
+        var day = WX.iso(k);
+        WX.get([{ la: w.la, lo: w.lo }], day).then(function (r) {
+          if (!r[0]) return;
+          var head = box.querySelectorAll(".pday h3")[w.i];
+          if (head) head.insertAdjacentHTML("beforeend",
+            '<span class="pwx">' + WX.badge(r[0]) + "</span>");
+        });
+      });
+    }
     box.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 

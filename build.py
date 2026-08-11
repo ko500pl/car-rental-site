@@ -28,9 +28,10 @@ LANG_FONT_STACK = {"fa": '"Vazirmatn","Noto Sans Arabic",',
                    "he": '"Noto Sans Hebrew","Noto Sans",',
                    "ar": '"Noto Kufi Arabic","Noto Sans Arabic",'}
 
+NAV_HIDDEN = {"account"}
 PAGE_ORDER = ["index", "fleet", "pricing", "map", "planner", "terms", "faq", "blog",
-              "about", "contact", "software"]
-PAGE_SLUG = {"index": "", "fleet": "fleet/", "pricing": "pricing/", "map": "map/",
+              "about", "contact", "software", "account"]
+PAGE_SLUG = {"index": "", "account": "account/", "fleet": "fleet/", "pricing": "pricing/", "map": "map/",
              "planner": "planner/", "terms": "terms/", "faq": "faq/", "blog": "blog/",
              "about": "about/", "contact": "contact/", "software": "fleet-management-software/"}
 
@@ -389,9 +390,30 @@ LEAFLET_CSS = "/assets/leaflet/leaflet.css"
 LEAFLET_JS = "/assets/leaflet/leaflet.js"
 
 
+ASSET = {"css": "/assets/style.css", "explorer": "/assets/explorer.js",
+         "planner": "/assets/planner.js"}
+
+
+def _hash(data):
+    import hashlib
+    if isinstance(data, str):
+        data = data.encode("utf-8")
+    return hashlib.md5(data).hexdigest()[:10]
+
+
+def write_hashed(out, rel, data, key):
+    """ჩაწერს ფაილს შიგთავსის ჰეშით სახელში — ბრაუზერი ძველს ვეღარ აჩვენებს."""
+    base, ext = os.path.splitext(rel)
+    name = base + "." + _hash(data) + ext
+    write(os.path.join(out, "assets", name), data)
+    write(os.path.join(out, "assets", rel), data)
+    ASSET[key] = "/assets/" + name
+    return ASSET[key]
+
+
 def head_html(lang, current, title, desc, keywords, url, alternates, depth, ld,
               og_type="website", image=None, leaflet=False):
-    css_href = rel_prefix(depth) + "assets/style.css"
+    css_href = ASSET["css"]
     alts = "\n".join(f'<link rel="alternate" hreflang="{l}" href="{u}">'
                      for l, u in alternates.items())
     alts += f'\n<link rel="alternate" hreflang="x-default" href="{alternates["en"]}">'
@@ -411,7 +433,7 @@ def head_html(lang, current, title, desc, keywords, url, alternates, depth, ld,
 <meta name="keywords" content="{E(keywords)}">
 <link rel="canonical" href="{url}">
 {alts}
-<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="robots" content="{"noindex, nofollow" if current == "account" else "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"}">
 <meta name="author" content="{E(BRAND)}">
 <meta name="geo.region" content="GE">
 <meta name="geo.placename" content="{E(SITE['address'][lang]['city'])}">
@@ -442,7 +464,7 @@ def header_html(lang, current):
     lis = "".join(
         f'<li><a href="{page_url(lang, p, False)}"'
         f'{CUR if p == current else ""}>{E(u["nav"][p])}</a></li>'
-        for p in PAGE_ORDER)
+        for p in PAGE_ORDER if p not in NAV_HIDDEN)
     langs = "".join(
         f'<a href="{lang_root(l)}" hreflang="{l}" lang="{l}" '
         f'class="{"on" if l == lang else ""}" title="{E(LANG_LABEL[l])}">{LANG_SHORT[l]}</a>'
@@ -457,6 +479,7 @@ def header_html(lang, current):
 <nav class="main" aria-label="{E(u['ui']['nav_label'])}"><ul>{lis}</ul></nav>
 <span class="head-tel"><a dir="ltr" href="tel:{SITE['phone_e164']}">{E(SITE['phone'])}</a></span>
 <div class="langs" role="group" aria-label="{E(u['ui']['lang_label'])}">{langs}</div>
+{'<div id="authbox" class="authbox"></div>' if AUTH.get("enabled") else ""}
 </div></header>"""
 
 
@@ -476,7 +499,7 @@ def footer_html(lang):
     u = UI[lang]
     a = SITE["address"][lang]
     links = "".join(f'<li><a href="{page_url(lang, p, False)}">{E(u["nav"][p])}</a></li>'
-                    for p in PAGE_ORDER[1:])
+                    for p in PAGE_ORDER[1:] if p not in NAV_HIDDEN)
     langlinks = "".join(f'<li><a href="{lang_root(l)}" hreflang="{l}" lang="{l}">'
                         f"{E(LANG_LABEL[l])}</a></li>" for l in LANGS)
     return f"""<footer class="site-foot"><div class="wrap"><div class="foot-grid">
@@ -498,10 +521,23 @@ def shell(lang, current, head, body, depth, tail=""):
     u = UI[lang]
     fs = LANG_FONT_STACK.get(lang, "")
     style = (f'<style>:root{{--font:{fs}{DESIGN["font_family"]}}}</style>\n' if fs else "")
+    fb = ""
+    if AUTH.get("enabled") and AUTH.get("apiKey"):
+        cfg = {k: AUTH.get(k, "") for k in ("apiKey", "authDomain", "projectId",
+                                            "storageBucket", "messagingSenderId", "appId")}
+        cfg["accountUrl"] = page_url(lang, "account", False)
+        cfg["plannerUrl"] = page_url(lang, "planner", False)
+        cfg["t"] = {k: u["ui"][k] for k in (
+            "account", "sign_in", "sign_up", "sign_out", "with_google", "or_email", "email",
+            "password", "forgot", "reset_sent", "why_account", "legal_note", "please_sign_in",
+            "no_trips", "to_planner", "planned", "done", "mark_done", "mark_planned", "open",
+            "delete", "confirm_del", "days", "stops", "save_trip", "saved") if k in u["ui"]}
+        fb = (f'\n<script>window.FH_CFG={J(cfg)};</script>'
+              f'\n<script type="module" src="{ASSET.get("auth", "/assets/auth.js")}"></script>')
     return (f'<!DOCTYPE html>\n<html lang="{lang}" dir="{LANG_DIR[lang]}">\n<head>\n{head}\n'
             f'{style}</head>\n<body>\n'
             f'<a class="skip" href="#main">{E(u["ui"]["skip"])}</a>\n'
-            f'{header_html(lang, current)}\n{body}\n{footer_html(lang)}\n{tail}\n</body>\n</html>\n')
+            f'{header_html(lang, current)}\n{body}\n{footer_html(lang)}\n{tail}{fb}\n</body>\n</html>\n')
 
 
 # ══════════════════════════════════════════════════════════════ page renders
@@ -531,6 +567,8 @@ def render_static_page(lang, page):
     else:
         body.append(f'<section class="page-head"><div class="wrap"><h1>{E(p["h1"])}</h1>'
                     f'<p class="lead">{inline(p["lead"], lang)}</p></div></section>')
+    if page == "account":
+        body.append('<section class="sec"><div class="wrap"><div id="account"></div></div></section>')
 
     sections, cur = [], []
     for b in p["blocks"]:
@@ -749,6 +787,7 @@ def render_post(lang, slug, post):
 # ══════════════════════════════════════════════════════════════ travel pages
 TRAVEL = load("content/settings/travel.yml")
 PLACES = load("content/settings/places.yml")["places"]
+AUTH = load("content/settings/auth.yml") if os.path.exists("content/settings/auth.yml") else {}
 SLOW_TOWNS = {"stepantsminda", "mestia-town", "khulo", "oni", "bakuriani",
               "ambrolauri", "akhalkalaki", "tkibuli", "sachkhere", "chiatura"}
 TB = (41.7151, 44.8271)          # თბილისი — მარშრუტების საწყისი წერტილი
@@ -946,6 +985,7 @@ def attr_detail(lang, slug, a):
 
 EXPLORER_JS = """
 <script src="%(js)s"></script>
+<script src="/assets/weather.js"></script>
 <script>window.EXP=%(cfg)s;</script>
 <script src="%(exp)s"></script>"""
 
@@ -971,7 +1011,7 @@ def explorer_block(lang, depth, height="72vh", hero=False):
                "tip_title": u["tip_title"], "route_title": u["route_title"],
                "nearby_title": u["nearby_title"]},
     })
-    js = EXPLORER_JS % {"js": LEAFLET_JS, "cfg": cfg, "exp": base + "assets/explorer.js"}
+    js = EXPLORER_JS % {"js": LEAFLET_JS, "cfg": cfg, "exp": ASSET["explorer"]}
     html = f'''<div class="explorer{" hero" if hero else ""}">
   <div class="expbar">
     <input id="expq" class="expsearch" type="search" placeholder="{E(x["search_ph"])}"
@@ -979,10 +1019,30 @@ def explorer_block(lang, depth, height="72vh", hero=False):
     <select id="exptype" aria-label="{E(x["all_types"])}"><option value="">{E(x["all_types"])}</option>{topts}</select>
     <select id="expregion" aria-label="{E(x["all_regions"])}"><option value="">{E(x["all_regions"])}</option>{ropts}</select>
     <button id="expreset" class="btn sm ghost" type="button">{E(x["reset"])}</button>
+    <label class="expdate">{E(x["date"])}
+      <input id="expday" type="date" aria-label="{E(x["date"])}">
+    </label>
     <span id="expcount" class="expcount"></span>
   </div>
   <div class="expgrid" style="--exph:{height}">
     <div class="expside">
+      <div class="expfind">
+        <div class="expfindrow">
+          <button id="expgeo" class="btn sm ghost" type="button">◎ {E(x["my_loc"])}</button>
+          <button id="expdraw" class="btn sm ghost" type="button">✎ {E(x["draw"])}</button>
+        </div>
+        <div class="expmodes">
+          <label class="tog sm"><input type="radio" name="expmode" value="time" checked>
+            <span>{E(x["by_time"])}</span></label>
+          <label class="tog sm"><input type="radio" name="expmode" value="km">
+            <span>{E(x["by_km"])}</span></label>
+        </div>
+        <label class="expslider" id="expbudgetwrap">
+          <span id="expbudgetv">8 {E(u["hrs"])}</span>
+          <input id="expbudget" type="range" min="2" max="72" step="1" value="8">
+        </label>
+        <div id="expnear" class="expnear"></div>
+      </div>
       <div class="exproutebox">
         <div class="exppair">
           <label>{E(x["from_label"])}
@@ -1468,7 +1528,9 @@ def render_planner(lang):
                      page_url(lang, "planner"), {l: page_url(l, "planner") for l in LANGS},
                      depth, {"@context": "https://schema.org", "@graph": graph}, leaflet=True)
     tail = (f'<script>window.PLANNER_DATA={J(planner_data(lang))};</script>\n'
-            f'<script src="{LEAFLET_JS}"></script>\n<script src="/assets/planner.js"></script>')
+            f'<script src="{LEAFLET_JS}"></script>\n'
+            f'<script src="/assets/weather.js"></script>\n'
+            f'<script src="{ASSET["planner"]}"></script>')
     crumbs = crumbs_html(lang, [(u["nav"]["index"], page_url(lang, "index", False)),
                                 (u["nav"]["planner"], None)])
     return shell(lang, "planner", head, crumbs + f'<main id="main">{body}</main>', depth, tail)
@@ -1493,6 +1555,8 @@ def sitemap():
   </url>""")
 
     for page in PAGE_ORDER:
+        if page in NAV_HIDDEN:
+            continue
         add(lambda l, p=page: page_url(l, p),
             "1.0" if page == "index" else
             ("0.9" if page in ("fleet", "pricing", "software", "blog") else "0.7"))
@@ -1679,12 +1743,16 @@ def main():
             pass          # ზოგ ფაილურ სისტემაზე წაშლა აკრძალულია — ვაწერთ ზემოდან
     os.makedirs(os.path.join(out, "assets"), exist_ok=True)
 
-    write(os.path.join(out, "assets", "style.css"), build_css(DESIGN))
+    for sdir, dst in (("static", os.path.join(out, "assets")),
+                      ("admin", os.path.join(out, "admin"))):
+        if os.path.isdir(sdir):
+            shutil.copytree(sdir, dst, dirs_exist_ok=True)
 
-    for src, dst in (("static", os.path.join(out, "assets")),
-                     ("admin", os.path.join(out, "admin"))):
-        if os.path.isdir(src):
-            shutil.copytree(src, dst, dirs_exist_ok=True)
+    write_hashed(out, "style.css", build_css(DESIGN), "css")
+    for fn, key in (("explorer.js", "explorer"), ("planner.js", "planner"), ("auth.js", "auth")):
+        p = os.path.join("static", fn)
+        if os.path.exists(p):
+            write_hashed(out, fn, open(p, encoding="utf-8").read(), key)
     up = os.path.join("static", "uploads")
     if os.path.isdir(up):
         shutil.copytree(up, os.path.join(out, "uploads"), dirs_exist_ok=True)

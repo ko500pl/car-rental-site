@@ -136,6 +136,7 @@
 
   function paint(d) {
     $('exptitle').textContent = d.n;
+    var p = BY[d.s];
     var facts = d.facts.map(function (f) {
       return '<div><dt class="k">' + esc(f[0]) + '</dt><dd class="v">' + esc(f[1]) + '</dd></div>';
     }).join('');
@@ -159,6 +160,18 @@
       (d.tip ? '<h4>' + esc(U.tip_title) + '</h4><div class="article">' + d.tip + '</div>' : '') +
       (d.route ? '<h4>' + esc(U.route_title) + '</h4><div class="article">' + d.route + '</div>' : '') +
       (near ? '<h4>' + esc(U.nearby_title) + '</h4><div class="chips">' + near + '</div>' : '');
+    if (p && window.WX) {
+      var day = $('expday').value;
+      WX.get([p], day).then(function (w) {
+        if (cur !== d.s || !w[0]) return;
+        var el = document.createElement('div');
+        el.className = 'wxbox';
+        el.innerHTML = '<b>' + esc(U.weather) + ' · ' + esc(day) + '</b>' + WX.badge(w[0]) +
+          '<small>' + esc(U.wx_source) + '</small>';
+        var tags = $('expbody').querySelector('.exptags');
+        if (tags) tags.parentNode.insertBefore(el, tags.nextSibling);
+      });
+    }
   }
 
   function close() {
@@ -269,6 +282,21 @@
         }).join('') + '</ul>'
         : '<p class="muted">' + esc(U.none) + '</p>') +
       (E.planner ? '<a class="btn sm" href="' + esc(E.planner) + '">' + esc(U.open_planner) + '</a>' : '');
+
+    if (window.WX) {
+      var day = $('expday').value;
+      WX.get(seq, day).then(function (ws) {
+        if (!ws.some(Boolean)) return;
+        var cells = box.querySelectorAll('.expstops li');
+        var head = '<div class="wxrow"><b>' + esc(U.weather) + ' · ' + esc(day) + '</b>' +
+          seq.map(function (pt, i) {
+            return ws[i] ? '<span class="wxcell" title="' + esc(pt.n) + '">' +
+              WX.badge(ws[i]) + '</span>' : '';
+          }).join('') + '<small>' + esc(U.wx_source) + '</small></div>';
+        var tot = box.querySelector('.exptot');
+        if (tot) tot.insertAdjacentHTML('afterend', head);
+      });
+    }
   }
 
   /* ── autocomplete for the two endpoint inputs ────────────────────── */
@@ -288,6 +316,154 @@
         esc(p.n) + '<small>' + esc(p.k ? p.t : p.gn) + '</small></button>';
     }).join('');
     box.classList.toggle('on', !!hits.length);
+  }
+
+
+  /* ── ჩემი ადგილი, დროის/მანძილის ფილტრი და რუკაზე მოხაზვა ─────────── */
+  var me = null, area = null, areaLayer = null, drawing = false;
+
+  function budgetMode() {
+    var el = document.querySelector('input[name="expmode"]:checked');
+    return el ? el.value : 'time';
+  }
+  function budgetVal() { return parseInt($('expbudget').value, 10) || 8; }
+
+  function origin() {
+    if (me) return me;
+    if (state.from && BY[state.from]) return BY[state.from];
+    var tb = BY['town:tbilisi'];
+    if (tb) return tb;
+    return { la: E.center[0], lo: E.center[1], f: 1.4, v: 55, n: '' };
+  }
+
+  function pointInPoly(la, lo, poly) {
+    var inside = false;
+    for (var i = 0, j = poly.length - 1; i < poly.length; j = i++) {
+      var xi = poly[i][1], yi = poly[i][0], xj = poly[j][1], yj = poly[j][0];
+      if (((yi > la) !== (yj > la)) && (lo < (xj - xi) * (la - yi) / (yj - yi) + xi)) inside = !inside;
+    }
+    return inside;
+  }
+
+  /* რა ჩაეტევა მოცემულ დროში / რადიუსში — ჩასმის ევრისტიკა */
+  function suggest() {
+    var box = $('expnear');
+    var o = origin();
+    var mode = budgetMode(), val = budgetVal();
+    var pool = PTS.filter(function (p) {
+      if (area && !pointInPoly(p.la, p.lo, area)) return false;
+      if (state.type && p.ty !== state.type) return false;
+      if (state.region && p.g !== state.region) return false;
+      if (mode === 'km' && leg(o, p).km > val) return false;
+      return true;
+    });
+    if (!pool.length) { box.innerHTML = '<p class="muted sm">' + esc(U.none) + '</p>'; return; }
+
+    var chosen = [], minutes = 0;
+    if (mode === 'time') {
+      var cap = val * 60;
+      var cand = pool.slice().sort(function (a, b) {
+        return (score2(b, o) - score2(a, o));
+      }).slice(0, 60);
+      for (var g = 0; g < 30; g++) {
+        var best = null, bestPos = 0, bestGain = -Infinity, bestT = 0;
+        for (var i = 0; i < cand.length; i++) {
+          if (chosen.indexOf(cand[i]) >= 0) continue;
+          for (var pos = 0; pos <= chosen.length; pos++) {
+            var trial = chosen.slice(0, pos).concat([cand[i]], chosen.slice(pos));
+            var t = chainTime(o, trial);
+            if (t > cap) continue;
+            var gain = ((cand[i].un ? 2 : 0) + (cand[i].fe ? 1.5 : 0) + 1) / Math.max(t - minutes, 12);
+            if (gain > bestGain) { bestGain = gain; best = cand[i]; bestPos = pos; bestT = t; }
+          }
+        }
+        if (!best) break;
+        chosen.splice(bestPos, 0, best); minutes = bestT;
+      }
+    } else {
+      chosen = pool.slice().sort(function (a, b) { return leg(o, a).km - leg(o, b).km; }).slice(0, 25);
+      minutes = chainTime(o, chosen);
+    }
+
+    box.innerHTML =
+      '<div class="exptot"><b>' + chosen.length + '</b><span>' + esc(U.suggest) + '</span>' +
+      (mode === 'time' ? '<span>' + fmtH(minutes) + ' / ' + val + ' ' + esc(U.hrs) + '</span>'
+                       : '<span>≤ ' + val + ' ' + esc(U.km) + '</span>') + '</div>' +
+      '<ol class="expstops">' + chosen.map(function (p) {
+        return '<li><button class="lnk" type="button" data-go="' + esc(p.s) + '">' + esc(p.n) +
+          '</button><span class="expmeta">' + esc(p.t) + ' · ' + esc(p.h) + ' · ' +
+          Math.round(leg(o, p).km) + ' ' + esc(U.km) + '</span></li>';
+      }).join('') + '</ol>';
+    drawSuggest(o, chosen);
+  }
+  function score2(p, o) {
+    return (p.un ? 2.4 : 0) + (p.fe ? 1.6 : 0) - leg(o, p).km / 160;
+  }
+  function chainTime(o, list) {
+    var t = 0, prev = o;
+    for (var i = 0; i < list.length; i++) { t += leg(prev, list[i]).min + (list[i].hh || 1) * 60; prev = list[i]; }
+    t += leg(prev, o).min;
+    return t;
+  }
+  var sugLayer = L.layerGroup().addTo(map);
+  function drawSuggest(o, list) {
+    sugLayer.clearLayers();
+    if (!list.length) return;
+    var pts = [[o.la, o.lo]].concat(list.map(function (p) { return [p.la, p.lo]; }));
+    pts.push([o.la, o.lo]);
+    L.polyline(pts, { color: '#2dd4bf', weight: 3, opacity: .75, dashArray: '5 7' }).addTo(sugLayer);
+    L.circleMarker([o.la, o.lo], { radius: 9, color: '#2dd4bf', weight: 3,
+      fillColor: '#0b1220', fillOpacity: 1 }).addTo(sugLayer);
+    map.fitBounds(L.latLngBounds(pts).pad(0.15));
+  }
+
+  function locate() {
+    var b = $('expgeo');
+    if (!navigator.geolocation) { b.textContent = U.loc_err; return; }
+    b.textContent = U.locating;
+    navigator.geolocation.getCurrentPosition(function (pos) {
+      me = { s: 'me', n: U.my_loc, la: pos.coords.latitude, lo: pos.coords.longitude,
+             f: 1.4, v: 55, hh: 0 };
+      BY.me = me;
+      b.textContent = '◎ ' + U.my_loc;
+      b.classList.add('on');
+      L.circleMarker([me.la, me.lo], { radius: 8, color: '#2dd4bf', weight: 3,
+        fillColor: '#fff', fillOpacity: 1 }).addTo(sugLayer).bindTooltip(U.my_loc);
+      map.setView([me.la, me.lo], 9);
+      suggest();
+    }, function () { b.textContent = U.loc_err; }, { timeout: 10000, enableHighAccuracy: false });
+  }
+
+  /* freehand lasso */
+  function toggleDraw() {
+    drawing = !drawing;
+    $('expdraw').classList.toggle('on', drawing);
+    document.getElementById('expmap').classList.toggle('drawing', drawing);
+    if (!drawing) return;
+    if (areaLayer) { map.removeLayer(areaLayer); areaLayer = null; }
+    area = null;
+    map.dragging.disable();
+    var pts = [], line = null;
+    function move(e) {
+      pts.push([e.latlng.lat, e.latlng.lng]);
+      if (!line) { line = L.polyline(pts, { color: '#2dd4bf', weight: 3, dashArray: '4 6' }).addTo(map); }
+      else line.setLatLngs(pts);
+    }
+    function up() {
+      map.off('mousemove', move); map.off('mouseup', up); map.off('mousedown', down);
+      map.dragging.enable();
+      if (line) map.removeLayer(line);
+      if (pts.length > 4) {
+        area = pts;
+        areaLayer = L.polygon(pts, { color: '#2dd4bf', weight: 2, fillOpacity: .08 }).addTo(map);
+      }
+      drawing = false;
+      $('expdraw').classList.remove('on');
+      document.getElementById('expmap').classList.remove('drawing');
+      suggest();
+    }
+    function down(e) { pts = [[e.latlng.lat, e.latlng.lng]]; map.on('mousemove', move); map.on('mouseup', up); }
+    map.on('mousedown', down);
   }
 
   /* ── wiring ──────────────────────────────────────────────────────── */
@@ -323,6 +499,23 @@
       route();
     }
   });
+  $('expday').value = window.WX ? WX.iso(0) : '';
+  $('expday').addEventListener('change', function () { route(); if (cur) { delete cache[cur]; open(cur); } });
+  $('expgeo').addEventListener('click', locate);
+  $('expdraw').addEventListener('click', toggleDraw);
+  document.querySelectorAll('input[name="expmode"]').forEach(function (r) {
+    r.addEventListener('change', function () {
+      var b = $('expbudget');
+      if (budgetMode() === 'km') { b.min = 10; b.max = 400; b.step = 10; b.value = 100; }
+      else { b.min = 2; b.max = 72; b.step = 1; b.value = 8; }
+      updBudget(); suggest();
+    });
+  });
+  function updBudget() {
+    $('expbudgetv').textContent = budgetVal() + ' ' + (budgetMode() === 'km' ? U.km : U.hrs);
+  }
+  $('expbudget').addEventListener('input', function () { updBudget(); suggest(); });
+  updBudget();
   $('expclose').addEventListener('click', close);
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
 
@@ -341,4 +534,5 @@
 
   renderList();
   route();
+  suggest();
 })();

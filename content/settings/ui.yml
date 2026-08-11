@@ -11,6 +11,7 @@ ka:
     about: ჩვენ შესახებ
     contact: კონტაქტი
     software: პროგრამა
+    account: ჩემი გვერდი
   ui:
     logo_sub: ავტოგაქირავება
     nav_label: მთავარი ნავიგაცია
@@ -34,6 +35,34 @@ ka:
     book_text: საიტი ინფორმაციულია — ონლაინ გადახდა არ გვაქვს. დასაჯავშნად დაგვირეკეთ ან მოგვწერეთ.
     e404_title: გვერდი ვერ მოიძებნა (404)
     e404_text: მისამართი შეიცვალა ან არ არსებობს. სცადეთ ქვემოთ მოცემული გვერდები.
+    account: ჩემი გვერდი
+    sign_in: შესვლა
+    sign_up: ანგარიშის შექმნა
+    sign_out: გასვლა
+    with_google: Google-ით გაგრძელება
+    or_email: ან ელფოსტით
+    email: ელფოსტა
+    password: პაროლი
+    forgot: პაროლი დაგავიწყდათ?
+    reset_sent: შესამოწმებელი წერილი გაიგზავნა.
+    why_account: ანგარიში მხოლოდ იმისთვის გჭირდებათ, რომ დაგეგმილი მარშრუტები და თარიღები შეინახოთ.
+    legal_note: შესვლით ეთანხმებით პირობებს და კონფიდენციალურობის პოლიტიკას.
+    please_sign_in: შენახული მარშრუტების სანახავად შედით ანგარიშში.
+    no_trips: ჯერ არაფერი შეგინახავთ. დაგეგმეთ მარშრუტი და დააჭირეთ „შენახვას“.
+    to_planner: დამგეგმავზე გადასვლა
+    planned: დაგეგმილი
+    done: შესრულებული
+    mark_done: შესრულებულად მონიშვნა
+    mark_planned: დაგეგმილში დაბრუნება
+    open: გახსნა
+    delete: წაშლა
+    confirm_del: წავშალო ეს მარშრუტი?
+    days: დღე
+    stops: გაჩერება
+    save_trip: მარშრუტის შენახვა
+    saved: შენახულია
+    trip_name: მარშრუტის სახელი
+    when: როდის
 en:
   nav:
     index: Home
@@ -47,6 +76,7 @@ en:
     about: About us
     contact: Contact
     software: Software
+    account: My page
   ui:
     logo_sub: Car Rental
     nav_label: Main navigation
@@ -70,6 +100,34 @@ en:
     book_text: This site is informational — there is no online payment. Call or email us to book.
     e404_title: Page not found (404)
     e404_text: The address has changed or does not exist. Try the pages below.
+    account: My page
+    sign_in: Sign in
+    sign_up: Create account
+    sign_out: Sign out
+    with_google: Continue with Google
+    or_email: or with email
+    email: Email
+    password: Password
+    forgot: Forgot your password?
+    reset_sent: A reset email is on its way.
+    why_account: You only need an account to save your planned routes and their dates.
+    legal_note: By signing in you agree to the terms and the privacy policy.
+    please_sign_in: Sign in to see your saved routes.
+    no_trips: Nothing saved yet. Build a route and press Save.
+    to_planner: Go to the planner
+    planned: Planned
+    done: Completed
+    mark_done: Mark as done
+    mark_planned: Move back to planned
+    open: Open
+    delete: Delete
+    confirm_del: Delete this route?
+    days: days
+    stops: stops
+    save_trip: Save this route
+    saved: Saved
+    trip_name: Route name
+    when: When
 ru:
   nav:
     index: Главная
@@ -83,6 +141,7 @@ ru:
     about: О нас
     contact: Контакты
     software: Программа
+    account: Моя страница
   ui:
     logo_sub: Аренда авто
     nav_label: Основная навигация
@@ -106,6 +165,34 @@ ru:
     book_text: Сайт информационный — онлайн-оплаты нет. Для брони позвоните или напишите нам.
     e404_title: Страница не найдена (404)
     e404_text: Адрес изменился или не существует. Попробуйте страницы ниже.
+    account: Моя страница
+    sign_in: Войти
+    sign_up: Создать аккаунт
+    sign_out: Выйти
+    with_google: Продолжить с Google
+    or_email: или по почте
+    email: Эл. почта
+    password: Пароль
+    forgot: Забыли пароль?
+    reset_sent: Письмо для сброса отправлено.
+    why_account: Аккаунт нужен только для того, чтобы сохранять маршруты и даты.
+    legal_note: Входя, вы соглашаетесь с условиями и политикой конфиденциальности.
+    please_sign_in: Войдите, чтобы увидеть сохранённые маршруты.
+    no_trips: Пока ничего не сохранено. Постройте маршрут и нажмите «Сохранить».
+    to_planner: К планировщику
+    planned: Запланировано
+    done: Выполнено
+    mark_done: Отметить выполненным
+    mark_planned: Вернуть в планы
+    open: Открыть
+    delete: Удалить
+    confirm_del: Удалить этот маршрут?
+    days: дн.
+    stops: остановок
+    save_trip: Сохранить маршрут
+    saved: Сохранено
+    trip_name: Название маршрута
+    when: Когда
 fa:
   nav:
     index: خانه
@@ -119,6 +206,7 @@ fa:
     about: درباره ما
     contact: تماس
     software: نرم‌افزار
+    account: صفحهٔ من
   ui:
     logo_sub: اجارهٔ خودرو
     nav_label: ناوبری اصلی
@@ -143,6 +231,34 @@ fa:
       بزنید.
     e404_title: صفحه پیدا نشد (404)
     e404_text: نشانی تغییر کرده یا وجود ندارد. صفحه‌های زیر را امتحان کنید.
+    account: صفحهٔ من
+    sign_in: ورود
+    sign_up: ساخت حساب
+    sign_out: خروج
+    with_google: ادامه با Google
+    or_email: یا با ایمیل
+    email: ایمیل
+    password: گذرواژه
+    forgot: گذرواژه را فراموش کرده‌اید؟
+    reset_sent: ایمیل بازیابی ارسال شد.
+    why_account: حساب فقط برای ذخیرهٔ مسیرها و تاریخ‌هایتان لازم است.
+    legal_note: با ورود، شرایط و سیاست حریم خصوصی را می‌پذیرید.
+    please_sign_in: برای دیدن مسیرهای ذخیره‌شده وارد شوید.
+    no_trips: هنوز چیزی ذخیره نشده است. مسیری بسازید و ذخیره را بزنید.
+    to_planner: به برنامه‌ریز
+    planned: برنامه‌ریزی‌شده
+    done: انجام‌شده
+    mark_done: علامت انجام‌شده
+    mark_planned: بازگرداندن به برنامه
+    open: باز کردن
+    delete: حذف
+    confirm_del: این مسیر حذف شود؟
+    days: روز
+    stops: توقف
+    save_trip: ذخیرهٔ مسیر
+    saved: ذخیره شد
+    trip_name: نام مسیر
+    when: چه زمانی
 he:
   nav:
     index: ראשי
@@ -156,6 +272,7 @@ he:
     about: אודות
     contact: צור קשר
     software: תוכנה
+    account: העמוד שלי
   ui:
     logo_sub: השכרת רכב
     nav_label: ניווט ראשי
@@ -178,6 +295,34 @@ he:
     book_text: זהו אתר מידע — אין בו תשלום מקוון. להזמנה התקשרו אלינו או שלחו אימייל.
     e404_title: הדף לא נמצא (404)
     e404_text: הכתובת השתנתה או שאינה קיימת. נסו את הדפים שלמטה.
+    account: העמוד שלי
+    sign_in: כניסה
+    sign_up: יצירת חשבון
+    sign_out: יציאה
+    with_google: המשך עם Google
+    or_email: או במייל
+    email: אימייל
+    password: סיסמה
+    forgot: שכחתם סיסמה?
+    reset_sent: נשלח מייל לאיפוס.
+    why_account: החשבון נחוץ רק כדי לשמור מסלולים ותאריכים.
+    legal_note: בכניסה אתם מסכימים לתנאים ולמדיניות הפרטיות.
+    please_sign_in: היכנסו כדי לראות את המסלולים השמורים.
+    no_trips: עדיין לא שמרתם דבר. בנו מסלול ולחצו שמירה.
+    to_planner: למתכנן
+    planned: מתוכנן
+    done: בוצע
+    mark_done: סימון כבוצע
+    mark_planned: החזרה למתוכנן
+    open: פתיחה
+    delete: מחיקה
+    confirm_del: למחוק את המסלול?
+    days: ימים
+    stops: עצירות
+    save_trip: שמירת המסלול
+    saved: נשמר
+    trip_name: שם המסלול
+    when: מתי
 ar:
   nav:
     index: الرئيسية
@@ -191,6 +336,7 @@ ar:
     about: من نحن
     contact: اتصل بنا
     software: البرنامج
+    account: صفحتي
   ui:
     logo_sub: تأجير السيارات
     nav_label: التنقل الرئيسي
@@ -214,3 +360,31 @@ ar:
     book_text: هذا الموقع معلوماتي — لا يتيح الدفع الإلكتروني. للحجز اتصل بنا أو راسلنا بالبريد الإلكتروني.
     e404_title: الصفحة غير موجودة (404)
     e404_text: تغيّر العنوان أو أنه غير موجود. جرّب الصفحات أدناه.
+    account: صفحتي
+    sign_in: تسجيل الدخول
+    sign_up: إنشاء حساب
+    sign_out: تسجيل الخروج
+    with_google: المتابعة عبر Google
+    or_email: أو بالبريد
+    email: البريد الإلكتروني
+    password: كلمة المرور
+    forgot: نسيت كلمة المرور؟
+    reset_sent: تم إرسال رسالة إعادة التعيين.
+    why_account: الحساب مطلوب فقط لحفظ مساراتك وتواريخها.
+    legal_note: بتسجيل الدخول أنت توافق على الشروط وسياسة الخصوصية.
+    please_sign_in: سجّل الدخول لرؤية مساراتك المحفوظة.
+    no_trips: لم تحفظ شيئاً بعد. أنشئ مساراً واضغط حفظ.
+    to_planner: إلى المخطط
+    planned: مخطط
+    done: منجز
+    mark_done: وضع علامة منجز
+    mark_planned: إعادة إلى المخطط
+    open: فتح
+    delete: حذف
+    confirm_del: حذف هذا المسار؟
+    days: أيام
+    stops: محطات
+    save_trip: احفظ المسار
+    saved: تم الحفظ
+    trip_name: اسم المسار
+    when: متى

@@ -101,6 +101,28 @@ ka:
     city: ქალაქი
     airport: აეროპორტი
     towns_group: ქალაქები და აეროპორტები
+    date: თარიღი
+    weather: ამინდი
+    forecast_only: პროგნოზი 16 დღემდე
+    my_loc: ჩემი ადგილმდებარეობა
+    locating: ვეძებ…
+    loc_err: ადგილმდებარეობა ვერ დადგინდა
+    near_me: რა არის ახლოს
+    by_time: დრო მაქვს
+    by_km: მანძილი
+    hours: სთ
+    draw: მოხაზე რუკაზე
+    draw_on: მოხაზეთ არე — თაგუნა დააჭირეთ და გაატარეთ
+    draw_clear: არის მოხსნა
+    in_area: არჩეულ არეში
+    fits: ეტევა
+    doesnt_fit: არ ეტევა
+    suggest: შემოთავაზება
+    plan_it: დაგეგმე
+    reach: მისვლა
+    back: დაბრუნება
+    free: თავისუფალი
+    wx_source: 'ამინდი: Open-Meteo'
   rent:
     title: დაიქირავე მანქანა ამ მოგზაურობისთვის
     text: '{cat} სავსებით საკმარისია — გზა {road}. დაჯავშნა ერთი ზარით ხდება.'
@@ -215,6 +237,28 @@ en:
     city: City
     airport: Airport
     towns_group: Cities & airports
+    date: Date
+    weather: Weather
+    forecast_only: Forecast up to 16 days ahead
+    my_loc: My location
+    locating: Locating…
+    loc_err: Could not get your location
+    near_me: What is near me
+    by_time: Time I have
+    by_km: Distance
+    hours: h
+    draw: Draw on the map
+    draw_on: Draw an area — press and drag
+    draw_clear: Clear area
+    in_area: In the selected area
+    fits: fits
+    doesnt_fit: does not fit
+    suggest: Suggestion
+    plan_it: Plan it
+    reach: Getting there
+    back: Back
+    free: free
+    wx_source: 'Weather: Open-Meteo'
   rent:
     title: Rent a car for this trip
     text: '{cat} is enough — the road is {road}. Booking takes one call.'
@@ -328,6 +372,28 @@ ru:
     city: Город
     airport: Аэропорт
     towns_group: Города и аэропорты
+    date: Дата
+    weather: Погода
+    forecast_only: Прогноз до 16 дней
+    my_loc: Моё местоположение
+    locating: Определяю…
+    loc_err: Не удалось определить местоположение
+    near_me: Что рядом
+    by_time: Сколько времени
+    by_km: Расстояние
+    hours: ч
+    draw: Обвести на карте
+    draw_on: Обведите область — зажмите и ведите
+    draw_clear: Снять выделение
+    in_area: В выбранной области
+    fits: вмещается
+    doesnt_fit: не вмещается
+    suggest: Предложение
+    plan_it: Спланировать
+    reach: Дорога
+    back: Обратно
+    free: свободно
+    wx_source: 'Погода: Open-Meteo'
   rent:
     title: Возьмите машину для этой поездки
     text: '{cat} вполне достаточно — дорога {road}. Бронь — один звонок.'
@@ -441,6 +507,28 @@ fa:
     city: شهر
     airport: فرودگاه
     towns_group: شهرها و فرودگاه‌ها
+    date: تاریخ
+    weather: آب‌وهوا
+    forecast_only: پیش‌بینی تا ۱۶ روز
+    my_loc: موقعیت من
+    locating: در حال یافتن…
+    loc_err: موقعیت شما به‌دست نیامد
+    near_me: چه چیزی نزدیک است
+    by_time: زمانی که دارم
+    by_km: فاصله
+    hours: س
+    draw: روی نقشه بکشید
+    draw_on: ناحیه را بکشید — نگه دارید و بکشید
+    draw_clear: پاک کردن ناحیه
+    in_area: در ناحیهٔ انتخابی
+    fits: جا می‌شود
+    doesnt_fit: جا نمی‌شود
+    suggest: پیشنهاد
+    plan_it: برنامه‌ریزی
+    reach: رسیدن
+    back: بازگشت
+    free: آزاد
+    wx_source: 'آب‌وهوا: Open-Meteo'
   rent:
     title: برای این سفر خودرو اجاره کنید
     text: '{cat} کافی است — جاده {road} است. رزرو با یک تماس انجام می‌شود.'
@@ -553,6 +641,28 @@ he:
     city: עיר
     airport: נמל תעופה
     towns_group: ערים ונמלי תעופה
+    date: תאריך
+    weather: מזג אוויר
+    forecast_only: תחזית עד 16 יום
+    my_loc: המיקום שלי
+    locating: מאתר…
+    loc_err: לא הצלחנו לאתר את מיקומך
+    near_me: מה קרוב אליי
+    by_time: כמה זמן יש לי
+    by_km: מרחק
+    hours: שע׳
+    draw: סמנו על המפה
+    draw_on: סמנו אזור — לחצו וגררו
+    draw_clear: ניקוי האזור
+    in_area: באזור שנבחר
+    fits: נכנס
+    doesnt_fit: לא נכנס
+    suggest: הצעה
+    plan_it: תכנון
+    reach: הדרך לשם
+    back: חזרה
+    free: פנוי
+    wx_source: 'מזג אוויר: Open-Meteo'
   rent:
     title: שכרו רכב לטיול הזה
     text: '{cat} מספיקה — הדרך {road}. ההזמנה נעשית בשיחה אחת.'
@@ -666,6 +776,28 @@ ar:
     city: مدينة
     airport: مطار
     towns_group: المدن والمطارات
+    date: التاريخ
+    weather: الطقس
+    forecast_only: توقعات حتى 16 يوماً
+    my_loc: موقعي
+    locating: جارٍ تحديد الموقع…
+    loc_err: تعذّر تحديد موقعك
+    near_me: ما القريب مني
+    by_time: الوقت المتاح
+    by_km: المسافة
+    hours: س
+    draw: ارسم على الخريطة
+    draw_on: ارسم منطقة — اضغط واسحب
+    draw_clear: مسح المنطقة
+    in_area: في المنطقة المحددة
+    fits: يتّسع
+    doesnt_fit: لا يتّسع
+    suggest: اقتراح
+    plan_it: خطّط
+    reach: الوصول
+    back: العودة
+    free: مجاني
+    wx_source: 'الطقس: Open-Meteo'
   rent:
     title: استأجر سيارة لهذه الرحلة
     text: '{cat} تكفي — الطريق {road}. الحجز بمكالمة واحدة.'
