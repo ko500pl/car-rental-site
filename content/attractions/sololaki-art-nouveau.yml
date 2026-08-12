@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 38
 image: /assets/photos/sololaki-art-nouveau.webp
-gallery: []
+gallery:
+- image: /assets/photos/sololaki-art-nouveau-1.webp
+  author: Giftzwerg 88
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Stadtansicht_Tiflis_59.jpg
+- image: /assets/photos/sololaki-art-nouveau-2.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Tbilisi,_Lermontovi_St.jpg
+- image: /assets/photos/sololaki-art-nouveau-3.webp
+  author: Gobrona
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:Alexander_Kartveli_commemorative_plaque_(Tbilisi).jpg
 visit_hours: '1.5'
 best_season: all
 open_year_round: true
@@ -344,3 +359,4 @@ image_credit:
   license: CC BY-SA 2.0
   license_url: https://creativecommons.org/licenses/by-sa/2.0
   source: https://commons.wikimedia.org/wiki/File:Graffiti_in_Tbilisi_(19).jpg
+rating: 3.5

@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 78
 image: /assets/photos/gori-war-museum.webp
-gallery: []
+gallery:
+- image: /assets/photos/gori-war-museum-1.webp
+  author: Adam Jones from Kelowna, BC, Canada
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Detail_of_War_Memorial,_Gori,_Georgia_(2).jpg
+- image: /assets/photos/gori-war-museum-2.webp
+  author: Marcin Konsek
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:2016_Gori,_Budynek,_aleja_Stalina_14_(02).jpg
+- image: /assets/photos/gori-war-museum-3.webp
+  author: Marcin Konsek
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:2016_Gori,_Budynek,_aleja_Stalina_14_(01).jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -226,3 +241,4 @@ image_credit:
   license: CC BY-SA 2.0
   license_url: https://creativecommons.org/licenses/by-sa/2.0
   source: https://commons.wikimedia.org/wiki/File:Detail_of_War_Memorial,_Gori,_Georgia.jpg
+rating: 3.0

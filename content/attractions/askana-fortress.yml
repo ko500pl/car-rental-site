@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 70
 image: /assets/photos/askana-fortress.webp
-gallery: []
+gallery:
+- image: /assets/photos/askana-fortress-1.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Gonebiskari,_Georgia_-_panoramio.jpg
+- image: /assets/photos/askana-fortress-2.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Gonebiskari,_Georgia_-_panoramio_(1).jpg
+- image: /assets/photos/askana-fortress-3.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Gonebiskari,_Georgia_-_panoramio_(2).jpg
 visit_hours: '1.5'
 best_season: may-october
 open_year_round: true
@@ -242,3 +257,4 @@ image_credit:
   license: Public domain
   license_url: ''
   source: https://commons.wikimedia.org/wiki/File:ISS031-E-5714_-_View_of_Earth.jpg
+rating: 3.5

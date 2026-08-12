@@ -57,7 +57,7 @@
       fillColor: p.c, fillOpacity: dim ? .35 : 1
     });
     m.bindTooltip(p.n, { direction: 'top' });
-    m.on('click', function () { open(p.s); });
+    m.on('click', function () { if (wpMode) { addWp(p.la, p.lo, p); } else { open(p.s); } });
     return m;
   }
 
@@ -106,7 +106,8 @@
         (p.img ? '<img class="expthumb" src="' + esc(p.img) + '" alt="" loading="lazy">' : '') +
         '<i style="background:' + esc(p.c) + '"></i>' +
         '<span class="expitem-n">' + esc(p.n) + '</span>' +
-        '<span class="expitem-m">' + esc(p.t) + ' · ' + esc(p.h) + '</span></button>';
+        '<span class="expitem-m">' + esc(p.t) + ' · ' + esc(p.h) +
+        (p.r ? ' · ★' + p.r : '') + '</span></button>';
     }).join('');
     draw(list);
   }
@@ -148,7 +149,12 @@
         (d.credit ? '<figcaption>' + (d.credit_url
           ? '<a href="' + esc(d.credit_url) + '" rel="nofollow noopener" target="_blank">' + esc(d.credit) + '</a>'
           : esc(d.credit)) + '</figcaption>' : '') + '</figure>' : '') +
+      ((d.gal && d.gal.length) ? '<div class="galstrip">' + d.gal.map(function (g) {
+        return '<img src="' + esc(g) + '" alt="" loading="lazy">';
+      }).join('') + '</div>' : '') +
       '<div class="exptags"><span class="tag">' + esc(d.t) + '</span>' +
+      (d.r ? '<span class="stars sm" title="' + esc(U.rate_label) + '"><i>' +
+        '★'.repeat(Math.floor(d.r)) + (d.r % 1 ? '½' : '') + '</i><b>' + d.r + '</b></span>' : '') +
       (d.unesco ? '<span class="tag u">UNESCO</span>' : '') +
       '<span class="tag g">' + esc(d.gn) + '</span></div>' +
       '<div class="expact">' +
@@ -346,7 +352,7 @@
   }
 
   /* რა ჩაეტევა მოცემულ დროში / რადიუსში — ჩასმის ევრისტიკა */
-  function suggest() {
+  function suggestNear() {
     var box = $('expnear');
     var o = origin();
     var mode = budgetMode(), val = budgetVal();
@@ -382,8 +388,9 @@
       }
     } else {
       chosen = pool.slice().sort(function (a, b) { return leg(o, a).km - leg(o, b).km; }).slice(0, 25);
-      minutes = chainTime(o, chosen);
     }
+    chosen = order2opt(o, chosen);
+    minutes = chainTime(o, chosen);
 
     box.innerHTML =
       '<div class="exptot"><b>' + chosen.length + '</b><span>' + esc(U.suggest) + '</span>' +
@@ -395,6 +402,38 @@
           Math.round(leg(o, p).km) + ' ' + esc(U.km) + '</span></li>';
       }).join('') + '</ol>';
     drawSuggest(o, chosen);
+  }
+
+  /* nearest-neighbour + 2-opt — გონივრული თანმიმდევრობა */
+  function order2opt(o, list) {
+    if (list.length < 3) return list.slice();
+    var left = list.slice(), out = [], cur = o;
+    while (left.length) {
+      var bi = 0, bd = Infinity;
+      for (var i = 0; i < left.length; i++) {
+        var d = hav(cur.la, cur.lo, left[i].la, left[i].lo);
+        if (d < bd) { bd = d; bi = i; }
+      }
+      cur = left[bi]; out.push(cur); left.splice(bi, 1);
+    }
+    function cost(r) {
+      var c = 0, prev = o;
+      for (var i = 0; i < r.length; i++) { c += hav(prev.la, prev.lo, r[i].la, r[i].lo); prev = r[i]; }
+      c += hav(prev.la, prev.lo, o.la, o.lo);
+      return c;
+    }
+    var best = out, bc = cost(best), improved = true, guard = 0;
+    while (improved && guard++ < 30) {
+      improved = false;
+      for (var i2 = 0; i2 < best.length - 1; i2++) {
+        for (var j = i2 + 1; j < best.length; j++) {
+          var cand = best.slice(0, i2).concat(best.slice(i2, j + 1).reverse(), best.slice(j + 1));
+          var cc = cost(cand);
+          if (cc < bc - 0.01) { best = cand; bc = cc; improved = true; }
+        }
+      }
+    }
+    return best;
   }
   function score2(p, o) {
     return (p.un ? 2.4 : 0) + (p.fe ? 1.6 : 0) - leg(o, p).km / 160;
@@ -411,7 +450,12 @@
     if (!list.length) return;
     var pts = [[o.la, o.lo]].concat(list.map(function (p) { return [p.la, p.lo]; }));
     pts.push([o.la, o.lo]);
-    L.polyline(pts, { color: '#2dd4bf', weight: 3, opacity: .75, dashArray: '5 7' }).addTo(sugLayer);
+    L.polyline(pts, { color: '#2dd4bf', weight: 3, opacity: .8 }).addTo(sugLayer);
+    list.forEach(function (p, i) {
+      L.marker([p.la, p.lo], { icon: L.divIcon({ className: 'numpin',
+        html: '<b>' + (i + 1) + '</b>', iconSize: [22, 22] }) }).addTo(sugLayer)
+        .bindTooltip(p.n).on('click', function () { open(p.s); });
+    });
     L.circleMarker([o.la, o.lo], { radius: 9, color: '#2dd4bf', weight: 3,
       fillColor: '#0b1220', fillOpacity: 1 }).addTo(sugLayer);
     map.fitBounds(L.latLngBounds(pts).pad(0.15));
@@ -430,9 +474,29 @@
       L.circleMarker([me.la, me.lo], { radius: 8, color: '#2dd4bf', weight: 3,
         fillColor: '#fff', fillOpacity: 1 }).addTo(sugLayer).bindTooltip(U.my_loc);
       map.setView([me.la, me.lo], 9);
-      suggest();
-    }, function () { b.textContent = U.loc_err; }, { timeout: 10000, enableHighAccuracy: false });
+      suggestNear();
+    }, function () {
+      b.textContent = U.loc_fallback || U.loc_err;
+      pickLoc = true;
+      document.getElementById('expmap').classList.add('drawing');
+    }, { timeout: 10000, enableHighAccuracy: false });
   }
+  var pickLoc = false;
+  map.on('click', function (e) {
+    if (pickLoc) {
+      pickLoc = false;
+      document.getElementById('expmap').classList.remove('drawing');
+      me = { s: 'me', n: U.my_loc, la: e.latlng.lat, lo: e.latlng.lng, f: 1.4, v: 55, hh: 0 };
+      BY.me = me;
+      var b = $('expgeo');
+      b.textContent = '◎ ' + U.my_loc; b.classList.add('on');
+      L.circleMarker([me.la, me.lo], { radius: 8, color: '#2dd4bf', weight: 3,
+        fillColor: '#fff', fillOpacity: 1 }).addTo(sugLayer).bindTooltip(U.my_loc);
+      suggestNear();
+      return;
+    }
+    if (wpMode) { addWp(e.latlng.lat, e.latlng.lng, null); }
+  });
 
   /* freehand lasso */
   function toggleDraw() {
@@ -460,16 +524,111 @@
       drawing = false;
       $('expdraw').classList.remove('on');
       document.getElementById('expmap').classList.remove('drawing');
-      suggest();
+      suggestNear();
     }
     function down(e) { pts = [[e.latlng.lat, e.latlng.lng]]; map.on('mousemove', move); map.on('mouseup', up); }
     map.on('mousedown', down);
   }
 
+
+  /* ── წერტილებით მარშრუტი: ვაჭერ რუკას თანმიმდევრობით ────────────── */
+  var wpMode = false, wps = [], wpLayer = L.layerGroup().addTo(map);
+
+  function toggleWp() {
+    wpMode = !wpMode;
+    $('expwp').classList.toggle('on', wpMode);
+    document.getElementById('expmap').classList.toggle('drawing', wpMode);
+    if (wpMode && !wps.length) $('expnear').innerHTML =
+      '<p class="muted sm">' + esc(U.wp_hint) + '</p>';
+  }
+  function addWp(la, lo, ref) {
+    /* თუ ღირსშესანიშნაობასთან ახლოსაა (6 კმ) — თვითონ ის ავიღოთ */
+    if (!ref) {
+      var best = null, bd = 6;
+      PTS.forEach(function (p) {
+        var d = hav(la, lo, p.la, p.lo);
+        if (d < bd) { bd = d; best = p; }
+      });
+      ref = best;
+    }
+    wps.push(ref || { s: 'wp' + wps.length, n: (U.point || 'Point') + ' ' + (wps.length + 1),
+                      la: la, lo: lo, f: 1.4, v: 55, hh: 0, t: '', h: '' });
+    renderWp();
+  }
+  function wpTime() {
+    var t = 0, km = 0;
+    for (var i = 1; i < wps.length; i++) {
+      var l = leg(wps[i - 1], wps[i]); t += l.min; km += l.km;
+    }
+    wps.forEach(function (p, i) { if (i > 0) t += (p.hh || 0) * 60; });
+    return { min: t, km: km };
+  }
+  function renderWp() {
+    var box = $('expnear');
+    if (!wps.length) { box.innerHTML = ''; wpLayer.clearLayers(); return; }
+    var tot = wpTime();
+    box.innerHTML =
+      '<div class="exptot"><b>' + Math.round(tot.km) + ' ' + esc(U.km) + '</b>' +
+      '<span>' + esc(U.total) + ' ' + fmtH(tot.min) + '</span>' +
+      '<span>' + wps.length + '</span></div>' +
+      '<ol class="expstops wplist">' + wps.map(function (p, i) {
+        return '<li data-i="' + i + '">' +
+          '<button class="lnk" type="button"' + (p.u ? ' data-go="' + esc(p.s) + '"' : '') + '>' +
+          esc(p.n) + '</button>' +
+          '<span class="expmeta">' + (i > 0 ? '+' + fmtH(leg(wps[i - 1], p).min +
+            (p.hh || 0) * 60) : '') + '</span>' +
+          '<span class="wpbtns">' +
+          '<button type="button" data-wpup="' + i + '" title="' + esc(U.up) + '">↑</button>' +
+          '<button type="button" data-wpdn="' + i + '" title="' + esc(U.down) + '">↓</button>' +
+          '<button type="button" data-wpx="' + i + '" title="' + esc(U.remove) + '">✕</button>' +
+          '</span></li>';
+      }).join('') + '</ol>' +
+      '<div class="prow">' +
+      '<button class="btn sm" type="button" id="wpopt">' + esc(U.optimize) + '</button>' +
+      '<button class="btn sm ghost" type="button" id="wpclear">' + esc(U.reset) + '</button></div>';
+    drawWp();
+    var opt = document.getElementById('wpopt');
+    if (opt) opt.onclick = function () {
+      if (wps.length < 3) return;
+      var first = wps[0];
+      wps = [first].concat(order2opt(first, wps.slice(1)));
+      renderWp();
+    };
+    var clr = document.getElementById('wpclear');
+    if (clr) clr.onclick = function () { wps = []; renderWp(); };
+    box.querySelectorAll('[data-wpup]').forEach(function (b) {
+      b.onclick = function () {
+        var i = +b.dataset.wpup;
+        if (i > 0) { var t = wps[i - 1]; wps[i - 1] = wps[i]; wps[i] = t; renderWp(); }
+      };
+    });
+    box.querySelectorAll('[data-wpdn]').forEach(function (b) {
+      b.onclick = function () {
+        var i = +b.dataset.wpdn;
+        if (i < wps.length - 1) { var t = wps[i + 1]; wps[i + 1] = wps[i]; wps[i] = t; renderWp(); }
+      };
+    });
+    box.querySelectorAll('[data-wpx]').forEach(function (b) {
+      b.onclick = function () { wps.splice(+b.dataset.wpx, 1); renderWp(); };
+    });
+  }
+  function drawWp() {
+    wpLayer.clearLayers();
+    if (!wps.length) return;
+    L.polyline(wps.map(function (p) { return [p.la, p.lo]; }),
+      { color: '#38bdf8', weight: 4, opacity: .85 }).addTo(wpLayer);
+    wps.forEach(function (p, i) {
+      L.marker([p.la, p.lo], { icon: L.divIcon({ className: 'numpin blue',
+        html: '<b>' + (i + 1) + '</b>', iconSize: [22, 22] }) }).addTo(wpLayer).bindTooltip(p.n);
+    });
+    if (wps.length > 1)
+      map.fitBounds(L.latLngBounds(wps.map(function (p) { return [p.la, p.lo]; })).pad(0.2));
+  }
+
   /* ── wiring ──────────────────────────────────────────────────────── */
   $('expq').addEventListener('input', function () { state.q = this.value; renderList(); });
-  $('exptype').addEventListener('change', function () { state.type = this.value; renderList(); });
-  $('expregion').addEventListener('change', function () { state.region = this.value; renderList(); });
+  $('exptype').addEventListener('change', function () { state.type = this.value; renderList(); suggestNear(); });
+  $('expregion').addEventListener('change', function () { state.region = this.value; renderList(); suggestNear(); });
   $('expreset').addEventListener('click', function () {
     state.q = ''; state.type = ''; state.region = '';
     $('expq').value = ''; $('exptype').value = ''; $('expregion').value = '';
@@ -502,19 +661,20 @@
   $('expday').value = window.WX ? WX.iso(0) : '';
   $('expday').addEventListener('change', function () { route(); if (cur) { delete cache[cur]; open(cur); } });
   $('expgeo').addEventListener('click', locate);
+  $('expwp').addEventListener('click', toggleWp);
   $('expdraw').addEventListener('click', toggleDraw);
   document.querySelectorAll('input[name="expmode"]').forEach(function (r) {
     r.addEventListener('change', function () {
       var b = $('expbudget');
       if (budgetMode() === 'km') { b.min = 10; b.max = 400; b.step = 10; b.value = 100; }
       else { b.min = 2; b.max = 72; b.step = 1; b.value = 8; }
-      updBudget(); suggest();
+      updBudget(); suggestNear();
     });
   });
   function updBudget() {
     $('expbudgetv').textContent = budgetVal() + ' ' + (budgetMode() === 'km' ? U.km : U.hrs);
   }
-  $('expbudget').addEventListener('input', function () { updBudget(); suggest(); });
+  $('expbudget').addEventListener('input', function () { updBudget(); suggestNear(); });
   updBudget();
   $('expclose').addEventListener('click', close);
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
@@ -534,5 +694,5 @@
 
   renderList();
   route();
-  suggest();
+  suggestNear();
 })();

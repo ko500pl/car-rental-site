@@ -7,7 +7,22 @@ unesco: false
 featured: true
 order: 10
 image: /assets/photos/mestia.webp
-gallery: []
+gallery:
+- image: /assets/photos/mestia-1.webp
+  author: Алла Лебедева
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Georgia_(630).jpg
+- image: /assets/photos/mestia-2.webp
+  author: Alen Ištoković
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0
+  source: https://commons.wikimedia.org/wiki/File:Mestia,_Svaneti_-_panoramio.jpg
+- image: /assets/photos/mestia-3.webp
+  author: Alen Ištoković
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0
+  source: https://commons.wikimedia.org/wiki/File:A_modern_house_in_Mestia_-_panoramio.jpg
 visit_hours: '4'
 best_season: may-october
 open_year_round: true
@@ -272,3 +287,4 @@ image_credit:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:%E1%83%9B%E1%83%94%E1%83%A1%E1%83%A2%E1%83%98%E1%83%90,_2009.jpg
+rating: 5.0

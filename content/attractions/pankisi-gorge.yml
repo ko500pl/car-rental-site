@@ -7,7 +7,17 @@ unesco: false
 featured: false
 order: 88
 image: /assets/photos/pankisi-gorge.webp
-gallery: []
+gallery:
+- image: /assets/photos/pankisi-gorge-1.webp
+  author: Hundnase
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Amphitheatre_Monument,_Duisi,_Pankisi_Gorge,_Georgia.jpg
+- image: /assets/photos/pankisi-gorge-2.webp
+  author: Hundnase
+  license: CC0
+  license_url: http://creativecommons.org/publicdomain/zero/1.0/deed.en
+  source: https://commons.wikimedia.org/wiki/File:Wikipedia_Workshop_Duisi_--_February_2025.jpg
 visit_hours: '4'
 best_season: all
 open_year_round: true
@@ -298,3 +308,4 @@ image_credit:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:A_guidepost_in_Duisi,_Pankisi_Valley.jpg
+rating: 4.0

@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 85
 image: /assets/photos/khashuri.webp
-gallery: []
+gallery:
+- image: /assets/photos/khashuri-1.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Tower_of_Khashuri.jpg
+- image: /assets/photos/khashuri-2.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Khashuri_Tower_(1).jpg
+- image: /assets/photos/khashuri-3.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Khashuri_Tower_(2).jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -223,3 +238,4 @@ image_credit:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Khashuri_Tower_(3).jpg
+rating: 3.5

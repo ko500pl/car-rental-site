@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 66
 image: /assets/photos/utsera.webp
-gallery: []
+gallery:
+- image: /assets/photos/utsera-1.webp
+  author: Alexkom000
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0
+  source: https://commons.wikimedia.org/wiki/File:2025-06-19_Canyon_of_the_Gharula_River_near_Ghari_7.jpg
+- image: /assets/photos/utsera-2.webp
+  author: Alexkom000
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0
+  source: https://commons.wikimedia.org/wiki/File:2025-06-19_Canyon_of_the_Gharula_River_near_Ghari_6.jpg
+- image: /assets/photos/utsera-3.webp
+  author: Alexkom000
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0
+  source: https://commons.wikimedia.org/wiki/File:2025-06-19_Canyon_of_the_Gharula_River_near_Ghari_8.jpg
 visit_hours: '1.5'
 best_season: may-october
 open_year_round: false
@@ -287,3 +302,4 @@ image_credit:
   license: CC BY 4.0
   license_url: https://creativecommons.org/licenses/by/4.0
   source: https://commons.wikimedia.org/wiki/File:2025-06-19_Canyon_of_the_Gharula_River_near_Ghari_5.jpg
+rating: 3.0

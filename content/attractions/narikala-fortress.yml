@@ -7,7 +7,24 @@ unesco: false
 featured: true
 order: 10
 image: /assets/photos/narikala-fortress.webp
-gallery: []
+gallery:
+- image: /assets/photos/narikala-fortress-1.webp
+  author: Alkhimov Maxim
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0
+  source: https://commons.wikimedia.org/wiki/File:Tbilisi_-_panoramio_-_Alkhimov_Maxim.jpg
+- image: /assets/photos/narikala-fortress-2.webp
+  author: Андрей Мсхалая
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0
+  source: >-
+    https://commons.wikimedia.org/wiki/File:1975%D0%B3._%D0%92%D0%B8%D0%B4_%D1%81_%D0%BA%D1%80%D0%B5%D0%BF%D0%BE%D1%81%D1%82%D0%B8_02_-_panoramio.jpg
+- image: /assets/photos/narikala-fortress-3.webp
+  author: Mostafameraji
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: >-
+    https://commons.wikimedia.org/wiki/File:%E1%83%9C%E1%83%90%E1%83%A0%E1%83%98%E1%83%A7%E1%83%90%E1%83%9A%E1%83%90_Narikala_(Saint_Nicholas_Church-Hdr_Photos)_Tbilisi_05.jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true
@@ -251,3 +268,4 @@ image_credit:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:2014_Tbilisi,_Widoki_z_Twierdzy_Narikala_(46).jpg
+rating: 5.0

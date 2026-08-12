@@ -7,7 +7,12 @@ unesco: false
 featured: false
 order: 25
 image: /assets/photos/freedom-square-old-parliament.webp
-gallery: []
+gallery:
+- image: /assets/photos/freedom-square-old-parliament-1.webp
+  author: Marcin Konsek
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:2014_Tbilisi,_Ratusz_(03).jpg
 visit_hours: '0.5'
 best_season: all
 open_year_round: true
@@ -295,3 +300,4 @@ image_credit:
   license: Public domain
   license_url: ''
   source: https://commons.wikimedia.org/wiki/File:Tbscityhall.jpg
+rating: 3.0

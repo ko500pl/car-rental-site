@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 25
 image: /assets/photos/shkhara-glacier.webp
-gallery: []
+gallery:
+- image: /assets/photos/shkhara-glacier-1.webp
+  author: hr.icio
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Svaneti,_Georgia._2018_106.jpg
+- image: /assets/photos/shkhara-glacier-2.webp
+  author: hr.icio
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Svaneti,_Georgia._2018_108.jpg
+- image: /assets/photos/shkhara-glacier-3.webp
+  author: Boris Kuznetsov
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Shkhara_Mountain,_view_from_Chubedishi_Mountain.jpg
 visit_hours: '6'
 best_season: june-september
 open_year_round: false
@@ -379,3 +394,4 @@ image_credit:
   license: CC BY 2.0
   license_url: https://creativecommons.org/licenses/by/2.0
   source: https://commons.wikimedia.org/wiki/File:Svaneti,_Georgia._2018_107.jpg
+rating: 5.0

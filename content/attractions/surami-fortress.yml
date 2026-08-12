@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 55
 image: /assets/photos/surami-fortress.webp
-gallery: []
+gallery:
+- image: /assets/photos/surami-fortress-1.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:St._George_church_of_Surami_fortress.jpg
+- image: /assets/photos/surami-fortress-2.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Fence_of_Surami_fortress.jpg
+- image: /assets/photos/surami-fortress-3.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:St._Georges_church_of_Surami_fortress.jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -251,3 +266,4 @@ image_credit:
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Surami_fortress_(G.N._2008).jpg
+rating: 3.5

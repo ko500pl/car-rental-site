@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 40
 image: /assets/photos/chiatura-cable-cars.webp
-gallery: []
+gallery:
+- image: /assets/photos/chiatura-cable-cars-1.webp
+  author: Kabelleger, David Gubler
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Chiatura_Cable_Cars_3.jpg
+- image: /assets/photos/chiatura-cable-cars-2.webp
+  author: Kabelleger, David Gubler
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Chiatura_Cable_Cars_2.jpg
+- image: /assets/photos/chiatura-cable-cars-3.webp
+  author: Kabelleger, David Gubler
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Chiatura_Cable_Cars_1.jpg
 visit_hours: '3'
 best_season: all
 open_year_round: true
@@ -335,3 +350,4 @@ image_credit:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Chiatura_Cable_Cars_16.jpg
+rating: 4.0

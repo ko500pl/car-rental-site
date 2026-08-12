@@ -7,7 +7,22 @@ unesco: true
 featured: false
 order: 55
 image: /assets/photos/kolkheti-national-park.webp
-gallery: []
+gallery:
+- image: /assets/photos/kolkheti-national-park-1.webp
+  author: Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:ISS038-E-65736_-_View_of_Earth.jpg
+- image: /assets/photos/kolkheti-national-park-2.webp
+  author: Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:ISS038-E-65738_-_View_of_Earth.jpg
+- image: /assets/photos/kolkheti-national-park-3.webp
+  author: Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:ISS038-E-65737_-_View_of_Earth.jpg
 visit_hours: '3'
 best_season: all
 open_year_round: true
@@ -321,3 +336,4 @@ image_credit:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Kolkheti.jpg
+rating: 5.0

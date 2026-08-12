@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 62
 image: /assets/photos/sno-valley.webp
-gallery: []
+gallery:
+- image: /assets/photos/sno-valley-1.webp
+  author: Markleder
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Defensive_fort.jpg
+- image: /assets/photos/sno-valley-2.webp
+  author: t.przechlewski
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0
+  source: https://commons.wikimedia.org/wiki/File:Sno,_Georgia_-_panoramio_(2).jpg
+- image: /assets/photos/sno-valley-3.webp
+  author: Vyacheslav Argenberg
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0
+  source: https://commons.wikimedia.org/wiki/File:Lake_in_Sno_river_valley,_Caucasian_mountains,_Georgia.jpg
 visit_hours: '1.5'
 best_season: may-october
 open_year_round: true
@@ -266,3 +281,4 @@ image_credit:
   license: CC BY 2.0
   license_url: https://creativecommons.org/licenses/by/2.0
   source: https://commons.wikimedia.org/wiki/File:Watchtower_Tourists.jpg
+rating: 4.0

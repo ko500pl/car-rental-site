@@ -123,6 +123,16 @@ ka:
     back: დაბრუნება
     free: თავისუფალი
     wx_source: 'ამინდი: Open-Meteo'
+    wp_mode: ✥ წერტილებით მარშრუტი
+    wp_hint: დააწკაპუნეთ რუკაზე თანმიმდევრობით — აქ ვარ → აქ მივდივარ → შემდეგ…
+    optimize: ⚡ ოპტიმალური რიგი
+    loc_fallback: GPS ვერ მოიძებნა — დააწკაპუნეთ რუკაზე თქვენი ადგილის მოსანიშნად
+    up: ზემოთ
+    down: ქვემოთ
+    remove: ამოღება
+    point: წერტილი
+    rate_label: Fleet House-ის შეფასება
+    gallery: გალერეა
   rent:
     title: დაიქირავე მანქანა ამ მოგზაურობისთვის
     text: '{cat} სავსებით საკმარისია — გზა {road}. დაჯავშნა ერთი ზარით ხდება.'
@@ -259,6 +269,16 @@ en:
     back: Back
     free: free
     wx_source: 'Weather: Open-Meteo'
+    wp_mode: ✥ Tap-a-route
+    wp_hint: Tap the map in order — I am here → going here → then…
+    optimize: ⚡ Best order
+    loc_fallback: No GPS — tap the map to set your location
+    up: Up
+    down: Down
+    remove: Remove
+    point: Point
+    rate_label: Fleet House rating
+    gallery: Gallery
   rent:
     title: Rent a car for this trip
     text: '{cat} is enough — the road is {road}. Booking takes one call.'
@@ -394,6 +414,16 @@ ru:
     back: Обратно
     free: свободно
     wx_source: 'Погода: Open-Meteo'
+    wp_mode: ✥ Маршрут точками
+    wp_hint: Нажимайте на карту по порядку — я здесь → еду сюда → потом…
+    optimize: ⚡ Лучший порядок
+    loc_fallback: GPS недоступен — нажмите на карту, чтобы отметить себя
+    up: Вверх
+    down: Вниз
+    remove: Убрать
+    point: Точка
+    rate_label: Оценка Fleet House
+    gallery: Галерея
   rent:
     title: Возьмите машину для этой поездки
     text: '{cat} вполне достаточно — дорога {road}. Бронь — один звонок.'
@@ -529,6 +559,16 @@ fa:
     back: بازگشت
     free: آزاد
     wx_source: 'آب‌وهوا: Open-Meteo'
+    wp_mode: ✥ مسیر با نقطه‌ها
+    wp_hint: به‌ترتیب روی نقشه بزنید — اینجا هستم ← به اینجا می‌روم ← سپس…
+    optimize: ⚡ بهترین ترتیب
+    loc_fallback: GPS در دسترس نیست — روی نقشه بزنید تا مکان‌تان ثبت شود
+    up: بالا
+    down: پایین
+    remove: حذف
+    point: نقطه
+    rate_label: امتیاز Fleet House
+    gallery: گالری
   rent:
     title: برای این سفر خودرو اجاره کنید
     text: '{cat} کافی است — جاده {road} است. رزرو با یک تماس انجام می‌شود.'
@@ -663,6 +703,16 @@ he:
     back: חזרה
     free: פנוי
     wx_source: 'מזג אוויר: Open-Meteo'
+    wp_mode: ✥ מסלול בנקודות
+    wp_hint: הקישו על המפה לפי הסדר — אני כאן → נוסע לכאן → ואז…
+    optimize: ⚡ הסדר הטוב ביותר
+    loc_fallback: אין GPS — הקישו על המפה לסימון מיקומכם
+    up: למעלה
+    down: למטה
+    remove: הסרה
+    point: נקודה
+    rate_label: דירוג Fleet House
+    gallery: גלריה
   rent:
     title: שכרו רכב לטיול הזה
     text: '{cat} מספיקה — הדרך {road}. ההזמנה נעשית בשיחה אחת.'
@@ -798,6 +848,16 @@ ar:
     back: العودة
     free: مجاني
     wx_source: 'الطقس: Open-Meteo'
+    wp_mode: ✥ مسار بالنقاط
+    wp_hint: انقر على الخريطة بالترتيب — أنا هنا ← أذهب هنا ← ثم…
+    optimize: ⚡ أفضل ترتيب
+    loc_fallback: لا GPS — انقر على الخريطة لتحديد موقعك
+    up: أعلى
+    down: أسفل
+    remove: إزالة
+    point: نقطة
+    rate_label: تقييم Fleet House
+    gallery: المعرض
   rent:
     title: استأجر سيارة لهذه الرحلة
     text: '{cat} تكفي — الطريق {road}. الحجز بمكالمة واحدة.'

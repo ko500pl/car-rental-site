@@ -7,7 +7,22 @@ unesco: false
 featured: true
 order: 50
 image: /assets/photos/dashbashi-canyon.webp
-gallery: []
+gallery:
+- image: /assets/photos/dashbashi-canyon-1.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Tsalka_reservoir_-_panoramio.jpg
+- image: /assets/photos/dashbashi-canyon-2.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Untitled1_-_panoramio_(1498).jpg
+- image: /assets/photos/dashbashi-canyon-3.webp
+  author: Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:ISS053-E-214893_-_View_of_Earth.jpg
 visit_hours: '3'
 best_season: may-october
 open_year_round: true
@@ -207,3 +222,4 @@ image_credit:
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Tbeti,_Georgia_-_panoramio.jpg
+rating: 5.0

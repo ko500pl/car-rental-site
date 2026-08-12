@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 35
 image: /assets/photos/akhali-shuamta.webp
-gallery: []
+gallery:
+- image: /assets/photos/akhali-shuamta-1.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Telavi_(G.N._2012).jpg
+- image: /assets/photos/akhali-shuamta-2.webp
+  author: Abramia Giorgi
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Ruins_of_Ikalto_Academy.jpg
+- image: /assets/photos/akhali-shuamta-3.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:View_to_shuamta_-_panoramio.jpg
 visit_hours: '0.5'
 best_season: all
 open_year_round: true
@@ -260,3 +275,4 @@ image_credit:
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Hunters_house_-_panoramio.jpg
+rating: 3.0

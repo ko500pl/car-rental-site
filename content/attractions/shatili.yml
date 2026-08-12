@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 90
 image: /assets/photos/shatili.webp
-gallery: []
+gallery:
+- image: /assets/photos/shatili-1.webp
+  author: Jelger Groeneveld
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Shatili,_Khevsureti,_Georgia.jpg
+- image: /assets/photos/shatili-2.webp
+  author: Jelger Groeneveld
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Shatili_-_50564648567.jpg
+- image: /assets/photos/shatili-3.webp
+  author: Jelger Groeneveld
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Shatili,_Khevsureti_-_50538064277.jpg
 visit_hours: '4'
 best_season: june-september
 open_year_round: false
@@ -243,3 +258,4 @@ image_credit:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Shatili_2016.jpg
+rating: 4.0

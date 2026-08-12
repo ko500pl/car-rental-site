@@ -7,7 +7,19 @@ unesco: false
 featured: false
 order: 65
 image: /assets/photos/poti.webp
-gallery: []
+gallery:
+- image: /assets/photos/poti-1.webp
+  author: Sarah Murray from South Bend, IN, USA
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Poti_(14520503879).jpg
+- image: /assets/photos/poti-2.webp
+  author: >-
+    I would appreciate being notified if you use my work outside Wikimedia. More of my work can be found
+    in my personal gall
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Poti,_autobusov%C3%A9_n%C3%A1dra%C5%BE%C3%AD.jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true
@@ -362,3 +374,4 @@ image_credit:
   license: CC BY-SA 2.0
   license_url: https://creativecommons.org/licenses/by-sa/2.0
   source: https://commons.wikimedia.org/wiki/File:Cathedral_in_Poti.jpg
+rating: 4.0

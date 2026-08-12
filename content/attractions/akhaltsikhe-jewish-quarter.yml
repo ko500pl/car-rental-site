@@ -7,7 +7,23 @@ unesco: false
 featured: false
 order: 72
 image: /assets/photos/akhaltsikhe-jewish-quarter.webp
-gallery: []
+gallery:
+- image: /assets/photos/akhaltsikhe-jewish-quarter-1.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: >-
+    https://commons.wikimedia.org/wiki/File:%E1%83%94%E1%83%99%E1%83%9A%E1%83%94%E1%83%A1%E1%83%98%E1%83%90_-_panoramio.jpg
+- image: /assets/photos/akhaltsikhe-jewish-quarter-2.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Akhaltsikhe,_Georgia_-_panoramio_(2).jpg
+- image: /assets/photos/akhaltsikhe-jewish-quarter-3.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Rabati,_Akhaltsikhe,_Georgia_-_panoramio_(1).jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -269,3 +285,4 @@ image_credit:
   license: CC BY-SA 2.0
   license_url: https://creativecommons.org/licenses/by-sa/2.0
   source: https://commons.wikimedia.org/wiki/File:View_over_the_town,_akhaltsikhe.jpg
+rating: 3.5

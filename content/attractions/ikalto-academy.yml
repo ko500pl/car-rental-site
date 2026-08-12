@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 60
 image: /assets/photos/ikalto-academy.webp
-gallery: []
+gallery:
+- image: /assets/photos/ikalto-academy-1.webp
+  author: Daibo Taku
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0
+  source: https://commons.wikimedia.org/wiki/File:Zemo_Khodasheni-Alaverdi-Kvemo_Alvani,_Georgia_-_panoramio_(1).jpg
+- image: /assets/photos/ikalto-academy-2.webp
+  author: Daibo Taku
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0
+  source: https://commons.wikimedia.org/wiki/File:Zemo_Khodasheni-Alaverdi-Kvemo_Alvani,_Georgia_-_panoramio_(2).jpg
+- image: /assets/photos/ikalto-academy-3.webp
+  author: Daibo Taku
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0
+  source: https://commons.wikimedia.org/wiki/File:Zemo_Khodasheni-Alaverdi-Kvemo_Alvani,_Georgia_-_panoramio_(3).jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -214,3 +229,4 @@ image_credit:
   license: CC BY 3.0
   license_url: https://creativecommons.org/licenses/by/3.0
   source: https://commons.wikimedia.org/wiki/File:Ozhio,_Georgia_-_panoramio_(2).jpg
+rating: 3.5

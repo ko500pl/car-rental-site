@@ -82,6 +82,14 @@ ka:
     see_car: ავტომობილის გვერდი
     roughest: ყველაზე რთული გზა მარშრუტზე
     photo_by: ფოტო
+    stay: ღამის გასათევი
+    budget: ბიუჯეტი
+    b_low: ეკონომიური
+    b_mid: საშუალო
+    b_high: პრემიუმი
+    stay_src: 'სასტუმროების სია: © OpenStreetMap contributors'
+    summary_t: შეჯამება
+    sum_text: '{days}-დღიანი მარშრუტი: {stops} გაჩერება, {km} კმ, {drive} საჭესთან. სტილი — {style}.'
   starts:
   - თბილისი, ქალაქის ცენტრი
   - თბილისის აეროპორტი (TBS)
@@ -195,6 +203,14 @@ en:
     see_car: Car page
     roughest: Roughest road on the route
     photo_by: Photo
+    stay: Where to stay
+    budget: Budget
+    b_low: Budget
+    b_mid: Mid-range
+    b_high: Upper
+    stay_src: 'Accommodation list: © OpenStreetMap contributors'
+    summary_t: Summary
+    sum_text: 'A {days}-day route: {stops} stops, {km} km, {drive} at the wheel. Style — {style}.'
   starts:
   - Tbilisi, city centre
   - Tbilisi Airport (TBS)
@@ -310,6 +326,14 @@ ru:
     see_car: Страница машины
     roughest: Самая сложная дорога на маршруте
     photo_by: Фото
+    stay: Где ночевать
+    budget: Бюджет
+    b_low: Эконом
+    b_mid: Средний
+    b_high: Премиум
+    stay_src: 'Список жилья: © участники OpenStreetMap'
+    summary_t: Итог
+    sum_text: 'Маршрут на {days} дн.: {stops} остановок, {km} км, {drive} за рулём. Стиль — {style}.'
   starts:
   - Тбилиси, центр города
   - Аэропорт Тбилиси (TBS)
@@ -429,6 +453,14 @@ fa:
     see_car: صفحهٔ خودرو
     roughest: سخت‌ترین جادهٔ مسیر
     photo_by: عکس
+    stay: محل اقامت
+    budget: بودجه
+    b_low: اقتصادی
+    b_mid: متوسط
+    b_high: لوکس
+    stay_src: 'فهرست اقامتگاه‌ها: © مشارکت‌کنندگان OpenStreetMap'
+    summary_t: خلاصه
+    sum_text: 'مسیر {days}روزه: {stops} توقف، {km} کیلومتر، {drive} رانندگی. سبک — {style}.'
   styles:
   - key: classic
     name: کلاسیک
@@ -542,6 +574,14 @@ he:
     see_car: עמוד הרכב
     roughest: הדרך הקשה ביותר במסלול
     photo_by: צילום
+    stay: איפה לישון
+    budget: תקציב
+    b_low: חסכוני
+    b_mid: בינוני
+    b_high: פרימיום
+    stay_src: 'רשימת לינה: © תורמי OpenStreetMap'
+    summary_t: סיכום
+    sum_text: 'מסלול של {days} ימים: {stops} עצירות, {km} ק״מ, {drive} נהיגה. סגנון — {style}.'
   styles:
   - key: classic
     name: הקלאסיקה
@@ -655,6 +695,14 @@ ar:
     see_car: صفحة السيارة
     roughest: أصعب طريق في المسار
     photo_by: صورة
+    stay: أين تبيت
+    budget: الميزانية
+    b_low: اقتصادي
+    b_mid: متوسط
+    b_high: فاخر
+    stay_src: 'قائمة الإقامة: © مساهمو OpenStreetMap'
+    summary_t: الملخص
+    sum_text: 'مسار {days} أيام: {stops} محطة، {km} كم، {drive} قيادة. النمط — {style}.'
   styles:
   - key: classic
     name: الكلاسيكيات

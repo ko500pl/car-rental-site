@@ -479,7 +479,7 @@ def header_html(lang, current):
 <nav class="main" aria-label="{E(u['ui']['nav_label'])}"><ul>{lis}</ul></nav>
 <span class="head-tel"><a dir="ltr" href="tel:{SITE['phone_e164']}">{E(SITE['phone'])}</a></span>
 <div class="langs" role="group" aria-label="{E(u['ui']['lang_label'])}">{langs}</div>
-{'<div id="authbox" class="authbox"></div>' if AUTH.get("enabled") else ""}
+<div id="authbox" class="authbox"></div>
 </div></header>"""
 
 
@@ -522,7 +522,7 @@ def shell(lang, current, head, body, depth, tail=""):
     fs = LANG_FONT_STACK.get(lang, "")
     style = (f'<style>:root{{--font:{fs}{DESIGN["font_family"]}}}</style>\n' if fs else "")
     fb = ""
-    if AUTH.get("enabled") and AUTH.get("apiKey"):
+    if True:
         cfg = {k: AUTH.get(k, "") for k in ("apiKey", "authDomain", "projectId",
                                             "storageBucket", "messagingSenderId", "appId")}
         cfg["accountUrl"] = page_url(lang, "account", False)
@@ -788,6 +788,7 @@ def render_post(lang, slug, post):
 TRAVEL = load("content/settings/travel.yml")
 PLACES = load("content/settings/places.yml")["places"]
 AUTH = load("content/settings/auth.yml") if os.path.exists("content/settings/auth.yml") else {}
+HOTELS = (load("content/settings/hotels.yml") if os.path.exists("content/settings/hotels.yml") else {"towns": {}})["towns"]
 SLOW_TOWNS = {"stepantsminda", "mestia-town", "khulo", "oni", "bakuriani",
               "ambrolauri", "akhalkalaki", "tkibuli", "sachkhere", "chiatura"}
 TB = (41.7151, 44.8271)          # თბილისი — მარშრუტების საწყისი წერტილი
@@ -812,6 +813,41 @@ def tu(lang, key):
 
 def car_cat_label(cat, lang):
     return cat_label({"economy": "economy", "suv": "suv", "offroad": "offroad"}[cat], lang)
+
+
+def stars_html(r, lang, small=False):
+    """სარედაქციო შეფასება 1–5 — ვიზუალური ვარსკვლავები + რიცხვი."""
+    try:
+        r = float(r)
+    except (TypeError, ValueError):
+        return ""
+    if r <= 0:
+        return ""
+    full = int(r)
+    half = 1 if r - full >= 0.5 else 0
+    stars = "★" * full + ("½" if half else "") + "☆" * (5 - full - half)
+    lbl = te(lang, "rate_label")
+    cls = "stars sm" if small else "stars"
+    return (f'<span class="{cls}" title="{E(lbl)}: {r:g}/5" aria-label="{E(lbl)}: {r:g}/5">'
+            f'<i>{stars}</i><b>{r:g}</b></span>')
+
+
+def gallery_html(a, lang):
+    g = a.get("gallery") or []
+    if not g:
+        return ""
+    cap = te(lang, "photo_by")
+    figs = "".join(
+        f'<figure class="gph"><img src="{E(x["image"])}" alt="{E(a[lang]["name"])} — {i+1}" '
+        f'loading="lazy" decoding="async">'
+        f'<figcaption>{E(cap)}: '
+        + (f'<a href="{E(x["source"])}" rel="nofollow noopener" target="_blank">{E(x["author"])}</a>'
+           if x.get("source") else E(x["author"]))
+        + (f' · <a href="{E(x["license_url"])}" rel="license nofollow noopener" target="_blank">'
+           f'{E(x["license"])}</a>' if x.get("license_url") else f' · {E(x["license"])}' if x.get("license") else "")
+        + '</figcaption></figure>'
+        for i, x in enumerate(g))
+    return f'<div class="gallery"><h2 class="vh">{E(te(lang, "gallery"))}</h2>{figs}</div>'
 
 
 def photo_html(a, lang, cls="photo"):
@@ -931,7 +967,7 @@ def explorer_points(lang):
             "d": f'{a["distance_tbilisi_km"]} {u["km"]} · {a["drive_time_tbilisi"]}',
             "u": attr_url(lang, s, False), "f": f, "v": v,
             "un": bool(a["unesco"]), "fe": bool(a["featured"]),
-            "img": a.get("image") or "",
+            "img": a.get("image") or "", "r": a.get("rating") or 0,
         })
     pts.sort(key=lambda p: p["n"])
     return pts
@@ -962,6 +998,8 @@ def attr_detail(lang, slug, a):
         "gn": REGIONS[a["region"]][lang]["name"], "unesco": bool(a["unesco"]),
         "u": attr_url(lang, slug, False),
         "short": L["short"],
+        "r": a.get("rating") or 0,
+        "gal": [x["image"] for x in (a.get("gallery") or [])[:3]],
         "facts": [
             [u["visit_time"], f'{a["visit_hours"]} {u["hrs"]}'],
             [u["from_tbilisi"], f'{a["distance_tbilisi_km"]} {u["km"]} · {a["drive_time_tbilisi"]}'],
@@ -1030,6 +1068,7 @@ def explorer_block(lang, depth, height="72vh", hero=False):
         <div class="expfindrow">
           <button id="expgeo" class="btn sm ghost" type="button">◎ {E(x["my_loc"])}</button>
           <button id="expdraw" class="btn sm ghost" type="button">✎ {E(x["draw"])}</button>
+          <button id="expwp" class="btn sm ghost" type="button">{E(x["wp_mode"])}</button>
         </div>
         <div class="expmodes">
           <label class="tog sm"><input type="radio" name="expmode" value="time" checked>
@@ -1141,7 +1180,7 @@ def render_region(lang, key, r):
         f'<div class="card">'
         + (f'<a class="card-img" href="{attr_url(lang, s, False)}">'
            f'<img src="{E(a["image"])}" alt="" loading="lazy"></a>' if a.get("image") else "")
-        + f'<span class="tag">{E(tl(lang,"type",a["type"]))}</span>'
+        + f'<span class="tag">{E(tl(lang,"type",a["type"]))}</span>{stars_html(a.get("rating"), lang, True)}'
         f'<h3><a href="{attr_url(lang, s, False)}">{E(a[lang]["name"])}</a></h3>'
         f'<p>{E(a[lang]["short"])}</p><ul>'
         f'<li>{E(tu(lang,"visit_time"))}: {E(a["visit_hours"])} {E(tu(lang,"hrs"))}</li>'
@@ -1241,12 +1280,14 @@ def render_attraction(lang, slug, a):
                                f'{a["distance_tbilisi_km"]} {tu(lang,"km")}, '
                                f'{a["drive_time_tbilisi"]}. {L["body"]}')[:178]
     body = (
-        f'<section class="page-head"><div class="wrap"><div class="tagrow">{badge}</div>'
+        f'<section class="page-head"><div class="wrap"><div class="tagrow">{badge}'
+        f'{stars_html(a.get("rating"), lang)}</div>'
         f'<h1>{E(L["name"])}</h1>'
         f'<p class="lead">{E(L["short"])}</p></div></section>'
         f'<section class="sec"><div class="wrap">{photo_html(a, lang, "photo hero-photo")}'
         f'{attr_facts(a, lang)}'
-        f'<div class="attr-grid"><div class="article">{render_md(L["body"], lang)}</div>'
+        f'<div class="attr-grid"><div class="article">{render_md(L["body"], lang)}'
+        f'{gallery_html(a, lang)}</div>'
         f'{rent_box(lang, a)}</div></div></section>'
         f'<section class="sec alt"><div class="wrap"><h2>{E(tu(lang,"tip_title"))}</h2>'
         f'<div class="note">{render_md(L["tip"], lang)}</div>'
@@ -1456,6 +1497,9 @@ def planner_data(lang):
                   for t in sorted({a["type"] for a in ATTRACTIONS.values()})],
         "car": {c: cat_label(c, lang) for c in ("economy", "suv", "offroad")},
         "styles": P.get("styles", []),
+        "hotels": HOTELS,
+        "htowns": [{"k": p["key"], "la": p["lat"], "lo": p["lon"]}
+                   for p in PLACES if p["kind"] == "city"],
         "roads": {k: tl(lang, "road", k) for k in ("paved", "mostly_paved", "gravel", "4x4_only")},
         "fleet": fleet_for_planner(lang),
         "starts": starts,
@@ -1497,6 +1541,10 @@ def render_planner(lang):
 <option value="offroad">{E(cat_label('offroad', lang))}</option>
 </select></div>
 <div class="pf"><label for="pace">{E(t['pace'])}</label><select id="pace">{opt_pace()}</select></div>
+<div class="pf"><label for="hbudget">{E(t['stay'])} · {E(t['budget'])}</label><select id="hbudget">
+<option value="">—</option><option value="low">{E(t['b_low'])}</option>
+<option value="mid" selected>{E(t['b_mid'])}</option><option value="high">{E(t['b_high'])}</option>
+</select></div>
 <div class="pf pf-check"><label><input type="checkbox" id="back" checked> {E(t['return'])}</label></div>
 <div class="pf pf-wide"><label>{E(t['style'])}</label><div id="styles" class="chips styles"></div></div>
 <div class="pf pf-wide"><label>{E(t['regions'])} <span id="regions-count" class="cnt"></span>

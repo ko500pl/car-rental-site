@@ -7,7 +7,22 @@ unesco: false
 featured: true
 order: 20
 image: /assets/photos/rabati-castle.webp
-gallery: []
+gallery:
+- image: /assets/photos/rabati-castle-1.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Untitled1_-_panoramio_(1494).jpg
+- image: /assets/photos/rabati-castle-2.webp
+  author: t.przechlewski
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0
+  source: https://commons.wikimedia.org/wiki/File:Unnamed2_-_panoramio_(2124).jpg
+- image: /assets/photos/rabati-castle-3.webp
+  author: Soghomon Matevosyan
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Akhltskha_Rabat_castle_(15).jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true
@@ -237,3 +252,4 @@ image_credit:
   license: CC BY 3.0
   license_url: https://creativecommons.org/licenses/by/3.0
   source: https://commons.wikimedia.org/wiki/File:Unnamed2_-_panoramio_(2122).jpg
+rating: 5.0

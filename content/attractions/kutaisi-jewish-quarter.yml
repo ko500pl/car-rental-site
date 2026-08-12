@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 75
 image: /assets/photos/kutaisi-jewish-quarter.webp
-gallery: []
+gallery:
+- image: /assets/photos/kutaisi-jewish-quarter-1.webp
+  author: Marcin Konsek
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:2014_Kutaisi,_Cerkiew_%C5%9Awi%C4%99tego_Jerzego_(02).jpg
+- image: /assets/photos/kutaisi-jewish-quarter-2.webp
+  author: Marcin Konsek
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:2014_Kutaisi,_Cerkiew_%C5%9Awi%C4%99tego_Jerzego_(04).jpg
+- image: /assets/photos/kutaisi-jewish-quarter-3.webp
+  author: Marcin Konsek
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:2014_Kutaisi,_Stary_dom,_ulica_Newport_29_(02).jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -283,3 +298,4 @@ image_credit:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:2014_Kutaisi,_Cerkiew_%C5%9Awi%C4%99tego_Jerzego_(01).jpg
+rating: 3.5

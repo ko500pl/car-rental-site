@@ -207,9 +207,36 @@
     return { days: out, dropped: dropped };
   }
 
+  /* მიმდინარე გეგმის მდგომარეობა — რედაქტირებისთვის */
+  var CUR = { route: null, start: null, days: 3, budget: 480, back: true, pool: [] };
+
   function plan(all, start, days, budgetMin, back) {
-    return splitDays(buildRoute(all, start, days, budgetMin, back), start, days, budgetMin, back);
+    var route = buildRoute(all, start, days, budgetMin, back);
+    CUR = { route: route, start: start, days: days, budget: budgetMin, back: back, pool: all };
+    return splitDays(route, start, days, budgetMin, back);
   }
+  function replan() {
+    render(splitDays(CUR.route, CUR.start, CUR.days, CUR.budget, CUR.back), CUR.start, CUR.pool);
+  }
+  function editRemove(slug) {
+    CUR.route = CUR.route.filter(function (a) { return a.s !== slug; });
+    replan();
+  }
+  function editMove(slug, dir) {
+    var i = CUR.route.findIndex(function (a) { return a.s === slug; });
+    var j = i + dir;
+    if (i < 0 || j < 0 || j >= CUR.route.length) return;
+    var t = CUR.route[i]; CUR.route[i] = CUR.route[j]; CUR.route[j] = t;
+    replan();
+  }
+  function editAdd(slug, afterSlug) {
+    var a = D.a.find(function (x) { return x.s === slug; });
+    if (!a || CUR.route.some(function (x) { return x.s === slug; })) return;
+    var i = afterSlug ? CUR.route.findIndex(function (x) { return x.s === afterSlug; }) : -1;
+    if (i >= 0) CUR.route.splice(i, 0, a); else CUR.route.push(a);
+    replan();
+  }
+  window._fhEdit = { rm: editRemove, mv: editMove, add: editAdd };
 
   /* გზაში გასაჩერებელი ადგილები: ობიექტები, რომლებიც ახლოსაა
      A→B მონაკვეთთან და გეგმაში არ არიან */
@@ -245,6 +272,14 @@
       f(T.driving_time, fmtH(totDrive)) + f(T.visiting_time, fmtH(totVisit)) +
       f(T.need_car, D.car[maxCar]) + "</dl>";
 
+    var styleName = "";
+    (D.styles || []).forEach(function (st) { if (st.key === curStyle) styleName = st.name; });
+    if (T.sum_text) {
+      h += '<p class="psum">' + esc(T.sum_text
+        .replace("{days}", res.days.length).replace("{stops}", stops)
+        .replace("{km}", Math.round(totKm)).replace("{drive}", fmtH(totDrive))
+        .replace("{style}", styleName)) + "</p>";
+    }
     h += carCard(res, maxCar);
 
     h += '<div class="cta" style="margin:0 0 26px"><h2>' + T.book_cta + "</h2><p>" + T.book_text +
@@ -268,13 +303,20 @@
              '<div class="pstop-t"><b><a href="' + it.a.u + '">' + esc(it.a.n) + "</a></b>" +
              '<span class="pmeta">' + T.arrive + " " + clock(it.arrive) + " · " + T.visit + " " +
              fmtH(it.visit) + " · " + T.depart + " " + clock(it.depart) + "</span>" +
-             '<span class="pshort">' + esc(it.a.sh) + "</span></div></div>";
+             '<span class="pshort">' + esc(it.a.sh) + "</span></div>" +
+             '<span class="pstop-b">' +
+             '<button type="button" data-pmv="-1" data-s="' + esc(it.a.s) + '" title="↑">↑</button>' +
+             '<button type="button" data-pmv="1" data-s="' + esc(it.a.s) + '" title="↓">↓</button>' +
+             '<button type="button" data-prm="' + esc(it.a.s) + '" title="✕">✕</button>' +
+             '</span></div>';
         var opt = alongTheWay(prev, it.a, planSlugs(res), pool);
         if (opt.length) {
           h += '<div class="popt">' + T.optional + ": " +
                opt.map(function (o) {
                  return '<a href="' + o.p.u + '">' + esc(o.p.n) + "</a> <i>+" +
-                        fmtH(leg(prev, o.p).min * 0.35 + o.p.h * 60) + "</i>";
+                        fmtH(leg(prev, o.p).min * 0.35 + o.p.h * 60) + "</i>" +
+                        ' <button type="button" class="paddbtn" data-padd="' + esc(o.p.s) +
+                        '" data-after="' + esc(it.a.s) + '">＋</button>';
                }).join(" · ") + "</div>";
         }
         h += "</li>";
@@ -288,7 +330,11 @@
       h += "</ol>";
       var lastA = d.items.slice(-1)[0].a;
       wxDays.push({ i: di, la: d.items[0].a.lat, lo: d.items[0].a.lon });
-      if (di < res.days.length - 1) h += '<div class="pnight">' + T.overnight + ": " + esc(nearestTown(lastA).c) + "</div>";
+      if (di < res.days.length - 1) {
+        var town = nearestTown(lastA);
+        h += '<div class="pnight">' + T.overnight + ": " + esc(town.c) +
+             hotelsHtml(lastA) + "</div>";
+      }
       h += "</div>";
     });
     if (res.dropped.length) h += '<div class="note">' + T.too_far + "</div>";
@@ -297,6 +343,15 @@
             esc(T.save_trip || "Save") + "</button>" : "") +
          '<button class="btn ghost" type="button" onclick="window.print()">' + T.print + "</button></p>";
     box.innerHTML = h;
+    box.querySelectorAll("[data-prm]").forEach(function (b) {
+      b.onclick = function () { editRemove(b.dataset.prm); };
+    });
+    box.querySelectorAll("[data-pmv]").forEach(function (b) {
+      b.onclick = function () { editMove(b.dataset.s, parseInt(b.dataset.pmv, 10)); };
+    });
+    box.querySelectorAll("[data-padd]").forEach(function (b) {
+      b.onclick = function () { editAdd(b.dataset.padd, b.dataset.after); };
+    });
     var sv = document.getElementById("savetrip");
     if (sv) sv.onclick = function () {
       var stops = [];
@@ -375,6 +430,27 @@
       '<a class="btn sm" href="' + esc(r.car.u) + '">' + esc(T.see_car) + '</a></div></div>';
   }
 
+
+  /* ── სასტუმროები (© OpenStreetMap contributors) ────────────────────── */
+  function hotelsHtml(a) {
+    var H = D.hotels || {}, TW = D.htowns || [];
+    if (!TW.length) return "";
+    var best = null, bd = Infinity;
+    TW.forEach(function (t) {
+      var d = hav({ lat: a.lat, lon: a.lon }, { lat: t.la, lon: t.lo });
+      if (d < bd) { bd = d; best = t; }
+    });
+    if (!best || bd > 45) return "";
+    var budget = (EL("hbudget") || {}).value || "";
+    var rows = (H[best.k] || []).filter(function (r) { return !budget || r.b === budget; }).slice(0, 3);
+    if (!rows.length) return "";
+    return '<span class="pstay">' + T.stay + ': ' + rows.map(function (r) {
+      return '<a href="https://www.openstreetmap.org/?mlat=' + r.la + '&mlon=' + r.lo +
+        '#map=17/' + r.la + '/' + r.lo + '" rel="nofollow noopener" target="_blank">' +
+        esc(r.n) + '</a>' + (r.st ? ' ' + r.st + '★' : '');
+    }).join(' · ') + '<small> · ' + esc(T.stay_src) + '</small></span>';
+  }
+
   function f(k, v) { return "<div><dt class=\"k\">" + k + '</dt><dd class="v">' + v + "</dd></div>"; }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) {
     return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
@@ -412,6 +488,18 @@
       if (d.back) pts.push([start.lat, start.lon]);
       var pl = L.polyline(pts, { color: col, weight: 4, opacity: 0.8 }).addTo(map);
       layers.push(pl);
+    });
+    var inPlan = {};
+    days.forEach(function (d) { d.items.forEach(function (it) { inPlan[it.a.s] = 1; }); });
+    (CUR.pool || []).forEach(function (a) {
+      if (inPlan[a.s]) return;
+      var dm = L.circleMarker([a.lat, a.lon], { radius: 5, color: "#fff", weight: 1,
+        fillColor: "#5b6c7d", fillOpacity: .5 }).addTo(map);
+      dm.bindPopup('<b>' + esc(a.n) + '</b><br>' +
+        '<button type="button" class="btn sm" onclick="window._fhEdit.add(\'' + a.s +
+        '\')">＋ ' + (T.add_stop || '+') + '</button>');
+      dm.bindTooltip(a.n);
+      layers.push(dm);
     });
     if (all.length > 1) map.fitBounds(L.latLngBounds(all).pad(0.15));
   }
@@ -495,6 +583,8 @@
       { maxZoom: 17, attribution: "&copy; OpenStreetMap" }).addTo(map);
     map.on("click", function () { map.scrollWheelZoom.enable(); });
     EL("build").onclick = run;
+    var hb = EL("hbudget");
+    if (hb) hb.onchange = function () { if (CUR.route) replan(); };
     EL("reset").onclick = function () {
       document.querySelectorAll(".chip.on").forEach(function (c) { c.classList.remove("on"); });
       updateChipLabel("regions"); updateChipLabel("interests");

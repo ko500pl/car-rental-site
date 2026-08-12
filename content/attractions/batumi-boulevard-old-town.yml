@@ -7,7 +7,22 @@ unesco: false
 featured: true
 order: 10
 image: /assets/photos/batumi-boulevard-old-town.webp
-gallery: []
+gallery:
+- image: /assets/photos/batumi-boulevard-old-town-1.webp
+  author: Greg McMullen from Vancouver, BC, Canada
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Batumi_(3001).jpg
+- image: /assets/photos/batumi-boulevard-old-town-2.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Untitled1_-_panoramio_(112).jpg
+- image: /assets/photos/batumi-boulevard-old-town-3.webp
+  author: Soghomon Matevosyan
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Batumi_Panorama_(24).jpg
 visit_hours: '6'
 best_season: all
 open_year_round: true
@@ -230,3 +245,4 @@ image_credit:
   license_url: https://creativecommons.org/licenses/by/3.0
   source: >-
     https://commons.wikimedia.org/wiki/File:Georgia_Batumi_-%E1%83%A1%E1%83%90%E1%83%A5%E1%83%90%E1%83%A0%E1%83%97%E1%83%95%E1%83%94%E1%83%9A%E1%83%9D,_%E1%83%91%E1%83%90%E1%83%97%E1%83%A3%E1%83%9B%E1%83%98-_%5E%C2%A9Abdullah_Kiyga_-_panoramio_(2).jpg
+rating: 5.0

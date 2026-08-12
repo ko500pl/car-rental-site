@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 30
 image: /assets/photos/ujarma-fortress.webp
-gallery: []
+gallery:
+- image: /assets/photos/ujarma-fortress-1.webp
+  author: Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:ISS045-E-174965_-_View_of_Earth.jpg
+- image: /assets/photos/ujarma-fortress-2.webp
+  author: Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:ISS045-E-174964_-_View_of_Earth.jpg
+- image: /assets/photos/ujarma-fortress-3.webp
+  author: GuramGraphy
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Khashmi,_Trinity_of_Katsareti.jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -298,3 +313,4 @@ image_credit:
   license: Public domain
   license_url: ''
   source: https://commons.wikimedia.org/wiki/File:ISS045-E-174966_-_View_of_Earth.jpg
+rating: 3.5

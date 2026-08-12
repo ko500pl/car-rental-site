@@ -7,7 +7,17 @@ unesco: false
 featured: false
 order: 55
 image: /assets/photos/tsughrughasheni-church.webp
-gallery: []
+gallery:
+- image: /assets/photos/tsughrughasheni-church-1.webp
+  author: ILIA
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Tsughrughasheni_Church,_detail7.jpg
+- image: /assets/photos/tsughrughasheni-church-2.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Door_of_Tsughrughasheni.jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -225,3 +235,4 @@ image_credit:
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Tsughrughasheni.JPG
+rating: 3.5

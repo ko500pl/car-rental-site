@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 80
 image: /assets/photos/chronicle-of-georgia.webp
-gallery: []
+gallery:
+- image: /assets/photos/chronicle-of-georgia-1.webp
+  author: Jonathan Cardy
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:March_2013_Tbilisi_panorama_01.jpg
+- image: /assets/photos/chronicle-of-georgia-2.webp
+  author: Tiia Monto
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Tbilisi_Sea_2.jpg
+- image: /assets/photos/chronicle-of-georgia-3.webp
+  author: Tiia Monto
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Tbilisi_-_view_10.jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -229,3 +244,4 @@ image_credit:
   license: CC BY 2.0
   license_url: https://creativecommons.org/licenses/by/2.0
   source: https://commons.wikimedia.org/wiki/File:Litter_at_Tbilisi_Sea_Reservoir.jpg
+rating: 3.0

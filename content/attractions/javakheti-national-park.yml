@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 52
 image: /assets/photos/javakheti-national-park.webp
-gallery: []
+gallery:
+- image: /assets/photos/javakheti-national-park-1.webp
+  author: patri_arch
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0
+  source: https://commons.wikimedia.org/wiki/File:Surb_Khalaja,_Ninotsminda,_Georgia_-_panoramio.jpg
+- image: /assets/photos/javakheti-national-park-2.webp
+  author: patri_arch
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0
+  source: https://commons.wikimedia.org/wiki/File:Surb_Khalaja,_Ninotsminda,_Georgia_-_panoramio_(1).jpg
+- image: /assets/photos/javakheti-national-park-3.webp
+  author: patri_arch
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0
+  source: https://commons.wikimedia.org/wiki/File:Unnamed_Road,_Ninotsminda,_Georgia_-_panoramio.jpg
 visit_hours: '4'
 best_season: may-october
 open_year_round: false
@@ -295,3 +310,4 @@ image_credit:
   license: CC BY 3.0
   license_url: https://creativecommons.org/licenses/by/3.0
   source: https://commons.wikimedia.org/wiki/File:Rolling_stones_-_panoramio.jpg
+rating: 4.0

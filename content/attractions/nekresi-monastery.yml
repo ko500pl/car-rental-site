@@ -7,7 +7,24 @@ unesco: false
 featured: false
 order: 70
 image: /assets/photos/nekresi-monastery.webp
-gallery: []
+gallery:
+- image: /assets/photos/nekresi-monastery-1.webp
+  author: levan varamishvili
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0
+  source: https://commons.wikimedia.org/wiki/File:Kakheti,_Georgia_-_panoramio_(2).jpg
+- image: /assets/photos/nekresi-monastery-2.webp
+  author: Adam Jones from Kelowna, BC, Canada
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: >-
+    https://commons.wikimedia.org/wiki/File:View_through_Window_-_Nekresi_Monastery_-_Near_Telavi_-_Georgia_(18420550142).jpg
+- image: /assets/photos/nekresi-monastery-3.webp
+  author: Adam Jones from Kelowna, BC, Canada
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: >-
+    https://commons.wikimedia.org/wiki/File:Panorama_from_Nekresi_Monastery_-_Near_Telavi_-_Georgia_-_01_(18236991598).jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true
@@ -215,3 +232,4 @@ image_credit:
   license: CC BY 3.0
   license_url: https://creativecommons.org/licenses/by/3.0
   source: https://commons.wikimedia.org/wiki/File:Kakheti,_Georgia_-_panoramio_(1).jpg
+rating: 4.0

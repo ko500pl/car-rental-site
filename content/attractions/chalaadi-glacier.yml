@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 30
 image: /assets/photos/chalaadi-glacier.webp
-gallery: []
+gallery:
+- image: /assets/photos/chalaadi-glacier-1.webp
+  author: Alex Mestiashvili
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:View_from_Mt.Banguriani_-_panoramio.jpg
+- image: /assets/photos/chalaadi-glacier-2.webp
+  author: Alex Mestiashvili
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:The_view_to_Mestia_from_Mt._Banguriani_-_panoramio.jpg
+- image: /assets/photos/chalaadi-glacier-3.webp
+  author: Alen Ištoković
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0
+  source: https://commons.wikimedia.org/wiki/File:Bridge_to_the_Chaladi_glacier_-_panoramio.jpg
 visit_hours: '4'
 best_season: june-september
 open_year_round: false
@@ -243,3 +258,4 @@ image_credit:
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Z%C3%A1v%C4%9Br_doliny_pod_ledovcem_Murkvami_-_panoramio.jpg
+rating: 4.5

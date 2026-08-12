@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 60
 image: /assets/photos/barakoni-church.webp
-gallery: []
+gallery:
+- image: /assets/photos/barakoni-church-1.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Barakoni_church_(G.N._2009).jpg
+- image: /assets/photos/barakoni-church-2.webp
+  author: Yasuhiro Kojima
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Lukhuni_river.JPG
+- image: /assets/photos/barakoni-church-3.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:%22Minda%22_fortress_-_panoramio.jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -271,3 +286,4 @@ image_credit:
   license: Public domain
   license_url: ''
   source: https://commons.wikimedia.org/wiki/File:Khodiskari_bridge._%27%27Souan%C3%A9tie_libre%27%27._1875_.jpg
+rating: 3.5

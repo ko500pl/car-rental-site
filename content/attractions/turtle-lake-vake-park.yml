@@ -7,7 +7,17 @@ unesco: false
 featured: false
 order: 70
 image: /assets/photos/turtle-lake-vake-park.webp
-gallery: []
+gallery:
+- image: /assets/photos/turtle-lake-vake-park-1.webp
+  author: Agostino Fedeli from Milano, Italy
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Parco_Vake.jpg
+- image: /assets/photos/turtle-lake-vake-park-2.webp
+  author: Photo by D.Papuashvili
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:Chavchavadze_Ave..jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true
@@ -245,3 +255,4 @@ image_credit:
   license: CC BY-SA 2.0
   license_url: https://creativecommons.org/licenses/by-sa/2.0
   source: https://commons.wikimedia.org/wiki/File:Archil_Mishveladze_Street,_1997.jpg
+rating: 4.0

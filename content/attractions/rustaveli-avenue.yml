@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 15
 image: /assets/photos/rustaveli-avenue.webp
-gallery: []
+gallery:
+- image: /assets/photos/rustaveli-avenue-1.webp
+  author: Ainars Brūvelis
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Architecture,_Tbilisi_-_panoramio.jpg
+- image: /assets/photos/rustaveli-avenue-2.webp
+  author: Daibo Taku
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0
+  source: https://commons.wikimedia.org/wiki/File:Dzveli_Tbilisi,_Tbilisi,_Georgia_-_panoramio_(101).jpg
+- image: /assets/photos/rustaveli-avenue-3.webp
+  author: Daibo Taku
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0
+  source: https://commons.wikimedia.org/wiki/File:Dzveli_Tbilisi,_Tbilisi,_Georgia_-_panoramio_(103).jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true
@@ -290,3 +305,4 @@ image_credit:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:2014_Tbilisi,_Pierwsza_Szko%C5%82a_Klasyczna.jpg
+rating: 4.0

@@ -7,7 +7,17 @@ unesco: false
 featured: false
 order: 62
 image: /assets/photos/oni.webp
-gallery: []
+gallery:
+- image: /assets/photos/oni-1.webp
+  author: Yasuhiro Kojima
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:2015-08-29_(70)_Oni.jpg
+- image: /assets/photos/oni-2.webp
+  author: Alexkom000
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0
+  source: https://commons.wikimedia.org/wiki/File:2025-06-20_Public_Service_Hall_in_Oni.jpg
 visit_hours: '2'
 best_season: may-october
 open_year_round: true
@@ -261,3 +271,4 @@ image_credit:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Ialoni_Ensemble.jpg
+rating: 4.0

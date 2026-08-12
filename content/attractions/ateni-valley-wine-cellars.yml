@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 80
 image: /assets/photos/ateni-valley-wine-cellars.webp
-gallery: []
+gallery:
+- image: /assets/photos/ateni-valley-wine-cellars-1.webp
+  author: GuramGraphy
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Veres_gvtismshoblis_eklesia_(1)_02.jpg
+- image: /assets/photos/ateni-valley-wine-cellars-2.webp
+  author: GuramGraphy
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Veres_gvtismshoblis_eklesia_(1)_03.jpg
+- image: /assets/photos/ateni-valley-wine-cellars-3.webp
+  author: GuramGraphy
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Veres_gvtismshoblis_eklesia_(1)_01.jpg
 visit_hours: '3'
 best_season: may-october
 open_year_round: true
@@ -230,3 +245,4 @@ image_credit:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Ateni,_Sioni_church.jpg
+rating: 4.0

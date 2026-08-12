@@ -7,7 +7,22 @@ unesco: false
 featured: true
 order: 20
 image: /assets/photos/shaori-reservoir.webp
-gallery: []
+gallery:
+- image: /assets/photos/shaori-reservoir-1.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Nikortsminda_-_panoramio.jpg
+- image: /assets/photos/shaori-reservoir-2.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Nikortsminda_-_panoramio_(1).jpg
+- image: /assets/photos/shaori-reservoir-3.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Nikortsminda_-_panoramio_(2).jpg
 visit_hours: '3'
 best_season: may-october
 open_year_round: false
@@ -254,3 +269,4 @@ image_credit:
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Vil._Nikortsminda_apple_orchard_-_panoramio.jpg
+rating: 5.0

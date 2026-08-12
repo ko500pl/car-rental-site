@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 55
 image: /assets/photos/jvari-pass-friendship-monument.webp
-gallery: []
+gallery:
+- image: /assets/photos/jvari-pass-friendship-monument-1.webp
+  author: Alexxx1979
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Georgian_Military_Road_IMG_8698_1920.jpg
+- image: /assets/photos/jvari-pass-friendship-monument-2.webp
+  author: Alexxx1979
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Georgian_Military_Road_IMG_8706_1920.jpg
+- image: /assets/photos/jvari-pass-friendship-monument-3.webp
+  author: Alexxx1979
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Georgia_Georgian_Military_Road_Ghudi_gorge_IMG_8722_1920.jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -259,3 +274,4 @@ image_credit:
   license: CC BY 2.0
   license_url: https://creativecommons.org/licenses/by/2.0
   source: https://commons.wikimedia.org/wiki/File:Scenery_in_Khevi,_Georgia.jpg
+rating: 4.0

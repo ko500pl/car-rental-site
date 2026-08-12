@@ -7,7 +7,12 @@ unesco: false
 featured: false
 order: 30
 image: /assets/photos/becho-mazeri.webp
-gallery: []
+gallery:
+- image: /assets/photos/becho-mazeri-1.webp
+  author: FingerWiki
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Forest_on_the_trail_to_Mount_Ushba_along_the_Dolra_River,_Mestia.jpg
 visit_hours: '6'
 best_season: may-october
 open_year_round: false
@@ -375,3 +380,4 @@ image_credit:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Road_sign_in_Svan_language,_Tvebishi_village,_late_October_2020.jpg
+rating: 4.5

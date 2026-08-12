@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 62
 image: /assets/photos/tsromi-church.webp
-gallery: []
+gallery:
+- image: /assets/photos/tsromi-church-1.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Tsromi_church_(2).jpg
+- image: /assets/photos/tsromi-church-2.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Tsromi_church_(7).jpg
+- image: /assets/photos/tsromi-church-3.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Tsromi_church_(21).jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -226,3 +241,4 @@ image_credit:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Tsromi_church_(6).jpg
+rating: 3.5

@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 60
 image: /assets/photos/balda-canyon.webp
-gallery: []
+gallery:
+- image: /assets/photos/balda-canyon-1.webp
+  author: Kober
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Baldi_Canyon_(1).jpg
+- image: /assets/photos/balda-canyon-2.webp
+  author: Kober
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Baldi_Canyon_(2).jpg
+- image: /assets/photos/balda-canyon-3.webp
+  author: Kober
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Baldi_Canyon_(3).jpg
 visit_hours: '2'
 best_season: may-october
 open_year_round: false
@@ -360,3 +375,4 @@ image_credit:
   license: CC BY 4.0
   license_url: https://creativecommons.org/licenses/by/4.0
   source: https://commons.wikimedia.org/wiki/File:Forest_canopy_in_Martvili.jpg
+rating: 4.0

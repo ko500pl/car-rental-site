@@ -592,6 +592,42 @@ tbody tr:nth-child(even){{background:color-mix(in srgb,#fff 3%,transparent)}}
 .tog.sm{{padding:6px 12px;font-size:13px}}
 .expnear{{margin-top:10px;font-size:14px;max-height:260px;overflow:auto}}
 .expmap.drawing{{cursor:crosshair}}
+.stars{{display:inline-flex;align-items:baseline;gap:7px;white-space:nowrap}}
+.stars i{{font-style:normal;color:#fbbf24;letter-spacing:2px;font-size:16px}}
+.stars b{{font-family:var(--mono);font-size:13.5px;color:var(--ink-2);font-weight:600}}
+.stars.sm i{{font-size:13px;letter-spacing:1px}}
+.stars.sm b{{font-size:12px}}
+.card .stars.sm{{display:flex;margin:8px 0 2px}}
+.gallery{{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;
+  margin:24px 0 6px}}
+.gph{{margin:0;border-radius:12px;overflow:hidden;background:var(--surface-2);
+  border:1px solid var(--line)}}
+.gph img{{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;
+  transition:transform .35s ease}}
+.gph:hover img{{transform:scale(1.05)}}
+.gph figcaption{{font-size:10.5px;color:var(--ink-3);padding:5px 9px;line-height:1.35}}
+.gph figcaption a{{color:var(--ink-3)}}
+.galstrip{{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:0 0 14px}}
+.galstrip img{{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:8px;display:block}}
+.numpin b{{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;
+  background:#2dd4bf;color:#04222b;font-size:12px;font-weight:800;border:2px solid #fff;
+  box-shadow:0 2px 8px rgba(0,0,0,.4)}}
+.numpin.blue b{{background:#38bdf8}}
+.wpbtns{{display:inline-flex;gap:4px;margin-inline-start:8px}}
+.wpbtns button,.pstop-b button{{border:1px solid var(--line);background:var(--surface-2);
+  color:var(--ink-2);border-radius:6px;width:24px;height:24px;cursor:pointer;font-size:12px;
+  line-height:1}}
+.wpbtns button:hover,.pstop-b button:hover{{border-color:var(--brand);color:#fff}}
+.pstop-b{{display:flex;flex-direction:column;gap:4px;flex:none}}
+.paddbtn{{border:1px solid var(--line);background:var(--surface-2);color:var(--ok);
+  border-radius:6px;width:22px;height:22px;cursor:pointer;font-size:13px;line-height:1;
+  vertical-align:middle}}
+.paddbtn:hover{{border-color:var(--ok)}}
+.psum{{font-size:16px;color:var(--ink-2);background:var(--surface);border:1px solid var(--line);
+  border-inline-start:3px solid var(--brand);border-radius:10px;padding:13px 17px;margin:0 0 22px}}
+.pstay{{display:block;margin-top:6px;font-size:13.5px}}
+.pstay a{{color:var(--brand-2)}}
+.pstay small{{color:var(--ink-3);font-size:11px;display:block;margin-top:2px}}
 .wx{{display:inline-flex;align-items:baseline;gap:4px;font-family:var(--mono);font-size:14px;
   color:#fff;white-space:nowrap}}
 .wx small{{color:var(--ink-3);font-size:12px}}

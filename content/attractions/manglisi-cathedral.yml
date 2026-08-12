@@ -7,7 +7,17 @@ unesco: false
 featured: false
 order: 65
 image: /assets/photos/manglisi-cathedral.webp
-gallery: []
+gallery:
+- image: /assets/photos/manglisi-cathedral-1.webp
+  author: toomas.liivamagi
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Manglisi,_in_front_of_local_government_building_-_panoramio.jpg
+- image: /assets/photos/manglisi-cathedral-2.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:View_Manglisi_-_panoramio.jpg
 visit_hours: '1.5'
 best_season: all
 open_year_round: true
@@ -234,3 +244,4 @@ image_credit:
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: >-
     https://commons.wikimedia.org/wiki/File:%E1%83%9B%E1%83%90%E1%83%9C%E1%83%92%E1%83%9A%E1%83%98%E1%83%A1%E1%83%98_-_panoramio.jpg
+rating: 3.5

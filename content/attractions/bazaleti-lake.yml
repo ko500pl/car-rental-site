@@ -7,7 +7,17 @@ unesco: false
 featured: false
 order: 35
 image: /assets/photos/bazaleti-lake.webp
-gallery: []
+gallery:
+- image: /assets/photos/bazaleti-lake-1.webp
+  author: პაატა შ
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Dushetis_centri.JPG
+- image: /assets/photos/bazaleti-lake-2.webp
+  author: Yasuhiro Kojima
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:River_Abanoskhevi_(in_Abanoskhevi).jpg
 visit_hours: '2'
 best_season: may-october
 open_year_round: true
@@ -275,3 +285,4 @@ image_credit:
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Chanadirtkari.JPG
+rating: 4.0

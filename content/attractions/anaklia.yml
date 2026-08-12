@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 45
 image: /assets/photos/anaklia.webp
-gallery: []
+gallery:
+- image: /assets/photos/anaklia-1.webp
+  author: Dalibor Z. Chvatal
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0
+  source: https://commons.wikimedia.org/wiki/File:Unnamed_Road,_Anaklia,_Georgia_-_panoramio_(2).jpg
+- image: /assets/photos/anaklia-2.webp
+  author: Dalibor Z. Chvatal
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0
+  source: https://commons.wikimedia.org/wiki/File:Unnamed_Road,_Anaklia,_Georgia_-_panoramio_(5).jpg
+- image: /assets/photos/anaklia-3.webp
+  author: Lorenz King, Giessen university, JLU.de
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Enguri_river_with_bridge.jpg
 visit_hours: '3'
 best_season: june-september
 open_year_round: true
@@ -347,3 +362,4 @@ image_credit:
   license: CC BY-SA 2.0
   license_url: https://creativecommons.org/licenses/by-sa/2.0
   source: https://commons.wikimedia.org/wiki/File:Anaklia_(14667619556).jpg
+rating: 4.0

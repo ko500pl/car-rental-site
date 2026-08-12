@@ -7,7 +7,17 @@ unesco: false
 featured: false
 order: 60
 image: /assets/photos/likhauri-church.webp
-gallery: []
+gallery:
+- image: /assets/photos/likhauri-church-1.webp
+  author: Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:ISS046-E-10546_-_View_of_Earth.jpg
+- image: /assets/photos/likhauri-church-2.webp
+  author: Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:ISS046-E-10545_-_View_of_Earth.jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -235,3 +245,4 @@ image_credit:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Inscription_of_Likhauri2.jpg
+rating: 3.5

@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 86
 image: /assets/photos/shenako-diklo.webp
-gallery: []
+gallery:
+- image: /assets/photos/shenako-diklo-1.webp
+  author: Abramia Giorgi
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Shenako.Tusheti.JPG
+- image: /assets/photos/shenako-diklo-2.webp
+  author: Karel61
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Khiso_%26_Khisos_Alazani_2016.jpg
+- image: /assets/photos/shenako-diklo-3.webp
+  author: Karel61
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:P1100619b_Makratela_Range_2016.jpg
 visit_hours: '4'
 best_season: june-september
 open_year_round: false
@@ -251,3 +266,4 @@ image_credit:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:View_on_Lower_Omalo.JPG
+rating: 4.5

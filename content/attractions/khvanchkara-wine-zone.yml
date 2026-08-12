@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 58
 image: /assets/photos/khvanchkara-wine-zone.webp
-gallery: []
+gallery:
+- image: /assets/photos/khvanchkara-wine-zone-1.webp
+  author: Félix Mathieu-Bégin
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Sh-16_T%27ola_(2).jpg
+- image: /assets/photos/khvanchkara-wine-zone-2.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:View_from_patara_oni_-_panoramio.jpg
+- image: /assets/photos/khvanchkara-wine-zone-3.webp
+  author: Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:ISS030-E-8402_-_View_of_Earth.jpg
 visit_hours: '3'
 best_season: may-october
 open_year_round: true
@@ -278,3 +293,4 @@ image_credit:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Sh-16_T%27ola.jpg
+rating: 4.0

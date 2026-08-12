@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 50
 image: /assets/photos/mtirala-national-park.webp
-gallery: []
+gallery:
+- image: /assets/photos/mtirala-national-park-1.webp
+  author: Philipp Weigell
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0
+  source: https://commons.wikimedia.org/wiki/File:Potamon_ibericus_(2).JPG
+- image: /assets/photos/mtirala-national-park-2.webp
+  author: Philipp Weigell
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0
+  source: https://commons.wikimedia.org/wiki/File:Potamon_ibericus_(3).JPG
+- image: /assets/photos/mtirala-national-park-3.webp
+  author: 'Potamon_ibericus_(1).JPG: Myself derivative work: Stemonitis (talk)'
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0
+  source: https://commons.wikimedia.org/wiki/File:Potamon_ibericus_cropped.JPG
 visit_hours: '4'
 best_season: may-october
 open_year_round: true
@@ -248,3 +263,4 @@ image_credit:
   license: CC BY 3.0
   license_url: https://creativecommons.org/licenses/by/3.0
   source: https://commons.wikimedia.org/wiki/File:Idaea_mancipiata_(1).JPG
+rating: 4.0

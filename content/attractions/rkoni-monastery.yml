@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 72
 image: /assets/photos/rkoni-monastery.webp
-gallery: []
+gallery:
+- image: /assets/photos/rkoni-monastery-1.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Rkoni_Monastery,_Kaspi_(2).jpg
+- image: /assets/photos/rkoni-monastery-2.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Rkoni_Monastery,_Kaspi_(7).jpg
+- image: /assets/photos/rkoni-monastery-3.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Rkoni_Monastery,_Kaspi_(8).jpg
 visit_hours: '3'
 best_season: may-october
 open_year_round: false
@@ -234,3 +249,4 @@ image_credit:
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Pigeons_-_panoramio.jpg
+rating: 4.0

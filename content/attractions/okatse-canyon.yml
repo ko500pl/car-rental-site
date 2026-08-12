@@ -7,7 +7,17 @@ unesco: false
 featured: false
 order: 50
 image: /assets/photos/okatse-canyon.webp
-gallery: []
+gallery:
+- image: /assets/photos/okatse-canyon-1.webp
+  author: Karelj
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Okatse_visitor_centrum_2019_1.jpg
+- image: /assets/photos/okatse-canyon-2.webp
+  author: Cechenochilus
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Carabus_(Neoplectes)_martviliensis_martviliensis_2.jpg
 visit_hours: '3'
 best_season: may-october
 open_year_round: true
@@ -245,3 +255,4 @@ image_credit:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Okatse_27.jpg
+rating: 4.0

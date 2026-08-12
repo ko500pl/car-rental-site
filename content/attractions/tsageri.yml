@@ -7,7 +7,23 @@ unesco: false
 featured: false
 order: 50
 image: /assets/photos/tsageri.webp
-gallery: []
+gallery:
+- image: /assets/photos/tsageri-1.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:View_to_Tsageri_-_panoramio.jpg
+- image: /assets/photos/tsageri-2.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Racha-Lechkhumi_and_Lower_Svaneti,_Georgia_-_panoramio_(1).jpg
+- image: /assets/photos/tsageri-3.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: >-
+    https://commons.wikimedia.org/wiki/File:Kutaisi_-_Tskaltubo_-_Tsageri_-_Lentekhi_-_Lasdili,_Tsageri,_Georgia_-_panoramio.jpg
 visit_hours: '3'
 best_season: may-october
 open_year_round: true
@@ -248,3 +264,4 @@ image_credit:
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Unnamed_Road,_Tsageri,_Georgia_-_panoramio.jpg
+rating: 4.0

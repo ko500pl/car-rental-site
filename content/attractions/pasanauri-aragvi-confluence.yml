@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 45
 image: /assets/photos/pasanauri-aragvi-confluence.webp
-gallery: []
+gallery:
+- image: /assets/photos/pasanauri-aragvi-confluence-1.webp
+  author: Karelj
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Aragvi_confluence_Gruzia_2019_4.jpg
+- image: /assets/photos/pasanauri-aragvi-confluence-2.webp
+  author: Jeremy Teigen from USA
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Selling_a_hat.jpg
+- image: /assets/photos/pasanauri-aragvi-confluence-3.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Pasanauri,_Georgia_-_panoramio.jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -273,3 +288,4 @@ image_credit:
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Aragvi_-_panoramio.jpg
+rating: 3.5

@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 52
 image: /assets/photos/mtatsminda-pantheon.webp
-gallery: []
+gallery:
+- image: /assets/photos/mtatsminda-pantheon-1.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Samebis_khedi_mamadavitidan_-_panoramio.jpg
+- image: /assets/photos/mtatsminda-pantheon-2.webp
+  author: Reda Kerbush
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Grave_of_Vaso_Abashidze_1.jpg
+- image: /assets/photos/mtatsminda-pantheon-3.webp
+  author: Reda Kerbush
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Grave_of_Vazha-Pshavela,_Tbilisi_2.jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -354,3 +369,4 @@ image_credit:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Tbilisi3331.jpg
+rating: 3.5

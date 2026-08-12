@@ -7,7 +7,24 @@ unesco: false
 featured: true
 order: 60
 image: /assets/photos/gergeti-trinity-church.webp
-gallery: []
+gallery:
+- image: /assets/photos/gergeti-trinity-church-1.webp
+  author: Lika Kharazishvili
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Bell_tower_of_Gergeti_Trinity_Church.jpg
+- image: /assets/photos/gergeti-trinity-church-2.webp
+  author: t.przechlewski
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0
+  source: >-
+    https://commons.wikimedia.org/wiki/File:%E1%83%92%E1%83%94%E1%83%A0%E1%83%92%E1%83%94%E1%83%A2%E1%83%98%E1%83%A1_%E1%83%A1%E1%83%90%E1%83%9B%E1%83%94%E1%83%91%E1%83%90,_Georgia_-_panoramio_(3).jpg
+- image: /assets/photos/gergeti-trinity-church-3.webp
+  author: t.przechlewski
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0
+  source: >-
+    https://commons.wikimedia.org/wiki/File:%E1%83%92%E1%83%94%E1%83%A0%E1%83%92%E1%83%94%E1%83%A2%E1%83%98%E1%83%A1_%E1%83%A1%E1%83%90%E1%83%9B%E1%83%94%E1%83%91%E1%83%90,_Georgia_-_panoramio_(4).jpg
 visit_hours: '3'
 best_season: may-october
 open_year_round: true
@@ -242,3 +259,4 @@ image_credit:
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Gergeti_from_Church_02.jpg
+rating: 5.0

@@ -7,7 +7,22 @@ unesco: true
 featured: false
 order: 15
 image: /assets/photos/samtavro-monastery.webp
-gallery: []
+gallery:
+- image: /assets/photos/samtavro-monastery-1.webp
+  author: Stefano Bolognini (uploader Giorgi Balakhadze)
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Mtskheta,_Georgia_%E2%80%94_Samtavro_Orthodox_Church.jpg
+- image: /assets/photos/samtavro-monastery-2.webp
+  author: Marcin Konsek
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:2016_Mccheta,_Klasztor_Samtawro,_Cerkiew_%C5%9Bw._Nino_(01).jpg
+- image: /assets/photos/samtavro-monastery-3.webp
+  author: Marcin Konsek
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:2016_Mccheta,_Klasztor_Samtawro,_Cerkiew_%C5%9Bw._Nino_(02).jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -293,3 +308,4 @@ image_credit:
   license: CC BY-SA 2.0
   license_url: https://creativecommons.org/licenses/by-sa/2.0
   source: https://commons.wikimedia.org/wiki/File:Samtavro_(47).jpg
+rating: 5.0

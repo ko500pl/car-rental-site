@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 80
 image: /assets/photos/rustavi.webp
-gallery: []
+gallery:
+- image: /assets/photos/rustavi-1.webp
+  author: Tiia Monto
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Rustavi_-_park.jpg
+- image: /assets/photos/rustavi-2.webp
+  author: Tiia Monto
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Rustavi_-_path.jpg
+- image: /assets/photos/rustavi-3.webp
+  author: Tiia Monto
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Rustavi_2018.jpg
 visit_hours: '3'
 best_season: all
 open_year_round: true
@@ -227,3 +242,4 @@ image_credit:
   license: CC BY 3.0
   license_url: https://creativecommons.org/licenses/by/3.0
   source: https://commons.wikimedia.org/wiki/File:Dzveli_rustavi_-_panoramio.jpg
+rating: 4.0

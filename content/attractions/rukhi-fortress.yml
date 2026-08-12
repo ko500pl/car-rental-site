@@ -7,7 +7,17 @@ unesco: false
 featured: false
 order: 80
 image: /assets/photos/rukhi-fortress.webp
-gallery: []
+gallery:
+- image: /assets/photos/rukhi-fortress-1.webp
+  author: Jelger Groeneveld
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Rukhi_fort_-_central_castle_within_the_walls.jpg
+- image: /assets/photos/rukhi-fortress-2.webp
+  author: Jelger Groeneveld
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Busshelter_Rukhi.jpg
 visit_hours: '0.5'
 best_season: all
 open_year_round: true
@@ -330,3 +340,4 @@ image_credit:
   license: CC BY 2.0
   license_url: https://creativecommons.org/licenses/by/2.0
   source: https://commons.wikimedia.org/wiki/File:Rukhi_fortress_-_outer_wall.jpg
+rating: 3.0

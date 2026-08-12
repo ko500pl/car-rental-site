@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 65
 image: /assets/photos/kutaisi-botanical-garden.webp
-gallery: []
+gallery:
+- image: /assets/photos/kutaisi-botanical-garden-1.webp
+  author: Sarah Murray from Lincoln, NE, USA
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Bagrati_5.jpg
+- image: /assets/photos/kutaisi-botanical-garden-2.webp
+  author: Marcin Konsek
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:2014_Kutaisi,_Katedra_Bagrati_(16).jpg
+- image: /assets/photos/kutaisi-botanical-garden-3.webp
+  author: Marcin Konsek
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:2014_Kutaisi,_Widoki_z_twierdzy_Ukimerioni_(02).jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -285,3 +300,4 @@ image_credit:
   license: CC BY-SA 2.0
   license_url: https://creativecommons.org/licenses/by-sa/2.0
   source: https://commons.wikimedia.org/wiki/File:Kutaisi_weir_from_Uqimerioni_Fortress_(11741302994).jpg
+rating: 4.0

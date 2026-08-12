@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 45
 image: /assets/photos/shekvetili-dendrological-park.webp
-gallery: []
+gallery:
+- image: /assets/photos/shekvetili-dendrological-park-1.webp
+  author: Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:ISS038-E-43672_-_View_of_Earth.jpg
+- image: /assets/photos/shekvetili-dendrological-park-2.webp
+  author: Earth Science and Remote Sensing Unit, NASA Johnson Space Center
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:ISS062-E-9491_-_View_of_Earth.jpg
+- image: /assets/photos/shekvetili-dendrological-park-3.webp
+  author: Earth Science and Remote Sensing Unit, NASA Johnson Space Center
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:ISS062-E-9490_-_View_of_Earth.jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true
@@ -236,3 +251,4 @@ image_credit:
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Guria,_Georgia_-_panoramio.jpg
+rating: 4.0

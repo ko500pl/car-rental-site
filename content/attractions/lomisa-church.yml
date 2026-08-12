@@ -7,7 +7,17 @@ unesco: false
 featured: false
 order: 52
 image: /assets/photos/lomisa-church.webp
-gallery: []
+gallery:
+- image: /assets/photos/lomisa-church-1.webp
+  author: Alexxx1979
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Georgia_Georgian_Military_Road_IMG_8743_1920.jpg
+- image: /assets/photos/lomisa-church-2.webp
+  author: Alexxx1979
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Georgia_Georgian_Military_Road_IMG_8744_1920.jpg
 visit_hours: '4'
 best_season: june-september
 open_year_round: false
@@ -274,3 +284,4 @@ image_credit:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Lomisa_tower.jpg
+rating: 4.0

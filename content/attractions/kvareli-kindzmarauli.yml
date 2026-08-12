@@ -7,7 +7,23 @@ unesco: false
 featured: false
 order: 90
 image: /assets/photos/kvareli-kindzmarauli.webp
-gallery: []
+gallery:
+- image: /assets/photos/kvareli-kindzmarauli-1.webp
+  author: კოლხი
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Church_of_Kvareli.1.jpg
+- image: /assets/photos/kvareli-kindzmarauli-2.webp
+  author: კოლხი
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Church_of_Kvareli.jpg
+- image: /assets/photos/kvareli-kindzmarauli-3.webp
+  author: Adam Jones from Kelowna, BC, Canada
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: >-
+    https://commons.wikimedia.org/wiki/File:Young_Women_outside_Kindzmarauli_Winery_-_Near_Telavi_-_Georgia_(18398224136).jpg
 visit_hours: '4'
 best_season: all
 open_year_round: true
@@ -223,3 +239,4 @@ image_credit:
   license_url: https://creativecommons.org/licenses/by-sa/2.0
   source: >-
     https://commons.wikimedia.org/wiki/File:Traditional_Clay_Pot_for_Wine_-_Kindzmarauli_Winery_-_Near_Telavi_-_Georgia_(18237050090).jpg
+rating: 4.0

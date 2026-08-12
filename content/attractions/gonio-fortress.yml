@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 30
 image: /assets/photos/gonio-fortress.webp
-gallery: []
+gallery:
+- image: /assets/photos/gonio-fortress-1.webp
+  author: Soghomon Matevosyan
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Gonio_fortress_(3).jpg
+- image: /assets/photos/gonio-fortress-2.webp
+  author: Soghomon Matevosyan
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Gonio_fortress_(1).jpg
+- image: /assets/photos/gonio-fortress-3.webp
+  author: Soghomon Matevosyan
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Gonio_fortress_(2).jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true
@@ -233,3 +248,4 @@ image_credit:
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Pevnost_Gonio_(Apsaros)_-_panoramio.jpg
+rating: 4.0

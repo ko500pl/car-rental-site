@@ -7,7 +7,12 @@ unesco: false
 featured: false
 order: 78
 image: /assets/photos/bolnisi-town.webp
-gallery: []
+gallery:
+- image: /assets/photos/bolnisi-town-1.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Bolnisi,_Georgia_-_panoramio_(2).jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true
@@ -227,3 +232,4 @@ image_credit:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Mashavera_River_in_Bolnisi.jpg
+rating: 4.0

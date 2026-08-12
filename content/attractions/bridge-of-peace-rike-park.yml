@@ -7,7 +7,12 @@ unesco: false
 featured: false
 order: 22
 image: /assets/photos/bridge-of-peace-rike-park.webp
-gallery: []
+gallery:
+- image: /assets/photos/bridge-of-peace-rike-park-1.webp
+  author: Kober
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Rike_Park,_Tbilisi,_Georgia._2018_01.jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -331,3 +336,4 @@ image_credit:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:2014_Tbilisi,_Park_Rike_(02).jpg
+rating: 4.0

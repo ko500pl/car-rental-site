@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 35
 image: /assets/photos/adishi.webp
-gallery: []
+gallery:
+- image: /assets/photos/adishi-1.webp
+  author: hr.icio
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Svaneti,_Georgia._2018_32.jpg
+- image: /assets/photos/adishi-2.webp
+  author: hr.icio
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Svaneti,_Georgia._2018_34.jpg
+- image: /assets/photos/adishi-3.webp
+  author: hr.icio
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Svaneti,_Georgia._2018_35.jpg
 visit_hours: '3'
 best_season: june-september
 open_year_round: false
@@ -389,3 +404,4 @@ image_credit:
   license: CC BY 2.0
   license_url: https://creativecommons.org/licenses/by/2.0
   source: https://commons.wikimedia.org/wiki/File:Svaneti,_Georgia._2018_33.jpg
+rating: 4.5

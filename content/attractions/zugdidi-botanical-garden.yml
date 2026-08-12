@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 88
 image: /assets/photos/zugdidi-botanical-garden.webp
-gallery: []
+gallery:
+- image: /assets/photos/zugdidi-botanical-garden-1.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Zugdidi_Church.jpg
+- image: /assets/photos/zugdidi-botanical-garden-2.webp
+  author: VASOG
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Svaneti_1517.jpg
+- image: /assets/photos/zugdidi-botanical-garden-3.webp
+  author: Kakhi Kuloshvili
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Dadiani_Palace_2.jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -383,3 +398,4 @@ image_credit:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Svaneti_1504.jpg
+rating: 4.0

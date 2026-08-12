@@ -7,7 +7,23 @@ unesco: false
 featured: false
 order: 85
 image: /assets/photos/marneuli.webp
-gallery: []
+gallery:
+- image: /assets/photos/marneuli-1.webp
+  author: Zviad Avaliani
+  license: Attribution
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:Marneuli_Cultural_Centre.JPG
+- image: /assets/photos/marneuli-2.webp
+  author: Jelger Groeneveld
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: >-
+    https://commons.wikimedia.org/wiki/File:2020_parliamentary_elections_in_Marneuli_city_(Kvemo_Kartli)_-_mobile_ballot_box.jpg
+- image: /assets/photos/marneuli-3.webp
+  author: Jelger Groeneveld
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:2020_parliamentary_elections_in_Marneuli_city_(Kvemo_Kartli).jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true
@@ -229,3 +245,4 @@ image_credit:
   license: Attribution
   license_url: ''
   source: https://commons.wikimedia.org/wiki/File:Marneuli_Self_Government.JPG
+rating: 4.0

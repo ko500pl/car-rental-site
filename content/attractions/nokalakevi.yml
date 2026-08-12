@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 90
 image: /assets/photos/nokalakevi.webp
-gallery: []
+gallery:
+- image: /assets/photos/nokalakevi-1.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Jikha_(G.N._2008).jpg
+- image: /assets/photos/nokalakevi-2.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Summer_naer_Nokalakebi_fortress_-_panoramio.jpg
+- image: /assets/photos/nokalakevi-3.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Upper_castle_(2).jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true
@@ -243,3 +258,4 @@ image_credit:
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Riv._Tekhura.jpg
+rating: 4.0

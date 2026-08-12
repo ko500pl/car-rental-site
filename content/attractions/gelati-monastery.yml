@@ -7,7 +7,22 @@ unesco: true
 featured: true
 order: 10
 image: /assets/photos/gelati-monastery.webp
-gallery: []
+gallery:
+- image: /assets/photos/gelati-monastery-1.webp
+  author: Marcin Konsek
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:2014_Imeretia,_Gelati,_Monastyr_Gelati_(03).jpg
+- image: /assets/photos/gelati-monastery-2.webp
+  author: Marcin Konsek
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:2014_Imeretia,_Gelati,_Monastyr_Gelati_(02).jpg
+- image: /assets/photos/gelati-monastery-3.webp
+  author: Marcin Konsek
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:2014_Imeretia,_Gelati,_Monastyr_Gelati_(01).jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true
@@ -264,3 +279,4 @@ image_credit:
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Gelati_Cathedral_Georgia_July_2007_-_panoramio.jpg
+rating: 5.0

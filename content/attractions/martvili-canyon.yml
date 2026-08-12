@@ -7,7 +7,12 @@ unesco: false
 featured: false
 order: 60
 image: /assets/photos/martvili-canyon.webp
-gallery: []
+gallery:
+- image: /assets/photos/martvili-canyon-1.webp
+  author: Earth Science and Remote Sensing Unit, NASA Johnson Space Center
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:ISS057-E-36700_-_View_of_Earth.jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true
@@ -245,3 +250,4 @@ image_credit:
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Riv._Tskhenistskali_(G.N._2011).jpg
+rating: 4.0

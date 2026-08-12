@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 15
 image: /assets/photos/batumi-alphabetic-tower.webp
-gallery: []
+gallery:
+- image: /assets/photos/batumi-alphabetic-tower-1.webp
+  author: Sarah Murray from South Bend, IN, USA
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Rustaveli_statue_in_Batumi.jpg
+- image: /assets/photos/batumi-alphabetic-tower-2.webp
+  author: Sarah Murray from South Bend, IN, USA
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Batumi_(14715288712).jpg
+- image: /assets/photos/batumi-alphabetic-tower-3.webp
+  author: Sarah Murray from South Bend, IN, USA
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Batumi_(14713205634).jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -257,3 +272,4 @@ image_credit:
   license: CC BY-SA 2.0
   license_url: https://creativecommons.org/licenses/by-sa/2.0
   source: https://commons.wikimedia.org/wiki/File:%E1%83%91%E1%83%90%E1%83%97%E1%83%A3%E1%83%9B%E1%83%98_19_Batumi.jpg
+rating: 3.5

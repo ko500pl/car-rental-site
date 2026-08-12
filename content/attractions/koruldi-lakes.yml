@@ -7,7 +7,18 @@ unesco: false
 featured: false
 order: 40
 image: /assets/photos/koruldi-lakes.webp
-gallery: []
+gallery:
+- image: /assets/photos/koruldi-lakes-1.webp
+  author: Alexey Komarov
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Zemo_Svaneti,_June,_2018-16.jpg
+- image: /assets/photos/koruldi-lakes-2.webp
+  author: Андрій Дуда
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: >-
+    https://commons.wikimedia.org/wiki/File:%D0%A4%D0%BE%D1%82%D0%BE_%D0%B7_%D0%B3%D1%80%D1%83%D0%B7%D1%96%D1%97.jpg
 visit_hours: '3'
 best_season: june-september
 open_year_round: false
@@ -267,3 +278,4 @@ image_credit:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Zemo_Svaneti,_June,_2018-15.jpg
+rating: 4.5

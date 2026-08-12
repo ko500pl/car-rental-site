@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 60
 image: /assets/photos/khulo-cable-car-upper-adjara.webp
-gallery: []
+gallery:
+- image: /assets/photos/khulo-cable-car-upper-adjara-1.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Khulo,_Georgia_-_panoramio.jpg
+- image: /assets/photos/khulo-cable-car-upper-adjara-2.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Khulo,_Georgia_-_panoramio_(1).jpg
+- image: /assets/photos/khulo-cable-car-upper-adjara-3.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Vil._chao_-_panoramio.jpg
 visit_hours: '3'
 best_season: may-october
 open_year_round: true
@@ -269,3 +284,4 @@ image_credit:
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: >-
     https://commons.wikimedia.org/wiki/File:%E1%83%A1%E1%83%90%E1%83%AE%E1%83%9A%E1%83%98_%E1%83%99%E1%83%9A%E1%83%93%E1%83%98%E1%83%A1_%E1%83%AB%E1%83%98%E1%83%A0%E1%83%90%E1%83%A1_-_panoramio.jpg
+rating: 4.5

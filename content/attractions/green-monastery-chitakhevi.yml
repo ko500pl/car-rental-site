@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 55
 image: /assets/photos/green-monastery-chitakhevi.webp
-gallery: []
+gallery:
+- image: /assets/photos/green-monastery-chitakhevi-1.webp
+  author: tomasz przechlewski from Sopot, Poland
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Mtsvane_Monastery,_Borjomi_Municipality,_Georgia._2014.jpg
+- image: /assets/photos/green-monastery-chitakhevi-2.webp
+  author: Beniamin Netan from Tbilisi, Georgia
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Mtsvane_Monastery_(29007397843).jpg
+- image: /assets/photos/green-monastery-chitakhevi-3.webp
+  author: Sergey Sebelev
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Mtsvane_(Green)_Monastery_near_Borjomi.jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -263,3 +278,4 @@ image_credit:
   license: CC BY 3.0
   license_url: https://creativecommons.org/licenses/by/3.0
   source: https://commons.wikimedia.org/wiki/File:The_Green_Monastery_(Mtsvane_Monastery)_-_panoramio_(2121).jpg
+rating: 3.5

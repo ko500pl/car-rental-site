@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 60
 image: /assets/photos/khirsa-monastery.webp
-gallery: []
+gallery:
+- image: /assets/photos/khirsa-monastery-1.webp
+  author: khalampre
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Kakheti_fort.jpg
+- image: /assets/photos/khirsa-monastery-2.webp
+  author: khalampre
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Cross_at_bodbe.jpg
+- image: /assets/photos/khirsa-monastery-3.webp
+  author: Jelger Groeneveld
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0
+  source: https://commons.wikimedia.org/wiki/File:Zemo_Machkhaani_Town_Hall.jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -258,3 +273,4 @@ image_credit:
   license: CC BY 4.0
   license_url: https://creativecommons.org/licenses/by/4.0
   source: https://commons.wikimedia.org/wiki/File:St._Nicholas_Church_in_Bodbiskhevi_(Georgia).jpg
+rating: 3.5

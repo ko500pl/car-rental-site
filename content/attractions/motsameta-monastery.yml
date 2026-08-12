@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 80
 image: /assets/photos/motsameta-monastery.webp
-gallery: []
+gallery:
+- image: /assets/photos/motsameta-monastery-1.webp
+  author: Aldis Dzenovskis
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Motsameta,_Georgia_-_panoramio_(19).jpg
+- image: /assets/photos/motsameta-monastery-2.webp
+  author: Aldis Dzenovskis
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Motsameta,_Georgia_-_panoramio_(20).jpg
+- image: /assets/photos/motsameta-monastery-3.webp
+  author: Aldis Dzenovskis
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Motsameta,_Georgia_-_panoramio_(22).jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -230,3 +245,4 @@ image_credit:
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Kutaisi_(G.N._2012).jpg
+rating: 3.5

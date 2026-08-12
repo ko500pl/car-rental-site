@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 30
 image: /assets/photos/shovi-resort.webp
-gallery: []
+gallery:
+- image: /assets/photos/shovi-resort-1.webp
+  author: Jelger Groeneveld
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Road_to_Mamison_Pass_at_Shovi.jpg
+- image: /assets/photos/shovi-resort-2.webp
+  author: Yasuhiro Kojima
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:River_Chanchakhi_in_Glola.jpg
+- image: /assets/photos/shovi-resort-3.webp
+  author: Boris Kuznetsov
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:At_the_top_of_Dolomisistsveri_Mountain_(3250m),_Racha,_Georgia.jpg
 visit_hours: '4'
 best_season: june-september
 open_year_round: false
@@ -246,3 +261,4 @@ image_credit:
   license: CC BY 2.0
   license_url: https://creativecommons.org/licenses/by/2.0
   source: https://commons.wikimedia.org/wiki/File:Stormy_Sky_over_Shovi,_Racha,_Georgia.jpg
+rating: 4.5

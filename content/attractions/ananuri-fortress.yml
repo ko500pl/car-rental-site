@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 30
 image: /assets/photos/ananuri-fortress.webp
-gallery: []
+gallery:
+- image: /assets/photos/ananuri-fortress-1.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Ananuri_-_panoramio.jpg
+- image: /assets/photos/ananuri-fortress-2.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Ananuri_-_panoramio_-_G.N..jpg
+- image: /assets/photos/ananuri-fortress-3.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Ananuri_-_panoramio_-_G.N._(1).jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -259,3 +274,4 @@ image_credit:
   license: CC BY-SA 2.0
   license_url: https://creativecommons.org/licenses/by-sa/2.0
   source: https://commons.wikimedia.org/wiki/File:Ananuri,_Georgia_%E2%80%94_Interior_of_Ananuri_Deity_Church.jpg
+rating: 3.5

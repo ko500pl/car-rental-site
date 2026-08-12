@@ -7,7 +7,23 @@ unesco: false
 featured: false
 order: 35
 image: /assets/photos/vanis-kvabebi.webp
-gallery: []
+gallery:
+- image: /assets/photos/vanis-kvabebi-1.webp
+  author: toomas.liivamagi
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Vanis_Kvabebi_koobasklooster_-_panoramio.jpg
+- image: /assets/photos/vanis-kvabebi-2.webp
+  author: toomas.liivamagi
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Vanis_Kvabebi_koobasklooster_-_panoramio_-_toomas.liivamagi.jpg
+- image: /assets/photos/vanis-kvabebi-3.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: >-
+    https://commons.wikimedia.org/wiki/File:%E1%83%97%E1%83%9B%E1%83%9D%E1%83%92%E1%83%95%E1%83%98%E1%83%A1_%E1%83%AA%E1%83%98%E1%83%AE%E1%83%94%E1%83%A1%E1%83%97%E1%83%90%E1%83%9C_-_panoramio.jpg
 visit_hours: '2'
 best_season: may-october
 open_year_round: true
@@ -281,3 +297,4 @@ image_credit:
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Vardzia_-_panoramio_-_toomas.liivamagi_(1).jpg
+rating: 4.0

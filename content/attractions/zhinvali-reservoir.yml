@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 40
 image: /assets/photos/zhinvali-reservoir.webp
-gallery: []
+gallery:
+- image: /assets/photos/zhinvali-reservoir-1.webp
+  author: Jonathan Cardy
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Ananuri_August_2013_02.jpg
+- image: /assets/photos/zhinvali-reservoir-2.webp
+  author: Jonathan Cardy
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Ananuri_August_2013_13.jpg
+- image: /assets/photos/zhinvali-reservoir-3.webp
+  author: Jonathan Cardy
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Ananuri_August_2013_14.jpg
 visit_hours: '1'
 best_season: may-october
 open_year_round: true
@@ -237,3 +252,4 @@ image_credit:
   license: CC0
   license_url: http://creativecommons.org/publicdomain/zero/1.0/deed.en
   source: https://commons.wikimedia.org/wiki/File:Ananuri_Castle_Complex.jpg
+rating: 3.5

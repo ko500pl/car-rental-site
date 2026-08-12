@@ -7,7 +7,23 @@ unesco: false
 featured: false
 order: 50
 image: /assets/photos/hatsvali-tetnuldi.webp
-gallery: []
+gallery:
+- image: /assets/photos/hatsvali-tetnuldi-1.webp
+  author: deguonis from Lithuania
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Svaneti_Jeep-D%C5%BEipas_(3872444314).jpg
+- image: /assets/photos/hatsvali-tetnuldi-2.webp
+  author: deguonis from Lithuania
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: >-
+    https://commons.wikimedia.org/wiki/File:Svaneti_Mountain_House_Near_Mestia_TV_Tower-Namas_kalnuose_%C5%A1alia_Mestijos_TV_bok%C5%A1to_(3872444640).jpg
+- image: /assets/photos/hatsvali-tetnuldi-3.webp
+  author: deguonis from Lithuania
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Svaneti_Work_is_done-Darbai_atlikti_(3872445186).jpg
 visit_hours: '6'
 best_season: december-march
 open_year_round: false
@@ -272,3 +288,4 @@ image_credit:
   license_url: https://creativecommons.org/licenses/by/2.0
   source: >-
     https://commons.wikimedia.org/wiki/File:Svaneti_View_from_Mestia%27s_TV_Tower-Vaizdas_nuo_Mestijos_TV_bok%C5%A1to_(3872445854).jpg
+rating: 4.0

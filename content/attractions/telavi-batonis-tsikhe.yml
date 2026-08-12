@@ -7,7 +7,25 @@ unesco: false
 featured: false
 order: 30
 image: /assets/photos/telavi-batonis-tsikhe.webp
-gallery: []
+gallery:
+- image: /assets/photos/telavi-batonis-tsikhe-1.webp
+  author: Shalvabaiashvili
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: >-
+    https://commons.wikimedia.org/wiki/File:%E1%83%A1%E1%83%90%E1%83%9B%E1%83%AE%E1%83%90%E1%83%A2%E1%83%95%E1%83%A0%E1%83%9D_%E1%83%A1%E1%83%99%E1%83%9D%E1%83%9A%E1%83%90_3.jpg
+- image: /assets/photos/telavi-batonis-tsikhe-2.webp
+  author: Shalvabaiashvili
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: >-
+    https://commons.wikimedia.org/wiki/File:%E1%83%A1%E1%83%90%E1%83%9B%E1%83%AE%E1%83%90%E1%83%A2%E1%83%95%E1%83%A0%E1%83%9D_%E1%83%A1%E1%83%99%E1%83%9D%E1%83%9A%E1%83%90.jpg
+- image: /assets/photos/telavi-batonis-tsikhe-3.webp
+  author: Shalvabaiashvili
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: >-
+    https://commons.wikimedia.org/wiki/File:%E1%83%92%E1%83%90%E1%83%9A%E1%83%90%E1%83%95%E1%83%90%E1%83%9C%E1%83%98_20160909_015.jpg
 visit_hours: '3'
 best_season: all
 open_year_round: true
@@ -218,3 +236,4 @@ image_credit:
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Telavi_(G.N._2014).jpg
+rating: 4.0

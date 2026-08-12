@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 88
 image: /assets/photos/tkibuli-reservoir.webp
-gallery: []
+gallery:
+- image: /assets/photos/tkibuli-reservoir-1.webp
+  author: Kabelleger / David Gubler
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:SR_VL22M_Satsire.jpg
+- image: /assets/photos/tkibuli-reservoir-2.webp
+  author: Earth Science and Remote Sensing Unit, NASA Johnson Space Center
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:ISS057-E-36709_-_View_of_Earth.jpg
+- image: /assets/photos/tkibuli-reservoir-3.webp
+  author: Jelger Groeneveld
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:View_of_Tkibuli_Reservoir.jpg
 visit_hours: '2'
 best_season: may-october
 open_year_round: true
@@ -324,3 +339,4 @@ image_credit:
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Tkibuli_reservoir_-_panoramio.jpg
+rating: 4.0

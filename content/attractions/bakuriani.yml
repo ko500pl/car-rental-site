@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 25
 image: /assets/photos/bakuriani.webp
-gallery: []
+gallery:
+- image: /assets/photos/bakuriani-1.webp
+  author: Franz Xaver
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Clinopodium_grandiflorum_1.jpg
+- image: /assets/photos/bakuriani-2.webp
+  author: Franz Xaver
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Dipsacus_strigosus_1.jpg
+- image: /assets/photos/bakuriani-3.webp
+  author: Franz Xaver
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Dipsacus_strigosus_2.jpg
 visit_hours: '6'
 best_season: all
 open_year_round: true
@@ -309,3 +324,4 @@ image_credit:
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Geranium_gracile_4.jpg
+rating: 4.0

@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 40
 image: /assets/photos/borjomi-kharagauli-national-park.webp
-gallery: []
+gallery:
+- image: /assets/photos/borjomi-kharagauli-national-park-1.webp
+  author: Alexkom000
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0
+  source: https://commons.wikimedia.org/wiki/File:2024-08-31_Borjomi_Strict_Nature_Reserve_03.jpg
+- image: /assets/photos/borjomi-kharagauli-national-park-2.webp
+  author: Alexkom000
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0
+  source: https://commons.wikimedia.org/wiki/File:2024-08-31_Borjomi_Strict_Nature_Reserve_01.jpg
+- image: /assets/photos/borjomi-kharagauli-national-park-3.webp
+  author: Alexkom000
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0
+  source: https://commons.wikimedia.org/wiki/File:2024-08-31_Borjomi_Strict_Nature_Reserve_04.jpg
 visit_hours: '6'
 best_season: may-october
 open_year_round: true
@@ -254,3 +269,4 @@ image_credit:
   license: CC BY 4.0
   license_url: https://creativecommons.org/licenses/by/4.0
   source: https://commons.wikimedia.org/wiki/File:2024-08-31_Borjomi_Strict_Nature_Reserve_02.jpg
+rating: 4.0

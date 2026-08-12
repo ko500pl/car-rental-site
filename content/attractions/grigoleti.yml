@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 65
 image: /assets/photos/grigoleti.webp
-gallery: []
+gallery:
+- image: /assets/photos/grigoleti-1.webp
+  author: Jelger Groeneveld
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:S12_Grigoleti_nearing_S2_junction.jpg
+- image: /assets/photos/grigoleti-2.webp
+  author: Sarah Murray from South Bend, IN, USA
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Poti_(14520669897).jpg
+- image: /assets/photos/grigoleti-3.webp
+  author: U.S. Army Corps of Engineers Europe District from Wiesbaden, Germany
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:Supsa_Fusion_Center_opens_in_Georgia_(14671799541).jpg
 visit_hours: '4'
 best_season: june-september
 open_year_round: true
@@ -235,3 +250,4 @@ image_credit:
   license: CC BY 2.0
   license_url: https://creativecommons.org/licenses/by/2.0
   source: https://commons.wikimedia.org/wiki/File:S12_Grigoleti_S2_junction.jpg
+rating: 4.0

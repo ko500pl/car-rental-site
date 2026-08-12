@@ -7,7 +7,22 @@ unesco: true
 featured: true
 order: 20
 image: /assets/photos/svetitskhoveli-cathedral.webp
-gallery: []
+gallery:
+- image: /assets/photos/svetitskhoveli-cathedral-1.webp
+  author: Joonas Plaan from Tallinn, Estonia
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Samtvro_chappel_(1).jpg
+- image: /assets/photos/svetitskhoveli-cathedral-2.webp
+  author: Gusjer
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Inside_Svetitskhoveli_Cathedral.jpg
+- image: /assets/photos/svetitskhoveli-cathedral-3.webp
+  author: Giftzwerg 88
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Swetizchoweli-Kathedrale_9.jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true
@@ -249,3 +264,4 @@ image_credit:
   license: CC BY 2.0
   license_url: https://creativecommons.org/licenses/by/2.0
   source: https://commons.wikimedia.org/wiki/File:Samtvro_chappel.jpg
+rating: 5.0

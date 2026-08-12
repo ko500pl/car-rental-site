@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 76
 image: /assets/photos/muri-fortress.webp
-gallery: []
+gallery:
+- image: /assets/photos/muri-fortress-1.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Riv._Tskhenistskali_ravine_near_Tsageri_-_panoramio.jpg
+- image: /assets/photos/muri-fortress-2.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Unnamed_Road,_Tsageri,_Georgia_-_panoramio.jpg
+- image: /assets/photos/muri-fortress-3.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:View_to_Tsageri_-_panoramio.jpg
 visit_hours: '1.5'
 best_season: all
 open_year_round: true
@@ -283,3 +298,4 @@ image_credit:
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Fortress_near_Tsageri_-_panoramio.jpg
+rating: 3.5

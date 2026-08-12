@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 25
 image: /assets/photos/tskaltubo-spa-town.webp
-gallery: []
+gallery:
+- image: /assets/photos/tskaltubo-spa-town-1.webp
+  author: Sarah Murray from South Bend, IN, USA
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Tsqaltubo_(14679495911).jpg
+- image: /assets/photos/tskaltubo-spa-town-2.webp
+  author: Sarah Murray from South Bend, IN, USA
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Tsqaltubo_(14684316365).jpg
+- image: /assets/photos/tskaltubo-spa-town-3.webp
+  author: Sarah Murray from South Bend, IN, USA
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Tsqaltubo_(14682014804).jpg
 visit_hours: '3'
 best_season: all
 open_year_round: true
@@ -272,3 +287,4 @@ image_credit:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Abandoned_bathhouse_in_Tskaltubo.jpg
+rating: 4.0

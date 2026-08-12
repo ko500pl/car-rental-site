@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 40
 image: /assets/photos/kintsvisi-monastery.webp
-gallery: []
+gallery:
+- image: /assets/photos/kintsvisi-monastery-1.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Kintsvisi_church.jpg
+- image: /assets/photos/kintsvisi-monastery-2.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Kintsvisi_church4.jpg
+- image: /assets/photos/kintsvisi-monastery-3.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Kintsvisi_church_(5).jpg
 visit_hours: '2'
 best_season: may-october
 open_year_round: true
@@ -232,3 +247,4 @@ image_credit:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Kintsvisi,_small_church.jpg
+rating: 4.0

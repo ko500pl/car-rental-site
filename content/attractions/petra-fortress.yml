@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 70
 image: /assets/photos/petra-fortress.webp
-gallery: []
+gallery:
+- image: /assets/photos/petra-fortress-1.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:-_panoramio_(5334).jpg
+- image: /assets/photos/petra-fortress-2.webp
+  author: Андрей Бобровский
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0
+  source: https://commons.wikimedia.org/wiki/File:%D0%93%D1%80%D1%83%D0%B7%D0%B8%D1%8F_-_panoramio_(31).jpg
+- image: /assets/photos/petra-fortress-3.webp
+  author: Андрей Бобровский
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0
+  source: https://commons.wikimedia.org/wiki/File:%D0%93%D1%80%D1%83%D0%B7%D0%B8%D1%8F_-_panoramio_(32).jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -232,3 +247,4 @@ image_credit:
   license: CC BY 3.0
   license_url: https://creativecommons.org/licenses/by/3.0
   source: https://commons.wikimedia.org/wiki/File:%D0%93%D1%80%D1%83%D0%B7%D0%B8%D1%8F_-_panoramio_(33).jpg
+rating: 3.5

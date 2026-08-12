@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 35
 image: /assets/photos/sioni-cathedral.webp
-gallery: []
+gallery:
+- image: /assets/photos/sioni-cathedral-1.webp
+  author: D.Rovchak
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Sioni_cathedral_en_Tbilisi.jpg
+- image: /assets/photos/sioni-cathedral-2.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Tbilisi%27s_Sioni_(4).jpg
+- image: /assets/photos/sioni-cathedral-3.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Tbilisi%27s_Sioni_(5).jpg
 visit_hours: '0.5'
 best_season: all
 open_year_round: true
@@ -289,3 +304,4 @@ image_credit:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Sioni_Cathedral_2.jpg
+rating: 3.0

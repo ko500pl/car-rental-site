@@ -7,7 +7,24 @@ unesco: false
 featured: false
 order: 40
 image: /assets/photos/algeti-national-park.webp
-gallery: []
+gallery:
+- image: /assets/photos/algeti-national-park-1.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: >-
+    https://commons.wikimedia.org/wiki/File:%E1%83%9B%E1%83%90%E1%83%9C%E1%83%92%E1%83%9A%E1%83%98%E1%83%A1%E1%83%98%E1%83%A1_%E1%83%AE%E1%83%94%E1%83%93%E1%83%98_-_panoramio.jpg
+- image: /assets/photos/algeti-national-park-2.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: >-
+    https://commons.wikimedia.org/wiki/File:%E1%83%92%E1%83%90%E1%83%96%E1%83%90%E1%83%A4%E1%83%AE%E1%83%A3%E1%83%9A%E1%83%98_%E1%83%9B%E1%83%90%E1%83%9C%E1%83%92%E1%83%9A%E1%83%98%E1%83%A1%E1%83%97%E1%83%90%E1%83%9C_%E1%83%90%E1%83%AE%E1%83%9A%E1%83%9D%E1%83%A1_-_panoramio.jpg
+- image: /assets/photos/algeti-national-park-3.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:View_Manglisi_-_panoramio_(1).jpg
 visit_hours: '4'
 best_season: may-october
 open_year_round: true
@@ -219,3 +236,4 @@ image_credit:
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Tbilisi-Kojori-Tsalka-Ninotsminda,_Georgia_-_panoramio.jpg
+rating: 4.0

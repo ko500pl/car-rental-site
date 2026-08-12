@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 75
 image: /assets/photos/lanchkhuti.webp
-gallery: []
+gallery:
+- image: /assets/photos/lanchkhuti-1.webp
+  author: M.
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Lanchkhuti_Agaraki_Bell_Tower.jpg
+- image: /assets/photos/lanchkhuti-2.webp
+  author: M.
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Machkhvareti.jpg
+- image: /assets/photos/lanchkhuti-3.webp
+  author: Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:ISS048-E-23814_-_View_of_Earth.jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true
@@ -205,3 +220,4 @@ image_credit:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Lanchkhuti_former_Theater.jpg
+rating: 4.0

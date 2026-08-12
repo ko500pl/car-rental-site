@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 70
 image: /assets/photos/salkhino-palace.webp
-gallery: []
+gallery:
+- image: /assets/photos/salkhino-palace-1.webp
+  author: Kober
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Salkhino_mansion_(4).jpg
+- image: /assets/photos/salkhino-palace-2.webp
+  author: Kober
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Salkhino_mansion_(5).jpg
+- image: /assets/photos/salkhino-palace-3.webp
+  author: Kober
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Salkhino_mansion_(6).jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -360,3 +375,4 @@ image_credit:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Salkhino_mansion_(3).jpg
+rating: 3.0

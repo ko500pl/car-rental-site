@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 65
 image: /assets/photos/bakuriani-botanical-garden.webp
-gallery: []
+gallery:
+- image: /assets/photos/bakuriani-botanical-garden-1.webp
+  author: Vladimer Shioshvili
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Bakuriani_003.jpg
+- image: /assets/photos/bakuriani-botanical-garden-2.webp
+  author: Giga Paitchadze from Tbilisi, Georgia
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Borjomi_water_bottle,_March_13_2007.jpg
+- image: /assets/photos/bakuriani-botanical-garden-3.webp
+  author: Franz Xaver
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Lavatera_thuringiaca_8.jpg
 visit_hours: '1.5'
 best_season: may-october
 open_year_round: false
@@ -275,3 +290,4 @@ image_credit:
   license: CC BY-SA 2.0
   license_url: https://creativecommons.org/licenses/by-sa/2.0
   source: https://commons.wikimedia.org/wiki/File:Bakuriani_002.jpg
+rating: 4.0

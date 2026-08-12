@@ -7,7 +7,17 @@ unesco: false
 featured: false
 order: 45
 image: /assets/photos/kukushka-narrow-gauge-railway.webp
-gallery: []
+gallery:
+- image: /assets/photos/kukushka-narrow-gauge-railway-1.webp
+  author: Henri Bergius from Finland
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Aerial_tramway._Borjomi.jpg
+- image: /assets/photos/kukushka-narrow-gauge-railway-2.webp
+  author: Henri Bergius from Finland
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Borjomi_from_the_wheel.jpg
 visit_hours: '4'
 best_season: all
 open_year_round: true
@@ -268,3 +278,4 @@ image_credit:
   license: CC BY-SA 2.0
   license_url: https://creativecommons.org/licenses/by-sa/2.0
   source: https://commons.wikimedia.org/wiki/File:Borjomi_water.jpg
+rating: 4.0

@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 70
 image: /assets/photos/khareba-wine-tunnel.webp
-gallery: []
+gallery:
+- image: /assets/photos/khareba-wine-tunnel-1.webp
+  author: A. Muhranoff
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Dolochopi_basilica._Ruins_in_Kakheti,_Georgia_03.jpg
+- image: /assets/photos/khareba-wine-tunnel-2.webp
+  author: A. Muhranoff
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Dolochopi_basilica._Ruins_in_Kakheti,_Georgia_06.jpg
+- image: /assets/photos/khareba-wine-tunnel-3.webp
+  author: A. Muhranoff
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Dolochopi_basilica._Ruins_in_Kakheti,_Georgia_05.jpg
 visit_hours: '1.5'
 best_season: all
 open_year_round: true
@@ -260,3 +275,4 @@ image_credit:
   license: CC BY 3.0
   license_url: https://creativecommons.org/licenses/by/3.0
   source: https://commons.wikimedia.org/wiki/File:Unnamed_Road,_Georgia_-_panoramio_(16).jpg
+rating: 3.5

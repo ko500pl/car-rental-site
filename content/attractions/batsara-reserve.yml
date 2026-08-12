@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 78
 image: /assets/photos/batsara-reserve.webp
-gallery: []
+gallery:
+- image: /assets/photos/batsara-reserve-1.webp
+  author: Ivan Ruggiero
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Detail_of_a_grave_in_Jokolo%27s_old_cemetery.jpg
+- image: /assets/photos/batsara-reserve-2.webp
+  author: Ivan Ruggiero
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Baltagori_lower_guidepost.jpg
+- image: /assets/photos/batsara-reserve-3.webp
+  author: Ivan Ruggiero
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Duisi_info_board_DX.jpg
 visit_hours: '6'
 best_season: may-october
 open_year_round: true
@@ -248,3 +263,4 @@ image_credit:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Jokolo%27s_old_cemetery.jpg
+rating: 4.0

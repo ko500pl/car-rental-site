@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 60
 image: /assets/photos/ertatsminda-cathedral.webp
-gallery: []
+gallery:
+- image: /assets/photos/ertatsminda-cathedral-1.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Kaspi,_Ertatsminda_church_(4).jpg
+- image: /assets/photos/ertatsminda-cathedral-2.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Kaspi,_Ertatsminda_church_(6).jpg
+- image: /assets/photos/ertatsminda-cathedral-3.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Kaspi,_Ertatsminda_church_(5).jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -242,3 +257,4 @@ image_credit:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Kaspi,_Ertatsminda_church_(1).jpg
+rating: 3.5

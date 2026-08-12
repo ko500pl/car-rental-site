@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 80
 image: /assets/photos/chokhatauri.webp
-gallery: []
+gallery:
+- image: /assets/photos/chokhatauri-1.webp
+  author: Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:ISS046-E-10549_-_View_of_Earth.jpg
+- image: /assets/photos/chokhatauri-2.webp
+  author: Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:ISS031-E-5734_-_View_of_Earth.jpg
+- image: /assets/photos/chokhatauri-3.webp
+  author: Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:ISS031-E-5732_-_View_of_Earth.jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true
@@ -231,3 +246,4 @@ image_credit:
   license: Public domain
   license_url: ''
   source: https://commons.wikimedia.org/wiki/File:ISS046-E-10548_-_View_of_Earth.jpg
+rating: 4.0

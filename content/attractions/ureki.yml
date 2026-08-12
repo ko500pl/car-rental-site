@@ -7,7 +7,23 @@ unesco: false
 featured: true
 order: 20
 image: /assets/photos/ureki.webp
-gallery: []
+gallery:
+- image: /assets/photos/ureki-1.webp
+  author: M.
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0
+  source: >-
+    https://commons.wikimedia.org/wiki/File:%E1%83%A3%E1%83%A0%E1%83%94%E1%83%99%E1%83%98,_%E1%83%9B%E1%83%97%E1%83%98%E1%83%A1_%E1%83%91%E1%83%A0%E1%83%9D%E1%83%9A%E1%83%98.jpg
+- image: /assets/photos/ureki-2.webp
+  author: M.
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0
+  source: https://commons.wikimedia.org/wiki/File:%E1%83%A3%E1%83%A0%E1%83%94%E1%83%99%E1%83%98.jpg
+- image: /assets/photos/ureki-3.webp
+  author: Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:ISS038-E-43672_-_View_of_Earth.jpg
 visit_hours: '4'
 best_season: june-september
 open_year_round: false
@@ -232,3 +248,4 @@ image_credit:
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Guria,_Georgia_-_panoramio.jpg
+rating: 5.0

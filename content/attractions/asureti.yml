@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 75
 image: /assets/photos/asureti.webp
-gallery: []
+gallery:
+- image: /assets/photos/asureti-1.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Vil._Asureti_-_panoramio.jpg
+- image: /assets/photos/asureti-2.webp
+  author: Alexey Komarov
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:2023-10-22_A_view_from_the_trail_between_Asureti_and_Kojori_1.jpg
+- image: /assets/photos/asureti-3.webp
+  author: Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:ISS030-E-22360_-_View_of_Earth.jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true
@@ -222,3 +237,4 @@ image_credit:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:2023-10-22_Lutheran_church_in_Asureti.jpg
+rating: 4.0

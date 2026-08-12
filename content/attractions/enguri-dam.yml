@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 70
 image: /assets/photos/enguri-dam.webp
-gallery: []
+gallery:
+- image: /assets/photos/enguri-dam-1.webp
+  author: deguonis from Lithuania
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Kelias_%C4%AF_Mestij%C4%85_(Photo_by_deguonis_2009)_(1).jpg
+- image: /assets/photos/enguri-dam-2.webp
+  author: deguonis from Lithuania
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Kelias_%C4%AF_Mestij%C4%85_(Photo_by_deguonis_2009)_(2).jpg
+- image: /assets/photos/enguri-dam-3.webp
+  author: deguonis from Lithuania
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Kelias_%C4%AF_Mestij%C4%85_(Photo_by_deguonis_2009)_(3).jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -236,3 +251,4 @@ image_credit:
   license: CC BY-SA 2.0
   license_url: https://creativecommons.org/licenses/by-sa/2.0
   source: https://commons.wikimedia.org/wiki/File:Enguri_Dam_006.jpg
+rating: 3.5

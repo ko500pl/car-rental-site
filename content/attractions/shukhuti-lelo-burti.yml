@@ -7,7 +7,17 @@ unesco: false
 featured: false
 order: 85
 image: /assets/photos/shukhuti-lelo-burti.webp
-gallery: []
+gallery:
+- image: /assets/photos/shukhuti-lelo-burti-1.webp
+  author: jaba1977
+  license: Attribution
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:Museum_of_Egnate_Ninoshvili.jpg
+- image: /assets/photos/shukhuti-lelo-burti-2.webp
+  author: M.
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Djumati_Monastery.jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true
@@ -216,3 +226,4 @@ image_credit:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Ninoshvili.jpg
+rating: 4.0

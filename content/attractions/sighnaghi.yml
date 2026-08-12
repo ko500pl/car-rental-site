@@ -7,7 +7,22 @@ unesco: false
 featured: true
 order: 10
 image: /assets/photos/sighnaghi.webp
-gallery: []
+gallery:
+- image: /assets/photos/sighnaghi-1.webp
+  author: Alexxx1979
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Sighnaghi_IMG_9071_1920.jpg
+- image: /assets/photos/sighnaghi-2.webp
+  author: Alexxx1979
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Sighnaghi_IMG_9076_1920.jpg
+- image: /assets/photos/sighnaghi-3.webp
+  author: Alexxx1979
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Sighnaghi_IMG_9086_1920.jpg
 visit_hours: '3'
 best_season: all
 open_year_round: true
@@ -221,3 +236,4 @@ image_credit:
   license: CC BY-SA 2.0
   license_url: https://creativecommons.org/licenses/by-sa/2.0
   source: https://commons.wikimedia.org/wiki/File:Kakheti_15409_(9106027013).jpg
+rating: 5.0

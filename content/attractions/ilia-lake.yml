@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 80
 image: /assets/photos/ilia-lake.webp
-gallery: []
+gallery:
+- image: /assets/photos/ilia-lake-1.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Kvareli,_Georgia_-_panoramio_(2).jpg
+- image: /assets/photos/ilia-lake-2.webp
+  author: Giftzwerg 88
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Kvareli_Eden_H%C3%BCtte1.jpg
+- image: /assets/photos/ilia-lake-3.webp
+  author: Giftzwerg 88
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Kvareli_Eden_Tandoor_3.jpg
 visit_hours: '2'
 best_season: may-october
 open_year_round: true
@@ -252,3 +267,4 @@ image_credit:
   license: CC BY-SA 2.0
   license_url: https://creativecommons.org/licenses/by-sa/2.0
   source: https://commons.wikimedia.org/wiki/File:Mushrooms_and_cheese_in_Georgia.jpg
+rating: 4.0

@@ -1,0 +1,1361 @@
+note: © OpenStreetMap contributors (ODbL)
+towns:
+  tbilisi:
+  - n: Ambassadori
+    ty: hotel
+    b: high
+    la: 41.69617
+    lo: 44.8068
+    st: '5'
+  - n: Kartli
+    ty: hotel
+    b: mid
+    la: 41.70364
+    lo: 44.78451
+  - n: Argo Palace
+    ty: hotel
+    b: mid
+    la: 41.70487
+    lo: 44.77988
+  - n: Tbili Metekhi Boutique Hotel
+    ty: guest_house
+    b: low
+    la: 41.68991
+    lo: 44.81617
+  - n: GTM
+    ty: hotel
+    b: mid
+    la: 41.69027
+    lo: 44.81239
+  - n: Boombully
+    ty: hostel
+    b: low
+    la: 41.7001
+    lo: 44.79585
+  - n: Hotel Ortachala Palace
+    ty: hotel
+    b: mid
+    la: 41.67518
+    lo: 44.83521
+  - n: TiflisLux Hostel & GuestHouse
+    ty: hostel
+    b: low
+    la: 41.70349
+    lo: 44.78626
+  - n: Hotel Mari
+    ty: hotel
+    b: mid
+    la: 41.70271
+    lo: 44.78405
+  - n: Tamar Guesthouse
+    ty: guest_house
+    b: low
+    la: 41.70768
+    lo: 44.80159
+  - n: Epic (Liva) Hotel
+    ty: hotel
+    b: mid
+    la: 41.6981
+    lo: 44.81396
+  - n: Margot
+    ty: hotel
+    b: mid
+    la: 41.68933
+    lo: 44.81926
+  kutaisi:
+  - n: Bagrati
+    ty: hotel
+    b: high
+    la: 42.268
+    lo: 42.7035
+    st: '5'
+  - n: Hotel Tamar Mepe
+    ty: guest_house
+    b: low
+    la: 42.26808
+    lo: 42.70666
+  - n: Sano
+    ty: hotel
+    b: mid
+    la: 42.25136
+    lo: 42.71817
+  - n: Golden Fleece
+    ty: hostel
+    b: low
+    la: 42.24652
+    lo: 42.68041
+  - n: Kolkha
+    ty: hotel
+    b: mid
+    la: 42.24393
+    lo: 42.71207
+  - n: Medico & Suliko guest house
+    ty: guest_house
+    b: low
+    la: 42.26774
+    lo: 42.71592
+  - n: Imperial
+    ty: hotel
+    b: mid
+    la: 42.25755
+    lo: 42.69452
+  - n: Hotel Gelati
+    ty: hotel
+    b: mid
+    la: 42.27049
+    lo: 42.71326
+  - n: Lali's Family Hotel
+    ty: hotel
+    b: mid
+    la: 42.27301
+    lo: 42.69638
+  - n: Hotel Beka
+    ty: hotel
+    b: mid
+    la: 42.27314
+    lo: 42.69736
+  - n: Old Town
+    ty: hotel
+    b: mid
+    la: 42.26901
+    lo: 42.70157
+  - n: Giorgi's Homestay
+    ty: guest_house
+    b: low
+    la: 42.27846
+    lo: 42.70017
+  batumi:
+  - n: Chao
+    ty: hotel
+    b: mid
+    la: 41.64413
+    lo: 41.62352
+  - n: Golden Palace
+    ty: hotel
+    b: mid
+    la: 41.65209
+    lo: 41.63669
+  - n: Eiffel
+    ty: hotel
+    b: mid
+    la: 41.64593
+    lo: 41.62899
+  - n: Elite House
+    ty: hotel
+    b: mid
+    la: 41.647
+    lo: 41.6423
+  - n: Mireosi
+    ty: hotel
+    b: mid
+    la: 41.65077
+    lo: 41.64223
+  - n: Daisi-Sunset
+    ty: hotel
+    b: mid
+    la: 41.64439
+    lo: 41.63102
+  - n: Globus
+    ty: hostel
+    b: low
+    la: 41.64792
+    lo: 41.64162
+  - n: Green Villa
+    ty: hotel
+    b: mid
+    la: 41.65087
+    lo: 41.64031
+  - n: Lim
+    ty: guest_house
+    b: low
+    la: 41.6432
+    lo: 41.62922
+  - n: Sea Towers G
+    ty: hotel
+    b: mid
+    la: 41.63684
+    lo: 41.60966
+  - n: Guest House - HouseinAjara
+    ty: guest_house
+    b: low
+    la: 41.63556
+    lo: 41.64531
+  - n: Riva
+    ty: hotel
+    b: mid
+    la: 41.64321
+    lo: 41.62347
+  rustavi:
+  - n: Rustavis Autobazroba
+    ty: hotel
+    b: mid
+    la: 41.56714
+    lo: 44.95276
+    st: '3'
+  - n: Green hotel
+    ty: hotel
+    b: mid
+    la: 41.5592
+    lo: 44.96549
+  - n: '21'
+    ty: hotel
+    b: mid
+    la: 41.54268
+    lo: 45.01204
+  - n: Tamada
+    ty: hotel
+    b: mid
+    la: 41.56171
+    lo: 44.97506
+  - n: Rustavi
+    ty: hotel
+    b: mid
+    la: 41.56175
+    lo: 44.97813
+  - n: Grand Vejini
+    ty: hotel
+    b: mid
+    la: 41.56782
+    lo: 44.96267
+  - n: Vip Hotel
+    ty: hotel
+    b: mid
+    la: 41.53876
+    lo: 45.01635
+  mtskheta:
+  - n: Zedazeni
+    ty: hotel
+    b: mid
+    la: 41.86077
+    lo: 44.73029
+  - n: guest house Lasha
+    ty: guest_house
+    b: low
+    la: 41.84169
+    lo: 44.72156
+  - n: Old Capital
+    ty: guest_house
+    b: low
+    la: 41.84307
+    lo: 44.71997
+  - n: Iberia
+    ty: guest_house
+    b: low
+    la: 41.84167
+    lo: 44.72092
+  - n: Igloo
+    ty: chalet
+    b: mid
+    la: 41.83973
+    lo: 44.67302
+  - n: Ulysses
+    ty: hotel
+    b: mid
+    la: 41.84304
+    lo: 44.7191
+  - n: Golden Fleece
+    ty: hotel
+    b: mid
+    la: 41.86499
+    lo: 44.72983
+  - n: Fifty
+    ty: guest_house
+    b: low
+    la: 41.84172
+    lo: 44.72323
+  - n: Ebralidze
+    ty: guest_house
+    b: low
+    la: 41.84355
+    lo: 44.71997
+  - n: Aragvi
+    ty: hotel
+    b: mid
+    la: 41.84393
+    lo: 44.72147
+  - n: Andria
+    ty: hotel
+    b: mid
+    la: 41.84156
+    lo: 44.72237
+  - n: Tengo
+    ty: hotel
+    b: mid
+    la: 41.8427
+    lo: 44.71869
+  gori:
+  - n: Victoria
+    ty: hotel
+    b: mid
+    la: 41.97777
+    lo: 44.11312
+    st: '3'
+  - n: Intourist
+    ty: hotel
+    b: mid
+    la: 41.98522
+    lo: 44.11345
+    st: '2'
+  - n: Gori Inn
+    ty: hotel
+    b: mid
+    la: 41.97864
+    lo: 44.1033
+  - n: Nitsa guest house
+    ty: guest_house
+    b: low
+    la: 41.98654
+    lo: 44.11708
+  - n: Guesthouse Svetlana
+    ty: guest_house
+    b: low
+    la: 41.98052
+    lo: 44.10586
+  - n: Kartli
+    ty: hotel
+    b: mid
+    la: 41.98167
+    lo: 44.10678
+  - n: my home
+    ty: hostel
+    b: low
+    la: 41.95825
+    lo: 44.13309
+  - n: hotel
+    ty: hotel
+    b: mid
+    la: 41.96264
+    lo: 44.1329
+  - n: Tamar
+    ty: guest_house
+    b: low
+    la: 41.97994
+    lo: 44.10448
+  - n: Savane
+    ty: guest_house
+    b: low
+    la: 41.9848
+    lo: 44.10702
+  - n: Brick Walls
+    ty: guest_house
+    b: low
+    la: 41.9851
+    lo: 44.11518
+  - n: Levani
+    ty: guest_house
+    b: low
+    la: 41.97896
+    lo: 44.11466
+  khashuri:
+  - n: სურამის სასტუმრო
+    ty: hotel
+    b: mid
+    la: 42.01668
+    lo: 43.56409
+  - n: Metreveli street guest house
+    ty: guest_house
+    b: low
+    la: 41.98982
+    lo: 43.60084
+  borjomi:
+  - n: Borjomis Kheoba
+    ty: hotel
+    b: mid
+    la: 41.84292
+    lo: 43.38617
+  - n: Victoria Panorama
+    ty: hotel
+    b: mid
+    la: 41.84267
+    lo: 43.37833
+  - n: Borjomi Palace
+    ty: guest_house
+    b: low
+    la: 41.84233
+    lo: 43.37992
+  - n: Rainbow
+    ty: guest_house
+    b: low
+    la: 41.84522
+    lo: 43.39494
+  - n: Golden Tulip Borjomi
+    ty: hotel
+    b: mid
+    la: 41.83655
+    lo: 43.39024
+  - n: Rudolf
+    ty: guest_house
+    b: low
+    la: 41.83501
+    lo: 43.37631
+  - n: Unforgettable attic with balcony in Borjomi
+    ty: guest_house
+    b: low
+    la: 41.83789
+    lo: 43.38606
+  - n: Borjomi
+    ty: hotel
+    b: mid
+    la: 41.84135
+    lo: 43.37844
+  - n: Meidan
+    ty: hotel
+    b: mid
+    la: 41.84136
+    lo: 43.38256
+  - n: Tbilisi
+    ty: hotel
+    b: mid
+    la: 41.83981
+    lo: 43.38465
+  - n: Likani Palace
+    ty: hotel
+    b: mid
+    la: 41.83636
+    lo: 43.36994
+  - n: Lilu
+    ty: guest_house
+    b: low
+    la: 41.83623
+    lo: 43.38992
+  bakuriani:
+  - n: Snow Plaza
+    ty: hotel
+    b: high
+    la: 41.74551
+    lo: 43.53322
+    st: '4'
+  - n: Hotel Iceberg
+    ty: hotel
+    b: mid
+    la: 41.74995
+    lo: 43.52827
+    st: '3'
+  - n: Orbi Palace
+    ty: hotel
+    b: high
+    la: 41.72707
+    lo: 43.53169
+    st: '4'
+  - n: Trialeti Palace
+    ty: hotel
+    b: mid
+    la: 41.73057
+    lo: 43.53671
+    st: '2'
+  - n: Bakuriani Hills
+    ty: hotel
+    b: mid
+    la: 41.74845
+    lo: 43.5285
+  - n: Apollon
+    ty: hotel
+    b: mid
+    la: 41.74379
+    lo: 43.52875
+  - n: Villa Palace
+    ty: hotel
+    b: mid
+    la: 41.74637
+    lo: 43.53252
+  - n: Red House
+    ty: hotel
+    b: mid
+    la: 41.74471
+    lo: 43.53411
+  - n: Crystal
+    ty: hotel
+    b: mid
+    la: 41.72999
+    lo: 43.53102
+  - n: Bakuriani Inn
+    ty: hotel
+    b: mid
+    la: 41.75944
+    lo: 43.53527
+  - n: Alpina
+    ty: hotel
+    b: mid
+    la: 41.75605
+    lo: 43.52829
+  - n: Hotel Melisi
+    ty: hotel
+    b: mid
+    la: 41.74851
+    lo: 43.52106
+  akhaltsikhe:
+  - n: Lomsia
+    ty: hotel
+    b: mid
+    la: 41.63895
+    lo: 42.98768
+  - n: Aventus
+    ty: hotel
+    b: mid
+    la: 41.64451
+    lo: 43.00493
+  - n: Almi Hotel
+    ty: guest_house
+    b: low
+    la: 41.6378
+    lo: 42.9921
+  - n: Hotel Tourist
+    ty: hotel
+    b: mid
+    la: 41.63855
+    lo: 42.99184
+  - n: Meskheti Palace
+    ty: hotel
+    b: mid
+    la: 41.64006
+    lo: 42.98511
+  - n: Ariali
+    ty: hotel
+    b: mid
+    la: 41.64322
+    lo: 42.98617
+  - n: Prestige
+    ty: hotel
+    b: mid
+    la: 41.63904
+    lo: 42.99373
+  - n: Akhaltsikhe
+    ty: hotel
+    b: mid
+    la: 41.64099
+    lo: 42.97152
+  - n: Mirage
+    ty: hotel
+    b: mid
+    la: 41.63847
+    lo: 42.99938
+  - n: Potskhovi
+    ty: hotel
+    b: mid
+    la: 41.6412
+    lo: 42.98011
+  - n: Meskheti
+    ty: hotel
+    b: mid
+    la: 41.63883
+    lo: 42.98727
+  - n: Star
+    ty: hotel
+    b: mid
+    la: 41.63867
+    lo: 42.99275
+  akhalkalaki: []
+  zestafoni:
+  - n: Guesthouse Zedafoni
+    ty: guest_house
+    b: low
+    la: 42.10133
+    lo: 43.03813
+  - n: Farnavazi
+    ty: hotel
+    b: mid
+    la: 42.10515
+    lo: 43.03036
+  - n: საოჯახო სასტუმრო
+    ty: guest_house
+    b: low
+    la: 42.10659
+    lo: 43.04292
+  - n: Alpede
+    ty: hotel
+    b: mid
+    la: 42.11997
+    lo: 43.01087
+  - n: Black Sea
+    ty: hotel
+    b: mid
+    la: 42.10653
+    lo: 43.03549
+  chiatura: []
+  sachkhere:
+  - n: Chais saxli
+    ty: apartment
+    b: mid
+    la: 42.33803
+    lo: 43.40099
+  - n: Гостиница
+    ty: hotel
+    b: mid
+    la: 42.32587
+    lo: 43.40545
+  - n: Sachkhere Gardens Hotel Complex (real location)
+    ty: hotel
+    b: mid
+    la: 42.32508
+    lo: 43.40395
+  tkibuli:
+  - n: Okriba
+    ty: hotel
+    b: mid
+    la: 42.35197
+    lo: 42.99772
+  samtredia:
+  - n: Gio Grigolia
+    ty: guest_house
+    b: low
+    la: 42.16563
+    lo: 42.33593
+  - n: OBOLA
+    ty: hotel
+    b: mid
+    la: 42.16361
+    lo: 42.34736
+  - n: Gio Guesthouse
+    ty: guest_house
+    b: low
+    la: 42.16481
+    lo: 42.37798
+  senaki: []
+  poti:
+  - n: Meshi Family
+    ty: guest_house
+    b: low
+    la: 42.14079
+    lo: 41.65902
+  - n: Ankor
+    ty: hotel
+    b: mid
+    la: 42.15186
+    lo: 41.66044
+  - n: Boutique Hostel
+    ty: hostel
+    b: low
+    la: 42.14002
+    lo: 41.67257
+  - n: Park Green
+    ty: hotel
+    b: mid
+    la: 42.10829
+    lo: 41.69844
+  - n: Golden Lake
+    ty: hotel
+    b: mid
+    la: 42.10556
+    lo: 41.69386
+  - n: Green House
+    ty: hotel
+    b: mid
+    la: 42.11216
+    lo: 41.70161
+  zugdidi:
+  - n: My Moon Hostel
+    ty: hostel
+    b: low
+    la: 42.50521
+    lo: 41.8766
+  - n: Hostel Cozy Home
+    ty: hostel
+    b: low
+    la: 42.51026
+    lo: 41.86565
+  - n: Shorena’s House
+    ty: guest_house
+    b: low
+    la: 42.49521
+    lo: 41.8621
+  - n: Hotel Zugdidi
+    ty: hotel
+    b: mid
+    la: 42.50678
+    lo: 41.86969
+  - n: Hotel Samegrelo
+    ty: hotel
+    b: mid
+    la: 42.50673
+    lo: 41.86946
+  - n: Zugdidi Hostel
+    ty: hostel
+    b: low
+    la: 42.50159
+    lo: 41.85708
+  - n: Iberia Palace
+    ty: hotel
+    b: mid
+    la: 42.50272
+    lo: 41.87034
+  - n: Stay Inn
+    ty: hostel
+    b: low
+    la: 42.52588
+    lo: 41.86406
+  - n: Giorgio
+    ty: guest_house
+    b: low
+    la: 42.5133
+    lo: 41.86966
+  - n: ჩაჩიბაია 20
+    ty: hotel
+    b: mid
+    la: 42.5113
+    lo: 41.85587
+  - n: Khazalia House
+    ty: guest_house
+    b: low
+    la: 42.50223
+    lo: 41.86408
+  - n: Green Garden
+    ty: guest_house
+    b: low
+    la: 42.49437
+    lo: 41.86766
+  anaklia:
+  - n: Beach House Anaklia
+    ty: hotel
+    b: mid
+    la: 42.38927
+    lo: 41.56491
+  - n: Willow
+    ty: hostel
+    b: low
+    la: 42.40367
+    lo: 41.57775
+  - n: Cactus
+    ty: hotel
+    b: mid
+    la: 42.3931
+    lo: 41.56945
+  - n: Golden Fleece
+    ty: hotel
+    b: mid
+    la: 42.3905
+    lo: 41.56287
+  - n: Anaklia Hotel
+    ty: hotel
+    b: mid
+    la: 42.38883
+    lo: 41.56381
+  - n: Palm Beach
+    ty: hotel
+    b: mid
+    la: 42.39353
+    lo: 41.56224
+  - n: White House Anaklia
+    ty: guest_house
+    b: low
+    la: 42.39328
+    lo: 41.5631
+  - n: Flamingo
+    ty: guest_house
+    b: low
+    la: 42.39612
+    lo: 41.56649
+  - n: Cruise
+    ty: hotel
+    b: mid
+    la: 42.39285
+    lo: 41.56254
+  ambrolauri:
+  - n: Chateau Dio
+    ty: guest_house
+    b: low
+    la: 42.53655
+    lo: 43.1301
+  - n: View Racha
+    ty: hotel
+    b: mid
+    la: 42.51828
+    lo: 43.157
+  - n: Glamping Georgia
+    ty: hotel
+    b: mid
+    la: 42.50201
+    lo: 43.16712
+  - n: Olimpi
+    ty: motel
+    b: low
+    la: 42.52018
+    lo: 43.14903
+  - n: Melano Tomadze
+    ty: guest_house
+    b: low
+    la: 42.52272
+    lo: 43.15561
+  - n: Elo
+    ty: guest_house
+    b: low
+    la: 42.52168
+    lo: 43.1531
+  - n: Tanini
+    ty: guest_house
+    b: low
+    la: 42.52191
+    lo: 43.15477
+  - n: Toma
+    ty: guest_house
+    b: low
+    la: 42.5225
+    lo: 43.1568
+  - n: Eleganti
+    ty: guest_house
+    b: low
+    la: 42.52151
+    lo: 43.1513
+  - n: Garemo
+    ty: hostel
+    b: low
+    la: 42.53119
+    lo: 43.12404
+  - n: Wine Space
+    ty: guest_house
+    b: low
+    la: 42.54432
+    lo: 43.10777
+  - n: Chveni Ezo
+    ty: guest_house
+    b: low
+    la: 42.52179
+    lo: 43.15238
+  oni: []
+  ozurgeti:
+  - n: Komli
+    ty: guest_house
+    b: low
+    la: 41.90484
+    lo: 42.041
+  - n: Sam
+    ty: hotel
+    b: mid
+    la: 41.92336
+    lo: 42.0113
+  - n: Dzabzu
+    ty: hotel
+    b: mid
+    la: 41.93404
+    lo: 42.04749
+  khulo:
+  - n: Glamping Tago
+    ty: guest_house
+    b: low
+    la: 41.62194
+    lo: 42.31264
+  - n: Toma
+    ty: hotel
+    b: mid
+    la: 41.64327
+    lo: 42.31061
+  - n: Hostel 13
+    ty: hostel
+    b: low
+    la: 41.64454
+    lo: 42.31371
+  - n: Guest house KARATI
+    ty: guest_house
+    b: low
+    la: 41.65045
+    lo: 42.29788
+  - n: Sunrise
+    ty: guest_house
+    b: low
+    la: 41.64482
+    lo: 42.3174
+  - n: Armazy guest
+    ty: guest_house
+    b: low
+    la: 41.64998
+    lo: 42.30403
+  telavi:
+  - n: Rcheuli Marani
+    ty: hotel
+    b: high
+    la: 41.92352
+    lo: 45.46128
+    st: '4'
+  - n: Esquisse Design Hotel
+    ty: hotel
+    b: mid
+    la: 41.9261
+    lo: 45.49111
+  - n: Qvevrebi
+    ty: hotel
+    b: mid
+    la: 41.9004
+    lo: 45.50782
+  - n: Erma
+    ty: hotel
+    b: mid
+    la: 41.91093
+    lo: 45.46802
+    st: '0'
+  - n: Eto gesthouse
+    ty: guest_house
+    b: low
+    la: 41.91471
+    lo: 45.47307
+  - n: Kavkasioni-33
+    ty: guest_house
+    b: low
+    la: 41.92623
+    lo: 45.47032
+  - n: Erekle II
+    ty: hotel
+    b: mid
+    la: 41.91754
+    lo: 45.47681
+  - n: Hostel Ajime
+    ty: hostel
+    b: low
+    la: 41.9205
+    lo: 45.46652
+  - n: Grandpa's Inn Guest House
+    ty: hostel
+    b: low
+    la: 41.91514
+    lo: 45.47975
+  - n: Family Oasis
+    ty: guest_house
+    b: low
+    la: 41.91503
+    lo: 45.48506
+  - n: მარინე და კახა
+    ty: apartment
+    b: mid
+    la: 41.93092
+    lo: 45.45257
+  - n: Hotel Guglux
+    ty: hotel
+    b: mid
+    la: 41.9112
+    lo: 45.47156
+  gurjaani:
+  - n: Guest House, (საოჯახო სასტუმრო)
+    ty: guest_house
+    b: low
+    la: 41.74775
+    lo: 45.79174
+  - n: Guest house
+    ty: guest_house
+    b: low
+    la: 41.74778
+    lo: 45.79242
+  - n: House in the nature
+    ty: guest_house
+    b: low
+    la: 41.74777
+    lo: 45.79243
+  - n: Shanshe • შანშე
+    ty: hotel
+    b: mid
+    la: 41.73034
+    lo: 45.80224
+  - n: Rebi Gurjaani
+    ty: hotel
+    b: mid
+    la: 41.74478
+    lo: 45.78709
+  kvareli:
+  - n: Chateau Kvareli
+    ty: hotel
+    b: mid
+    la: 41.94773
+    lo: 45.81333
+  - n: Pabellón hotel
+    ty: hotel
+    b: mid
+    la: 41.95015
+    lo: 45.79383
+  - n: Tilia Kvareli Resort
+    ty: hotel
+    b: mid
+    la: 41.96637
+    lo: 45.82653
+  - n: Varga Kvareli
+    ty: guest_house
+    b: low
+    la: 41.95429
+    lo: 45.81321
+  - n: Piano
+    ty: hotel
+    b: mid
+    la: 41.95543
+    lo: 45.81459
+  - n: Shua Kalakshi
+    ty: hotel
+    b: mid
+    la: 41.95086
+    lo: 45.81412
+  - n: Betti
+    ty: guest_house
+    b: low
+    la: 41.94716
+    lo: 45.80365
+  - n: Caucasia
+    ty: hotel
+    b: mid
+    la: 41.93598
+    lo: 45.82223
+  - n: Guest house Kakheti
+    ty: guest_house
+    b: low
+    la: 41.9416
+    lo: 45.81679
+  - n: Villa
+    ty: guest_house
+    b: low
+    la: 41.94887
+    lo: 45.81884
+  - n: Europe
+    ty: guest_house
+    b: low
+    la: 41.94919
+    lo: 45.81734
+  - n: Pawlonia Villa
+    ty: guest_house
+    b: low
+    la: 41.95069
+    lo: 45.81597
+  lagodekhi:
+  - n: Hotel Kavkasioni
+    ty: hotel
+    b: mid
+    la: 41.84
+    lo: 46.28191
+  - n: La Deka Guesthouse
+    ty: guest_house
+    b: low
+    la: 41.82972
+    lo: 46.27134
+  - n: Duende Hotels
+    ty: hotel
+    b: mid
+    la: 41.84817
+    lo: 46.23134
+  - n: Winehouse
+    ty: apartment
+    b: mid
+    la: 41.82621
+    lo: 46.27708
+  - n: Lile Hotel
+    ty: hotel
+    b: mid
+    la: 41.83548
+    lo: 46.27959
+  - n: Lago Guesthouse
+    ty: guest_house
+    b: low
+    la: 41.82192
+    lo: 46.27744
+  - n: Bio Yard
+    ty: hotel
+    b: mid
+    la: 41.83933
+    lo: 46.28087
+  - n: Wald Hotel
+    ty: hotel
+    b: mid
+    la: 41.84236
+    lo: 46.28205
+  - n: Gardenia Guesthouse
+    ty: guest_house
+    b: low
+    la: 41.83688
+    lo: 46.27884
+  - n: Ludwig Guesthouse
+    ty: guest_house
+    b: low
+    la: 41.83152
+    lo: 46.28071
+  - n: At Nanas
+    ty: guest_house
+    b: low
+    la: 41.82783
+    lo: 46.2761
+  - n: Sunny Side
+    ty: guest_house
+    b: low
+    la: 41.82502
+    lo: 46.27524
+  sagarejo:
+  - n: Andamati
+    ty: hotel
+    b: mid
+    la: 41.73819
+    lo: 45.32541
+  - n: sagarejo baiti
+    ty: motel
+    b: low
+    la: 41.73683
+    lo: 45.32442
+  - n: Guesthouse Maia (real location)
+    ty: guest_house
+    b: low
+    la: 41.72768
+    lo: 45.33541
+  - n: Gareji Hotel
+    ty: hotel
+    b: mid
+    la: 41.72431
+    lo: 45.33744
+  akhmeta:
+  - n: Hotel
+    ty: hotel
+    b: mid
+    la: 42.04127
+    lo: 45.20475
+  dedoplistskaro:
+  - n: Iliauni Research Center/Hotel
+    ty: hotel
+    b: mid
+    la: 41.45813
+    lo: 46.12347
+  - n: Meri Poppins
+    ty: guest_house
+    b: low
+    la: 41.46364
+    lo: 46.11541
+  - n: Autograph
+    ty: hotel
+    b: mid
+    la: 41.46261
+    lo: 46.11473
+  stepantsminda:
+  - n: Cozy
+    ty: hotel
+    b: mid
+    la: 42.6611
+    lo: 44.64132
+  - n: Gio-Nika
+    ty: guest_house
+    b: low
+    la: 42.65191
+    lo: 44.64531
+  - n: Kazbegi Guide
+    ty: guest_house
+    b: low
+    la: 42.65249
+    lo: 44.64693
+  - n: Mtis Sakhli
+    ty: hotel
+    b: mid
+    la: 42.65665
+    lo: 44.64052
+  - n: Stepantsminda
+    ty: hotel
+    b: mid
+    la: 42.6576
+    lo: 44.64039
+  - n: Mari Qishashvili
+    ty: guest_house
+    b: low
+    la: 42.66212
+    lo: 44.64666
+  - n: Anano
+    ty: guest_house
+    b: low
+    la: 42.65746
+    lo: 44.64306
+  - n: Leo Hostel
+    ty: guest_house
+    b: low
+    la: 42.65931
+    lo: 44.63667
+  - n: Ninos
+    ty: guest_house
+    b: low
+    la: 42.65397
+    lo: 44.64193
+  - n: Soul kazbegi guest house
+    ty: guest_house
+    b: low
+    la: 42.65958
+    lo: 44.64205
+  - n: Emma's Guest House
+    ty: guest_house
+    b: low
+    la: 42.66074
+    lo: 44.64627
+  - n: Easy
+    ty: hotel
+    b: mid
+    la: 42.65909
+    lo: 44.64144
+  dusheti:
+  - n: Apartments Laguna Beach Club
+    ty: apartment
+    b: mid
+    la: 42.04802
+    lo: 44.6748
+  - n: Grili Chero
+    ty: chalet
+    b: mid
+    la: 42.07152
+    lo: 44.68889
+  - n: dachaa
+    ty: guest_house
+    b: low
+    la: 42.08838
+    lo: 44.68368
+  - n: papas
+    ty: guest_house
+    b: low
+    la: 42.08759
+    lo: 44.69863
+  - n: David's House
+    ty: hostel
+    b: low
+    la: 42.04482
+    lo: 44.69071
+  - n: ოლიმპიური სახლი
+    ty: hotel
+    b: mid
+    la: 42.0839
+    lo: 44.69626
+  - n: First Hotel
+    ty: hotel
+    b: mid
+    la: 42.08294
+    lo: 44.69246
+  - n: One Way
+    ty: hotel
+    b: mid
+    la: 42.0599
+    lo: 44.74536
+  marneuli:
+  - n: Star Hotel
+    ty: hotel
+    b: mid
+    la: 41.48124
+    lo: 44.8055
+  - n: Kavkaz
+    ty: hotel
+    b: mid
+    la: 41.45861
+    lo: 44.81038
+  bolnisi:
+  - n: Deutsche Mühle
+    ty: hotel
+    b: mid
+    la: 41.44488
+    lo: 44.53672
+  - n: Bolnisi Prime House
+    ty: hotel
+    b: mid
+    la: 41.44672
+    lo: 44.551
+  shekvetili:
+  - n: Oxygen
+    ty: hotel
+    b: mid
+    la: 41.92289
+    lo: 41.76744
+    st: '3'
+  - n: Mirage
+    ty: hotel
+    b: mid
+    la: 41.93945
+    lo: 41.76567
+  - n: Exotica
+    ty: hotel
+    b: mid
+    la: 41.98748
+    lo: 41.76053
+  - n: Lizi
+    ty: hotel
+    b: mid
+    la: 41.98974
+    lo: 41.76368
+  - n: Mcvane Ezo
+    ty: hotel
+    b: mid
+    la: 41.93778
+    lo: 41.76932
+  - n: Keria
+    ty: hotel
+    b: mid
+    la: 41.96918
+    lo: 41.76268
+  - n: Gina Shekvetili
+    ty: hotel
+    b: mid
+    la: 41.92685
+    lo: 41.76734
+  - n: Gala Hotel Ureki
+    ty: hotel
+    b: mid
+    la: 41.99167
+    lo: 41.76469
+  - n: Elegant
+    ty: hotel
+    b: mid
+    la: 41.99098
+    lo: 41.7618
+  - n: Mziuri
+    ty: hotel
+    b: mid
+    la: 41.99106
+    lo: 41.76206
+  - n: Olimp
+    ty: hotel
+    b: mid
+    la: 41.93647
+    lo: 41.7658
+  - n: Iberia
+    ty: hotel
+    b: mid
+    la: 41.93945
+    lo: 41.76638
+  mestia-town:
+  - n: Daeli
+    ty: hotel
+    b: mid
+    la: 43.04358
+    lo: 42.72332
+  - n: Ninia's Guesthouse
+    ty: guest_house
+    b: low
+    la: 43.04669
+    lo: 42.73144
+  - n: Hotel Restaurant Old House
+    ty: hotel
+    b: mid
+    la: 43.04751
+    lo: 42.73113
+  - n: Svaneti
+    ty: hotel
+    b: mid
+    la: 43.04457
+    lo: 42.72761
+  - n: Ushba
+    ty: guest_house
+    b: low
+    la: 43.04476
+    lo: 42.72816
+  - n: Sana Guesthouse
+    ty: guest_house
+    b: low
+    la: 43.04523
+    lo: 42.72357
+  - n: N 32
+    ty: guest_house
+    b: low
+    la: 43.04524
+    lo: 42.72909
+  - n: Nino Ratiani
+    ty: guest_house
+    b: low
+    la: 43.04245
+    lo: 42.71865
+  - n: Niguriani
+    ty: guest_house
+    b: low
+    la: 43.04607
+    lo: 42.73059
+  - n: Manoni´s Gueshouse
+    ty: hotel
+    b: mid
+    la: 43.04513
+    lo: 42.7373
+  - n: Irma´s Guesthouse
+    ty: guest_house
+    b: low
+    la: 43.04524
+    lo: 42.73796
+  - n: Roza's Guesthouse
+    ty: guest_house
+    b: low
+    la: 43.04514
+    lo: 42.72102

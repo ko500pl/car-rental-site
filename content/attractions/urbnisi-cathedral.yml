@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 65
 image: /assets/photos/urbnisi-cathedral.webp
-gallery: []
+gallery:
+- image: /assets/photos/urbnisi-cathedral-1.webp
+  author: კოლხი
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Church_of_Urbnisi.2.jpg
+- image: /assets/photos/urbnisi-cathedral-2.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Inscription_of_Urbnisi_church.jpg
+- image: /assets/photos/urbnisi-cathedral-3.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Urbnisi_church_(2).jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -239,3 +254,4 @@ image_credit:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Church_of_Urbnisi.1.jpg
+rating: 3.5

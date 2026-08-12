@@ -7,7 +7,17 @@ unesco: false
 featured: false
 order: 65
 image: /assets/photos/oniore-waterfall.webp
-gallery: []
+gallery:
+- image: /assets/photos/oniore-waterfall-1.webp
+  author: Alexey Komarov
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:River_Abasha_close_to_Oniore_waterfall.jpg
+- image: /assets/photos/oniore-waterfall-2.webp
+  author: Alexey Komarov
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Oniore_Waterfall_2023-08-27-2.jpg
 visit_hours: '2'
 best_season: may-october
 open_year_round: false
@@ -377,3 +387,4 @@ image_credit:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:A_waterfall_seen_from_the_trail_to_Oniore_Waterfall.jpg
+rating: 4.0

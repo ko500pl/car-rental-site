@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 88
 image: /assets/photos/mutso.webp
-gallery: []
+gallery:
+- image: /assets/photos/mutso-1.webp
+  author: Rike Fotos
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Shatili_(7).jpg
+- image: /assets/photos/mutso-2.webp
+  author: Rike Fotos
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Shatili_(10).jpg
+- image: /assets/photos/mutso-3.webp
+  author: Rike Fotos
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Shatili_(11).jpg
 visit_hours: '2.5'
 best_season: june-september
 open_year_round: false
@@ -329,3 +344,4 @@ image_credit:
   license: Public domain
   license_url: ''
   source: https://commons.wikimedia.org/wiki/File:ISS054-E-36347_-_View_of_Earth.jpg
+rating: 4.0

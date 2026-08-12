@@ -7,7 +7,17 @@ unesco: false
 featured: false
 order: 72
 image: /assets/photos/lentekhi.webp
-gallery: []
+gallery:
+- image: /assets/photos/lentekhi-1.webp
+  author: Yasuhiro Kojima
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:River_Laskadura_in_Lentekhi.jpg
+- image: /assets/photos/lentekhi-2.webp
+  author: Yasuhiro Kojima
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Mount_Tekali_and_Tskhenistskali_(view_from_Lentekhi).jpg
 visit_hours: '2'
 best_season: may-october
 open_year_round: true
@@ -285,3 +295,4 @@ image_credit:
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Lentekhi_church_-_panoramio.jpg
+rating: 4.0

@@ -7,7 +7,23 @@ unesco: false
 featured: false
 order: 82
 image: /assets/photos/green-lake-goderdzi.webp
-gallery: []
+gallery:
+- image: /assets/photos/green-lake-goderdzi-1.webp
+  author: Sarah Murray from South Bend, IN, USA
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:%E1%83%9B%E1%83%90%E1%83%A6%E1%83%90%E1%83%96%E1%83%98%E1%83%90.jpg
+- image: /assets/photos/green-lake-goderdzi-2.webp
+  author: Sarah Murray from South Bend, IN, USA
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: >-
+    https://commons.wikimedia.org/wiki/File:%E1%83%91%E1%83%94%E1%83%A8%E1%83%A3%E1%83%9B%E1%83%98_%E1%83%AE%E1%83%A3%E1%83%9A%E1%83%9D.jpg
+- image: /assets/photos/green-lake-goderdzi-3.webp
+  author: Sarah Murray from South Bend, IN, USA
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Rural_Adjaria_(14530459810).jpg
 visit_hours: '2'
 best_season: june-september
 open_year_round: false
@@ -242,3 +258,4 @@ image_credit:
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Batumi-Akhaltsikhe,_Georgia_-_panoramio_(4).jpg
+rating: 4.0

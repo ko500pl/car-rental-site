@@ -7,7 +7,22 @@ unesco: false
 featured: true
 order: 10
 image: /assets/photos/birtvisi-fortress.webp
-gallery: []
+gallery:
+- image: /assets/photos/birtvisi-fortress-1.webp
+  author: Alexkom000
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0
+  source: https://commons.wikimedia.org/wiki/File:2024-01-07_Birtvisi_Canyon_1.jpg
+- image: /assets/photos/birtvisi-fortress-2.webp
+  author: Alexkom000
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0
+  source: https://commons.wikimedia.org/wiki/File:2024-01-07_Birtvisi_Canyon_2.jpg
+- image: /assets/photos/birtvisi-fortress-3.webp
+  author: Alexkom000
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0
+  source: https://commons.wikimedia.org/wiki/File:2024-07-01_A_view_from_the_trail_to_Birtvisi_Fortress_3.jpg
 visit_hours: '4'
 best_season: may-october
 open_year_round: true
@@ -221,3 +236,4 @@ image_credit:
   license: CC BY 3.0
   license_url: https://creativecommons.org/licenses/by/3.0
   source: https://commons.wikimedia.org/wiki/File:Normal_Fault_in_Georgia.jpg
+rating: 5.0

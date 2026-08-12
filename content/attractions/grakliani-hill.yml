@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 75
 image: /assets/photos/grakliani-hill.webp
-gallery: []
+gallery:
+- image: /assets/photos/grakliani-hill-1.webp
+  author: Kober
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Grakliani_Gora_archaeological_site,_Kaspi_Municipality,_Georgia_02.jpg
+- image: /assets/photos/grakliani-hill-2.webp
+  author: Kober
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Grakliani_Gora_archaeological_site,_Kaspi_Municipality,_Georgia_03.jpg
+- image: /assets/photos/grakliani-hill-3.webp
+  author: Kober
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Grakliani_Gora_archaeological_site,_Kaspi_Municipality,_Georgia_04.jpg
 visit_hours: '1'
 best_season: may-october
 open_year_round: true
@@ -234,3 +249,4 @@ image_credit:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Grakliani_Gora_archaeological_site,_Kaspi_Municipality,_Georgia_01.jpg
+rating: 3.5

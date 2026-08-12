@@ -7,7 +7,17 @@ unesco: false
 featured: false
 order: 80
 image: /assets/photos/truso-valley.webp
-gallery: []
+gallery:
+- image: /assets/photos/truso-valley-1.webp
+  author: Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:ISS045-E-160749_-_View_of_Earth.jpg
+- image: /assets/photos/truso-valley-2.webp
+  author: Earth Science and Remote Sensing Unit, NASA Johnson Space Center
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:ISS061-E-70567_-_View_of_Earth.jpg
 visit_hours: '6'
 best_season: june-september
 open_year_round: false
@@ -242,3 +252,4 @@ image_credit:
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Jvari_pass_(G.N._2011).jpg
+rating: 4.5

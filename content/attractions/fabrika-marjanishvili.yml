@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 65
 image: /assets/photos/fabrika-marjanishvili.webp
-gallery: []
+gallery:
+- image: /assets/photos/fabrika-marjanishvili-1.webp
+  author: bckirkup
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Tbilisi_-_panoramio_(1).jpg
+- image: /assets/photos/fabrika-marjanishvili-2.webp
+  author: Zblace
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Mutant_Radio_(Tbilisi)_2023_06_53_07_882000.jpg
+- image: /assets/photos/fabrika-marjanishvili-3.webp
+  author: Unknown authorUnknown author
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0
+  source: https://commons.wikimedia.org/wiki/File:Margarita_Maghalashvili.jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true
@@ -335,3 +350,4 @@ image_credit:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Tiflis_14_45_41_879000.jpeg
+rating: 4.0

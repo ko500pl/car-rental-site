@@ -5,7 +5,87 @@
 (function () {
   var C = window.FH_CFG || {};
   var T = (C.t || {});
-  if (!C.apiKey || !C.projectId) return;
+
+  /* ── ლოკალური რეჟიმი: Firebase ჯერ არ არის ჩართული ─────────────────
+     მარშრუტები ინახება ამ ბრაუზერში (localStorage). როცა auth.yml-ში
+     Firebase ჩაირთვება, იგივე ინტერფეისი ღრუბელში გადავა.            */
+  if (!C.apiKey || !C.projectId) {
+    var KEY = "fh_trips";
+    function lread() { try { return JSON.parse(localStorage.getItem(KEY) || "[]"); } catch (e) { return []; } }
+    function lwrite(a) { try { localStorage.setItem(KEY, JSON.stringify(a)); } catch (e) {} }
+    window.FH = {
+      local: true,
+      on: function (fn) { fn(null); },
+      user: function () { return null; },
+      openDialog: function () {},
+      saveTrip: function (t) {
+        var a = lread();
+        t.id = "t" + (a.length + 1) + "_" + String(a.length * 7919 % 100000);
+        t.status = "planned";
+        a.push(t); lwrite(a);
+        return Promise.resolve(t);
+      },
+      listTrips: function () { return Promise.resolve(lread().slice().reverse()); },
+      setStatus: function (id, st) {
+        var a = lread(); a.forEach(function (t) { if (t.id === id) t.status = st; }); lwrite(a);
+        return Promise.resolve();
+      },
+      removeTrip: function (id) { lwrite(lread().filter(function (t) { return t.id !== id; }));
+        return Promise.resolve(); }
+    };
+    function esc0(x) { return String(x == null ? "" : x).replace(/[&<>"]/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+    function initLocal() {
+      var box = document.getElementById("authbox");
+      if (box) box.innerHTML = '<a class="authlink" href="' + esc0(C.accountUrl || "/account/") +
+        '">' + esc0(T.account || "My page") + "</a>";
+      var root = document.getElementById("account");
+      if (!root) return;
+      function draw() {
+        window.FH.listTrips().then(function (trips) {
+          if (!trips.length) {
+            root.innerHTML = '<div class="note">' + esc0(T.no_trips || "") + '</div>' +
+              '<p><a class="btn" href="' + esc0(C.plannerUrl || "/planner/") + '">' +
+              esc0(T.to_planner || "Planner") + "</a></p>";
+            return;
+          }
+          var g = { planned: [], done: [] };
+          trips.forEach(function (t) { (g[t.status] || g.planned).push(t); });
+          root.innerHTML = ["planned", "done"].map(function (k) {
+            if (!g[k].length) return "";
+            return "<h2>" + esc0(k === "planned" ? T.planned : T.done) + " · " + g[k].length + "</h2>" +
+              g[k].map(function (t) {
+                var stops = (t.stops || []).slice(0, 8).map(function (s) { return esc0(s.n || s); }).join(" · ");
+                return '<div class="tripcard' + (k === "done" ? " done" : "") + '">' +
+                  '<div class="tripmeta"><b>' + esc0(t.title) + "</b><span>" + esc0(t.date || "") +
+                  " · " + (t.days || 1) + " " + esc0(T.days || "d") + " · " + (t.stops || []).length +
+                  " " + esc0(T.stops || "") + (t.km ? " · " + t.km + " km" : "") + "</span></div>" +
+                  '<p class="pshort">' + stops + "</p><div class=\"triprow\">" +
+                  (k === "planned"
+                    ? '<button class="btn sm" data-a="done" data-id="' + t.id + '">' + esc0(T.mark_done) + "</button>"
+                    : '<button class="btn sm ghost" data-a="planned" data-id="' + t.id + '">' + esc0(T.mark_planned) + "</button>") +
+                  (t.url ? '<a class="btn sm ghost" href="' + esc0(t.url) + '">' + esc0(T.open) + "</a>" : "") +
+                  '<button class="btn sm ghost" data-a="del" data-id="' + t.id + '">' + esc0(T.delete) + "</button>" +
+                  "</div></div>";
+              }).join("");
+          }).join("");
+          root.querySelectorAll("[data-a]").forEach(function (b) {
+            b.onclick = function () {
+              var act = b.dataset.a;
+              (act === "del"
+                ? (confirm(T.confirm_del || "?") ? window.FH.removeTrip(b.dataset.id) : Promise.reject())
+                : window.FH.setStatus(b.dataset.id, act)
+              ).then(draw, function () {});
+            };
+          });
+        });
+      }
+      draw();
+    }
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initLocal);
+    else initLocal();
+    return;
+  }
 
   var SDK = "https://www.gstatic.com/firebasejs/10.12.5/";
   var app, auth, db, user = null, ready = false;

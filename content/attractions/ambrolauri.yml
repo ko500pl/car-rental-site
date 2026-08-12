@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 55
 image: /assets/photos/ambrolauri.webp
-gallery: []
+gallery:
+- image: /assets/photos/ambrolauri-1.webp
+  author: Aleksey Muhranoff
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Aghmashenebeli_Street,_Ambrolauri_(Photo_A._Muhranoff,_2011).jpg
+- image: /assets/photos/ambrolauri-2.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Ambrolauri_theatre_-_panoramio.jpg
+- image: /assets/photos/ambrolauri-3.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Ambrolauri_-_panoramio.jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true
@@ -272,3 +287,4 @@ image_credit:
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Krikhula_(G.N._2009).jpg
+rating: 4.0

@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 45
 image: /assets/photos/latali-matskhvarishi.webp
-gallery: []
+gallery:
+- image: /assets/photos/latali-matskhvarishi-1.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Matskhvarishi_archangels_church_(1).jpg
+- image: /assets/photos/latali-matskhvarishi-2.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Matskhvarishi_archangels_church_(3).jpg
+- image: /assets/photos/latali-matskhvarishi-3.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Matskhvarishi_archangels_church_(4).jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -377,3 +392,4 @@ image_credit:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Church_of_Archangels_of_Matskhvarishi.jpg
+rating: 3.5

@@ -7,7 +7,22 @@ unesco: true
 featured: true
 order: 20
 image: /assets/photos/ushguli.webp
-gallery: []
+gallery:
+- image: /assets/photos/ushguli-1.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Church_of_Lashk-Duir2.jpg
+- image: /assets/photos/ushguli-2.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Church_of_Lashk-Duir.jpg
+- image: /assets/photos/ushguli-3.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Church_of_Lashk-Duir3.jpg
 visit_hours: '4'
 best_season: june-september
 open_year_round: false
@@ -251,3 +266,4 @@ image_credit:
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: >-
     https://commons.wikimedia.org/wiki/File:%E1%83%A9%E1%83%90%E1%83%9F%E1%83%90%E1%83%A8%E1%83%98_%E1%83%9B%E1%83%90%E1%83%AA%E1%83%AE%E1%83%9D%E1%83%95%E1%83%A0%E1%83%98%E1%83%A1_%E1%83%94%E1%83%99%E1%83%9A%E1%83%94%E1%83%A1%E1%83%98%E1%83%90_,,%E1%83%9B%E1%83%90%E1%83%AA%E1%83%AE%E1%83%95%E1%83%90%E1%83%A0%22.jpg
+rating: 5.0

@@ -7,7 +7,25 @@ unesco: false
 featured: false
 order: 45
 image: /assets/photos/kutaisi-historical-museum.webp
-gallery: []
+gallery:
+- image: /assets/photos/kutaisi-historical-museum-1.webp
+  author: Herbert Frank from Wien (Vienna), AT
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: >-
+    https://commons.wikimedia.org/wiki/File:%E1%83%A5%E1%83%A3%E1%83%97%E1%83%90%E1%83%98%E1%83%A1%E1%83%98_Kutaisi_State_Historical_Museum_(48731408532).jpg
+- image: /assets/photos/kutaisi-historical-museum-2.webp
+  author: Herbert Frank from Wien (Vienna), AT
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: >-
+    https://commons.wikimedia.org/wiki/File:%E1%83%A5%E1%83%A3%E1%83%97%E1%83%90%E1%83%98%E1%83%A1%E1%83%98_Kutaisi_State_Historical_Museum_(48731410657).jpg
+- image: /assets/photos/kutaisi-historical-museum-3.webp
+  author: Herbert Frank from Wien (Vienna), AT
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: >-
+    https://commons.wikimedia.org/wiki/File:%E1%83%A5%E1%83%A3%E1%83%97%E1%83%90%E1%83%98%E1%83%A1%E1%83%98_Kutaisi_State_Historical_Museum_(48731227231).jpg
 visit_hours: '1.5'
 best_season: all
 open_year_round: true
@@ -290,3 +308,4 @@ image_credit:
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: >-
     https://commons.wikimedia.org/wiki/File:%D0%9A%D1%83%D1%82%D0%B0%D0%B8%D1%81%D0%B8,_%D0%BB%D1%8E%D1%81%D1%82%D1%80%D0%B0_%D0%B2_%D0%B3%D0%BB%D0%B0%D0%B2%D0%BD%D0%BE%D0%BC_%D0%B7%D0%B0%D0%BB%D0%B5_%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B3%D0%BE_%D0%BC%D1%83%D0%B7%D0%B5%D1%8F_(3).jpg
+rating: 3.0

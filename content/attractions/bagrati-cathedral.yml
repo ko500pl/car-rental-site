@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 20
 image: /assets/photos/bagrati-cathedral.webp
-gallery: []
+gallery:
+- image: /assets/photos/bagrati-cathedral-1.webp
+  author: Marcin Konsek
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:2014_Kutaisi,_Katedra_Bagrati_(14).jpg
+- image: /assets/photos/bagrati-cathedral-2.webp
+  author: Marcin Konsek
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:2014_Kutaisi,_Katedra_Bagrati_(15).jpg
+- image: /assets/photos/bagrati-cathedral-3.webp
+  author: Marcin Konsek
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:2014_Kutaisi,_Katedra_Bagrati_(16).jpg
 visit_hours: '3'
 best_season: all
 open_year_round: true
@@ -294,3 +309,4 @@ image_credit:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:2014_Kutaisi,_Katedra_Bagrati_(13).jpg
+rating: 4.0

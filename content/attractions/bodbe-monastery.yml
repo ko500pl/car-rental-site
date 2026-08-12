@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 20
 image: /assets/photos/bodbe-monastery.webp
-gallery: []
+gallery:
+- image: /assets/photos/bodbe-monastery-1.webp
+  author: Darwwin
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Nasomkhari_(Nasamkhari)_Monastery_in_Georgia.jpg
+- image: /assets/photos/bodbe-monastery-2.webp
+  author: Darwwin
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Gravestones_used_as_foundation_for_a_wagon..jpg
+- image: /assets/photos/bodbe-monastery-3.webp
+  author: Alexey Komarov
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Mountains_of_Kakheti_2023-08-11.jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true
@@ -219,3 +234,4 @@ image_credit:
   license: CC BY 3.0
   license_url: https://creativecommons.org/licenses/by/3.0
   source: https://commons.wikimedia.org/wiki/File:Sighnaghi,_Georgia_-_panoramio_(26).jpg
+rating: 4.0

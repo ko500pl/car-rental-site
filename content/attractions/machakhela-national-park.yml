@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 58
 image: /assets/photos/machakhela-national-park.webp
-gallery: []
+gallery:
+- image: /assets/photos/machakhela-national-park-1.webp
+  author: Yasuhiro Kojima
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Chorokhi_(%C3%87oruh)_near_Kirnati.jpg
+- image: /assets/photos/machakhela-national-park-2.webp
+  author: Vladimir Pankratov
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Mirveti_bridge.jpg
+- image: /assets/photos/machakhela-national-park-3.webp
+  author: FingerWiki
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Mirveti_Waterfall.jpg
 visit_hours: '4'
 best_season: may-october
 open_year_round: true
@@ -232,3 +247,4 @@ image_credit:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Machakhelistskali_as_viewed_from_Gvara_Fortress.jpg
+rating: 4.0

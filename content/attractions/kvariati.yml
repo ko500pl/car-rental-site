@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 65
 image: /assets/photos/kvariati.webp
-gallery: []
+gallery:
+- image: /assets/photos/kvariati-1.webp
+  author: Agostino Fedeli from Milano, Italy
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Sunset_in_Batumi.jpg
+- image: /assets/photos/kvariati-2.webp
+  author: Dalibor Z. Chvatal
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0
+  source: https://commons.wikimedia.org/wiki/File:E70,_Georgia_-_panoramio_(1).jpg
+- image: /assets/photos/kvariati-3.webp
+  author: Dalibor Z. Chvatal
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0
+  source: https://commons.wikimedia.org/wiki/File:E70,_Georgia_-_panoramio_(2).jpg
 visit_hours: '4'
 best_season: june-september
 open_year_round: true
@@ -243,3 +258,4 @@ image_credit:
   license: CC BY-SA 2.0
   license_url: https://creativecommons.org/licenses/by-sa/2.0
   source: https://commons.wikimedia.org/wiki/File:Khachapuri_Adjariano.jpg
+rating: 4.0

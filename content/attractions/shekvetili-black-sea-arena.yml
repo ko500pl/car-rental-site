@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 35
 image: /assets/photos/shekvetili-black-sea-arena.webp
-gallery: []
+gallery:
+- image: /assets/photos/shekvetili-black-sea-arena-1.webp
+  author: M.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Kaprovani.jpg
+- image: /assets/photos/shekvetili-black-sea-arena-2.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Kvemo_Natanebi,_Georgia_-_panoramio.jpg
+- image: /assets/photos/shekvetili-black-sea-arena-3.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Kvemo_Natanebi,_Georgia_-_panoramio_(1).jpg
 visit_hours: '3'
 best_season: june-september
 open_year_round: true
@@ -239,3 +254,4 @@ image_credit:
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Guria,_Georgia_-_panoramio.jpg
+rating: 4.0
