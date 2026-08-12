@@ -23,14 +23,28 @@
         Math.cos(a1 * t) * Math.cos(a2 * t) * Math.sin(dO / 2) * Math.sin(dO / 2);
     return 2 * R * Math.atan2(Math.sqrt(x), Math.sqrt(1 - x));
   }
-  /* road distance & time between two points, using each point's own
-     sinuosity factor f and average speed v (calibrated in build.py)     */
+  /* road distance & time between two points — calibrated against real
+     Georgian tour-operator times (2026). Mountain points (>1200 m) cap at
+     45 km/h (class c); gravel / 4x4 legs get a slow final phase (24 / 18). */
+  var RD_SLOW = { 2: { len: 30, v: 24 }, 3: { len: 45, v: 18 } };
   function leg(a, b) {
     var d = hav(a.la, a.lo, b.la, b.lo);
     var f = ((a.f || 1.4) + (b.f || 1.4)) / 2;
-    var v = Math.min(a.v || 55, b.v || 55);
-    var km = d * f;
-    return { km: km, min: (km / v) * 60 };
+    var va = a.v || 55, vb = b.v || 55;
+    var rank = Math.max(a.rd || 0, b.rd || 0);
+    var mtn = (a.el || 0) > 1200 || (b.el || 0) > 1200;
+    var v = (rank >= 1 || mtn || Math.min(va, vb) < 45) ? Math.min(va, vb) : (va + vb) / 2;
+    if (mtn) { v = Math.min(v, 45); f = Math.max(f, 1.5); }
+    if (rank === 1) v = Math.min(v, 40);
+    var km = d * f, min;
+    if (rank >= 2) {
+      var rs = RD_SLOW[rank], kr = Math.min(km, rs.len);
+      min = (kr / rs.v + (km - kr) / Math.max(v, 30)) * 60;
+    } else {
+      if (km < 12) v = Math.min(v, 32);
+      min = (km / v) * 60;
+    }
+    return { km: km, min: min };
   }
   function fmtH(min) {
     min = Math.round(min);
@@ -38,6 +52,22 @@
     if (h && m) return h + ' ' + U.h_short + ' ' + m + ' ' + U.min_short;
     if (h) return h + ' ' + U.h_short;
     return m + ' ' + U.min_short;
+  }
+
+  /* real road geometry via OSRM: the straight line is drawn instantly as a
+     fallback, then snapped to actual roads when the response arrives.
+     Times always come from our calibrated model — OSRM is drawing only. */
+  var geomSeq = 0;
+  function roadGeom(latlons, done) {
+    if (latlons.length < 2 || latlons.length > 25 || !window.fetch) return;
+    var q = latlons.map(function (p) { return p[1] + ',' + p[0]; }).join(';');
+    fetch('https://router.project-osrm.org/route/v1/driving/' + q +
+          '?overview=full&geometries=geojson', { mode: 'cors' })
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        if (j && j.code === 'Ok' && j.routes && j.routes[0])
+          done(j.routes[0].geometry.coordinates.map(function (c) { return [c[1], c[0]]; }));
+      }).catch(function () { /* keep the straight line */ });
   }
 
   /* ── map ─────────────────────────────────────────────────────────── */
@@ -196,12 +226,12 @@
   }
 
   function alongTheWay(a, b, maxDetour) {
-    /* detour is measured geometrically so it can never come out negative */
-    var base = hav(a.la, a.lo, b.la, b.lo), out = [];
+    /* detour = the real extra road km of inserting the stop on the leg */
+    var base = leg(a, b).km, out = [];
     PTS.forEach(function (p) {
       if (p.s === a.s || p.s === b.s) return;
       var da = hav(a.la, a.lo, p.la, p.lo), db = hav(p.la, p.lo, b.la, b.lo);
-      var det = (da + db - base) * 1.35;          /* straight line -> road */
+      var det = leg(a, p).km + leg(p, b).km - base;
       if (det > maxDetour) return;
       out.push({ p: p, det: Math.max(0, det), t: da / (da + db || 1) });
     });
@@ -255,8 +285,12 @@
 
     L.polyline([[a.la, a.lo], [b.la, b.lo]],
       { color: '#94a7ba', weight: 3, opacity: .55, dashArray: '4 8' }).addTo(routeLayer);
-    L.polyline(seq.map(function (p) { return [p.la, p.lo]; }),
+    var routePl = L.polyline(seq.map(function (p) { return [p.la, p.lo]; }),
       { color: '#0f4c81', weight: 4, opacity: .85, lineCap: 'round' }).addTo(routeLayer);
+    var mySeq = ++geomSeq;
+    roadGeom(seq.map(function (p) { return [p.la, p.lo]; }), function (geom) {
+      if (mySeq === geomSeq && routeLayer.hasLayer(routePl)) routePl.setLatLngs(geom);
+    });
     seq.forEach(function (p, i) {
       L.circleMarker([p.la, p.lo], {
         radius: 9, color: '#0f4c81', weight: 3,
@@ -266,7 +300,8 @@
     });
     map.fitBounds(L.latLngBounds(seq.map(function (p) { return [p.la, p.lo]; })).pad(0.12));
 
-    var days = Math.max(1, Math.ceil((drive + visit) / (9 * 60)));
+    /* დღეები — დამგეგმავის ნაგულისხმევი ტემპით (8 სთ/დღე), 9 სთ საჭესთან არარეალურია */
+    var days = Math.max(1, Math.ceil((drive + visit) / (8 * 60)));
     box.innerHTML =
       '<div class="exptot">' +
       '<b>' + Math.round(km) + ' ' + esc(U.km) + '</b>' +
@@ -404,22 +439,25 @@
     drawSuggest(o, chosen);
   }
 
-  /* nearest-neighbour + 2-opt — გონივრული თანმიმდევრობა */
-  function order2opt(o, list) {
+  /* nearest-neighbour + 2-opt — გონივრული თანმიმდევრობა.
+     ღირებულება = სავალი დრო (კალიბრებული მოდელით), არა სწორი ხაზი.
+     open=true → ღია მარშრუტი (საწყისში დაბრუნების გარეშე) — წერტილებით
+     მარშრუტისთვის, სადაც უკან დაბრუნება არ იგეგმება */
+  function order2opt(o, list, open) {
     if (list.length < 3) return list.slice();
     var left = list.slice(), out = [], cur = o;
     while (left.length) {
       var bi = 0, bd = Infinity;
       for (var i = 0; i < left.length; i++) {
-        var d = hav(cur.la, cur.lo, left[i].la, left[i].lo);
+        var d = leg(cur, left[i]).min;
         if (d < bd) { bd = d; bi = i; }
       }
       cur = left[bi]; out.push(cur); left.splice(bi, 1);
     }
     function cost(r) {
       var c = 0, prev = o;
-      for (var i = 0; i < r.length; i++) { c += hav(prev.la, prev.lo, r[i].la, r[i].lo); prev = r[i]; }
-      c += hav(prev.la, prev.lo, o.la, o.lo);
+      for (var i = 0; i < r.length; i++) { c += leg(prev, r[i]).min; prev = r[i]; }
+      if (!open) c += leg(prev, o).min;
       return c;
     }
     var best = out, bc = cost(best), improved = true, guard = 0;
@@ -450,7 +488,11 @@
     if (!list.length) return;
     var pts = [[o.la, o.lo]].concat(list.map(function (p) { return [p.la, p.lo]; }));
     pts.push([o.la, o.lo]);
-    L.polyline(pts, { color: '#2dd4bf', weight: 3, opacity: .8 }).addTo(sugLayer);
+    var sugPl = L.polyline(pts, { color: '#2dd4bf', weight: 3, opacity: .8 }).addTo(sugLayer);
+    var mySeq = ++geomSeq;
+    roadGeom(pts, function (geom) {
+      if (mySeq === geomSeq && sugLayer.hasLayer(sugPl)) sugPl.setLatLngs(geom);
+    });
     list.forEach(function (p, i) {
       L.marker([p.la, p.lo], { icon: L.divIcon({ className: 'numpin',
         html: '<b>' + (i + 1) + '</b>', iconSize: [22, 22] }) }).addTo(sugLayer)
@@ -591,7 +633,7 @@
     if (opt) opt.onclick = function () {
       if (wps.length < 3) return;
       var first = wps[0];
-      wps = [first].concat(order2opt(first, wps.slice(1)));
+      wps = [first].concat(order2opt(first, wps.slice(1), true));
       renderWp();
     };
     var clr = document.getElementById('wpclear');
@@ -615,8 +657,12 @@
   function drawWp() {
     wpLayer.clearLayers();
     if (!wps.length) return;
-    L.polyline(wps.map(function (p) { return [p.la, p.lo]; }),
+    var wpPl = L.polyline(wps.map(function (p) { return [p.la, p.lo]; }),
       { color: '#38bdf8', weight: 4, opacity: .85 }).addTo(wpLayer);
+    var mySeq = ++geomSeq;
+    roadGeom(wps.map(function (p) { return [p.la, p.lo]; }), function (geom) {
+      if (mySeq === geomSeq && wpLayer.hasLayer(wpPl)) wpPl.setLatLngs(geom);
+    });
     wps.forEach(function (p, i) {
       L.marker([p.la, p.lo], { icon: L.divIcon({ className: 'numpin blue',
         html: '<b>' + (i + 1) + '</b>', iconSize: [22, 22] }) }).addTo(wpLayer).bindTooltip(p.n);

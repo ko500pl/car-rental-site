@@ -14,16 +14,31 @@
             Math.cos(p1) * Math.cos(p2) * Math.sin(dl / 2) * Math.sin(dl / 2);
     return 2 * R * Math.asin(Math.sqrt(h));
   }
-  /* საგზაო კმ და წუთი ორ წერტილს შორის.
-     თითოეულ ობიექტს აქვს f (გზის კლაკნილობა) და v (საშუალო სიჩქარე),
-     გამოთვლილი თბილისიდან რეალურ მანძილსა და დროზე დაყრდნობით. */
+  /* საგზაო კმ და წუთი ორ წერტილს შორის — ტუროპერატორების რეალურ
+     დროებზე კალიბრებული მოდელი (2026):
+     · f/v — თბილისიდან რეალური მანძილი/დროიდან გამოთვლილი წერტილის პარამეტრები
+     · მთის წერტილები (>1200 მ) — პესიმისტური სიჩქარე, მაქს. 45 კმ/სთ (კლასი c)
+     · gravel / 4x4 გზები — ბოლო მონაკვეთი ნელი ფაზით (24 / 18 კმ/სთ, კლასი d/e) */
+  var RD_SLOW = { 2: { len: 30, v: 24 }, 3: { len: 45, v: 18 } };
   function leg(a, b) {
     var d = hav(a, b);
     var f = ((a.f || 1.4) + (b.f || 1.4)) / 2;
-    var v = ((a.v || 55) + (b.v || 55)) / 2;
-    var km = d * f;
-    if (km < 12) v = Math.min(v, 32);            // ქალაქში ნელა
-    return { km: km, min: km / v * 60 };
+    var va = a.v || 55, vb = b.v || 55;
+    var rank = Math.max(a.rd || 0, b.rd || 0);
+    var mtn = (a.el || 0) > 1200 || (b.el || 0) > 1200;
+    /* მთაში, უხეშ გზაზე ან ნელ წერტილთან — მინიმალური სიჩქარე; ვაკეზე — საშუალო */
+    var v = (rank >= 1 || mtn || Math.min(va, vb) < 45) ? Math.min(va, vb) : (va + vb) / 2;
+    if (mtn) { v = Math.min(v, 45); f = Math.max(f, 1.5); }
+    if (rank === 1) v = Math.min(v, 40);
+    var km = d * f, min;
+    if (rank >= 2) {
+      var rs = RD_SLOW[rank], kr = Math.min(km, rs.len);
+      min = (kr / rs.v + (km - kr) / Math.max(v, 30)) * 60;
+    } else {
+      if (km < 12) v = Math.min(v, 32);          // ქალაქში ნელა
+      min = km / v * 60;
+    }
+    return { km: km, min: min };
   }
   function fmtH(m) {
     m = Math.round(m);
@@ -93,23 +108,13 @@
   }
 
   // ─── მარშრუტის აგება ────────────────────────────────────────────────────
-  function nearestNeighbour(start, pts) {
-    var out = [], cur = start, left = pts.slice();
-    while (left.length) {
-      var bi = 0, bd = Infinity;
-      for (var i = 0; i < left.length; i++) {
-        var d = hav(cur, left[i]);
-        if (d < bd) { bd = d; bi = i; }
-      }
-      cur = left[bi]; out.push(cur); left.splice(bi, 1);
-    }
-    return out;
-  }
   function twoOpt(start, route, back) {
+    /* ღირებულება = რეალური სავალი დრო (და არა სწორი ხაზი) — მთის გვერდის
+       ავლით მოკლე 4x4 გზას გრძელი ასფალტი შეიძლება სჯობდეს */
     function cost(r) {
       var c = 0, prev = start;
-      for (var i = 0; i < r.length; i++) { c += hav(prev, r[i]); prev = r[i]; }
-      if (back) c += hav(prev, start);
+      for (var i = 0; i < r.length; i++) { c += leg(prev, r[i]).min; prev = r[i]; }
+      if (back) c += leg(prev, start).min;
       return c;
     }
     var best = route.slice(), bc = cost(best), improved = true, guard = 0;
@@ -173,20 +178,25 @@
   }
 
   function splitDays(route, start, days, budget, back) {
+    /* ტუროპერატორული წესები: დღეში სავალი დროის ცალკე ლიმიტი (კომფორტული
+       დღე ≤ 4-6 სთ საჭესთან, ტემპის მიხედვით); გრძელი გადასვლის დღე
+       (მაგ. თბილისი→მესტია) დასაშვებია, მაგრამ მხოლოდ მსუბუქი დათვალიერებით */
+    var driveCap = budget / 2 + 60;              // 360→240წთ · 480→300წთ · 600→360წთ
+    var TRANSIT_MAX = 600;                       // ერთი გადასვლის აბსოლუტური ჭერი — 10 სთ
     var out = [], cur = start, day = { i: 1, items: [], km: 0, drive: 0, visit: 0 },
         used = 0, clockNow = DAY_START, lunched = false, left = route.slice(), dropped = [];
     while (left.length && day.i <= days) {
       var nx = left[0], L = leg(cur, nx), visit = nx.h * 60;
       var lunch = (day.items.length && !lunched && clockNow + L.min > 13 * 60) ? LUNCH : 0;
       var extra = L.min + visit + lunch;
-      if (used + extra > budget && day.items.length) {
+      if ((used + extra > budget || day.drive + L.min > driveCap) && day.items.length) {
         out.push(day);
         day = { i: day.i + 1, items: [], km: 0, drive: 0, visit: 0 };
         used = 0; clockNow = DAY_START; lunched = false;
         if (day.i > days) break;
         continue;
       }
-      if (used + extra > budget * 1.3 && !day.items.length) { dropped.push(nx); left.shift(); continue; }
+      if (L.min > TRANSIT_MAX && !day.items.length) { dropped.push(nx); left.shift(); continue; }
       clockNow += L.min;
       if (lunch) { clockNow += lunch; used += lunch; lunched = true; }
       var arrive = clockNow;
@@ -311,10 +321,13 @@
              '</span></div>';
         var opt = alongTheWay(prev, it.a, planSlugs(res), pool);
         if (opt.length) {
+          /* +დრო = რეალური ჩასმის დანამატი: (prev→o) + (o→აქ) − (prev→აქ) + ვიზიტი */
           h += '<div class="popt">' + T.optional + ": " +
                opt.map(function (o) {
+                 var addMin = Math.max(0, leg(prev, o.p).min + leg(o.p, it.a).min -
+                                          leg(prev, it.a).min) + o.p.h * 60;
                  return '<a href="' + o.p.u + '">' + esc(o.p.n) + "</a> <i>+" +
-                        fmtH(leg(prev, o.p).min * 0.35 + o.p.h * 60) + "</i>" +
+                        fmtH(addMin) + "</i>" +
                         ' <button type="button" class="paddbtn" data-padd="' + esc(o.p.s) +
                         '" data-after="' + esc(it.a.s) + '">＋</button>';
                }).join(" · ") + "</div>";
@@ -463,9 +476,26 @@
     return towns.reduce(function (b, x) { return hav(a, x) < hav(a, b) ? x : b; });
   }
 
+  /* რეალური გზის გეომეტრია OSRM-ით: ჯერ სწორი ხაზი იხატება (fallback),
+     პასუხის მოსვლისას კი ხაზი ნამდვილ გზას მიჰყვება. დროებს ჩვენი
+     კალიბრებული მოდელი ითვლის — OSRM მხოლოდ ნახაზისთვისაა. */
+  var geomSeq = 0;
+  function roadGeom(latlons, done) {
+    if (latlons.length < 2 || latlons.length > 25 || !window.fetch) return;
+    var q = latlons.map(function (p) { return p[1] + "," + p[0]; }).join(";");
+    fetch("https://router.project-osrm.org/route/v1/driving/" + q +
+          "?overview=full&geometries=geojson", { mode: "cors" })
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        if (j && j.code === "Ok" && j.routes && j.routes[0])
+          done(j.routes[0].geometry.coordinates.map(function (c) { return [c[1], c[0]]; }));
+      }).catch(function () { /* ვრჩებით სწორ ხაზზე */ });
+  }
+
   function drawMap(days, start) {
     layers.forEach(function (l) { map.removeLayer(l); });
     layers = [];
+    var mySeq = ++geomSeq;
     var all = [[start.lat, start.lon]];
     var m0 = L.circleMarker([start.lat, start.lon],
       { radius: 9, color: "#fff", weight: 3, fillColor: "#12181f", fillOpacity: 1 }).addTo(map);
@@ -488,6 +518,9 @@
       if (d.back) pts.push([start.lat, start.lon]);
       var pl = L.polyline(pts, { color: col, weight: 4, opacity: 0.8 }).addTo(map);
       layers.push(pl);
+      roadGeom(pts, function (geom) {
+        if (mySeq === geomSeq) pl.setLatLngs(geom);
+      });
     });
     var inPlan = {};
     days.forEach(function (d) { d.items.forEach(function (it) { inPlan[it.a.s] = 1; }); });

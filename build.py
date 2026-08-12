@@ -810,6 +810,7 @@ AUTH = load("content/settings/auth.yml") if os.path.exists("content/settings/aut
 HOTELS = (load("content/settings/hotels.yml") if os.path.exists("content/settings/hotels.yml") else {"towns": {}})["towns"]
 SLOW_TOWNS = {"stepantsminda", "mestia-town", "khulo", "oni", "bakuriani",
               "ambrolauri", "akhalkalaki", "tkibuli", "sachkhere", "chiatura"}
+ROAD_RANK_NUM = {"paved": 0, "mostly_paved": 1, "gravel": 2, "4x4_only": 3}
 TB = (41.7151, 44.8271)          # თბილისი — მარშრუტების საწყისი წერტილი
 
 TYPE_COLOR = {
@@ -987,6 +988,7 @@ def explorer_points(lang):
             "u": attr_url(lang, s, False), "f": f, "v": v,
             "un": bool(a["unesco"]), "fe": bool(a["featured"]),
             "img": a.get("image") or "", "r": a.get("rating") or 0,
+            "rd": ROAD_RANK_NUM.get(a["road"], 0), "el": a.get("elevation") or 0,
         })
     pts.sort(key=lambda p: p["n"])
     return pts
@@ -1511,6 +1513,7 @@ def planner_data(lang):
             "u": attr_url(lang, s, False), "fe": bool(a["featured"]), "un": bool(a["unesco"]),
             "c": CITY_NAME.get(s, {}).get(lang, ""),
             "img": a.get("image") or "", "road": a["road"],
+            "rd": ROAD_RANK_NUM.get(a["road"], 0), "el": a.get("elevation") or 0,
         })
     towns = [i for i in items if i["ty"] == "town"]
     starts = [{"n": P["starts"][0], "lat": TB_LAT, "lon": TB_LON, "f": 1.4, "v": 55}]
