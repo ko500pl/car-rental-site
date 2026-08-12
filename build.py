@@ -569,6 +569,25 @@ def render_static_page(lang, page):
                     f'<p class="lead">{inline(p["lead"], lang)}</p></div></section>')
     if page == "account":
         body.append('<section class="sec"><div class="wrap"><div id="account"></div></div></section>')
+    if page == "contact":
+        uu = u["ui"]
+        body.append(
+            f'<section class="sec"><div class="wrap"><h2>{E(uu["f_title"])}</h2>'
+            f'<form class="cform" name="contact" method="POST" data-netlify="true" '
+            f'netlify-honeypot="bot-field" action="?sent=1">'
+            f'<input type="hidden" name="form-name" value="contact">'
+            f'<p class="vh"><label>bot<input name="bot-field"></label></p>'
+            f'<div class="cf2"><label>{E(uu["f_name"])}<input name="name" required></label>'
+            f'<label>{E(uu["f_email"])}<input type="email" name="email" required></label></div>'
+            f'<label>{E(uu["f_dates"])}<input name="dates"></label>'
+            f'<label>{E(uu["f_msg"])}<textarea name="message" rows="5" required></textarea></label>'
+            f'<div class="prow"><button class="btn" type="submit">{E(uu["f_send"])}</button>'
+            f'<a class="btn wa" href="{wa_link(lang)}" rel="noopener" target="_blank">'
+            f'{E(uu["wa_btn"])}</a></div>'
+            f'<p class="rentnote fok" hidden>{E(uu["f_ok"])}</p></form>'
+            f'<script>if(location.search.indexOf("sent=1")>-1)'
+            f'{{var f=document.querySelector(".fok");if(f)f.hidden=false;}}</script>'
+            f'</div></section>')
 
     sections, cur = [], []
     for b in p["blocks"]:
@@ -1189,7 +1208,7 @@ def render_region(lang, key, r):
         f"</ul></div>" for s, a in sub.items())
     best = "".join(f"<li>{inline(x, lang)}</li>" for x in L["best_for"])
     title = f'{L["name"]} — {tu(lang, "attractions")}, {tu(lang, "routes")} | {BRAND}'
-    desc = re.sub(r"\s+", " ", L["short"] + " " + L["body"])[:176]
+    desc = re.sub(r"\s+", " ", L["short"] + " " + L["body"])[:158].rsplit(" ", 1)[0]
     body = (
         f'<section class="page-head"><div class="wrap"><h1>{E(L["name"])}</h1>'
         f'<p class="lead">{E(L["short"])}</p></div></section>'
@@ -1230,6 +1249,13 @@ def cheapest_price(cat):
     return min(ps) if ps else 0
 
 
+def wa_link(lang, text=""):
+    import urllib.parse as _u
+    num = SITE.get("whatsapp") or SITE.get("mobile_e164", "").lstrip("+")
+    msg = text or UI[lang]["ui"].get("wa_msg", "")
+    return f'https://wa.me/{num}?text={_u.quote(msg)}'
+
+
 def rent_box(lang, a):
     """გვერდითი ბარათი — „დაიქირავე მანქანა ამ მოგზაურობისთვის“."""
     r = TRAVEL[lang]["rent"]
@@ -1249,6 +1275,8 @@ def rent_box(lang, a):
         f'<div class="rentrow"><span>{E(r["fuel"])}</span>'
         f'<b>{E(r["approx"])}{fuel} ₾</b></div>'
         f'<a class="btn" dir="ltr" href="tel:{SITE["phone_e164"]}">{E(SITE["phone"])}</a>'
+        f'<a class="btn wa" href="{wa_link(lang, UI[lang]["ui"]["wa_msg"] + " — " + a[lang]["name"])}" '
+        f'rel="noopener" target="_blank">{E(UI[lang]["ui"]["wa_btn"])}</a>'
         f'<p class="rentnote">{E(r["note"].format(o=SITE["opens"], c=SITE["closes"]))}</p>'
         f'<p class="rentnote">{E(r["est"].format(l=lit, g=gel))}</p>'
         f'</aside>')
@@ -1278,7 +1306,7 @@ def render_attraction(lang, slug, a):
     desc = re.sub(r"\s+", " ", f'{L["short"]} {tu(lang,"visit_time")}: {a["visit_hours"]} '
                                f'{tu(lang,"hrs")}. {tu(lang,"from_tbilisi")} '
                                f'{a["distance_tbilisi_km"]} {tu(lang,"km")}, '
-                               f'{a["drive_time_tbilisi"]}. {L["body"]}')[:178]
+                               f'{a["drive_time_tbilisi"]}. {L["body"]}')[:158].rsplit(" ", 1)[0]
     body = (
         f'<section class="page-head"><div class="wrap"><div class="tagrow">{badge}'
         f'{stars_html(a.get("rating"), lang)}</div>'
@@ -1355,7 +1383,7 @@ def render_route(lang, slug, r):
         for s, a in wp.items())
     tips = "".join(f"<li>{inline(x, lang)}</li>" for x in L["tips"])
     title = f'{L["name"]} — {r["days"]} {tu(lang,"days")}, {r["distance_km"]} {tu(lang,"km")} | {BRAND}'
-    desc = re.sub(r"\s+", " ", L["short"] + " " + L["body"])[:176]
+    desc = re.sub(r"\s+", " ", L["short"] + " " + L["body"])[:158].rsplit(" ", 1)[0]
     body = (
         f'<section class="page-head"><div class="wrap"><h1>{E(L["name"])}</h1>'
         f'<p class="lead">{E(L["short"])}</p></div></section>'

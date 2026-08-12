@@ -63,6 +63,15 @@ ka:
     saved: შენახულია
     trip_name: მარშრუტის სახელი
     when: როდის
+    wa_btn: WhatsApp-ში მოწერა
+    wa_msg: გამარჯობა, მაინტერესებს ავტომობილის დაქირავება
+    f_name: სახელი
+    f_email: ელფოსტა
+    f_msg: შეტყობინება
+    f_dates: თარიღები (მაგ. 15–20 სექტემბერი)
+    f_send: გაგზავნა
+    f_ok: მადლობა! მალე გიპასუხებთ.
+    f_title: მოგვწერეთ
 en:
   nav:
     index: Home
@@ -128,6 +137,15 @@ en:
     saved: Saved
     trip_name: Route name
     when: When
+    wa_btn: Message on WhatsApp
+    wa_msg: Hello, I am interested in renting a car
+    f_name: Name
+    f_email: Email
+    f_msg: Message
+    f_dates: Dates (e.g. 15–20 September)
+    f_send: Send
+    f_ok: Thank you! We will reply shortly.
+    f_title: Write to us
 ru:
   nav:
     index: Главная
@@ -193,6 +211,15 @@ ru:
     saved: Сохранено
     trip_name: Название маршрута
     when: Когда
+    wa_btn: Написать в WhatsApp
+    wa_msg: Здравствуйте, меня интересует аренда автомобиля
+    f_name: Имя
+    f_email: Эл. почта
+    f_msg: Сообщение
+    f_dates: Даты (напр. 15–20 сентября)
+    f_send: Отправить
+    f_ok: Спасибо! Скоро ответим.
+    f_title: Напишите нам
 fa:
   nav:
     index: خانه
@@ -259,6 +286,15 @@ fa:
     saved: ذخیره شد
     trip_name: نام مسیر
     when: چه زمانی
+    wa_btn: پیام در واتساپ
+    wa_msg: سلام، مایل به اجارهٔ خودرو هستم
+    f_name: نام
+    f_email: ایمیل
+    f_msg: پیام
+    f_dates: تاریخ‌ها (مثلاً ۱۵–۲۰ سپتامبر)
+    f_send: ارسال
+    f_ok: سپاس! به‌زودی پاسخ می‌دهیم.
+    f_title: برای ما بنویسید
 he:
   nav:
     index: ראשי
@@ -323,6 +359,15 @@ he:
     saved: נשמר
     trip_name: שם המסלול
     when: מתי
+    wa_btn: הודעה בוואטסאפ
+    wa_msg: שלום, אני מעוניין לשכור רכב
+    f_name: שם
+    f_email: אימייל
+    f_msg: הודעה
+    f_dates: תאריכים (למשל 15–20 בספטמבר)
+    f_send: שליחה
+    f_ok: תודה! נשיב בקרוב.
+    f_title: כתבו לנו
 ar:
   nav:
     index: الرئيسية
@@ -388,3 +433,12 @@ ar:
     saved: تم الحفظ
     trip_name: اسم المسار
     when: متى
+    wa_btn: مراسلة عبر واتساب
+    wa_msg: مرحباً، أرغب في استئجار سيارة
+    f_name: الاسم
+    f_email: البريد الإلكتروني
+    f_msg: الرسالة
+    f_dates: التواريخ (مثلاً 15–20 سبتمبر)
+    f_send: إرسال
+    f_ok: شكراً! سنرد قريباً.
+    f_title: اكتب لنا

@@ -520,7 +520,7 @@ tbody tr:nth-child(even){{background:color-mix(in srgb,#fff 3%,transparent)}}
 .chip.style small{{display:block;font-size:12.5px;color:var(--ink-3);line-height:1.45}}
 .chip.style.on{{border-color:var(--brand);background:color-mix(in srgb,var(--brand) 12%,var(--surface))}}
 .chip.style.on b{{color:#fff}}
-.carmode{{display:flex;gap:10px;flex-wrap:wrap;align-items:center}}
+.carmode{{display:flex;flex-direction:row;gap:10px;flex-wrap:wrap;align-items:center;justify-content:flex-start}}
 .tog{{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);
   border-radius:999px;padding:9px 16px;font-size:14.5px;cursor:pointer;color:var(--ink-2)}}
 .tog:has(input:checked){{border-color:var(--brand);color:#fff;
@@ -580,6 +580,18 @@ tbody tr:nth-child(even){{background:color-mix(in srgb,#fff 3%,transparent)}}
 .tripmeta span{{font-size:13px;color:var(--ink-3);font-family:var(--mono)}}
 .triprow{{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}}
 .btn.sm.ghost{{padding:7px 13px}}
+.btn.wa{{background:#1faa53;color:#fff;box-shadow:0 6px 20px rgba(31,170,83,.25)}}
+.btn.wa:hover{{filter:brightness(1.08)}}
+.rentbox .btn.wa{{display:flex;width:100%;justify-content:center;margin-top:9px}}
+.cform{{max-width:640px;background:var(--surface);border:1px solid var(--line);
+  border-radius:16px;padding:24px 26px}}
+.cform label{{display:block;font-size:13.5px;color:var(--ink-3);margin:0 0 14px}}
+.cform input,.cform textarea{{width:100%;font:inherit;font-size:15px;padding:11px 13px;
+  margin-top:5px;border:1px solid var(--line);border-radius:10px;background:var(--bg);
+  color:var(--ink)}}
+.cf2{{display:grid;grid-template-columns:1fr 1fr;gap:14px}}
+@media(max-width:600px){{ .cf2{{grid-template-columns:1fr}} }}
+.fok{{color:var(--ok);text-align:start;font-size:14.5px}}
 
 .expdate{{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:var(--ink-3)}}
 .expdate input{{font:inherit;font-size:14px;padding:7px 10px;border:1px solid var(--line);
