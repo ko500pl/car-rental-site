@@ -75,6 +75,19 @@
     .setView(E.center, E.zoom);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
     { maxZoom: 17, attribution: '&copy; OpenStreetMap' }).addTo(map);
+  map.createPane('countryMask'); map.getPane('countryMask').style.zIndex = 250;
+  map.createPane('countryBorder'); map.getPane('countryBorder').style.zIndex = 251;
+  fetch(E.base + 'assets/georgia-boundary.geojson').then(function (r) { return r.json(); }).then(function (gj) {
+    var geom = gj.features ? gj.features[0].geometry : gj.geometry;
+    var polys = geom.type === 'Polygon' ? [geom.coordinates] : geom.coordinates;
+    function ringLatLng(ring) { return ring.map(function (c) { return [c[1], c[0]]; }); }
+    var world = [[-85, -180], [85, -180], [85, 180], [-85, 180]];
+    var holes = polys.map(function (poly) { return ringLatLng(poly[0]); });
+    L.polygon([world].concat(holes), { pane:'countryMask', stroke:false, fillColor:'#59616c',
+      fillOpacity:.58, interactive:false }).addTo(map);
+    L.geoJSON(gj, { pane:'countryBorder', style:{ color:'#f8fafc', weight:1.4, opacity:.9,
+      fill:false, interactive:false } }).addTo(map);
+  }).catch(function () {});
   map.on('click', function () { map.scrollWheelZoom.enable(); });
 
   var layer = L.layerGroup().addTo(map);
