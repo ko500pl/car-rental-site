@@ -46,7 +46,7 @@ def css(d):
 *,*::before,*::after{{box-sizing:border-box}}
 html{{-webkit-text-size-adjust:100%}}
 body{{margin:0;font-family:var(--font);color:var(--ink);background:var(--bg);
-  font-size:{d['base_font_size']}px;line-height:1.72;font-weight:400;
+  font-size:{d['base_font_size']}px;line-height:1.62;font-weight:400;
   text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}}
 img{{max-width:100%;height:auto;display:block}}
 a{{color:var(--brand-2);text-decoration:none}}
@@ -381,6 +381,39 @@ td:first-child{{font-weight:600;color:var(--ink)}}
   .site-head{{position:sticky}}
 }}
 @media (max-width:520px){{ .facts{{grid-template-columns:1fr}} }}
+
+/* Compact typography — keeps information-dense pages comfortable on desktop. */
+.hero h1{{font-size:clamp(25px,3.4vw,38px)}}
+.hero .lead{{font-size:clamp(15px,1.6vw,17px);line-height:1.58}}
+.hero-facts b{{font-size:22px}}
+h1{{font-size:clamp(24px,2.8vw,33px)}}
+h2{{font-size:clamp(19px,2vw,24px);margin-top:30px}}
+h3{{font-size:16.5px}}
+.page-head{{padding:30px 0 6px}}
+.page-head .lead{{font-size:16px;line-height:1.65}}
+.sec{{padding:38px 0}}
+.article h2{{font-size:22px;margin-top:28px}}
+.article h3{{font-size:17px;margin-top:20px}}
+.post-c h2{{font-size:17px}}
+.post-c p,.card p{{font-size:14px}}
+.post-c .in,.card{{padding:16px 18px}}
+.car h3{{font-size:16.5px}}
+.car .sub,.car ul,.car .more{{font-size:13.5px}}
+.car .p{{font-size:15px}}
+.spec,table{{font-size:14px}}
+.facts dd,.facts .v{{font-size:15px}}
+.faq h3{{font-size:16px}}
+.faq p,.note,.cta p{{font-size:14px}}
+.btn{{font-size:14px;padding:9px 18px}}
+.pricebox .big{{font-size:24px}}
+.pday h3{{font-size:17px}}
+.pstop b{{font-size:15px}}
+.pshort,.pnight{{font-size:13.5px}}
+.logo{{font-size:18px}}
+nav.main a{{font-size:13.5px;padding:6px 9px}}
+.head-tel{{font-size:13.5px}}
+.crumbs{{font-size:13px}}
+
 @media print{{ .site-head,.site-foot,.cta{{display:none}} body{{font-size:12pt}} }}
 
 /* ═══════════════ Fleet House — dark design layer ═══════════════ */
@@ -675,4 +708,21 @@ tbody tr:nth-child(even){{background:color-mix(in srgb,#fff 3%,transparent)}}
 }}
 .page-head .tag{{font-size:13px}}
 @media(max-width:980px){{ .attr-grid{{grid-template-columns:1fr}} .rentbox{{position:static}} }}
+/* Final compact scale overrides for extended travel/planner components. */
+.logo{{font-size:18px}}
+nav.main a{{font-size:13.5px;padding:6px 9px}}
+.head-in{{padding-block:9px}}
+.psum{{font-size:14px;padding:10px 14px}}
+.carrec h3,.rentbox h3{{font-size:17px}}
+.rentrow,.attr-facts,.route-meta,.timeline{{font-size:13.5px}}
+.explorer h2,.maphero h2{{font-size:22px}}
+.map-sub,.rentbox p{{font-size:14px}}
+.card-title{{font-size:16px}}
+.card-text{{font-size:13.5px}}
+@media(max-width:760px){{
+  body{{font-size:14px}}
+  h1{{font-size:26px}}
+  .page-head .lead{{font-size:15px}}
+  .sec{{padding:30px 0}}
+}}
 """

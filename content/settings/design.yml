@@ -23,7 +23,7 @@ color_on_brand: "#04222b" # ტექსტი ღია ღილაკზე
 font_family: '"Noto Sans Georgian","Noto Sans","Segoe UI",system-ui,sans-serif'
 font_mono: 'ui-monospace,"JetBrains Mono","SFMono-Regular",Consolas,"Liberation Mono",monospace'
 google_fonts: "Noto+Sans+Georgian:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700"
-base_font_size: "17"
+base_font_size: "15"
 radius: "12"
 max_width: "1200"
 
