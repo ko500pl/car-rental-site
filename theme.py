@@ -898,6 +898,10 @@ body.auth-open{{overflow:hidden}}
   .page-planner #pmap{{height:calc(100dvh - 176px);min-height:500px;border-radius:10px}}
 }}
 /* Desktop navigation rail: persistent, compact and column-based. */
+.page-map .page-head{{padding:18px 0 8px}}
+.page-map .page-head h1{{font-size:clamp(23px,2.2vw,32px);line-height:1.25;margin-bottom:8px;max-width:42ch}}
+.page-map .page-head .lead{{font-size:14px;line-height:1.5;max-width:82ch;margin-bottom:6px}}
+.page-map .sec.wide{{padding-top:10px}}
 @media(min-width:1001px){{
   body{{padding-inline-start:248px}}
   .site-head{{position:fixed;inset-block:0;inset-inline-start:0;width:248px;height:100dvh;
@@ -927,5 +931,10 @@ body.auth-open{{overflow:hidden}}
   .langs a{{text-align:center;padding:5px 3px;font-size:11px}}
   .authbox{{order:3;width:100%;margin:0}}
   .authbox .authlink{{width:100%;justify-content:center}}
+}}
+@media(max-width:760px){{
+  .page-map .page-head{{padding:14px 0 5px}}
+  .page-map .page-head h1{{font-size:21px;margin-bottom:6px}}
+  .page-map .page-head .lead{{font-size:13px;line-height:1.45}}
 }}
 """
