@@ -59,7 +59,7 @@ a:focus-visible{{outline:3px solid var(--accent);outline-offset:2px;border-radiu
 
 /* Header */
 .site-head{{border-bottom:1px solid var(--line);background:var(--surface);position:sticky;top:0;z-index:20}}
-.head-in{{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:14px 20px;max-width:var(--maxw);margin:0 auto}}
+.head-in{{display:flex;align-items:center;gap:16px;flex-wrap:nowrap;padding:14px 20px;max-width:var(--maxw);margin:0 auto}}
 .logo{{display:flex;align-items:center;gap:8px;font-weight:700;font-size:20px;color:var(--brand-ink);letter-spacing:-.2px}}
 .logo:hover{{text-decoration:none}}
 .logo img{{height:{d['logo_height']}px;width:auto}}
@@ -70,6 +70,14 @@ nav.main ul{{display:flex;flex-wrap:wrap;gap:2px;list-style:none;margin:0;paddin
 nav.main a{{display:block;padding:7px 10px;border-radius:7px;color:var(--ink-2);font-size:15px;font-weight:500}}
 nav.main a:hover{{background:var(--bg-3);color:var(--brand-ink);text-decoration:none}}
 nav.main a[aria-current="page"]{{background:var(--brand);color:var(--on-brand)}}
+.nav-more{{position:relative}}
+.nav-more details{{position:relative}}
+.nav-more summary{{list-style:none;cursor:pointer;padding:7px 12px;border-radius:9px;color:var(--ink-2);font-weight:800;letter-spacing:.12em}}
+.nav-more summary::-webkit-details-marker{{display:none}}
+.nav-more summary:hover,.nav-more details[open] summary{{background:var(--bg-3);color:var(--brand-ink)}}
+.nav-more details>ul{{position:absolute;inset-inline-end:0;top:calc(100% + 8px);min-width:190px;padding:8px!important;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:0 18px 45px rgba(0,0,0,.25);display:block!important;z-index:50}}
+.nav-more details>ul li{{display:block}}
+.nav-more details>ul a{{white-space:nowrap}}
 .langs{{display:flex;gap:4px;align-items:center;border-inline-start:1px solid var(--line);padding-inline-start:12px}}
 .langs a{{font-size:13px;font-weight:600;color:var(--ink-3);padding:5px 8px;border-radius:6px}}
 .langs a:hover{{background:var(--bg-3);text-decoration:none}}
@@ -362,14 +370,15 @@ td:first-child{{font-weight:600;color:var(--ink)}}
 @media (max-width:760px){{
   body{{font-size:16px}}
   .head-in{{gap:10px;padding:12px 16px}}
+  .head-in{{flex-wrap:wrap}}
   nav.main{{width:100%;margin-inline-start:0;order:3}}
-  nav.main ul{{gap:0}}
+  nav.main>ul{{gap:0;flex-wrap:nowrap;overflow:visible}}
   nav.main a{{padding:6px 9px;font-size:14.5px}}
   .langs{{margin-inline-start:auto;border:0;padding-inline-start:0}}
   .head-tel{{display:none}}
   .hero{{padding:44px 0 40px}}
   .sec{{padding:36px 0}}
-  .site-head{{position:static}}
+  .site-head{{position:sticky}}
 }}
 @media (max-width:520px){{ .facts{{grid-template-columns:1fr}} }}
 @media print{{ .site-head,.site-foot,.cta{{display:none}} body{{font-size:12pt}} }}
@@ -412,7 +421,9 @@ nav.main a[aria-current="page"]{{background:transparent;color:#fff;font-weight:7
 main{{position:relative}}
 body::before{{content:"";position:fixed;inset-inline:0;top:0;height:420px;pointer-events:none;z-index:0;
   background:radial-gradient(120% 100% at 50% 0%,color-mix(in srgb,var(--brand) 13%,transparent) 0%,transparent 62%)}}
-.site-head,main,.site-foot{{position:relative;z-index:1}}
+.site-head,main,.site-foot{{z-index:1}}
+.site-head{{position:sticky;top:0;z-index:30}}
+main,.site-foot{{position:relative}}
 
 /* hero */
 .hero{{background:linear-gradient(165deg,color-mix(in srgb,var(--brand) 12%,var(--bg)) 0%,var(--bg) 70%);

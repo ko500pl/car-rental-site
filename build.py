@@ -492,10 +492,15 @@ def head_html(lang, current, title, desc, keywords, url, alternates, depth, ld,
 def header_html(lang, current):
     u = UI[lang]
     CUR = ' aria-current="page"'
+    more_pages = {"terms", "faq", "blog", "software"}
     lis = "".join(
         f'<li><a href="{page_url(lang, p, False)}"'
         f'{CUR if p == current else ""}>{E(u["nav"][p])}</a></li>'
-        for p in PAGE_ORDER if p not in NAV_HIDDEN)
+        for p in PAGE_ORDER if p not in NAV_HIDDEN and p not in more_pages)
+    more = "".join(
+        f'<li><a href="{page_url(lang, p, False)}"'
+        f'{CUR if p == current else ""}>{E(u["nav"][p])}</a></li>'
+        for p in PAGE_ORDER if p in more_pages)
     langs = "".join(
         f'<a href="{lang_root(l)}" hreflang="{l}" lang="{l}" '
         f'class="{"on" if l == lang else ""}" title="{E(LANG_LABEL[l])}">{LANG_SHORT[l]}</a>'
@@ -507,7 +512,9 @@ def header_html(lang, current):
                  f'{E(BRAND)} <small>{E(u["ui"]["logo_sub"])}</small>')
     return f"""<header class="site-head"><div class="head-in">
 <a class="logo" href="{lang_root(lang)}">{logo}</a>
-<nav class="main" aria-label="{E(u['ui']['nav_label'])}"><ul>{lis}</ul></nav>
+<nav class="main" aria-label="{E(u['ui']['nav_label'])}"><ul>{lis}
+<li class="nav-more"><details><summary aria-label="More">•••</summary><ul>{more}</ul></details></li>
+</ul></nav>
 <span class="head-tel"><a dir="ltr" href="tel:{SITE['phone_e164']}">{E(SITE['phone'])}</a></span>
 <div class="langs" role="group" aria-label="{E(u['ui']['lang_label'])}">{langs}</div>
 <div id="authbox" class="authbox"></div>
