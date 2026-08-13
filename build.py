@@ -54,6 +54,7 @@ META = load("content/settings/meta.yml")
 SPECS = load("content/settings/specs.yml")
 PLANNER_LANGS = set(load("content/settings/planner.yml"))
 MAPS = load("content/settings/maps.yml") if os.path.exists("content/settings/maps.yml") else {}
+HOME_HERO = load("content/settings/home_hero.yml")
 CATS = load("content/settings/categories.yml")["categories"]
 
 PAGES = {os.path.splitext(os.path.basename(p))[0]: load(p)
@@ -607,7 +608,9 @@ def render_static_page(lang, page):
     body = []
     tail_js = ""
     if page == "index":
-        h = p["hero"]
+        h = dict(p["hero"])
+        h.update(HOME_HERO[lang])
+        p["h1"] = h["h1"]
         x = TRAVEL[lang]["exp"]
         facts = "".join(f"<div><b>{E(x2['v'])}</b><span>{E(x2['k'])}</span></div>"
                         for x2 in h["facts"])

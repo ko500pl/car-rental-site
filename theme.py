@@ -305,10 +305,10 @@ td:first-child{{font-weight:600;color:var(--ink)}}
   font-size:13.5px;cursor:pointer;color:var(--ink-2)}}
 .chip:hover{{border-color:var(--brand);color:var(--brand-ink)}}
 .btn.sm{{padding:8px 14px;font-size:14px}}
-.hero.tight{{padding:30px 0 26px}}
-.hero.tight h1{{font-size:clamp(25px,3vw,34px);margin:0 0 8px;max-width:28ch}}
-.hero.tight .lead{{font-size:clamp(15.5px,1.4vw,17.5px);margin:0;max-width:78ch;line-height:1.55}}
-.hero.tight .kicker{{margin-bottom:8px}}
+.hero.tight{{padding:20px 0 18px}}
+.hero.tight h1{{font-size:clamp(21px,2.2vw,28px);margin:0 0 5px;max-width:34ch;line-height:1.2}}
+.hero.tight .lead{{font-size:clamp(13px,1.1vw,15px);margin:0;max-width:58ch;line-height:1.45}}
+.hero.tight .kicker{{font-size:10.5px;letter-spacing:.1em;margin-bottom:6px}}
 .maphero{{padding:16px 0 26px}}
 .maphero .map-sub{{margin:0 0 12px}}
 .sec.wide{{padding-top:18px}}
