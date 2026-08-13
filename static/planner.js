@@ -633,9 +633,11 @@
 
   function init() {
     buildForm();
-    map = L.map("pmap", { scrollWheelZoom: false }).setView([42.1, 43.6], 7);
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-      { maxZoom: 17, attribution: "&copy; OpenStreetMap" }).addTo(map);
+    map = window.FH_TRAVEL_MAP || L.map("pmap", { scrollWheelZoom: false }).setView([42.1, 43.6], 7);
+    if (!window.FH_TRAVEL_MAP) {
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        { maxZoom: 17, attribution: "&copy; OpenStreetMap" }).addTo(map);
+    }
     var mc = D.maps || {};
     if (mc.provider === "tomtom" && mc.tomtomKey && mc.traffic) {
       var traffic = L.tileLayer(
@@ -654,7 +656,12 @@
       updateChipLabel("regions"); updateChipLabel("interests");
       EL("result").innerHTML = ""; drawMap([], D.starts[parseInt(EL("start").value, 10)]);
     };
-    run();
+    var workspace = document.querySelector('.travel-workspace');
+    if (workspace && workspace.dataset.mode === 'planner') run();
+    document.addEventListener('fh:planner', function () {
+      if (!CUR.route) run();
+      setTimeout(function () { map.invalidateSize(); }, 30);
+    });
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();

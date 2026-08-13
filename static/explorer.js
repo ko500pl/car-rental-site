@@ -80,6 +80,14 @@
   var layer = L.layerGroup().addTo(map);
   var routeLayer = L.layerGroup().addTo(map);
   var marks = {};
+  /* One canonical map is shared by Explore, point-to-point routing and the
+     multi-day planner. Other modules may add their own layers, but must not
+     create a second Leaflet instance. */
+  window.FH_TRAVEL_MAP = map;
+  window.FH_TRAVEL_EXPLORER = {
+    map: map,
+    clearRoute: function () { routeLayer.clearLayers(); }
+  };
 
   function mk(p, dim) {
     var m = L.circleMarker([p.la, p.lo], {

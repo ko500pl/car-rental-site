@@ -868,6 +868,22 @@ body.auth-open{{overflow:hidden}}
 .planner-more-in .chip{{font-size:11.5px;padding:5px 9px}}
 .planner-toolbar>.prow{{display:flex;flex-wrap:nowrap;min-width:max-content;margin:0}}
 .planner-toolbar>.prow .btn{{height:38px;padding:7px 14px;white-space:nowrap}}
+.travel-workspace{{position:relative}}
+.workspace-tabs{{display:inline-flex;gap:4px;margin:0 0 8px;padding:4px;background:var(--surface-2);
+  border:1px solid var(--line);border-radius:12px}}
+.workspace-tabs button{{min-height:34px;padding:6px 14px;border:0;border-radius:9px;background:transparent;
+  color:var(--ink-3);font:700 12px/1.2 inherit;cursor:pointer}}
+.workspace-tabs button.on{{color:var(--ink);background:var(--surface);box-shadow:0 1px 8px #0003}}
+.workspace-plan{{display:none;margin-bottom:8px}}
+.travel-workspace[data-mode="planner"] .workspace-plan{{display:block}}
+.travel-workspace[data-mode="planner"] .exproutebox{{display:none}}
+.travel-workspace[data-mode="route"] .expfind,
+.travel-workspace[data-mode="route"] #explist{{display:none}}
+.travel-workspace[data-mode="route"] .exproutebox{{display:block}}
+.travel-workspace[data-mode="explore"] .exproutebox{{display:none}}
+.workspace-result:empty{{display:none}}
+.workspace-result:not(:empty){{margin-top:12px}}
+.page-planner .travel-workspace[data-mode="planner"] .expgrid{{grid-template-columns:minmax(250px,320px) 1fr}}
 .planner-map-sec{{padding:0 0 18px!important}}
 .planner-map-sec>.wrap{{max-width:none;padding:0 12px}}
 .page-planner #pmap{{height:clamp(540px,calc(100dvh - 245px),820px);margin:0;border-radius:14px}}
@@ -876,6 +892,8 @@ body.auth-open{{overflow:hidden}}
   .page-planner .page-head{{display:none}}
   .planner-controls{{padding-top:8px!important}}
   .planner-toolbar{{border-radius:0}}
+  .workspace-tabs{{display:flex;position:sticky;top:0;z-index:5}}
+  .workspace-tabs button{{flex:1;padding-inline:8px}}
   .planner-more-in{{position:fixed;inset:auto 0 0;width:100%;max-height:72dvh;border-radius:20px 20px 0 0}}
   .page-planner #pmap{{height:calc(100dvh - 176px);min-height:500px;border-radius:10px}}
 }}

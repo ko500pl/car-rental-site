@@ -587,7 +587,7 @@ def render_static_page(lang, page):
         x = TRAVEL[lang]["exp"]
         facts = "".join(f"<div><b>{E(x2['v'])}</b><span>{E(x2['k'])}</span></div>"
                         for x2 in h["facts"])
-        mp, tail_js = explorer_block(lang, depth, "64vh", hero=True)
+        mp, tail_js = travel_workspace_block(lang, depth, "64vh", hero=True, initial="explore")
         body.append(f'<section class="hero tight"><div class="wrap">'
                     f'<span class="kicker">{E(h["kicker"])}</span><h1>{E(p["h1"])}</h1>'
                     f'<p class="lead">{inline(h["lead"], lang)}</p></div></section>'
@@ -1185,7 +1185,7 @@ def render_map_page(lang):
     p = {k: counts_sub(v) for k, v in PAGES["map"][lang].items()}
     u = UI[lang]
     depth = 1 if lang == "ka" else 2
-    mp, js = explorer_block(lang, depth, "68vh")
+    mp, js = travel_workspace_block(lang, depth, "68vh", initial="explore")
     regions = "".join(
         f'<div class="card"><h3><a href="{region_url(lang, k, False)}">{E(r[lang]["name"])}</a></h3>'
         f'<p>{E(r[lang]["short"])}</p>'
@@ -1586,10 +1586,9 @@ def planner_data(lang):
     }
 
 
-def render_planner(lang):
+def planner_form_html(lang):
     P = PLANNER[lang]
     u, t = UI[lang], P["ui"]
-    depth = 1 if lang == "ka" else 2
 
     def opt_pace():
         return "".join(
@@ -1634,12 +1633,53 @@ def render_planner(lang):
 <button type="button" class="btn ghost" id="reset">{E(t['reset'])}</button></div>
 </div>"""
 
-    body = (f'<section class="page-head"><div class="wrap"><h1>{E(P["h1"])}</h1>'
+    return form
+
+
+def travel_workspace_block(lang, depth, height="72vh", hero=False, initial="explore"):
+    """Shared travel workspace used on home, map and planner pages."""
+    explore, explore_js = explorer_block(lang, depth, height, hero)
+    labels = {
+        "ka": ("ადგილები", "მარშრუტი", "ტურის დაგეგმვა"),
+        "en": ("Places", "Route", "Trip planner"),
+        "ru": ("Места", "Маршрут", "План поездки"),
+        "fa": ("مکان‌ها", "مسیر", "برنامه سفر"),
+        "he": ("מקומות", "מסלול", "מתכנן טיול"),
+        "ar": ("الأماكن", "المسار", "مخطط الرحلة"),
+    }[lang]
+    form = planner_form_html(lang)
+    html = f'''<section class="travel-workspace" data-mode="{E(initial)}">
+  <div class="workspace-tabs" role="tablist" aria-label="Travel tools">
+    <button type="button" data-workmode="explore">{E(labels[0])}</button>
+    <button type="button" data-workmode="route">{E(labels[1])}</button>
+    <button type="button" data-workmode="planner">{E(labels[2])}</button>
+  </div>
+  <div class="workspace-plan">{form}</div>
+  {explore}
+  <div id="result" class="workspace-result"></div>
+</section>'''
+    mode_js = '''<script>(function(){
+var w=document.querySelector('.travel-workspace');if(!w)return;
+function setMode(m){w.dataset.mode=m;w.querySelectorAll('[data-workmode]').forEach(function(b){
+b.classList.toggle('on',b.dataset.workmode===m);b.setAttribute('aria-selected',b.dataset.workmode===m?'true':'false');});
+if(m==='planner')document.dispatchEvent(new CustomEvent('fh:planner'));
+if(window.FH_TRAVEL_MAP)setTimeout(function(){window.FH_TRAVEL_MAP.invalidateSize();},40);}
+w.querySelectorAll('[data-workmode]').forEach(function(b){b.onclick=function(){setMode(b.dataset.workmode);};});
+setMode(w.dataset.mode||'explore');})();</script>'''
+    js = (f'<script>window.PLANNER_DATA={J(planner_data(lang))};</script>\n' +
+          explore_js + f'\n<script src="{ASSET["planner"]}"></script>\n' + mode_js)
+    return html, js
+
+
+def render_planner(lang):
+    P = PLANNER[lang]
+    u = UI[lang]
+    depth = 1 if lang == "ka" else 2
+    workspace, tail = travel_workspace_block(lang, depth, "78vh", initial="planner")
+
+    body = (f'<section class="page-head compact"><div class="wrap"><h1>{E(P["h1"])}</h1>'
             f'<p class="lead">{inline(P["lead"], lang)}</p></div></section>'
-            f'<section class="sec planner-controls"><div class="wrap wide">{form}</div></section>'
-            f'<section class="sec alt planner-map-sec"><div class="wrap wide">'
-            f'<div id="pmap" class="gmap"></div>'
-            f'<div id="result"></div></div></section>')
+            f'<section class="sec planner-map-sec"><div class="wrap wide">{workspace}</div></section>')
 
     graph = [org_node(lang), website_node(lang),
              {"@type": "WebApplication", "@id": page_url(lang, "planner") + "#app",
@@ -1653,10 +1693,6 @@ def render_planner(lang):
     head = head_html(lang, "planner", P["title"], P["desc"], P.get("keywords", ""),
                      page_url(lang, "planner"), {l: page_url(l, "planner") for l in LANGS},
                      depth, {"@context": "https://schema.org", "@graph": graph}, leaflet=True)
-    tail = (f'<script>window.PLANNER_DATA={J(planner_data(lang))};</script>\n'
-            f'<script src="{LEAFLET_JS}"></script>\n'
-            f'<script src="/assets/weather.js"></script>\n'
-            f'<script src="{ASSET["planner"]}"></script>')
     crumbs = crumbs_html(lang, [(u["nav"]["index"], page_url(lang, "index", False)),
                                 (u["nav"]["planner"], None)])
     return shell(lang, "planner", head, crumbs + f'<main id="main">{body}</main>', depth, tail)
