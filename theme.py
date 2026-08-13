@@ -826,6 +826,31 @@ body.auth-open{{overflow:hidden}}
   .authcard{{width:100%;max-height:94dvh;border-radius:22px 22px 0 0;padding:24px 20px calc(20px + env(safe-area-inset-bottom))}}
   .authbrand{{width:40px;height:40px;margin-bottom:14px}}
 }}
+
+/* community */
+.interest-grid{{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}}
+.interest-card{{min-height:112px;padding:18px;border-radius:16px;border:1px solid var(--line);background:var(--surface);
+  color:var(--ink);display:flex;flex-direction:column;justify-content:space-between;text-decoration:none}}
+.interest-card:hover{{border-color:var(--brand);transform:translateY(-2px)}}
+.interest-card span{{width:38px;height:38px;border-radius:12px;background:var(--grad)}}
+.interest-card b{{font-size:15px}}
+.community-tabs{{display:flex;gap:6px;padding:5px;margin:0 0 14px;border:1px solid var(--line);border-radius:13px;width:max-content;background:var(--bg-2)}}
+.community-tabs button{{border:0;border-radius:9px;background:transparent;color:var(--ink-3);padding:9px 14px;font:700 13px/1 inherit;cursor:pointer}}
+.community-tabs button.on{{background:var(--surface-2);color:var(--ink)}}
+.community-app{{min-height:240px}}
+.community-head{{display:flex;align-items:center;justify-content:space-between}}
+.social-form{{display:grid;grid-template-columns:minmax(160px,1fr) minmax(130px,.55fr) auto;gap:8px;margin:0 0 16px;padding:14px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}}
+.social-form h3{{grid-column:1/-1;margin:0 0 4px;font-size:17px}}
+.social-form input,.social-form select,.social-form textarea{{min-height:42px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);padding:9px 11px;font:inherit}}
+.social-form textarea,.social-form label{{grid-column:1/-1}}
+#community-list{{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}}
+.social-card{{padding:15px;border:1px solid var(--line);border-radius:14px;background:var(--surface);display:flex;flex-direction:column;gap:7px}}
+.social-card p{{margin:0;color:var(--ink-2);font-size:13px;line-height:1.55}}
+.social-card small{{color:var(--ink-3)}}
+.review-card img{{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:10px}}
+.stars{{color:#f6b81a!important;letter-spacing:2px}}
+@media(max-width:820px){{.interest-grid,#community-list{{grid-template-columns:repeat(2,minmax(0,1fr))}}.social-form{{grid-template-columns:1fr}}}}
+@media(max-width:520px){{.interest-grid,#community-list{{grid-template-columns:1fr}}.community-tabs{{width:100%;overflow:auto}}}}
 @media(prefers-reduced-motion:reduce){{*{{scroll-behavior:auto!important;transition:none!important}}}}
 /* Planner: one-line controls, maximum map workspace */
 .page-planner .page-head{{padding:18px 0 4px}}

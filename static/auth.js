@@ -103,9 +103,10 @@
   var boot = Promise.all([
     import(SDK + "firebase-app.js"),
     import(SDK + "firebase-auth.js"),
-    import(SDK + "firebase-firestore.js")
+    import(SDK + "firebase-firestore.js"),
+    import(SDK + "firebase-storage.js")
   ]).then(function (mods) {
-    M.app = mods[0]; M.auth = mods[1]; M.db = mods[2];
+    M.app = mods[0]; M.auth = mods[1]; M.db = mods[2]; M.storage = mods[3];
     app = M.app.initializeApp({
       apiKey: C.apiKey, authDomain: C.authDomain, projectId: C.projectId,
       storageBucket: C.storageBucket, messagingSenderId: C.messagingSenderId, appId: C.appId
@@ -209,7 +210,9 @@
     return boot.then(function () {
       if (!user) { openDialog(); return Promise.reject("no-user"); }
       return M.db.addDoc(M.db.collection(db, "trips"), Object.assign({
-        uid: user.uid, status: "planned", created: M.db.serverTimestamp()
+        uid: user.uid, ownerName: user.displayName || user.email || "Traveller",
+        status: "planned", visibility: "private", purpose: "general",
+        created: M.db.serverTimestamp()
       }, trip));
     });
   }
@@ -228,6 +231,12 @@
   function setStatus(id, status) {
     return boot.then(function () {
       return M.db.updateDoc(M.db.doc(db, "trips", id), { status: status });
+    });
+  }
+  function updateTrip(id, data) {
+    return boot.then(function () {
+      if (!user) return Promise.reject("no-user");
+      return M.db.updateDoc(M.db.doc(db, "trips", id), data);
     });
   }
   function removeTrip(id) {
@@ -311,6 +320,13 @@
           });
         };
       });
+      box.querySelectorAll("[data-public]").forEach(function (b) {
+        b.onclick = function () {
+          var trip = trips.find(function (t) { return t.id === b.dataset.public; });
+          updateTrip(b.dataset.public, { visibility: trip && trip.visibility === "public" ? "private" : "public" })
+            .then(renderTrips);
+        };
+      });
     }).catch(function (e) {
       box.innerHTML = '<div class="note">' + esc(String(e && e.message || e)) + "</div>";
     });
@@ -329,6 +345,8 @@
         ? '<button class="btn sm" type="button" data-done="' + esc(t.id) + '">' + esc(T.mark_done || "Mark done") + "</button>"
         : '<button class="btn sm ghost" type="button" data-undo="' + esc(t.id) + '">' + esc(T.mark_planned || "Move back") + "</button>") +
       (t.url ? '<a class="btn sm ghost" href="' + esc(t.url) + '">' + esc(T.open || "Open") + "</a>" : "") +
+      '<button class="btn sm ghost" type="button" data-public="' + esc(t.id) + '">' +
+      (t.visibility === "public" ? "Public: on" : "Public: off") + "</button>" +
       '<button class="btn sm ghost" type="button" data-share="' + esc(t.id) + '">Share</button>' +
       '<button class="btn sm ghost" type="button" data-del="' + esc(t.id) + '">' + esc(T.delete || "Delete") + "</button>" +
       "</div></div>";
@@ -336,6 +354,7 @@
 
   window.FH = { on: on, saveTrip: saveTrip, listTrips: listTrips, shareTrip: shareTrip,
                 loadShared: loadShared, openDialog: openDialog,
+                firebase: function () { return boot.then(function () { return { db: db, auth: auth, M: M, app: app }; }); },
                 user: function () { return user; } };
 
   function init() { headerBox(); accountPage(); }

@@ -32,10 +32,10 @@ LANG_FONT_STACK = {"fa": '"Vazirmatn","Noto Sans Arabic",',
 
 NAV_HIDDEN = {"account"}
 PAGE_ORDER = ["index", "fleet", "pricing", "map", "planner", "terms", "faq", "blog",
-              "about", "contact", "software", "account"]
+              "community", "about", "contact", "software", "account"]
 PAGE_SLUG = {"index": "", "account": "account/", "fleet": "fleet/", "pricing": "pricing/", "map": "map/",
              "planner": "planner/", "terms": "terms/", "faq": "faq/", "blog": "blog/",
-             "about": "about/", "contact": "contact/", "software": "fleet-management-software/"}
+             "community": "community/", "about": "about/", "contact": "contact/", "software": "fleet-management-software/"}
 
 TODAY = date.today().isoformat()
 E = lambda s: html.escape(str(s), quote=True)                # noqa: E731
@@ -492,7 +492,7 @@ def head_html(lang, current, title, desc, keywords, url, alternates, depth, ld,
 def header_html(lang, current):
     u = UI[lang]
     CUR = ' aria-current="page"'
-    more_pages = {"terms", "faq", "blog", "software"}
+    more_pages = {"terms", "faq", "blog", "software", "community"}
     lis = "".join(
         f'<li><a href="{page_url(lang, "map", False) + "#planner" if p == "planner" else page_url(lang, p, False)}"'
         f'{CUR if p == current else ""}>{E(u["nav"][p])}</a></li>'
@@ -566,7 +566,8 @@ def shell(lang, current, head, body, depth, tail=""):
             "no_trips", "to_planner", "planned", "done", "mark_done", "mark_planned", "open",
             "delete", "confirm_del", "days", "stops", "save_trip", "saved") if k in u["ui"]}
         fb = (f'\n<script>window.FH_CFG={J(cfg)};</script>'
-              f'\n<script type="module" src="{ASSET.get("auth", "/assets/auth.js")}"></script>')
+              f'\n<script type="module" src="{ASSET.get("auth", "/assets/auth.js")}"></script>'
+              f'\n<script type="module" src="{ASSET.get("community", "/assets/community.js")}"></script>')
     return (f'<!DOCTYPE html>\n<html lang="{lang}" dir="{LANG_DIR[lang]}">\n<head>\n{head}\n'
             f'{style}</head>\n<body class="page-{E(current)}">\n'
             f'<a class="skip" href="#main">{E(u["ui"]["skip"])}</a>\n'
@@ -574,6 +575,29 @@ def shell(lang, current, head, body, depth, tail=""):
 
 
 # ══════════════════════════════════════════════════════════════ page renders
+def community_block(lang):
+    tx = {
+        "ka": ("აღმოაჩინეთ ინტერესის მიხედვით", "კულინარია", "სასტუმროები", "მიზნობრივი ტურები", "ველოტურები", "მოგზაურთა საზოგადოება", "საჯარო ტურები", "ჯგუფები", "შეფასებები", "შესვლა და მონაწილეობა"),
+        "en": ("Explore by interest", "Culinary", "Hotels", "Themed tours", "Cycling", "Traveller community", "Public trips", "Groups", "Reviews", "Sign in to participate"),
+        "ru": ("Выберите интерес", "Кулинария", "Отели", "Тематические туры", "Велотуры", "Сообщество путешественников", "Открытые поездки", "Группы", "Отзывы", "Войдите, чтобы участвовать"),
+        "fa": ("بر اساس علاقه کاوش کنید", "آشپزی", "هتل‌ها", "تورهای موضوعی", "دوچرخه‌سواری", "جامعه مسافران", "سفرهای عمومی", "گروه‌ها", "نظرها", "برای مشارکت وارد شوید"),
+        "he": ("גלו לפי עניין", "קולינריה", "מלונות", "סיורים נושאיים", "רכיבה על אופניים", "קהילת מטיילים", "טיולים ציבוריים", "קבוצות", "ביקורות", "התחברו כדי להשתתף"),
+        "ar": ("استكشف حسب الاهتمام", "الطهي", "الفنادق", "جولات هادفة", "ركوب الدراجات", "مجتمع المسافرين", "رحلات عامة", "مجموعات", "تقييمات", "سجّل الدخول للمشاركة")
+    }[lang]
+    cards = [(tx[1], "food", "food"), (tx[2], "hotel", "hotel"),
+             (tx[3], "tour", "culture"), (tx[4], "bike", "cycling")]
+    interests = "".join(
+        f'<a class="interest-card {kind}" href="{page_url(lang, "map", False)}?interest={query}"><span></span><b>{E(label)}</b></a>'
+        for label, kind, query in cards)
+    return (f'<section class="sec community-interests"><div class="wrap"><h2>{E(tx[0])}</h2>'
+            f'<div class="interest-grid">{interests}</div></div></section>'
+            f'<section class="sec alt"><div class="wrap"><h2>{E(tx[5])}</h2>'
+            f'<div class="community-tabs" role="tablist"><button class="on" data-community-tab="trips">{E(tx[6])}</button>'
+            f'<button data-community-tab="groups">{E(tx[7])}</button><button data-community-tab="reviews">{E(tx[8])}</button></div>'
+            f'<div id="community-app" class="community-app" data-signin="{E(tx[9])}"><p class="muted">…</p></div>'
+            f'</div></section>')
+
+
 def render_static_page(lang, page):
     p = {k: counts_sub(v) for k, v in PAGES[page][lang].items()}
     u = UI[lang]
@@ -602,6 +626,8 @@ def render_static_page(lang, page):
                     f'<p class="lead">{inline(p["lead"], lang)}</p></div></section>')
     if page == "account":
         body.append('<section class="sec account-sec"><div class="wrap"><div id="account" class="account-shell"></div></div></section>')
+    if page == "community":
+        body.append(community_block(lang))
     if page == "contact":
         uu = u["ui"]
         body.append(
@@ -1926,7 +1952,8 @@ def main():
             shutil.copytree(sdir, dst, dirs_exist_ok=True)
 
     write_hashed(out, "style.css", build_css(DESIGN), "css")
-    for fn, key in (("explorer.js", "explorer"), ("planner.js", "planner"), ("auth.js", "auth")):
+    for fn, key in (("explorer.js", "explorer"), ("planner.js", "planner"), ("auth.js", "auth"),
+                    ("community.js", "community")):
         p = os.path.join("static", fn)
         if os.path.exists(p):
             write_hashed(out, fn, open(p, encoding="utf-8").read(), key)

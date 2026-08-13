@@ -3,28 +3,42 @@ service cloud.firestore {
   match /databases/{database}/documents {
     function signedIn() { return request.auth != null; }
     function owner(data) { return signedIn() && data.uid == request.auth.uid; }
+    function member(data) { return signedIn() && request.auth.uid in data.memberIds; }
 
-    match /trips/{tripId} {
-      allow read, update, delete: if owner(resource.data);
-      allow create: if owner(request.resource.data)
-        && request.resource.data.keys().hasOnly([
-          'uid','title','date','days','stops','km','url','status','created'
-        ])
-        && request.resource.data.title is string
-        && request.resource.data.title.size() <= 120
-        && request.resource.data.stops is list
+    match /trips/{id} {
+      allow read: if owner(resource.data) || resource.data.visibility == 'public';
+      allow create: if owner(request.resource.data) && request.resource.data.title is string
+        && request.resource.data.title.size() <= 120 && request.resource.data.stops is list
         && request.resource.data.stops.size() <= 200;
-    }
-
-    match /sharedTrips/{shareId} {
-      allow read: if true;
-      allow create: if owner(request.resource.data)
-        && request.resource.data.keys().hasOnly([
-          'uid','tripId','title','date','days','stops','km','url','created'
-        ]);
       allow update, delete: if owner(resource.data);
     }
-
+    match /sharedTrips/{id} {
+      allow read: if true;
+      allow create: if owner(request.resource.data);
+      allow update, delete: if owner(resource.data);
+    }
+    match /groups/{id} {
+      allow read: if true;
+      allow create: if owner(request.resource.data) && request.resource.data.memberIds == [request.auth.uid];
+      allow update: if member(resource.data);
+      allow delete: if owner(resource.data);
+    }
+    match /reviews/{id} {
+      allow read: if true;
+      allow create: if owner(request.resource.data) && request.resource.data.rating is int
+        && request.resource.data.rating >= 1 && request.resource.data.rating <= 5
+        && request.resource.data.text is string && request.resource.data.text.size() <= 3000;
+      allow update, delete: if owner(resource.data);
+    }
+    match /conversations/{id} {
+      allow read, update: if member(resource.data);
+      allow create: if signedIn() && request.auth.uid in request.resource.data.memberIds
+        && request.resource.data.memberIds.size() == 2;
+    }
+    match /conversations/{id}/messages/{messageId} {
+      allow read, create: if signedIn()
+        && request.auth.uid in get(/databases/$(database)/documents/conversations/$(id)).data.memberIds;
+    }
     match /{document=**} { allow read, write: if false; }
   }
 }

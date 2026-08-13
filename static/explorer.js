@@ -121,6 +121,11 @@
 
   /* ── filtering & search ──────────────────────────────────────────── */
   var state = { q: '', type: '', region: '', from: null, to: null };
+  var interest = new URLSearchParams(location.search).get('interest');
+  if (interest === 'food') state.type = 'winery';
+  if (interest === 'culture') state.q = 'museum monastery fortress archaeology';
+  if (interest === 'cycling') state.q = 'nature lake town mountain';
+  if (interest === 'hotel') state.q = 'hotel guest hostel';
 
   function norm(s) { return String(s || '').toLowerCase(); }
   function searchable(p) {
@@ -132,7 +137,7 @@
     return PTS.filter(function (p) {
       if (state.type && p.ty !== state.type) return false;
       if (state.region && p.g !== state.region) return false;
-      if (q && searchable(p).indexOf(q) < 0) return false;
+      if (q && !q.split(/\s+/).some(function (term) { return searchable(p).indexOf(term) >= 0; })) return false;
       return true;
     });
   }
@@ -818,6 +823,8 @@
     if (t.hasAttribute('data-go')) { e.preventDefault(); e.stopPropagation(); open(t.getAttribute('data-go')); return; }
   });
 
+  if (state.type) $('exptype').value = state.type;
+  if (state.q) $('expq').value = state.q;
   renderList();
   route();
   suggestNear();

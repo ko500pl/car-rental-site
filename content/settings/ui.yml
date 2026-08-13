@@ -11,6 +11,7 @@ ka:
     about: ჩვენ შესახებ
     contact: კონტაქტი
     software: პროგრამა
+    community: საზოგადოება
     account: ჩემი გვერდი
   ui:
     logo_sub: ავტოგაქირავება
@@ -85,6 +86,7 @@ en:
     about: About us
     contact: Contact
     software: Software
+    community: Community
     account: My page
   ui:
     logo_sub: Car Rental
@@ -159,6 +161,7 @@ ru:
     about: О нас
     contact: Контакты
     software: Программа
+    community: Сообщество
     account: Моя страница
   ui:
     logo_sub: Аренда авто
@@ -233,6 +236,7 @@ fa:
     about: درباره ما
     contact: تماس
     software: نرم‌افزار
+    community: جامعه
     account: صفحهٔ من
   ui:
     logo_sub: اجارهٔ خودرو
@@ -308,6 +312,7 @@ he:
     about: אודות
     contact: צור קשר
     software: תוכנה
+    community: קהילה
     account: העמוד שלי
   ui:
     logo_sub: השכרת רכב
@@ -381,6 +386,7 @@ ar:
     about: من نحن
     contact: اتصل بنا
     software: البرنامج
+    community: المجتمع
     account: صفحتي
   ui:
     logo_sub: تأجير السيارات
