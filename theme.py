@@ -863,6 +863,22 @@ body.auth-open{{overflow:hidden}}
 .planner-toolbar>.pf:first-child{{min-width:185px}}
 .planner-toolbar .pf label{{font-size:11px;white-space:nowrap;color:var(--ink-3)}}
 .planner-toolbar .pf select{{height:38px;min-width:112px;padding:6px 9px;font-size:13px;border-radius:9px}}
+.date-pair{{display:flex;gap:5px}}
+.date-pair input{{height:38px;width:132px;padding:6px 8px;border:1px solid var(--line);border-radius:9px;background:var(--bg);color:var(--ink);font:600 12px/1 inherit}}
+.standard-tours{{min-width:min(760px,86vw);align-self:stretch;padding:0 0 2px}}
+.standard-head{{display:flex;align-items:center;gap:8px;margin-bottom:6px}}
+.standard-head h3{{margin:0;font-size:13px}}
+.standard-head span{{color:var(--brand);font-size:11px}}
+.standard-grid{{display:flex;gap:7px;overflow-x:auto;padding-bottom:3px}}
+.standard-card{{flex:0 0 300px;min-height:82px;display:grid;grid-template-columns:62px minmax(0,1fr) auto;gap:9px;align-items:center;padding:8px;border:1px solid var(--line);border-radius:11px;background:var(--surface-2)}}
+.standard-card>img{{width:62px;height:54px;object-fit:cover;border-radius:8px}}
+.standard-card:not(:has(>img)){{grid-template-columns:minmax(0,1fr) auto}}
+.standard-copy{{min-width:0;display:grid;gap:2px}}
+.standard-copy b{{font-size:12px;line-height:1.3}}
+.standard-copy small{{font-size:10px;color:var(--ink-3)}}
+.standard-copy p{{margin:0;font-size:10.5px;line-height:1.3;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
+.standard-card .btn{{padding:6px 8px;font-size:10.5px}}
+.standard-empty{{font-size:12px;color:var(--ink-3);padding:10px}}
 .planner-toolbar .carmode{{display:flex;flex-wrap:nowrap;gap:5px;min-width:max-content}}
 .planner-toolbar .carmode .tog{{height:38px;padding:6px 10px;font-size:12px;white-space:nowrap}}
 .planner-toolbar .pf-check{{min-width:max-content;padding-bottom:8px}}
@@ -904,6 +920,8 @@ body.auth-open{{overflow:hidden}}
   .page-planner .page-head{{display:none}}
   .planner-controls{{padding-top:8px!important}}
   .planner-toolbar{{border-radius:0}}
+  .standard-tours{{min-width:88vw}}
+  .standard-card{{flex-basis:280px}}
   .workspace-tabs{{display:flex;position:sticky;top:0;z-index:5}}
   .workspace-tabs button{{flex:1;padding-inline:8px}}
   .planner-more-in{{position:fixed;inset:auto 0 0;width:100%;max-height:72dvh;border-radius:20px 20px 0 0}}

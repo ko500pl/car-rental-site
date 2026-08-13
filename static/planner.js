@@ -581,6 +581,56 @@
     document.querySelectorAll('input[name="carmode"]').forEach(function (r) {
       r.onchange = function () { pickSel.hidden = carMode() !== "pick"; };
     });
+    var from = EL("datefrom"), to = EL("dateto"), today = new Date();
+    function iso(d) { return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
+    from.value = iso(today);
+    var end = new Date(today); end.setDate(end.getDate() + 2); to.value = iso(end);
+    function syncPeriod() {
+      if (from.value) EL("month").value = String(new Date(from.value + "T12:00:00").getMonth() + 1);
+      if (from.value && to.value) {
+        var n = Math.round((new Date(to.value + "T12:00:00") - new Date(from.value + "T12:00:00")) / 86400000) + 1;
+        if (n > 0 && n <= 10) EL("days").value = String(n);
+      }
+      renderStandardTours();
+    }
+    [from, to, EL("days"), EL("party"), EL("tourpurpose"), EL("month")].forEach(function (x) {
+      if (x) x.addEventListener("change", syncPeriod);
+    });
+  }
+
+  function renderStandardTours() {
+    var box = EL("standardtours"), count = EL("standardcount");
+    if (!box) return;
+    var days = parseInt(EL("days").value, 10), party = parseInt(EL("party").value, 10);
+    var purpose = EL("tourpurpose").value, month = parseInt(EL("month").value, 10);
+    var from = EL("datefrom").value, to = EL("dateto").value;
+    var related = {
+      culinary: ["culinary", "wine"], wine: ["culinary", "wine"],
+      cycling: ["cycling", "nature", "mountains"], family: ["family", "culture", "nature", "beach"]
+    };
+    var accepted = related[purpose] || [purpose];
+    var tours = (D.standardTours || []).filter(function (tour) {
+      if (party < tour.minPeople || party > tour.maxPeople || !seasonOK(tour, month)) return false;
+      if (purpose !== "classic" && accepted.indexOf(tour.purpose) < 0) return false;
+      if (tour.availableFrom && to && to < tour.availableFrom) return false;
+      if (tour.availableTo && from && from > tour.availableTo) return false;
+      return true;
+    }).sort(function (a, b) {
+      var ap = a.purpose === purpose ? 0 : 2, bp = b.purpose === purpose ? 0 : 2;
+      return (Math.abs(a.days - days) * 4 + ap) - (Math.abs(b.days - days) * 4 + bp) || a.days - b.days;
+    }).slice(0, 6);
+    count.textContent = tours.length ? tours.length : "";
+    if (!tours.length) {
+      box.innerHTML = '<div class="standard-empty">' + (T.no_results || "No matching tours") + '</div>';
+      return;
+    }
+    box.innerHTML = tours.map(function (tour) {
+      var image = tour.img ? '<img src="' + esc(tour.img) + '" alt="">' : '';
+      return '<article class="standard-card">' + image + '<div class="standard-copy"><b>' + esc(tour.n) +
+        '</b><small>' + tour.days + ' ' + T.days + ' · ' + tour.minPeople + '–' + tour.maxPeople + ' ' +
+        (T.people || '') + ' · ' + tour.km + ' km</small><p>' + esc(tour.sh) + '</p></div>' +
+        '<a class="btn sm" href="' + tour.u + '">' + (T.more || 'View') + '</a></article>';
+    }).join('');
   }
   function styleRow() {
     var box = EL("styles");
@@ -631,6 +681,7 @@
     var pool = pick();
     if (!pool.length) { EL("result").innerHTML = '<div class="note">' + T.no_results + "</div>"; return; }
     render(plan(pool, start, days, budget, back), start, D.a);
+    renderStandardTours();
   }
 
   function init() {
@@ -659,6 +710,7 @@
       EL("result").innerHTML = ""; drawMap([], D.starts[parseInt(EL("start").value, 10)]);
     };
     var workspace = document.querySelector('.travel-workspace');
+    renderStandardTours();
     if (workspace && workspace.dataset.mode === 'planner') run();
     document.addEventListener('fh:planner', function () {
       if (!CUR.route) run();

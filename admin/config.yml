@@ -415,6 +415,12 @@ collections:
       - {label: "რიგითობა", name: order, widget: number, value_type: int}
       - {label: "დღეები", name: days, widget: number, value_type: int}
       - {label: "ღამეები", name: nights, widget: number, value_type: int}
+      - {label: "ტურის მიზნობრიობა", name: purpose, widget: select, default: classic,
+         options: [classic, culinary, wine, culture, nature, cycling, mountains, beach, family]}
+      - {label: "მინიმალური მონაწილეები", name: min_people, widget: number, value_type: int, min: 1, default: 1}
+      - {label: "მაქსიმალური მონაწილეები", name: max_people, widget: number, value_type: int, min: 1, default: 8}
+      - {label: "ხელმისაწვდომია თარიღიდან", name: available_from, widget: datetime, date_format: "YYYY-MM-DD", time_format: false, required: false}
+      - {label: "ხელმისაწვდომია თარიღამდე", name: available_to, widget: datetime, date_format: "YYYY-MM-DD", time_format: false, required: false}
       - {label: "სულ მანძილი, კმ", name: distance_km, widget: number, value_type: int}
       - {label: "სულ მართვაში", name: drive_time_total, widget: string, hint: "მაგ. 9:30"}
       - {label: "საჭირო ავტომობილი", name: car_category, widget: select, options: [economy, suv, offroad]}

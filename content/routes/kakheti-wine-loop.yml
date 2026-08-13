@@ -1,6 +1,9 @@
 order: 20
 days: 3
 nights: 2
+purpose: culinary
+min_people: 1
+max_people: 16
 distance_km: 420
 drive_time_total: '8:00'
 car_category: economy

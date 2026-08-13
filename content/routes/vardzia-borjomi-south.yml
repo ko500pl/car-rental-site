@@ -1,6 +1,9 @@
 order: 30
 days: 2
 nights: 1
+purpose: culture
+min_people: 1
+max_people: 12
 distance_km: 550
 drive_time_total: '9:00'
 car_category: economy

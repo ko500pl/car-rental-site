@@ -1,6 +1,9 @@
 order: 60
 days: 4
 nights: 3
+purpose: beach
+min_people: 1
+max_people: 16
 distance_km: 880
 drive_time_total: '14:30'
 car_category: suv

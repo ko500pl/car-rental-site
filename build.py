@@ -1568,6 +1568,20 @@ def fleet_for_planner(lang):
 
 def planner_data(lang):
     P = PLANNER[lang]
+    purpose_by_route = {
+        "kakheti-wine-loop": "culinary", "imereti-caves-canyons": "nature",
+        "black-sea-adjara": "beach", "military-highway-kazbegi": "mountains",
+        "vardzia-borjomi-south": "culture", "svaneti-expedition": "mountains",
+        "racha-mountain-loop": "nature",
+    }
+    standard_tours = [{
+        "s": slug, "n": route[lang]["name"], "sh": route[lang]["short"],
+        "days": int(route["days"]), "nights": int(route["nights"]), "km": int(route["distance_km"]),
+        "season": route["best_season"], "purpose": route.get("purpose", purpose_by_route.get(slug, "classic")),
+        "minPeople": int(route.get("min_people", 1)), "maxPeople": int(route.get("max_people", 8)),
+        "availableFrom": route.get("available_from", ""), "availableTo": route.get("available_to", ""),
+        "img": route.get("image") or "", "u": route_url(lang, slug, False),
+    } for slug, route in ROUTES.items()]
     items = []
     for s, a in ATTRACTIONS.items():
         f, v = road_model(a)
@@ -1594,6 +1608,7 @@ def planner_data(lang):
                   for t in sorted({a["type"] for a in ATTRACTIONS.values()})],
         "car": {c: cat_label(c, lang) for c in ("economy", "suv", "offroad")},
         "styles": P.get("styles", []),
+        "standardTours": standard_tours,
         "hotels": HOTELS,
         "htowns": [{"k": p["key"], "la": p["lat"], "lo": p["lon"]}
                    for p in PLACES if p["kind"] == "city"],
@@ -1617,6 +1632,24 @@ def planner_data(lang):
 def planner_form_html(lang):
     P = PLANNER[lang]
     u, t = UI[lang], P["ui"]
+    labels = {
+        "ka": ("პერიოდი", "დან", "მდე", "ტურის ტიპი", "სტანდარტული ტურები"),
+        "en": ("Travel period", "From", "To", "Tour type", "Standard tours"),
+        "ru": ("Период", "С", "До", "Тип тура", "Стандартные туры"),
+        "fa": ("بازه سفر", "از", "تا", "نوع تور", "تورهای استاندارد"),
+        "he": ("תקופת הנסיעה", "מתאריך", "עד תאריך", "סוג הטיול", "טיולים מוכנים"),
+        "ar": ("فترة السفر", "من", "إلى", "نوع الجولة", "جولات جاهزة"),
+    }[lang]
+    purpose_names = {
+        "ka": ("კლასიკური", "კულინარიული", "ღვინის", "კულტურული", "ბუნება", "ველო", "მთები", "ზღვა", "ოჯახური"),
+        "en": ("Classic", "Culinary", "Wine", "Culture", "Nature", "Cycling", "Mountains", "Beach", "Family"),
+        "ru": ("Классический", "Кулинарный", "Винный", "Культурный", "Природа", "Велотур", "Горы", "Море", "Семейный"),
+        "fa": ("کلاسیک", "آشپزی", "شراب", "فرهنگی", "طبیعت", "دوچرخه‌سواری", "کوهستان", "ساحل", "خانوادگی"),
+        "he": ("קלאסי", "קולינרי", "יין", "תרבות", "טבע", "אופניים", "הרים", "חוף", "משפחתי"),
+        "ar": ("كلاسيكية", "الطهي", "النبيذ", "ثقافية", "الطبيعة", "الدراجات", "الجبال", "الشاطئ", "عائلية"),
+    }[lang]
+    purpose_keys = ("classic", "culinary", "wine", "culture", "nature", "cycling", "mountains", "beach", "family")
+    purposes = list(zip(purpose_keys, purpose_names))
 
     def opt_pace():
         return "".join(
@@ -1625,6 +1658,7 @@ def planner_form_html(lang):
 
     form = f"""<div class="pform planner-toolbar">
 <div class="pf"><label for="start">{E(t['start'])}</label><select id="start"></select></div>
+<div class="pf period-field"><label>{E(labels[0])}</label><div class="date-pair"><input id="datefrom" type="date" aria-label="{E(labels[1])}"><input id="dateto" type="date" aria-label="{E(labels[2])}"></div></div>
 <div class="pf"><label for="days">{E(t['days'])}</label><select id="days">
 {"".join(f'<option value="{d}"{" selected" if d == 3 else ""}>{d}</option>' for d in range(1, 11))}
 </select></div>
@@ -1632,6 +1666,7 @@ def planner_form_html(lang):
 <div class="pf"><label for="party">{E(t['party'])}</label><select id="party">
 {"".join(f'<option value="{n}"{" selected" if n == 2 else ""}>{n}</option>' for n in range(1, 9))}
 </select></div>
+<div class="pf"><label for="tourpurpose">{E(labels[3])}</label><select id="tourpurpose">{"".join(f'<option value="{k}">{E(v)}</option>' for k,v in purposes)}</select></div>
 <div class="pf pf-wide carmode">
 <label class="tog"><input type="radio" name="carmode" id="carauto" value="auto" checked>
 <span>{E(t['car_auto'])}</span></label>
@@ -1659,6 +1694,7 @@ def planner_form_html(lang):
 <div class="pf pf-wide prow">
 <button type="button" class="btn" id="build">{E(t['build'])}</button>
 <button type="button" class="btn ghost" id="reset">{E(t['reset'])}</button></div>
+<section class="standard-tours pf-wide"><div class="standard-head"><h3>{E(labels[4])}</h3><span id="standardcount"></span></div><div id="standardtours" class="standard-grid"></div></section>
 </div>"""
 
     return form

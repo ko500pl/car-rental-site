@@ -1,6 +1,9 @@
 order: 10
 days: 2
 nights: 1
+purpose: mountains
+min_people: 1
+max_people: 12
 distance_km: 340
 drive_time_total: '6:40'
 car_category: suv

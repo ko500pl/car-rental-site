@@ -1,6 +1,9 @@
 order: 40
 days: 3
 nights: 2
+purpose: nature
+min_people: 1
+max_people: 12
 distance_km: 640
 drive_time_total: '10:30'
 car_category: suv

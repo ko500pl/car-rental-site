@@ -1,6 +1,9 @@
 order: 50
 days: 5
 nights: 4
+purpose: mountains
+min_people: 1
+max_people: 8
 distance_km: 1050
 drive_time_total: '21:00'
 car_category: offroad
