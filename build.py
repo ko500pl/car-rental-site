@@ -494,7 +494,7 @@ def header_html(lang, current):
     CUR = ' aria-current="page"'
     more_pages = {"terms", "faq", "blog", "software"}
     lis = "".join(
-        f'<li><a href="{page_url(lang, p, False)}"'
+        f'<li><a href="{page_url(lang, "map", False) + "#planner" if p == "planner" else page_url(lang, p, False)}"'
         f'{CUR if p == current else ""}>{E(u["nav"][p])}</a></li>'
         for p in PAGE_ORDER if p not in NAV_HIDDEN and p not in more_pages)
     more = "".join(
@@ -1099,7 +1099,7 @@ def explorer_block(lang, depth, height="72vh", hero=False):
         "pts": explorer_points(lang),
         "towns": explorer_towns(lang),
         "lang": lang, "base": base, "center": [42.15, 43.6], "zoom": 7,
-        "planner": page_url(lang, "planner", False),
+        "planner": page_url(lang, "map", False) + "#planner",
         "ui": {**{k: v for k, v in x.items()},
                "hrs": u["hrs"], "km": u["km"], "h_short": u["hrs"], "days": u["days"],
                "tip_title": u["tip_title"], "route_title": u["route_title"],
@@ -1664,8 +1664,9 @@ function setMode(m){w.dataset.mode=m;w.querySelectorAll('[data-workmode]').forEa
 b.classList.toggle('on',b.dataset.workmode===m);b.setAttribute('aria-selected',b.dataset.workmode===m?'true':'false');});
 if(m==='planner')document.dispatchEvent(new CustomEvent('fh:planner'));
 if(window.FH_TRAVEL_MAP)setTimeout(function(){window.FH_TRAVEL_MAP.invalidateSize();},40);}
-w.querySelectorAll('[data-workmode]').forEach(function(b){b.onclick=function(){setMode(b.dataset.workmode);};});
-setMode(w.dataset.mode||'explore');})();</script>'''
+w.querySelectorAll('[data-workmode]').forEach(function(b){b.onclick=function(){setMode(b.dataset.workmode);history.replaceState(null,'','#'+b.dataset.workmode);};});
+window.addEventListener('hashchange',function(){var m=location.hash.slice(1);if(/^(explore|route|planner)$/.test(m))setMode(m);});
+var first=location.hash.slice(1);setMode(/^(explore|route|planner)$/.test(first)?first:(w.dataset.mode||'explore'));})();</script>'''
     js = (f'<script>window.PLANNER_DATA={J(planner_data(lang))};</script>\n' +
           explore_js + f'\n<script src="{ASSET["planner"]}"></script>\n' + mode_js)
     return html, js

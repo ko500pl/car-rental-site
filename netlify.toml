@@ -8,6 +8,16 @@
 [build.environment]
   PYTHON_VERSION = "3.11"
 
+[[redirects]]
+  from = "/planner/"
+  to = "/map/#planner"
+  status = 301
+
+[[redirects]]
+  from = "/:lang/planner/"
+  to = "/:lang/map/#planner"
+  status = 301
+
 [[headers]]
   for = "/assets/*"
   [headers.values]

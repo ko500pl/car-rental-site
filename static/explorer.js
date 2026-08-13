@@ -384,6 +384,11 @@
   /* ── ჩემი ადგილი, დროის/მანძილის ფილტრი და რუკაზე მოხაზვა ─────────── */
   var me = null, area = null, areaLayer = null, drawing = false;
   var suggested = [], sugOff = {};
+  function publishSelection() {
+    var slugs = suggested.filter(function (p) { return !sugOff[p.s]; }).map(function (p) { return p.s; });
+    window.FH_TRAVEL_SELECTION = slugs;
+    document.dispatchEvent(new CustomEvent('fh:selection', { detail: slugs }));
+  }
 
   function ratingStars(p) {
     var r = Number(p.r || 0), full = Math.floor(r);
@@ -473,6 +478,7 @@
     }
     chosen = order2opt(o, chosen);
     suggested = chosen;
+    publishSelection();
     var active = chosen.filter(function (p) { return !sugOff[p.s]; });
     minutes = chainTime(o, active);
 
@@ -783,6 +789,7 @@
         if (x !== t) x.checked = t.checked;
       });
       var active = suggested.filter(function (p) { return !sugOff[p.s]; });
+      publishSelection();
       drawSuggest(origin(), active);
       suggestNear();
     }

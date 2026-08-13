@@ -91,7 +91,9 @@
     /* "pick" — მომხმარებელი თვითონ ირჩევს კლასს და ეს ზღუდავს ადგილებს.
        "auto"/"own" — ადგილებს სტილი ზღუდავს, მანქანას მერე ვარჩევთ.        */
     var carCap = mode === "pick" ? CAR_RANK[EL("car").value] : 2;
+    var selected = window.FH_TRAVEL_SELECTION || [];
     return D.a.filter(function (a) {
+      if (selected.length && selected.indexOf(a.s) < 0) return false;
       if (regions.length && regions.indexOf(a.r) < 0) return false;
       if (types.length && types.indexOf(a.ty) < 0) return false;
       if (mode === "pick" && CAR_RANK[a.car] > carCap) return false;
