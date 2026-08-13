@@ -216,6 +216,23 @@
   function removeTrip(id) {
     return boot.then(function () { return M.db.deleteDoc(M.db.doc(db, "trips", id)); });
   }
+  function shareTrip(trip) {
+    return boot.then(function () {
+      if (!user) return Promise.reject("no-user");
+      return M.db.addDoc(M.db.collection(db, "sharedTrips"), {
+        uid: user.uid, tripId: trip.id, title: trip.title || "", date: trip.date || "",
+        days: trip.days || 1, stops: trip.stops || [], km: trip.km || 0,
+        url: trip.url || "", created: M.db.serverTimestamp()
+      }).then(function (doc) { return location.origin + location.pathname + "?shared=" + doc.id; });
+    });
+  }
+  function loadShared(id) {
+    return boot.then(function () {
+      return M.db.getDoc(M.db.doc(db, "sharedTrips", id)).then(function (doc) {
+        return doc.exists() ? Object.assign({ id: doc.id }, doc.data()) : null;
+      });
+    });
+  }
 
   /* ── ანგარიშის გვერდი ─────────────────────────────────────────────── */
   function accountPage() {
@@ -265,6 +282,16 @@
           if (confirm(T.confirm_del || "Delete?")) removeTrip(b.dataset.del).then(renderTrips);
         };
       });
+      box.querySelectorAll("[data-share]").forEach(function (b) {
+        b.onclick = function () {
+          var trip = trips.find(function (t) { return t.id === b.dataset.share; });
+          if (!trip) return;
+          shareTrip(trip).then(function (url) {
+            if (navigator.clipboard) navigator.clipboard.writeText(url);
+            prompt("Share link", url);
+          });
+        };
+      });
     }).catch(function (e) {
       box.innerHTML = '<div class="note">' + esc(String(e && e.message || e)) + "</div>";
     });
@@ -283,11 +310,13 @@
         ? '<button class="btn sm" type="button" data-done="' + esc(t.id) + '">' + esc(T.mark_done || "Mark done") + "</button>"
         : '<button class="btn sm ghost" type="button" data-undo="' + esc(t.id) + '">' + esc(T.mark_planned || "Move back") + "</button>") +
       (t.url ? '<a class="btn sm ghost" href="' + esc(t.url) + '">' + esc(T.open || "Open") + "</a>" : "") +
+      '<button class="btn sm ghost" type="button" data-share="' + esc(t.id) + '">Share</button>' +
       '<button class="btn sm ghost" type="button" data-del="' + esc(t.id) + '">' + esc(T.delete || "Delete") + "</button>" +
       "</div></div>";
   }
 
-  window.FH = { on: on, saveTrip: saveTrip, listTrips: listTrips, openDialog: openDialog,
+  window.FH = { on: on, saveTrip: saveTrip, listTrips: listTrips, shareTrip: shareTrip,
+                loadShared: loadShared, openDialog: openDialog,
                 user: function () { return user; } };
 
   function init() { headerBox(); accountPage(); }

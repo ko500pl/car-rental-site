@@ -44,7 +44,7 @@ def css(d):
 }}
 
 *,*::before,*::after{{box-sizing:border-box}}
-html{{-webkit-text-size-adjust:100%;scroll-behavior:smooth}}
+html{{-webkit-text-size-adjust:100%}}
 body{{margin:0;font-family:var(--font);color:var(--ink);background:var(--bg);
   font-size:{d['base_font_size']}px;line-height:1.72;font-weight:400;
   text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}}

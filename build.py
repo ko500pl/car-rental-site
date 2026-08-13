@@ -6,9 +6,11 @@
 """
 import glob, html, json, os, re, shutil, sys
 from datetime import date, datetime
+from decimal import Decimal, ROUND_HALF_UP
 
 import yaml
 import markdown as md
+from sitegen.validation import is_public, validate
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 os.chdir(ROOT)
@@ -51,28 +53,38 @@ UI = load("content/settings/ui.yml")
 META = load("content/settings/meta.yml")
 SPECS = load("content/settings/specs.yml")
 PLANNER_LANGS = set(load("content/settings/planner.yml"))
+MAPS = load("content/settings/maps.yml") if os.path.exists("content/settings/maps.yml") else {}
 CATS = load("content/settings/categories.yml")["categories"]
 
 PAGES = {os.path.splitext(os.path.basename(p))[0]: load(p)
          for p in glob.glob("content/pages/*.yml")}
 CARS = {os.path.splitext(os.path.basename(p))[0]: load(p)
         for p in sorted(glob.glob("content/cars/*.yml"))}
+CARS_ALL = CARS
+CARS = {k: v for k, v in CARS.items() if is_public(v)}
 CARS = dict(sorted(CARS.items(), key=lambda kv: kv[1].get("order", 999)))
 POSTS = {os.path.splitext(os.path.basename(p))[0]: load(p)
          for p in sorted(glob.glob("content/posts/*.yml"))}
+POSTS_ALL = POSTS
 POSTS = {k: v for k, v in sorted(POSTS.items(),
                                  key=lambda kv: str(kv[1].get("date", "")), reverse=True)
-         if not v.get("draft")}
+         if is_public(v)}
 
 REGIONS = {os.path.splitext(os.path.basename(p))[0]: load(p)
            for p in sorted(glob.glob("content/regions/*.yml"))}
+REGIONS_ALL = REGIONS
+REGIONS = {k: v for k, v in REGIONS.items() if is_public(v)}
 REGIONS = dict(sorted(REGIONS.items(), key=lambda kv: kv[1].get("order", 999)))
 ATTRACTIONS = {os.path.splitext(os.path.basename(p))[0]: load(p)
                for p in sorted(glob.glob("content/attractions/*.yml"))}
+ATTRACTIONS_ALL = ATTRACTIONS
+ATTRACTIONS = {k: v for k, v in ATTRACTIONS.items() if is_public(v)}
 ATTRACTIONS = dict(sorted(ATTRACTIONS.items(),
                           key=lambda kv: (kv[1].get("region", ""), kv[1].get("order", 999))))
 ROUTES = {os.path.splitext(os.path.basename(p))[0]: load(p)
           for p in sorted(glob.glob("content/routes/*.yml"))}
+ROUTES_ALL = ROUTES
+ROUTES = {k: v for k, v in ROUTES.items() if is_public(v)}
 ROUTES = dict(sorted(ROUTES.items(), key=lambda kv: kv[1].get("order", 999)))
 
 # რეალურად ხელმისაწვდომი ენები (თარგმანის მიხედვით)
@@ -81,6 +93,25 @@ LANGS = [l for l in ALL_LANGS if l in UI and l in META and l in PLANNER_LANGS
 
 SITE_URL = SITE["site_url"].rstrip("/")
 BRAND = SITE["rental_brand"]
+
+
+def gel_to_usd(gel):
+    """Convert the GEL source price to an approximate USD price.
+
+    Business rule: divide by the admin-managed exchange rate and round half-up
+    to the configured USD step (10 dollars by default).
+    """
+    rate = Decimal(str(SITE.get("usd_rate", 2.6)))
+    step = Decimal(str(SITE.get("usd_rounding", 10)))
+    if rate <= 0 or step <= 0:
+        raise ValueError("site.yml: usd_rate and usd_rounding must be positive")
+    units = (Decimal(str(gel)) / rate / step).quantize(Decimal("1"), rounding=ROUND_HALF_UP)
+    return int(units * step)
+
+
+def money(gel):
+    """Public dual-currency label; GEL remains the source of truth."""
+    return f"{gel} ₾ · ≈ ${gel_to_usd(gel)}"
 
 from theme import css as build_css  # noqa: E402
 
@@ -251,7 +282,7 @@ def cars_grid(category, lang):
             f'<article class="car">{ph}<div class="in">'
             f'<h3><a href="{car_url(lang, slug, False)}">{E(L["name"])}</a></h3>'
             f'<p class="sub">{E(L.get("summary", ""))}</p><ul>{feats}</ul>'
-            f'<div class="foot"><span class="p">{E(c["price_1_6"])} ₾ '
+            f'<div class="foot"><span class="p">{E(money(c["price_1_6"]))} '
             f'<small>/ {E(unit)}</small></span>'
             f'<a class="more" href="{car_url(lang, slug, False)}">'
             f'{E(UI[lang]["ui"]["more"])} →</a></div></div></article>')
@@ -675,10 +706,10 @@ def render_car(lang, slug, c):
         rows.append(f'<tr><th scope="row">{E(spec_label(k, lang))}</th><td>{E(v)}</td></tr>')
 
     prices = "".join(
-        f'<tr><th scope="row">{E(spec_label(k, lang))}</th><td>{E(c[k])} ₾</td></tr>'
+        f'<tr><th scope="row">{E(spec_label(k, lang))}</th><td>{E(money(c[k]))}</td></tr>'
         for k in ("price_1_6", "price_7_29", "price_30") if c.get(k))
     prices += (f'<tr><th scope="row">{E(spec_label("deposit", lang))}</th>'
-               f'<td>{E(c["deposit"])} ₾</td></tr>')
+               f'<td>{E(money(c["deposit"]))}</td></tr>')
 
     feats = "".join(f"<li>{inline(x, lang)}</li>" for x in L.get("features", []))
     body_html = render_md(L.get("body", ""), lang)
@@ -689,7 +720,7 @@ def render_car(lang, slug, c):
 <section class="sec"><div class="wrap"><div class="cardetail">
 <div class="gal">{main_img}{gal}</div>
 <div>
-<div class="pricebox"><span class="big">{E(c['price_1_6'])} ₾ <small>/ {E(SPECS['units']['day'][lang])}</small></span></div>
+<div class="pricebox"><span class="big">{E(money(c['price_1_6']))} <small>/ {E(SPECS['units']['day'][lang])}</small></span></div>
 <div class="tbl-wrap"><table class="spec"><tbody>{"".join(rows)}</tbody></table></div>
 <div class="tbl-wrap"><table class="spec"><caption>{E(u['ui']['price_table'])}</caption><tbody>{prices}</tbody></table></div>
 <ul>{feats}</ul>
@@ -1490,6 +1521,8 @@ def fleet_for_planner(lang):
             "rank": CAT_RANK.get(c["category"], 1),
             "seats": int(str(c["seats"]).split("-")[0].split("+")[0] or 5),
             "price": int(c["price_1_6"]), "price7": int(c["price_7_29"]),
+            "priceUsd": gel_to_usd(c["price_1_6"]),
+            "price7Usd": gel_to_usd(c["price_7_29"]),
             "fuel": str(c.get("fuel_100km", "")),
             "cl": int(c.get("clearance") or 150),
             "img": c.get("image") or "",
@@ -1533,6 +1566,14 @@ def planner_data(lang):
                    for p in PLACES if p["kind"] == "city"],
         "roads": {k: tl(lang, "road", k) for k in ("paved", "mostly_paved", "gravel", "4x4_only")},
         "fleet": fleet_for_planner(lang),
+        "maps": {
+            "provider": MAPS.get("provider", "osrm"),
+            "tomtomKey": MAPS.get("tomtom_api_key", ""),
+            "traffic": bool(MAPS.get("traffic_enabled", False)),
+            "routing": bool(MAPS.get("routing_enabled", True)),
+            "trafficOpacity": float(MAPS.get("traffic_opacity", 0.82)),
+            "fallback": MAPS.get("fallback_provider", "osrm"),
+        },
         "starts": starts,
         "t": P["ui"],
         "nav": {"contact": UI[lang]["nav"]["contact"], "fleet": UI[lang]["nav"]["fleet"]},
@@ -1814,12 +1855,25 @@ def write(path, data):
 
 
 def main():
-    out = sys.argv[1] if len(sys.argv) > 1 else "dist"
+    args = [x for x in sys.argv[1:] if not x.startswith("--")]
+    out = args[0] if args else "dist"
+    strict = "--strict" in sys.argv
+    validate_only = "--validate-only" in sys.argv
+    report = validate(SITE, CARS_ALL, REGIONS_ALL, ATTRACTIONS_ALL, ROUTES_ALL,
+                      PAGES, POSTS_ALL)
+    for warning in report.warnings:
+        print(f"WARNING: {warning}")
+    if report.errors or (strict and report.warnings):
+        for error in report.errors:
+            print(f"ERROR: {error}")
+        if strict and report.warnings:
+            print("ERROR: strict mode treats warnings as publication blockers")
+        raise SystemExit(2)
+    if validate_only:
+        print("✔ content validation passed")
+        return
     if os.path.isdir(out):
-        try:
-            shutil.rmtree(out)
-        except OSError:
-            pass          # ზოგ ფაილურ სისტემაზე წაშლა აკრძალულია — ვაწერთ ზემოდან
+        shutil.rmtree(out)
     os.makedirs(os.path.join(out, "assets"), exist_ok=True)
 
     for sdir, dst in (("static", os.path.join(out, "assets")),

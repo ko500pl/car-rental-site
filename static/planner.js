@@ -393,7 +393,6 @@
         });
       });
     }
-    box.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
   /* ── ავტომობილის შერჩევა მარშრუტისა და ხალხის რაოდენობის მიხედვით ──── */
@@ -476,20 +475,43 @@
     return towns.reduce(function (b, x) { return hav(a, x) < hav(a, b) ? x : b; });
   }
 
-  /* რეალური გზის გეომეტრია OSRM-ით: ჯერ სწორი ხაზი იხატება (fallback),
-     პასუხის მოსვლისას კი ხაზი ნამდვილ გზას მიჰყვება. დროებს ჩვენი
-     კალიბრებული მოდელი ითვლის — OSRM მხოლოდ ნახაზისთვისაა. */
+  /* რეალური გზის გეომეტრია TomTom Traffic Routing-ით. OSRM გამოიყენება
+     მხოლოდ სარეზერვოდ; სწორი ხაზი რუკაზე საბოლოო შედეგად არ რჩება. */
   var geomSeq = 0;
-  function roadGeom(latlons, done) {
-    if (latlons.length < 2 || latlons.length > 25 || !window.fetch) return;
+  function osrmGeom(latlons, done, fail) {
     var q = latlons.map(function (p) { return p[1] + "," + p[0]; }).join(";");
     fetch("https://router.project-osrm.org/route/v1/driving/" + q +
           "?overview=full&geometries=geojson", { mode: "cors" })
       .then(function (r) { return r.json(); })
       .then(function (j) {
         if (j && j.code === "Ok" && j.routes && j.routes[0])
-          done(j.routes[0].geometry.coordinates.map(function (c) { return [c[1], c[0]]; }));
-      }).catch(function () { /* ვრჩებით სწორ ხაზზე */ });
+          return done(j.routes[0].geometry.coordinates.map(function (c) { return [c[1], c[0]]; }));
+        if (fail) fail();
+      }).catch(function () { if (fail) fail(); });
+  }
+  function roadGeom(latlons, done) {
+    if (latlons.length < 2 || latlons.length > 25 || !window.fetch) return;
+    var mc = D.maps || {}, key = mc.tomtomKey || "";
+    function fallback() {
+      if (mc.fallback !== "none") osrmGeom(latlons, done);
+    }
+    if (mc.provider !== "tomtom" || !key || mc.routing === false) return fallback();
+    var q = latlons.map(function (p) { return p[0] + "," + p[1]; }).join(":");
+    fetch("https://api.tomtom.com/routing/1/calculateRoute/" + q +
+      "/json?traffic=true&routeRepresentation=polyline&computeTravelTimeFor=all&key=" +
+      encodeURIComponent(key), { mode: "cors" })
+      .then(function (r) { if (!r.ok) throw new Error("TomTom " + r.status); return r.json(); })
+      .then(function (j) {
+        if (!j.routes || !j.routes[0]) return fallback();
+        var pts = [];
+        (j.routes[0].legs || []).forEach(function (leg) {
+          (leg.points || []).forEach(function (p) {
+            var xy = [p.latitude, p.longitude];
+            if (!pts.length || pts[pts.length - 1][0] !== xy[0] || pts[pts.length - 1][1] !== xy[1]) pts.push(xy);
+          });
+        });
+        if (pts.length > 1) done(pts); else fallback();
+      }).catch(fallback);
   }
 
   function drawMap(days, start) {
@@ -614,6 +636,15 @@
     map = L.map("pmap", { scrollWheelZoom: false }).setView([42.1, 43.6], 7);
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
       { maxZoom: 17, attribution: "&copy; OpenStreetMap" }).addTo(map);
+    var mc = D.maps || {};
+    if (mc.provider === "tomtom" && mc.tomtomKey && mc.traffic) {
+      var traffic = L.tileLayer(
+        "https://api.tomtom.com/traffic/map/4/tile/flow/relative0/{z}/{x}/{y}.png?tileSize=256&key=" +
+        encodeURIComponent(mc.tomtomKey),
+        { maxZoom: 22, opacity: mc.trafficOpacity || 0.82, attribution: "Traffic &copy; TomTom" }
+      ).addTo(map);
+      L.control.layers(null, { "Live Traffic": traffic }, { collapsed: false }).addTo(map);
+    }
     map.on("click", function () { map.scrollWheelZoom.enable(); });
     EL("build").onclick = run;
     var hb = EL("hbudget");

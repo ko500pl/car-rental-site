@@ -1,0 +1,6 @@
+provider: tomtom
+tomtom_api_key: 3lk5JFY61MM8oCTvn2OCA99vWzGbvRlF
+traffic_enabled: true
+routing_enabled: true
+traffic_opacity: 0.82
+fallback_provider: osrm

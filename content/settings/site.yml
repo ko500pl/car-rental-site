@@ -12,8 +12,9 @@ address_zip: 0186
 geo_lat: '41.7245'
 geo_lon: '44.7509'
 founded: '2019'
-fleet_size: '120'
-usd_rate: 2.7
+fleet_size: '17'
+usd_rate: 2.6
+usd_rounding: 10
 opens: 09:00
 closes: '21:00'
 address:
