@@ -727,7 +727,7 @@ nav.main a{{font-size:13.5px;padding:6px 9px}}
 }}
 /* Account experience — compact travel dashboard */
 .head-in{{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:18px}}
-nav.main{{justify-self:end;min-width:0;margin-inline-start:0}}
+nav.main{{justify-self:start;min-width:0;margin-inline-start:0}}
 .head-actions{{display:flex;align-items:center;gap:10px;justify-self:end}}
 .authbox{{margin-inline-start:0;justify-self:end;flex:none}}
 .authlink{{min-height:40px;border-color:color-mix(in srgb,var(--brand) 32%,var(--line));font-weight:650;
@@ -778,11 +778,38 @@ body.auth-open{{overflow:hidden}}
 .account-empty>p{{font-size:14.5px;color:var(--ink-2);max-width:500px;margin:0 auto 22px}}
 .account-actions{{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}}
 .account-actions .btn{{min-width:150px}}
+/* Explorer place selection and real grouped map markers */
+.suggest-list,.cluster-list{{display:grid;gap:6px}}
+.place-choice{{display:grid;grid-template-columns:24px 58px minmax(0,1fr);gap:9px;align-items:center;
+  min-height:70px;padding:8px;border:1px solid transparent;border-radius:12px;cursor:pointer;
+  background:color-mix(in srgb,var(--surface) 82%,transparent);transition:border-color .16s,background .16s}}
+.place-choice:hover{{background:var(--surface-2);border-color:var(--line)}}
+.place-choice:has(input:checked){{border-color:color-mix(in srgb,var(--accent) 70%,var(--line));
+  background:color-mix(in srgb,var(--accent) 9%,var(--surface))}}
+.place-choice input{{width:19px;height:19px;accent-color:var(--accent);cursor:pointer}}
+.place-choice img,.place-ph{{width:58px;height:44px;object-fit:cover;border-radius:8px;background:var(--surface-2);display:block}}
+.place-copy{{min-width:0;display:block}}
+.place-copy .lnk{{display:block;font-size:13.5px;line-height:1.3;font-weight:650;text-decoration:none;
+  white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}}
+.place-line{{display:block;font-size:11.5px;line-height:1.35;color:var(--ink-3);margin-top:3px}}
+.place-rating{{display:flex;align-items:center;gap:5px;font-size:11.5px;line-height:1.2;margin-top:3px}}
+.place-rating i{{font-style:normal;color:#fbbf24;letter-spacing:.02em}}
+.place-rating b{{font-family:var(--mono);color:var(--ink-2)}}
+.cluster-intro{{font-size:13px;color:var(--ink-3);margin:0 0 12px}}
+.exppanel.group-panel{{width:min(390px,94%)}}
+.placecluster{{background:transparent!important;border:0!important}}
+.placecluster b{{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#2dd4bf;
+  color:#04222b;font-size:14px;font-weight:850;border:3px solid #fff;box-shadow:0 0 0 4px rgba(45,212,191,.24),0 5px 18px rgba(0,0,0,.35);cursor:pointer}}
+.placecluster.single b{{width:25px;height:25px;font-size:0;background:#38bdf8;box-shadow:0 0 0 3px rgba(56,189,248,.22),0 4px 12px rgba(0,0,0,.3)}}
+.placecluster.single b::after{{content:"";width:7px;height:7px;border-radius:50%;background:#fff}}
+#expgeo.approx{{border-color:#f59e0b;color:#fbbf24}}
+.expnear{{padding-inline-end:3px}}
 @media(max-width:1000px){{.head-tel,.langs{{display:none}}}}
 @media(max-width:760px){{
   .head-in{{grid-template-columns:auto minmax(0,1fr) auto;gap:10px;padding-inline:14px}}
   nav.main{{overflow:hidden}}
   nav.main ul>li:not(.nav-more){{display:none}}
+  nav.main{{justify-self:end}}
   nav.main ul{{justify-content:flex-end}}
   .authlink{{width:42px;height:42px;padding:0;justify-content:center}}
   .authtext{{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}}

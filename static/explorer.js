@@ -149,6 +149,7 @@
     var p = BY[slug]; if (!p) return;
     cur = slug;
     var panel = $('exppanel');
+    panel.classList.remove('group-panel');
     panel.classList.add('on');
     panel.setAttribute('aria-hidden', 'false');
     map.setView([p.la, p.lo], Math.max(map.getZoom(), 10), { animate: true });
@@ -214,6 +215,7 @@
     cur = null;
     var panel = $('exppanel');
     panel.classList.remove('on');
+    panel.classList.remove('group-panel');
     panel.setAttribute('aria-hidden', 'true');
   }
 
@@ -362,6 +364,32 @@
 
   /* ── ჩემი ადგილი, დროის/მანძილის ფილტრი და რუკაზე მოხაზვა ─────────── */
   var me = null, area = null, areaLayer = null, drawing = false;
+  var suggested = [], sugOff = {};
+
+  function ratingStars(p) {
+    var r = Number(p.r || 0), full = Math.floor(r);
+    return '<span class="place-rating" aria-label="' + esc(U.rate_label || 'Rating') + ' ' + r + '">' +
+      '<i>' + '★'.repeat(full) + '☆'.repeat(Math.max(0, 5 - full)) + '</i>' +
+      (r ? '<b>' + r + '</b>' : '') + '</span>';
+  }
+
+  function placeChoice(p, checked, compact) {
+    return '<label class="place-choice' + (compact ? ' compact' : '') + '">' +
+      '<input type="checkbox" data-suggest="' + esc(p.s) + '"' + (checked ? ' checked' : '') + '>' +
+      (p.img ? '<img src="' + esc(p.img) + '" alt="" loading="lazy">' : '<span class="place-ph" aria-hidden="true"></span>') +
+      '<span class="place-copy"><button class="lnk" type="button" data-go="' + esc(p.s) + '">' + esc(p.n) + '</button>' +
+      '<span class="place-line">' + esc(p.t) + ' · ' + esc(p.h) + '</span>' + ratingStars(p) + '</span></label>';
+  }
+
+  function openGroup(points) {
+    var list = points.slice().sort(function (a, b) { return Number(b.r || 0) - Number(a.r || 0); });
+    cur = null;
+    var panel = $('exppanel');
+    panel.classList.add('on', 'group-panel'); panel.setAttribute('aria-hidden', 'false');
+    $('exptitle').textContent = list.length + ' ' + (U.found || 'places');
+    $('expbody').innerHTML = '<p class="cluster-intro">' + esc(U.cluster_hint || 'Choose places for your route. Highest rated appear first.') + '</p>' +
+      '<div class="cluster-list">' + list.map(function (p) { return placeChoice(p, !sugOff[p.s], true); }).join('') + '</div>';
+  }
 
   function budgetMode() {
     var el = document.querySelector('input[name="expmode"]:checked');
@@ -425,18 +453,18 @@
       chosen = pool.slice().sort(function (a, b) { return leg(o, a).km - leg(o, b).km; }).slice(0, 25);
     }
     chosen = order2opt(o, chosen);
-    minutes = chainTime(o, chosen);
+    suggested = chosen;
+    var active = chosen.filter(function (p) { return !sugOff[p.s]; });
+    minutes = chainTime(o, active);
 
     box.innerHTML =
-      '<div class="exptot"><b>' + chosen.length + '</b><span>' + esc(U.suggest) + '</span>' +
+      '<div class="exptot"><b>' + active.length + '/' + chosen.length + '</b><span>' + esc(U.suggest) + '</span>' +
       (mode === 'time' ? '<span>' + fmtH(minutes) + ' / ' + val + ' ' + esc(U.hrs) + '</span>'
                        : '<span>≤ ' + val + ' ' + esc(U.km) + '</span>') + '</div>' +
-      '<ol class="expstops">' + chosen.map(function (p) {
-        return '<li><button class="lnk" type="button" data-go="' + esc(p.s) + '">' + esc(p.n) +
-          '</button><span class="expmeta">' + esc(p.t) + ' · ' + esc(p.h) + ' · ' +
-          Math.round(leg(o, p).km) + ' ' + esc(U.km) + '</span></li>';
-      }).join('') + '</ol>';
-    drawSuggest(o, chosen);
+      '<div class="suggest-list">' + chosen.map(function (p) {
+        return placeChoice(p, !sugOff[p.s], false);
+      }).join('') + '</div>';
+    drawSuggest(o, active);
   }
 
   /* nearest-neighbour + 2-opt — გონივრული თანმიმდევრობა.
@@ -483,6 +511,17 @@
     return t;
   }
   var sugLayer = L.layerGroup().addTo(map);
+  function spatialGroups(list) {
+    var left = list.slice(), groups = [];
+    while (left.length) {
+      var seed = left.shift(), group = [seed];
+      for (var i = left.length - 1; i >= 0; i--) {
+        if (hav(seed.la, seed.lo, left[i].la, left[i].lo) <= 18) group.push(left.splice(i, 1)[0]);
+      }
+      groups.push(group);
+    }
+    return groups;
+  }
   function drawSuggest(o, list) {
     sugLayer.clearLayers();
     if (!list.length) return;
@@ -493,10 +532,14 @@
     roadGeom(pts, function (geom) {
       if (mySeq === geomSeq && sugLayer.hasLayer(sugPl)) sugPl.setLatLngs(geom);
     });
-    list.forEach(function (p, i) {
-      L.marker([p.la, p.lo], { icon: L.divIcon({ className: 'numpin',
-        html: '<b>' + (i + 1) + '</b>', iconSize: [22, 22] }) }).addTo(sugLayer)
-        .bindTooltip(p.n).on('click', function () { open(p.s); });
+    spatialGroups(list).forEach(function (group) {
+      var la = 0, lo = 0; group.forEach(function (p) { la += p.la; lo += p.lo; });
+      la /= group.length; lo /= group.length;
+      var label = group.length > 1 ? group.length : '•';
+      var marker = L.marker([la, lo], { icon: L.divIcon({ className: 'placecluster' + (group.length === 1 ? ' single' : ''),
+        html: '<b>' + label + '</b>', iconSize: [34, 34] }) }).addTo(sugLayer);
+      marker.bindTooltip(group.length > 1 ? group.length + ' ' + (U.found || 'places') : group[0].n);
+      marker.on('click', function () { group.length > 1 ? openGroup(group) : open(group[0].s); });
     });
     L.circleMarker([o.la, o.lo], { radius: 9, color: '#2dd4bf', weight: 3,
       fillColor: '#0b1220', fillOpacity: 1 }).addTo(sugLayer);
@@ -507,21 +550,31 @@
     var b = $('expgeo');
     if (!navigator.geolocation) { b.textContent = U.loc_err; return; }
     b.textContent = U.locating;
+    var done = false;
     navigator.geolocation.getCurrentPosition(function (pos) {
+      done = true;
       me = { s: 'me', n: U.my_loc, la: pos.coords.latitude, lo: pos.coords.longitude,
              f: 1.4, v: 55, hh: 0 };
       BY.me = me;
       b.textContent = '◎ ' + U.my_loc;
+      b.title = '±' + Math.round(pos.coords.accuracy || 0) + ' m';
       b.classList.add('on');
+      b.classList.toggle('approx', (pos.coords.accuracy || 0) >= 100);
+      if (pos.coords.accuracy) L.circle([me.la, me.lo], { radius: pos.coords.accuracy,
+        color: (pos.coords.accuracy >= 100 ? '#f59e0b' : '#38bdf8'), weight: 1,
+        fillOpacity: .08, interactive: false }).addTo(sugLayer);
       L.circleMarker([me.la, me.lo], { radius: 8, color: '#2dd4bf', weight: 3,
         fillColor: '#fff', fillOpacity: 1 }).addTo(sugLayer).bindTooltip(U.my_loc);
       map.setView([me.la, me.lo], 9);
       suggestNear();
-    }, function () {
-      b.textContent = U.loc_fallback || U.loc_err;
+    }, function (err) {
+      if (done) return;
+      var why = err && err.code === 1 ? (U.loc_denied || U.loc_fallback) :
+        (err && err.code === 3 ? (U.loc_timeout || U.loc_fallback) : (U.loc_fallback || U.loc_err));
+      b.textContent = why || U.loc_err;
       pickLoc = true;
       document.getElementById('expmap').classList.add('drawing');
-    }, { timeout: 10000, enableHighAccuracy: false });
+    }, { timeout: 20000, maximumAge: 60000, enableHighAccuracy: true });
   }
   var pickLoc = false;
   map.on('click', function (e) {
@@ -703,6 +756,15 @@
       off[t.getAttribute('data-stop')] = !t.checked;
       route();
     }
+    if (t && t.hasAttribute && t.hasAttribute('data-suggest')) {
+      sugOff[t.getAttribute('data-suggest')] = !t.checked;
+      document.querySelectorAll('[data-suggest="' + CSS.escape(t.getAttribute('data-suggest')) + '"]').forEach(function (x) {
+        if (x !== t) x.checked = t.checked;
+      });
+      var active = suggested.filter(function (p) { return !sugOff[p.s]; });
+      drawSuggest(origin(), active);
+      suggestNear();
+    }
   });
   $('expday').value = window.WX ? WX.iso(0) : '';
   $('expday').addEventListener('change', function () { route(); if (cur) { delete cache[cur]; open(cur); } });
@@ -734,7 +796,7 @@
       return;
     }
     if (t.hasAttribute('data-set')) { if (cur) setEnd(t.getAttribute('data-set'), cur); return; }
-    if (t.hasAttribute('data-go')) { open(t.getAttribute('data-go')); return; }
+    if (t.hasAttribute('data-go')) { e.preventDefault(); e.stopPropagation(); open(t.getAttribute('data-go')); return; }
     if (t.classList.contains('expitem')) { open(t.getAttribute('data-s')); }
   });
 
