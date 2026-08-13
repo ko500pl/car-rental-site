@@ -406,8 +406,10 @@
     cur = null;
     var panel = $('exppanel');
     panel.classList.add('on', 'group-panel'); panel.setAttribute('aria-hidden', 'false');
-    $('exptitle').textContent = list.length + ' ' + (U.found || 'places');
-    $('expbody').innerHTML = '<p class="cluster-intro">' + esc(U.cluster_hint || 'Choose places for your route. Highest rated appear first.') + '</p>' +
+    $('exptitle').textContent = list.length === 1 ? list[0].n : list.length + ' ' + (U.found || 'places');
+    $('expbody').innerHTML = '<p class="cluster-intro">' + esc(list.length === 1 ?
+      (U.single_hint || U.cluster_hint || 'Choose or remove this place from your route.') :
+      (U.cluster_hint || 'Choose places for your route. Highest rated appear first.')) + '</p>' +
       '<div class="cluster-list">' + list.map(function (p) { return placeChoice(p, !sugOff[p.s], true); }).join('') + '</div>';
   }
 
@@ -560,7 +562,9 @@
       var marker = L.marker([la, lo], { icon: L.divIcon({ className: 'placecluster' + (group.length === 1 ? ' single' : ''),
         html: '<b>' + label + '</b>', iconSize: [34, 34] }) }).addTo(sugLayer);
       marker.bindTooltip(group.length > 1 ? group.length + ' ' + (U.found || 'places') : group[0].n);
-      marker.on('click', function () { group.length > 1 ? openGroup(group) : open(group[0].s); });
+      // One marker and a cluster use the same selectable panel. Previously a single
+      // place opened only the read-only details view, so it could not be removed.
+      marker.on('click', function () { openGroup(group); });
     });
     L.circleMarker([o.la, o.lo], { radius: 9, color: '#2dd4bf', weight: 3,
       fillColor: '#0b1220', fillOpacity: 1 }).addTo(sugLayer);
