@@ -466,6 +466,11 @@ def head_html(lang, current, title, desc, keywords, url, alternates, depth, ld,
     lf = (f'\n<link rel="stylesheet" href="{LEAFLET_CSS}">' if leaflet else "")
     return f"""<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0f4c81">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Fleet House">
 <title>{E(title)}</title>
 <meta name="description" content="{E(desc)}">
 <meta name="keywords" content="{E(keywords)}">
@@ -490,6 +495,8 @@ def head_html(lang, current, title, desc, keywords, url, alternates, depth, ld,
 <meta name="twitter:description" content="{E(desc)}">
 {fonts}
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/app-icon.svg">
+<link rel="manifest" href="/assets/manifest.webmanifest">
 <link rel="stylesheet" href="{css_href}">{lf}
 <script type="application/ld+json">
 {J(ld)}
@@ -574,7 +581,8 @@ def shell(lang, current, head, body, depth, tail=""):
             "delete", "confirm_del", "days", "stops", "save_trip", "saved") if k in u["ui"]}
         fb = (f'\n<script>window.FH_CFG={J(cfg)};</script>'
               f'\n<script type="module" src="{ASSET.get("auth", "/assets/auth.js")}"></script>'
-              f'\n<script type="module" src="{ASSET.get("community", "/assets/community.js")}"></script>')
+              f'\n<script type="module" src="{ASSET.get("community", "/assets/community.js")}"></script>'
+              f'\n<script defer src="{ASSET.get("app", "/assets/app.js")}"></script>')
     return (f'<!DOCTYPE html>\n<html lang="{lang}" dir="{LANG_DIR[lang]}">\n<head>\n{head}\n'
             f'{style}</head>\n<body class="page-{E(current)}">\n'
             f'<a class="skip" href="#main">{E(u["ui"]["skip"])}</a>\n'
@@ -2005,7 +2013,7 @@ def main():
 
     write_hashed(out, "style.css", build_css(DESIGN), "css")
     for fn, key in (("explorer.js", "explorer"), ("planner.js", "planner"), ("auth.js", "auth"),
-                    ("community.js", "community")):
+                    ("community.js", "community"), ("app.js", "app")):
         p = os.path.join("static", fn)
         if os.path.exists(p):
             write_hashed(out, fn, open(p, encoding="utf-8").read(), key)
@@ -2015,6 +2023,9 @@ def main():
     fav = os.path.join(out, "assets", "favicon.svg")
     if os.path.exists(fav):
         shutil.copy2(fav, os.path.join(out, "favicon.svg"))
+    sw = os.path.join("static", "sw.js")
+    if os.path.exists(sw):
+        shutil.copy2(sw, os.path.join(out, "sw.js"))
 
     n = 0
     for lang in LANGS:

@@ -1,0 +1,21 @@
+{
+  "name": "Fleet House — Georgia Travel",
+  "short_name": "Fleet House",
+  "description": "Car rental, Georgia map, trip planner and saved journeys.",
+  "id": "/",
+  "start_url": "/?source=app",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#07111b",
+  "theme_color": "#0f4c81",
+  "categories": ["travel", "navigation", "lifestyle"],
+  "icons": [
+    {"src": "/assets/app-icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable"}
+  ],
+  "shortcuts": [
+    {"name": "Fleet", "url": "/fleet/", "icons": [{"src": "/assets/app-icon.svg", "sizes": "any", "type": "image/svg+xml"}]},
+    {"name": "Map and planner", "url": "/map/#planner", "icons": [{"src": "/assets/app-icon.svg", "sizes": "any", "type": "image/svg+xml"}]},
+    {"name": "My trips", "url": "/account/", "icons": [{"src": "/assets/app-icon.svg", "sizes": "any", "type": "image/svg+xml"}]}
+  ]
+}
