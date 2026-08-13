@@ -1156,7 +1156,6 @@ def explorer_block(lang, depth, height="72vh", hero=False):
         </label>
         <div id="exproute" class="exprouteout"></div>
       </div>
-      <div id="explist" class="explist"></div>
     </div>
     <div class="expmapwrap">
       <div id="expmap" class="expmap"></div>

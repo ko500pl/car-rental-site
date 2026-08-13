@@ -281,14 +281,6 @@ td:first-child{{font-weight:600;color:var(--ink)}}
 .expmeta{{display:block;font-size:12.5px;color:var(--ink-3)}}
 .lnk{{border:0;background:none;padding:0;font:inherit;color:var(--brand-ink);cursor:pointer;
   text-decoration:underline;text-align:start}}
-.explist{{flex:0 0 auto;max-height:210px;overflow:auto;min-height:0;padding:5px}}
-.expitem{{display:block;width:100%;text-align:start;border:0;background:none;padding:9px 10px;
-  border-radius:9px;cursor:pointer;font:inherit;color:var(--ink);position:relative}}
-.expitem:hover{{background:var(--surface)}}
-.expitem i{{width:9px;height:9px;border-radius:50%;display:inline-block;margin-inline-end:8px;
-  border:2px solid #fff;box-shadow:0 0 0 1px var(--line)}}
-.expitem-n{{font-weight:600;font-size:14.5px}}
-.expitem-m{{display:block;font-size:12.5px;color:var(--ink-3);margin-inline-start:19px}}
 .expmapwrap{{position:relative;min-height:0}}
 .expmap{{position:absolute;inset:0;z-index:1}}
 .exppanel{{position:absolute;top:0;bottom:0;inset-inline-end:0;width:min(460px,92%);background:var(--surface);
@@ -327,7 +319,6 @@ td:first-child{{font-weight:600;color:var(--ink)}}
 @media(max-width:1000px){{
   .expgrid{{grid-template-columns:1fr;height:auto}}
   .expside{{border-inline-end:0;border-bottom:1px solid var(--line)}}
-  .explist{{max-height:320px}}
   .expmapwrap{{height:64vh;min-height:420px}}
   .exppanel{{width:100%}}
 }}
@@ -518,7 +509,6 @@ tbody tr:nth-child(even){{background:color-mix(in srgb,#fff 3%,transparent)}}
 .expbar input::placeholder,.exppair input::placeholder{{color:var(--ink-3)}}
 .expside{{background:color-mix(in srgb,var(--bg-2) 70%,var(--bg))}}
 .exproutebox,.exppanel,.expsug{{background:var(--surface)}}
-.expitem:hover{{background:var(--surface-2)}}
 .exptot{{background:var(--surface-2)}}
 .expclose{{background:var(--surface-2);color:var(--ink-2);border-color:var(--line)}}
 .chip{{background:var(--surface-2);color:var(--ink-2);border-color:var(--line)}}
@@ -554,7 +544,6 @@ tbody tr:nth-child(even){{background:color-mix(in srgb,#fff 3%,transparent)}}
   background:currentColor;-webkit-mask:var(--ico-tel) center/contain no-repeat;
   mask:var(--ico-tel) center/contain no-repeat}}
 .rentbox .btn{{align-items:center}}
-.expitem i{{box-shadow:0 0 0 1px var(--line)}}
 
 /* ── photos ─────────────────────────────────────────────────────── */
 .photo{{margin:0 0 22px;border-radius:14px;overflow:hidden;background:var(--surface-2);
@@ -569,7 +558,6 @@ tbody tr:nth-child(even){{background:color-mix(in srgb,#fff 3%,transparent)}}
 .card:hover .card-img img{{transform:scale(1.04)}}
 .expthumb{{width:46px;height:34px;object-fit:cover;border-radius:6px;float:inline-start;
   margin-inline-end:9px}}
-.expitem{{overflow:hidden}}
 .exppanel .photo{{margin-bottom:16px}}
 
 /* ── planner: styles, photos, car recommendation ────────────────── */
@@ -877,8 +865,7 @@ body.auth-open{{overflow:hidden}}
 .workspace-plan{{display:none;margin-bottom:8px}}
 .travel-workspace[data-mode="planner"] .workspace-plan{{display:block}}
 .travel-workspace[data-mode="planner"] .exproutebox{{display:none}}
-.travel-workspace[data-mode="route"] .expfind,
-.travel-workspace[data-mode="route"] #explist{{display:none}}
+.travel-workspace[data-mode="route"] .expfind{{display:none}}
 .travel-workspace[data-mode="route"] .exproutebox{{display:block}}
 .travel-workspace[data-mode="explore"] .exproutebox{{display:none}}
 .workspace-result:empty{{display:none}}

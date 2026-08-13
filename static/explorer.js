@@ -138,17 +138,8 @@
   }
 
   function renderList() {
-    var list = filtered(), box = $('explist');
+    var list = filtered();
     $('expcount').textContent = list.length + ' ' + U.found;
-    if (!list.length) { box.innerHTML = '<p class="muted">' + esc(U.none) + '</p>'; draw(list); return; }
-    box.innerHTML = list.slice(0, 400).map(function (p) {
-      return '<button class="expitem" data-s="' + esc(p.s) + '">' +
-        (p.img ? '<img class="expthumb" src="' + esc(p.img) + '" alt="" loading="lazy">' : '') +
-        '<i style="background:' + esc(p.c) + '"></i>' +
-        '<span class="expitem-n">' + esc(p.n) + '</span>' +
-        '<span class="expitem-m">' + esc(p.t) + ' · ' + esc(p.h) +
-        (p.r ? ' · ★' + p.r : '') + '</span></button>';
-    }).join('');
     var qbox = $('expqlist');
     if (qbox) {
       qbox.innerHTML = state.q ? list.slice(0, 8).map(function (p) {
@@ -825,7 +816,6 @@
     }
     if (t.hasAttribute('data-set')) { if (cur) setEnd(t.getAttribute('data-set'), cur); return; }
     if (t.hasAttribute('data-go')) { e.preventDefault(); e.stopPropagation(); open(t.getAttribute('data-go')); return; }
-    if (t.classList.contains('expitem')) { open(t.getAttribute('data-s')); }
   });
 
   renderList();
