@@ -725,4 +725,73 @@ nav.main a{{font-size:13.5px;padding:6px 9px}}
   .page-head .lead{{font-size:15px}}
   .sec{{padding:30px 0}}
 }}
+/* Account experience — compact travel dashboard */
+.head-in{{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:18px}}
+nav.main{{justify-self:end;min-width:0;margin-inline-start:0}}
+.head-actions{{display:flex;align-items:center;gap:10px;justify-self:end}}
+.authbox{{margin-inline-start:0;justify-self:end;flex:none}}
+.authlink{{min-height:40px;border-color:color-mix(in srgb,var(--brand) 32%,var(--line));font-weight:650;
+  color:var(--brand-ink);box-shadow:0 8px 24px rgba(0,0,0,.18);white-space:nowrap}}
+.authlink:hover{{background:color-mix(in srgb,var(--brand) 12%,var(--surface-2))}}
+.auth-user-icon{{width:17px;height:17px;border:1.8px solid currentColor;border-radius:50%;position:relative}}
+.auth-user-icon::after{{content:"";position:absolute;width:21px;height:10px;border:1.8px solid currentColor;
+  border-bottom:0;border-radius:13px 13px 0 0;inset-inline-start:50%;top:15px;transform:translateX(-50%)}}
+.ava{{width:25px;height:25px}}
+.authdlg{{background:rgba(2,8,16,.78);backdrop-filter:blur(10px)}}
+body.auth-open{{overflow:hidden}}
+.authcard{{width:min(440px,100%);background:linear-gradient(180deg,#101a28,#0b141f);
+  border:1px solid rgba(148,163,184,.18);border-radius:22px;padding:30px 32px 26px;
+  box-shadow:0 32px 90px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.03);max-height:calc(100dvh - 32px)}}
+.authbrand{{width:46px;height:46px;border-radius:14px;background:var(--grad);display:grid;place-items:center;
+  margin-bottom:18px;box-shadow:0 10px 28px color-mix(in srgb,var(--brand) 30%,transparent)}}
+.authbrand span{{font-weight:850;font-size:14px;color:#04222b}}
+.authcard h3{{font-size:24px;line-height:1.25;color:#f4f8fc}}
+.authcard .pshort{{font-size:14px;line-height:1.65;margin-bottom:18px}}
+.authcard input{{height:48px;padding:11px 13px;margin-top:6px;border-radius:12px;background:#07101a;transition:.18s ease}}
+.authcard input:focus{{outline:0;border-color:var(--brand);box-shadow:0 0 0 3px color-mix(in srgb,var(--brand) 22%,transparent)}}
+.authx{{width:40px;height:40px;border-radius:11px}}
+.btn.goog{{min-height:48px;margin-top:0;border:1px solid #d6dce4}}
+.btn.goog:hover{{filter:none;background:#f5f7fa}}
+.btn.goog:disabled{{opacity:.65;cursor:wait}}
+.gicon,.gicon svg{{width:21px;height:21px;display:block;flex:none}}
+.authrow{{margin-top:10px}}
+.autherr{{display:none;min-height:0;color:#fecaca;background:rgba(239,68,68,.1);border:1px solid rgba(248,113,113,.25);
+  border-radius:10px;line-height:1.5;padding:9px 11px;margin:6px 0}}
+.autherr.show{{display:block}}
+.authsignup{{font-size:13px;color:var(--ink-3);margin:14px 0 0;text-align:center}}
+.authsignup .lnk{{font-weight:700;color:var(--brand-2)}}
+.account-sec{{padding-top:26px}}
+.page-account .page-head{{text-align:center;padding-top:34px}}
+.page-account .page-head h1{{font-size:clamp(27px,3vw,36px);margin-bottom:10px}}
+.page-account .page-head .lead{{font-size:15px;margin-inline:auto}}
+.account-shell{{max-width:760px;margin:0 auto}}
+.account-empty{{min-height:clamp(330px,48vh,500px);display:flex;flex-direction:column;align-items:center;
+  justify-content:center;text-align:center;padding:46px 28px;background:radial-gradient(circle at 50% 0%,rgba(34,184,214,.12),transparent 48%),var(--surface);
+  border:1px solid var(--line);border-radius:22px;box-shadow:0 26px 70px rgba(0,0,0,.2)}}
+.account-orbit{{width:70px;height:70px;border:1px solid rgba(56,189,248,.35);border-radius:50%;display:grid;
+  place-items:center;margin-bottom:20px;box-shadow:inset 0 0 28px rgba(34,184,214,.1),0 0 35px rgba(34,184,214,.08)}}
+.account-orbit span{{width:24px;height:30px;border:2px solid var(--brand-2);border-radius:5px;position:relative}}
+.account-orbit span::after{{content:"";position:absolute;width:9px;height:9px;border-inline-end:2px solid var(--accent);
+  border-bottom:2px solid var(--accent);transform:rotate(45deg);inset-inline-start:5px;top:6px}}
+.account-eyebrow{{font-size:11px!important;letter-spacing:.16em;text-transform:uppercase;color:var(--brand-2)!important;margin-bottom:8px!important}}
+.account-empty h2{{font-size:23px;margin:0 0 10px}}
+.account-empty>p{{font-size:14.5px;color:var(--ink-2);max-width:500px;margin:0 auto 22px}}
+.account-actions{{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}}
+.account-actions .btn{{min-width:150px}}
+@media(max-width:1000px){{.head-tel,.langs{{display:none}}}}
+@media(max-width:760px){{
+  .head-in{{grid-template-columns:auto minmax(0,1fr) auto;gap:10px;padding-inline:14px}}
+  nav.main{{overflow:hidden}}
+  nav.main ul>li:not(.nav-more){{display:none}}
+  nav.main ul{{justify-content:flex-end}}
+  .authlink{{width:42px;height:42px;padding:0;justify-content:center}}
+  .authtext{{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}}
+  .account-empty{{padding:36px 20px;min-height:360px}}
+}}
+@media(max-width:520px){{
+  .authdlg{{place-items:end center;padding:0}}
+  .authcard{{width:100%;max-height:94dvh;border-radius:22px 22px 0 0;padding:24px 20px calc(20px + env(safe-area-inset-bottom))}}
+  .authbrand{{width:40px;height:40px;margin-bottom:14px}}
+}}
+@media(prefers-reduced-motion:reduce){{*{{scroll-behavior:auto!important;transition:none!important}}}}
 """

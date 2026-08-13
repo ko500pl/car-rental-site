@@ -515,9 +515,9 @@ def header_html(lang, current):
 <nav class="main" aria-label="{E(u['ui']['nav_label'])}"><ul>{lis}
 <li class="nav-more"><details><summary aria-label="More">•••</summary><ul>{more}</ul></details></li>
 </ul></nav>
-<span class="head-tel"><a dir="ltr" href="tel:{SITE['phone_e164']}">{E(SITE['phone'])}</a></span>
+<div class="head-actions"><span class="head-tel"><a dir="ltr" href="tel:{SITE['phone_e164']}">{E(SITE['phone'])}</a></span>
 <div class="langs" role="group" aria-label="{E(u['ui']['lang_label'])}">{langs}</div>
-<div id="authbox" class="authbox"></div>
+<div id="authbox" class="authbox"></div></div>
 </div></header>"""
 
 
@@ -568,7 +568,7 @@ def shell(lang, current, head, body, depth, tail=""):
         fb = (f'\n<script>window.FH_CFG={J(cfg)};</script>'
               f'\n<script type="module" src="{ASSET.get("auth", "/assets/auth.js")}"></script>')
     return (f'<!DOCTYPE html>\n<html lang="{lang}" dir="{LANG_DIR[lang]}">\n<head>\n{head}\n'
-            f'{style}</head>\n<body>\n'
+            f'{style}</head>\n<body class="page-{E(current)}">\n'
             f'<a class="skip" href="#main">{E(u["ui"]["skip"])}</a>\n'
             f'{header_html(lang, current)}\n{body}\n{footer_html(lang)}\n{tail}{fb}\n</body>\n</html>\n')
 
@@ -601,7 +601,7 @@ def render_static_page(lang, page):
         body.append(f'<section class="page-head"><div class="wrap"><h1>{E(p["h1"])}</h1>'
                     f'<p class="lead">{inline(p["lead"], lang)}</p></div></section>')
     if page == "account":
-        body.append('<section class="sec"><div class="wrap"><div id="account"></div></div></section>')
+        body.append('<section class="sec account-sec"><div class="wrap"><div id="account" class="account-shell"></div></div></section>')
     if page == "contact":
         uu = u["ui"]
         body.append(

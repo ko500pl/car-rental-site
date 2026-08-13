@@ -123,10 +123,12 @@
     if (!box) return;
     on(function (u) {
       box.innerHTML = u
-        ? '<a class="authlink" href="' + esc(C.accountUrl) + '">' +
+        ? '<a class="authlink" href="' + esc(C.accountUrl) + '" aria-label="' + esc(T.account || "Account") + '">' +
           '<span class="ava">' + esc((u.displayName || u.email || "?").slice(0, 1).toUpperCase()) +
-          "</span>" + esc(T.account || "Account") + "</a>"
-        : '<button class="authlink" type="button" id="authopen">' + esc(T.sign_in || "Sign in") + "</button>";
+          '</span><span class="authtext">' + esc(T.account || "Account") + "</span></a>"
+        : '<button class="authlink" type="button" id="authopen" aria-label="' + esc(T.sign_in || "Sign in") +
+          '"><span class="auth-user-icon" aria-hidden="true"></span><span class="authtext">' +
+          esc(T.sign_in || "Sign in") + "</span></button>";
       var b = document.getElementById("authopen");
       if (b) b.onclick = openDialog;
     });
@@ -134,50 +136,65 @@
 
   /* ── UI: შესვლა / რეგისტრაცია ─────────────────────────────────────── */
   function openDialog(mode) {
+    var opener = document.activeElement;
     var d = document.getElementById("authdlg");
     if (d) d.remove();
     d = document.createElement("div");
     d.id = "authdlg";
     d.className = "authdlg";
     d.innerHTML =
-      '<div class="authcard" role="dialog" aria-modal="true">' +
+      '<div class="authcard" role="dialog" aria-modal="true" aria-labelledby="authtitle">' +
       '<button class="authx" type="button" aria-label="×">✕</button>' +
-      "<h3>" + esc(T.sign_in || "Sign in") + "</h3>" +
+      '<div class="authbrand" aria-hidden="true"><span>FH</span></div>' +
+      '<h3 id="authtitle">' + esc(T.sign_in || "Sign in") + "</h3>" +
       '<p class="pshort">' + esc(T.why_account || "") + "</p>" +
       '<button class="btn goog" type="button" id="authgoogle">' +
-      '<span class="gicon">G</span>' + esc(T.with_google || "Continue with Google") + "</button>" +
+      '<span class="gicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="#4285F4" d="M21.6 12.2c0-.7-.1-1.5-.2-2.2H12v4.3h5.4a4.6 4.6 0 0 1-2 3v2.8h3.3c1.9-1.8 2.9-4.4 2.9-7.9z"/><path fill="#34A853" d="M12 22c2.7 0 5-.9 6.7-2.4l-3.3-2.8c-.9.6-2.1 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3v2.8A10 10 0 0 0 12 22z"/><path fill="#FBBC05" d="M6.4 13.7A6 6 0 0 1 6.1 12c0-.6.1-1.2.3-1.7V7.5H3A10 10 0 0 0 2 12c0 1.6.4 3.1 1 4.5l3.4-2.8z"/><path fill="#EA4335" d="M12 6.2c1.5 0 2.8.5 3.8 1.5l2.9-2.8A9.7 9.7 0 0 0 12 2a10 10 0 0 0-9 5.5l3.4 2.8A6 6 0 0 1 12 6.2z"/></svg></span>' + esc(T.with_google || "Continue with Google") + "</button>" +
       '<div class="author"><span>' + esc(T.or_email || "or") + "</span></div>" +
       '<label>' + esc(T.email || "Email") + '<input id="authem" type="email" autocomplete="email"></label>' +
       '<label>' + esc(T.password || "Password") +
       '<input id="authpw" type="password" autocomplete="current-password"></label>' +
-      '<div id="autherr" class="autherr"></div>' +
+      '<div id="autherr" class="autherr" role="alert" aria-live="polite"></div>' +
       '<div class="authrow">' +
       '<button class="btn" type="button" id="authin">' + esc(T.sign_in || "Sign in") + "</button>" +
-      '<button class="btn ghost" type="button" id="authup">' + esc(T.sign_up || "Create account") + "</button>" +
       "</div>" +
       '<button class="lnk" type="button" id="authreset">' + esc(T.forgot || "Forgot password") + "</button>" +
+      '<p class="authsignup"><button class="lnk" type="button" id="authup">' + esc(T.sign_up || "Create account") + "</button></p>" +
       '<p class="authnote">' + esc(T.legal_note || "") + "</p>" +
       "</div>";
     document.body.appendChild(d);
+    document.body.classList.add("auth-open");
     var err = d.querySelector("#autherr");
     function fail(e) {
       var m = String((e && e.code) || e || "").replace("auth/", "").replace(/-/g, " ");
+      if (m === "configuration not found") {
+        var unavailable = {ka:"შესვლა დროებით მიუწვდომელია. ვააქტიურებთ ანგარიშის სერვისს — გთხოვთ, მალე სცადოთ.",
+          en:"Sign-in is temporarily unavailable. Please try again shortly.",ru:"Вход временно недоступен. Пожалуйста, попробуйте позже.",
+          fa:"ورود موقتاً در دسترس نیست. لطفاً کمی بعد دوباره امتحان کنید.",he:"הכניסה אינה זמינה זמנית. נסו שוב בקרוב.",
+          ar:"تسجيل الدخول غير متاح مؤقتًا. يرجى المحاولة بعد قليل."};
+        m = T.auth_unavailable || unavailable[document.documentElement.lang] || unavailable.en;
+      }
       err.textContent = T["e_" + ((e && e.code) || "").replace("auth/", "")] || m;
+      err.classList.add("show");
     }
-    d.querySelector(".authx").onclick = function () { d.remove(); };
-    d.onclick = function (e) { if (e.target === d) d.remove(); };
+    function close() { d.remove(); document.body.classList.remove("auth-open"); if (opener && opener.focus) opener.focus(); }
+    d.querySelector(".authx").onclick = close;
+    d.onclick = function (e) { if (e.target === d) close(); };
+    d.onkeydown = function (e) { if (e.key === "Escape") close(); };
+    setTimeout(function () { var em = d.querySelector("#authem"); if (em) em.focus(); }, 80);
     boot.then(function () {
       d.querySelector("#authgoogle").onclick = function () {
+        var btn = this; btn.disabled = true; btn.classList.add("loading"); err.textContent = ""; err.classList.remove("show");
         var p = new M.auth.GoogleAuthProvider();
-        M.auth.signInWithPopup(auth, p).then(function () { d.remove(); }).catch(fail);
+        M.auth.signInWithPopup(auth, p).then(close).catch(function(e){ fail(e); btn.disabled = false; btn.classList.remove("loading"); });
       };
       d.querySelector("#authin").onclick = function () {
         M.auth.signInWithEmailAndPassword(auth, val("authem"), val("authpw"))
-          .then(function () { d.remove(); }).catch(fail);
+          .then(close).catch(fail);
       };
       d.querySelector("#authup").onclick = function () {
         M.auth.createUserWithEmailAndPassword(auth, val("authem"), val("authpw"))
-          .then(function () { d.remove(); }).catch(fail);
+          .then(close).catch(fail);
       };
       d.querySelector("#authreset").onclick = function () {
         M.auth.sendPasswordResetEmail(auth, val("authem"))
@@ -240,9 +257,11 @@
     if (!root) return;
     on(function (u) {
       if (!u) {
-        root.innerHTML = '<div class="note">' + esc(T.please_sign_in || "") +
-          '</div><p><button class="btn" type="button" id="accin">' +
-          esc(T.sign_in || "Sign in") + "</button></p>";
+        root.innerHTML = '<div class="account-empty"><div class="account-orbit" aria-hidden="true"><span></span></div>' +
+          '<p class="account-eyebrow">Fleet House</p><h2>' + esc(T.account || "My page") + '</h2><p>' +
+          esc(T.please_sign_in || "") + '</p><div class="account-actions"><button class="btn" type="button" id="accin">' +
+          esc(T.sign_in || "Sign in") + '</button><a class="btn ghost" href="' + esc(C.plannerUrl || "/planner/") + '">' +
+          esc(T.to_planner || "Planner") + "</a></div></div>";
         var b = document.getElementById("accin"); if (b) b.onclick = openDialog;
         return;
       }
