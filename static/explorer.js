@@ -89,10 +89,50 @@
     clearRoute: function () { routeLayer.clearLayers(); }
   };
 
+  var visited = {};
+  try { visited = JSON.parse(localStorage.getItem('fh-visited-places') || '{}') || {}; } catch (e) {}
+
+  function refreshVisited() {
+    renderList();
+    draw(filtered());
+    suggestNear();
+    if (cur && BY[cur]) open(cur);
+  }
+  function persistVisited() {
+    localStorage.setItem('fh-visited-places', JSON.stringify(visited));
+    if (!window.FH || !window.FH.user || !window.FH.user()) return;
+    var u = window.FH.user();
+    window.FH.firebase().then(function (a) {
+      return a.M.db.setDoc(a.M.db.doc(a.db, 'userPlaces', u.uid), {
+        uid: u.uid, slugs: Object.keys(visited).filter(function (s) { return visited[s]; }),
+        updatedAt: a.M.db.serverTimestamp()
+      }, { merge: true });
+    }).catch(function () {});
+  }
+  function toggleVisited(slug) {
+    if (visited[slug]) delete visited[slug]; else visited[slug] = true;
+    persistVisited(); refreshVisited();
+  }
+  function loadCloudVisited() {
+    if (!window.FH || !window.FH.user || !window.FH.user()) return;
+    var u = window.FH.user();
+    window.FH.firebase().then(function (a) {
+      return a.M.db.getDoc(a.M.db.doc(a.db, 'userPlaces', u.uid)).then(function (snap) {
+        if (snap.exists()) {
+          visited = {}; (snap.data().slugs || []).forEach(function (s) { visited[s] = true; });
+          localStorage.setItem('fh-visited-places', JSON.stringify(visited)); refreshVisited();
+        } else if (Object.keys(visited).length) persistVisited();
+      });
+    }).catch(function () {});
+  }
+  document.addEventListener('fh:auth', loadCloudVisited);
+  setTimeout(loadCloudVisited, 800);
+
   function mk(p, dim) {
+    var wasVisited = !!visited[p.s];
     var m = L.circleMarker([p.la, p.lo], {
       radius: dim ? 4 : 7, color: '#fff', weight: dim ? 1 : 2,
-      fillColor: p.c, fillOpacity: dim ? .35 : 1
+      fillColor: wasVisited ? '#788493' : p.c, fillOpacity: dim ? .35 : (wasVisited ? .72 : 1)
     });
     m.bindTooltip(p.n, { direction: 'top' });
     m.on('click', function () { if (wpMode) { addWp(p.la, p.lo, p); } else { open(p.s); } });
@@ -120,7 +160,7 @@
   }
 
   /* ── filtering & search ──────────────────────────────────────────── */
-  var state = { q: '', type: '', region: '', from: null, to: null };
+  var state = { q: '', type: '', region: '', visited: '', from: null, to: null };
   var interest = new URLSearchParams(location.search).get('interest');
   if (interest === 'food') state.type = 'winery';
   if (interest === 'culture') state.q = 'museum monastery fortress archaeology';
@@ -137,6 +177,8 @@
     return PTS.filter(function (p) {
       if (state.type && p.ty !== state.type) return false;
       if (state.region && p.g !== state.region) return false;
+      if (state.visited === 'yes' && !visited[p.s]) return false;
+      if (state.visited === 'no' && visited[p.s]) return false;
       if (q && !q.split(/\s+/).some(function (term) { return searchable(p).indexOf(term) >= 0; })) return false;
       return true;
     });
@@ -204,6 +246,8 @@
       (d.unesco ? '<span class="tag u">UNESCO</span>' : '') +
       '<span class="tag g">' + esc(d.gn) + '</span></div>' +
       '<div class="expact">' +
+      '<button class="btn sm visited-toggle' + (visited[d.s] ? ' on' : '') + '" type="button" data-visited="' + esc(d.s) + '">' +
+      (visited[d.s] ? '✓ ' : '') + esc(visited[d.s] ? (U.visited_yes || 'Visited') : (U.visited_mark || 'Mark visited')) + '</button>' +
       '<button class="btn sm" data-set="from">' + esc(U.set_start) + '</button>' +
       '<button class="btn sm alt" data-set="to">' + esc(U.set_end) + '</button>' +
       '<a class="btn sm ghost" href="' + esc(d.u) + '">' + esc(U.full_page) + '</a></div>' +
@@ -401,6 +445,14 @@
       '<span class="place-line">' + esc(p.t) + ' · ' + esc(p.h) + '</span>' + ratingStars(p) + '</span></label>';
   }
 
+  var basePlaceChoice = placeChoice;
+  placeChoice = function (p, checked, compact) {
+    var html = basePlaceChoice(p, checked, compact);
+    var label = visited[p.s] ? (U.visited_yes || 'Visited') : (U.visited_mark || 'Mark as visited');
+    return html.replace('</span></label>', '<button class="visited-mini' + (visited[p.s] ? ' on' : '') +
+      '" type="button" data-visited="' + esc(p.s) + '">' + (visited[p.s] ? '✓ ' : '') + esc(label) + '</button></span></label>');
+  };
+
   function openGroup(points) {
     var list = points.slice().sort(function (a, b) { return Number(b.r || 0) - Number(a.r || 0); });
     cur = null;
@@ -559,7 +611,8 @@
       var la = 0, lo = 0; group.forEach(function (p) { la += p.la; lo += p.lo; });
       la /= group.length; lo /= group.length;
       var label = group.length > 1 ? group.length : '•';
-      var marker = L.marker([la, lo], { icon: L.divIcon({ className: 'placecluster' + (group.length === 1 ? ' single' : ''),
+      var allVisited = group.every(function (p) { return !!visited[p.s]; });
+      var marker = L.marker([la, lo], { icon: L.divIcon({ className: 'placecluster' + (group.length === 1 ? ' single' : '') + (allVisited ? ' visited' : ''),
         html: '<b>' + label + '</b>', iconSize: [34, 34] }) }).addTo(sugLayer);
       marker.bindTooltip(group.length > 1 ? group.length + ' ' + (U.found || 'places') : group[0].n);
       // One marker and a cluster use the same selectable panel. Previously a single
@@ -755,9 +808,10 @@
   $('expq').addEventListener('blur', function () { setTimeout(function () { var q = $('expqlist'); if (q) q.classList.remove('on'); }, 180); });
   $('exptype').addEventListener('change', function () { state.type = this.value; renderList(); suggestNear(); });
   $('expregion').addEventListener('change', function () { state.region = this.value; renderList(); suggestNear(); });
+  $('expvisited').addEventListener('change', function () { state.visited = this.value; renderList(); suggestNear(); });
   $('expreset').addEventListener('click', function () {
-    state.q = ''; state.type = ''; state.region = '';
-    $('expq').value = ''; $('exptype').value = ''; $('expregion').value = '';
+    state.q = ''; state.type = ''; state.region = ''; state.visited = '';
+    $('expq').value = ''; $('exptype').value = ''; $('expregion').value = ''; $('expvisited').value = '';
     renderList(); map.setView(E.center, E.zoom);
   });
   ['from', 'to'].forEach(function (w) {
@@ -816,8 +870,9 @@
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
 
   document.addEventListener('click', function (e) {
-    var t = e.target.closest ? e.target.closest('[data-s],[data-go],[data-set],[data-pick]') : null;
+    var t = e.target.closest ? e.target.closest('[data-s],[data-go],[data-set],[data-pick],[data-visited]') : null;
     if (!t) return;
+    if (t.hasAttribute('data-visited')) { e.preventDefault(); e.stopPropagation(); toggleVisited(t.getAttribute('data-visited')); return; }
     if (t.hasAttribute('data-pick')) {
       setEnd(t.getAttribute('data-pick'), t.getAttribute('data-s'));
       $('exp' + t.getAttribute('data-pick') + 'list').classList.remove('on');

@@ -1136,6 +1136,14 @@ def explorer_block(lang, depth, height="72vh", hero=False):
     topts = "".join(f'<option value="{E(t)}">{E(tl(lang,"type",t))}</option>' for t in types)
     ropts = "".join(f'<option value="{E(k)}">{E(r[lang]["name"])}</option>'
                     for k, r in REGIONS.items())
+    visit_labels = {
+        "ka": ("ყველა ადგილი", "ნამყოფი ვარ", "არ ვარ ნამყოფი", "ნამყოფი ვარ", "ნამყოფად მონიშვნა"),
+        "en": ("All places", "Visited", "Not visited", "Visited", "Mark as visited"),
+        "ru": ("Все места", "Посещённые", "Не посещённые", "Посещено", "Отметить посещённым"),
+        "fa": ("همه مکان‌ها", "بازدید شده", "بازدید نشده", "بازدید شده", "علامت‌گذاری به‌عنوان بازدیدشده"),
+        "he": ("כל המקומות", "ביקרתי", "טרם ביקרתי", "ביקרתי", "סימון כמקום שביקרתי בו"),
+        "ar": ("كل الأماكن", "تمت زيارتها", "لم تتم زيارتها", "تمت الزيارة", "وضع علامة تمت الزيارة"),
+    }[lang]
     cfg = J({
         "pts": explorer_points(lang),
         "towns": explorer_towns(lang),
@@ -1144,7 +1152,8 @@ def explorer_block(lang, depth, height="72vh", hero=False):
         "ui": {**{k: v for k, v in x.items()},
                "hrs": u["hrs"], "km": u["km"], "h_short": u["hrs"], "days": u["days"],
                "tip_title": u["tip_title"], "route_title": u["route_title"],
-               "nearby_title": u["nearby_title"]},
+               "nearby_title": u["nearby_title"],
+               "visited_yes": visit_labels[3], "visited_mark": visit_labels[4]},
     })
     js = EXPLORER_JS % {"js": LEAFLET_JS, "cfg": cfg, "exp": ASSET["explorer"]}
     html = f'''<div class="explorer{" hero" if hero else ""}">
@@ -1154,6 +1163,7 @@ def explorer_block(lang, depth, height="72vh", hero=False):
     <div id="expqlist" class="expqlist" role="listbox"></div>
     <select id="exptype" aria-label="{E(x["all_types"])}"><option value="">{E(x["all_types"])}</option>{topts}</select>
     <select id="expregion" aria-label="{E(x["all_regions"])}"><option value="">{E(x["all_regions"])}</option>{ropts}</select>
+    <select id="expvisited" aria-label="{E(visit_labels[0])}"><option value="">{E(visit_labels[0])}</option><option value="yes">{E(visit_labels[1])}</option><option value="no">{E(visit_labels[2])}</option></select>
     <button id="expreset" class="btn sm ghost" type="button">{E(x["reset"])}</button>
     <label class="expdate">{E(x["date"])}
       <input id="expday" type="date" aria-label="{E(x["date"])}">

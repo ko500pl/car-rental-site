@@ -97,7 +97,10 @@
     });
   }
   function on(fn) { listeners.push(fn); if (ready) fn(user); }
-  function fire() { listeners.forEach(function (f) { try { f(user); } catch (e) {} }); }
+  function fire() {
+    listeners.forEach(function (f) { try { f(user); } catch (e) {} });
+    document.dispatchEvent(new CustomEvent("fh:auth", { detail: user ? { uid: user.uid } : null }));
+  }
 
   var M = {};
   var boot = Promise.all([

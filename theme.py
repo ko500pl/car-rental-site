@@ -796,6 +796,10 @@ body.auth-open{{overflow:hidden}}
 .place-rating{{display:flex;align-items:center;gap:5px;font-size:11.5px;line-height:1.2;margin-top:3px}}
 .place-rating i{{font-style:normal;color:#fbbf24;letter-spacing:.02em}}
 .place-rating b{{font-family:var(--mono);color:var(--ink-2)}}
+.visited-mini{{grid-column:3;border:0;background:transparent;color:var(--ink-2);padding:2px 0;text-align:start;
+  font:600 11px/1.25 var(--sans);cursor:pointer}}
+.visited-mini:hover,.visited-mini.on{{color:#9ca3af;text-decoration:underline}}
+.visited-toggle.on{{background:#475569!important;border-color:#64748b!important;color:#f1f5f9!important}}
 .cluster-intro{{font-size:13px;color:var(--ink-3);margin:0 0 12px}}
 .exppanel.group-panel{{width:min(390px,94%)}}
 .placecluster{{background:transparent!important;border:0!important}}
@@ -803,6 +807,7 @@ body.auth-open{{overflow:hidden}}
   color:#04222b;font-size:14px;font-weight:850;border:3px solid #fff;box-shadow:0 0 0 4px rgba(45,212,191,.24),0 5px 18px rgba(0,0,0,.35);cursor:pointer}}
 .placecluster.single b{{width:25px;height:25px;font-size:0;background:#38bdf8;box-shadow:0 0 0 3px rgba(56,189,248,.22),0 4px 12px rgba(0,0,0,.3)}}
 .placecluster.single b::after{{content:"";width:7px;height:7px;border-radius:50%;background:#fff}}
+.placecluster.visited b{{background:#788493!important;color:#f8fafc!important;box-shadow:0 0 0 3px rgba(120,132,147,.2),0 4px 12px rgba(0,0,0,.3)!important}}
 #expgeo.approx{{border-color:#f59e0b;color:#fbbf24}}
 .expnear{{padding-inline-end:3px}}
 .maphero+section.sec{{padding:22px 0}}
