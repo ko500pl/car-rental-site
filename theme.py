@@ -191,14 +191,18 @@ td:first-child{{font-weight:600;color:var(--ink)}}
 .btn.ghost:hover{{background:var(--bg-2)}}
 
 /* Footer */
-.site-foot{{background:{d['color_brand_ink']};color:#a9c0d4;padding:46px 0 26px;font-size:15px;margin-top:20px}}
+.site-foot{{background:{d['color_brand_ink']};color:#a9c0d4;padding:18px 0 12px;font-size:13px;margin-top:20px}}
+.foot-compact{{display:flex;align-items:center;justify-content:space-between;gap:14px 28px;flex-wrap:wrap}}
+.foot-compact nav,.foot-contact{{display:flex;align-items:center;gap:10px 20px;flex-wrap:wrap}}
+.foot-compact nav a{{font-weight:700;color:#e4eef7}}
+.foot-contact span{{color:#8fa7bd}}
 .foot-grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:28px}}
 .site-foot h2{{color:#fff;font-size:14px;letter-spacing:.09em;text-transform:uppercase;margin:0 0 12px;font-weight:600}}
 .site-foot ul{{list-style:none;margin:0;padding:0}}
 .site-foot li{{margin:0 0 7px}}
 .site-foot a{{color:#cfe0ef}}
 .site-foot p{{color:#8fa7bd;font-size:14.5px;margin:0 0 8px}}
-.foot-bottom{{border-top:1px solid rgba(255,255,255,.12);margin-top:30px;padding-top:18px;font-size:13.5px;color:#7f97ad;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}}
+.foot-bottom{{border-top:1px solid rgba(255,255,255,.1);margin-top:12px;padding-top:9px;font-size:12px;color:#7f97ad;display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between}}
 
 /* Map */
 .gmap{{width:100%;border:1px solid var(--line);border-radius:var(--radius);margin:0 0 10px;z-index:1}}

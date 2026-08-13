@@ -529,23 +529,18 @@ def crumbs_html(lang, trail_rel):
 def footer_html(lang):
     u = UI[lang]
     a = SITE["address"][lang]
-    links = "".join(f'<li><a href="{page_url(lang, p, False)}">{E(u["nav"][p])}</a></li>'
-                    for p in PAGE_ORDER[1:] if p not in NAV_HIDDEN)
-    langlinks = "".join(f'<li><a href="{lang_root(l)}" hreflang="{l}" lang="{l}">'
-                        f"{E(LANG_LABEL[l])}</a></li>" for l in LANGS)
-    return f"""<footer class="site-foot"><div class="wrap"><div class="foot-grid">
-<div><h2>{E(u['ui']['foot_about'])}</h2><p>{inline(u['ui']['foot_about_text'], lang)}</p></div>
-<div><h2>{E(u['ui']['foot_pages'])}</h2><ul>{links}</ul></div>
-<div><h2>{E(u['ui']['foot_contact'])}</h2><ul>
-<li><a dir="ltr" href="tel:{SITE['phone_e164']}">{E(SITE['phone'])}</a></li>
-<li><a dir="ltr" href="tel:{SITE['mobile_e164']}">{E(SITE['mobile'])}</a></li>
-<li><a dir="ltr" href="mailto:{SITE['email']}">{E(SITE['email'])}</a></li>
-<li>{E(a['street'])}, {E(a['city'])} {E(SITE['address_zip'])}</li>
-<li>{E(u['ui']['hours'])}</li></ul></div>
-<div><h2>{E(u['ui']['foot_langs'])}</h2><ul>{langlinks}</ul></div>
+    return f"""<footer class="site-foot"><div class="wrap"><div class="foot-compact">
+<nav aria-label="{E(u['ui']['foot_pages'])}">
+<a href="{page_url(lang, 'fleet', False)}">{E(u['nav']['fleet'])}</a>
+<a href="{page_url(lang, 'contact', False)}">{E(u['nav']['contact'])}</a></nav>
+<div class="foot-contact">
+<a dir="ltr" href="tel:{SITE['phone_e164']}">{E(SITE['phone'])}</a>
+<a dir="ltr" href="tel:{SITE['mobile_e164']}">{E(SITE['mobile'])}</a>
+<a dir="ltr" href="mailto:{SITE['email']}">{E(SITE['email'])}</a>
+<span>{E(a['street'])}, {E(a['city'])}</span></div>
 </div><div class="foot-bottom">
 <span>© {date.today().year} {E(BRAND)}. {E(u['ui']['rights'])}</span>
-<span>{E(u['ui']['updated'])}: {TODAY}</span></div></div></footer>"""
+</div></div></footer>"""
 
 
 def shell(lang, current, head, body, depth, tail=""):
