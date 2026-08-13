@@ -115,14 +115,16 @@
   var state = { q: '', type: '', region: '', from: null, to: null };
 
   function norm(s) { return String(s || '').toLowerCase(); }
+  function searchable(p) {
+    return [p.n, p.t, p.gn, p.s].concat(p.names || []).map(norm).join(' ');
+  }
 
   function filtered() {
     var q = norm(state.q);
     return PTS.filter(function (p) {
       if (state.type && p.ty !== state.type) return false;
       if (state.region && p.g !== state.region) return false;
-      if (q && norm(p.n).indexOf(q) < 0 && norm(p.t).indexOf(q) < 0 &&
-        norm(p.gn).indexOf(q) < 0 && norm(p.s).indexOf(q) < 0) return false;
+      if (q && searchable(p).indexOf(q) < 0) return false;
       return true;
     });
   }
@@ -347,7 +349,7 @@
     var inp = $('exp' + which), box = $('exp' + which + 'list');
     var q = norm(inp.value);
     if (!q) { box.innerHTML = ''; box.classList.remove('on'); return; }
-    var hits = ALL.filter(function (p) { return norm(p.n).indexOf(q) >= 0; });
+    var hits = ALL.filter(function (p) { return searchable(p).indexOf(q) >= 0; });
     hits.sort(function (a, b) {
       var ta = a.k ? 0 : 1, tb = b.k ? 0 : 1;
       if (ta !== tb) return ta - tb;

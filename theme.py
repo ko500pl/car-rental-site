@@ -216,7 +216,8 @@ td:first-child{{font-weight:600;color:var(--ink)}}
 .gmap{{width:100%;border:1px solid var(--line);border-radius:var(--radius);margin:0 0 10px;z-index:1}}
 .map-hint{{font-size:14.5px;color:var(--ink-3);margin:0 0 18px}}
 .legend{{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;font-size:14px;color:var(--ink-2);
-  border:1px solid var(--line);border-radius:var(--radius);padding:14px 18px;background:var(--surface)}}
+  clear:both;border:1px solid var(--line);border-radius:var(--radius);padding:9px 12px;background:var(--surface);
+  margin-top:12px;position:relative;z-index:0}}
 .legend b{{color:var(--brand-ink)}}
 .lg{{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}}
 .lg i{{width:11px;height:11px;border-radius:50%;display:inline-block;border:2px solid #fff;
@@ -236,10 +237,10 @@ td:first-child{{font-weight:600;color:var(--ink)}}
 .expbar input,.expbar select{{font:inherit;font-size:15px;padding:9px 12px;border:1px solid var(--line);
   border-radius:10px;background:var(--surface);color:var(--ink)}}
 .expcount{{font-size:14px;color:var(--ink-3);margin-inline-start:auto}}
-.expgrid{{display:grid;grid-template-columns:352px 1fr;height:var(--exph,72vh);min-height:520px}}
+.expgrid{{display:grid;grid-template-columns:330px 1fr;height:clamp(540px,var(--exph,68vh),720px);min-height:540px}}
 .expside{{border-inline-end:1px solid var(--line);display:flex;flex-direction:column;min-height:0;
-  background:var(--bg-2)}}
-.exproutebox{{padding:12px 14px;border-bottom:1px solid var(--line);background:var(--surface)}}
+  background:var(--bg-2);overflow-y:auto;overflow-x:hidden}}
+.exproutebox{{padding:9px 11px;border-bottom:1px solid var(--line);background:var(--surface)}}
 .exppair{{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:end}}
 .exppair label{{position:relative;font-size:12.5px;color:var(--ink-3);display:block}}
 .exppair input{{width:100%;font:inherit;font-size:14.5px;padding:8px 10px;margin-top:4px;
@@ -252,10 +253,10 @@ td:first-child{{font-weight:600;color:var(--ink)}}
   font:inherit;font-size:14px;cursor:pointer;color:var(--ink)}}
 .expsug button:hover{{background:var(--bg-2)}}
 .expsug small{{display:block;color:var(--ink-3);font-size:12px}}
-.expslider{{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-3);margin-top:10px}}
+.expslider{{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--ink-3);margin-top:7px}}
 .expslider input{{flex:1}}
 .exprouteout{{margin-top:10px;font-size:14px}}
-.exptot{{display:flex;gap:12px;flex-wrap:wrap;align-items:baseline;padding:8px 10px;border-radius:9px;
+.exptot{{display:flex;gap:9px;flex-wrap:wrap;align-items:baseline;padding:7px 9px;border-radius:9px;
   background:var(--bg-2);margin-bottom:8px}}
 .exptot b{{color:var(--brand-ink);font-size:17px}}
 .exptot span{{font-size:13px;color:var(--ink-2)}}
@@ -269,7 +270,7 @@ td:first-child{{font-weight:600;color:var(--ink)}}
 .expmeta{{display:block;font-size:12.5px;color:var(--ink-3)}}
 .lnk{{border:0;background:none;padding:0;font:inherit;color:var(--brand-ink);cursor:pointer;
   text-decoration:underline;text-align:start}}
-.explist{{flex:1;overflow:auto;min-height:0;padding:6px}}
+.explist{{flex:0 0 auto;max-height:210px;overflow:auto;min-height:0;padding:5px}}
 .expitem{{display:block;width:100%;text-align:start;border:0;background:none;padding:9px 10px;
   border-radius:9px;cursor:pointer;font:inherit;color:var(--ink);position:relative}}
 .expitem:hover{{background:var(--surface)}}
@@ -644,13 +645,14 @@ tbody tr:nth-child(even){{background:color-mix(in srgb,#fff 3%,transparent)}}
 .expdate{{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:var(--ink-3)}}
 .expdate input{{font:inherit;font-size:14px;padding:7px 10px;border:1px solid var(--line);
   border-radius:9px;background:var(--bg);color:var(--ink)}}
-.expfind{{padding:12px 14px;border-bottom:1px solid var(--line);background:var(--surface)}}
-.expfindrow{{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:9px}}
+.expfind{{padding:9px 11px;border-bottom:1px solid var(--line);background:var(--surface)}}
+.expfindrow{{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:7px}}
+.expfindrow .btn{{padding:7px 10px;font-size:12.5px}}
 .expfindrow .btn.on{{border-color:var(--accent);color:#fff;
   background:color-mix(in srgb,var(--accent) 18%,var(--surface))}}
-.expmodes{{display:flex;gap:7px;margin-bottom:8px}}
+.expmodes{{display:flex;gap:6px;margin-bottom:6px}}
 .tog.sm{{padding:6px 12px;font-size:13px}}
-.expnear{{margin-top:10px;font-size:14px;max-height:260px;overflow:auto}}
+.expnear{{margin-top:7px;font-size:13px;max-height:210px;overflow:auto}}
 .expmap.drawing{{cursor:crosshair}}
 .stars{{display:inline-flex;align-items:baseline;gap:7px;white-space:nowrap}}
 .stars i{{font-style:normal;color:#fbbf24;letter-spacing:2px;font-size:16px}}
@@ -780,18 +782,18 @@ body.auth-open{{overflow:hidden}}
 .account-actions .btn{{min-width:150px}}
 /* Explorer place selection and real grouped map markers */
 .suggest-list,.cluster-list{{display:grid;gap:6px}}
-.place-choice{{display:grid;grid-template-columns:24px 58px minmax(0,1fr);gap:9px;align-items:center;
-  min-height:70px;padding:8px;border:1px solid transparent;border-radius:12px;cursor:pointer;
+.place-choice{{display:grid;grid-template-columns:22px 50px minmax(0,1fr);gap:8px;align-items:center;
+  min-height:60px;padding:6px;border:1px solid transparent;border-radius:10px;cursor:pointer;
   background:color-mix(in srgb,var(--surface) 82%,transparent);transition:border-color .16s,background .16s}}
 .place-choice:hover{{background:var(--surface-2);border-color:var(--line)}}
 .place-choice:has(input:checked){{border-color:color-mix(in srgb,var(--accent) 70%,var(--line));
   background:color-mix(in srgb,var(--accent) 9%,var(--surface))}}
 .place-choice input{{width:19px;height:19px;accent-color:var(--accent);cursor:pointer}}
-.place-choice img,.place-ph{{width:58px;height:44px;object-fit:cover;border-radius:8px;background:var(--surface-2);display:block}}
+.place-choice img,.place-ph{{width:50px;height:38px;object-fit:cover;border-radius:7px;background:var(--surface-2);display:block}}
 .place-copy{{min-width:0;display:block}}
-.place-copy .lnk{{display:block;font-size:13.5px;line-height:1.3;font-weight:650;text-decoration:none;
+.place-copy .lnk{{display:block;font-size:12.5px;line-height:1.3;font-weight:650;text-decoration:none;
   white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}}
-.place-line{{display:block;font-size:11.5px;line-height:1.35;color:var(--ink-3);margin-top:3px}}
+.place-line{{display:block;font-size:10.5px;line-height:1.3;color:var(--ink-3);margin-top:2px}}
 .place-rating{{display:flex;align-items:center;gap:5px;font-size:11.5px;line-height:1.2;margin-top:3px}}
 .place-rating i{{font-style:normal;color:#fbbf24;letter-spacing:.02em}}
 .place-rating b{{font-family:var(--mono);color:var(--ink-2)}}
@@ -804,6 +806,11 @@ body.auth-open{{overflow:hidden}}
 .placecluster.single b::after{{content:"";width:7px;height:7px;border-radius:50%;background:#fff}}
 #expgeo.approx{{border-color:#f59e0b;color:#fbbf24}}
 .expnear{{padding-inline-end:3px}}
+.maphero+section.sec{{padding:22px 0}}
+.maphero+section.sec .hero-facts{{padding-top:14px;gap:8px}}
+.maphero+section.sec .hero-facts div{{padding:10px 12px}}
+.maphero+section.sec .hero-facts b{{font-size:18px}}
+.maphero+section.sec .hero-facts span{{font-size:12px}}
 @media(max-width:1000px){{.head-tel,.langs{{display:none}}}}
 @media(max-width:760px){{
   .head-in{{grid-template-columns:auto minmax(0,1fr) auto;gap:10px;padding-inline:14px}}

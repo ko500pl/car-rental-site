@@ -587,7 +587,7 @@ def render_static_page(lang, page):
         x = TRAVEL[lang]["exp"]
         facts = "".join(f"<div><b>{E(x2['v'])}</b><span>{E(x2['k'])}</span></div>"
                         for x2 in h["facts"])
-        mp, tail_js = explorer_block(lang, depth, "70vh", hero=True)
+        mp, tail_js = explorer_block(lang, depth, "64vh", hero=True)
         body.append(f'<section class="hero tight"><div class="wrap">'
                     f'<span class="kicker">{E(h["kicker"])}</span><h1>{E(p["h1"])}</h1>'
                     f'<p class="lead">{inline(h["lead"], lang)}</p></div></section>'
@@ -1013,6 +1013,7 @@ def explorer_points(lang):
         f, v = road_model(a)
         pts.append({
             "s": s, "n": a[lang]["name"], "la": a["lat"], "lo": a["lon"],
+            "names": [a.get(l, {}).get("name", "") for l in LANGS],
             "t": tl(lang, "type", a["type"]), "ty": a["type"],
             "c": TYPE_COLOR.get(a["type"], "#0f4c81"),
             "g": a["region"], "gn": REGIONS[a["region"]][lang]["name"],
@@ -1034,6 +1035,7 @@ def explorer_towns(lang):
         slow = p["key"] in SLOW_TOWNS
         out.append({
             "s": "town:" + p["key"], "n": p[lang], "la": p["lat"], "lo": p["lon"],
+            "names": [p.get(l, "") for l in LANGS],
             "t": te(lang, p["kind"]), "k": p["kind"], "hh": 0.0,
             "c": "#37485c" if p["kind"] == "city" else "#8a6d3b",
             "f": 1.8 if slow else 1.4, "v": 38.0 if slow else 62.0,
@@ -1182,7 +1184,7 @@ def render_map_page(lang):
     p = {k: counts_sub(v) for k, v in PAGES["map"][lang].items()}
     u = UI[lang]
     depth = 1 if lang == "ka" else 2
-    mp, js = explorer_block(lang, depth, "78vh")
+    mp, js = explorer_block(lang, depth, "68vh")
     regions = "".join(
         f'<div class="card"><h3><a href="{region_url(lang, k, False)}">{E(r[lang]["name"])}</a></h3>'
         f'<p>{E(r[lang]["short"])}</p>'
