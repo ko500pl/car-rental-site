@@ -18,6 +18,16 @@
   to = "/:lang/map/#planner"
   status = 301
 
+[[redirects]]
+  from = "/pricing/"
+  to = "/fleet/"
+  status = 301
+
+[[redirects]]
+  from = "/:lang/pricing/"
+  to = "/:lang/fleet/"
+  status = 301
+
 [[headers]]
   for = "/assets/*"
   [headers.values]

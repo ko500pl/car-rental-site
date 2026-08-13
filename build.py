@@ -31,7 +31,7 @@ LANG_FONT_STACK = {"fa": '"Vazirmatn","Noto Sans Arabic",',
                    "ar": '"Noto Kufi Arabic","Noto Sans Arabic",'}
 
 NAV_HIDDEN = {"account", "planner"}
-PAGE_ORDER = ["index", "fleet", "pricing", "map", "planner", "terms", "faq", "blog",
+PAGE_ORDER = ["index", "fleet", "map", "planner", "terms", "faq", "blog",
               "community", "about", "contact", "software", "account"]
 PAGE_SLUG = {"index": "", "account": "account/", "fleet": "fleet/", "pricing": "pricing/", "map": "map/",
              "planner": "planner/", "terms": "terms/", "faq": "faq/", "blog": "blog/",
@@ -123,7 +123,9 @@ def lang_root(lang):
 
 
 def page_url(lang, page, absolute=True):
-    p = lang_root(lang) + PAGE_SLUG[page]
+    # Pricing is part of the fleet experience; keep the old URL only as a redirect.
+    target = "fleet" if page == "pricing" else page
+    p = lang_root(lang) + PAGE_SLUG[target]
     return (SITE_URL + p) if absolute else p
 
 
@@ -153,6 +155,8 @@ def route_url(lang, slug, absolute=True):
 
 
 def localize_href(href, lang):
+    if href.rstrip("/") == "/pricing":
+        return page_url(lang, "fleet", False)
     if lang != "ka" and href.startswith("/") and not href.startswith(f"/{lang}/"):
         return f"/{lang}{href}"
     return href
@@ -298,6 +302,8 @@ def render_md(text, lang):
     _MD.reset()
     out = _MD.convert(text or "")
     out = re.sub(r'href="(/[^"]*)"', lambda m: f'href="{localize_href(m.group(1), lang)}"', out)
+    out = out.replace(f'href="{page_url(lang, "pricing", False)}"',
+                      f'href="{page_url(lang, "fleet", False)}"')
     out = out.replace("<table>", '<div class="tbl-wrap"><table>').replace("</table>", "</table></div>")
     return out
 
@@ -685,9 +691,8 @@ def render_static_page(lang, page):
                           {"@type": "ListItem", "position": i + 1,
                            "url": attr_url(lang, s), "name": a[lang]["name"]}
                           for i, (s, a) in enumerate(ATTRACTIONS.items())]})
-    if page == "pricing":
-        graph.append(offer_catalog(lang))
     if page == "fleet":
+        graph.append(offer_catalog(lang))
         graph.append({"@type": "ItemList", "itemListElement": [
             {"@type": "ListItem", "position": i + 1, "url": car_url(lang, s)}
             for i, s in enumerate(CARS)]})
@@ -759,7 +764,6 @@ def render_car(lang, slug, c):
 <div class="article">{body_html}</div>
 <div class="cta"><h2>{E(u['ui']['book_title'])}</h2><p>{inline(u['ui']['book_text'], lang)}</p>
 <div class="row"><a class="btn" href="{page_url(lang,'contact',False)}">{E(u['nav']['contact'])}</a>
-<a class="btn ghost" href="{page_url(lang,'pricing',False)}">{E(u['nav']['pricing'])}</a>
 <a class="btn ghost" href="{page_url(lang,'fleet',False)}">{E(u['nav']['fleet'])}</a></div></div>
 </div></section>"""
 
@@ -2030,6 +2034,14 @@ def main():
             else:
                 write(os.path.join(out, rel, "index.html"), render_static_page(lang, page))
             n += 1
+        # Preserve old bookmarked pricing URLs, but send visitors to the fleet where all rates live.
+        pricing_rel = lang_root(lang).lstrip("/") + PAGE_SLUG["pricing"]
+        fleet_target = page_url(lang, "fleet", False)
+        write(os.path.join(out, pricing_rel, "index.html"),
+              f'<!doctype html><meta charset="utf-8"><meta name="robots" content="noindex">'
+              f'<link rel="canonical" href="{page_url(lang, "fleet")}">'
+              f'<meta http-equiv="refresh" content="0;url={fleet_target}">'
+              f'<script>location.replace({J(fleet_target)})</script>')
         for key, r in REGIONS.items():
             write(os.path.join(out, region_url(lang, key, False).lstrip("/"), "index.html"),
                   render_region(lang, key, r))
