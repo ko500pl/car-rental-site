@@ -1,0 +1,41 @@
+region: guria
+type: museum
+lat: 41.97298
+lon: 42.22303
+elevation: 120
+unesco: false
+featured: false
+order: 58
+image: ''
+gallery: []
+visit_hours: '1'
+best_season: all
+open_year_round: true
+entry_fee: check locally
+distance_tbilisi_km: 300
+drive_time_tbilisi: '4:35'
+road: paved
+car_category: economy
+nearby: [chokhatauri, sameba-jikheti-monastery, bakhmaro]
+rating: 4.7
+ka:
+  name: ნოდარ დუმბაძის სახლ-მუზეუმი
+  short: ქართველი მწერლის სახლ-მუზეუმი სოფელ ხიდისთავში, პირადი ნივთებითა და მისი ცხოვრების მასალებით.
+  body: '**ნოდარ დუმბაძის სახლ-მუზეუმი** გურიაში, ჩოხატაურის მუნიციპალიტეტის სოფელ ხიდისთავში მდებარეობს. ექსპოზიცია მწერლის ცხოვრებას, ოჯახურ გარემოსა და შემოქმედებით გზას აცოცხლებს პირადი ნივთებით, ფოტოებითა და დოკუმენტებით.'
+  tip: რეგიონული სახლ-მუზეუმების სამუშაო საათები შესაძლოა შეიცვალოს — გამგზავრებამდე გადაამოწმეთ გახსნის დრო ადგილობრივად.
+  route: ჩოხატაურიდან ბახმაროს მიმართულების გზით სოფელ ხიდისთავამდე. მისასვლელი გზა ასფალტიანია და ეკონომ-კლასის მანქანა საკმარისია.
+en:
+  name: Nodar Dumbadze House Museum
+  short: The Georgian writer's house museum in Khidistavi, displaying personal objects and biographical material.
+  body: '**The Nodar Dumbadze House Museum** stands in Khidistavi village in Chokhatauri Municipality. Personal belongings, photographs and documents introduce the writer’s family life and literary career.'
+  tip: Hours at small regional museums can change; confirm locally before making a special trip.
+  route: From Chokhatauri follow the Bakhmaro road to Khidistavi. The access is paved and suitable for an economy car.
+ru:
+  name: Дом-музей Нодара Думбадзе
+  short: Дом-музей грузинского писателя в селе Хидистави с личными вещами и архивными материалами.
+  body: '**Дом-музей Нодара Думбадзе** знакомит с семейной жизнью и творчеством писателя через личные вещи, фотографии и документы.'
+  tip: Перед отдельной поездкой уточните актуальные часы работы на месте.
+  route: Из Чохатаури по дороге на Бахмаро до Хидистави; дорога асфальтирована.
+fa: {name: خانه‌موزه نودار دومبادزه, short: خانه‌موزه نویسنده گرجی در روستای خیدیستاوی., body: '**خانه‌موزه نودار دومبادزه** وسایل شخصی، عکس‌ها و اسناد زندگی نویسنده را نمایش می‌دهد.', tip: ساعات بازدید را پیش از سفر بررسی کنید., route: از چوخاتائوری در جاده باخمارو به خیدیستاوی بروید.}
+he: {name: בית־מוזיאון נודר דומבדזה, short: ביתו של הסופר הגאורגי בכפר חידיסתאווי., body: '**בית־מוזיאון נודר דומבדזה** מציג חפצים אישיים, תצלומים ומסמכים.', tip: מומלץ לוודא שעות פתיחה לפני הנסיעה., route: מצ׳וחטאורי סעו בדרך בחמרו לחידיסתאווי.}
+ar: {name: متحف منزل نودار دومبادزه, short: منزل الكاتب الجورجي في قرية خيديستافي ويضم مقتنياته الشخصية., body: '**متحف منزل نودار دومبادزه** يعرض مقتنيات وصوراً ووثائق من حياة الكاتب.', tip: تحقق من ساعات العمل محلياً قبل الزيارة., route: من تشوخاتوري اتبع طريق باخمارو إلى خيديستافي.}

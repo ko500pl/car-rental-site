@@ -141,6 +141,15 @@
         '<span class="expitem-m">' + esc(p.t) + ' · ' + esc(p.h) +
         (p.r ? ' · ★' + p.r : '') + '</span></button>';
     }).join('');
+    var qbox = $('expqlist');
+    if (qbox) {
+      qbox.innerHTML = state.q ? list.slice(0, 8).map(function (p) {
+        return '<button type="button" class="expqitem" data-s="' + esc(p.s) + '">' +
+          (p.img ? '<img src="' + esc(p.img) + '" alt="" loading="lazy">' : '') +
+          '<span><b>' + esc(p.n) + '</b><small>' + esc(p.t) + ' · ' + esc(p.gn) + '</small></span></button>';
+      }).join('') : '';
+      qbox.classList.toggle('on', !!state.q && !!list.length);
+    }
     draw(list);
   }
 
@@ -728,6 +737,8 @@
 
   /* ── wiring ──────────────────────────────────────────────────────── */
   $('expq').addEventListener('input', function () { state.q = this.value; renderList(); });
+  $('expq').addEventListener('focus', function () { if (state.q) renderList(); });
+  $('expq').addEventListener('blur', function () { setTimeout(function () { var q = $('expqlist'); if (q) q.classList.remove('on'); }, 180); });
   $('exptype').addEventListener('change', function () { state.type = this.value; renderList(); suggestNear(); });
   $('expregion').addEventListener('change', function () { state.region = this.value; renderList(); suggestNear(); });
   $('expreset').addEventListener('click', function () {

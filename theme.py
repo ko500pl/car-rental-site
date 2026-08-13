@@ -232,7 +232,18 @@ td:first-child{{font-weight:600;color:var(--ink)}}
 .map-sub{{color:var(--ink-2);margin:0 0 14px;max-width:70ch}}
 .explorer{{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--surface)}}
 .expbar{{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:12px 14px;
-  border-bottom:1px solid var(--line);background:var(--bg-2)}}
+  border-bottom:1px solid var(--line);background:var(--bg-2);position:relative}}
+.expqlist{{display:none;position:absolute;z-index:850;top:calc(100% - 4px);inset-inline-start:14px;width:min(430px,calc(100% - 28px));
+  max-height:420px;overflow:auto;background:var(--surface);border:1px solid var(--line);border-radius:12px;
+  box-shadow:0 20px 55px rgba(0,0,0,.48);padding:6px}}
+.expqlist.on{{display:block}}
+.expqitem{{display:flex;width:100%;align-items:center;gap:10px;text-align:start;border:0;background:transparent;
+  color:var(--ink);padding:7px;border-radius:9px;cursor:pointer;font:inherit}}
+.expqitem:hover,.expqitem:focus-visible{{background:var(--surface-2)}}
+.expqitem img{{width:54px;height:40px;object-fit:cover;border-radius:7px;flex:none}}
+.expqitem span{{min-width:0}}
+.expqitem b{{display:block;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
+.expqitem small{{display:block;font-size:11px;color:var(--ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
 .expsearch{{flex:1 1 240px;min-width:180px}}
 .expbar input,.expbar select{{font:inherit;font-size:15px;padding:9px 12px;border:1px solid var(--line);
   border-radius:10px;background:var(--surface);color:var(--ink)}}

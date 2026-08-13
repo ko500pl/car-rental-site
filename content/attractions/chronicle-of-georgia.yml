@@ -6,7 +6,7 @@ elevation: 570
 unesco: false
 featured: false
 order: 80
-image: /assets/photos/chronicle-of-georgia.webp
+image: https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Georgiaren_Kronikak_%28Tbilisi%29_-_The_Chronicle_of_Georgia_-_Tagzania_-_1775459623095.jpg/960px-Georgiaren_Kronikak_%28Tbilisi%29_-_The_Chronicle_of_Georgia_-_Tagzania_-_1775459623095.jpg
 gallery:
 - image: /assets/photos/chronicle-of-georgia-1.webp
   author: Jonathan Cardy
@@ -240,8 +240,8 @@ ar:
     مجاني عند الأعمدة مباشرة. وسيارة اقتصادية تفي بالغرض، وإن كانت الكروس أوفر تجعل المقطع الأخير أكثر
     راحة.
 image_credit:
-  author: ben van der ploeg from devizes, uk
-  license: CC BY 2.0
-  license_url: https://creativecommons.org/licenses/by/2.0
-  source: https://commons.wikimedia.org/wiki/File:Litter_at_Tbilisi_Sea_Reservoir.jpg
+  author: MSO (Tagzania user ID 3984)
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Georgiaren_Kronikak_(Tbilisi)_-_The_Chronicle_of_Georgia_-_Tagzania_-_1775459623095.jpg
 rating: 3.0

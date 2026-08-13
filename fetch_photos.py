@@ -126,6 +126,13 @@ def from_geosearch(lat, lon):
     return None
 
 
+def relevant_source(meta, name):
+    """Reject a merely nearby photograph unless its Commons page identifies the place."""
+    source = urllib.parse.unquote((meta or {}).get("source", "")).lower().replace("_", " ")
+    words = [w for w in re.findall(r"[a-z0-9]+", name.lower()) if len(w) >= 4]
+    return bool(words and sum(w in source for w in words) >= min(2, len(words)))
+
+
 def save(slug, url):
     os.makedirs(OUT, exist_ok=True)
     req = urllib.request.Request(url, headers={"User-Agent": UA})
@@ -150,7 +157,10 @@ def one(path, force):
         return slug, "skip", 0
     lat, lon = float(a["lat"]), float(a["lon"])
     name = a["en"]["name"]
-    m = from_wikipedia(name, lat, lon) or from_geosearch(lat, lon)
+    m = from_wikipedia(name, lat, lon)
+    if not m:
+        nearby = from_geosearch(lat, lon)
+        m = nearby if relevant_source(nearby, name) else None
     if not m or not m.get("url"):
         return slug, "none", 0
     try:

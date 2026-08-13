@@ -1110,6 +1110,7 @@ def explorer_block(lang, depth, height="72vh", hero=False):
   <div class="expbar">
     <input id="expq" class="expsearch" type="search" placeholder="{E(x["search_ph"])}"
            aria-label="{E(x["search_ph"])}">
+    <div id="expqlist" class="expqlist" role="listbox"></div>
     <select id="exptype" aria-label="{E(x["all_types"])}"><option value="">{E(x["all_types"])}</option>{topts}</select>
     <select id="expregion" aria-label="{E(x["all_regions"])}"><option value="">{E(x["all_regions"])}</option>{ropts}</select>
     <button id="expreset" class="btn sm ghost" type="button">{E(x["reset"])}</button>
