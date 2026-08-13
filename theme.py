@@ -897,4 +897,35 @@ body.auth-open{{overflow:hidden}}
   .planner-more-in{{position:fixed;inset:auto 0 0;width:100%;max-height:72dvh;border-radius:20px 20px 0 0}}
   .page-planner #pmap{{height:calc(100dvh - 176px);min-height:500px;border-radius:10px}}
 }}
+/* Desktop navigation rail: persistent, compact and column-based. */
+@media(min-width:1001px){{
+  body{{padding-inline-start:248px}}
+  .site-head{{position:fixed;inset-block:0;inset-inline-start:0;width:248px;height:100dvh;
+    border-bottom:0;border-inline-end:1px solid var(--line);z-index:40;overflow-y:auto;overscroll-behavior:contain}}
+  .head-in{{min-height:100%;width:100%;padding:24px 16px 18px;display:flex;flex-direction:column;
+    align-items:stretch;gap:20px;margin:0}}
+  .logo{{display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:10px;
+    padding:4px 6px 18px;border-bottom:1px solid var(--line);font-size:18px}}
+  .logo .mark,.logo img{{grid-row:1 / 3}}
+  .logo small{{font-size:9px;line-height:1.35;white-space:normal}}
+  nav.main{{width:100%;margin:0;justify-self:auto;overflow:visible}}
+  nav.main ul{{display:flex;flex-direction:column;gap:3px;width:100%}}
+  nav.main li{{width:100%;margin:0}}
+  nav.main a{{width:100%;padding:10px 12px;border-radius:10px;font-size:13.5px}}
+  nav.main a[aria-current="page"]{{background:color-mix(in srgb,var(--brand) 18%,var(--surface-2));
+    color:var(--brand-ink);box-shadow:inset 3px 0 0 var(--brand)}}
+  .nav-more{{margin-top:4px}}
+  .nav-more summary{{display:flex;align-items:center;width:100%;min-height:40px;padding:8px 12px;
+    border-radius:10px;letter-spacing:.18em}}
+  .nav-more details>ul{{position:static;inset:auto;min-width:0;margin:4px 0 0!important;padding:4px 0 4px 12px!important;
+    background:transparent;border:0;border-inline-start:1px solid var(--line);border-radius:0;box-shadow:none}}
+  .nav-more details>ul a{{padding-block:8px;white-space:normal;font-size:12.5px}}
+  .head-actions{{margin-top:auto;width:100%;display:flex;flex-direction:column;align-items:stretch;gap:10px;justify-self:auto}}
+  .head-tel{{order:1}}
+  .head-tel a{{width:100%;justify-content:center;padding:9px 10px;font-size:12.5px}}
+  .langs{{order:2;width:100%;display:grid;grid-template-columns:repeat(3,1fr);border:0;padding:4px;gap:2px}}
+  .langs a{{text-align:center;padding:5px 3px;font-size:11px}}
+  .authbox{{order:3;width:100%;margin:0}}
+  .authbox .authlink{{width:100%;justify-content:center}}
+}}
 """
