@@ -3,7 +3,7 @@ ka:
     index: მთავარი
     fleet: ავტოპარკი
     pricing: ფასები
-    map: რუკა
+    map: რუკა და დამგეგმავი
     planner: დამგეგმავი
     terms: პირობები
     faq: კითხვები
@@ -78,7 +78,7 @@ en:
     index: Home
     fleet: Fleet
     pricing: Prices
-    map: Map
+    map: Map & planner
     planner: Planner
     terms: Terms
     faq: FAQ
@@ -153,7 +153,7 @@ ru:
     index: Главная
     fleet: Автопарк
     pricing: Цены
-    map: Карта
+    map: Карта и планировщик
     planner: Планировщик
     terms: Условия
     faq: Вопросы
@@ -228,7 +228,7 @@ fa:
     index: خانه
     fleet: ناوگان
     pricing: قیمت‌ها
-    map: نقشه
+    map: نقشه و برنامه‌ریز
     planner: برنامه‌ریز
     terms: شرایط
     faq: پرسش‌ها
@@ -304,7 +304,7 @@ he:
     index: ראשי
     fleet: צי הרכב
     pricing: מחירים
-    map: מפה
+    map: מפה ומתכנן
     planner: מתכנן
     terms: תנאים
     faq: שאלות
@@ -378,7 +378,7 @@ ar:
     index: الرئيسية
     fleet: الأسطول
     pricing: الأسعار
-    map: الخريطة
+    map: الخريطة والمخطط
     planner: المخطط
     terms: الشروط
     faq: الأسئلة

@@ -30,7 +30,7 @@ LANG_FONT_STACK = {"fa": '"Vazirmatn","Noto Sans Arabic",',
                    "he": '"Noto Sans Hebrew","Noto Sans",',
                    "ar": '"Noto Kufi Arabic","Noto Sans Arabic",'}
 
-NAV_HIDDEN = {"account"}
+NAV_HIDDEN = {"account", "planner"}
 PAGE_ORDER = ["index", "fleet", "pricing", "map", "planner", "terms", "faq", "blog",
               "community", "about", "contact", "software", "account"]
 PAGE_SLUG = {"index": "", "account": "account/", "fleet": "fleet/", "pricing": "pricing/", "map": "map/",
