@@ -936,5 +936,23 @@ body.auth-open{{overflow:hidden}}
   .page-map .page-head{{padding:14px 0 5px}}
   .page-map .page-head h1{{font-size:21px;margin-bottom:6px}}
   .page-map .page-head .lead{{font-size:13px;line-height:1.45}}
+  html,body{{max-width:100%;overflow-x:hidden}}
+  .wrap,.wrap.wide{{width:100%;max-width:100%;padding-inline:12px}}
+  .head-in{{display:grid;grid-template-columns:minmax(0,1fr) auto;padding:10px 12px;gap:8px}}
+  .logo{{min-width:0;font-size:15px;gap:6px}}
+  .logo small{{display:none}}
+  nav.main{{grid-column:2;grid-row:1;overflow:visible}}
+  nav.main ul>li:not(.nav-more){{display:none!important}}
+  .head-actions{{grid-column:1 / -1;grid-row:2;display:flex;justify-content:flex-end}}
+  .head-tel,.langs{{display:none!important}}
+  .site-head{{min-height:0}}
+  .expbar{{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:6px;padding:8px}}
+  .expsearch{{grid-column:1/-1;min-width:0;width:100%}}
+  .expbar input,.expbar select{{min-width:0;width:100%;font-size:13px;padding:7px 8px}}
+  .expdate{{grid-column:1/-1}}
+  .expgrid{{min-width:0}}
+  .expside,.expmapwrap{{min-width:0;width:100%}}
+  .planner-toolbar{{max-width:100%;padding:8px}}
+  .planner-more-in{{max-width:100vw}}
 }}
 """

@@ -559,7 +559,7 @@ def shell(lang, current, head, body, depth, tail=""):
         cfg = {k: AUTH.get(k, "") for k in ("apiKey", "authDomain", "projectId",
                                             "storageBucket", "messagingSenderId", "appId")}
         cfg["accountUrl"] = page_url(lang, "account", False)
-        cfg["plannerUrl"] = page_url(lang, "planner", False)
+        cfg["plannerUrl"] = page_url(lang, "map", False) + "#planner"
         cfg["t"] = {k: u["ui"][k] for k in (
             "account", "sign_in", "sign_up", "sign_out", "with_google", "or_email", "email",
             "password", "forgot", "reset_sent", "why_account", "legal_note", "please_sign_in",
@@ -1718,6 +1718,8 @@ def sitemap():
   </url>""")
 
     for page in PAGE_ORDER:
+        if page == "planner":
+            continue
         if page in NAV_HIDDEN:
             continue
         add(lambda l, p=page: page_url(l, p),
@@ -1945,7 +1947,12 @@ def main():
             elif page == "map":
                 write(os.path.join(out, rel, "index.html"), render_map_page(lang))
             elif page == "planner":
-                write(os.path.join(out, rel, "index.html"), render_planner(lang))
+                target = page_url(lang, "map", False) + "#planner"
+                write(os.path.join(out, rel, "index.html"),
+                      f'<!doctype html><meta charset="utf-8"><meta name="robots" content="noindex">'
+                      f'<link rel="canonical" href="{page_url(lang, "map")}">'
+                      f'<meta http-equiv="refresh" content="0;url={target}">'
+                      f'<script>location.replace({J(target)})</script>')
             else:
                 write(os.path.join(out, rel, "index.html"), render_static_page(lang, page))
             n += 1
