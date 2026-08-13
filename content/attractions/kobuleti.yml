@@ -18,6 +18,11 @@ gallery:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:1000058267_(1)_georgia.jpg
+- image: /assets/photos/kobuleti-3.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:View_Batumi_from_Kobuleti_-_panoramio.jpg
 visit_hours: '4'
 best_season: june-september
 open_year_round: true

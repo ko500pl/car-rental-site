@@ -19,6 +19,11 @@ gallery:
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: >-
     https://commons.wikimedia.org/wiki/File:%E1%83%A1%E1%83%90%E1%83%9A%E1%83%9D%E1%83%AA%E1%83%90%E1%83%95%E1%83%98_-_panoramio_(1).jpg
+- image: /assets/photos/modinakhe-fortress-3.webp
+  author: Aleksey Muhranoff
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Modinakhe_fortress-2_(Photo_A._Muhranoff,_2011).jpg
 visit_hours: '1'
 best_season: may-october
 open_year_round: true

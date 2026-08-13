@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 75
 image: /assets/photos/vashlovani-national-park.webp
-gallery: []
+gallery:
+- image: /assets/photos/vashlovani-national-park-1.webp
+  author: Jesper Ahlin Marceta
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Jahlinmarceta_vashlovani.jpg
+- image: /assets/photos/vashlovani-national-park-2.webp
+  author: Paata Vardanashvili from Tbilisi, Georgia
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Vashlovani_State_Reserve,_Georgia.jpg
+- image: /assets/photos/vashlovani-national-park-3.webp
+  author: Paata Vardanashvili from Tbilisi, Georgia
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Vashlovani_National_Park_in_Georgia.jpg
 visit_hours: '6'
 best_season: may-october
 open_year_round: true

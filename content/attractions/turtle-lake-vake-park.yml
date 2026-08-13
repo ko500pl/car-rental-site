@@ -18,6 +18,11 @@ gallery:
   license: Public domain
   license_url: ''
   source: https://commons.wikimedia.org/wiki/File:Chavchavadze_Ave..jpg
+- image: /assets/photos/turtle-lake-vake-park-3.webp
+  author: Jelger Groeneveld
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0
+  source: https://commons.wikimedia.org/wiki/File:Cable_car_Vake_Park_-_Turtle_Lake,_Tbilisi,_Georgia_(2).jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true

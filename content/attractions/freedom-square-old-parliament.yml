@@ -13,6 +13,17 @@ gallery:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:2014_Tbilisi,_Ratusz_(03).jpg
+- image: /assets/photos/freedom-square-old-parliament-2.webp
+  author: Art Anderson
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Freedom_Square_-_panoramio.jpg
+- image: /assets/photos/freedom-square-old-parliament-3.webp
+  author: Kober
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: >-
+    https://commons.wikimedia.org/wiki/File:Freedom_Square,_Tbilisi._Georgia%27s_Independence_Day_celebrations_26.05.2017.jpg
 visit_hours: '0.5'
 best_season: all
 open_year_round: true

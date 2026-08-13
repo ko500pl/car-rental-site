@@ -18,6 +18,11 @@ gallery:
   license: CC BY 2.0
   license_url: https://creativecommons.org/licenses/by/2.0
   source: https://commons.wikimedia.org/wiki/File:Highway_-34_(25286933483).jpg
+- image: /assets/photos/samtavisi-cathedral-3.webp
+  author: Kober
+  license: CC0
+  license_url: http://creativecommons.org/publicdomain/zero/1.0/deed.en
+  source: https://commons.wikimedia.org/wiki/File:Samtavisi_Cathedral,_panoramic_view_from_the_east._Georgia.jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true

@@ -19,6 +19,11 @@ gallery:
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: >-
     https://commons.wikimedia.org/wiki/File:%E1%83%A9%E1%83%90%E1%83%9C%E1%83%A9%E1%83%A5%E1%83%94%E1%83%A0%E1%83%98_%E1%83%93%E1%83%90%E1%83%A0%E1%83%98%E1%83%90%E1%83%9A%E1%83%98%E1%83%A1_%E1%83%AE%E1%83%94%E1%83%9D%E1%83%91%E1%83%90%E1%83%A8%E1%83%98_-_panoramio.jpg
+- image: /assets/photos/dariali-gorge-gveleti-waterfalls-3.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Dariali_gorge_mountain_-_panoramio.jpg
 visit_hours: '2'
 best_season: may-october
 open_year_round: true

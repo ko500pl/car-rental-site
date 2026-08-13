@@ -20,6 +20,11 @@ gallery:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Poti,_autobusov%C3%A9_n%C3%A1dra%C5%BE%C3%AD.jpg
+- image: /assets/photos/poti-3.webp
+  author: Julian Nyča
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Poti_%E2%80%93_Aerial.jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true

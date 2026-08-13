@@ -20,6 +20,11 @@ gallery:
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: >-
     https://commons.wikimedia.org/wiki/File:%E1%83%9B%E1%83%9D%E1%83%93%E1%83%98_%E1%83%9C%E1%83%90%E1%83%AE%E1%83%94_(G.N._2010).jpg
+- image: /assets/photos/skhvitori-akaki-tsereteli-museum-3.webp
+  author: Yasuhiro Kojima
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Akaki_Tsereteli_House-Museum_2.jpg
 visit_hours: '1.5'
 best_season: all
 open_year_round: true

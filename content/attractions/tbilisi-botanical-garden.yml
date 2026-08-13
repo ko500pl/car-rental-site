@@ -20,6 +20,12 @@ gallery:
   license_url: https://creativecommons.org/licenses/by/4.0
   source: >-
     https://commons.wikimedia.org/wiki/File:%DA%AF%DB%8C%D8%A7%D9%87%D8%A7%D9%86_%D8%AF%D8%B1_%D9%BE%D8%A7%DB%8C%DB%8C%D8%B2_-_%D8%A8%D8%A7%D8%BA_%D8%A8%D9%88%D8%AA%D8%A7%D9%86%DB%8C%DA%A9%D8%A7%D9%84_%D8%AA%D9%81%D9%84%DB%8C%D8%B3_04.jpg
+- image: /assets/photos/tbilisi-botanical-garden-3.webp
+  author: Reda Kerbush
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: >-
+    https://commons.wikimedia.org/wiki/File:Ruin_in_arabe_finded_in_the_National_Botanical_Garden_of_Georgia_(Tbilissi).jpg
 visit_hours: '2'
 best_season: may-october
 open_year_round: true

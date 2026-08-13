@@ -18,6 +18,11 @@ gallery:
   license: CC BY 3.0
   license_url: https://creativecommons.org/licenses/by/3.0
   source: https://commons.wikimedia.org/wiki/File:Mestia,_Svaneti_-_panoramio.jpg
+- image: /assets/photos/svaneti-museum-mestia-3.webp
+  author: U.S. Embassy Georgia
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:Svaneti_Museum_(AFCP)_13.jpg
 visit_hours: '1.5'
 best_season: all
 open_year_round: true

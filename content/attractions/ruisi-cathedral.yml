@@ -18,6 +18,11 @@ gallery:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Ruisi_church_(8).jpg
+- image: /assets/photos/ruisi-cathedral-3.webp
+  author: Aleksey Muhranoff
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Ruisi_church_(Photo_A._Muhranoff,_2011).jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true

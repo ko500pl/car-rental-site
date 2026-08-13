@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 60
 image: /assets/photos/geguti-palace.webp
-gallery: []
+gallery:
+- image: /assets/photos/geguti-palace-1.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Geguti_palace.jpg
+- image: /assets/photos/geguti-palace-2.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Geguti_palace2.jpg
+- image: /assets/photos/geguti-palace-3.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Geguti_church.jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true

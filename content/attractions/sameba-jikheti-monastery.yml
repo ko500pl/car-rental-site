@@ -7,7 +7,12 @@ unesco: false
 featured: false
 order: 55
 image: ''
-gallery: []
+gallery:
+- image: /assets/photos/sameba-jikheti-monastery-1.webp
+  author: M.
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Chkonagora_to_Jikheti_Monastery_road.jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -16,26 +21,60 @@ distance_tbilisi_km: 305
 drive_time_tbilisi: '4:40'
 road: mostly_paved
 car_category: economy
-nearby: [lanchkhuti, jumati-monastery, nodar-dumbadze-house-museum]
+nearby:
+- lanchkhuti
+- jumati-monastery
+- nodar-dumbadze-house-museum
 rating: 4.5
 ka:
   name: სამება–ჯიხეთის დედათა მონასტერი
   short: 1896 წელს დაარსებული მოქმედი დედათა მონასტერი გურიის ტყიან ბორცვებზე, ლანჩხუთის მუნიციპალიტეტში.
-  body: '**სამება–ჯიხეთის დედათა მონასტერი** ღვთისმშობლის ტაძრად მიყვანების სახელობის მოქმედი სავანეა. მონასტერი 1896 წელს დაარსდა და გურიის ერთ-ერთ მნიშვნელოვან სულიერ კერად ჩამოყალიბდა. მშვიდი ეზო, ტყიანი გარემო და მოქმედი სამონასტრო ცხოვრება ადგილს განსაკუთრებულ ატმოსფეროს აძლევს.'
-  tip: მონასტერი მოქმედია — ჩაიცვით მოკრძალებულად, არ გადაიღოთ ადამიანები ნებართვის გარეშე და მსახურების დროს შეინარჩუნეთ სიჩუმე.
-  route: თბილისიდან E60-ით სამტრედიისა და ლანჩხუთის მიმართულებით. ბოლო მონაკვეთი ადგილობრივი, ნაწილობრივ ვიწრო გზაა; ჩვეულებრივი ავტომობილი მშრალ ამინდში საკმარისია.
+  body: >-
+    **სამება–ჯიხეთის დედათა მონასტერი** ღვთისმშობლის ტაძრად მიყვანების სახელობის მოქმედი სავანეა. მონასტერი
+    1896 წელს დაარსდა და გურიის ერთ-ერთ მნიშვნელოვან სულიერ კერად ჩამოყალიბდა. მშვიდი ეზო, ტყიანი გარემო
+    და მოქმედი სამონასტრო ცხოვრება ადგილს განსაკუთრებულ ატმოსფეროს აძლევს.
+  tip: >-
+    მონასტერი მოქმედია — ჩაიცვით მოკრძალებულად, არ გადაიღოთ ადამიანები ნებართვის გარეშე და მსახურების
+    დროს შეინარჩუნეთ სიჩუმე.
+  route: >-
+    თბილისიდან E60-ით სამტრედიისა და ლანჩხუთის მიმართულებით. ბოლო მონაკვეთი ადგილობრივი, ნაწილობრივ ვიწრო
+    გზაა; ჩვეულებრივი ავტომობილი მშრალ ამინდში საკმარისია.
 en:
   name: Sameba–Jikheti Convent
   short: An active convent founded in 1896 among Guria's wooded hills in Lanchkhuti Municipality.
-  body: '**Sameba–Jikheti Convent** is an active monastery dedicated to the Presentation of the Mother of God. Founded in 1896, it became one of Guria’s important spiritual centres. Its quiet courtyard, forest setting and living monastic tradition define the visit.'
-  tip: This is an active convent. Dress modestly, avoid photographing people without permission, and keep quiet during services.
-  route: Follow the E60 toward Samtredia and Lanchkhuti. The final local road is narrow in places; a regular car is sufficient in dry weather.
+  body: >-
+    **Sameba–Jikheti Convent** is an active monastery dedicated to the Presentation of the Mother of God.
+    Founded in 1896, it became one of Guria’s important spiritual centres. Its quiet courtyard, forest
+    setting and living monastic tradition define the visit.
+  tip: >-
+    This is an active convent. Dress modestly, avoid photographing people without permission, and keep
+    quiet during services.
+  route: >-
+    Follow the E60 toward Samtredia and Lanchkhuti. The final local road is narrow in places; a regular
+    car is sufficient in dry weather.
 ru:
   name: Женский монастырь Самеба–Джихети
   short: Действующий женский монастырь 1896 года среди лесистых холмов Гурии.
-  body: '**Самеба–Джихети** — действующий монастырь Введения Богородицы, основанный в 1896 году и ставший важным духовным центром Гурии.'
+  body: >-
+    **Самеба–Джихети** — действующий монастырь Введения Богородицы, основанный в 1896 году и ставший важным
+    духовным центром Гурии.
   tip: Одевайтесь скромно, не фотографируйте людей без разрешения и соблюдайте тишину во время службы.
   route: По E60 в сторону Самтредиа и Ланчхути; последний участок местной дороги местами узкий.
-fa: {name: صومعه سامبا–جیختی, short: صومعه‌ای فعال از سال ۱۸۹۶ در تپه‌های جنگلی گوریا., body: '**سامبا–جیختی** صومعه‌ای فعال و از مراکز معنوی مهم گوریا است.', tip: پوشش مناسب داشته باشید و هنگام مراسم سکوت را رعایت کنید., route: از E60 به سوی لانچخوتی بروید؛ بخش پایانی جاده محلی و باریک است.}
-he: {name: מנזר סמבה–ג'יחתי, short: מנזר נשים פעיל שנוסד ב־1896 בגבעות המיוערות של גוריה., body: '**סמבה–ג׳יחתי** הוא מנזר פעיל ומרכז רוחני חשוב בגוריה.', tip: יש להתלבש בצניעות ולשמור על שקט בזמן תפילה., route: סעו ב־E60 לכיוון לנצ׳חותי; הקטע האחרון צר ומקומי.}
-ar: {name: دير ساميبا–جيخيتي, short: دير راهبات عامل تأسس عام 1896 بين تلال غوريا الحرجية., body: '**ساميبا–جيخيتي** دير عامل ومركز روحي مهم في غوريا.', tip: يرجى ارتداء ملابس محتشمة والحفاظ على الهدوء أثناء الصلاة., route: اتبع طريق E60 نحو لانشخوتي؛ الجزء الأخير طريق محلي ضيق.}
+fa:
+  name: صومعه سامبا–جیختی
+  short: صومعه‌ای فعال از سال ۱۸۹۶ در تپه‌های جنگلی گوریا.
+  body: '**سامبا–جیختی** صومعه‌ای فعال و از مراکز معنوی مهم گوریا است.'
+  tip: پوشش مناسب داشته باشید و هنگام مراسم سکوت را رعایت کنید.
+  route: از E60 به سوی لانچخوتی بروید؛ بخش پایانی جاده محلی و باریک است.
+he:
+  name: מנזר סמבה–ג'יחתי
+  short: מנזר נשים פעיל שנוסד ב־1896 בגבעות המיוערות של גוריה.
+  body: '**סמבה–ג׳יחתי** הוא מנזר פעיל ומרכז רוחני חשוב בגוריה.'
+  tip: יש להתלבש בצניעות ולשמור על שקט בזמן תפילה.
+  route: סעו ב־E60 לכיוון לנצ׳חותי; הקטע האחרון צר ומקומי.
+ar:
+  name: دير ساميبا–جيخيتي
+  short: دير راهبات عامل تأسس عام 1896 بين تلال غوريا الحرجية.
+  body: '**ساميبا–جيخيتي** دير عامل ومركز روحي مهم في غوريا.'
+  tip: يرجى ارتداء ملابس محتشمة والحفاظ على الهدوء أثناء الصلاة.
+  route: اتبع طريق E60 نحو لانشخوتي؛ الجزء الأخير طريق محلي ضيق.

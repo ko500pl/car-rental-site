@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 78
 image: /assets/photos/khikhani-fortress.webp
-gallery: []
+gallery:
+- image: /assets/photos/khikhani-fortress-1.webp
+  author: Boris Kuznetsov
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Khikhani_Fortress,_Ajaria,_Georgia.jpg
+- image: /assets/photos/khikhani-fortress-2.webp
+  author: Boris Kuznetsov
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Khikhani_Fortress_Trail,_Ajaria,_Georgia.jpg
+- image: /assets/photos/khikhani-fortress-3.webp
+  author: Boris Kuznetsov
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:View_from_Khikhani_Fortress,_Ajaria,_Georgia.jpg
 visit_hours: '4'
 best_season: june-september
 open_year_round: false

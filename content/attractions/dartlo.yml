@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 82
 image: /assets/photos/dartlo.webp
-gallery: []
+gallery:
+- image: /assets/photos/dartlo-1.webp
+  author: Moahim
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:WLM_-_2020_-_The_Dartlo_Village_at_night.jpg
+- image: /assets/photos/dartlo-2.webp
+  author: Draceane
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Dartlo,_2024_(38).jpg
+- image: /assets/photos/dartlo-3.webp
+  author: Lidia Ilona
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Dartlo_(2).jpg
 visit_hours: '4'
 best_season: june-september
 open_year_round: false

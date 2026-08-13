@@ -18,6 +18,11 @@ gallery:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Georgia_Georgian_Military_Road_IMG_8744_1920.jpg
+- image: /assets/photos/lomisa-church-3.webp
+  author: Damianenika
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Lomisa._church.jpg
 visit_hours: '4'
 best_season: june-september
 open_year_round: false

@@ -4,6 +4,7 @@
 """
 import glob
 import os
+import re
 import sys
 import urllib.parse
 import urllib.request
@@ -35,17 +36,36 @@ def save_g(slug, i, url):
     return "/assets/photos/" + f"{slug}-{i}.webp", os.path.getsize(path)
 
 
+def name_words(a):
+    names = [a.get("en", {}).get("name", ""), a.get("ka", {}).get("name", "")]
+    words = set()
+    for name in names:
+        words.update(w.lower() for w in re.findall(r"[^\W_]+", name, re.UNICODE) if len(w) >= 4)
+    return words
+
+
+def relevant(title, source, words):
+    hay = urllib.parse.unquote((title + " " + source).replace("_", " ")).lower()
+    return any(w in hay for w in words)
+
+
 def candidates(a):
     """Commons-ის გეოძებნის ყველა შესაფერისი ფაილი, მთავარი ფოტოს გარდა."""
     la, lo = float(a["lat"]), float(a["lon"])
     main_src = (a.get("image_credit") or {}).get("source", "")
-    out, seen = [], set()
+    out, seen, words = [], set(), name_words(a)
+    # Name search is preferred: nearby photos can depict an unrelated field or building.
+    query = a.get("en", {}).get("name", "") + " Georgia"
+    searches = [FP.get(FP.CM, {"action": "query", "generator": "search",
+                               "gsrsearch": query, "gsrnamespace": 6, "gsrlimit": 30,
+                               "prop": "imageinfo", "iiprop": "url|extmetadata|size", "iiurlwidth": GW})]
     for radius in (700, 2000, 5000):
-        d = FP.get(FP.CM, {"action": "query", "generator": "geosearch",
+        searches.append(FP.get(FP.CM, {"action": "query", "generator": "geosearch",
                            "ggscoord": f"{la}|{lo}", "ggsradius": radius,
                            "ggslimit": 20, "ggsnamespace": 6,
                            "prop": "imageinfo", "iiprop": "url|extmetadata|size",
-                           "iiurlwidth": GW})
+                           "iiurlwidth": GW}))
+    for d in searches:
         pages = list((d.get("query", {}).get("pages") or {}).values())
         pages.sort(key=lambda p: p.get("index", 99))
         for p in pages:
@@ -61,6 +81,8 @@ def candidates(a):
             if FP.re.search(r"fair use|non[- ]free", lic, FP.re.I):
                 continue
             src = ii.get("descriptionurl", "")
+            if not relevant(t, src, words):
+                continue
             if src and src == main_src:
                 continue
             out.append({"url": ii.get("thumburl") or ii.get("url"),
@@ -70,18 +92,19 @@ def candidates(a):
                         "source": src})
             if len(out) >= WANT + 3:
                 return out
-        if len(out) >= WANT:
-            break
     return out
 
 
 def one(path):
     slug = os.path.basename(path)[:-4]
     a = yaml.safe_load(open(path, encoding="utf-8"))
-    if a.get("gallery"):
+    rows, size = list(a.get("gallery") or []), 0
+    if len(rows) >= WANT:
         return slug, "skip", 0
-    rows, size = [], 0
+    existing = {x.get("source", "") for x in rows}
     for c in candidates(a):
+        if c.get("source") in existing:
+            continue
         i = len(rows) + 1
         try:
             rel, sz = save_g(slug, i, c["url"])
@@ -89,6 +112,7 @@ def one(path):
             continue
         rows.append({"image": rel, "author": c["author"], "license": c["license"],
                      "license_url": c["license_url"], "source": c["source"]})
+        existing.add(c.get("source", ""))
         size += sz
         if len(rows) >= WANT:
             break

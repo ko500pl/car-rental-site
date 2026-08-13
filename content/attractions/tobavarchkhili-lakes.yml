@@ -7,7 +7,12 @@ unesco: false
 featured: false
 order: 40
 image: /assets/photos/tobavarchkhili-lakes.webp
-gallery: []
+gallery:
+- image: /assets/photos/tobavarchkhili-lakes-1.webp
+  author: Superhickish
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Tobavarchkhili.jpg
 visit_hours: '6'
 best_season: june-september
 open_year_round: false

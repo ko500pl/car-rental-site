@@ -13,6 +13,11 @@ gallery:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Forest_on_the_trail_to_Mount_Ushba_along_the_Dolra_River,_Mestia.jpg
+- image: /assets/photos/becho-mazeri-2.webp
+  author: Vittorio Sella
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:Mazeri_in_Svaneti,_Georgia_(1890s).jpg
 visit_hours: '6'
 best_season: may-october
 open_year_round: false

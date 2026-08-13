@@ -7,7 +7,12 @@ unesco: false
 featured: false
 order: 68
 image: /assets/photos/ajameti-managed-reserve.webp
-gallery: []
+gallery:
+- image: /assets/photos/ajameti-managed-reserve-1.webp
+  author: Paata vardanashvili
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Ajameti_Managed_Reserve.jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true

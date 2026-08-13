@@ -13,6 +13,16 @@ gallery:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Rike_Park,_Tbilisi,_Georgia._2018_01.jpg
+- image: /assets/photos/bridge-of-peace-rike-park-2.webp
+  author: Amir Hossein Eslami
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Tbilisi_Peace_Bridge5.jpg
+- image: /assets/photos/bridge-of-peace-rike-park-3.webp
+  author: Kober
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Rike_Park,_Tbilisi,_Georgia._2018_03.jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true

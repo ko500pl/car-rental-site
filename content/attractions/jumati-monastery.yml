@@ -13,6 +13,11 @@ gallery:
   license: CC BY 4.0
   license_url: https://creativecommons.org/licenses/by/4.0
   source: https://commons.wikimedia.org/wiki/File:Khvarbeti_.jpg
+- image: /assets/photos/jumati-monastery-2.webp
+  author: M.
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Jumati_view_from_Konchkati.jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true

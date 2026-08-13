@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 30
 image: /assets/photos/ateni-sioni-church.webp
-gallery: []
+gallery:
+- image: /assets/photos/ateni-sioni-church-1.webp
+  author: George Mel
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Atenis_Sioni_view.jpg
+- image: /assets/photos/ateni-sioni-church-2.webp
+  author: Alf Altendorf
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:A_medieval_inscription_on_the_Ateni_Sioni_church,_Georgia.jpg
+- image: /assets/photos/ateni-sioni-church-3.webp
+  author: Alf Altendorf
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Dome_of_the_Ateni_Sioni_church,_Georgia.jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true

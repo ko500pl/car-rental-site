@@ -272,8 +272,16 @@ collections:
       - {label: "გამორჩეული", name: featured, widget: boolean, default: false, required: false}
       - {label: "მთავარი ფოტო", name: image, widget: image, required: false,
          hint: "რეკომენდებული ზომა 1200×750, WebP ან JPG"}
-      - {label: "გალერეა", name: gallery, widget: list, required: false,
-         field: {label: "ფოტო", name: img, widget: image}}
+      - label: "გალერეა"
+        name: gallery
+        widget: list
+        required: false
+        fields:
+          - {label: "ფოტო", name: image, widget: image}
+          - {label: "ავტორი", name: author, widget: string, required: false}
+          - {label: "წყარო", name: source, widget: string, required: false}
+          - {label: "ლიცენზია", name: license, widget: string, required: false}
+          - {label: "ლიცენზიის ბმული", name: license_url, widget: string, required: false}
       - {label: "წლები", name: years, widget: string, hint: "მაგ. 2019–2023"}
       - {label: "ძრავი", name: engine, widget: string, hint: "მაგ. 2.5 hybrid / 2.0 petrol / 2.2 diesel"}
       - {label: "ტრანსმისია", name: transmission, widget: select, options: [automatic, manual]}

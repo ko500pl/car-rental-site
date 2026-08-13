@@ -13,6 +13,18 @@ gallery:
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Bolnisi,_Georgia_-_panoramio_(2).jpg
+- image: /assets/photos/bolnisi-town-2.webp
+  author: Adam Jones from Kelowna, BC, Canada
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: >-
+    https://commons.wikimedia.org/wiki/File:Detail_of_Georgian_Cross_on_Stone_Bench_-_Botanical_Gardens_-_Old_Town_-_Tbilisi_-_Georgia_(18492373728)_(2).jpg
+- image: /assets/photos/bolnisi-town-3.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: >-
+    https://commons.wikimedia.org/wiki/File:%E1%83%91%E1%83%9D%E1%83%9A%E1%83%9C%E1%83%98%E1%83%A1%E1%83%98%E1%83%A1_%E1%83%AE%E1%83%94%E1%83%93%E1%83%98_(G.N._2010).jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true

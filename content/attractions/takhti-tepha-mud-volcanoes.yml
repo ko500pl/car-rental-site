@@ -13,6 +13,11 @@ gallery:
   license: Public domain
   license_url: ''
   source: https://commons.wikimedia.org/wiki/File:ISS054-E-40734_-_View_of_Earth.jpg
+- image: /assets/photos/takhti-tepha-mud-volcanoes-2.webp
+  author: Paata vardanashvili
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Takhti_tefa_5.jpg
 visit_hours: '2'
 best_season: may-october
 open_year_round: true

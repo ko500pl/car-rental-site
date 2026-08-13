@@ -13,6 +13,17 @@ gallery:
   license: Public domain
   license_url: ''
   source: https://commons.wikimedia.org/wiki/File:ISS028-E-43480_-_View_of_Earth.jpg
+- image: /assets/photos/mount-khvamli-2.webp
+  author: Jaba1977
+  license: Attribution
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:Khvamli.jpg
+- image: /assets/photos/mount-khvamli-3.webp
+  author: Roberto Strauss from Frankfurt am Main, Deutschland
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: >-
+    https://commons.wikimedia.org/wiki/File:Khvamli-Khomli_Mountain_cliff-massive_from_Gelaty_monastery_Kutaisi_(14547065945).jpg
 visit_hours: '3'
 best_season: may-october
 open_year_round: false

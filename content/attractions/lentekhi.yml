@@ -18,6 +18,11 @@ gallery:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Mount_Tekali_and_Tskhenistskali_(view_from_Lentekhi).jpg
+- image: /assets/photos/lentekhi-3.webp
+  author: Aleksey Muhranoff
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Lentekhi_(Photo_A._Muhranoff,_2011).jpg
 visit_hours: '2'
 best_season: may-october
 open_year_round: true

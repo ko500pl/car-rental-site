@@ -18,6 +18,12 @@ gallery:
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:E60_Sakartvelo.jpg
+- image: /assets/photos/chateau-mukhrani-3.webp
+  author: Press Service of the President of the Republic of Azerbaijan
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0
+  source: >-
+    https://commons.wikimedia.org/wiki/File:Cultural_program_was_presented_at_Ch%C3%A2teau_Mukhrani_in_Mtskheta_Municipality_of_Georgia_02.jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true

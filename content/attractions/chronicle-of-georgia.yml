@@ -6,23 +6,26 @@ elevation: 570
 unesco: false
 featured: false
 order: 80
-image: https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Georgiaren_Kronikak_%28Tbilisi%29_-_The_Chronicle_of_Georgia_-_Tagzania_-_1775459623095.jpg/960px-Georgiaren_Kronikak_%28Tbilisi%29_-_The_Chronicle_of_Georgia_-_Tagzania_-_1775459623095.jpg
+image: >-
+  https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Georgiaren_Kronikak_%28Tbilisi%29_-_The_Chronicle_of_Georgia_-_Tagzania_-_1775459623095.jpg/960px-Georgiaren_Kronikak_%28Tbilisi%29_-_The_Chronicle_of_Georgia_-_Tagzania_-_1775459623095.jpg
 gallery:
 - image: /assets/photos/chronicle-of-georgia-1.webp
-  author: Jonathan Cardy
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:March_2013_Tbilisi_panorama_01.jpg
+  author: Eka Samkharadze
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Chronicle_of_Georgia_-_Fragment.jpg
 - image: /assets/photos/chronicle-of-georgia-2.webp
-  author: Tiia Monto
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Tbilisi_Sea_2.jpg
+  author: Alexkom000
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0
+  source: >-
+    https://commons.wikimedia.org/wiki/File:2023-12-26_Church_of_the_Annunciation_at_the_Chronicle_of_Georgia_monument.jpg
 - image: /assets/photos/chronicle-of-georgia-3.webp
-  author: Tiia Monto
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Tbilisi_-_view_10.jpg
+  author: Alexkom000
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0
+  source: >-
+    https://commons.wikimedia.org/wiki/File:2023-12-26_Church_of_the_Annunciation_at_the_Chronicle_of_Georgia_monument_(cropped).jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -243,5 +246,6 @@ image_credit:
   author: MSO (Tagzania user ID 3984)
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Georgiaren_Kronikak_(Tbilisi)_-_The_Chronicle_of_Georgia_-_Tagzania_-_1775459623095.jpg
+  source: >-
+    https://commons.wikimedia.org/wiki/File:Georgiaren_Kronikak_(Tbilisi)_-_The_Chronicle_of_Georgia_-_Tagzania_-_1775459623095.jpg
 rating: 3.0
