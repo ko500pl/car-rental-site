@@ -280,15 +280,19 @@
       root.innerHTML = '<div class="acchead"><div><b>' + esc(u.displayName || u.email) +
         "</b><span>" + esc(u.email || "") + "</span></div>" +
         '<button class="btn ghost sm" type="button" id="accout">' + esc(T.sign_out || "Sign out") +
-        "</button></div><div id=\"acclist\"><p class=\"muted\">…</p></div>";
+        "</button></div><div id=\"accjournal\" class=\"accjournal\"><p class=\"muted\">…</p></div>" +
+        '<div id="acclist"><p class="muted">…</p></div>';
       document.getElementById("accout").onclick = function () { M.auth.signOut(auth); };
       renderTrips();
+      renderJournal();
     });
   }
   function renderTrips() {
     var box = document.getElementById("acclist");
     if (!box) return;
-    listTrips().then(function (trips) {
+    Promise.all([listTrips(), listMemories()]).then(function (data) {
+      var trips = data[0], memories = data[1];
+      trips.forEach(function (t) { t.memoryUrls = memories[t.id] || []; });
       if (!trips.length) {
         box.innerHTML = '<div class="note">' + esc(T.no_trips || "") + '</div>' +
           '<p><a class="btn" href="' + esc(C.plannerUrl) + '">' + esc(T.to_planner || "") + "</a></p>";
@@ -330,8 +334,20 @@
             .then(renderTrips);
         };
       });
+      box.querySelectorAll('[data-memory]').forEach(function (input) {
+        input.onchange = function () { uploadMemories(input.dataset.memory, input.files).then(renderTrips); };
+      });
     }).catch(function (e) {
       box.innerHTML = '<div class="note">' + esc(String(e && e.message || e)) + "</div>";
+    });
+  }
+  function listMemories() {
+    return boot.then(function () {
+      if (!user) return {};
+      var q = M.db.query(M.db.collection(db, 'tripMemories'), M.db.where('uid', '==', user.uid));
+      return M.db.getDocs(q).then(function (snap) {
+        var out = {}; snap.forEach(function (d) { var x=d.data(); out[x.tripId]=x.photoUrls||[]; }); return out;
+      });
     });
   }
   function tripCard(t, g) {
@@ -351,8 +367,52 @@
       '<button class="btn sm ghost" type="button" data-public="' + esc(t.id) + '">' +
       (t.visibility === "public" ? "Public: on" : "Public: off") + "</button>" +
       '<button class="btn sm ghost" type="button" data-share="' + esc(t.id) + '">Share</button>' +
+      '<label class="btn sm ghost memory-upload">📷 ' + esc(T.memories || 'Memories') +
+      '<input type="file" accept="image/*" multiple data-memory="' + esc(t.id) + '"></label>' +
+      ((t.memoryUrls || []).length ? '<div class="memory-strip">' + t.memoryUrls.slice(0, 8).map(function(url){
+        return '<a href="'+esc(url)+'" target="_blank" rel="noopener"><img src="'+esc(url)+'" alt=""></a>';
+      }).join('') + '</div>' : '') +
       '<button class="btn sm ghost" type="button" data-del="' + esc(t.id) + '">' + esc(T.delete || "Delete") + "</button>" +
       "</div></div>";
+  }
+
+  function uploadMemories(tripId, files) {
+    files = Array.prototype.slice.call(files || []).slice(0, 20);
+    if (!user || !files.length) return Promise.resolve();
+    return boot.then(function () {
+      var storage = M.storage.getStorage(app);
+      return Promise.all(files.map(function (file) {
+        if (!/^image\//.test(file.type) || file.size > 10 * 1024 * 1024) return Promise.reject('Invalid image');
+        var name = Date.now() + '-' + Math.random().toString(36).slice(2) + '-' + file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+        var ref = M.storage.ref(storage, 'memories/' + user.uid + '/' + tripId + '/' + name);
+        return M.storage.uploadBytes(ref, file).then(function () { return M.storage.getDownloadURL(ref); });
+      })).then(function (urls) {
+        var ref = M.db.doc(db, 'tripMemories', user.uid + '_' + tripId);
+        return M.db.getDoc(ref).then(function (snap) {
+          var old = snap.exists() ? (snap.data().photoUrls || []) : [];
+          return M.db.setDoc(ref, { uid:user.uid, tripId:tripId, photoUrls:old.concat(urls).slice(0,80), updated:M.db.serverTimestamp() }, { merge:true });
+        });
+      });
+    });
+  }
+
+  function renderJournal() {
+    var root = document.getElementById('accjournal');
+    if (!root || !user) return;
+    boot.then(function () {
+      var places = M.db.getDoc(M.db.doc(db, 'userPlaces', user.uid));
+      var rq = M.db.query(M.db.collection(db, 'reviews'), M.db.where('uid', '==', user.uid));
+      return Promise.all([places, M.db.getDocs(rq)]);
+    }).then(function (data) {
+      var visits = data[0].exists() ? (data[0].data().visits || (data[0].data().slugs || []).map(function(s){return {slug:s};})) : [];
+      visits.sort(function(a,b){return String(b.visitedAt||'').localeCompare(String(a.visitedAt||''));});
+      var reviews=[]; data[1].forEach(function(d){reviews.push(d.data());});
+      reviews.sort(function(a,b){return (b.created&&b.created.seconds||0)-(a.created&&a.created.seconds||0);});
+      root.innerHTML = '<section class="journal-section"><h2>' + esc(T.visit_history || 'Visit history') + ' · ' + visits.length + '</h2>' +
+        (visits.length ? '<div class="visit-history">' + visits.map(function(v){return '<div><time>' + esc(v.visitedAt||'—') + '</time><b>' + esc(String(v.slug||'').replace(/-/g,' ')) + '</b></div>';}).join('') + '</div>' : '<p class="note">' + esc(T.no_visits || 'No visited places yet.') + '</p>') + '</section>' +
+        '<section class="journal-section"><h2>' + esc(T.my_reviews || 'My reviews') + ' · ' + reviews.length + '</h2>' +
+        (reviews.length ? '<div class="my-reviews">' + reviews.map(function(r){return '<article><b>' + esc(r.subject||'') + '</b><span class="stars">' + '★'.repeat(r.rating||0) + '</span><p>' + esc(r.text||'') + '</p>' + (r.photoUrl?'<img src="'+esc(r.photoUrl)+'" alt="">':'') + '</article>';}).join('') + '</div>' : '<p class="note">' + esc(T.no_reviews || 'No reviews yet.') + '</p>') + '</section>';
+    }).catch(function(){ root.innerHTML=''; });
   }
 
   window.FH = { on: on, saveTrip: saveTrip, listTrips: listTrips, shareTrip: shareTrip,

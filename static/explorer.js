@@ -105,12 +105,15 @@
     window.FH.firebase().then(function (a) {
       return a.M.db.setDoc(a.M.db.doc(a.db, 'userPlaces', u.uid), {
         uid: u.uid, slugs: Object.keys(visited).filter(function (s) { return visited[s]; }),
+        visits: Object.keys(visited).filter(function (s) { return visited[s]; }).map(function (s) {
+          return { slug: s, visitedAt: visited[s] === true ? new Date().toISOString().slice(0, 10) : visited[s] };
+        }),
         updatedAt: a.M.db.serverTimestamp()
       }, { merge: true });
     }).catch(function () {});
   }
   function toggleVisited(slug) {
-    if (visited[slug]) delete visited[slug]; else visited[slug] = true;
+    if (visited[slug]) delete visited[slug]; else visited[slug] = new Date().toISOString().slice(0, 10);
     persistVisited(); refreshVisited();
   }
   function loadCloudVisited() {
@@ -119,7 +122,10 @@
     window.FH.firebase().then(function (a) {
       return a.M.db.getDoc(a.M.db.doc(a.db, 'userPlaces', u.uid)).then(function (snap) {
         if (snap.exists()) {
-          visited = {}; (snap.data().slugs || []).forEach(function (s) { visited[s] = true; });
+          visited = {};
+          if (snap.data().visits && snap.data().visits.length) {
+            snap.data().visits.forEach(function (v) { visited[v.slug] = v.visitedAt || true; });
+          } else (snap.data().slugs || []).forEach(function (s) { visited[s] = true; });
           localStorage.setItem('fh-visited-places', JSON.stringify(visited)); refreshVisited();
         } else if (Object.keys(visited).length) persistVisited();
       });
@@ -248,6 +254,7 @@
       '<div class="expact">' +
       '<button class="btn sm visited-toggle' + (visited[d.s] ? ' on' : '') + '" type="button" data-visited="' + esc(d.s) + '">' +
       (visited[d.s] ? '✓ ' : '') + esc(visited[d.s] ? (U.visited_yes || 'Visited') : (U.visited_mark || 'Mark visited')) + '</button>' +
+      '<button class="btn sm ghost" type="button" data-review="' + esc(d.s) + '">★ ' + esc(U.write_review || 'Write review') + '</button>' +
       '<button class="btn sm" data-set="from">' + esc(U.set_start) + '</button>' +
       '<button class="btn sm alt" data-set="to">' + esc(U.set_end) + '</button>' +
       '<a class="btn sm ghost" href="' + esc(d.u) + '">' + esc(U.full_page) + '</a></div>' +
@@ -870,9 +877,20 @@
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
 
   document.addEventListener('click', function (e) {
-    var t = e.target.closest ? e.target.closest('[data-s],[data-go],[data-set],[data-pick],[data-visited]') : null;
+    var t = e.target.closest ? e.target.closest('[data-s],[data-go],[data-set],[data-pick],[data-visited],[data-review]') : null;
     if (!t) return;
     if (t.hasAttribute('data-visited')) { e.preventDefault(); e.stopPropagation(); toggleVisited(t.getAttribute('data-visited')); return; }
+    if (t.hasAttribute('data-review')) {
+      e.preventDefault(); e.stopPropagation();
+      var p = BY[t.getAttribute('data-review')], rating = parseInt(prompt(U.rating_prompt || 'Rating 1–5', '5'), 10);
+      if (!p || rating < 1 || rating > 5) return;
+      var text = prompt(U.review_prompt || 'Share your experience'); if (!text) return;
+      if (!window.FH || !window.FH.user || !window.FH.user()) { if (window.FH) window.FH.openDialog(); return; }
+      window.FH.firebase().then(function(a){ var u=window.FH.user(); return a.M.db.addDoc(a.M.db.collection(a.db,'reviews'),{
+        uid:u.uid, authorName:u.displayName||u.email, subject:p.n, placeSlug:p.s, rating:rating, text:text, created:a.M.db.serverTimestamp()
+      }); }).then(function(){ alert(U.review_saved || 'Review saved'); }).catch(function(){});
+      return;
+    }
     if (t.hasAttribute('data-pick')) {
       setEnd(t.getAttribute('data-pick'), t.getAttribute('data-s'));
       $('exp' + t.getAttribute('data-pick') + 'list').classList.remove('on');

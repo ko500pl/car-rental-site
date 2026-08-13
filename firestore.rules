@@ -34,6 +34,13 @@ service cloud.firestore {
       allow read, update, delete: if owner(resource.data);
       allow create: if owner(request.resource.data);
     }
+    match /tripMemories/{id} {
+      allow read, update, delete: if owner(resource.data);
+      allow create: if owner(request.resource.data)
+        && request.resource.data.tripId is string
+        && request.resource.data.photoUrls is list
+        && request.resource.data.photoUrls.size() <= 80;
+    }
     match /conversations/{id} {
       allow read, update: if member(resource.data);
       allow create: if signedIn() && request.auth.uid in request.resource.data.memberIds

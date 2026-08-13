@@ -627,6 +627,17 @@ tbody tr:nth-child(even){{background:color-mix(in srgb,#fff 3%,transparent)}}
 .tripmeta b{{color:#fff;font-size:17px;display:block}}
 .tripmeta span{{font-size:13px;color:var(--ink-3);font-family:var(--mono)}}
 .triprow{{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}}
+.memory-upload{{cursor:pointer}}.memory-upload input{{position:absolute;inline-size:1px;block-size:1px;opacity:0}}
+.memory-strip{{flex-basis:100%;display:flex;gap:7px;overflow:auto;padding-top:5px}}
+.memory-strip img{{width:72px;height:54px;object-fit:cover;border-radius:8px;border:1px solid var(--line)}}
+.accjournal{{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}}
+.journal-section{{padding:14px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}}
+.journal-section h2{{font-size:17px;margin:0 0 10px}}.visit-history{{display:grid;gap:6px;max-height:250px;overflow:auto}}
+.visit-history div{{display:grid;grid-template-columns:100px 1fr;gap:10px;padding:8px;border-radius:9px;background:var(--surface-2)}}
+.visit-history time{{font:12px var(--mono);color:var(--ink-2)}}.visit-history b{{font-size:13px;text-transform:capitalize}}
+.my-reviews{{display:grid;gap:8px;max-height:250px;overflow:auto}}.my-reviews article{{padding:9px;border-radius:9px;background:var(--surface-2)}}
+.my-reviews article p{{font-size:13px;margin:5px 0}}.my-reviews article img{{width:64px;height:48px;object-fit:cover;border-radius:7px}}
+@media(max-width:720px){{.accjournal{{grid-template-columns:1fr}}}}
 .btn.sm.ghost{{padding:7px 13px}}
 .btn.wa{{background:#1faa53;color:#fff;box-shadow:0 6px 20px rgba(31,170,83,.25)}}
 .btn.wa:hover{{filter:brightness(1.08)}}

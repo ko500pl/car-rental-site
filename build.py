@@ -1153,7 +1153,9 @@ def explorer_block(lang, depth, height="72vh", hero=False):
                "hrs": u["hrs"], "km": u["km"], "h_short": u["hrs"], "days": u["days"],
                "tip_title": u["tip_title"], "route_title": u["route_title"],
                "nearby_title": u["nearby_title"],
-               "visited_yes": visit_labels[3], "visited_mark": visit_labels[4]},
+               "visited_yes": visit_labels[3], "visited_mark": visit_labels[4],
+               "write_review": {"ka":"რივიუს დაწერა","en":"Write review","ru":"Написать отзыв","fa":"نوشتن نظر","he":"כתיבת ביקורת","ar":"كتابة مراجعة"}[lang],
+               "review_saved": {"ka":"რივიუ შენახულია","en":"Review saved","ru":"Отзыв сохранён","fa":"نظر ذخیره شد","he":"הביקורת נשמרה","ar":"تم حفظ المراجعة"}[lang]},
     })
     js = EXPLORER_JS % {"js": LEAFLET_JS, "cfg": cfg, "exp": ASSET["explorer"]}
     html = f'''<div class="explorer{" hero" if hero else ""}">
