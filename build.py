@@ -1064,6 +1064,8 @@ def explorer_points(lang):
             "un": bool(a["unesco"]), "fe": bool(a["featured"]),
             "img": a.get("image") or "", "r": a.get("rating") or 0,
             "rd": ROAD_RANK_NUM.get(a["road"], 0), "el": a.get("elevation") or 0,
+            "bike": a["type"] in {"nature", "lake", "town", "beach", "mountain", "canyon", "waterfall"}
+                    and ROAD_RANK_NUM.get(a["road"], 0) <= 2,
         })
     pts.sort(key=lambda p: p["n"])
     return pts
@@ -1134,6 +1136,8 @@ def explorer_block(lang, depth, height="72vh", hero=False):
     types = sorted({a["type"] for a in ATTRACTIONS.values()},
                    key=lambda t: tl(lang, "type", t))
     topts = "".join(f'<option value="{E(t)}">{E(tl(lang,"type",t))}</option>' for t in types)
+    bike_label = {"ka":"ველოგზები","en":"Cycling routes","ru":"Веломаршруты","fa":"مسیرهای دوچرخه‌سواری","he":"מסלולי אופניים","ar":"مسارات الدراجات"}[lang]
+    topts += f'<option value="__cycling__">{E(bike_label)}</option>'
     ropts = "".join(f'<option value="{E(k)}">{E(r[lang]["name"])}</option>'
                     for k, r in REGIONS.items())
     visit_labels = {

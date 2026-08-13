@@ -181,7 +181,8 @@
   function filtered() {
     var q = norm(state.q);
     return PTS.filter(function (p) {
-      if (state.type && p.ty !== state.type) return false;
+      if (state.type === '__cycling__' && !p.bike) return false;
+      if (state.type && state.type !== '__cycling__' && p.ty !== state.type) return false;
       if (state.region && p.g !== state.region) return false;
       if (state.visited === 'yes' && !visited[p.s]) return false;
       if (state.visited === 'no' && visited[p.s]) return false;
