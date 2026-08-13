@@ -828,4 +828,44 @@ body.auth-open{{overflow:hidden}}
   .authbrand{{width:40px;height:40px;margin-bottom:14px}}
 }}
 @media(prefers-reduced-motion:reduce){{*{{scroll-behavior:auto!important;transition:none!important}}}}
+/* Planner: one-line controls, maximum map workspace */
+.page-planner .page-head{{padding:18px 0 4px}}
+.page-planner .page-head h1{{font-size:26px;margin-bottom:6px}}
+.page-planner .page-head .lead{{font-size:14px;line-height:1.45;max-width:100ch}}
+.planner-controls{{padding:12px 0!important;border-bottom:0}}
+.planner-toolbar{{display:flex;align-items:flex-end;gap:8px;padding:10px 12px;margin:0;
+  overflow-x:auto;overflow-y:visible;border-radius:14px;scrollbar-width:thin}}
+.planner-toolbar>.pf{{flex:0 0 auto;min-width:118px;gap:3px}}
+.planner-toolbar>.pf:first-child{{min-width:185px}}
+.planner-toolbar .pf label{{font-size:11px;white-space:nowrap;color:var(--ink-3)}}
+.planner-toolbar .pf select{{height:38px;min-width:112px;padding:6px 9px;font-size:13px;border-radius:9px}}
+.planner-toolbar .carmode{{display:flex;flex-wrap:nowrap;gap:5px;min-width:max-content}}
+.planner-toolbar .carmode .tog{{height:38px;padding:6px 10px;font-size:12px;white-space:nowrap}}
+.planner-toolbar .pf-check{{min-width:max-content;padding-bottom:8px}}
+.planner-toolbar .pf-check label{{font-size:12px;color:var(--ink-2)}}
+.planner-more{{position:relative;flex:0 0 auto;min-width:max-content}}
+.planner-more>summary{{height:38px;display:flex;align-items:center;padding:6px 12px;border:1px solid var(--line);
+  border-radius:9px;background:var(--surface-2);font-size:12px;font-weight:650;color:var(--brand-ink);cursor:pointer;white-space:nowrap}}
+.planner-more-in{{position:absolute;z-index:800;top:calc(100% + 8px);inset-inline-end:0;width:min(920px,88vw);
+  max-height:62vh;overflow:auto;padding:14px;background:var(--surface);border:1px solid var(--line);
+  border-radius:14px;box-shadow:0 24px 70px rgba(0,0,0,.48);display:grid;gap:12px}}
+.planner-more-in .chips.styles{{display:flex;flex-wrap:nowrap;overflow-x:auto;gap:6px}}
+.planner-more-in .chip.style{{min-width:180px;padding:8px 10px}}
+.planner-more-in .chip.style b{{font-size:13px}}
+.planner-more-in .chip.style small{{font-size:10.5px}}
+.planner-more-in .chips:not(.styles){{gap:5px}}
+.planner-more-in .chip{{font-size:11.5px;padding:5px 9px}}
+.planner-toolbar>.prow{{display:flex;flex-wrap:nowrap;min-width:max-content;margin:0}}
+.planner-toolbar>.prow .btn{{height:38px;padding:7px 14px;white-space:nowrap}}
+.planner-map-sec{{padding:0 0 18px!important}}
+.planner-map-sec>.wrap{{max-width:none;padding:0 12px}}
+.page-planner #pmap{{height:clamp(540px,calc(100dvh - 245px),820px);margin:0;border-radius:14px}}
+.page-planner #result{{max-width:var(--maxw);margin:18px auto 0}}
+@media(max-width:760px){{
+  .page-planner .page-head{{display:none}}
+  .planner-controls{{padding-top:8px!important}}
+  .planner-toolbar{{border-radius:0}}
+  .planner-more-in{{position:fixed;inset:auto 0 0;width:100%;max-height:72dvh;border-radius:20px 20px 0 0}}
+  .page-planner #pmap{{height:calc(100dvh - 176px);min-height:500px;border-radius:10px}}
+}}
 """

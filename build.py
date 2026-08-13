@@ -1595,7 +1595,7 @@ def render_planner(lang):
             f'<option value="{v}"{" selected" if v == 480 else ""}>{E(lbl)}</option>'
             for v, lbl in ((360, t["pace_easy"]), (480, t["pace_normal"]), (600, t["pace_full"])))
 
-    form = f"""<div class="pform">
+    form = f"""<div class="pform planner-toolbar">
 <div class="pf"><label for="start">{E(t['start'])}</label><select id="start"></select></div>
 <div class="pf"><label for="days">{E(t['days'])}</label><select id="days">
 {"".join(f'<option value="{d}"{" selected" if d == 3 else ""}>{d}</option>' for d in range(1, 11))}
@@ -1622,11 +1622,12 @@ def render_planner(lang):
 <option value="mid" selected>{E(t['b_mid'])}</option><option value="high">{E(t['b_high'])}</option>
 </select></div>
 <div class="pf pf-check"><label><input type="checkbox" id="back" checked> {E(t['return'])}</label></div>
+<details class="planner-more pf-wide"><summary>{E(t['style'])} · {E(t['regions'])} · {E(t['interests'])}</summary><div class="planner-more-in">
 <div class="pf pf-wide"><label>{E(t['style'])}</label><div id="styles" class="chips styles"></div></div>
 <div class="pf pf-wide"><label>{E(t['regions'])} <span id="regions-count" class="cnt"></span>
 <small>{E(t['all_regions'])}</small></label><div id="regions" class="chips"></div></div>
 <div class="pf pf-wide"><label>{E(t['interests'])} <span id="interests-count" class="cnt"></span>
-<small>{E(t['all_interests'])}</small></label><div id="interests" class="chips"></div></div>
+<small>{E(t['all_interests'])}</small></label><div id="interests" class="chips"></div></div></div></details>
 <div class="pf pf-wide prow">
 <button type="button" class="btn" id="build">{E(t['build'])}</button>
 <button type="button" class="btn ghost" id="reset">{E(t['reset'])}</button></div>
@@ -1634,9 +1635,9 @@ def render_planner(lang):
 
     body = (f'<section class="page-head"><div class="wrap"><h1>{E(P["h1"])}</h1>'
             f'<p class="lead">{inline(P["lead"], lang)}</p></div></section>'
-            f'<section class="sec"><div class="wrap">{form}</div></section>'
-            f'<section class="sec alt"><div class="wrap">'
-            f'<div id="pmap" class="gmap" style="height:460px"></div>'
+            f'<section class="sec planner-controls"><div class="wrap wide">{form}</div></section>'
+            f'<section class="sec alt planner-map-sec"><div class="wrap wide">'
+            f'<div id="pmap" class="gmap"></div>'
             f'<div id="result"></div></div></section>')
 
     graph = [org_node(lang), website_node(lang),
