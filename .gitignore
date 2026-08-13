@@ -8,3 +8,6 @@ preview/
 dist/
 *.zip
 *.zip.done
+
+# Local Netlify folder
+.netlify
