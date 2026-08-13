@@ -1568,6 +1568,14 @@ def fleet_for_planner(lang):
 
 def planner_data(lang):
     P = PLANNER[lang]
+    tour_ui = {
+        "ka": {"day": "დღე", "people": "ადამიანი", "view": "ნახვა"},
+        "en": {"day": "days", "people": "people", "view": "View"},
+        "ru": {"day": "дн.", "people": "чел.", "view": "Открыть"},
+        "fa": {"day": "روز", "people": "نفر", "view": "مشاهده"},
+        "he": {"day": "ימים", "people": "אנשים", "view": "צפייה"},
+        "ar": {"day": "أيام", "people": "أشخاص", "view": "عرض"},
+    }[lang]
     purpose_by_route = {
         "kakheti-wine-loop": "culinary", "imereti-caves-canyons": "nature",
         "black-sea-adjara": "beach", "military-highway-kazbegi": "mountains",
@@ -1609,6 +1617,7 @@ def planner_data(lang):
         "car": {c: cat_label(c, lang) for c in ("economy", "suv", "offroad")},
         "styles": P.get("styles", []),
         "standardTours": standard_tours,
+        "tourUi": tour_ui,
         "hotels": HOTELS,
         "htowns": [{"k": p["key"], "la": p["lat"], "lo": p["lon"]}
                    for p in PLACES if p["kind"] == "city"],

@@ -624,12 +624,13 @@
       box.innerHTML = '<div class="standard-empty">' + (T.no_results || "No matching tours") + '</div>';
       return;
     }
+    var ui = D.tourUi || {};
     box.innerHTML = tours.map(function (tour) {
       var image = tour.img ? '<img src="' + esc(tour.img) + '" alt="">' : '';
       return '<article class="standard-card">' + image + '<div class="standard-copy"><b>' + esc(tour.n) +
-        '</b><small>' + tour.days + ' ' + T.days + ' · ' + tour.minPeople + '–' + tour.maxPeople + ' ' +
-        (T.people || '') + ' · ' + tour.km + ' km</small><p>' + esc(tour.sh) + '</p></div>' +
-        '<a class="btn sm" href="' + tour.u + '">' + (T.more || 'View') + '</a></article>';
+        '</b><small>' + tour.days + ' ' + (ui.day || '') + ' · ' + tour.minPeople + '–' + tour.maxPeople + ' ' +
+        (ui.people || '') + ' · ' + tour.km + ' km</small><p>' + esc(tour.sh) + '</p></div>' +
+        '<a class="btn sm" href="' + tour.u + '">' + (ui.view || 'View') + '</a></article>';
     }).join('');
   }
   function styleRow() {
