@@ -616,6 +616,9 @@ tbody tr:nth-child(even){{background:color-mix(in srgb,#fff 3%,transparent)}}
 .authrow{{display:flex;gap:9px;margin:6px 0 10px}}
 .authrow .btn{{flex:1;justify-content:center;display:flex}}
 .autherr{{color:#fca5a5;font-size:13px;min-height:18px;margin:2px 0 6px}}
+.authcard .facebook{{width:100%;margin-top:10px;background:#1877f2;color:#fff;border-color:#1877f2}}
+.authcard .facebook:hover{{background:#166fe5;border-color:#166fe5}}
+.fbicon{{display:inline-grid;place-items:center;width:24px;height:24px;margin-inline-end:10px;border-radius:50%;background:#fff;color:#1877f2;font:bold 21px/1 Arial,sans-serif}}
 .authnote{{font-size:11.5px;color:var(--ink-3);margin:10px 0 0;line-height:1.5}}
 .acchead{{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
   background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 20px;

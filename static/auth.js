@@ -154,6 +154,8 @@
       '<p class="pshort">' + esc(T.why_account || "") + "</p>" +
       '<button class="btn goog" type="button" id="authgoogle">' +
       '<span class="gicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="#4285F4" d="M21.6 12.2c0-.7-.1-1.5-.2-2.2H12v4.3h5.4a4.6 4.6 0 0 1-2 3v2.8h3.3c1.9-1.8 2.9-4.4 2.9-7.9z"/><path fill="#34A853" d="M12 22c2.7 0 5-.9 6.7-2.4l-3.3-2.8c-.9.6-2.1 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3v2.8A10 10 0 0 0 12 22z"/><path fill="#FBBC05" d="M6.4 13.7A6 6 0 0 1 6.1 12c0-.6.1-1.2.3-1.7V7.5H3A10 10 0 0 0 2 12c0 1.6.4 3.1 1 4.5l3.4-2.8z"/><path fill="#EA4335" d="M12 6.2c1.5 0 2.8.5 3.8 1.5l2.9-2.8A9.7 9.7 0 0 0 12 2a10 10 0 0 0-9 5.5l3.4 2.8A6 6 0 0 1 12 6.2z"/></svg></span>' + esc(T.with_google || "Continue with Google") + "</button>" +
+      '<button class="btn facebook" type="button" id="authfacebook">' +
+      '<span class="fbicon" aria-hidden="true">f</span>' + esc(T.with_facebook || "Continue with Facebook") + "</button>" +
       '<div class="author"><span>' + esc(T.or_email || "or") + "</span></div>" +
       '<label>' + esc(T.email || "Email") + '<input id="authem" type="email" autocomplete="email"></label>' +
       '<label>' + esc(T.password || "Password") +
@@ -171,6 +173,15 @@
     var err = d.querySelector("#autherr");
     function fail(e) {
       var m = String((e && e.code) || e || "").replace("auth/", "").replace(/-/g, " ");
+      if (m === "unauthorized domain") {
+        var domainError = {ka:"ამ მისამართიდან შესვლა ჯერ არ არის დაშვებული. ადმინისტრატორმა Firebase-ში უნდა დაამატოს საიტის დომენი.",
+          en:"Sign-in is not enabled for this website address yet. The site administrator must authorize this domain in Firebase.",
+          ru:"Вход с этого адреса сайта пока не разрешён. Администратор должен добавить домен в Firebase.",
+          fa:"ورود از این نشانی وب‌سایت هنوز مجاز نیست. مدیر سایت باید دامنه را در Firebase تأیید کند.",
+          he:"הכניסה מכתובת אתר זו עדיין אינה מורשית. מנהל האתר צריך לאשר את הדומיין ב-Firebase.",
+          ar:"تسجيل الدخول من عنوان الموقع هذا غير مسموح بعد. يجب على مدير الموقع اعتماد النطاق في Firebase."};
+        m = domainError[document.documentElement.lang] || domainError.en;
+      }
       if (m === "configuration not found") {
         var unavailable = {ka:"შესვლა დროებით მიუწვდომელია. ვააქტიურებთ ანგარიშის სერვისს — გთხოვთ, მალე სცადოთ.",
           en:"Sign-in is temporarily unavailable. Please try again shortly.",ru:"Вход временно недоступен. Пожалуйста, попробуйте позже.",
@@ -190,6 +201,12 @@
       d.querySelector("#authgoogle").onclick = function () {
         var btn = this; btn.disabled = true; btn.classList.add("loading"); err.textContent = ""; err.classList.remove("show");
         var p = new M.auth.GoogleAuthProvider();
+        M.auth.signInWithPopup(auth, p).then(close).catch(function(e){ fail(e); btn.disabled = false; btn.classList.remove("loading"); });
+      };
+      d.querySelector("#authfacebook").onclick = function () {
+        var btn = this; btn.disabled = true; btn.classList.add("loading"); err.textContent = ""; err.classList.remove("show");
+        var p = new M.auth.FacebookAuthProvider();
+        p.addScope("email");
         M.auth.signInWithPopup(auth, p).then(close).catch(function(e){ fail(e); btn.disabled = false; btn.classList.remove("loading"); });
       };
       d.querySelector("#authin").onclick = function () {
