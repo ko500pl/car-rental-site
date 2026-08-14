@@ -889,6 +889,11 @@ body.booking-open{{overflow:hidden}}
 .booking-hero-cta{{margin-top:8px}}
 @media(max-width:600px){{.booking-dialog{{place-items:end center;padding:0}}.booking-modal-card{{width:100%;max-height:92dvh;padding:24px 18px calc(20px + env(safe-area-inset-bottom));border-radius:22px 22px 0 0}}.inquiry-grid{{grid-template-columns:1fr}}.inquiry-notes{{grid-column:auto}}.inquiry-actions{{grid-template-columns:1fr}}}}
 #expgeo.approx{{border-color:#f59e0b;color:#fbbf24}}
+.corner-tools{{position:fixed;inset-block-start:14px;inset-inline-end:18px;z-index:72;display:flex;align-items:center;gap:9px}}
+.corner-tools .corner-langs{{display:flex!important;width:auto;border:1px solid var(--line);padding:3px;background:rgba(11,20,31,.94);backdrop-filter:blur(10px);box-shadow:0 10px 34px rgba(0,0,0,.28)}}
+.corner-tools .corner-langs a{{min-width:35px;padding:6px 8px;text-align:center;font-size:11px}}
+.corner-tools .authbox{{position:static!important;inset:auto!important;width:auto!important}}
+.corner-tools .authlink{{width:auto!important;min-width:44px;background:rgba(11,20,31,.94);backdrop-filter:blur(10px);box-shadow:0 10px 34px rgba(0,0,0,.32)}}
 .expnear{{padding-inline-end:3px}}
 .maphero+section.sec{{padding:22px 0}}
 .maphero+section.sec .hero-facts{{padding-top:14px;gap:8px}}
@@ -897,6 +902,12 @@ body.booking-open{{overflow:hidden}}
 .maphero+section.sec .hero-facts span{{font-size:12px}}
 @media(max-width:1000px){{.head-tel,.langs{{display:none}}}}
 @media(max-width:760px){{
+  .corner-tools{{inset-block-start:9px;inset-inline-end:10px;gap:6px}}
+  .corner-tools .corner-langs{{max-width:156px;overflow-x:auto;scrollbar-width:none}}
+  .corner-tools .corner-langs::-webkit-scrollbar{{display:none}}
+  .corner-tools .corner-langs a{{min-width:31px;padding:6px 5px;font-size:10px}}
+  .corner-tools .authtext{{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}}
+  .corner-tools .authlink{{width:42px!important;min-width:42px;padding:0}}
   .head-in{{grid-template-columns:auto minmax(0,1fr) auto;gap:10px;padding-inline:14px}}
   nav.main{{overflow:hidden}}
   nav.main ul>li:not(.nav-more){{display:none}}
