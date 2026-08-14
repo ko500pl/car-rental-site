@@ -962,6 +962,14 @@
       $('exp' + t.getAttribute('data-pick') + 'list').classList.remove('on');
       return;
     }
+    if (t.hasAttribute('data-s')) {
+      e.preventDefault();
+      var slug = t.getAttribute('data-s');
+      var searchList = $('expqlist');
+      if (searchList) searchList.classList.remove('on');
+      open(slug);
+      return;
+    }
     if (t.hasAttribute('data-set')) { if (cur) setEnd(t.getAttribute('data-set'), cur); return; }
     if (t.hasAttribute('data-go')) { e.preventDefault(); e.stopPropagation(); open(t.getAttribute('data-go')); return; }
   });
