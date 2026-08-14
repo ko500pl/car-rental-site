@@ -639,14 +639,26 @@
     var box = $('expnear');
     var o = origin();
     var mode = budgetMode(), val = budgetVal();
+    /* Keep manually removed places visible and unchecked, but do not let them
+       consume the budget while calculating their replacements. */
+    var excluded = suggested.filter(function (p) { return !!sugOff[p.s]; });
     var pool = PTS.filter(function (p) {
+      if (sugOff[p.s]) return false;
       if (area && !pointInPoly(p.la, p.lo, area)) return false;
       if (state.type && p.ty !== state.type) return false;
       if (state.region && p.g !== state.region) return false;
       if (mode === 'km' && leg(o, p).km > val) return false;
       return true;
     });
-    if (!pool.length) { box.innerHTML = '<p class="muted sm">' + esc(U.none) + '</p>'; return; }
+    if (!pool.length) {
+      suggested = excluded;
+      publishSelection();
+      box.innerHTML = excluded.length
+        ? '<div class="exptot"><b>0/' + excluded.length + '</b><span>' + esc(U.suggest) + '</span></div><div class="suggest-list">' + excluded.map(function (p) { return placeChoice(p, false, false); }).join('') + '</div>'
+        : '<p class="muted sm">' + esc(U.none) + '</p>';
+      drawSuggest(o, []);
+      return;
+    }
 
     var chosen = [], minutes = 0;
     if (mode === 'time') {
@@ -673,16 +685,18 @@
       chosen = pool.slice().sort(function (a, b) { return leg(o, a).km - leg(o, b).km; }).slice(0, 25);
     }
     chosen = order2opt(o, chosen);
-    suggested = chosen;
+    suggested = excluded.concat(chosen.filter(function (p) {
+      return !excluded.some(function (x) { return x.s === p.s; });
+    }));
     publishSelection();
-    var active = chosen.filter(function (p) { return !sugOff[p.s]; });
+    var active = chosen;
     minutes = chainTime(o, active);
 
     box.innerHTML =
-      '<div class="exptot"><b>' + active.length + '/' + chosen.length + '</b><span>' + esc(U.suggest) + '</span>' +
+      '<div class="exptot"><b>' + active.length + '/' + suggested.length + '</b><span>' + esc(U.suggest) + '</span>' +
       (mode === 'time' ? '<span>' + fmtH(minutes) + ' / ' + val + ' ' + esc(U.hrs) + '</span>'
                        : '<span>≤ ' + val + ' ' + esc(U.km) + '</span>') + '</div>' +
-      '<div class="suggest-list">' + chosen.map(function (p) {
+      '<div class="suggest-list">' + suggested.map(function (p) {
         return placeChoice(p, !sugOff[p.s], false);
       }).join('') + '</div>';
     drawSuggest(o, active);
@@ -957,8 +971,9 @@
   $('expvisited').addEventListener('change', function () { state.visited = this.value; renderList(); suggestNear(); });
   $('expreset').addEventListener('click', function () {
     state.q = ''; state.type = ''; state.region = ''; state.visited = '';
+    sugOff = {};
     $('expq').value = ''; $('exptype').value = ''; $('expregion').value = ''; $('expvisited').value = '';
-    renderList(); map.setView(E.center, E.zoom);
+    renderList(); suggestNear(); map.setView(E.center, E.zoom);
   });
   ['from', 'to'].forEach(function (w) {
     $('exp' + w).addEventListener('input', function () { suggest(w); });
@@ -988,9 +1003,6 @@
       document.querySelectorAll('[data-suggest="' + CSS.escape(t.getAttribute('data-suggest')) + '"]').forEach(function (x) {
         if (x !== t) x.checked = t.checked;
       });
-      var active = suggested.filter(function (p) { return !sugOff[p.s]; });
-      publishSelection();
-      drawSuggest(origin(), active);
       suggestNear();
     }
   });
