@@ -692,16 +692,41 @@ def render_static_page(lang, page):
             "he": ("התחילו לתכנן טיול", "גלו טיולים ציבוריים", "מתחילים בחינם · כניסה נדרשת רק לשמירה או לשיתוף"),
             "ar": ("ابدأ تخطيط رحلتك", "استكشف الرحلات العامة", "ابدأ مجانًا · تسجيل الدخول مطلوب فقط للحفظ أو المشاركة"),
         }[lang]
+        quick = {
+            "ka": (("მაქვს იდეა", "რუკაზე ადგილების აღმოჩენა", "#explore"),
+                   ("მინდა მზა გეგმა", "სტანდარტული ტურიდან დაწყება", "#planner"),
+                   ("მივდივარ სხვებთან", "საჯარო ტურების ნახვა", page_url(lang, "community", False))),
+            "en": (("I have an idea", "Discover places on the map", "#explore"),
+                   ("I want a ready plan", "Start with a standard tour", "#planner"),
+                   ("I want company", "Browse public trips", page_url(lang, "community", False))),
+            "ru": (("У меня есть идея", "Найти места на карте", "#explore"),
+                   ("Мне нужен готовый план", "Начать со стандартного тура", "#planner"),
+                   ("Ищу попутчиков", "Смотреть публичные поездки", page_url(lang, "community", False))),
+            "fa": (("ایده دارم", "کشف مکان‌ها روی نقشه", "#explore"),
+                   ("برنامه آماده می‌خواهم", "شروع با یک تور استاندارد", "#planner"),
+                   ("همسفر می‌خواهم", "مشاهده سفرهای عمومی", page_url(lang, "community", False))),
+            "he": (("יש לי רעיון", "גילוי מקומות במפה", "#explore"),
+                   ("אני רוצה מסלול מוכן", "התחלה מטיול סטנדרטי", "#planner"),
+                   ("אני מחפש שותפים", "צפייה בטיולים ציבוריים", page_url(lang, "community", False))),
+            "ar": (("لدي فكرة", "اكتشف الأماكن على الخريطة", "#explore"),
+                   ("أريد خطة جاهزة", "ابدأ بجولة قياسية", "#planner"),
+                   ("أبحث عن رفقاء", "تصفح الرحلات العامة", page_url(lang, "community", False))),
+        }[lang]
         x = TRAVEL[lang]["exp"]
         facts = "".join(f"<div><b>{E(x2['v'])}</b><span>{E(x2['k'])}</span></div>"
                         for x2 in h["facts"])
         mp, tail_js = travel_workspace_block(lang, depth, "64vh", hero=True, initial="planner")
-        body.append(f'<section class="hero home-hero"><div class="wrap">'
-                    f'<span class="kicker">{E(h["kicker"])}</span><h1>{E(p["h1"])}</h1>'
+        quick_html = "".join(
+            f'<a class="home-quick-card" href="{E(q[2])}"><span>{i}</span><div><b>{E(q[0])}</b><small>{E(q[1])}</small></div><i aria-hidden="true">→</i></a>'
+            for i, q in enumerate(quick, 1))
+        body.append(f'<section class="hero home-hero"><div class="wrap home-hero-grid">'
+                    f'<div class="home-hero-copy"><span class="kicker">{E(h["kicker"])}</span><h1>{E(p["h1"])}</h1>'
                     f'<p class="lead">{inline(h["lead"], lang)}</p>'
                     f'<div class="home-hero-actions"><a class="btn" href="#planner">{E(hero_cta[0])}</a>'
                     f'<a class="btn alt" href="{page_url(lang, "community", False)}">{E(hero_cta[1])}</a></div>'
-                    f'<p class="home-hero-note">✓ {E(hero_cta[2])}</p></div></section>')
+                    f'<p class="home-hero-note">✓ {E(hero_cta[2])}</p></div>'
+                    f'<aside class="home-quick" aria-label="Quick start">{quick_html}</aside>'
+                    f'</div></section>')
         map_section = (f'<section class="sec wide maphero" id="planner"><div class="wrap wide">'
                        f'<div class="map-intro"><h2>{E(x["explore_h"])}</h2>'
                        f'<p class="map-sub">{E(x["explore_sub"])}</p></div>'

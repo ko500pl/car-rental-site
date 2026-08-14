@@ -1192,4 +1192,91 @@ body.booking-open{{overflow:hidden}}
   .journey-steps{{grid-template-columns:1fr}}
   .journey-steps article{{padding:12px}}
 }}
+/* 2026 UX reset: calm, flat and task-first. */
+:root{{
+  --ink:#17202b;--ink-2:#526170;--ink-3:#718091;--line:#dfe6ec;--line-2:#e9eef2;
+  --bg:#f5f7f9;--bg-2:#eef2f5;--bg-3:#e7edf1;--surface:#ffffff;--surface-2:#f7f9fb;
+  --brand:#087f8c;--brand-2:#066d78;--brand-ink:#102a32;--accent:#087f8c;--on-brand:#fff;
+  --radius:12px
+}}
+body{{font-size:14px;line-height:1.5;background:var(--bg);color:var(--ink)}}
+a{{color:#087f8c}}
+.site-head{{background:#fff}}
+.btn,.head-tel a{{min-height:42px;padding:9px 16px;border-radius:9px;background:#087f8c;color:#fff;font-weight:750}}
+.btn:hover,.head-tel a:hover{{background:#066d78;text-decoration:none}}
+.btn.alt,.btn.ghost{{background:#fff;color:#1d3a42;border:1px solid #ccd8de}}
+.btn.alt:hover,.btn.ghost:hover{{background:#f2f6f7;color:#102a32}}
+
+/* A first screen that answers “what can I do here?” immediately. */
+.home-hero{{padding:40px 0 34px!important;background:#fff!important;border-bottom:1px solid var(--line)!important;color:var(--ink)!important}}
+.home-hero-grid{{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(330px,.75fr);gap:clamp(30px,6vw,88px);align-items:center}}
+.home-hero-copy{{min-width:0}}
+.home-hero .kicker{{margin:0 0 10px;color:#087f8c;font-size:11px;letter-spacing:.08em}}
+.home-hero h1{{max-width:16ch;margin:0 0 12px;color:#15262d;font-size:clamp(32px,4.2vw,54px);line-height:1.08;letter-spacing:-.035em}}
+.home-hero .lead{{max-width:58ch;margin:0 0 20px;color:#526170;font-size:15px;line-height:1.55}}
+.home-hero-actions{{display:flex;gap:9px;flex-wrap:wrap}}
+.home-hero-note{{margin:10px 0 0;color:#718091;font-size:11.5px}}
+.home-quick{{display:grid;gap:8px;padding:8px;border:1px solid #dfe6ec;border-radius:16px;background:#f7f9fb}}
+.home-quick-card{{display:grid;grid-template-columns:32px minmax(0,1fr) auto;align-items:center;gap:10px;min-height:64px;padding:10px 12px;border:1px solid transparent;border-radius:11px;color:#17202b;background:#fff;text-decoration:none}}
+.home-quick-card:hover{{border-color:#a9cbd0;background:#fbfefe;text-decoration:none}}
+.home-quick-card>span{{display:grid;place-items:center;width:30px;height:30px;border-radius:8px;background:#e6f4f4;color:#087f8c;font-size:12px;font-weight:800}}
+.home-quick-card div{{display:grid;gap:2px}}
+.home-quick-card b{{font-size:13px;color:#17202b}}
+.home-quick-card small{{font-size:11px;color:#718091}}
+.home-quick-card i{{font-style:normal;color:#087f8c;font-size:18px}}
+
+/* Keep the map central and remove decorative detours. */
+.journey-flow{{padding:22px 0;background:#f5f7f9}}
+.journey-flow-head{{margin-bottom:12px}}
+.journey-flow-head h2{{font-size:19px}}
+.journey-flow-head p{{font-size:12.5px}}
+.journey-steps{{gap:8px}}
+.journey-steps article{{min-height:0;padding:12px 14px;border-radius:10px;background:#fff}}
+.journey-steps article>span{{width:28px;height:28px;font-size:11px;background:#e6f4f4;color:#087f8c}}
+.journey-steps h3{{font-size:13px}}
+.journey-steps p{{font-size:11.5px}}
+.maphero{{padding:22px 0 28px!important;background:#f5f7f9}}
+.map-intro{{margin:0 0 10px}}
+.map-intro h2{{font-size:20px;color:#17202b}}
+.map-intro .map-sub{{font-size:12.5px;color:#718091}}
+.travel-workspace,.explorer{{border-color:#d9e2e8;border-radius:14px;background:#fff}}
+.workspace-tabs{{margin:0 0 7px;background:#edf2f5;border:0}}
+.workspace-tabs button{{color:#687786}}
+.workspace-tabs button.on{{background:#fff;color:#17202b}}
+.planner-toolbar,.expbar{{background:#fff;border-bottom:1px solid #e1e8ed}}
+.planner-toolbar input,.planner-toolbar select,.expbar input,.expbar select{{background:#fff!important;color:#17202b!important;border-color:#d7e0e6!important}}
+.expside{{background:#fff}}
+.expside button,.expside .tog{{box-shadow:none}}
+.place-choice{{background:#fff;border-color:#e0e7ec}}
+.place-choice.on{{background:#edf8f7;border-color:#43aeb1}}
+.legend{{background:#fff;border-color:#e0e7ec}}
+.home-more-wrap{{padding:18px 0 30px;background:#f5f7f9}}
+.home-more{{background:#fff;border-color:#dfe6ec}}
+
+/* The rail is navigation, not the main visual. */
+@media(min-width:1001px){{
+  body{{padding-inline-start:220px}}
+  .site-head{{width:220px;border-inline-end:1px solid #dfe6ec}}
+  .head-in{{padding:20px 14px 16px;gap:15px}}
+  .logo{{padding:2px 5px 14px}}
+  nav.main a{{padding:9px 11px;color:#526170;font-size:12.5px}}
+  nav.main a[aria-current="page"]{{background:#e8f3f4;color:#14505a;box-shadow:inset 3px 0 0 #1597a3}}
+  .head-tel a{{font-size:11.5px}}
+  .langs{{background:#f3f6f8;border-radius:10px}}
+  .corner-tools .corner-langs,.corner-tools .authlink,.authbox .authlink{{background:#fff!important;color:#17202b;border:1px solid #dfe6ec}}
+}}
+@media(max-width:900px){{
+  .home-hero-grid{{grid-template-columns:1fr;gap:22px}}
+  .home-quick{{grid-template-columns:repeat(3,minmax(0,1fr))}}
+  .home-quick-card{{grid-template-columns:28px 1fr;align-items:start}}
+  .home-quick-card i{{display:none}}
+}}
+@media(max-width:600px){{
+  .home-hero{{padding:24px 0 20px!important}}
+  .home-hero h1{{font-size:32px;max-width:18ch}}
+  .home-hero .lead{{font-size:14px}}
+  .home-quick{{grid-template-columns:1fr}}
+  .journey-flow{{display:none}}
+  .maphero{{padding-top:14px!important}}
+}}
 """
