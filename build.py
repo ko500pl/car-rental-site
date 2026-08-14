@@ -311,8 +311,10 @@ def cars_grid(category, lang):
             f'<p class="sub">{E(L.get("summary", ""))}</p><ul>{feats}</ul>'
             f'<div class="foot"><span class="p">{E(money(c["price_1_6"]))} '
             f'<small>/ {E(unit)}</small></span>'
-            f'<a class="more" href="{car_url(lang, slug, False)}">'
-            f'{E(UI[lang]["ui"]["more"])} →</a></div></div></article>')
+            f'<span class="car-actions"><a class="more" href="{car_url(lang, slug, False)}">'
+            f'{E(UI[lang]["ui"]["more"])} →</a>'
+            f'<button class="book-car-link" type="button" data-booking-open data-car="{E(slug)}" data-car-name="{E(L["name"])}">'
+            f'{E(BOOKING_TEXT[lang]["book"])}</button></span></div></div></article>')
     return f'<div class="cars">{"".join(out)}</div>'
 
 
@@ -620,16 +622,20 @@ def shell(lang, current, head, body, depth, tail=""):
 
 def inquiry_widget(lang, context=""):
     tx = {
-        "ka": ("მანქანის მოთხოვნა", "საიდან", "როდის", "დაბრუნება", "სახელი", "ტელეფონი / WhatsApp", "შენიშვნა", "WhatsApp", "მოთხოვნის გაგზავნა"),
-        "en": ("Request a car", "Pickup", "Start date", "Return date", "Name", "Phone / WhatsApp", "Notes", "WhatsApp", "Send request"),
-        "ru": ("Запрос автомобиля", "Место получения", "Дата начала", "Дата возврата", "Имя", "Телефон / WhatsApp", "Комментарий", "WhatsApp", "Отправить запрос"),
-        "fa": ("درخواست خودرو", "محل تحویل", "تاریخ شروع", "تاریخ بازگشت", "نام", "تلفن / واتس‌اپ", "یادداشت", "واتس‌اپ", "ارسال درخواست"),
-        "he": ("בקשת רכב", "איסוף", "תאריך התחלה", "תאריך החזרה", "שם", "טלפון / WhatsApp", "הערות", "WhatsApp", "שליחת בקשה"),
-        "ar": ("طلب سيارة", "مكان الاستلام", "تاريخ البدء", "تاريخ الإرجاع", "الاسم", "الهاتف / واتساب", "ملاحظات", "واتساب", "إرسال الطلب")
+        "ka": ("დაჯავშნეთ ავტომობილი", "არჩეული ავტომობილი", "დაწყება", "დაბრუნება", "სახელი", "ტელეფონი / WhatsApp", "შენიშვნა (არასავალდებულო)", "WhatsApp", "მოთხოვნის გაგზავნა", "ხელმისაწვდომობას სწრაფად გადავამოწმებთ და დაგიკავშირდებით.", "დახურვა"),
+        "en": ("Book a car", "Selected car", "Start date", "Return date", "Name", "Phone / WhatsApp", "Notes (optional)", "WhatsApp", "Send request", "We’ll quickly confirm availability and contact you.", "Close"),
+        "ru": ("Забронировать автомобиль", "Выбранный автомобиль", "Дата начала", "Дата возврата", "Имя", "Телефон / WhatsApp", "Комментарий (необязательно)", "WhatsApp", "Отправить запрос", "Мы быстро проверим наличие и свяжемся с вами.", "Закрыть"),
+        "fa": ("رزرو خودرو", "خودروی انتخابی", "تاریخ شروع", "تاریخ بازگشت", "نام", "تلفن / واتس‌اپ", "یادداشت (اختیاری)", "واتس‌اپ", "ارسال درخواست", "موجودی را سریع بررسی کرده و با شما تماس می‌گیریم.", "بستن"),
+        "he": ("הזמנת רכב", "הרכב שנבחר", "תאריך התחלה", "תאריך החזרה", "שם", "טלפון / WhatsApp", "הערות (לא חובה)", "WhatsApp", "שליחת בקשה", "נבדוק זמינות במהירות וניצור קשר.", "סגירה"),
+        "ar": ("حجز سيارة", "السيارة المختارة", "تاريخ البدء", "تاريخ الإرجاع", "الاسم", "الهاتف / واتساب", "ملاحظات (اختياري)", "واتساب", "إرسال الطلب", "سنتحقق من التوفر سريعًا ونتواصل معك.", "إغلاق")
     }[lang]
-    return f'''<section class="sec inquiry-section"><div class="wrap"><form class="inquiry-mini" data-inquiry name="rental-inquiry" method="POST" data-netlify="true" netlify-honeypot="company" data-lang="{lang}">
-<input type="hidden" name="form-name" value="rental-inquiry"><input type="hidden" name="context" value="{E(context)}"><input type="hidden" name="page_url" value=""><p class="hp"><label>Company<input name="company"></label></p>
-<h2>{E(tx[0])}</h2><div class="inquiry-grid"><label>{E(tx[1])}<input name="pickup" required autocomplete="street-address"></label><label>{E(tx[2])}<input name="start" type="date" required></label><label>{E(tx[3])}<input name="end" type="date" required></label><label>{E(tx[4])}<input name="name" required autocomplete="name"></label><label>{E(tx[5])}<input name="phone" required autocomplete="tel"></label><label>{E(tx[6])}<input name="notes"></label></div><div class="inquiry-actions"><button class="btn wa" type="button" data-inquiry-wa>{E(tx[7])}</button><button class="btn" type="submit">{E(tx[8])}</button></div><p class="inquiry-status" role="status"></p></form></div></section>'''
+    return f'''<div class="booking-dialog" data-booking-dialog hidden role="dialog" aria-modal="true" aria-labelledby="booking-title-{lang}"><div class="booking-modal-card">
+<button class="booking-close" type="button" data-booking-close aria-label="{E(tx[10])}">×</button><div class="booking-brand" aria-hidden="true">SL</div>
+<form class="inquiry-mini" data-inquiry name="rental-inquiry" method="POST" data-netlify="true" netlify-honeypot="company" data-lang="{lang}">
+<input type="hidden" name="form-name" value="rental-inquiry"><input type="hidden" name="context" value="{E(context)}"><input type="hidden" name="requested_car" value=""><input type="hidden" name="page_url" value=""><p class="hp" hidden><label>Company<input name="company" tabindex="-1" autocomplete="off"></label></p>
+<h2 id="booking-title-{lang}">{E(tx[0])}</h2><p class="booking-lead">{E(tx[9])}</p><div class="booking-choice" data-booking-choice hidden><small>{E(tx[1])}</small><strong></strong></div>
+<div class="inquiry-grid"><label>{E(tx[2])}<input name="start" type="date" required></label><label>{E(tx[3])}<input name="end" type="date" required></label><label>{E(tx[4])}<input name="name" required autocomplete="name"></label><label>{E(tx[5])}<input name="phone" required autocomplete="tel"></label><label class="inquiry-notes">{E(tx[6])}<textarea name="notes" rows="2"></textarea></label></div>
+<div class="inquiry-actions"><button class="btn" type="submit">{E(tx[8])}</button><button class="btn ghost wa" type="button" data-inquiry-wa>{E(tx[7])}</button></div><p class="inquiry-status" role="status" aria-live="polite"></p></form></div></div>'''
 
 
 # ══════════════════════════════════════════════════════════════ page renders
@@ -841,16 +847,7 @@ def render_car(lang, slug, c):
 </div></div>
 <div class="article">{body_html}</div>
 <div class="cta"><h2>{E(u['ui']['book_title'])}</h2><p>{inline(u['ui']['book_text'], lang)}</p>
-<form class="booking-box" data-booking name="rental-inquiry" method="POST" data-netlify="true" netlify-honeypot="company" data-car="{E(slug)}" data-car-name="{E(L['name'])}"
- data-price-1-6="{E(c['price_1_6'])}" data-price-7-29="{E(c['price_7_29'])}" data-price-30="{E(c['price_30'])}"
- data-deposit="{E(c['deposit'])}" data-lang="{lang}" data-usd-rate="{E(SITE.get('usd_rate', 2.6))}" data-usd-rounding="{E(SITE.get('usd_rounding', 10))}">
-<input type="hidden" name="form-name" value="rental-inquiry"><input type="hidden" name="requested_car" value="{E(L['name'])}"><input type="hidden" name="page_url" value="{E(car_url(lang,slug))}"><p hidden><label>Company<input name="company"></label></p>
-<div class="booking-grid"><label>{E(BOOKING_TEXT[lang]['start'])}<input type="date" name="start" required></label>
-<label>{E(BOOKING_TEXT[lang]['end'])}<input type="date" name="end" required></label>
-<label>{E(BOOKING_TEXT[lang]['drivers'])}<input type="number" name="travellers" min="1" max="20" value="1"></label>
-<label>Pickup<input name="pickup" required></label><label>Return<input name="return_location"></label><label>Name<input name="traveller_name" required></label>
-<label>Phone / WhatsApp<input name="phone" inputmode="tel" required></label><label>Email<input name="email" type="email"></label><label>Notes<input name="notes"></label></div>
-<div class="booking-summary" aria-live="polite"></div><div class="row"><button class="btn wa" type="button" data-wa>WhatsApp</button><button class="btn" type="submit">{E(BOOKING_TEXT[lang]['book'])}</button></div></form>
+<button class="btn booking-hero-cta" type="button" data-booking-open data-car="{E(slug)}" data-car-name="{E(L['name'])}">{E(BOOKING_TEXT[lang]['book'])}</button>
 <div class="row"><a class="btn ghost" href="{page_url(lang,'contact',False)}">{E(u['nav']['contact'])}</a>
 <a class="btn ghost" href="{page_url(lang,'fleet',False)}">{E(u['nav']['fleet'])}</a></div></div>
 </div></section>"""

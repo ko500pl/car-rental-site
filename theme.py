@@ -859,15 +859,29 @@ body.auth-open{{overflow:hidden}}
 .mapcluster b{{display:grid;place-items:center;width:100%;height:100%;border-radius:50%;background:#20c9bd;
   color:#032b35;font-size:17px;font-weight:900;border:4px solid #fff;box-shadow:0 0 0 6px rgba(32,201,189,.25),0 9px 28px rgba(0,0,0,.4);cursor:zoom-in}}
 .mapcluster.visited b{{background:#7b8795;color:#fff;box-shadow:0 0 0 6px rgba(123,135,149,.22),0 9px 28px rgba(0,0,0,.35)}}
-.inquiry-section{{padding-block:24px}}
-.inquiry-mini{{padding:20px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface)}}
-.inquiry-mini h2{{font-size:22px;margin:0 0 14px}}
-.inquiry-grid{{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}}
-.inquiry-grid label{{font-size:12px;color:var(--muted)}}
-.inquiry-grid input{{display:block;width:100%;margin-top:5px;min-height:42px}}
-.inquiry-actions{{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}}
-.inquiry-status{{min-height:1.3em;margin:6px 0 0;color:var(--muted)}}
-@media(max-width:760px){{.inquiry-grid{{grid-template-columns:1fr}}.inquiry-mini{{padding:14px}}}}
+.hp{{display:none!important}}
+.booking-dialog{{position:fixed;inset:0;z-index:9998;display:grid;place-items:center;padding:18px;background:rgba(2,8,16,.8);backdrop-filter:blur(10px)}}
+.booking-dialog[hidden]{{display:none}}
+body.booking-open{{overflow:hidden}}
+.booking-modal-card{{position:relative;width:min(560px,100%);max-height:calc(100dvh - 36px);overflow:auto;padding:28px;border:1px solid rgba(148,163,184,.2);border-radius:22px;background:linear-gradient(180deg,#101b29,#0a141f);box-shadow:0 32px 90px rgba(0,0,0,.6)}}
+.booking-close{{position:absolute;inset-block-start:14px;inset-inline-end:14px;width:40px;height:40px;border:1px solid var(--line);border-radius:11px;background:var(--surface-2);color:var(--muted);font-size:25px;line-height:1;cursor:pointer}}
+.booking-brand{{display:grid;place-items:center;width:58px;height:46px;margin-bottom:15px;border-radius:13px;background:linear-gradient(135deg,#24bce2,#4385f5);color:#062333;font-weight:900;box-shadow:0 10px 28px rgba(43,184,230,.22)}}
+.inquiry-mini{{margin:0;padding:0;background:transparent}}
+.inquiry-mini h2{{font-size:24px;line-height:1.25;margin:0 0 6px}}
+.booking-lead{{max-width:440px;margin:0 0 16px;color:var(--muted);font-size:13px;line-height:1.55}}
+.booking-choice{{display:grid;gap:2px;margin:0 0 14px;padding:10px 12px;border:1px solid rgba(45,212,191,.28);border-radius:12px;background:rgba(45,212,191,.08)}}
+.booking-choice small{{color:var(--muted);font-size:11px}}.booking-choice strong{{font-size:14px;color:var(--ink)}}
+.inquiry-grid{{display:grid;grid-template-columns:1fr 1fr;gap:11px}}
+.inquiry-grid label{{display:grid;gap:5px;font-size:12px;color:var(--muted)}}
+.inquiry-grid input,.inquiry-grid textarea{{width:100%;min-width:0;padding:10px 12px;border:1px solid var(--line);border-radius:11px;background:#07101a;color:var(--ink);font:inherit}}
+.inquiry-grid input{{height:46px}}.inquiry-grid textarea{{resize:vertical;min-height:68px}}
+.inquiry-notes{{grid-column:1/-1}}
+.inquiry-actions{{display:grid;grid-template-columns:1.4fr 1fr;gap:10px;margin-top:15px}}
+.inquiry-actions .btn{{width:100%;min-height:46px}}
+.inquiry-status{{min-height:1.3em;margin:7px 0 0;color:var(--muted);font-size:12px}}
+.car-actions{{display:flex;align-items:center;gap:10px}}.book-car-link{{border:0;padding:0;background:none;color:var(--accent);font:inherit;font-size:12px;font-weight:750;cursor:pointer}}
+.booking-hero-cta{{margin-top:8px}}
+@media(max-width:600px){{.booking-dialog{{place-items:end center;padding:0}}.booking-modal-card{{width:100%;max-height:92dvh;padding:24px 18px calc(20px + env(safe-area-inset-bottom));border-radius:22px 22px 0 0}}.inquiry-grid{{grid-template-columns:1fr}}.inquiry-notes{{grid-column:auto}}.inquiry-actions{{grid-template-columns:1fr}}}}
 #expgeo.approx{{border-color:#f59e0b;color:#fbbf24}}
 .expnear{{padding-inline-end:3px}}
 .maphero+section.sec{{padding:22px 0}}
