@@ -91,6 +91,14 @@ class ProductFeatureTests(unittest.TestCase):
         self.assertIn('register("/sw.js")', app)
         self.assertIn('self.addEventListener("fetch"', worker)
         self.assertIn('"display": "standalone"', manifest)
+        self.assertIn('app-icon-192.png', manifest)
+        self.assertIn('app-icon-maskable-512.png', manifest)
+        self.assertIn('FH_INSTALL_APP', app)
+        for icon in ("app-icon-180.png", "app-icon-192.png", "app-icon-512.png",
+                     "app-icon-maskable-512.png"):
+            path = Path("static", icon)
+            self.assertTrue(path.exists(), str(path))
+            self.assertGreater(path.stat().st_size, 1000)
 
     def test_safe_vehicle_floor_has_no_downgrade_fallback(self):
         planner = Path("static", "planner.js").read_text(encoding="utf-8")

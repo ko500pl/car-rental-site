@@ -520,7 +520,7 @@ def head_html(lang, current, title, desc, keywords, url, alternates, depth, ld,
 <meta name="twitter:description" content="{E(desc)}">
 {fonts}
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/assets/app-icon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/app-icon-180.png">
 <link rel="manifest" href="/assets/manifest.webmanifest">
 <link rel="stylesheet" href="{css_href}">{lf}
 <script type="application/ld+json">

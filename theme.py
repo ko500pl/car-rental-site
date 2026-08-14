@@ -1312,4 +1312,27 @@ html,body{{max-width:100%;overflow-x:hidden}}
   .home-quick{{display:none}}
   .maphero{{padding-top:10px!important}}
 }}
+
+/* Clear section rhythm using restrained white tones. */
+.home-hero{{background:#fff!important;border-bottom:1px solid #dfe6e9!important}}
+.maphero{{background:#f5f7f8!important;border-block:1px solid #dfe6e9}}
+.home-more-wrap{{background:#fff}}
+.home-more-wrap .sec:nth-of-type(even),main>.sec.alt{{background:#f7f8f9}}
+.home-more-wrap .sec:nth-of-type(odd),main>.sec:not(.alt):not(.maphero){{background:#fff}}
+main>.sec+section.sec{{border-top:1px solid #e3e8eb}}
+
+/* Installable Android/iPhone application prompt. */
+.app-install-card{{position:fixed;z-index:95;inset-inline-end:18px;bottom:18px;width:min(430px,calc(100% - 36px));display:grid;grid-template-columns:48px minmax(0,1fr) auto 28px;align-items:center;gap:10px;padding:12px;background:rgba(255,255,255,.98);border:1px solid #d7e0e4;border-radius:16px;box-shadow:0 18px 48px rgba(20,38,45,.18);color:#15262d}}
+.app-install-card img{{width:48px;height:48px;border-radius:12px}}
+.app-install-card div{{display:grid;gap:2px}}
+.app-install-card strong{{font-size:13px;line-height:1.3}}
+.app-install-card span{{font-size:11px;line-height:1.35;color:#667681}}
+.app-install-action{{min-height:38px;padding:7px 12px;border:0;border-radius:10px;background:#0d8e98;color:#fff;font:700 12px var(--font);cursor:pointer}}
+.app-install-close{{width:28px;height:28px;padding:0;border:0;background:transparent;color:#657681;font-size:20px;cursor:pointer}}
+@media(max-width:600px){{
+  .app-install-card{{inset-inline:10px;bottom:10px;width:auto;grid-template-columns:42px minmax(0,1fr) auto 24px;padding:10px;gap:8px;border-radius:14px}}
+  .app-install-card img{{width:42px;height:42px;border-radius:10px}}
+  .app-install-card span{{font-size:10px}}
+  .app-install-action{{padding-inline:10px}}
+}}
 """
