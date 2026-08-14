@@ -226,9 +226,16 @@
         var cm = L.marker([la / group.length, lo / group.length], { icon: clusterIcon(group.length, allVisited) });
         cm.bindTooltip(group.length + ' ' + (U.found || 'places'), { direction: 'top' });
         cm.on('click', function () {
-          if (group.length === 1) return openGroup(group);
+          openGroup(group);
+        });
+        cm.on('dblclick', function (e) {
+          if (e && e.originalEvent) L.DomEvent.stop(e.originalEvent);
+          if (group.length === 1) {
+            map.setView([group[0].la, group[0].lo], Math.min(14, Math.max(map.getZoom() + 2, 11)), { animate: true });
+            return;
+          }
           map.fitBounds(L.latLngBounds(group.map(function (p) { return [p.la, p.lo]; })).pad(.35),
-            { maxZoom: Math.min(11, zoom + 2) });
+            { maxZoom: Math.min(14, zoom + 3) });
         });
         layer.addLayer(cm);
       });
