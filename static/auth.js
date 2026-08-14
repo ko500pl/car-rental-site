@@ -128,7 +128,7 @@
     on(function (u) {
       box.innerHTML = u
         ? '<a class="authlink" href="' + esc(C.accountUrl) + '" aria-label="' + esc(T.account || "Account") + '">' +
-          '<span class="ava">' + esc((u.displayName || u.email || "?").slice(0, 1).toUpperCase()) +
+          '<span class="ava">' + (u.photoURL ? '<img src="' + esc(u.photoURL) + '" alt="">' : esc((u.displayName || u.email || "?").slice(0, 1).toUpperCase())) +
           '</span><span class="authtext">' + esc(T.account || "Account") + "</span></a>"
         : '<button class="authlink" type="button" id="authopen" aria-label="' + esc(T.sign_in || "Sign in") +
           '"><span class="auth-user-icon" aria-hidden="true"></span><span class="authtext">' +
@@ -294,12 +294,25 @@
         var b = document.getElementById("accin"); if (b) b.onclick = openDialog;
         return;
       }
-      root.innerHTML = '<div class="acchead"><div><b>' + esc(u.displayName || u.email) +
-        "</b><span>" + esc(u.email || "") + "</span></div>" +
+      root.innerHTML = '<div class="acchead"><div class="profile-id"><label class="profile-avatar" title="Upload profile photo">' +
+        (u.photoURL ? '<img src="' + esc(u.photoURL) + '" alt="">' : '<span>' + esc((u.displayName || u.email || "?").slice(0,1).toUpperCase()) + '</span>') +
+        '<input id="avatarfile" type="file" accept="image/jpeg,image/png,image/webp" aria-label="Upload profile photo"><i aria-hidden="true">+</i></label><div><b>' + esc(u.displayName || u.email) +
+        "</b><span>" + esc(u.email || "") + "</span><button class=\"avatar-change\" type=\"button\" id=\"avatarpick\">" +
+        (document.documentElement.lang === 'ka' ? 'ფოტოს შეცვლა' : 'Change photo') + "</button></div></div>" +
         '<button class="btn ghost sm" type="button" id="accout">' + esc(T.sign_out || "Sign out") +
         "</button></div><div id=\"accjournal\" class=\"accjournal\"><p class=\"muted\">…</p></div>" +
         '<div id="acclist"><p class="muted">…</p></div>';
       document.getElementById("accout").onclick = function () { M.auth.signOut(auth); };
+      var avatarFile=document.getElementById('avatarfile'),avatarPick=document.getElementById('avatarpick');
+      if(avatarPick)avatarPick.onclick=function(){avatarFile.click();};
+      if(avatarFile)avatarFile.onchange=function(){
+        var file=avatarFile.files&&avatarFile.files[0];if(!file)return;
+        if(!/^image\/(jpeg|png|webp)$/.test(file.type)||file.size>5*1024*1024){alert(document.documentElement.lang==='ka'?'აირჩიეთ JPG, PNG ან WebP სურათი (მაქს. 5 MB).':'Choose a JPG, PNG or WebP image (max 5 MB).');return;}
+        var wrap=avatarFile.closest('.profile-avatar');wrap.classList.add('loading');
+        var storage=M.storage.getStorage(app),ext=(file.name.split('.').pop()||'jpg').replace(/[^a-z0-9]/gi,'');
+        var ref=M.storage.ref(storage,'avatars/'+u.uid+'/profile.'+ext);
+        M.storage.uploadBytes(ref,file).then(function(){return M.storage.getDownloadURL(ref);}).then(function(url){return M.auth.updateProfile(auth.currentUser,{photoURL:url});}).then(function(){user=auth.currentUser;fire();}).catch(function(err){console.warn('[avatar]',err);alert(document.documentElement.lang==='ka'?'ფოტო ვერ აიტვირთა. სცადეთ ხელახლა.':'Photo upload failed. Please try again.');}).finally(function(){wrap.classList.remove('loading');avatarFile.value='';});
+      };
       renderTrips();
       renderBookings();
       renderMessages();

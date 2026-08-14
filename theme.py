@@ -623,6 +623,12 @@ tbody tr:nth-child(even){{background:color-mix(in srgb,#fff 3%,transparent)}}
 .acchead{{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
   background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 20px;
   margin:0 0 22px}}
+.profile-id{{display:flex;align-items:center;gap:13px;min-width:0}}
+.profile-avatar{{position:relative;flex:0 0 auto;width:62px;height:62px;border-radius:50%;overflow:hidden;display:grid;place-items:center;background:var(--grad);color:var(--on-brand);font-weight:850;font-size:22px;cursor:pointer;border:2px solid color-mix(in srgb,var(--brand) 55%,#fff);box-shadow:0 8px 24px rgba(0,0,0,.3)}}
+.profile-avatar img{{width:100%;height:100%;object-fit:cover;display:block}}.profile-avatar input{{position:absolute;width:1px;height:1px;opacity:0}}
+.profile-avatar i{{position:absolute;inset:auto 2px 2px auto;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;background:var(--brand);color:#04222b;font:900 16px/1 sans-serif;border:2px solid var(--surface)}}
+.profile-avatar.loading{{opacity:.55;pointer-events:none}}
+.avatar-change{{display:block;margin-top:5px;padding:0;border:0;background:none;color:var(--brand-2);font:inherit;font-size:12px;font-weight:700;cursor:pointer}}
 .acchead b{{display:block;color:#fff;font-size:17px}}
 .acchead span{{font-size:13.5px;color:var(--ink-3)}}
 .tripcard{{background:var(--surface);border:1px solid var(--line);border-radius:14px;
@@ -785,7 +791,7 @@ nav.main{{justify-self:start;min-width:0;margin-inline-start:0}}
 .auth-user-icon{{width:17px;height:17px;border:1.8px solid currentColor;border-radius:50%;position:relative}}
 .auth-user-icon::after{{content:"";position:absolute;width:21px;height:10px;border:1.8px solid currentColor;
   border-bottom:0;border-radius:13px 13px 0 0;inset-inline-start:50%;top:15px;transform:translateX(-50%)}}
-.ava{{width:25px;height:25px}}
+.ava{{width:30px;height:30px;overflow:hidden}}.ava img{{width:100%;height:100%;object-fit:cover;display:block}}
 .authdlg{{background:rgba(2,8,16,.78);backdrop-filter:blur(10px)}}
 body.auth-open{{overflow:hidden}}
 .authcard{{width:min(440px,100%);background:linear-gradient(180deg,#101a28,#0b141f);
@@ -1042,6 +1048,8 @@ body.booking-open{{overflow:hidden}}
   .langs a{{text-align:center;padding:5px 3px;font-size:11px}}
   .authbox{{order:3;width:100%;margin:0}}
   .authbox .authlink{{width:100%;justify-content:center}}
+  .authbox{{position:fixed;inset-block-start:16px;inset-inline-end:18px;width:auto!important;z-index:70}}
+  .authbox .authlink{{width:auto;min-width:44px;justify-content:center;background:rgba(11,20,31,.94);backdrop-filter:blur(10px);box-shadow:0 10px 34px rgba(0,0,0,.34)}}
 }}
 @media(max-width:760px){{
   .page-map .page-head{{padding:14px 0 5px}}
@@ -1056,6 +1064,9 @@ body.booking-open{{overflow:hidden}}
   nav.main ul>li:not(.nav-more){{display:none!important}}
   .head-actions{{grid-column:1 / -1;grid-row:2;display:flex;justify-content:flex-end}}
   .head-tel,.langs{{display:none!important}}
+  nav.main{{margin-inline-end:48px}}
+  .authbox{{position:fixed;inset-block-start:10px;inset-inline-end:12px;width:auto;margin:0;z-index:70}}
+  .authbox .authlink{{width:42px;min-width:42px;background:rgba(11,20,31,.94);backdrop-filter:blur(10px)}}
   .site-head{{min-height:0}}
   .expbar{{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:6px;padding:8px}}
   .expsearch{{grid-column:1/-1;min-width:0;width:100%}}

@@ -556,9 +556,8 @@ def header_html(lang, current):
 <li class="nav-more"><details><summary aria-label="More">•••</summary><ul>{more}</ul></details></li>
 </ul></nav>
 <div class="head-actions"><span class="head-tel"><a dir="ltr" href="tel:{SITE['phone_e164']}">{E(SITE['phone'])}</a></span>
-<div class="langs" role="group" aria-label="{E(u['ui']['lang_label'])}">{langs}</div>
-<div id="authbox" class="authbox"></div></div>
-</div></header>"""
+<div class="langs" role="group" aria-label="{E(u['ui']['lang_label'])}">{langs}</div></div>
+</div></header><div id="authbox" class="authbox authbox-corner"></div>"""
 
 
 def crumbs_html(lang, trail_rel):
