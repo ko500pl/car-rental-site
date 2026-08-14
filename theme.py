@@ -916,6 +916,14 @@ body.booking-open{{overflow:hidden}}
 .corner-tools .corner-langs a{{min-width:35px;padding:6px 8px;text-align:center;font-size:11px}}
 .corner-tools .authbox{{position:static!important;inset:auto!important;width:auto!important}}
 .corner-tools .authlink{{width:auto!important;min-width:44px;background:rgba(11,20,31,.94);backdrop-filter:blur(10px);box-shadow:0 10px 34px rgba(0,0,0,.32)}}
+.app-download{{position:relative}}
+.app-download summary{{list-style:none;display:flex;align-items:center;justify-content:center;gap:7px;min-height:42px;padding:0 13px;border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--ink);font-size:12px;font-weight:750;cursor:pointer}}
+.app-download summary::-webkit-details-marker{{display:none}}
+.app-download-icon{{display:grid;place-items:center;width:22px;height:22px;border-radius:7px;background:var(--accent);color:#fff;font-size:16px;line-height:1}}
+.app-download-menu{{position:absolute;inset-block-start:calc(100% + 8px);inset-inline-end:0;width:240px;padding:7px;border:1px solid var(--line);border-radius:14px;background:var(--surface);box-shadow:0 18px 45px rgba(0,0,0,.18)}}
+.app-download-menu a,.app-download-menu button{{display:grid;width:100%;gap:2px;padding:10px 11px;border:0;border-radius:10px;background:transparent;color:var(--ink);text-align:start;text-decoration:none;font:inherit;cursor:pointer}}
+.app-download-menu a:hover,.app-download-menu button:hover{{background:var(--soft)}}
+.app-download-menu b{{font-size:12px}}.app-download-menu small{{color:var(--muted);font-size:10px}}
 .expnear{{padding-inline-end:3px}}
 .maphero+section.sec{{padding:22px 0}}
 .maphero+section.sec .hero-facts{{padding-top:14px;gap:8px}}
@@ -930,6 +938,8 @@ body.booking-open{{overflow:hidden}}
   .corner-tools .corner-langs a{{min-width:31px;padding:6px 5px;font-size:10px}}
   .corner-tools .authtext{{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}}
   .corner-tools .authlink{{width:42px!important;min-width:42px;padding:0}}
+  .app-download summary{{width:42px;min-width:42px;padding:0}}
+  .app-download-text{{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}}
   .head-in{{grid-template-columns:auto minmax(0,1fr) auto;gap:10px;padding-inline:14px}}
   nav.main{{overflow:hidden}}
   nav.main ul>li:not(.nav-more){{display:none}}

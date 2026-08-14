@@ -530,6 +530,14 @@ def head_html(lang, current, title, desc, keywords, url, alternates, depth, ld,
 
 def header_html(lang, current):
     u = UI[lang]
+    app_copy = {
+        "ka": ("აპლიკაცია", "Android APK", "iPhone / iOS", "ჩამოტვირთეთ Android-ზე", "ინსტალაციის ინსტრუქცია"),
+        "en": ("App", "Android APK", "iPhone / iOS", "Download for Android", "Installation instructions"),
+        "ru": ("Приложение", "Android APK", "iPhone / iOS", "Скачать для Android", "Инструкция по установке"),
+        "fa": ("اپلیکیشن", "Android APK", "iPhone / iOS", "دانلود برای اندروید", "راهنمای نصب"),
+        "he": ("אפליקציה", "Android APK", "iPhone / iOS", "הורדה לאנדרואיד", "הוראות התקנה"),
+        "ar": ("التطبيق", "Android APK", "iPhone / iOS", "تنزيل لأندرويد", "تعليمات التثبيت"),
+    }[lang]
     CUR = ' aria-current="page"'
     # Trip planning and community are the product's primary navigation.
     # Fleet stays available, but appears contextually and in the secondary menu.
@@ -558,7 +566,12 @@ def header_html(lang, current):
 <li class="nav-more"><details><summary aria-label="More">•••</summary><ul>{more}</ul></details></li>
 </ul></nav>
 <div class="head-actions"><span class="head-tel"><a dir="ltr" href="tel:{SITE['phone_e164']}">{E(SITE['phone'])}</a></span></div>
-</div></header><div class="corner-tools"><div class="langs corner-langs" role="group" aria-label="{E(u['ui']['lang_label'])}">{langs}</div><div id="authbox" class="authbox authbox-corner"></div></div>"""
+</div></header><div class="corner-tools"><div class="langs corner-langs" role="group" aria-label="{E(u['ui']['lang_label'])}">{langs}</div>
+<details class="app-download"><summary aria-label="{E(app_copy[0])}"><span class="app-download-icon" aria-hidden="true">↓</span><span class="app-download-text">{E(app_copy[0])}</span></summary>
+<div class="app-download-menu">
+<a href="/assets/downloads/fleet-house-android.apk" download><b>{E(app_copy[1])}</b><small>{E(app_copy[3])}</small></a>
+<button type="button" data-ios-install><b>{E(app_copy[2])}</b><small>{E(app_copy[4])}</small></button>
+</div></details><div id="authbox" class="authbox authbox-corner"></div></div>"""
 
 
 def crumbs_html(lang, trail_rel):

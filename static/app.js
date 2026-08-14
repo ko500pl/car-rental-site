@@ -21,10 +21,10 @@
   function standalone() {
     return window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
   }
-  function showInstall() {
+  function showInstall(forceIos) {
     if (standalone() || document.getElementById("app-install-card")) return;
     var text = copy[language()];
-    var ios = /iphone|ipad|ipod/i.test(navigator.userAgent);
+    var ios = forceIos || /iphone|ipad|ipod/i.test(navigator.userAgent);
     var card = document.createElement("aside");
     card.id = "app-install-card";
     card.className = "app-install-card";
@@ -55,6 +55,14 @@
       return choice.outcome === "accepted";
     });
   };
+  window.FH_SHOW_IOS_INSTALL = function () { showInstall(true); };
+  document.addEventListener("click", function (event) {
+    var button = event.target.closest("[data-ios-install]");
+    if (!button) return;
+    var menu = button.closest("details");
+    if (menu) menu.removeAttribute("open");
+    showInstall(true);
+  });
   window.addEventListener("appinstalled", function () {
     var card = document.getElementById("app-install-card");
     if (card) card.remove();
