@@ -40,7 +40,7 @@ BOOKING_TEXT = {
     "ar": {"start": "البداية", "end": "النهاية", "drivers": "السائقون", "book": "طلب الحجز"},
 }
 
-NAV_HIDDEN = {"account", "planner"}
+NAV_HIDDEN = {"account", "planner", "map"}
 PAGE_ORDER = ["index", "fleet", "map", "planner", "terms", "faq", "blog",
               "community", "about", "contact", "software", "account"]
 PAGE_SLUG = {"index": "", "account": "account/", "fleet": "fleet/", "pricing": "pricing/", "map": "map/",
@@ -1321,6 +1321,20 @@ def counts_sub(s):
 
 
 def render_map_page(lang):
+    """Legacy URL: the unified map and planner now live on Home."""
+    target = page_url(lang, "index", False)
+    canonical = page_url(lang, "index")
+    direction = "rtl" if lang in ("fa", "he", "ar") else "ltr"
+    return f'''<!doctype html><html lang="{lang}" dir="{direction}"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,follow"><link rel="canonical" href="{E(canonical)}">
+<meta http-equiv="refresh" content="0;url={E(target)}#explore">
+<title>{E(UI[lang]["nav"]["map"])}</title></head><body>
+<p><a href="{E(target)}#explore">{E(UI[lang]["nav"]["index"])}</a></p>
+<script>(function(){{var h=location.hash||'#explore';location.replace({J(target)}+(location.search||'')+h);}})();</script>
+</body></html>'''
+
+    # Kept below temporarily as migration history; unreachable by design.
     p = {k: counts_sub(v) for k, v in PAGES["map"][lang].items()}
     u = UI[lang]
     depth = 1 if lang == "ka" else 2
