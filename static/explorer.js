@@ -129,6 +129,25 @@
     if (visited[slug]) delete visited[slug]; else visited[slug] = new Date().toISOString().slice(0, 10);
     persistVisited(); refreshVisited();
   }
+  function openReviewForm(p) {
+    if (!window.FH || !window.FH.user || !window.FH.user()) { if (window.FH) window.FH.openDialog(); return; }
+    var old = document.getElementById('reviewdlg'); if (old) old.remove();
+    var d = document.createElement('div'); d.id='reviewdlg'; d.className='authdlg reviewdlg';
+    d.innerHTML='<form class="authcard reviewform" aria-labelledby="reviewtitle">' +
+      '<button class="authx" type="button" aria-label="Close">✕</button><h3 id="reviewtitle">'+esc(U.write_review||'Write review')+'</h3>'+
+      '<p class="pshort">'+esc(p.n)+'</p><fieldset><legend>'+esc(U.rating_prompt||'Rating')+'</legend><div class="rating-pick">'+
+      [5,4,3,2,1].map(function(n){return '<label><input type="radio" name="rating" value="'+n+'"'+(n===5?' checked':'')+'><span>'+n+' ★</span></label>';}).join('')+
+      '</div></fieldset><label>'+esc(U.review_prompt||'Share your experience')+'<textarea name="text" maxlength="3000" required></textarea></label>'+
+      '<div class="autherr" role="alert"></div><button class="btn" type="submit">'+esc(U.review_save||U.review_saved||'Save review')+'</button></form>';
+    document.body.appendChild(d); document.body.classList.add('auth-open');
+    function close(){d.remove();document.body.classList.remove('auth-open');}
+    d.querySelector('.authx').onclick=close; d.onclick=function(e){if(e.target===d)close();};
+    d.querySelector('form').onsubmit=function(e){e.preventDefault();var form=e.currentTarget,btn=form.querySelector('[type=submit]'),err=form.querySelector('.autherr');btn.disabled=true;
+      window.FH.firebase().then(function(a){var u=window.FH.user();return a.M.db.addDoc(a.M.db.collection(a.db,'reviews'),{
+        uid:u.uid,authorName:u.displayName||u.email,subject:p.n,placeSlug:p.s,rating:parseInt(form.rating.value,10),text:form.text.value.trim(),created:a.M.db.serverTimestamp()
+      });}).then(function(){close();}).catch(function(x){err.textContent=String(x&&x.message||x);err.classList.add('show');btn.disabled=false;});};
+    setTimeout(function(){d.querySelector('textarea').focus();},80);
+  }
   function loadCloudVisited() {
     if (!window.FH || !window.FH.user || !window.FH.user()) return;
     var u = window.FH.user();
@@ -158,6 +177,25 @@
     return m;
   }
 
+  function pixelGroups(list, zoom, radius) {
+    var pending = list.slice(), groups = [];
+    while (pending.length) {
+      var seed = pending.shift(), center = map.project([seed.la, seed.lo], zoom), group = [seed];
+      for (var i = pending.length - 1; i >= 0; i--) {
+        if (center.distanceTo(map.project([pending[i].la, pending[i].lo], zoom)) <= radius)
+          group.push(pending.splice(i, 1)[0]);
+      }
+      groups.push(group);
+    }
+    return groups;
+  }
+
+  function clusterIcon(count, visitedCluster) {
+    var size = count >= 30 ? 62 : (count >= 10 ? 54 : 46);
+    return L.divIcon({ className: 'mapcluster' + (visitedCluster ? ' visited' : ''),
+      html: '<b>' + count + '</b>', iconSize: [size, size], iconAnchor: [size / 2, size / 2] });
+  }
+
   var townLayer = L.layerGroup().addTo(map);
   TOWNS.forEach(function (p) {
     var m = L.circleMarker([p.la, p.lo], {
@@ -171,12 +209,32 @@
 
   function draw(list) {
     layer.clearLayers(); marks = {};
-    var on = {}; list.forEach(function (p) { on[p.s] = 1; });
-    PTS.forEach(function (p) {
-      var m = mk(p, !on[p.s]);
-      marks[p.s] = m; layer.addLayer(m);
+    var zoom = map.getZoom(), visible = list.slice();
+    if (zoom < 11) {
+      var radius = zoom <= 7 ? 92 : (zoom <= 8 ? 76 : (zoom <= 9 ? 60 : 46));
+      pixelGroups(visible, zoom, radius).forEach(function (group) {
+        if (group.length === 1 && zoom >= 10) {
+          var one = mk(group[0], false); marks[group[0].s] = one; layer.addLayer(one); return;
+        }
+        var la = 0, lo = 0;
+        group.forEach(function (p) { la += p.la; lo += p.lo; });
+        var allVisited = group.every(function (p) { return !!visited[p.s]; });
+        var cm = L.marker([la / group.length, lo / group.length], { icon: clusterIcon(group.length, allVisited) });
+        cm.bindTooltip(group.length + ' ' + (U.found || 'places'), { direction: 'top' });
+        cm.on('click', function () {
+          if (group.length === 1) return openGroup(group);
+          map.fitBounds(L.latLngBounds(group.map(function (p) { return [p.la, p.lo]; })).pad(.35),
+            { maxZoom: Math.min(11, zoom + 2) });
+        });
+        layer.addLayer(cm);
+      });
+      return;
+    }
+    visible.forEach(function (p) {
+      var m = mk(p, false); marks[p.s] = m; layer.addLayer(m);
     });
   }
+  map.on('zoomend', function () { draw(filtered()); });
 
   /* ── filtering & search ──────────────────────────────────────────── */
   var state = { q: '', type: '', region: '', visited: '', from: null, to: null };
@@ -631,10 +689,10 @@
     spatialGroups(list).forEach(function (group) {
       var la = 0, lo = 0; group.forEach(function (p) { la += p.la; lo += p.lo; });
       la /= group.length; lo /= group.length;
-      var label = group.length > 1 ? group.length : '•';
+      var label = group.length;
       var allVisited = group.every(function (p) { return !!visited[p.s]; });
       var marker = L.marker([la, lo], { icon: L.divIcon({ className: 'placecluster' + (group.length === 1 ? ' single' : '') + (allVisited ? ' visited' : ''),
-        html: '<b>' + label + '</b>', iconSize: [34, 34] }) }).addTo(sugLayer);
+        html: '<b>' + label + '</b>', iconSize: [48, 48], iconAnchor: [24, 24] }) }).addTo(sugLayer);
       marker.bindTooltip(group.length > 1 ? group.length + ' ' + (U.found || 'places') : group[0].n);
       // One marker and a cluster use the same selectable panel. Previously a single
       // place opened only the read-only details view, so it could not be removed.
@@ -896,13 +954,7 @@
     if (t.hasAttribute('data-visited')) { e.preventDefault(); e.stopPropagation(); toggleVisited(t.getAttribute('data-visited')); return; }
     if (t.hasAttribute('data-review')) {
       e.preventDefault(); e.stopPropagation();
-      var p = BY[t.getAttribute('data-review')], rating = parseInt(prompt(U.rating_prompt || 'Rating 1–5', '5'), 10);
-      if (!p || rating < 1 || rating > 5) return;
-      var text = prompt(U.review_prompt || 'Share your experience'); if (!text) return;
-      if (!window.FH || !window.FH.user || !window.FH.user()) { if (window.FH) window.FH.openDialog(); return; }
-      window.FH.firebase().then(function(a){ var u=window.FH.user(); return a.M.db.addDoc(a.M.db.collection(a.db,'reviews'),{
-        uid:u.uid, authorName:u.displayName||u.email, subject:p.n, placeSlug:p.s, rating:rating, text:text, created:a.M.db.serverTimestamp()
-      }); }).then(function(){ alert(U.review_saved || 'Review saved'); }).catch(function(){});
+      var p = BY[t.getAttribute('data-review')]; if (p) openReviewForm(p);
       return;
     }
     if (t.hasAttribute('data-pick')) {

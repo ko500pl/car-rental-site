@@ -1,10 +1,24 @@
+/* Fleet House PWA service worker. Network-first pages, cache-first local assets. */
 const CACHE = "fleet-house-v1";
-const CORE = ["/", "/fleet/", "/map/", "/account/", "/assets/app-icon.svg", "/assets/manifest.webmanifest"];
-self.addEventListener("install", event => event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(CORE)).then(() => self.skipWaiting())));
-self.addEventListener("activate", event => event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key !== CACHE).map(key => caches.delete(key)))).then(() => self.clients.claim())));
+const CORE = ["/", "/map/", "/fleet/", "/account/", "/assets/manifest.webmanifest", "/assets/app-icon.svg"];
+self.addEventListener("install", event => {
+  event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(CORE)).then(() => self.skipWaiting()));
+});
+self.addEventListener("activate", event => {
+  event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key !== CACHE).map(key => caches.delete(key))))
+    .then(() => self.clients.claim()));
+});
 self.addEventListener("fetch", event => {
-  if (event.request.method !== "GET" || new URL(event.request.url).origin !== location.origin) return;
-  event.respondWith(fetch(event.request).then(response => {
-    const copy = response.clone(); caches.open(CACHE).then(cache => cache.put(event.request, copy)); return response;
-  }).catch(() => caches.match(event.request).then(hit => hit || (event.request.mode === "navigate" ? caches.match("/") : undefined))));
+  const request = event.request;
+  if (request.method !== "GET" || new URL(request.url).origin !== self.location.origin) return;
+  if (request.mode === "navigate") {
+    event.respondWith(fetch(request).then(response => {
+      const copy = response.clone(); caches.open(CACHE).then(cache => cache.put(request, copy)); return response;
+    }).catch(() => caches.match(request).then(hit => hit || caches.match("/"))));
+    return;
+  }
+  event.respondWith(caches.match(request).then(hit => hit || fetch(request).then(response => {
+    if (response.ok) { const copy = response.clone(); caches.open(CACHE).then(cache => cache.put(request, copy)); }
+    return response;
+  })));
 });

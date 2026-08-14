@@ -1,0 +1,15 @@
+# Conservative curated tourism-corridor overrides. Values are planning estimates,
+# not live road guarantees. Both directions use the same entry.
+legs:
+  tsageri|ushguli: {km: 105, minutes: 255, difficulty: 4x4_only, seasonal: true}
+  mestia|ushguli: {km: 47, minutes: 150, difficulty: 4x4_only, seasonal: true}
+  gori-fortress-stalin-museum|ushguli: {km: 360, minutes: 510, difficulty: 4x4_only, seasonal: true}
+  tbilisi|ushguli: {km: 470, minutes: 600, difficulty: 4x4_only, seasonal: true}
+  kutaisi|ushguli: {km: 245, minutes: 390, difficulty: 4x4_only, seasonal: true}
+  tbilisi|mestia: {km: 465, minutes: 510, difficulty: mostly_paved, seasonal: false}
+  kutaisi|mestia: {km: 235, minutes: 330, difficulty: mostly_paved, seasonal: false}
+  tbilisi|stepantsminda: {km: 155, minutes: 210, difficulty: mostly_paved, seasonal: true}
+  tbilisi|telavi-batonis-tsikhe: {km: 95, minutes: 120, difficulty: paved, seasonal: false}
+  tbilisi|sighnaghi: {km: 110, minutes: 125, difficulty: paved, seasonal: false}
+  tbilisi|batumi-boulevard-old-town: {km: 375, minutes: 360, difficulty: paved, seasonal: false}
+  tbilisi|bagrati-cathedral: {km: 225, minutes: 225, difficulty: paved, seasonal: false}

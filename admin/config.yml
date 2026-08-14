@@ -295,6 +295,16 @@ collections:
       - {label: "ფასი 7–29 დღე, ₾", name: price_7_29, widget: number, value_type: int, min: 0}
       - {label: "ფასი 30+ დღე, ₾", name: price_30, widget: number, value_type: int, min: 0}
       - {label: "დეპოზიტი, ₾", name: deposit, widget: number, value_type: int, min: 0}
+      - {label: "ფრანშიზა / კლიენტის პასუხისმგებლობა, ₾", name: franchise, widget: number, value_type: int, min: 0, required: false}
+      - {label: "დაზღვევის პირობები", name: insurance, widget: text, required: false}
+      - {label: "დღიური გარბენის ლიმიტი, კმ", name: mileage_limit, widget: number, value_type: int, min: 0, required: false}
+      - {label: "მინიმალური გაქირავება, დღე", name: minimum_rental_days, widget: number, value_type: int, min: 1, default: 1, required: false}
+      - {label: "ამჟამად ხელმისაწვდომია", name: available, widget: boolean, default: true, required: false,
+         hint: "გამორთეთ დროებით დაკავებული ავტომობილისთვის; არქივში გადატანა საჭირო არ არის"}
+      - {label: "დამატებითი მძღოლი, ₾/დღე", name: additional_driver_price, widget: number, value_type: int, min: 0, required: false}
+      - {label: "ბავშვის სავარძელი, ₾/დღე", name: child_seat_price, widget: number, value_type: int, min: 0, required: false}
+      - {label: "აეროპორტში მიწოდება, ₾", name: airport_delivery_price, widget: number, value_type: int, min: 0, required: false}
+      - {label: "საზღვარგარეთ გაყვანის პირობები", name: cross_border, widget: text, required: false}
       - {label: "მოდელის სახელი", name: name, widget: string, i18n: true}
       - {label: "მოკლე აღწერა", name: summary, widget: string, i18n: true}
       - {label: "მახასიათებლები", name: features, widget: list, i18n: true,
@@ -550,6 +560,25 @@ collections:
           - {label: "რეალურ გზებზე მარშრუტი", name: routing_enabled, widget: boolean, default: true}
           - {label: "Traffic გამჭვირვალობა", name: traffic_opacity, widget: number, value_type: float, min: 0.1, max: 1, default: 0.82}
           - {label: "სარეზერვო მარშრუტი", name: fallback_provider, widget: select, options: [osrm, none], default: osrm}
+
+      - name: booking
+        label: "დაჯავშნა და გაგრძელების წესები"
+        file: content/settings/booking.yml
+        fields:
+          - {label: "დაჯავშნის მოთხოვნები ჩართულია", name: enabled, widget: boolean, default: true}
+          - {label: "გადახდა სავალდებულოა დადასტურებამდე", name: payment_required, widget: boolean, default: true}
+          - {label: "ვალუტა", name: currency, widget: select, options: [GEL], default: GEL}
+          - {label: "გაგრძელების შეთავაზება ჩართულია", name: extension_enabled, widget: boolean, default: true}
+          - {label: "რამდენი საათით ადრე გამოჩნდეს შეთავაზება", name: extension_offer_before_end_hours, widget: number, value_type: int, min: 1, max: 72, default: 24}
+          - {label: "დამატებითი დღეების მინიმუმი", name: extension_min_days, widget: number, value_type: int, min: 0, max: 30, default: 1}
+          - {label: "დამატებითი დღეების მაქსიმუმი", name: extension_max_days, widget: number, value_type: int, min: 0, max: 30, default: 2}
+          - label: "ფასდაკლების წესები"
+            name: extension_rules
+            widget: list
+            min: 1
+            fields:
+              - {label: "დამატებითი დღეები", name: extra_days, widget: number, value_type: int, min: 1, max: 30}
+              - {label: "ფასდაკლება, %", name: discount_percent, widget: number, value_type: int, min: 0, max: 100}
 
       - name: categories
         label: "ავტომობილების კატეგორიები"

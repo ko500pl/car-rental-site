@@ -1,1 +1,16 @@
-<!doctype html><html lang="ka"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>გენერატორი და HTML არქიტექტურა</title><style>body{font:16px/1.65 system-ui;max-width:920px;margin:40px auto;padding:0 22px;color:#172033}nav a{margin-right:14px}h1{line-height:1.15}section{border-top:1px solid #dce2ea;padding:18px 0}code{background:#eef2f6;padding:2px 5px}small{color:#64748b}.card{display:block;padding:14px;margin:10px 0;border:1px solid #dce2ea;border-radius:10px;text-decoration:none;color:inherit}.card:hover{background:#f7fafc}</style><nav><a href="index.html">← ყველა მოდული</a></nav><h1>გენერატორი და HTML არქიტექტურა</h1><small>ადმინისტრატორისა და ტექნიკური გუნდის დოკუმენტაცია</small><section><h2>გადაწყვეტილება</h2><p>საჯარო dist უკვე სწორადაა დაყოფილი ცალკე HTML გვერდებად. უნდა დაიშალოს შიდა build.py: sitegen/context, content, validation, urls, i18n, seo, schema, components და renderers.</p></section><section><h2>შაბლონები</h2><p>templates/pages-ში თითო გვერდის ტიპს ექნება საკუთარი HTML: fleet, car, pricing, planner, map, region, attraction, route, blog და სხვა. საერთო header/footer/base ნაწილები partial-ებად რჩება.</p></section><section><h2>მიგრაცია</h2><p>ეტაპობრივი ჩანაცვლება: ჯერ URL/კონტენტი/ვალიდაცია, შემდეგ shell და SEO, მერე მარტივი გვერდები, ავტოპარკი, მოგზაურობის მოდულები და ბოლოს sitemap/llms. ყოველ ეტაპზე ძველი და ახალი შედეგები შედარდება.</p></section>
+<!doctype html><html lang="ka"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>08 build architecture</title><style>body{font:15px/1.65 system-ui;max-width:940px;margin:36px auto;padding:0 22px;color:#172033}a{color:#087ea4}h1,h2{line-height:1.2}h1{font-size:30px}h2{margin-top:30px;border-top:1px solid #dce2ea;padding-top:18px}code{background:#eef2f6;padding:2px 5px;border-radius:4px}li{margin:5px 0}.back{display:inline-block;margin-bottom:18px}.meta{color:#64748b;font-size:13px}</style></head><body><a class="back" href="00-DOCUMENTATION-INDEX.html">← დოკუმენტაციის ინდექსი</a><div class="meta">ლოკალური დოკუმენტაცია · 2026-08-14</div><h1>არქიტექტურა და build</h1>
+<h2>მიზანი</h2>
+<p>საიტი რჩება static-first სისტემად: YAML კონტენტი → Python გენერატორი → ცალკეული HTML გვერდები → ჰოსტინგი. React/Next.js ან მუდმივი ბიზნეს-ბაზა საჭირო არ არის.</p>
+<h2>ძირითადი ნაწილები</h2>
+<ul>
+<li><code>content/</code> — ადმინისტრატორის მონაცემები;</li>
+<li><code>admin/config.yml</code> — Decap CMS ფორმები;</li>
+<li><code>build.py</code> — HTML, sitemap, JSON-LD და მონაცემთა პაკეტები;</li>
+<li><code>static/</code> — Leaflet, ანგარიშები, მოთხოვნის ფორმები და დიზაინის რესურსები;</li>
+<li><code>sitegen/validation.py</code> — გამოქვეყნებამდე ვალიდაცია;</li>
+<li><code>tests/</code> — რეგრესიის ტესტები.</li>
+</ul>
+<h2>ბრძანებები</h2>
+<p><code>python build.py --validate-only</code> ამოწმებს მონაცემებს. <code>python build.py dist --strict</code> არის production gate და placeholder მონაცემებზე exit code 2-ით ჩერდება.</p>
+<h2>უცვლელი პრინციპები</h2>
+<p>საჯარო URL-ები, ექვსი ენა, RTL, canonical/hreflang და სტატიკური SEO გვერდები შენარჩუნებულია. Firebase არასავალდებულოა და არ გამოიყენება გაქირავების მოთხოვნისთვის.</p></body></html>

@@ -7,6 +7,7 @@
 import glob, html, json, os, re, shutil, sys
 from datetime import date, datetime
 from decimal import Decimal, ROUND_HALF_UP
+from pathlib import Path
 
 import yaml
 import markdown as md
@@ -29,6 +30,15 @@ LANG_FONT = {"fa": "Vazirmatn:wght@400;500;600;700",
 LANG_FONT_STACK = {"fa": '"Vazirmatn","Noto Sans Arabic",',
                    "he": '"Noto Sans Hebrew","Noto Sans",',
                    "ar": '"Noto Kufi Arabic","Noto Sans Arabic",'}
+
+BOOKING_TEXT = {
+    "ka": {"start": "დაწყება", "end": "დასრულება", "drivers": "მძღოლები", "book": "დაჯავშნის მოთხოვნა"},
+    "en": {"start": "Start", "end": "End", "drivers": "Drivers", "book": "Request booking"},
+    "ru": {"start": "Начало", "end": "Окончание", "drivers": "Водители", "book": "Запросить бронирование"},
+    "fa": {"start": "شروع", "end": "پایان", "drivers": "رانندگان", "book": "درخواست رزرو"},
+    "he": {"start": "התחלה", "end": "סיום", "drivers": "נהגים", "book": "בקשת הזמנה"},
+    "ar": {"start": "البداية", "end": "النهاية", "drivers": "السائقون", "book": "طلب الحجز"},
+}
 
 NAV_HIDDEN = {"account", "planner"}
 PAGE_ORDER = ["index", "fleet", "map", "planner", "terms", "faq", "blog",
@@ -54,6 +64,7 @@ META = load("content/settings/meta.yml")
 SPECS = load("content/settings/specs.yml")
 PLANNER_LANGS = set(load("content/settings/planner.yml"))
 MAPS = load("content/settings/maps.yml") if os.path.exists("content/settings/maps.yml") else {}
+BOOKING = load("content/settings/booking.yml") if os.path.exists("content/settings/booking.yml") else {}
 HOME_HERO = load("content/settings/home_hero.yml")
 CATS = load("content/settings/categories.yml")["categories"]
 
@@ -108,6 +119,17 @@ def gel_to_usd(gel):
         raise ValueError("site.yml: usd_rate and usd_rounding must be positive")
     units = (Decimal(str(gel)) / rate / step).quantize(Decimal("1"), rounding=ROUND_HALF_UP)
     return int(units * step)
+
+
+def rental_daily_rate(car, days):
+    """Return the admin-managed GEL daily rate for the rental length."""
+    days = max(1, int(days))
+    key = "price_30" if days >= 30 else ("price_7_29" if days >= 7 else "price_1_6")
+    return Decimal(str(car[key]))
+
+
+def rental_total(car, days):
+    return rental_daily_rate(car, days) * max(1, int(days))
 
 
 def money(gel):
@@ -396,7 +418,8 @@ def car_node(slug, c, lang):
                             "unitCode": "LTR", "name": "l/100km"},
         "vehicleConfiguration": cat_label(c["category"], lang),
         "offers": {"@type": "Offer", "priceCurrency": "GEL",
-                   "price": c["price_1_6"], "availability": "https://schema.org/InStock",
+                   "price": c["price_1_6"], "availability": ("https://schema.org/InStock"
+                       if c.get("available", True) else "https://schema.org/OutOfStock"),
                    "priceSpecification": {
                        "@type": "UnitPriceSpecification", "price": c["price_1_6"],
                        "priceCurrency": "GEL", "unitCode": "DAY",
@@ -521,7 +544,8 @@ def header_html(lang, current):
         for l in LANGS)
     logo_img = DESIGN.get("logo_image")
     mark = DESIGN.get("logo_mark") or "".join(w[0] for w in BRAND.split()[:2]).upper()
-    logo = (f'<img src="{E(logo_img)}" alt="{E(BRAND)}">' if logo_img
+    logo = (f'<img src="{E(logo_img)}" alt="" aria-hidden="true">'
+            f'<span class="logo-name">{E(BRAND)} <small>{E(u["ui"]["logo_sub"])}</small></span>' if logo_img
             else f'<span class="mark" aria-hidden="true">{E(mark)}</span>'
                  f'{E(BRAND)} <small>{E(u["ui"]["logo_sub"])}</small>')
     return f"""<header class="site-head"><div class="head-in">
@@ -574,6 +598,9 @@ def shell(lang, current, head, body, depth, tail=""):
                                             "storageBucket", "messagingSenderId", "appId")}
         cfg["accountUrl"] = page_url(lang, "account", False)
         cfg["plannerUrl"] = page_url(lang, "map", False) + "#planner"
+        cfg["booking"] = BOOKING
+        cfg["whatsapp"] = str(SITE.get("whatsapp") or SITE.get("mobile_e164", "")).replace("+", "").replace(" ", "")
+        cfg["siteUrl"] = SITE_URL
         cfg["t"] = {k: u["ui"][k] for k in (
             "account", "sign_in", "sign_up", "sign_out", "with_google", "or_email", "email",
             "password", "forgot", "reset_sent", "why_account", "legal_note", "please_sign_in",
@@ -581,12 +608,28 @@ def shell(lang, current, head, body, depth, tail=""):
             "delete", "confirm_del", "days", "stops", "save_trip", "saved") if k in u["ui"]}
         fb = (f'\n<script>window.FH_CFG={J(cfg)};</script>'
               f'\n<script type="module" src="{ASSET.get("auth", "/assets/auth.js")}"></script>'
+              f'\n<script type="module" src="{ASSET.get("booking", "/assets/booking.js")}"></script>'
               f'\n<script type="module" src="{ASSET.get("community", "/assets/community.js")}"></script>'
               f'\n<script defer src="{ASSET.get("app", "/assets/app.js")}"></script>')
+    inquiry = inquiry_widget(lang, current) if current in ("index", "fleet", "map", "planner") else ""
     return (f'<!DOCTYPE html>\n<html lang="{lang}" dir="{LANG_DIR[lang]}">\n<head>\n{head}\n'
             f'{style}</head>\n<body class="page-{E(current)}">\n'
             f'<a class="skip" href="#main">{E(u["ui"]["skip"])}</a>\n'
-            f'{header_html(lang, current)}\n{body}\n{footer_html(lang)}\n{tail}{fb}\n</body>\n</html>\n')
+            f'{header_html(lang, current)}\n{body}\n{inquiry}{footer_html(lang)}\n{tail}{fb}\n</body>\n</html>\n')
+
+
+def inquiry_widget(lang, context=""):
+    tx = {
+        "ka": ("მანქანის მოთხოვნა", "საიდან", "როდის", "დაბრუნება", "სახელი", "ტელეფონი / WhatsApp", "შენიშვნა", "WhatsApp", "მოთხოვნის გაგზავნა"),
+        "en": ("Request a car", "Pickup", "Start date", "Return date", "Name", "Phone / WhatsApp", "Notes", "WhatsApp", "Send request"),
+        "ru": ("Запрос автомобиля", "Место получения", "Дата начала", "Дата возврата", "Имя", "Телефон / WhatsApp", "Комментарий", "WhatsApp", "Отправить запрос"),
+        "fa": ("درخواست خودرو", "محل تحویل", "تاریخ شروع", "تاریخ بازگشت", "نام", "تلفن / واتس‌اپ", "یادداشت", "واتس‌اپ", "ارسال درخواست"),
+        "he": ("בקשת רכב", "איסוף", "תאריך התחלה", "תאריך החזרה", "שם", "טלפון / WhatsApp", "הערות", "WhatsApp", "שליחת בקשה"),
+        "ar": ("طلب سيارة", "مكان الاستلام", "تاريخ البدء", "تاريخ الإرجاع", "الاسم", "الهاتف / واتساب", "ملاحظات", "واتساب", "إرسال الطلب")
+    }[lang]
+    return f'''<section class="sec inquiry-section"><div class="wrap"><form class="inquiry-mini" data-inquiry name="rental-inquiry" method="POST" data-netlify="true" netlify-honeypot="company" data-lang="{lang}">
+<input type="hidden" name="form-name" value="rental-inquiry"><input type="hidden" name="context" value="{E(context)}"><input type="hidden" name="page_url" value=""><p class="hp"><label>Company<input name="company"></label></p>
+<h2>{E(tx[0])}</h2><div class="inquiry-grid"><label>{E(tx[1])}<input name="pickup" required autocomplete="street-address"></label><label>{E(tx[2])}<input name="start" type="date" required></label><label>{E(tx[3])}<input name="end" type="date" required></label><label>{E(tx[4])}<input name="name" required autocomplete="name"></label><label>{E(tx[5])}<input name="phone" required autocomplete="tel"></label><label>{E(tx[6])}<input name="notes"></label></div><div class="inquiry-actions"><button class="btn wa" type="button" data-inquiry-wa>{E(tx[7])}</button><button class="btn" type="submit">{E(tx[8])}</button></div><p class="inquiry-status" role="status"></p></form></div></section>'''
 
 
 # ══════════════════════════════════════════════════════════════ page renders
@@ -615,6 +658,16 @@ def community_block(lang):
 
 def render_static_page(lang, page):
     p = {k: counts_sub(v) for k, v in PAGES[page][lang].items()}
+    if page == "contact":
+        contact_leads = {
+            "ka": "მოგვწერეთ ან დაგვირეკეთ ავტომობილის მოთხოვნისთვის. მიუთითეთ თარიღები, აღების ადგილი და სასურველი ავტომობილი.",
+            "en": "Send a rental request or contact us by phone or WhatsApp. Include your dates, pickup point and preferred vehicle.",
+            "ru": "Отправьте запрос на аренду или свяжитесь с нами по телефону или WhatsApp. Укажите даты, место получения и автомобиль.",
+            "fa": "درخواست اجاره ارسال کنید یا از طریق تلفن و واتس‌اپ تماس بگیرید. تاریخ، محل تحویل و خودروی موردنظر را ذکر کنید.",
+            "he": "שלחו בקשת השכרה או צרו קשר בטלפון או ב-WhatsApp. ציינו תאריכים, מקום איסוף ורכב מועדף.",
+            "ar": "أرسل طلب تأجير أو تواصل معنا عبر الهاتف أو واتساب، مع ذكر التواريخ ومكان الاستلام والسيارة المفضلة."
+        }
+        p["lead"] = contact_leads[lang]
     u = UI[lang]
     depth = 0 if page == "index" else 1
     if lang != "ka":
@@ -647,8 +700,24 @@ def render_static_page(lang, page):
         body.append(community_block(lang))
     if page == "contact":
         uu = u["ui"]
+        contact_tx = {
+            "ka": ("დაგვიკავშირდით", "ტელეფონი", "მობილური / WhatsApp", "ელფოსტა", "მისამართი", "სამუშაო საათები", "ჯავშნის მოთხოვნისთვის მოგვწერეთ თარიღები, აღების ადგილი და სასურველი ავტომობილი."),
+            "en": ("Contact us", "Phone", "Mobile / WhatsApp", "Email", "Address", "Working hours", "For a rental request, send us your dates, pickup point and preferred vehicle."),
+            "ru": ("Свяжитесь с нами", "Телефон", "Мобильный / WhatsApp", "Эл. почта", "Адрес", "Часы работы", "Для запроса аренды укажите даты, место получения и желаемый автомобиль."),
+            "fa": ("تماس با ما", "تلفن", "موبایل / واتس‌اپ", "ایمیل", "نشانی", "ساعات کاری", "برای درخواست اجاره، تاریخ‌ها، محل تحویل و خودروی موردنظر را ارسال کنید."),
+            "he": ("צרו קשר", "טלפון", "נייד / WhatsApp", "דוא״ל", "כתובת", "שעות פעילות", "לבקשת השכרה שלחו תאריכים, מקום איסוף ורכב מועדף."),
+            "ar": ("اتصل بنا", "الهاتف", "الجوال / واتساب", "البريد الإلكتروني", "العنوان", "ساعات العمل", "لطلب التأجير أرسل التواريخ ومكان الاستلام والسيارة المفضلة.")
+        }[lang]
+        addr = SITE["address"][lang]
         body.append(
-            f'<section class="sec"><div class="wrap"><h2>{E(uu["f_title"])}</h2>'
+            f'<section class="sec"><div class="wrap"><h2>{E(contact_tx[0])}</h2>'
+            f'<dl class="facts contact-facts">'
+            f'<div><dt class="k">{E(contact_tx[1])}</dt><dd class="v"><a dir="ltr" href="tel:{E(SITE["phone_e164"])}">{E(SITE["phone"])}</a></dd></div>'
+            f'<div><dt class="k">{E(contact_tx[2])}</dt><dd class="v"><a dir="ltr" href="tel:{E(SITE["mobile_e164"])}">{E(SITE["mobile"])}</a></dd></div>'
+            f'<div><dt class="k">{E(contact_tx[3])}</dt><dd class="v"><a href="mailto:{E(SITE["email"])}">{E(SITE["email"])}</a></dd></div>'
+            f'<div><dt class="k">{E(contact_tx[4])}</dt><dd class="v">{E(addr["street"])}, {E(addr["city"])} {E(SITE["address_zip"])}</dd></div>'
+            f'<div><dt class="k">{E(contact_tx[5])}</dt><dd class="v">{E(SITE["opens"])}–{E(SITE["closes"])}</dd></div></dl>'
+            f'<p>{E(contact_tx[6])}</p><h2>{E(uu["f_title"])}</h2>'
             f'<form class="cform" name="contact" method="POST" data-netlify="true" '
             f'netlify-honeypot="bot-field" action="?sent=1">'
             f'<input type="hidden" name="form-name" value="contact">'
@@ -672,7 +741,7 @@ def render_static_page(lang, page):
         cur.append(b)
     if cur:
         sections.append(cur)
-    for i, s in enumerate(sections):
+    for i, s in enumerate([] if page == "contact" else sections):
         inner = "\n".join(render_block(b, lang) for b in s)
         body.append(f'<section class="sec{" alt" if i % 2 else ""}">'
                     f'<div class="wrap">{inner}</div></section>')
@@ -728,8 +797,9 @@ def render_car(lang, slug, c):
     desc = re.sub(r"\s+", " ", desc)[:178]
 
     img = c.get("image")
+    gal_items = [g.get("image") if isinstance(g, dict) else g for g in (c.get("gallery") or [])]
     gal = "".join(f'<img src="{E(g)}" alt="{E(L["name"])}" loading="lazy">'
-                  for g in (c.get("gallery") or []))
+                  for g in gal_items if g)
     main_img = (f'<img src="{E(img)}" alt="{E(L["name"])} — {E(cat_label(c["category"], lang))}" '
                 f'width="960" height="600">' if img else f'<div class="ph">{E(L["name"])}</div>')
 
@@ -771,7 +841,17 @@ def render_car(lang, slug, c):
 </div></div>
 <div class="article">{body_html}</div>
 <div class="cta"><h2>{E(u['ui']['book_title'])}</h2><p>{inline(u['ui']['book_text'], lang)}</p>
-<div class="row"><a class="btn" href="{page_url(lang,'contact',False)}">{E(u['nav']['contact'])}</a>
+<form class="booking-box" data-booking name="rental-inquiry" method="POST" data-netlify="true" netlify-honeypot="company" data-car="{E(slug)}" data-car-name="{E(L['name'])}"
+ data-price-1-6="{E(c['price_1_6'])}" data-price-7-29="{E(c['price_7_29'])}" data-price-30="{E(c['price_30'])}"
+ data-deposit="{E(c['deposit'])}" data-lang="{lang}" data-usd-rate="{E(SITE.get('usd_rate', 2.6))}" data-usd-rounding="{E(SITE.get('usd_rounding', 10))}">
+<input type="hidden" name="form-name" value="rental-inquiry"><input type="hidden" name="requested_car" value="{E(L['name'])}"><input type="hidden" name="page_url" value="{E(car_url(lang,slug))}"><p hidden><label>Company<input name="company"></label></p>
+<div class="booking-grid"><label>{E(BOOKING_TEXT[lang]['start'])}<input type="date" name="start" required></label>
+<label>{E(BOOKING_TEXT[lang]['end'])}<input type="date" name="end" required></label>
+<label>{E(BOOKING_TEXT[lang]['drivers'])}<input type="number" name="travellers" min="1" max="20" value="1"></label>
+<label>Pickup<input name="pickup" required></label><label>Return<input name="return_location"></label><label>Name<input name="traveller_name" required></label>
+<label>Phone / WhatsApp<input name="phone" inputmode="tel" required></label><label>Email<input name="email" type="email"></label><label>Notes<input name="notes"></label></div>
+<div class="booking-summary" aria-live="polite"></div><div class="row"><button class="btn wa" type="button" data-wa>WhatsApp</button><button class="btn" type="submit">{E(BOOKING_TEXT[lang]['book'])}</button></div></form>
+<div class="row"><a class="btn ghost" href="{page_url(lang,'contact',False)}">{E(u['nav']['contact'])}</a>
 <a class="btn ghost" href="{page_url(lang,'fleet',False)}">{E(u['nav']['fleet'])}</a></div></div>
 </div></section>"""
 
@@ -880,6 +960,7 @@ def render_post(lang, slug, post):
 # ══════════════════════════════════════════════════════════════ travel pages
 TRAVEL = load("content/settings/travel.yml")
 PLACES = load("content/settings/places.yml")["places"]
+ROAD_LEGS = (load("content/settings/road_legs.yml") if os.path.exists("content/settings/road_legs.yml") else {"legs": {}}).get("legs", {})
 AUTH = load("content/settings/auth.yml") if os.path.exists("content/settings/auth.yml") else {}
 HOTELS = (load("content/settings/hotels.yml") if os.path.exists("content/settings/hotels.yml") else {"towns": {}})["towns"]
 SLOW_TOWNS = {"stepantsminda", "mestia-town", "khulo", "oni", "bakuriani",
@@ -944,7 +1025,7 @@ def gallery_html(a, lang):
     return f'<div class="gallery"><h2 class="vh">{E(te(lang, "gallery"))}</h2>{figs}</div>'
 
 
-def photo_html(a, lang, cls="photo"):
+def photo_html(a, lang, cls="photo", hero=False):
     """სურათი + ავტორის მითითება — ლიცენზიის მოთხოვნაა."""
     img = a.get("image")
     if not img:
@@ -960,8 +1041,10 @@ def photo_html(a, lang, cls="photo"):
     if lic:
         bits.append(f'<a href="{E(lurl)}" rel="license nofollow noopener" target="_blank">{E(lic)}</a>'
                     if lurl else E(lic))
-    return (f'<figure class="{cls}"><img src="{E(img)}" alt="{E(a[lang]["name"])}" '
-            f'loading="lazy" decoding="async">'
+    priority = ('loading="eager" fetchpriority="high" decoding="async" width="1100" height="688"'
+                if hero else 'loading="lazy" decoding="async" width="1100" height="688"')
+    return (f'<figure class="{cls}"><img src="{E(img)}" alt="{E(a[lang]["name"])}" {priority} '
+            f'sizes="(max-width: 760px) 100vw, 1100px">'
             f'<figcaption>{cap}{" · ".join(bits)}</figcaption></figure>')
 
 
@@ -1406,7 +1489,7 @@ def render_attraction(lang, slug, a):
         f'{stars_html(a.get("rating"), lang)}</div>'
         f'<h1>{E(L["name"])}</h1>'
         f'<p class="lead">{E(L["short"])}</p></div></section>'
-        f'<section class="sec"><div class="wrap">{photo_html(a, lang, "photo hero-photo")}'
+        f'<section class="sec"><div class="wrap">{photo_html(a, lang, "photo hero-photo", True)}'
         f'{attr_facts(a, lang)}'
         f'<div class="attr-grid"><div class="article">{render_md(L["body"], lang)}'
         f'{gallery_html(a, lang)}</div>'
@@ -1547,27 +1630,6 @@ def road_model(a):
     return round(f, 3), round(v, 1)
 
 
-# ღამის გასათევის ქალაქები — მოკლე სახელი (ობიექტის სრული სახელი გრძელია)
-CITY_NAME = {
-    "bagrati-cathedral":          {"ka": "ქუთაისი", "en": "Kutaisi", "ru": "Кутаиси",
-                                   "fa": "کوتایسی", "he": "קוטאיסי", "ar": "كوتايسي"},
-    "batumi-boulevard-old-town":  {"ka": "ბათუმი", "en": "Batumi", "ru": "Батуми",
-                                   "fa": "باتومی", "he": "בטומי", "ar": "باتومي"},
-    "gori-fortress-stalin-museum":{"ka": "გორი", "en": "Gori", "ru": "Гори",
-                                   "fa": "گوری", "he": "גורי", "ar": "غوري"},
-    "mestia":                     {"ka": "მესტია", "en": "Mestia", "ru": "Местиа",
-                                   "fa": "مستیا", "he": "מסטיה", "ar": "ميستيا"},
-    "sighnaghi":                  {"ka": "სიღნაღი", "en": "Sighnaghi", "ru": "Сигнахи",
-                                   "fa": "سیغناغی", "he": "סיגנאגי", "ar": "سيغناغي"},
-    "telavi-batonis-tsikhe":      {"ka": "თელავი", "en": "Telavi", "ru": "Телави",
-                                   "fa": "تلاوی", "he": "טלאווי", "ar": "تيلافي"},
-    "tsageri":                    {"ka": "ცაგერი", "en": "Tsageri", "ru": "Цагери",
-                                   "fa": "تساگری", "he": "צאגרי", "ar": "تساغيري"},
-    "ushguli":                    {"ka": "უშგული", "en": "Ushguli", "ru": "Ушгули",
-                                   "fa": "اوشگولی", "he": "אושגולי", "ar": "أوشغولي"},
-}
-
-
 # ავტომობილის შერჩევის რიგი: რაც უფრო მაღალია, მით უფრო „უხეშ“ გზას უძლებს
 ROAD_RANK = {"paved": 0, "mostly_paved": 1, "gravel": 2, "4x4_only": 3}
 CAT_RANK = {"economy": 0, "business": 0, "minivan": 1, "van": 1, "suv": 2, "offroad": 3}
@@ -1577,6 +1639,8 @@ def fleet_for_planner(lang):
     """მანქანების მსუბუქი სია — დამგეგმავი აქედან ირჩევს."""
     out = []
     for s, c in CARS.items():
+        if not c.get("available", True):
+            continue
         out.append({
             "s": s, "n": c[lang]["name"], "cat": c["category"],
             "rank": CAT_RANK.get(c["category"], 1),
@@ -1625,18 +1689,18 @@ def planner_data(lang):
             "s": s, "n": a[lang]["name"], "sh": a[lang]["short"],
             "lat": a["lat"], "lon": a["lon"], "r": a["region"], "ty": a["type"],
             "h": float(a["visit_hours"]), "car": a["car_category"],
-            "season": a["best_season"], "f": f, "v": v,
+            "season": a["best_season"], "yearRound": bool(a.get("open_year_round", False)), "f": f, "v": v,
             "u": attr_url(lang, s, False), "fe": bool(a["featured"]), "un": bool(a["unesco"]),
-            "c": CITY_NAME.get(s, {}).get(lang, ""),
+            "c": "",
             "img": a.get("image") or "", "road": a["road"],
             "rd": ROAD_RANK_NUM.get(a["road"], 0), "el": a.get("elevation") or 0,
         })
     towns = [i for i in items if i["ty"] == "town"]
-    starts = [{"n": P["starts"][0], "lat": TB_LAT, "lon": TB_LON, "f": 1.4, "v": 55}]
+    starts = [{"s": "tbilisi", "n": P["starts"][0], "lat": TB_LAT, "lon": TB_LON, "f": 1.4, "v": 55}]
     for i, (la, lo) in enumerate(AIRPORTS):
-        starts.append({"n": P["starts"][i + 1], "lat": la, "lon": lo, "f": 1.4, "v": 60})
+        starts.append({"s": ("tbilisi-airport", "kutaisi-airport", "batumi-airport")[i], "n": P["starts"][i + 1], "lat": la, "lon": lo, "f": 1.4, "v": 60})
     for t in towns:
-        starts.append({"n": t["n"], "lat": t["lat"], "lon": t["lon"], "f": t["f"], "v": t["v"]})
+        starts.append({"s": t["s"], "n": t["n"], "lat": t["lat"], "lon": t["lon"], "f": t["f"], "v": t["v"]})
     return {
         "a": items,
         "regions": [{"k": k, "n": r[lang]["name"]} for k, r in REGIONS.items()],
@@ -1647,6 +1711,9 @@ def planner_data(lang):
         "standardTours": standard_tours,
         "tourUi": tour_ui,
         "hotels": HOTELS,
+        "towns": [{"k": p["key"], "n": p[lang], "lat": p["lat"], "lon": p["lon"]}
+                  for p in PLACES if p["kind"] == "city"],
+        "roadLegs": ROAD_LEGS,
         "htowns": [{"k": p["key"], "la": p["lat"], "lo": p["lon"]}
                    for p in PLACES if p["kind"] == "city"],
         "roads": {k: tl(lang, "road", k) for k in ("paved", "mostly_paved", "gravel", "4x4_only")},
@@ -1659,6 +1726,8 @@ def planner_data(lang):
             "trafficOpacity": float(MAPS.get("traffic_opacity", 0.82)),
             "fallback": MAPS.get("fallback_provider", "osrm"),
         },
+        "brand": {"site": SITE_URL, "phone": SITE["phone"],
+                  "slogan": "You Drive. We handle the rest."},
         "starts": starts,
         "t": P["ui"],
         "nav": {"contact": UI[lang]["nav"]["contact"], "fleet": UI[lang]["nav"]["fleet"]},
@@ -1801,10 +1870,19 @@ def render_planner(lang):
 
 
 # ══════════════════════════════════════════════════════════════ sitemap etc.
+def source_lastmod(path):
+    """Stable sitemap date derived from the content source, not build time."""
+    try:
+        return date.fromtimestamp(Path(path).stat().st_mtime).isoformat()
+    except (OSError, ValueError):
+        return TODAY
+
+
 def sitemap():
     urls = []
 
-    def add(loc_fn, prio, langs=LANGS):
+    def add(loc_fn, prio, langs=LANGS, source=None):
+        lastmod = source_lastmod(source) if source else source_lastmod("build.py")
         for lang in langs:
             alts = "".join(
                 f'\n    <xhtml:link rel="alternate" hreflang="{l}" href="{loc_fn(l)}"/>'
@@ -1813,7 +1891,7 @@ def sitemap():
                      f'href="{loc_fn("en")}"/>')
             urls.append(f"""  <url>
     <loc>{loc_fn(lang)}</loc>
-    <lastmod>{TODAY}</lastmod>
+    <lastmod>{lastmod}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>{prio}</priority>{alts}
   </url>""")
@@ -1825,17 +1903,18 @@ def sitemap():
             continue
         add(lambda l, p=page: page_url(l, p),
             "1.0" if page == "index" else
-            ("0.9" if page in ("fleet", "pricing", "software", "blog") else "0.7"))
+            ("0.9" if page in ("fleet", "pricing", "software", "blog") else "0.7"),
+            source=Path("content/pages") / f"{page}.yml")
     for slug in CARS:
-        add(lambda l, s=slug: car_url(l, s), "0.8")
+        add(lambda l, s=slug: car_url(l, s), "0.8", source=Path("content/cars") / f"{slug}.yml")
     for slug in POSTS:
-        add(lambda l, s=slug: post_url(l, s), "0.6")
+        add(lambda l, s=slug: post_url(l, s), "0.6", source=Path("content/posts") / f"{slug}.yml")
     for key in REGIONS:
-        add(lambda l, k=key: region_url(l, k), "0.8")
+        add(lambda l, k=key: region_url(l, k), "0.8", source=Path("content/regions") / f"{key}.yml")
     for slug in ATTRACTIONS:
-        add(lambda l, s=slug: attr_url(l, s), "0.7")
+        add(lambda l, s=slug: attr_url(l, s), "0.7", source=Path("content/attractions") / f"{slug}.yml")
     for slug in ROUTES:
-        add(lambda l, s=slug: route_url(l, s), "0.8")
+        add(lambda l, s=slug: route_url(l, s), "0.8", source=Path("content/routes") / f"{slug}.yml")
     return ('<?xml version="1.0" encoding="UTF-8"?>\n'
             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n'
             '        xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
@@ -2000,6 +2079,19 @@ def write(path, data):
         f.write(data)
 
 
+def render_booking_admin():
+    cfg = {k: AUTH.get(k, "") for k in ("apiKey", "authDomain", "projectId",
+                                         "storageBucket", "messagingSenderId", "appId")}
+    return f'''<!doctype html><html lang="ka"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>ჯავშნების მართვა — Fleet House</title>
+<link rel="stylesheet" href="{ASSET["css"]}"><style>
+body{{background:#07101a;color:#edf6fc}}#booking-admin{{width:min(1100px,94%);margin:30px auto}}.admin-head{{display:flex;justify-content:space-between;align-items:center}}
+.admin-filters{{display:flex;gap:10px;margin:20px 0}}.admin-booking{{display:grid;grid-template-columns:minmax(250px,1fr) 170px 170px auto;gap:12px;align-items:end;padding:15px;margin:8px 0;border:1px solid #26384a;border-radius:14px;background:#0d1824}}
+.admin-booking>div,.admin-booking label{{display:grid;gap:5px}}.admin-booking span,.admin-booking label{{font-size:13px;color:#9db0c2}}.admin-note{{padding:20px;border:1px solid #26384a;border-radius:12px}}.admin-note.error{{border-color:#ef4444;color:#fecaca}}
+@media(max-width:760px){{.admin-booking{{grid-template-columns:1fr}}}}</style></head><body>
+<main id="booking-admin"></main><script>window.FH_ADMIN_CFG={J(cfg)};</script><script type="module" src="{ASSET["admin_bookings"]}"></script></body></html>'''
+
+
 def main():
     args = [x for x in sys.argv[1:] if not x.startswith("--")]
     out = args[0] if args else "dist"
@@ -2028,11 +2120,12 @@ def main():
             shutil.copytree(sdir, dst, dirs_exist_ok=True)
 
     write_hashed(out, "style.css", build_css(DESIGN), "css")
-    for fn, key in (("explorer.js", "explorer"), ("planner.js", "planner"), ("auth.js", "auth"),
-                    ("community.js", "community"), ("app.js", "app")):
+    for fn, key in (("explorer.js", "explorer"), ("planner.js", "planner"), ("auth.js", "auth"), ("booking.js", "booking"),
+                    ("community.js", "community"), ("admin-bookings.js", "admin_bookings"), ("app.js", "app")):
         p = os.path.join("static", fn)
         if os.path.exists(p):
             write_hashed(out, fn, open(p, encoding="utf-8").read(), key)
+    write(os.path.join(out, "admin", "bookings.html"), render_booking_admin())
     up = os.path.join("static", "uploads")
     if os.path.isdir(up):
         shutil.copytree(up, os.path.join(out, "uploads"), dirs_exist_ok=True)

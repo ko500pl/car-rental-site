@@ -3,6 +3,8 @@
 (function () {
   "use strict";
   var D = window.PLANNER_DATA, T = D.t, EL = function (id) { return document.getElementById(id); };
+  window.FH_BRAND_LOGO = window.FH_BRAND_LOGO || new Image();
+  if (!window.FH_BRAND_LOGO.src) window.FH_BRAND_LOGO.src = "/assets/sl-logo.png";
   var map, layers = [], DAY_COLORS = ["#0f4c81", "#c8963e", "#1d7a53", "#8e6bb5", "#b5563f",
                                       "#2b8a9e", "#8f2f52", "#4a76b5", "#3f8f5f", "#a0703c"];
 
@@ -20,7 +22,10 @@
      · მთის წერტილები (>1200 მ) — პესიმისტური სიჩქარე, მაქს. 45 კმ/სთ (კლასი c)
      · gravel / 4x4 გზები — ბოლო მონაკვეთი ნელი ფაზით (24 / 18 კმ/სთ, კლასი d/e) */
   var RD_SLOW = { 2: { len: 30, v: 24 }, 3: { len: 45, v: 18 } };
+  function legKey(a, b) { var x=a.s||"",y=b.s||""; return x<y?x+"|"+y:y+"|"+x; }
   function leg(a, b) {
+    var curated=(D.roadLegs||{})[legKey(a,b)];
+    if(curated) return {km:+curated.km,min:+curated.minutes,difficulty:curated.difficulty||"paved",seasonal:!!curated.seasonal,curated:true};
     var d = hav(a, b);
     var f = ((a.f || 1.4) + (b.f || 1.4)) / 2;
     var va = a.v || 55, vb = b.v || 55;
@@ -38,7 +43,7 @@
       if (km < 12) v = Math.min(v, 32);          // ქალაქში ნელა
       min = km / v * 60;
     }
-    return { km: km, min: min };
+    return { km: km, min: min, difficulty:Object.keys(ROAD_RANK).find(function(k){return ROAD_RANK[k]===rank;})||"paved", seasonal:mtn||rank>=2 };
   }
   function fmtH(m) {
     m = Math.round(m);
@@ -71,8 +76,9 @@
   var curStyle = "classic";
 
   // ─── ფილტრაცია ──────────────────────────────────────────────────────────
-  var CAR_RANK = { economy: 0, suv: 1, offroad: 2 };
+  var CAR_RANK = { economy: 0, suv: 2, offroad: 3 };
   function seasonOK(a, month) {
+    if (a.yearRound) return true;
     if (a.season === "all") return true;
     if (a.season === "may-october") return month >= 5 && month <= 10;
     if (a.season === "june-september") return month >= 6 && month <= 9;
@@ -96,7 +102,8 @@
       if (selected.length && selected.indexOf(a.s) < 0) return false;
       if (regions.length && regions.indexOf(a.r) < 0) return false;
       if (types.length && types.indexOf(a.ty) < 0) return false;
-      if (mode === "pick" && CAR_RANK[a.car] > carCap) return false;
+      var winter=month===12||month<=3,required=Math.max(CAR_RANK[a.car]||0,a.rd||0,(winter&&((a.el||0)>1200||a.rd>=1))?2:0);
+      if (mode === "pick" && required > carCap) return false;
       if (ROAD_RANK[a.road] > st.maxRoad) return false;
       if (st.maxVisit && a.h > st.maxVisit) return false;
       if (!seasonOK(a, month)) return false;
@@ -269,12 +276,13 @@
   function render(res, start, pool) {
     var box = EL("result");
     if (!res.days.length) { box.innerHTML = '<div class="note">' + T.no_results + "</div>"; drawMap([], start); return; }
-    var totKm = 0, totDrive = 0, totVisit = 0, stops = 0, maxCar = "economy";
+    var totKm = 0, totDrive = 0, totVisit = 0, stops = 0, maxRank = 0;
+    var month=parseInt(EL("month").value,10),winter=month===12||month<=3;
     var wxDays = [];
     res.days.forEach(function (d) {
       totKm += d.km; totDrive += d.drive; totVisit += d.visit; stops += d.items.length;
       d.items.forEach(function (it) {
-        if (CAR_RANK[it.a.car] > CAR_RANK[maxCar]) maxCar = it.a.car;
+        maxRank=Math.max(maxRank,CAR_RANK[it.a.car]||0,it.a.rd||0,(winter&&((it.a.el||0)>1200||it.a.rd>=1))?2:0);
       });
     });
 
@@ -282,7 +290,7 @@
       f(T.day, res.days.length) + f(T.stops, stops) +
       f(T.distance, Math.round(totKm) + " " + T.km) +
       f(T.driving_time, fmtH(totDrive)) + f(T.visiting_time, fmtH(totVisit)) +
-      f(T.need_car, D.car[maxCar]) + "</dl>";
+      f(T.need_car, D.car[maxRank>=3?"offroad":(maxRank>=2?"suv":"economy")]) + "</dl>";
 
     var styleName = "";
     (D.styles || []).forEach(function (st) { if (st.key === curStyle) styleName = st.name; });
@@ -292,11 +300,12 @@
         .replace("{km}", Math.round(totKm)).replace("{drive}", fmtH(totDrive))
         .replace("{style}", styleName)) + "</p>";
     }
-    h += carCard(res, maxCar);
+    h += carCard(res, maxRank);
 
+    var rentalCar=recommendCar(res,maxRank).car,tripName=start.n+" · "+res.days.length+" "+T.day;
     h += '<div class="cta" style="margin:0 0 26px"><h2>' + T.book_cta + "</h2><p>" + T.book_text +
-         '</p><div class="row"><a class="btn" href="' + D.url.contact + '">' + D.nav.contact +
-         '</a><a class="btn ghost" href="' + D.url.fleet + '">' + D.nav.fleet + "</a></div></div>";
+         '</p><div class="row"><button class="btn wa" type="button" id="plannerwa">WhatsApp</button>'+
+         '<a class="btn ghost" href="' + D.url.fleet + '">' + D.nav.fleet + "</a></div></div>";
 
     h += "<h2>" + T.day_plan + "</h2>";
     res.days.forEach(function (d, di) {
@@ -304,6 +313,9 @@
       h += '<div class="pday"><h3><span class="pdot" style="background:' + col + '"></span>' +
            T.day + " " + d.i + ' <small>' + Math.round(d.km) + " " + T.km + " · " +
            T.drive + " " + fmtH(d.drive) + " · " + T.visit + " " + fmtH(d.visit) + "</small></h3>";
+      if(d.drive>480)h+='<div class="note error">⚠ '+esc(T.very_long_drive||"Very long driving day — split this itinerary")+'</div>';
+      else if(d.drive>360)h+='<div class="note">⚠ '+esc(T.long_drive||"More than 6 hours of driving")+'</div>';
+      if(winter&&d.items.some(function(x){return (x.a.el||0)>1200||x.a.rd>=1;}))h+='<div class="note">❄ '+esc(T.winter_warning||"Winter tyres are required; carry snow chains and verify current road conditions.")+'</div>';
       h += '<ol class="pstops">';
       var prev = di === 0 ? start : res.days[di - 1].items.slice(-1)[0].a;
       d.items.forEach(function (it, ii) {
@@ -348,16 +360,83 @@
       if (di < res.days.length - 1) {
         var town = nearestTown(lastA);
         h += '<div class="pnight">' + T.overnight + ": " + esc(town.c) +
-             hotelsHtml(lastA) + "</div>";
+             hotelsHtml(town) + "</div>";
       }
       h += "</div>";
     });
     if (res.dropped.length) h += '<div class="note">' + T.too_far + "</div>";
-    h += '<p class="prow">' +
+    h += '<p class="prow tour-export-actions">' +
          (window.FH ? '<button class="btn" type="button" id="savetrip">' +
             esc(T.save_trip || "Save") + "</button>" : "") +
+         '<button class="btn ghost" type="button" id="tourjpg">JPG</button>' +
+         '<button class="btn ghost" type="button" id="tourpdf">PDF</button>' +
          '<button class="btn ghost" type="button" onclick="window.print()">' + T.print + "</button></p>";
     box.innerHTML = h;
+
+    function wrap(ctx, text, x, y, max, line) {
+      var words = String(text || "").split(/\s+/), row = "", lines = [];
+      words.forEach(function (word) {
+        var test = row ? row + " " + word : word;
+        if (row && ctx.measureText(test).width > max) { lines.push(row); row = word; } else row = test;
+      });
+      if (row) lines.push(row);
+      lines.forEach(function (value, i) { ctx.fillText(value, x, y + i * line); });
+      return y + lines.length * line;
+    }
+    function summaryCanvas() {
+      var rows = [];
+      res.days.forEach(function (day) {
+        rows.push({ head: T.day + " " + day.i + " · " + Math.round(day.km) + " " + T.km,
+          stops: day.items.map(function (it) { return it.a.n; }) });
+      });
+      var height = 500 + rows.reduce(function (n, row) { return n + 80 + row.stops.length * 68; }, 0);
+      var c = document.createElement("canvas"), ctx = c.getContext("2d"); c.width = 1240; c.height = Math.max(900, height);
+      ctx.fillStyle = "#f7fafc"; ctx.fillRect(0, 0, c.width, c.height);
+      ctx.fillStyle = "#07111d"; ctx.fillRect(0, 0, c.width, 180);
+      var grad = ctx.createLinearGradient(0, 0, 1240, 0); grad.addColorStop(0, "#25bfd1"); grad.addColorStop(1, "#3b82f6");
+      var brandLogo = window.FH_BRAND_LOGO;
+      if (brandLogo && brandLogo.complete && brandLogo.naturalWidth) ctx.drawImage(brandLogo, 60, 38, 130, 92);
+      ctx.fillStyle = "#f4f8fc"; ctx.font = "800 40px sans-serif"; ctx.fillText("Fleet House", 215, 90);
+      ctx.fillStyle = "#9fb0c4"; ctx.font = "500 22px sans-serif"; ctx.fillText("TRIP SUMMARY", 215, 126);
+      ctx.fillStyle = "#0b1724"; ctx.font = "800 38px sans-serif";
+      var y = wrap(ctx, start.n + " · " + res.days.length + " " + T.day, 70, 250, 1100, 48) + 16;
+      ctx.font = "600 22px sans-serif"; ctx.fillStyle = "#526274";
+      ctx.fillText(stops + " " + T.stops + "   ·   " + Math.round(totKm) + " " + T.km + "   ·   " + fmtH(totDrive), 70, y); y += 70;
+      rows.forEach(function (row, di) {
+        ctx.fillStyle = DAY_COLORS[di % DAY_COLORS.length]; ctx.beginPath(); ctx.arc(84, y - 7, 12, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = "#0b1724"; ctx.font = "800 26px sans-serif"; ctx.fillText(row.head, 112, y); y += 44;
+        row.stops.forEach(function (name, i) {
+          ctx.fillStyle = "#d9e2ec"; ctx.fillRect(82, y - 20, 3, 35);
+          ctx.fillStyle = "#617286"; ctx.font = "700 18px sans-serif"; ctx.fillText(String(i + 1), 103, y + 2);
+          ctx.fillStyle = "#172536"; ctx.font = "600 21px sans-serif"; y = wrap(ctx, name, 142, y + 2, 980, 29) + 12;
+        });
+        y += 20;
+      });
+      ctx.fillStyle = "#07111d"; ctx.fillRect(0, c.height - 132, c.width, 132);
+      ctx.fillStyle = "#f4f8fc"; ctx.font = "800 25px sans-serif"; ctx.fillText((D.brand && D.brand.slogan) || "You Drive. We handle the rest.", 64, c.height - 78);
+      ctx.fillStyle = "#9fb0c4"; ctx.font = "600 19px sans-serif";
+      ctx.fillText(((D.brand && D.brand.site) || location.origin) + "   ·   " + ((D.brand && D.brand.phone) || ""), 64, c.height - 43);
+      return c;
+    }
+    function saveBlob(blob, name) { var url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(url);},1000); }
+    function saveJpg() { summaryCanvas().toBlob(function (b) { if (b) saveBlob(b, "fleet-house-trip.jpg"); }, "image/jpeg", .92); }
+    function savePdf() {
+      var c=summaryCanvas(), data=c.toDataURL("image/jpeg",.92).split(",")[1], raw=atob(data), img=new Uint8Array(raw.length);
+      for(var i=0;i<raw.length;i++)img[i]=raw.charCodeAt(i);
+      var enc=new TextEncoder(), parts=[], offsets=[0], size=0;
+      function add(x){var b=typeof x==="string"?enc.encode(x):x;parts.push(b);size+=b.length;}
+      add("%PDF-1.4\n");
+      function obj(n,body){offsets[n]=size;add(n+" 0 obj\n"+body+"\nendobj\n");}
+      obj(1,"<< /Type /Catalog /Pages 2 0 R >>"); obj(2,"<< /Type /Pages /Kids [3 0 R] /Count 1 >>");
+      var pw=595, ph=Math.round(595*c.height/c.width);
+      obj(3,"<< /Type /Page /Parent 2 0 R /MediaBox [0 0 "+pw+" "+ph+"] /Resources << /XObject << /Im0 4 0 R >> >> /Contents 5 0 R >>");
+      offsets[4]=size; add("4 0 obj\n<< /Type /XObject /Subtype /Image /Width "+c.width+" /Height "+c.height+" /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length "+img.length+" >>\nstream\n");add(img);add("\nendstream\nendobj\n");
+      var stream="q "+pw+" 0 0 "+ph+" 0 0 cm /Im0 Do Q"; obj(5,"<< /Length "+stream.length+" >>\nstream\n"+stream+"\nendstream");
+      var xref=size; add("xref\n0 6\n0000000000 65535 f \n"); for(var n=1;n<=5;n++)add(String(offsets[n]).padStart(10,"0")+" 00000 n \n");
+      add("trailer\n<< /Size 6 /Root 1 0 R >>\nstartxref\n"+xref+"\n%%EOF"); saveBlob(new Blob(parts,{type:"application/pdf"}),"fleet-house-trip.pdf");
+    }
+    var jpg=document.getElementById("tourjpg"),pdf=document.getElementById("tourpdf"); if(jpg)jpg.onclick=saveJpg;if(pdf)pdf.onclick=savePdf;
+    var plannerWa=document.getElementById("plannerwa");if(plannerWa)plannerWa.onclick=function(){var cfg=window.FH_CFG||{},num=String(cfg.whatsapp||"").replace(/\D/g,"");if(!num)return;var msg="Hello, I want to rent "+(rentalCar?rentalCar.n:"a suitable car")+" for "+tripName+". Route: "+planSlugs(res).join(", ")+". Distance: "+Math.round(totKm)+" km. Page: "+location.href;window.open("https://wa.me/"+num+"?text="+encodeURIComponent(msg),"_blank","noopener");};
     box.querySelectorAll("[data-prm]").forEach(function (b) {
       b.onclick = function () { editRemove(b.dataset.prm); };
     });
@@ -371,16 +450,15 @@
     if (sv) sv.onclick = function () {
       var stops = [];
       res.days.forEach(function (d) { d.items.forEach(function (i) { stops.push({ s: i.a.s, n: i.a.n }); }); });
-      var when = prompt(T.when + " (YYYY-MM-DD)", (window.WX ? WX.iso(7) : ""));
-      if (when === null) return;
-      var title = prompt(T.trip_name, start.n + " · " + res.days.length + " " + T.day);
-      if (title === null) return;
-      sv.disabled = true;
-      window.FH.saveTrip({
-        title: title, date: when, days: res.days.length, stops: stops,
-        km: Math.round(totKm), url: location.pathname
-      }).then(function () { sv.textContent = T.saved; })
-        .catch(function () { sv.disabled = false; });
+      var form = document.createElement("form"); form.className = "trip-save-form";
+      form.innerHTML = '<label>' + esc(T.when) + '<input type="date" name="when" required value="' +
+        esc(window.WX ? WX.iso(7) : "") + '"></label><label>' + esc(T.trip_name) +
+        '<input name="title" required maxlength="120" value="' + esc(start.n + " · " + res.days.length + " " + T.day) +
+        '"></label><button class="btn sm" type="submit">' + esc(T.save_trip || "Save") + '</button><button class="btn sm ghost" type="button" data-cancel>×</button><span role="status"></span>';
+      sv.replaceWith(form); form.querySelector("[data-cancel]").onclick = function(){form.replaceWith(sv);};
+      form.onsubmit = function(e){e.preventDefault();var submit=form.querySelector('[type="submit"]'),status=form.querySelector('[role="status"]');submit.disabled=true;status.textContent="…";
+        window.FH.saveTrip({title:form.title.value.trim(),date:form.when.value,days:res.days.length,stops:stops,km:Math.round(totKm),url:location.pathname})
+          .then(function(){status.textContent=T.saved;}).catch(function(){submit.disabled=false;status.textContent="!";});};
     };
     drawMap(res.days, start);
     if (window.WX && wxDays.length) {
@@ -407,26 +485,28 @@
     });
     return worst;
   }
-  function recommendCar(res) {
+  function recommendCar(res, minimumRank) {
     var party = parseInt(EL("party").value, 10) || 2;
     var road = roughestRoad(res);
-    var needRank = ROAD_RANK[road] >= 3 ? 3 : (ROAD_RANK[road] >= 2 ? 2 : 0);
+    var needRank = Math.max(minimumRank||0,ROAD_RANK[road]||0);
     var fleet = (D.fleet || []).filter(function (c) {
       return c.seats >= party + 0 && c.rank >= needRank;
     });
-    if (!fleet.length) {
-      fleet = (D.fleet || []).filter(function (c) { return c.seats >= party; });
-    }
-    if (!fleet.length) fleet = (D.fleet || []).slice();
+    /* Never trade safety for availability: an empty result is preferable to
+       recommending a vehicle below the itinerary's minimum class. */
     /* ყველაზე იაფი, რომელიც ორივე პირობას აკმაყოფილებს */
     fleet.sort(function (a, b) { return (a.rank - b.rank) || (a.price - b.price); });
     return { car: fleet[0], road: road, party: party };
   }
-  function carCard(res, maxCar) {
+  function carCard(res, minimumRank) {
     var mode = carMode();
     if (mode === "own") return "";
-    var r = recommendCar(res);
-    if (!r.car) return "";
+    var r = recommendCar(res,minimumRank);
+    if (!r.car) return '<div class="carrec carrec-none"><div class="carrec-b">' +
+      '<span class="tag">' + esc(T.car_rec) + '</span><h3>' +
+      esc(T.no_safe_car || "No suitable published vehicle is currently available") +
+      '</h3><p class="pshort">' + esc(T.contact_for_vehicle || "Contact us for a vehicle that meets this route’s minimum requirement.") +
+      '</p></div></div>';
     var days = res.days.length;
     var rate = days >= 7 ? r.car.price7 : r.car.price;
     var total = rate * days;
@@ -446,15 +526,9 @@
 
 
   /* ── სასტუმროები (© OpenStreetMap contributors) ────────────────────── */
-  function hotelsHtml(a) {
-    var H = D.hotels || {}, TW = D.htowns || [];
-    if (!TW.length) return "";
-    var best = null, bd = Infinity;
-    TW.forEach(function (t) {
-      var d = hav({ lat: a.lat, lon: a.lon }, { lat: t.la, lon: t.lo });
-      if (d < bd) { bd = d; best = t; }
-    });
-    if (!best || bd > 45) return "";
+  function hotelsHtml(best) {
+    var H = D.hotels || {};
+    if (!best) return "";
     var budget = (EL("hbudget") || {}).value || "";
     var rows = (H[best.k] || []).filter(function (r) { return !budget || r.b === budget; }).slice(0, 3);
     if (!rows.length) return "";
@@ -472,9 +546,10 @@
     var out = []; res.days.forEach(function (d) { d.items.forEach(function (i) { out.push(i.a.s); }); }); return out;
   }
   function nearestTown(a) {
-    var towns = D.a.filter(function (x) { return x.c; });
-    if (!towns.length) return { c: a.n };
-    return towns.reduce(function (b, x) { return hav(a, x) < hav(a, b) ? x : b; });
+    var towns = D.towns || [];
+    if (!towns.length) return { c: a.n,k:"" };
+    var t=towns.reduce(function (b, x) { return hav(a,{lat:x.lat,lon:x.lon}) < hav(a,{lat:b.lat,lon:b.lon}) ? x : b; });
+    return {c:t.n,k:t.k,lat:t.lat,lon:t.lon};
   }
 
   /* რეალური გზის გეომეტრია TomTom Traffic Routing-ით. OSRM გამოიყენება

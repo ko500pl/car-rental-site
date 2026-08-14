@@ -149,7 +149,7 @@
     d.innerHTML =
       '<div class="authcard" role="dialog" aria-modal="true" aria-labelledby="authtitle">' +
       '<button class="authx" type="button" aria-label="×">✕</button>' +
-      '<div class="authbrand" aria-hidden="true"><span>FH</span></div>' +
+      '<div class="authbrand" aria-hidden="true"><img src="/assets/sl-logo.png" alt=""></div>' +
       '<h3 id="authtitle">' + esc(T.sign_in || "Sign in") + "</h3>" +
       '<p class="pshort">' + esc(T.why_account || "") + "</p>" +
       '<button class="btn goog" type="button" id="authgoogle">' +
@@ -284,8 +284,51 @@
         '<div id="acclist"><p class="muted">…</p></div>';
       document.getElementById("accout").onclick = function () { M.auth.signOut(auth); };
       renderTrips();
+      renderBookings();
+      renderMessages();
       renderJournal();
     });
+  }
+  function renderBookings() {
+    var root = document.getElementById("account"); if (!root || !user || root.querySelector(".accbookings")) return;
+    var box=document.createElement("section");box.className="journal-section accbookings";var journal=document.getElementById("accjournal");root.insertBefore(box,journal);
+    boot.then(function(){var q=M.db.query(M.db.collection(db,"bookings"),M.db.where("uid","==",user.uid));return M.db.getDocs(q);}).then(function(snap){var rows=[];snap.forEach(function(d){rows.push(Object.assign({id:d.id},d.data()));});rows.sort(function(a,b){return String(b.start||"").localeCompare(String(a.start||""));});box.innerHTML='<h2>Bookings · '+rows.length+'</h2>'+(rows.length?'<div class="booking-list">'+rows.map(function(x){var cfg=C.booking||{},rules=cfg.extension_rules||[],ext=x.status==="confirmed"&&cfg.extension_enabled?'<div class="booking-ext">'+rules.filter(function(r){return r.extra_days>=cfg.extension_min_days&&r.extra_days<=cfg.extension_max_days;}).map(function(r){return '<button class="btn sm ghost" data-extend="'+esc(x.id)+'" data-days="'+r.extra_days+'" data-discount="'+r.discount_percent+'">+'+r.extra_days+' day · -'+r.discount_percent+'%</button>';}).join('')+'</div>':'';return '<article class="booking-card"><b>'+esc(x.carName||x.carSlug)+'</b><span>'+esc(x.start)+' → '+esc(x.end)+' · '+x.days+' days</span><span>'+Math.round(x.paymentDueGel||0)+' GEL · '+esc(x.paymentStatus||'required')+' · '+esc(x.status||'pending')+'</span>'+ext+'</article>';}).join('')+'</div>':'<p class="note">No booking requests yet.</p>');box.querySelectorAll('[data-extend]').forEach(function(b){b.onclick=function(){var x=rows.find(function(r){return r.id===b.dataset.extend;});if(!x)return;b.disabled=true;boot.then(function(){return M.db.addDoc(M.db.collection(db,'extensionRequests'),{uid:user.uid,bookingId:x.id,carSlug:x.carSlug,extraDays:parseInt(b.dataset.days,10),discountPercent:parseInt(b.dataset.discount,10),status:'pending',paymentStatus:'required',created:M.db.serverTimestamp()});}).then(function(){b.textContent='✓';}).catch(function(){b.disabled=false;});};});}).catch(function(){box.remove();});
+  }
+  function renderMessages() {
+    var account = document.getElementById("account"); if (!account || !user || account.querySelector(".accmessages")) return;
+    var box = document.createElement("section"); box.className = "journal-section accmessages";
+    var journal = document.getElementById("accjournal"); account.insertBefore(box, journal); box.innerHTML = "<h2>Messages</h2><p class=\"muted\">…</p>";
+    boot.then(function () {
+      var q = M.db.query(M.db.collection(db, "conversations"), M.db.where("memberIds", "array-contains", user.uid));
+      return M.db.getDocs(q);
+    }).then(function (snap) {
+      var conversations = []; snap.forEach(function (doc) { conversations.push(Object.assign({ id: doc.id }, doc.data())); });
+      if (!conversations.length) { box.innerHTML = '<h2>Messages · 0</h2><p class="note">No conversations yet.</p>'; return; }
+      return Promise.all(conversations.map(function (conversation) {
+        return M.db.getDocs(M.db.collection(db, "conversations", conversation.id, "messages")).then(function (messages) {
+          conversation.messages = []; messages.forEach(function (doc) { conversation.messages.push(Object.assign({ id: doc.id }, doc.data())); });
+          conversation.messages.sort(function (a, b) { return (a.created && a.created.seconds || 0) - (b.created && b.created.seconds || 0); });
+          return conversation;
+        });
+      })).then(function (rows) {
+        box.innerHTML = '<h2>Messages · ' + rows.length + '</h2><div class="conversation-list">' + rows.map(function (c) {
+          var other = (c.memberIds || []).filter(function (id) { return id !== user.uid; })[0] || "";
+          return '<article class="conversation" data-conversation="' + esc(c.id) + '"><b>' + esc(c.otherName || other) + '</b><div class="message-list">' + c.messages.map(function (message) {
+            return '<p class="message ' + (message.uid === user.uid ? "mine" : "theirs") + '">' + esc(message.text) + "</p>";
+          }).join("") + '</div><form><label><span class="sr-only">Message</span><textarea required maxlength="2000"></textarea></label><button class="btn sm" type="submit">Send</button><span role="status"></span></form></article>';
+        }).join("") + "</div>";
+        box.querySelectorAll(".conversation").forEach(function (card) {
+          card.querySelector("form").onsubmit = function (event) {
+            event.preventDefault(); var input = card.querySelector("textarea"), status = card.querySelector('[role="status"]');
+            var value = input.value.trim(); if (!value) return; status.textContent = "…";
+            M.db.addDoc(M.db.collection(db, "conversations", card.dataset.conversation, "messages"), {
+              uid: user.uid, text: value, created: M.db.serverTimestamp()
+            }).then(function () { input.value = ""; renderMessagesRefresh(); }).catch(function () { status.textContent = "!"; });
+          };
+        });
+      });
+    }).catch(function () { box.innerHTML = ""; });
+    function renderMessagesRefresh() { box.remove(); renderMessages(); }
   }
   function renderTrips() {
     var box = document.getElementById("acclist");
@@ -323,7 +366,14 @@
           if (!trip) return;
           shareTrip(trip).then(function (url) {
             if (navigator.clipboard) navigator.clipboard.writeText(url);
-            prompt("Share link", url);
+            var note = document.createElement("div");
+            note.className = "share-result"; note.setAttribute("role", "status");
+            note.innerHTML = '<input readonly value="' + esc(url) + '"><button class="btn sm ghost" type="button">Copy</button>';
+            b.closest(".tripcard").appendChild(note);
+            note.querySelector("button").onclick = function () {
+              if (navigator.clipboard) navigator.clipboard.writeText(url);
+              this.textContent = "Copied";
+            };
           });
         };
       });
@@ -335,7 +385,12 @@
         };
       });
       box.querySelectorAll('[data-memory]').forEach(function (input) {
-        input.onchange = function () { uploadMemories(input.dataset.memory, input.files).then(renderTrips); };
+        input.onchange = function () {
+          var label=input.closest('.memory-upload'); if(label) label.classList.add('loading');
+          uploadMemories(input.dataset.memory, input.files).then(renderTrips).catch(function(e){
+            if(label){label.classList.remove('loading');label.classList.add('upload-error');label.title=String(e&&e.message||e);}
+          });
+        };
       });
     }).catch(function (e) {
       box.innerHTML = '<div class="note">' + esc(String(e && e.message || e)) + "</div>";
@@ -382,7 +437,8 @@
     return boot.then(function () {
       var storage = M.storage.getStorage(app);
       return Promise.all(files.map(function (file) {
-        if (!/^image\//.test(file.type) || file.size > 10 * 1024 * 1024) return Promise.reject('Invalid image');
+        if (!/^image\//.test(file.type)) return Promise.reject(new Error(T.image_only || 'Only image files are allowed.'));
+        if (file.size > 10 * 1024 * 1024) return Promise.reject(new Error(T.image_too_large || 'Each image must be under 10 MB.'));
         var name = Date.now() + '-' + Math.random().toString(36).slice(2) + '-' + file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
         var ref = M.storage.ref(storage, 'memories/' + user.uid + '/' + tripId + '/' + name);
         return M.storage.uploadBytes(ref, file).then(function () { return M.storage.getDownloadURL(ref); });

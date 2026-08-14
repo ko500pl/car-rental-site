@@ -376,7 +376,7 @@ en:
     text: Booking, cancellation and changes
   - type: ul
     items:
-    - Bookings are confirmed by phone or email; no prepayment is required.
+    - Booking requests are confirmed after availability is checked and the required payment is completed.
     - '**Cancellation more than 48 hours ahead** — free of charge.'
     - '**Cancellation 24–48 hours ahead** — one day''s rate is charged.'
     - '**Cancellation less than 24 hours ahead, or a no-show** — two days'' rate is charged.'

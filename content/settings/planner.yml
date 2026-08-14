@@ -68,7 +68,7 @@ ka:
     - ნოემბერი
     - დეკემბერი
     book_cta: ამ მარშრუტისთვის ავტომობილი
-    book_text: შეარჩიეთ შესაფერისი კატეგორია და დაგვირეკეთ — ონლაინ გადახდა არ გვაქვს.
+    book_text: შეარჩიეთ შესაფერისი კატეგორია და ჯავშნის მოთხოვნა პირდაპირ საიტიდან გააგზავნეთ.
     style: ტურის სტილი
     party: რამდენი ხართ
     own_car: ჩემი მანქანით ვარ
@@ -189,7 +189,7 @@ en:
     - November
     - December
     book_cta: A car for this route
-    book_text: Pick the right category and call us — there is no online payment.
+    book_text: Choose the right category and send a booking request. Payment is required before confirmation.
     style: Trip style
     party: How many of you
     own_car: I have my own car
@@ -312,7 +312,7 @@ ru:
     - ноябрь
     - декабрь
     book_cta: Автомобиль для этого маршрута
-    book_text: Выберите подходящую категорию и позвоните нам — онлайн-оплаты нет.
+    book_text: Выберите категорию и отправьте запрос. Оплата обязательна до подтверждения.
     style: Стиль поездки
     party: Сколько вас
     own_car: Я на своей машине
@@ -439,7 +439,7 @@ fa:
     - نوامبر
     - دسامبر
     book_cta: خودرو برای این مسیر
-    book_text: دسته مناسب را انتخاب کنید و با ما تماس بگیرید — پرداخت آنلاین نداریم.
+    book_text: دسته مناسب را انتخاب و درخواست رزرو ارسال کنید. پرداخت پیش از تأیید الزامی است.
     style: سبک سفر
     party: چند نفر هستید
     own_car: خودروی خودم را دارم
@@ -560,7 +560,7 @@ he:
     - נובמבר
     - דצמבר
     book_cta: רכב למסלול הזה
-    book_text: בחרו את הקטגוריה המתאימה והתקשרו אלינו — אין תשלום מקוון.
+    book_text: בחרו קטגוריה ושלחו בקשת הזמנה. התשלום נדרש לפני האישור.
     style: סגנון הטיול
     party: כמה אתם
     own_car: יש לי רכב משלי

@@ -6,15 +6,18 @@ from playwright.sync_api import sync_playwright
 import yaml
 _S = yaml.safe_load(open('content/settings/site.yml', encoding='utf-8'))
 RENTAL_BRAND = _S['rental_brand']
-LANGS = ['ka', 'en', 'ru']
+LANGS = ['ka', 'en', 'ru', 'fa', 'he', 'ar']
 
 TXT = {
  "ka": ("ავტომობილების გაქირავება საქართველოში",
-        "120+ ავტომობილი · 75 ₾-დან დღეში · თბილისი · ქუთაისი · ბათუმი"),
+        "ავტოპარკი · მარშრუტები · თბილისი · ქუთაისი · ბათუმი"),
  "en": ("Car Rental in Georgia",
-        "120+ vehicles · from 75 GEL per day · Tbilisi · Kutaisi · Batumi"),
+        "Fleet · road-trip routes · Tbilisi · Kutaisi · Batumi"),
  "ru": ("Аренда автомобилей в Грузии",
-        "120+ автомобилей · от 75 ₾ в сутки · Тбилиси · Кутаиси · Батуми"),
+        "Автопарк · цены · маршруты · Тбилиси · Кутаиси · Батуми"),
+ "fa": ("اجاره خودرو در گرجستان", "ناوگان · قیمت‌ها · مسیرها · تفلیس · کوتایسی · باتومی"),
+ "he": ("השכרת רכב בגאורגיה", "צי רכב · מחירים · מסלולים · טביליסי · קוטאיסי · בטומי"),
+ "ar": ("تأجير السيارات في جورجيا", "الأسطول · الأسعار · المسارات · تبليسي · كوتايسي · باتومي"),
 }
 
 TPL = """<!DOCTYPE html><html><head><meta charset="utf-8">

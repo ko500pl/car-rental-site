@@ -6,6 +6,16 @@ car-rental-site/
 _to_delete/
 preview/
 dist/
+dist-next/
+dist-next-2/
+dist-next-final/
+dist-unified/
+dist-audited/
+dist-final-audit/
+dist-hardened/
+dist-release/
+dist-strict-audit/
+dist-strict-check/
 *.zip
 *.zip.done
 

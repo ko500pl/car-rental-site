@@ -1,0 +1,12 @@
+enabled: true
+payment_required: true
+currency: GEL
+extension_enabled: true
+extension_offer_before_end_hours: 24
+extension_min_days: 1
+extension_max_days: 2
+extension_rules:
+  - extra_days: 1
+    discount_percent: 50
+  - extra_days: 2
+    discount_percent: 30

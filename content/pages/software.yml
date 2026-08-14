@@ -1,4 +1,4 @@
-ka:
+﻿ka:
   title: Fleet House Manager — ავტოპარკის მართვის პროგრამა გაქირავების ბიზნესისთვის
   desc: >-
     Fleet House Manager — ავტოგაქირავების ბიზნესის მართვის აპლიკაცია: ჯავშნები, კონფლიქტების დეტექცია, დღიური P&L,
@@ -8,7 +8,7 @@ ka:
     სისტემა, rent a car crm
   h1: Fleet House Manager — ავტოპარკის მართვის სისტემა
   lead: >-
-    Fleet House Manager არის აპლიკაცია, რომლითაც ჩვენ თვითონ ვმართავთ 120-ავტომობილიან პარკს. იგივე სისტემა ხელმისაწვდომია
+    Fleet House Manager არის აპლიკაცია, რომლითაც ჩვენ თვითონ ვმართავთ 17-ავტომობილიან პარკს. იგივე სისტემა ხელმისაწვდომია
     სხვა გაქირავების კომპანიებისთვის — მცირე, 5-მანქანიანი ბიზნესიდან რამდენიმე ასეულამდე.
   blocks:
   - type: h2
@@ -151,7 +151,7 @@ en:
     rent a car crm
   h1: Fleet House Manager — fleet management system
   lead: >-
-    Fleet House Manager is the app we use ourselves to run a 120-vehicle fleet. The same system is available to
+    Fleet House Manager is the app we use ourselves to run a 17-vehicle fleet. The same system is available to
     other rental companies — from a small five-car operation up to a few hundred vehicles.
   blocks:
   - type: h2
@@ -293,7 +293,7 @@ ru:
     rent a car crm
   h1: Fleet House Manager — система управления автопарком
   lead: >-
-    Fleet House Manager — приложение, с помощью которого мы сами управляем парком из 120 автомобилей. Эта же система
+    Fleet House Manager — приложение, с помощью которого мы сами управляем парком из 17 автомобилей. Эта же система
     доступна другим прокатным компаниям — от маленького бизнеса на 5 машин до парков в несколько сотен.
   blocks:
   - type: h2
@@ -437,7 +437,7 @@ fa:
     CRM اجاره خودرو
   h1: Fleet House Manager — سامانهٔ مدیریت ناوگان
   lead: >-
-    Fleet House Manager همان اپلیکیشنی است که خودمان برای ادارهٔ ناوگانی 120 خودرویی به کار می‌بریم. همین سامانه
+    Fleet House Manager همان اپلیکیشنی است که خودمان برای ادارهٔ ناوگانی 17 خودرویی به کار می‌بریم. همین سامانه
     در اختیار دیگر شرکت‌های اجاره نیز هست — از یک کسب‌وکار کوچک پنج‌خودرویی تا چند صد خودرو.
   blocks:
   - type: h2
@@ -580,7 +580,7 @@ he:
     רכב
   h1: Fleet House Manager — מערכת לניהול צי
   lead: >-
-    Fleet House Manager היא האפליקציה שאנחנו עצמנו מנהלים בעזרתה צי של 120 רכבים. אותה מערכת זמינה גם לחברות השכרה
+    Fleet House Manager היא האפליקציה שאנחנו עצמנו מנהלים בעזרתה צי של 17 רכבים. אותה מערכת זמינה גם לחברות השכרה
     אחרות — מעסק קטן של חמישה רכבים ועד כמה מאות רכבים.
   blocks:
   - type: h2
@@ -711,7 +711,7 @@ ar:
     CRM تأجير السيارات
   h1: Fleet House Manager — نظام إدارة الأسطول
   lead: >-
-    Fleet House Manager هو التطبيق الذي نستخدمه بأنفسنا لإدارة أسطول من 120 سيارة. والنظام نفسه متاح لشركات التأجير
+    Fleet House Manager هو التطبيق الذي نستخدمه بأنفسنا لإدارة أسطول من 17 سيارة. والنظام نفسه متاح لشركات التأجير
     الأخرى — من نشاط صغير بخمس سيارات وحتى بضع مئات من السيارات.
   blocks:
   - type: h2
@@ -840,3 +840,4 @@ ar:
       href: /contact/
     - label: من نحن
       href: /about/
+

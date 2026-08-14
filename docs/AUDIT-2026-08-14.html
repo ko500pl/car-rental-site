@@ -1,0 +1,50 @@
+<!doctype html><html lang="ka"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>AUDIT 2026 08 14</title><style>body{font:15px/1.65 system-ui;max-width:940px;margin:36px auto;padding:0 22px;color:#172033}a{color:#087ea4}h1,h2{line-height:1.2}h1{font-size:30px}h2{margin-top:30px;border-top:1px solid #dce2ea;padding-top:18px}code{background:#eef2f6;padding:2px 5px;border-radius:4px}li{margin:5px 0}.back{display:inline-block;margin-bottom:18px}.meta{color:#64748b;font-size:13px}</style></head><body><a class="back" href="00-DOCUMENTATION-INDEX.html">← დოკუმენტაციის ინდექსი</a><div class="meta">ლოკალური დოკუმენტაცია · 2026-08-14</div><h1>დეტალური აუდიტი — 2026-08-14</h1>
+<h2>შეფასებული არე</h2>
+<p>შემოწმდა კონტენტის სქემა, გენერატორი, Decap CMS, რუკა/დამგეგმავი, ანგარიშები, მოთხოვნის ფორმები, SEO, generated HTML და ავტომატური ტესტები. აუდიტი ეხება მხოლოდ ლოკალურ branch-ს <code>harden-static-rental-funnel</code>; production არ შეცვლილა.</p>
+<h2>კრიტიკული აღმოჩენები და შესწორებები</h2>
+<h3>1. უსაფრთხო მანქანის რეკომენდაცია</h3>
+<p>აღმოჩენა: შესაბამისი კლასის მანქანის არქონისას ალგორითმი მხოლოდ ადგილების რაოდენობით არჩევდა უფრო დაბალ კლასს.<br />
+შესწორება: fallback გაუქმდა. რეკომენდაცია ყოველთვის აკმაყოფილებს strict minimum rank-ს; წინააღმდეგ შემთხვევაში მომხმარებელი იღებს უსაფრთხო შეტყობინებას.</p>
+<h3>2. CMS გალერეის ფორმატი</h3>
+<p>აღმოჩენა: CMS გალერეა ინახავს <code>{image, author, source...}</code> ობიექტებს, ხოლო მანქანის გვერდი ელოდა უბრალო string-ს.<br />
+რისკი: ადმინისტრატორის მიერ ფოტოს ატვირთვის შემდეგ გატეხილი <code>src</code>.<br />
+შესწორება: გენერატორი ორივე ფორმატს იღებს და ცარიელ ელემენტს არ აჩვენებს.</p>
+<h3>3. კონტაქტების დუბლირება</h3>
+<p>აღმოჩენა: header/footer/schema იყენებდა <code>site.yml</code>-ს, მაგრამ Contact გვერდი იმეორებდა placeholder ნომრებსა და ელფოსტას თავის multilingual blocks-ში. შეიცავდა დაუდასტურებელ 24/7, ოფისის, ბანკისა და VAT განცხადებებსაც.<br />
+შესწორება: საჯარო Contact დეტალები ახლა მხოლოდ <code>site.yml</code>-დან იქმნება; ძველი დუბლირებული/დაუდასტურებელი ბლოკები აღარ render-დება; lead აღარ ამბობს, რომ ფორმა არ არსებობს.</p>
+<h3>4. მოთხოვნის ნაკადი</h3>
+<p>აღმოჩენა: მოთხოვნის სრული ფორმა მხოლოდ მანქანის გვერდზე იყო.<br />
+შესწორება: compact Netlify-compatible form + WhatsApp დაემატა მთავარ, ავტოპარკის, რუკის/დამგეგმავის და შესაბამის ტურისტულ გვერდებს. ნომერი ადმინისტრაციული წყაროდან მოდის.</p>
+<h3>5. sitemap freshness</h3>
+<p>აღმოჩენა: ყველა URL ყოველ build-ზე მიმდინარე დღეს იღებდა.<br />
+შესწორება: <code>lastmod</code> ახლა კონკრეტული YAML source file-ის modification date-ია.</p>
+<h3>6. დოკუმენტაციის drift</h3>
+<p>აღმოჩენა: ძველი status დოკუმენტები აღწერდა Firebase booking/payment მოთხოვნას, 8/15 ტესტს და უკვე შეცვლილ არქიტექტურას.<br />
+შესწორება: შეიქმნა ცალკეული მოდულის მიმდინარე Markdown დოკუმენტაცია და თემატური HTML გვერდები; phase-one მოთხოვნა მკაფიოდ განისაზღვრა როგორც WhatsApp/form და არა დადასტურებული ონლაინ ჯავშანი.</p>
+<h2>დადასტურებული ძლიერი მხარეები</h2>
+<ul>
+<li>static-first არქიტექტურა და 6 ენა/RTL შენარჩუნებულია;</li>
+<li>draft/published/archived ფილტრი მუშაობს;</li>
+<li>strict build placeholder მონაცემებს ბლოკავს exit code 2-ით;</li>
+<li>multilingual place search, clusters, visited filter და cycling filter არსებობს;</li>
+<li>რთული გზების curated matrix და ერთიანი town/hotel წყარო არსებობს;</li>
+<li>OG fallback ექვსივე ენაზე არსებობს;</li>
+<li>Firebase გათიშვისას core browsing/inquiry მუშაობს.</li>
+</ul>
+<h2>დარჩენილი მაღალი პრიორიტეტის მფლობელის ბლოკერები</h2>
+<ul>
+<li>რეალური ტელეფონი, WhatsApp, ელფოსტა და სოციალური ბმულები;</li>
+<li>17 გამოქვეყნებული მანქანის რეალური მთავარი ფოტო და რეალური availability;</li>
+<li>ღირსშესანიშნაობების ფოტოების საბოლოო ადამიანური ვიზუალური დადასტურება;</li>
+<li>რეალური OAuth/Firebase კონფიგურაცია მხოლოდ ანგარიშებისა და community ფუნქციებისთვის.</li>
+</ul>
+<h2>შეგნებულად არ განხორციელდა</h2>
+<ul>
+<li>გადახდის gateway;</li>
+<li>realtime fleet lock/availability database;</li>
+<li>ავტომატურად დადასტურებული booking;</li>
+<li>ყალბი review/rating/business fact;</li>
+<li>production deploy ან GitHub push.</li>
+</ul>
+<h2>მიმდინარე ვერდიქტი</h2>
+<p>ლოკალური სტატიკური პროდუქტი ფუნქციურად build-დება და ძირითადი ტურისტული → დამგეგმავი → მანქანა → მოთხოვნა funnel არსებობს. Production release ჯერ <strong>არ არის ნებადართული</strong>, რადგან strict build სწორად ბლოკავს რეალური ბიზნეს კონტაქტებისა და მანქანის ფოტოების არქონას.</p></body></html>
