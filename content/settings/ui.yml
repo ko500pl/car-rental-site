@@ -14,7 +14,7 @@ ka:
     community: საზოგადოება
     account: ჩემი გვერდი
   ui:
-    logo_sub: ავტოგაქირავება
+    logo_sub: მოგზაურობის დამგეგმავი
     nav_label: მთავარი ნავიგაცია
     lang_label: ენის არჩევა
     crumbs: ნავიგაციის გზა
@@ -89,7 +89,7 @@ en:
     community: Community
     account: My page
   ui:
-    logo_sub: Car Rental
+    logo_sub: Travel Planner
     nav_label: Main navigation
     lang_label: Language selection
     crumbs: Breadcrumb navigation
@@ -164,7 +164,7 @@ ru:
     community: Сообщество
     account: Моя страница
   ui:
-    logo_sub: Аренда авто
+    logo_sub: Планировщик поездок
     nav_label: Основная навигация
     lang_label: Выбор языка
     crumbs: Навигационная цепочка
@@ -239,7 +239,7 @@ fa:
     community: جامعه
     account: صفحهٔ من
   ui:
-    logo_sub: اجارهٔ خودرو
+    logo_sub: برنامه‌ریز سفر
     nav_label: ناوبری اصلی
     lang_label: انتخاب زبان
     crumbs: مسیر ناوبری
@@ -315,7 +315,7 @@ he:
     community: קהילה
     account: העמוד שלי
   ui:
-    logo_sub: השכרת רכב
+    logo_sub: מתכנן טיולים
     nav_label: ניווט ראשי
     lang_label: בחירת שפה
     crumbs: נתיב ניווט
@@ -389,7 +389,7 @@ ar:
     community: المجتمع
     account: صفحتي
   ui:
-    logo_sub: تأجير السيارات
+    logo_sub: مخطط الرحلات
     nav_label: التنقل الرئيسي
     lang_label: اختيار اللغة
     crumbs: مسار التصفح

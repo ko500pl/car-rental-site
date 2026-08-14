@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>რედაქტორი — Fleet House</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <style>
+    body{margin:0;font-family:"Noto Sans Georgian",system-ui,sans-serif}
+    #nc-root:empty::after{content:"რედაქტორი იტვირთება…";display:block;padding:40px;text-align:center;color:#66788a}
+    .admin-home{position:fixed;z-index:9999;right:12px;top:12px;padding:10px 14px;border-radius:9px;background:#0b1724;color:#fff;text-decoration:none;box-shadow:0 4px 18px #0002}
+  </style>
+</head>
+<body>
+  <a class="admin-home" href="./">მართვის მთავარი</a>
+  <script src="https://unpkg.com/decap-cms@^3.8.4/dist/decap-cms.js"></script>
+  <script>
+    if (window.CMS) {
+      CMS.registerPreviewStyle('/assets/style.css');
+      CMS.registerEventListener({
+        name: 'postSave',
+        handler: () => console.log('[admin] შენახულია — საიტი 1–2 წუთში განახლდება'),
+      });
+    }
+  </script>
+</body>
+</html>

@@ -151,7 +151,7 @@ _seo_kw: &seo_kw
 collections:
   # ───────────────────────────────────────────────────────────── გვერდები
   - name: pages
-    label: "გვერდები"
+    label: "ტექსტების შეცვლა"
     label_singular: "გვერდი"
     i18n: *i18n
     files:
@@ -160,11 +160,8 @@ collections:
         file: content/pages/index.yml
         i18n: true
         fields:
-          - *seo_title
-          - *seo_desc
-          - *seo_kw
-          - {label: "სათაური გვერდზე (H1)", name: h1, widget: string, i18n: true}
-          - label: "ზედა ბლოკი (hero)"
+          - {label: "მთავარი სათაური", name: h1, widget: string, i18n: true}
+          - label: "პირველი ეკრანი"
             name: hero
             widget: object
             i18n: true
@@ -178,87 +175,96 @@ collections:
                   - {label: "დასახელება", name: k, widget: string}
                   - {label: "მნიშვნელობა", name: v, widget: string}
           - *blocks
+          - *seo_title
+          - *seo_desc
+          - *seo_kw
 
       - name: fleet
         label: "ავტოპარკი"
         file: content/pages/fleet.yml
         i18n: true
-        fields: [*seo_title, *seo_desc, *seo_kw, {label: "H1", name: h1, widget: string, i18n: true},
-                 {label: "შესავალი", name: lead, widget: text, i18n: true}, *blocks]
+        fields: [{label: "მთავარი სათაური", name: h1, widget: string, i18n: true},
+                 {label: "შესავალი", name: lead, widget: text, i18n: true}, *blocks, *seo_title, *seo_desc, *seo_kw]
 
       - name: pricing
         label: "ფასები"
         file: content/pages/pricing.yml
         i18n: true
-        fields: [*seo_title, *seo_desc, *seo_kw, {label: "H1", name: h1, widget: string, i18n: true},
-                 {label: "შესავალი", name: lead, widget: text, i18n: true}, *blocks]
+        fields: [{label: "მთავარი სათაური", name: h1, widget: string, i18n: true},
+                 {label: "შესავალი", name: lead, widget: text, i18n: true}, *blocks, *seo_title, *seo_desc, *seo_kw]
 
       - name: terms
         label: "პირობები"
         file: content/pages/terms.yml
         i18n: true
-        fields: [*seo_title, *seo_desc, *seo_kw, {label: "H1", name: h1, widget: string, i18n: true},
-                 {label: "შესავალი", name: lead, widget: text, i18n: true}, *blocks]
+        fields: [{label: "მთავარი სათაური", name: h1, widget: string, i18n: true},
+                 {label: "შესავალი", name: lead, widget: text, i18n: true}, *blocks, *seo_title, *seo_desc, *seo_kw]
 
       - name: faq
         label: "ხშირი კითხვები"
         file: content/pages/faq.yml
         i18n: true
-        fields: [*seo_title, *seo_desc, *seo_kw, {label: "H1", name: h1, widget: string, i18n: true},
-                 {label: "შესავალი", name: lead, widget: text, i18n: true}, *blocks]
+        fields: [{label: "მთავარი სათაური", name: h1, widget: string, i18n: true},
+                 {label: "შესავალი", name: lead, widget: text, i18n: true}, *blocks, *seo_title, *seo_desc, *seo_kw]
 
       - name: blog
         label: "ბლოგის მთავარი"
         file: content/pages/blog.yml
         i18n: true
-        fields: [*seo_title, *seo_desc, *seo_kw, {label: "H1", name: h1, widget: string, i18n: true},
-                 {label: "შესავალი", name: lead, widget: text, i18n: true}, *blocks]
+        fields: [{label: "მთავარი სათაური", name: h1, widget: string, i18n: true},
+                 {label: "შესავალი", name: lead, widget: text, i18n: true}, *blocks, *seo_title, *seo_desc, *seo_kw]
 
       - name: map
         label: "რუკის გვერდი"
         file: content/pages/map.yml
         i18n: true
-        fields: [*seo_title, *seo_desc, *seo_kw, {label: "H1", name: h1, widget: string, i18n: true},
-                 {label: "შესავალი", name: lead, widget: text, i18n: true}, *blocks]
+        fields: [{label: "მთავარი სათაური", name: h1, widget: string, i18n: true},
+                 {label: "შესავალი", name: lead, widget: text, i18n: true}, *blocks, *seo_title, *seo_desc, *seo_kw]
 
       - name: about
         label: "ჩვენ შესახებ"
         file: content/pages/about.yml
         i18n: true
-        fields: [*seo_title, *seo_desc, *seo_kw, {label: "H1", name: h1, widget: string, i18n: true},
-                 {label: "შესავალი", name: lead, widget: text, i18n: true}, *blocks]
+        fields: [{label: "მთავარი სათაური", name: h1, widget: string, i18n: true},
+                 {label: "შესავალი", name: lead, widget: text, i18n: true}, *blocks, *seo_title, *seo_desc, *seo_kw]
 
       - name: contact
         label: "კონტაქტი"
         file: content/pages/contact.yml
         i18n: true
-        fields: [*seo_title, *seo_desc, *seo_kw, {label: "H1", name: h1, widget: string, i18n: true},
-                 {label: "შესავალი", name: lead, widget: text, i18n: true}, *blocks]
+        fields: [{label: "მთავარი სათაური", name: h1, widget: string, i18n: true},
+                 {label: "შესავალი", name: lead, widget: text, i18n: true}, *blocks, *seo_title, *seo_desc, *seo_kw]
 
       - name: software
         label: "პროგრამა (Fleet House Manager)"
         file: content/pages/software.yml
         i18n: true
-        fields: [*seo_title, *seo_desc, *seo_kw, {label: "H1", name: h1, widget: string, i18n: true},
-                 {label: "შესავალი", name: lead, widget: text, i18n: true}, *blocks]
+        fields: [{label: "მთავარი სათაური", name: h1, widget: string, i18n: true},
+                 {label: "შესავალი", name: lead, widget: text, i18n: true}, *blocks, *seo_title, *seo_desc, *seo_kw]
 
   # ──────────────────────────────────────────────────────── ავტომობილები
   - name: cars
-    label: "ავტომობილები"
-    label_singular: "ავტომობილი"
+    label: "მანქანების მართვა და ფასები"
+    label_singular: "მანქანა"
     folder: content/cars
     extension: yml
     format: yaml
     create: true
     slug: "{{fields.en.name}}"
-    summary: "{{fields.en.name}} — {{fields.price_1_6}} ₾"
+    summary: "{{fields.ka.name}} · {{category}} · 1–6 დღე: {{fields.price_1_6}} ₾"
     sortable_fields: [order, price_1_6, category]
+    view_filters:
+      - {label: "გამოქვეყნებული", field: status, pattern: published}
+      - {label: "მონახაზი", field: status, pattern: draft}
+      - {label: "ხელმისაწვდომი", field: available, pattern: true}
+      - {label: "გამორჩეული", field: featured, pattern: true}
     i18n: *i18n
     fields:
-      - {label: "სტატუსი", name: status, widget: select, default: draft,
-         options: [{label: "მონახაზი", value: draft}, {label: "გამოქვეყნებული", value: published}, {label: "არქივი", value: archived}],
-         hint: "ახალი ჩანაწერი გამოქვეყნებამდე ექვსივე ენაზე შეავსეთ"}
-      - label: "კატეგორია"
+      - {label: "1. მოდელის სახელი", name: name, widget: string, i18n: true,
+         hint: "ჯერ შეავსეთ ქართული, შემდეგ სხვა ენები"}
+      - {label: "2. მთავარი ფოტო", name: image, widget: image, required: false,
+         hint: "რეკომენდებული ზომა 1200×750, WebP ან JPG"}
+      - label: "3. კატეგორია"
         name: category
         widget: select
         options:
@@ -268,13 +274,43 @@ collections:
           - {label: "მაღალი გამავლობის 4x4", value: offroad}
           - {label: "მინივენი", value: minivan}
           - {label: "კომერციული ფურგონი", value: van}
-      - {label: "რიგითობა (მცირე = ზემოთ)", name: order, widget: number, value_type: int, default: 99}
-      - {label: "გამორჩეული", name: featured, widget: boolean, default: false, required: false}
-      - {label: "მთავარი ფოტო", name: image, widget: image, required: false,
-         hint: "რეკომენდებული ზომა 1200×750, WebP ან JPG"}
-      - label: "გალერეა"
+      - {label: "4. ფასი 1–6 დღე, ₾", name: price_1_6, widget: number, value_type: int, min: 0,
+         hint: "ჩაწერეთ მხოლოდ რიცხვი. USD ავტომატურად გამოითვლება და დამრგვალდება 10 დოლარამდე"}
+      - {label: "5. ფასი 7–29 დღე, ₾", name: price_7_29, widget: number, value_type: int, min: 0,
+         hint: "ეს ფასი არ უნდა აღემატებოდეს 1–6 დღის ფასს"}
+      - {label: "6. ფასი 30+ დღე, ₾", name: price_30, widget: number, value_type: int, min: 0,
+         hint: "ეს ფასი არ უნდა აღემატებოდეს 7–29 დღის ფასს"}
+      - {label: "7. ამჟამად ხელმისაწვდომია", name: available, widget: boolean, default: true, required: false,
+         hint: "გამორთეთ დროებით დაკავებული მანქანისთვის — წაშლა საჭირო არ არის"}
+      - {label: "8. დეპოზიტი, ₾", name: deposit, widget: number, value_type: int, min: 0}
+      - {label: "წლები", name: years, widget: string, hint: "მაგ. 2019–2023"}
+      - {label: "ძრავი", name: engine, widget: string, hint: "მაგ. 2.5 hybrid / 2.0 petrol / 2.2 diesel"}
+      - {label: "ტრანსმისია", name: transmission, widget: select,
+         options: [{label: "ავტომატიკა", value: automatic}, {label: "მექანიკა", value: manual}]}
+      - {label: "წამყვანი", name: drive, widget: select,
+         options: [{label: "წინა (FWD)", value: fwd}, {label: "უკანა (RWD)", value: rwd}, {label: "სრული (AWD)", value: awd}, {label: "4×4", value: 4wd}]}
+      - {label: "ადგილების რაოდენობა", name: seats, widget: number, value_type: int, min: 1, max: 20}
+      - {label: "ჩემოდანი / მოცულობა", name: luggage, widget: string}
+      - {label: "საწვავი / 100 კმ", name: fuel_100km, widget: string}
+      - {label: "კლირენსი, მმ", name: clearance, widget: number, value_type: int, min: 80, max: 500}
+      - {label: "ფრანშიზა / კლიენტის პასუხისმგებლობა, ₾", name: franchise, widget: number, value_type: int, min: 0, required: false}
+      - {label: "დაზღვევის პირობები", name: insurance, widget: text, required: false}
+      - {label: "დღიური გარბენის ლიმიტი, კმ", name: mileage_limit, widget: number, value_type: int, min: 0, required: false}
+      - {label: "მინიმალური გაქირავება, დღე", name: minimum_rental_days, widget: number, value_type: int, min: 1, default: 1, required: false}
+      - {label: "დამატებითი მძღოლი, ₾/დღე", name: additional_driver_price, widget: number, value_type: int, min: 0, required: false}
+      - {label: "ბავშვის სავარძელი, ₾/დღე", name: child_seat_price, widget: number, value_type: int, min: 0, required: false}
+      - {label: "აეროპორტში მიწოდება, ₾", name: airport_delivery_price, widget: number, value_type: int, min: 0, required: false}
+      - {label: "საზღვარგარეთ გაყვანის პირობები", name: cross_border, widget: text, required: false}
+      - {label: "მოკლე აღწერა", name: summary, widget: string, i18n: true}
+      - {label: "მახასიათებლები", name: features, widget: list, i18n: true,
+         collapsed: true, minimize_collapsed: true,
+         field: {label: "პუნქტი", name: f, widget: string}}
+      - {label: "სრული აღწერა", name: body, widget: text, i18n: true, required: false}
+      - label: "დამატებითი ფოტოები"
         name: gallery
         widget: list
+        collapsed: true
+        minimize_collapsed: true
         required: false
         fields:
           - {label: "ფოტო", name: image, widget: image}
@@ -282,38 +318,16 @@ collections:
           - {label: "წყარო", name: source, widget: string, required: false}
           - {label: "ლიცენზია", name: license, widget: string, required: false}
           - {label: "ლიცენზიის ბმული", name: license_url, widget: string, required: false}
-      - {label: "წლები", name: years, widget: string, hint: "მაგ. 2019–2023"}
-      - {label: "ძრავი", name: engine, widget: string, hint: "მაგ. 2.5 hybrid / 2.0 petrol / 2.2 diesel"}
-      - {label: "ტრანსმისია", name: transmission, widget: select, options: [automatic, manual]}
-      - {label: "წამყვანი", name: drive, widget: select, options: [fwd, rwd, awd, 4wd]}
-      - {label: "ადგილების რაოდენობა", name: seats, widget: number, value_type: int, min: 1, max: 20}
-      - {label: "ჩემოდანი / მოცულობა", name: luggage, widget: string}
-      - {label: "საწვავი / 100 კმ", name: fuel_100km, widget: string}
-      - {label: "კლირენსი, მმ", name: clearance, widget: number, value_type: int, min: 80, max: 500}
-      - {label: "ფასი 1–6 დღე, ₾", name: price_1_6, widget: number, value_type: int, min: 0,
-         hint: "USD ავტომატურად გამოითვლება საიტის პარამეტრებში მითითებული კურსით და დამრგვალდება 10 დოლარამდე"}
-      - {label: "ფასი 7–29 დღე, ₾", name: price_7_29, widget: number, value_type: int, min: 0}
-      - {label: "ფასი 30+ დღე, ₾", name: price_30, widget: number, value_type: int, min: 0}
-      - {label: "დეპოზიტი, ₾", name: deposit, widget: number, value_type: int, min: 0}
-      - {label: "ფრანშიზა / კლიენტის პასუხისმგებლობა, ₾", name: franchise, widget: number, value_type: int, min: 0, required: false}
-      - {label: "დაზღვევის პირობები", name: insurance, widget: text, required: false}
-      - {label: "დღიური გარბენის ლიმიტი, კმ", name: mileage_limit, widget: number, value_type: int, min: 0, required: false}
-      - {label: "მინიმალური გაქირავება, დღე", name: minimum_rental_days, widget: number, value_type: int, min: 1, default: 1, required: false}
-      - {label: "ამჟამად ხელმისაწვდომია", name: available, widget: boolean, default: true, required: false,
-         hint: "გამორთეთ დროებით დაკავებული ავტომობილისთვის; არქივში გადატანა საჭირო არ არის"}
-      - {label: "დამატებითი მძღოლი, ₾/დღე", name: additional_driver_price, widget: number, value_type: int, min: 0, required: false}
-      - {label: "ბავშვის სავარძელი, ₾/დღე", name: child_seat_price, widget: number, value_type: int, min: 0, required: false}
-      - {label: "აეროპორტში მიწოდება, ₾", name: airport_delivery_price, widget: number, value_type: int, min: 0, required: false}
-      - {label: "საზღვარგარეთ გაყვანის პირობები", name: cross_border, widget: text, required: false}
-      - {label: "მოდელის სახელი", name: name, widget: string, i18n: true}
-      - {label: "მოკლე აღწერა", name: summary, widget: string, i18n: true}
-      - {label: "მახასიათებლები", name: features, widget: list, i18n: true,
-         field: {label: "პუნქტი", name: f, widget: string}}
-      - {label: "სრული აღწერა", name: body, widget: text, i18n: true, required: false}
+      - {label: "გამოქვეყნების სტატუსი", name: status, widget: select, default: draft,
+         options: [{label: "მონახაზი — მომხმარებელი ვერ ხედავს", value: draft}, {label: "გამოქვეყნებული", value: published}, {label: "არქივი", value: archived}],
+         hint: "ჯერ შეავსეთ ყველა ენა და მხოლოდ შემდეგ გამოაქვეყნეთ"}
+      - {label: "საიტზე რიგითობა", name: order, widget: number, value_type: int, default: 99,
+         hint: "1 გამოჩნდება ყველაზე წინ; დიდი რიცხვი — უფრო ქვემოთ"}
+      - {label: "გამორჩეულად ჩვენება", name: featured, widget: boolean, default: false, required: false}
 
   # ────────────────────────────────────────────────────────────── ბლოგი
   - name: posts
-    label: "ბლოგი"
+    label: "ბლოგი და სიახლეები"
     label_singular: "სტატია"
     folder: content/posts
     extension: yml
@@ -335,8 +349,8 @@ collections:
 
   # ──────────────────────────────────────────────── ღირსშესანიშნაობები
   - name: attractions
-    label: "ღირსშესანიშნაობები"
-    label_singular: "ღირსშესანიშნაობა"
+    label: "ადგილები და ღირსშესანიშნაობები"
+    label_singular: "ადგილი"
     folder: content/attractions
     extension: yml
     format: yaml
@@ -417,8 +431,8 @@ collections:
 
   # ────────────────────────────────────────────────────────── მარშრუტები
   - name: routes
-    label: "მარშრუტები"
-    label_singular: "მარშრუტი"
+    label: "ტურები და მარშრუტები"
+    label_singular: "ტური / მარშრუტი"
     folder: content/routes
     extension: yml
     format: yaml
@@ -471,7 +485,7 @@ collections:
 
   # ────────────────────────────────────────────────────── საიტის პარამეტრები
   - name: settings
-    label: "პარამეტრები"
+    label: "საიტის პარამეტრები"
     files:
       - name: site
         label: "საიტი და კონტაქტები"
@@ -491,7 +505,8 @@ collections:
           - {label: "განედი", name: geo_lat, widget: string}
           - {label: "გრძედი", name: geo_lon, widget: string}
           - {label: "დაარსების წელი", name: founded, widget: string}
-          - {label: "ავტოპარკის ზომა", name: fleet_size, widget: string}
+          - {label: "საიტზე ნაჩვენები მანქანების რაოდენობა", name: fleet_size, widget: string,
+             hint: "ეს რიცხვი ავტომატურად არ ითვლება — ავტოპარკის ცვლილებისას ხელით განაახლეთ"}
           - {label: "USD კურსი", name: usd_rate, widget: number, value_type: float, min: 0.01,
              hint: "GEL იყოფა ამ კურსზე; მიღებული USD ავტომატურად მრგვალდება ქვემოთ მითითებულ ბიჯზე"}
           - {label: "USD დამრგვალების ბიჯი", name: usd_rounding, widget: number, value_type: int, min: 1, default: 10}

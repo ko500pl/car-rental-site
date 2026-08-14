@@ -648,10 +648,11 @@ tbody tr:nth-child(even){{background:color-mix(in srgb,#fff 3%,transparent)}}
 .share-result{{display:flex;gap:.5rem;margin-top:.65rem}}.share-result input{{flex:1;min-width:0}}
 .message-form{{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.55rem;align-items:end;margin-top:.75rem}}
 .message-form label{{display:grid;gap:.3rem;font-size:.75rem;color:var(--ink2)}}.message-form textarea{{min-height:72px}}
-.trip-save-form{{display:grid;grid-template-columns:minmax(150px,.65fr) minmax(220px,1.35fr) auto auto;gap:.5rem;align-items:end;margin-top:1rem}}
+.trip-save-form{{display:grid;grid-template-columns:minmax(130px,.7fr) minmax(190px,1.3fr) auto auto;gap:.4rem;align-items:end}}
 .trip-save-form label{{display:grid;gap:.3rem;font-size:.75rem;color:var(--ink2)}}
-.booking-list{{display:grid;gap:.6rem}}.booking-card{{display:grid;gap:.25rem;padding:.85rem;border:1px solid var(--line);border-radius:12px;background:var(--bg2)}}
-.booking-card span{{font-size:.8rem;color:var(--ink2)}}.booking-ext{{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.4rem}}
+.booking-list{{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:.7rem}}.booking-card{{display:grid;gap:.65rem;padding:1rem;border:1px solid var(--line);border-radius:14px;background:linear-gradient(145deg,var(--bg2),var(--surface-2))}}
+.booking-card-head{{display:flex;align-items:flex-start;justify-content:space-between;gap:.75rem}}.booking-card-head>div{{display:grid;gap:.2rem}}.booking-card span{{font-size:.8rem;color:var(--ink2)}}.booking-status{{padding:.3rem .55rem;border-radius:999px;background:rgba(148,163,184,.12);white-space:nowrap}}.booking-status.confirmed,.booking-status.completed{{color:#5eead4;background:rgba(45,212,191,.12)}}.booking-status.cancelled{{color:#fda4af;background:rgba(244,63,94,.12)}}.booking-facts{{display:flex;gap:.8rem;padding-top:.55rem;border-top:1px solid var(--line)}}.booking-ext{{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.2rem}}
+.car-review{{display:grid;gap:.55rem;padding-top:.65rem;border-top:1px solid var(--line)}}.rating-pick{{display:flex;flex-direction:row-reverse;justify-content:flex-end;width:max-content}}.rating-pick input{{position:absolute;opacity:0}}.rating-pick span{{font-size:1.45rem;color:#526173;cursor:pointer}}.rating-pick label:hover span,.rating-pick label:hover~label span,.rating-pick input:checked~span,.rating-pick label:has(input:checked)~label span{{color:#fbbf24}}.car-review textarea{{min-height:72px;resize:vertical}}.car-review [role=status]{{font-size:.8rem;color:#5eead4}}.car-review-saved{{display:grid;gap:.25rem;padding-top:.6rem;border-top:1px solid var(--line)}}.car-review-saved .stars{{color:#fbbf24;letter-spacing:2px}}.car-review-saved p{{margin:0;font-size:.82rem;color:var(--ink2)}}
 .conversation-list{{display:grid;gap:.75rem}}.conversation{{padding:.9rem;border:1px solid var(--line);border-radius:12px;background:var(--bg2)}}
 .message-list{{display:grid;gap:.35rem;margin:.65rem 0;max-height:280px;overflow:auto}}.message{{width:fit-content;max-width:82%;margin:0;padding:.5rem .7rem;border-radius:10px;background:var(--bg)}}
 .message.mine{{justify-self:end;background:rgba(45,212,191,.13);border:1px solid rgba(45,212,191,.28)}}.conversation form{{display:grid;grid-template-columns:1fr auto;gap:.45rem;align-items:end}}.conversation textarea{{min-height:54px}}
@@ -865,6 +866,27 @@ body.auth-open{{overflow:hidden}}
 .mapcluster b{{display:grid;place-items:center;width:100%;height:100%;border-radius:50%;background:#20c9bd;
   color:#032b35;font-size:17px;font-weight:900;border:4px solid #fff;box-shadow:0 0 0 6px rgba(32,201,189,.25),0 9px 28px rgba(0,0,0,.4);cursor:zoom-in}}
 .mapcluster.visited b{{background:#7b8795;color:#fff;box-shadow:0 0 0 6px rgba(123,135,149,.22),0 9px 28px rgba(0,0,0,.35)}}
+/* Progressive disclosure from the 100-scenario UX review. */
+.expfilters{{position:relative;flex:0 0 auto}}
+.expfilters>summary{{height:40px;display:flex;align-items:center;padding:7px 12px;border:1px solid var(--line);
+  border-radius:10px;background:var(--surface-2);color:var(--ink-2);font-size:13px;font-weight:650;cursor:pointer;list-style:none;white-space:nowrap}}
+.expfilters>summary::-webkit-details-marker{{display:none}}
+.expfilters>summary::after{{content:"⌄";margin-inline-start:8px;color:var(--ink-3)}}
+.expfilters[open]>summary{{border-color:color-mix(in srgb,var(--brand) 65%,var(--line));color:var(--brand-ink)}}
+.expfilters-pop{{position:absolute;z-index:950;inset-block-start:calc(100% + 8px);inset-inline-end:0;width:min(330px,90vw);
+  display:grid;gap:8px;padding:12px;border:1px solid var(--line);border-radius:14px;background:var(--surface);box-shadow:0 20px 55px rgba(0,0,0,.45)}}
+.expfilters-pop select,.expfilters-pop input{{width:100%;min-width:0}}
+.expfilters-pop .expdate{{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:8px}}
+.home-more-wrap{{padding:18px 0 40px;border-top:1px solid var(--line)}}
+.home-more{{border:1px solid var(--line);border-radius:16px;background:var(--surface);overflow:hidden}}
+.home-more>summary{{display:flex;align-items:center;justify-content:space-between;min-height:56px;padding:14px 18px;
+  color:var(--brand-ink);font-size:14px;font-weight:750;cursor:pointer;list-style:none}}
+.home-more>summary::-webkit-details-marker{{display:none}}
+.home-more>summary::after{{content:"+";display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--surface-2);font-size:19px}}
+.home-more[open]>summary::after{{content:"−"}}
+.home-more-facts{{margin:0 18px 8px;padding:14px 0!important}}
+.home-more>.sec{{padding:28px 0}}
+.home-more>.sec>.wrap{{padding-inline:18px}}
 .hp{{display:none!important}}
 .booking-dialog{{position:fixed;inset:0;z-index:9998;display:grid;place-items:center;padding:18px;background:rgba(2,8,16,.8);backdrop-filter:blur(10px)}}
 .booking-dialog[hidden]{{display:none}}
@@ -953,20 +975,32 @@ body.booking-open{{overflow:hidden}}
 .page-planner .page-head h1{{font-size:26px;margin-bottom:6px}}
 .page-planner .page-head .lead{{font-size:14px;line-height:1.45;max-width:100ch}}
 .planner-controls{{padding:12px 0!important;border-bottom:0}}
-.planner-toolbar{{display:flex;align-items:flex-end;gap:8px;padding:10px 12px;margin:0;
-  overflow-x:auto;overflow-y:visible;border-radius:14px;scrollbar-width:thin}}
-.planner-toolbar>.pf{{flex:0 0 auto;min-width:118px;gap:3px}}
-.planner-toolbar>.pf:first-child{{min-width:185px}}
+.planner-toolbar{{display:grid;grid-template-columns:minmax(180px,1.5fr) minmax(245px,1.4fr) 72px 72px minmax(155px,1fr) minmax(150px,1fr) auto auto;
+  align-items:end;gap:8px;padding:10px 12px;margin:0;overflow:visible;border-radius:14px}}
+.planner-toolbar>.pf{{min-width:0;gap:3px}}
+.planner-toolbar>.pf:first-child{{min-width:0}}
 .planner-toolbar .pf label{{font-size:11px;white-space:nowrap;color:var(--ink-3)}}
 .planner-toolbar .pf select{{height:38px;min-width:112px;padding:6px 9px;font-size:13px;border-radius:9px}}
 .date-pair{{display:flex;gap:5px}}
 .date-pair input{{height:38px;width:132px;padding:6px 8px;border:1px solid var(--line);border-radius:9px;background:var(--bg);color:var(--ink);font:600 12px/1 inherit}}
-.standard-tours{{min-width:min(760px,86vw);align-self:stretch;padding:0 0 2px}}
+.derived-month,.tour-purpose-field,.secondary-planner-field,.planner-toolbar>.pf-check{{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0 0 0 0)!important}}
+.planner-toolbar .carmode label:not(:first-child),.planner-toolbar .carmode>select{{display:none!important}}
+.planner-toolbar .carmode{{min-width:0!important}}
+.planner-toolbar .carmode .tog:first-child{{width:100%;justify-content:center}}
+.standard-launch .btn{{height:38px;width:100%;padding:7px 10px;white-space:nowrap}}
+.standard-launch .btn span:not(:empty)::before{{content:" ("}}.standard-launch .btn span:not(:empty)::after{{content:")"}}
+.standard-modal{{position:fixed;z-index:2500;inset:0;display:grid;place-items:center;padding:24px;background:rgba(2,8,16,.78);backdrop-filter:blur(9px)}}
+.standard-modal[hidden]{{display:none}}
+.standard-dialog{{position:relative;width:min(920px,94vw);max-height:min(720px,88dvh);overflow:auto;padding:22px;background:linear-gradient(180deg,var(--surface),var(--bg));border:1px solid var(--line);border-radius:20px;box-shadow:0 30px 90px #0009}}
+.standard-close{{position:absolute;inset-inline-end:14px;top:14px;width:40px;height:40px;border:1px solid var(--line);border-radius:11px;background:var(--surface-2);color:var(--ink-2);cursor:pointer}}
+.standard-dialog-head{{display:grid;grid-template-columns:1fr minmax(180px,240px);align-items:end;gap:14px;margin:0 50px 18px 0}}
+.standard-dialog-head h3{{margin:0;font-size:22px}}.standard-dialog-head label{{font-size:11px;color:var(--ink-3)}}
+.standard-dialog-head select{{display:block;width:100%;height:40px;margin-top:5px}}
 .standard-head{{display:flex;align-items:center;gap:8px;margin-bottom:6px}}
 .standard-head h3{{margin:0;font-size:13px}}
 .standard-head span{{color:var(--brand);font-size:11px}}
-.standard-grid{{display:flex;gap:7px;overflow-x:auto;padding-bottom:3px}}
-.standard-card{{flex:0 0 300px;min-height:82px;display:grid;grid-template-columns:62px minmax(0,1fr) auto;gap:9px;align-items:center;padding:8px;border:1px solid var(--line);border-radius:11px;background:var(--surface-2)}}
+.standard-grid{{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}}
+.standard-card{{min-height:92px;display:grid;grid-template-columns:76px minmax(0,1fr) auto;gap:10px;align-items:center;padding:10px;border:1px solid var(--line);border-radius:13px;background:var(--surface-2)}}
 .standard-card>img{{width:62px;height:54px;object-fit:cover;border-radius:8px}}
 .standard-card:not(:has(>img)){{grid-template-columns:minmax(0,1fr) auto}}
 .standard-copy{{min-width:0;display:grid;gap:2px}}
@@ -975,7 +1009,7 @@ body.booking-open{{overflow:hidden}}
 .standard-copy p{{margin:0;font-size:10.5px;line-height:1.3;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
 .standard-card .btn{{padding:6px 8px;font-size:10.5px}}
 .standard-empty{{font-size:12px;color:var(--ink-3);padding:10px}}
-.planner-toolbar .carmode{{display:flex;flex-wrap:nowrap;gap:5px;min-width:max-content}}
+.planner-toolbar .carmode{{display:flex;flex-wrap:nowrap;gap:5px}}
 .planner-toolbar .carmode .tog{{height:38px;padding:6px 10px;font-size:12px;white-space:nowrap}}
 .planner-toolbar .pf-check{{min-width:max-content;padding-bottom:8px}}
 .planner-toolbar .pf-check label{{font-size:12px;color:var(--ink-2)}}
@@ -1007,8 +1041,10 @@ body.booking-open{{overflow:hidden}}
 .travel-workspace[data-mode="explore"] .exproutebox{{display:none}}
 .workspace-result:empty{{display:none}}
 .workspace-result:not(:empty){{margin-top:12px}}
-.tour-export-actions{{align-items:center;gap:8px;flex-wrap:wrap}}
+.tour-export-actions{{display:flex;align-items:center;gap:6px;flex-wrap:nowrap}}
 .tour-export-actions #tourjpg,.tour-export-actions #tourpdf{{min-width:72px;font-weight:800;letter-spacing:.04em}}
+.expbar .trip-save-form{{grid-column:1/-1;width:min(760px,100%);margin:0}}
+@media(max-width:900px){{.tour-export-actions{{order:8;width:100%;overflow-x:auto;padding-bottom:2px}}.expbar .trip-save-form{{display:flex;align-items:end;overflow-x:auto}}}}
 .page-planner .travel-workspace[data-mode="planner"] .expgrid{{grid-template-columns:minmax(250px,320px) 1fr}}
 .planner-map-sec{{padding:0 0 18px!important}}
 .planner-map-sec>.wrap{{max-width:none;padding:0 12px}}
@@ -1018,8 +1054,13 @@ body.booking-open{{overflow:hidden}}
   .page-planner .page-head{{display:none}}
   .planner-controls{{padding-top:8px!important}}
   .planner-toolbar{{border-radius:0}}
-  .standard-tours{{min-width:88vw}}
-  .standard-card{{flex-basis:280px}}
+  .planner-toolbar{{display:flex;overflow-x:auto;overflow-y:visible}}
+  .planner-toolbar>.pf{{flex:0 0 auto;min-width:132px}}
+  .planner-toolbar>.pf:first-child{{min-width:190px}}
+  .standard-dialog{{width:100%;max-height:82dvh;border-radius:20px 20px 0 0;padding:18px}}
+  .standard-modal{{place-items:end center;padding:0}}
+  .standard-dialog-head{{grid-template-columns:1fr;margin-right:45px}}
+  .standard-grid{{grid-template-columns:1fr}}
   .workspace-tabs{{display:flex;position:sticky;top:0;z-index:5}}
   .workspace-tabs button{{flex:1;padding-inline:8px}}
   .planner-more-in{{position:fixed;inset:auto 0 0;width:100%;max-height:72dvh;border-radius:20px 20px 0 0}}
@@ -1082,6 +1123,9 @@ body.booking-open{{overflow:hidden}}
   .expbar{{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:6px;padding:8px}}
   .expsearch{{grid-column:1/-1;min-width:0;width:100%}}
   .expbar input,.expbar select{{min-width:0;width:100%;font-size:13px;padding:7px 8px}}
+  .expfilters{{min-width:0}}
+  .expfilters>summary{{width:100%;height:36px;font-size:12px}}
+  .expfilters-pop{{position:fixed;inset:auto 10px 10px;width:auto;max-height:72dvh;overflow:auto;border-radius:18px;z-index:1800}}
   .expdate{{grid-column:1/-1}}
   .expgrid{{min-width:0;display:flex;flex-direction:column}}
   .expmapwrap{{order:1;height:calc(100dvh - 250px);min-height:430px;max-height:620px}}
@@ -1091,5 +1135,61 @@ body.booking-open{{overflow:hidden}}
   .expside,.expmapwrap{{min-width:0;width:100%}}
   .planner-toolbar{{max-width:100%;padding:8px}}
   .planner-more-in{{max-width:100vw}}
+}}
+
+/* Flat travel product language: restrained surfaces, clear hierarchy, no 3D chrome. */
+.hero{{background:var(--bg);border-bottom:1px solid var(--line);box-shadow:none}}
+.hero .kicker{{color:var(--accent);font-weight:700}}
+.hero.tight{{padding-block:18px 14px}}
+.site-head,.travel-workspace,.explorer,.expbar,.expside,.expmapwrap,.planner-toolbar,
+.workspace-tabs,.home-more,.journey-steps article,.card,.surface,.booking-card{{box-shadow:none}}
+.logo img{{filter:none}}
+.head-tel a,.btn{{background:var(--brand);border:0;border-radius:10px;box-shadow:none;filter:none}}
+.head-tel a:hover,.btn:hover{{background:var(--brand-2);filter:none}}
+.btn.ghost,.btn.alt{{background:transparent;border:1px solid var(--line);border-radius:10px}}
+.workspace-tabs{{border:1px solid var(--line);border-radius:10px;background:transparent;padding:3px}}
+.workspace-tabs button{{border-radius:7px}}
+.workspace-tabs button.on{{background:var(--surface-2);box-shadow:none}}
+.travel-workspace{{border-radius:12px}}
+.planner-toolbar,.expbar{{background:var(--surface);border-radius:0}}
+.place-choice,.standard-card,.booking-card{{background:var(--surface);border-radius:10px;box-shadow:none}}
+.place-choice.on{{background:color-mix(in srgb,var(--brand) 8%,var(--surface))}}
+.mapcluster b,.placecluster b{{border:2px solid #fff!important;box-shadow:0 0 0 2px rgba(32,201,189,.18)!important}}
+.mapcluster.visited b,.placecluster.visited b{{box-shadow:0 0 0 2px rgba(123,135,149,.16)!important}}
+.authcard,.booking-modal-card,.standard-dialog{{background:var(--surface);border-radius:14px;box-shadow:0 18px 55px rgba(0,0,0,.34)}}
+.corner-tools .corner-langs,.corner-tools .authlink,.authbox .authlink{{backdrop-filter:none;box-shadow:none;background:var(--surface)}}
+
+.journey-flow{{padding:28px 0;border-block:1px solid var(--line);background:var(--bg)}}
+.journey-flow-head{{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:18px}}
+.journey-flow-head h2{{margin:0 0 4px;font-size:clamp(20px,2.2vw,28px)}}
+.journey-flow-head p{{margin:0;color:var(--ink-2);font-size:14px}}
+.text-link{{font-weight:700;font-size:14px;white-space:nowrap}}
+.journey-steps{{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}}
+.journey-steps article{{display:flex;gap:12px;align-items:flex-start;padding:15px;border:1px solid var(--line);border-radius:10px;background:var(--surface)}}
+.journey-steps article>span{{display:grid;place-items:center;flex:0 0 28px;width:28px;height:28px;border-radius:50%;background:var(--brand);color:var(--on-brand);font-size:12px;font-weight:800}}
+.journey-steps h3{{margin:1px 0 3px;font-size:15px}}
+.journey-steps p{{margin:0;color:var(--ink-2);font-size:12.5px;line-height:1.45}}
+.home-hero{{padding:34px 0 28px!important;background:var(--bg)!important}}
+.home-hero .wrap{{display:grid;justify-items:start}}
+.home-hero h1{{max-width:22ch;font-size:clamp(30px,4vw,48px);margin-bottom:10px}}
+.home-hero .lead{{max-width:62ch;font-size:clamp(15px,1.5vw,18px);margin-bottom:18px}}
+.home-hero-actions{{display:flex;flex-wrap:wrap;gap:9px}}
+.home-hero-actions .btn{{min-height:44px;padding-inline:18px;text-decoration:none}}
+.home-hero-note{{margin:11px 0 0;color:var(--ink-3);font-size:12px}}
+.map-intro{{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:12px}}
+.map-intro h2{{margin:0;font-size:clamp(19px,2vw,24px)}}
+.map-intro .map-sub{{margin:0;max-width:68ch;text-align:end;font-size:13px;color:var(--ink-2)}}
+.maphero{{scroll-margin-top:20px}}
+@media(max-width:700px){{
+  .home-hero{{padding:26px 0 22px!important}}
+  .home-hero h1{{font-size:30px}}
+  .home-hero-actions{{display:grid;width:100%}}
+  .home-hero-actions .btn{{width:100%;justify-content:center}}
+  .map-intro{{display:block}}
+  .map-intro .map-sub{{margin-top:5px;text-align:start}}
+  .journey-flow{{padding-block:22px}}
+  .journey-flow-head{{display:grid;align-items:start}}
+  .journey-steps{{grid-template-columns:1fr}}
+  .journey-steps article{{padding:12px}}
 }}
 """

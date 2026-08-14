@@ -47,4 +47,3 @@ Admin → ავტომობილები → New Automobile. შეავ�
 ## 9. გამოქვეყნებამდე შემოწმება
 
 გაუშვით `python build.py --validate-only`, შემდეგ `python build.py dist --strict`. შეცდომის ტექსტი მიუთითებს შესავსებ ველს. მხოლოდ წარმატებული strict build არის წარმოებისთვის მზად.
-

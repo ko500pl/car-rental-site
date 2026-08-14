@@ -4,43 +4,38 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
-  <title>ადმინი — საიტის მართვა</title>
+  <title>საიტის მართვა — Fleet House</title>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <style>
-    body{margin:0;font-family:"Noto Sans Georgian",system-ui,sans-serif}
-    #nc-root:empty::after{content:"იტვირთება…";display:block;padding:40px;text-align:center;color:#66788a}
+    :root{--bg:#f4f7fa;--card:#fff;--ink:#12202d;--muted:#607080;--line:#dce5ec;--accent:#087ea4;--soft:#e9f7fb}
+    *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans Georgian",system-ui,sans-serif}
+    a{color:inherit}.shell{max-width:1180px;margin:auto;padding:32px 22px 56px}.top{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:28px}
+    .brand{display:flex;align-items:center;gap:13px}.mark{width:58px;height:48px;border-radius:11px;background:#0c1a29;display:grid;place-items:center;overflow:hidden}.mark img{width:52px;height:38px;object-fit:contain}.brand b{font-size:20px}.brand span{display:block;color:var(--muted);font-size:13px;margin-top:2px}
+    .site-link{padding:10px 14px;border:1px solid var(--line);border-radius:10px;text-decoration:none;background:#fff;font-weight:650;font-size:14px}
+    h1{font-size:clamp(26px,4vw,38px);margin:0 0 8px}.lead{color:var(--muted);margin:0 0 28px;max-width:720px;line-height:1.65}
+    .quick{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:30px}.quick a{min-height:92px;padding:18px;border-radius:14px;text-decoration:none;background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column;justify-content:center;gap:5px}.quick a:first-child{background:var(--accent);color:#fff;border-color:var(--accent)}.quick strong{font-size:16px}.quick small{color:var(--muted);line-height:1.4}.quick a:first-child small{color:#d9f5fc}
+    h2{font-size:18px;margin:0 0 13px}.groups{display:grid;grid-template-columns:1fr 1fr;gap:16px}.group{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}.group h3{font-size:16px;margin:0 0 6px}.group>p{font-size:13px;color:var(--muted);margin:0 0 12px;line-height:1.5}.links{display:grid;gap:7px}.links a{display:flex;align-items:center;justify-content:space-between;padding:11px 12px;border-radius:9px;text-decoration:none;background:#f8fafc;border:1px solid transparent;font-size:14px}.links a:hover,.links a:focus-visible{border-color:#93d8e9;background:var(--soft);outline:none}.links a::after{content:'›';color:var(--accent);font-size:20px}
+    .note{margin-top:18px;padding:14px 16px;background:#fff8e6;border:1px solid #f0db9b;border-radius:12px;color:#665217;font-size:13px;line-height:1.55}
+    @media(max-width:850px){.quick{grid-template-columns:1fr 1fr}.groups{grid-template-columns:1fr}}@media(max-width:520px){.shell{padding:20px 14px 40px}.top{align-items:flex-start}.site-link{font-size:0}.site-link::after{content:'საიტი';font-size:14px}.quick{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
-  <a href="/admin/bookings.html" style="position:fixed;z-index:9999;right:12px;top:12px;padding:10px 14px;border-radius:9px;background:#0b1724;color:#fff;text-decoration:none">ჯავშნების მართვა</a>
-  <!-- ══════════════════════════════════════════════════════════════════════
-       ადმინ-პანელი. ორი ვარიანტია — ერთი აქტიურია, მეორე კომენტარში.
-
-       ვარიანტი 1 (აქტიური): Decap CMS — კარგად დოკუმენტირებული, Netlify-ის
-       GitHub OAuth-თან პირდაპირ მუშაობს.
-
-       ვარიანტი 2: Sveltia CMS — იგივე config.yml, გაცილებით სწრაფი და
-       მოხერხებული ინტერფეისი. გადასართავად დააკომენტარეთ ქვედა ორი <script>
-       და გააქტიურეთ Sveltia-ს ხაზი.
-       ═══════════════════════════════════════════════════════════════════ -->
-
-  <!-- ვარიანტი 2 — Sveltia CMS (გასააქტიურებლად მოხსენით კომენტარი)
-  <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js" type="module"></script>
-  -->
-
-  <!-- ვარიანტი 1 — Decap CMS -->
-  <script src="https://unpkg.com/decap-cms@^3.8.4/dist/decap-cms.js"></script>
-
-  <script>
-    // build.py-ის შემდეგ საიტი გადაიწყობა ავტომატურად (Netlify / GitHub Actions).
-    // ცვლილების შენახვიდან საიტზე გამოჩენამდე გადის 1–2 წუთი.
-    if (window.CMS) {
-      CMS.registerPreviewStyle('/assets/style.css');
-      CMS.registerEventListener({
-        name: 'postSave',
-        handler: () => console.log('[admin] შენახულია — საიტი 1–2 წუთში განახლდება'),
-      });
-    }
-  </script>
+  <main class="shell">
+    <header class="top"><div class="brand"><div class="mark"><img src="../assets/sl-logo.png" alt="Fleet House"></div><div><b>Fleet House</b><span>საიტის მართვა</span></div></div><a class="site-link" href="../index.html" target="_blank" rel="noopener">საიტის ნახვა ↗</a></header>
+    <h1>რისი შეცვლა გსურთ?</h1>
+    <p class="lead">აირჩიეთ კონკრეტული საქმე. რედაქტორში პირველ რიგში გამოჩნდება მომხმარებლისთვის ხილული ინფორმაცია, ხოლო Google-ისა და ტექნიკური ველები — ბოლოს.</p>
+    <section class="quick" aria-label="ხშირი მოქმედებები">
+      <a href="cms.html#/collections/pages"><strong>ტექსტების შეცვლა</strong><small>მთავარი, პირობები, კითხვები და სხვა გვერდები</small></a>
+      <a href="cms.html#/collections/cars/new"><strong>＋ ახალი მანქანა</strong><small>ფოტო, აღწერა, მახასიათებლები და ფასი</small></a>
+      <a href="cms.html#/collections/cars"><strong>მანქანები და ფასები</strong><small>არსებული ავტოპარკის მართვა</small></a>
+      <a href="bookings.html"><strong>ჯავშნების მართვა</strong><small>მოთხოვნები, თარიღები და სტატუსები</small></a>
+    </section>
+    <h2>ყველა განყოფილება</h2>
+    <section class="groups">
+      <article class="group"><h3>კონტენტი და შეთავაზებები</h3><p>ის ინფორმაცია, რომელსაც საიტის მომხმარებელი ხედავს.</p><nav class="links"><a href="cms.html#/collections/pages">ტექსტების შეცვლა</a><a href="cms.html#/collections/cars">მანქანების მართვა და ფასები</a><a href="cms.html#/collections/routes">ტურები და მარშრუტები</a><a href="cms.html#/collections/attractions">ადგილები და ღირსშესანიშნაობები</a><a href="cms.html#/collections/posts">ბლოგი და სიახლეები</a></nav></article>
+      <article class="group"><h3>საიტის პარამეტრები</h3><p>იშვიათად შესაცვლელი საერთო ინფორმაცია და წარწერები.</p><nav class="links"><a href="cms.html#/collections/settings/entries/site">ავტოპარკის რაოდენობა და კონტაქტები</a><a href="cms.html#/collections/translations">მენიუ და ღილაკების წარწერები</a><a href="cms.html#/collections/settings">საიტის პარამეტრები</a><a href="cms.html#/media">ფოტოების ბიბლიოთეკა</a><a href="cms.html">სრული რედაქტორის გახსნა</a></nav></article>
+    </section>
+    <p class="note"><strong>რჩევა:</strong> ჯერ შეავსეთ ქართული ტექსტი, შემდეგ ინგლისური და რუსული. ცვლილების შენახვიდან საიტზე გამოჩენას ჩვეულებრივ 1–2 წუთი სჭირდება.</p>
+  </main>
 </body>
 </html>

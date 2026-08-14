@@ -531,7 +531,9 @@ def head_html(lang, current, title, desc, keywords, url, alternates, depth, ld,
 def header_html(lang, current):
     u = UI[lang]
     CUR = ' aria-current="page"'
-    more_pages = {"terms", "faq", "blog", "software", "community"}
+    # Trip planning and community are the product's primary navigation.
+    # Fleet stays available, but appears contextually and in the secondary menu.
+    more_pages = {"fleet", "terms", "faq", "blog", "software"}
     lis = "".join(
         f'<li><a href="{page_url(lang, "map", False) + "#planner" if p == "planner" else page_url(lang, p, False)}"'
         f'{CUR if p == current else ""}>{E(u["nav"][p])}</a></li>'
@@ -682,19 +684,68 @@ def render_static_page(lang, page):
         h = dict(p["hero"])
         h.update(HOME_HERO[lang])
         p["h1"] = h["h1"]
+        hero_cta = {
+            "ka": ("დაიწყე ტურის დაგეგმვა", "ნახე საჯარო ტურები", "დაწყება უფასოა · რეგისტრაცია მხოლოდ შენახვისა და გაზიარებისთვის დაგჭირდება"),
+            "en": ("Start planning your trip", "Explore public trips", "Start for free · Sign in only when you want to save or share"),
+            "ru": ("Начать планирование", "Смотреть публичные поездки", "Начните бесплатно · Вход нужен только для сохранения и публикации"),
+            "fa": ("برنامه‌ریزی سفر را شروع کنید", "سفرهای عمومی را ببینید", "شروع رایگان است · ورود فقط برای ذخیره یا اشتراک‌گذاری لازم است"),
+            "he": ("התחילו לתכנן טיול", "גלו טיולים ציבוריים", "מתחילים בחינם · כניסה נדרשת רק לשמירה או לשיתוף"),
+            "ar": ("ابدأ تخطيط رحلتك", "استكشف الرحلات العامة", "ابدأ مجانًا · تسجيل الدخول مطلوب فقط للحفظ أو المشاركة"),
+        }[lang]
         x = TRAVEL[lang]["exp"]
         facts = "".join(f"<div><b>{E(x2['v'])}</b><span>{E(x2['k'])}</span></div>"
                         for x2 in h["facts"])
-        mp, tail_js = travel_workspace_block(lang, depth, "64vh", hero=True, initial="explore")
-        body.append(f'<section class="hero tight"><div class="wrap">'
+        mp, tail_js = travel_workspace_block(lang, depth, "64vh", hero=True, initial="planner")
+        body.append(f'<section class="hero home-hero"><div class="wrap">'
                     f'<span class="kicker">{E(h["kicker"])}</span><h1>{E(p["h1"])}</h1>'
-                    f'<p class="lead">{inline(h["lead"], lang)}</p></div></section>'
-                    f'<section class="sec wide maphero"><div class="wrap wide">'
-                    f'<h2 class="vh">{E(x["explore_h"])}</h2>'
-                    f'<p class="map-sub">{E(x["explore_sub"])}</p>'
-                    f'{mp}{legend_html(lang)}</div></section>'
-                    f'<section class="sec"><div class="wrap">'
-                    f'<div class="hero-facts">{facts}</div></div></section>')
+                    f'<p class="lead">{inline(h["lead"], lang)}</p>'
+                    f'<div class="home-hero-actions"><a class="btn" href="#planner">{E(hero_cta[0])}</a>'
+                    f'<a class="btn alt" href="{page_url(lang, "community", False)}">{E(hero_cta[1])}</a></div>'
+                    f'<p class="home-hero-note">✓ {E(hero_cta[2])}</p></div></section>')
+        map_section = (f'<section class="sec wide maphero" id="planner"><div class="wrap wide">'
+                       f'<div class="map-intro"><h2>{E(x["explore_h"])}</h2>'
+                       f'<p class="map-sub">{E(x["explore_sub"])}</p></div>'
+                       f'{mp}{legend_html(lang)}</div></section>')
+        flow = {
+            "ka": ("დაგეგმე. მოარგე. გააზიარე.", "მოგზაურობის სრული გზა ერთ სივრცეში.",
+                   "1", "დაგეგმე", "მიუთითე დრო, ინტერესები და თანამგზავრები.",
+                   "2", "მოარგე", "დაამატე ან ამოიღე ადგილები პირდაპირ რუკაზე.",
+                   "3", "გააზიარე", "მოიწვიე მეგობრები ან იპოვე თანამგზავრები.",
+                   "საჯარო ტურების ნახვა"),
+            "en": ("Plan. Shape. Share.", "The complete trip journey in one place.",
+                   "1", "Plan", "Set your dates, interests, and travel party.",
+                   "2", "Shape", "Add or remove places directly on the map.",
+                   "3", "Share", "Invite friends or connect with fellow travellers.",
+                   "Explore public trips"),
+            "ru": ("Планируйте. Настраивайте. Делитесь.", "Весь путь путешествия в одном месте.",
+                   "1", "Планируйте", "Укажите даты, интересы и состав группы.",
+                   "2", "Настраивайте", "Добавляйте и удаляйте места прямо на карте.",
+                   "3", "Делитесь", "Приглашайте друзей или находите попутчиков.",
+                   "Смотреть публичные поездки"),
+            "fa": ("برنامه‌ریزی. شخصی‌سازی. اشتراک‌گذاری.", "تمام مسیر سفر در یک فضا.",
+                   "۱", "برنامه‌ریزی", "تاریخ، علایق و همراهان را مشخص کنید.",
+                   "۲", "شخصی‌سازی", "مکان‌ها را مستقیماً روی نقشه اضافه یا حذف کنید.",
+                   "۳", "اشتراک‌گذاری", "دوستان را دعوت کنید یا هم‌سفر پیدا کنید.",
+                   "مشاهده سفرهای عمومی"),
+            "he": ("מתכננים. מתאימים. משתפים.", "כל מסע הטיול במקום אחד.",
+                   "1", "מתכננים", "בחרו תאריכים, תחומי עניין והרכב מטיילים.",
+                   "2", "מתאימים", "הוסיפו או הסירו מקומות ישירות במפה.",
+                   "3", "משתפים", "הזמינו חברים או מצאו שותפים למסע.",
+                   "צפייה בטיולים ציבוריים"),
+            "ar": ("خطط. خصص. شارك.", "رحلة التخطيط كاملة في مكان واحد.",
+                   "١", "خطط", "حدد التواريخ والاهتمامات ورفقاء السفر.",
+                   "٢", "خصص", "أضف الأماكن أو احذفها مباشرة على الخريطة.",
+                   "٣", "شارك", "ادعُ الأصدقاء أو تواصل مع مسافرين آخرين.",
+                   "استكشف الرحلات العامة"),
+        }[lang]
+        steps = "".join(
+            f'<article><span>{E(flow[i])}</span><div><h3>{E(flow[i + 1])}</h3><p>{E(flow[i + 2])}</p></div></article>'
+            for i in (2, 5, 8))
+        body.append(f'<section class="journey-flow"><div class="wrap"><div class="journey-flow-head">'
+                    f'<div><h2>{E(flow[0])}</h2><p>{E(flow[1])}</p></div>'
+                    f'<a class="text-link" href="{page_url(lang, "community", False)}">{E(flow[11])} →</a>'
+                    f'</div><div class="journey-steps">{steps}</div></div></section>')
+        body.append(map_section)
     else:
         body.append(f'<section class="page-head"><div class="wrap"><h1>{E(p["h1"])}</h1>'
                     f'<p class="lead">{inline(p["lead"], lang)}</p></div></section>')
@@ -745,10 +796,26 @@ def render_static_page(lang, page):
         cur.append(b)
     if cur:
         sections.append(cur)
+    rendered_sections = []
     for i, s in enumerate([] if page == "contact" else sections):
         inner = "\n".join(render_block(b, lang) for b in s)
-        body.append(f'<section class="sec{" alt" if i % 2 else ""}">'
-                    f'<div class="wrap">{inner}</div></section>')
+        rendered_sections.append(f'<section class="sec{" alt" if i % 2 else ""}">'
+                                 f'<div class="wrap">{inner}</div></section>')
+    if page == "index" and rendered_sections:
+        more_label = {
+            "ka": "კომპანიის პირობები და დამატებითი ინფორმაცია",
+            "en": "Rental terms and more information",
+            "ru": "Условия аренды и дополнительная информация",
+            "fa": "شرایط اجاره و اطلاعات بیشتر",
+            "he": "תנאי השכרה ומידע נוסף",
+            "ar": "شروط التأجير ومعلومات إضافية",
+        }[lang]
+        body.append(f'<section class="home-more-wrap"><div class="wrap">'
+                    f'<details class="home-more"><summary>{E(more_label)}</summary>'
+                    f'<div class="home-more-facts hero-facts">{facts}</div>'
+                    f'{"".join(rendered_sections)}</details></div></section>')
+    else:
+        body.extend(rendered_sections)
 
     graph = [org_node(lang), website_node(lang),
              {"@type": "WebPage", "@id": page_url(lang, page) + "#webpage",
@@ -1246,12 +1313,17 @@ def explorer_block(lang, depth, height="72vh", hero=False):
            aria-label="{E(x["search_ph"])}">
     <div id="expqlist" class="expqlist" role="listbox"></div>
     <select id="exptype" aria-label="{E(x["all_types"])}"><option value="">{E(x["all_types"])}</option>{topts}</select>
-    <select id="expregion" aria-label="{E(x["all_regions"])}"><option value="">{E(x["all_regions"])}</option>{ropts}</select>
-    <select id="expvisited" aria-label="{E(visit_labels[0])}"><option value="">{E(visit_labels[0])}</option><option value="yes">{E(visit_labels[1])}</option><option value="no">{E(visit_labels[2])}</option></select>
-    <button id="expreset" class="btn sm ghost" type="button">{E(x["reset"])}</button>
-    <label class="expdate">{E(x["date"])}
-      <input id="expday" type="date" aria-label="{E(x["date"])}">
-    </label>
+    <details class="expfilters">
+      <summary>{E({"ka":"მეტი ფილტრი","en":"More filters","ru":"Ещё фильтры","fa":"فیلترهای بیشتر","he":"מסננים נוספים","ar":"مزيد من الفلاتر"}[lang])}</summary>
+      <div class="expfilters-pop">
+        <select id="expregion" aria-label="{E(x["all_regions"])}"><option value="">{E(x["all_regions"])}</option>{ropts}</select>
+        <select id="expvisited" aria-label="{E(visit_labels[0])}"><option value="">{E(visit_labels[0])}</option><option value="yes">{E(visit_labels[1])}</option><option value="no">{E(visit_labels[2])}</option></select>
+        <label class="expdate">{E(x["date"])}
+          <input id="expday" type="date" aria-label="{E(x["date"])}">
+        </label>
+        <button id="expreset" class="btn sm ghost" type="button">{E(x["reset"])}</button>
+      </div>
+    </details>
     <span id="expcount" class="expcount"></span>
   </div>
   <div class="expgrid" style="--exph:{height}">
@@ -1690,6 +1762,7 @@ def planner_data(lang):
         "minPeople": int(route.get("min_people", 1)), "maxPeople": int(route.get("max_people", 8)),
         "availableFrom": route.get("available_from", ""), "availableTo": route.get("available_to", ""),
         "img": route.get("image") or "", "u": route_url(lang, slug, False),
+        "wp": route.get("waypoints", []),
     } for slug, route in ROUTES.items()]
     items = []
     for s, a in ATTRACTIONS.items():
@@ -1777,11 +1850,11 @@ def planner_form_html(lang):
 <div class="pf"><label for="days">{E(t['days'])}</label><select id="days">
 {"".join(f'<option value="{d}"{" selected" if d == 3 else ""}>{d}</option>' for d in range(1, 11))}
 </select></div>
-<div class="pf"><label for="month">{E(t['month'])}</label><select id="month"></select></div>
+<div class="pf derived-month"><label for="month">{E(t['month'])}</label><select id="month"></select></div>
 <div class="pf"><label for="party">{E(t['party'])}</label><select id="party">
 {"".join(f'<option value="{n}"{" selected" if n == 2 else ""}>{n}</option>' for n in range(1, 9))}
 </select></div>
-<div class="pf"><label for="tourpurpose">{E(labels[3])}</label><select id="tourpurpose">{"".join(f'<option value="{k}">{E(v)}</option>' for k,v in purposes)}</select></div>
+<div class="pf tour-purpose-field"><label for="tourpurpose">{E(labels[3])}</label><select id="tourpurpose">{"".join(f'<option value="{k}">{E(v)}</option>' for k,v in purposes)}</select></div>
 <div class="pf pf-wide carmode">
 <label class="tog"><input type="radio" name="carmode" id="carauto" value="auto" checked>
 <span>{E(t['car_auto'])}</span></label>
@@ -1794,8 +1867,8 @@ def planner_form_html(lang):
 <option value="suv" selected>{E(cat_label('suv', lang))}</option>
 <option value="offroad">{E(cat_label('offroad', lang))}</option>
 </select></div>
-<div class="pf"><label for="pace">{E(t['pace'])}</label><select id="pace">{opt_pace()}</select></div>
-<div class="pf"><label for="hbudget">{E(t['stay'])} · {E(t['budget'])}</label><select id="hbudget">
+<div class="pf secondary-planner-field"><label for="pace">{E(t['pace'])}</label><select id="pace">{opt_pace()}</select></div>
+<div class="pf secondary-planner-field"><label for="hbudget">{E(t['stay'])} · {E(t['budget'])}</label><select id="hbudget">
 <option value="">—</option><option value="low">{E(t['b_low'])}</option>
 <option value="mid" selected>{E(t['b_mid'])}</option><option value="high">{E(t['b_high'])}</option>
 </select></div>
@@ -1809,7 +1882,11 @@ def planner_form_html(lang):
 <div class="pf pf-wide prow">
 <button type="button" class="btn" id="build">{E(t['build'])}</button>
 <button type="button" class="btn ghost" id="reset">{E(t['reset'])}</button></div>
-<section class="standard-tours pf-wide"><div class="standard-head"><h3>{E(labels[4])}</h3><span id="standardcount"></span></div><div id="standardtours" class="standard-grid"></div></section>
+<div class="pf standard-launch"><label>{E(labels[4])}</label><button type="button" class="btn ghost" id="standardopen">{E(labels[4])} <span id="standardcount"></span></button></div>
+<div class="standard-modal" id="standardmodal" hidden><div class="standard-dialog" role="dialog" aria-modal="true" aria-labelledby="standardtitle">
+<button type="button" class="standard-close" id="standardclose" aria-label="Close">&#10005;</button>
+<div class="standard-dialog-head"><h3 id="standardtitle">{E(labels[4])}</h3><label for="tourpurposemodal">{E(labels[3])}</label><select id="tourpurposemodal">{"".join(f'<option value="{k}">{E(v)}</option>' for k,v in purposes)}</select></div>
+<div id="standardtours" class="standard-grid"></div></div></div>
 </div>"""
 
     return form
@@ -1819,19 +1896,19 @@ def travel_workspace_block(lang, depth, height="72vh", hero=False, initial="expl
     """Shared travel workspace used on home, map and planner pages."""
     explore, explore_js = explorer_block(lang, depth, height, hero)
     labels = {
-        "ka": ("ადგილები", "მარშრუტი", "ტურის დაგეგმვა"),
-        "en": ("Places", "Route", "Trip planner"),
-        "ru": ("Места", "Маршрут", "План поездки"),
-        "fa": ("مکان‌ها", "مسیر", "برنامه سفر"),
-        "he": ("מקומות", "מסלול", "מתכנן טיול"),
-        "ar": ("الأماكن", "المسار", "مخطط الرحلة"),
+        "ka": ("დაგეგმე", "აღმოაჩინე", "მარშრუტი"),
+        "en": ("Plan", "Explore", "Route"),
+        "ru": ("План", "Открыть", "Маршрут"),
+        "fa": ("برنامه‌ریزی", "کاوش", "مسیر"),
+        "he": ("תכנון", "גילוי", "מסלול"),
+        "ar": ("خطط", "استكشف", "المسار"),
     }[lang]
     form = planner_form_html(lang)
     html = f'''<section class="travel-workspace" data-mode="{E(initial)}">
   <div class="workspace-tabs" role="tablist" aria-label="Travel tools">
-    <button type="button" data-workmode="explore">{E(labels[0])}</button>
-    <button type="button" data-workmode="route">{E(labels[1])}</button>
-    <button type="button" data-workmode="planner">{E(labels[2])}</button>
+    <button type="button" data-workmode="planner">{E(labels[0])}</button>
+    <button type="button" data-workmode="explore">{E(labels[1])}</button>
+    <button type="button" data-workmode="route">{E(labels[2])}</button>
   </div>
   <div class="workspace-plan">{form}</div>
   {explore}

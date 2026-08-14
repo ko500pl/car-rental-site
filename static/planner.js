@@ -365,13 +365,14 @@
       h += "</div>";
     });
     if (res.dropped.length) h += '<div class="note">' + T.too_far + "</div>";
-    h += '<p class="prow tour-export-actions">' +
-         (window.FH ? '<button class="btn" type="button" id="savetrip">' +
-            esc(T.save_trip || "Save") + "</button>" : "") +
-         '<button class="btn ghost" type="button" id="tourjpg">JPG</button>' +
-         '<button class="btn ghost" type="button" id="tourpdf">PDF</button>' +
-         '<button class="btn ghost" type="button" onclick="window.print()">' + T.print + "</button></p>";
     box.innerHTML = h;
+    var oldTools=document.getElementById("triptools");if(oldTools)oldTools.remove();
+    var topTools=document.createElement("div");topTools.id="triptools";topTools.className="tour-export-actions";
+    topTools.innerHTML=(window.FH?'<button class="btn sm" type="button" id="savetrip">'+esc(T.save_trip||"Save")+'</button>':'')+
+      '<button class="btn sm ghost" type="button" id="tourjpg">JPG</button><button class="btn sm ghost" type="button" id="tourpdf">PDF</button>'+
+      '<button class="btn sm ghost" type="button" id="tourprint">'+esc(T.print||"Print")+'</button>';
+    var expCount=document.getElementById("expcount"),expBar=document.querySelector(".expbar");
+    if(expBar)expBar.insertBefore(topTools,expCount||null);
 
     function wrap(ctx, text, x, y, max, line) {
       var words = String(text || "").split(/\s+/), row = "", lines = [];
@@ -435,7 +436,7 @@
       var xref=size; add("xref\n0 6\n0000000000 65535 f \n"); for(var n=1;n<=5;n++)add(String(offsets[n]).padStart(10,"0")+" 00000 n \n");
       add("trailer\n<< /Size 6 /Root 1 0 R >>\nstartxref\n"+xref+"\n%%EOF"); saveBlob(new Blob(parts,{type:"application/pdf"}),"fleet-house-trip.pdf");
     }
-    var jpg=document.getElementById("tourjpg"),pdf=document.getElementById("tourpdf"); if(jpg)jpg.onclick=saveJpg;if(pdf)pdf.onclick=savePdf;
+    var jpg=document.getElementById("tourjpg"),pdf=document.getElementById("tourpdf"),print=document.getElementById("tourprint"); if(jpg)jpg.onclick=saveJpg;if(pdf)pdf.onclick=savePdf;if(print)print.onclick=function(){window.print();};
     var plannerWa=document.getElementById("plannerwa");if(plannerWa)plannerWa.onclick=function(){var cfg=window.FH_CFG||{},num=String(cfg.whatsapp||"").replace(/\D/g,"");if(!num)return;var msg="Hello, I want to rent "+(rentalCar?rentalCar.n:"a suitable car")+" for "+tripName+". Route: "+planSlugs(res).join(", ")+". Distance: "+Math.round(totKm)+" km. Page: "+location.href;window.open("https://wa.me/"+num+"?text="+encodeURIComponent(msg),"_blank","noopener");};
     box.querySelectorAll("[data-prm]").forEach(function (b) {
       b.onclick = function () { editRemove(b.dataset.prm); };
@@ -451,8 +452,10 @@
       var stops = [];
       res.days.forEach(function (d) { d.items.forEach(function (i) { stops.push({ s: i.a.s, n: i.a.n }); }); });
       var form = document.createElement("form"); form.className = "trip-save-form";
-      form.innerHTML = '<label>' + esc(T.when) + '<input type="date" name="when" required value="' +
-        esc(window.WX ? WX.iso(7) : "") + '"></label><label>' + esc(T.trip_name) +
+      var saveLabels={ka:["თარიღი","მარშრუტის სახელი"],en:["Date","Route name"],ru:["Дата","Название маршрута"],fa:["تاریخ","نام مسیر"],he:["תאריך","שם המסלול"],ar:["التاريخ","اسم المسار"]}[document.documentElement.lang]||["Date","Route name"];
+      var chosenDay=document.getElementById("expday"),defaultDay=chosenDay&&chosenDay.value?chosenDay.value:(window.WX?WX.iso(7):"");
+      form.innerHTML = '<label>' + esc(T.when || T.date || saveLabels[0]) + '<input type="date" name="when" required value="' +
+        esc(defaultDay) + '"></label><label>' + esc(T.trip_name || saveLabels[1]) +
         '<input name="title" required maxlength="120" value="' + esc(start.n + " · " + res.days.length + " " + T.day) +
         '"></label><button class="btn sm" type="submit">' + esc(T.save_trip || "Save") + '</button><button class="btn sm ghost" type="button" data-cancel>×</button><span role="status"></span>';
       sv.replaceWith(form); form.querySelector("[data-cancel]").onclick = function(){form.replaceWith(sv);};
@@ -702,11 +705,41 @@
     var ui = D.tourUi || {};
     box.innerHTML = tours.map(function (tour) {
       var image = tour.img ? '<img src="' + esc(tour.img) + '" alt="">' : '';
-      return '<article class="standard-card">' + image + '<div class="standard-copy"><b>' + esc(tour.n) +
+      return '<article class="standard-card" data-tour="' + esc(tour.s) + '">' + image + '<div class="standard-copy"><b>' + esc(tour.n) +
         '</b><small>' + tour.days + ' ' + (ui.day || '') + ' · ' + tour.minPeople + '–' + tour.maxPeople + ' ' +
         (ui.people || '') + ' · ' + tour.km + ' km</small><p>' + esc(tour.sh) + '</p></div>' +
-        '<a class="btn sm" href="' + tour.u + '">' + (ui.view || 'View') + '</a></article>';
+        '<button type="button" class="btn sm" data-choose-tour="' + esc(tour.s) + '">' + (ui.view || 'Choose') + '</button></article>';
     }).join('');
+    box.querySelectorAll('[data-choose-tour]').forEach(function (button) {
+      button.onclick = function () {
+        var tour = (D.standardTours || []).find(function (x) { return x.s === button.dataset.chooseTour; });
+        if (!tour) return;
+        window.FH_TRAVEL_SELECTION = (tour.wp || []).slice();
+        EL("days").value = String(Math.max(1, Math.min(10, tour.days || 1)));
+        EL("tourpurpose").value = tour.purpose || "classic";
+        var modalPurpose = EL("tourpurposemodal");
+        if (modalPurpose) modalPurpose.value = EL("tourpurpose").value;
+        closeStandardTours();
+        run();
+        CUR.pool = D.a.slice();
+        replan();
+      };
+    });
+  }
+  function openStandardTours() {
+    var modal = EL("standardmodal"), purpose = EL("tourpurposemodal");
+    if (!modal) return;
+    if (purpose) purpose.value = EL("tourpurpose").value;
+    modal.hidden = false;
+    document.body.classList.add("modal-open");
+    renderStandardTours();
+    setTimeout(function () { (purpose || EL("standardclose")).focus(); }, 20);
+  }
+  function closeStandardTours() {
+    var modal = EL("standardmodal");
+    if (!modal) return;
+    modal.hidden = true;
+    document.body.classList.remove("modal-open");
   }
   function styleRow() {
     var box = EL("styles");
@@ -785,6 +818,20 @@
       updateChipLabel("regions"); updateChipLabel("interests");
       EL("result").innerHTML = ""; drawMap([], D.starts[parseInt(EL("start").value, 10)]);
     };
+    var standardOpen = EL("standardopen"), standardClose = EL("standardclose"),
+        standardModal = EL("standardmodal"), purposeModal = EL("tourpurposemodal");
+    if (standardOpen) standardOpen.onclick = openStandardTours;
+    if (standardClose) standardClose.onclick = closeStandardTours;
+    if (standardModal) standardModal.onclick = function (e) {
+      if (e.target === standardModal) closeStandardTours();
+    };
+    if (purposeModal) purposeModal.onchange = function () {
+      EL("tourpurpose").value = purposeModal.value;
+      renderStandardTours();
+    };
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && standardModal && !standardModal.hidden) closeStandardTours();
+    });
     var workspace = document.querySelector('.travel-workspace');
     renderStandardTours();
     if (workspace && workspace.dataset.mode === 'planner') run();
