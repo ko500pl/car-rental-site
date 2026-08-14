@@ -1279,4 +1279,37 @@ a{{color:#087f8c}}
   .journey-flow{{display:none}}
   .maphero{{padding-top:14px!important}}
 }}
+/* Compact desktop pass: map-first, with the full canvas used efficiently. */
+html,body{{max-width:100%;overflow-x:hidden}}
+@media(min-width:1001px){{
+  .home-hero{{padding:20px 0 16px!important}}
+  .home-hero-grid{{max-width:1560px;grid-template-columns:minmax(0,1.55fr) minmax(320px,420px);gap:32px;align-items:center}}
+  .home-hero h1{{max-width:24ch;margin:0 0 8px;font-size:clamp(30px,2.35vw,40px);line-height:1.16;letter-spacing:-.02em;font-weight:700}}
+  .home-hero .lead{{max-width:72ch;margin:0 0 12px;font-size:14px;line-height:1.45}}
+  .home-hero-actions{{gap:8px}}
+  .home-hero-actions .btn{{min-height:38px;padding:8px 14px;font-size:13px}}
+  .home-hero-note{{margin-top:7px;font-size:11px}}
+  .home-quick{{gap:6px;padding:6px;border-radius:12px}}
+  .home-quick-card{{grid-template-columns:26px minmax(0,1fr) auto;gap:8px;min-height:48px;padding:7px 9px;border-radius:9px}}
+  .home-quick-card>span{{width:24px;height:24px;border-radius:6px;font-size:10px}}
+  .home-quick-card b{{font-size:12px}}
+  .home-quick-card small{{font-size:10px}}
+  .home-quick-card i{{font-size:15px}}
+  .journey-flow{{display:none}}
+  .maphero{{padding:12px 0 24px!important}}
+  .maphero>.wrap.wide{{max-width:1560px}}
+  .map-intro{{display:flex;align-items:baseline;justify-content:space-between;gap:20px;margin:0 0 8px}}
+  .map-intro h2{{margin:0;font-size:18px}}
+  .map-intro .map-sub{{margin:0;font-size:11.5px;white-space:nowrap}}
+}}
+@media(min-width:1001px) and (max-width:1200px){{
+  .home-hero-grid{{grid-template-columns:minmax(0,1fr) 320px;gap:22px}}
+  .map-intro .map-sub{{white-space:normal}}
+}}
+@media(max-width:900px){{
+  .home-hero{{padding:16px 0 12px!important}}
+  .home-hero h1{{font-size:28px;line-height:1.16;max-width:22ch}}
+  .home-quick{{display:none}}
+  .maphero{{padding-top:10px!important}}
+}}
 """

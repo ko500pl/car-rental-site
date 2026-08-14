@@ -719,7 +719,7 @@ def render_static_page(lang, page):
         quick_html = "".join(
             f'<a class="home-quick-card" href="{E(q[2])}"><span>{i}</span><div><b>{E(q[0])}</b><small>{E(q[1])}</small></div><i aria-hidden="true">→</i></a>'
             for i, q in enumerate(quick, 1))
-        body.append(f'<section class="hero home-hero"><div class="wrap home-hero-grid">'
+        body.append(f'<section class="hero home-hero"><div class="wrap wide home-hero-grid">'
                     f'<div class="home-hero-copy"><span class="kicker">{E(h["kicker"])}</span><h1>{E(p["h1"])}</h1>'
                     f'<p class="lead">{inline(h["lead"], lang)}</p>'
                     f'<div class="home-hero-actions"><a class="btn" href="#planner">{E(hero_cta[0])}</a>'
