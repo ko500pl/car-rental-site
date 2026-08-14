@@ -745,6 +745,10 @@ tbody tr:nth-child(even){{background:color-mix(in srgb,#fff 3%,transparent)}}
 .wxrow b{{color:var(--ink-3);font-size:12.5px;font-weight:600;width:100%}}
 .wxcell{{background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:4px 9px}}
 .wxrow small{{color:var(--ink-3);font-size:11.5px;width:100%}}
+.map-weather-symbol{{background:transparent!important;border:0!important}}
+.map-weather-symbol span{{display:grid;place-items:center;width:42px;height:42px;font-size:30px;line-height:1;
+  opacity:.30;filter:saturate(.72) drop-shadow(0 1px 2px rgba(3,12,22,.32));transform:translateZ(0);user-select:none}}
+@media (max-width:760px){{.map-weather-symbol span{{width:36px;height:36px;font-size:25px;opacity:.27}}}}
 .pwx{{display:inline-flex;gap:6px;align-items:center;margin-inline-start:10px}}
 @media(max-width:760px){{
   .carrec{{grid-template-columns:1fr}}

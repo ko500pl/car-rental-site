@@ -77,6 +77,8 @@
     { maxZoom: 17, attribution: '&copy; OpenStreetMap' }).addTo(map);
   map.createPane('countryMask'); map.getPane('countryMask').style.zIndex = 250;
   map.createPane('countryBorder'); map.getPane('countryBorder').style.zIndex = 251;
+  map.createPane('weatherSymbols'); map.getPane('weatherSymbols').style.zIndex = 420;
+  map.getPane('weatherSymbols').style.pointerEvents = 'none';
   fetch(E.base + 'assets/georgia-boundary.geojson').then(function (r) { return r.json(); }).then(function (gj) {
     var geom = gj.features ? gj.features[0].geometry : gj.geometry;
     var polys = geom.type === 'Polygon' ? [geom.coordinates] : geom.coordinates;
@@ -92,6 +94,8 @@
 
   var layer = L.layerGroup().addTo(map);
   var routeLayer = L.layerGroup().addTo(map);
+  var weatherLayer = L.layerGroup().addTo(map);
+  var weatherSeq = 0, weatherTimer = null;
   var marks = {};
   /* One canonical map is shared by Explore, point-to-point routing and the
      multi-day planner. Other modules may add their own layers, but must not
@@ -275,7 +279,63 @@
       qbox.classList.toggle('on', !!state.q && !!list.length);
     }
     draw(list);
+    scheduleWeather();
   }
+
+  /* Quiet weather symbols: at country scale one symbol represents a small
+     area; as the user zooms in, the grid splits until symbols follow
+     individual nearby places. This keeps the map readable and the weather
+     request small while still reflecting local conditions. */
+  function weatherPoints() {
+    var zoom = map.getZoom();
+    var cell = zoom <= 7 ? .72 : (zoom <= 8 ? .42 : (zoom <= 10 ? .20 : .075));
+    var bounds = map.getBounds().pad(.12), groups = {};
+    filtered().forEach(function (p) {
+      if (!bounds.contains([p.la, p.lo])) return;
+      var key = Math.round(p.la / cell) + ':' + Math.round(p.lo / cell);
+      (groups[key] || (groups[key] = [])).push(p);
+    });
+    return Object.keys(groups).map(function (key) {
+      var g = groups[key], la = 0, lo = 0;
+      g.forEach(function (p) { la += p.la; lo += p.lo; });
+      la /= g.length; lo /= g.length;
+      var best = g[0], bd = Infinity;
+      g.forEach(function (p) {
+        var d = Math.abs(p.la - la) + Math.abs(p.lo - lo);
+        if (d < bd) { bd = d; best = p; }
+      });
+      return { p: best, count: g.length };
+    }).sort(function (a, b) { return b.count - a.count; }).slice(0, 32);
+  }
+
+  function refreshWeather() {
+    weatherTimer = null;
+    weatherLayer.clearLayers();
+    if (!window.WX || !$('expday')) return;
+    var day = $('expday').value;
+    if (!WX.inRange(day)) return;
+    var groups = weatherPoints(), points = groups.map(function (g) { return g.p; });
+    var seq = ++weatherSeq;
+    WX.get(points, day).then(function (weather) {
+      if (seq !== weatherSeq) return;
+      weatherLayer.clearLayers();
+      weather.forEach(function (w, i) {
+        if (!w || !points[i]) return;
+        var p = points[i];
+        L.marker([p.la, p.lo], {
+          pane: 'weatherSymbols', interactive: false,
+          icon: L.divIcon({ className: 'map-weather-symbol',
+            html: '<span aria-hidden="true">' + esc(w.icon) + '</span>', iconSize: [42, 42], iconAnchor: [21, 21] })
+        }).addTo(weatherLayer);
+      });
+    });
+  }
+
+  function scheduleWeather() {
+    clearTimeout(weatherTimer);
+    weatherTimer = setTimeout(refreshWeather, 180);
+  }
+  map.on('moveend', scheduleWeather);
 
   /* ── detail panel ────────────────────────────────────────────────── */
   var cache = {}, cur = null;
@@ -928,7 +988,7 @@
     }
   });
   $('expday').value = window.WX ? WX.iso(0) : '';
-  $('expday').addEventListener('change', function () { route(); if (cur) { delete cache[cur]; open(cur); } });
+  $('expday').addEventListener('change', function () { route(); scheduleWeather(); if (cur) { delete cache[cur]; open(cur); } });
   $('expgeo').addEventListener('click', locate);
   $('expwp').addEventListener('click', toggleWp);
   $('expdraw').addEventListener('click', toggleDraw);
