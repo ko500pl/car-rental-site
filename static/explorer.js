@@ -258,7 +258,7 @@
   map.on('zoomend', function () { draw(filtered()); });
 
   /* ── filtering & search ──────────────────────────────────────────── */
-  var state = { q: '', type: '', region: '', visited: '', from: null, to: null };
+  var state = { q: '', type: '', region: '', visited: '', rating: 0, from: null, to: null };
   var interest = new URLSearchParams(location.search).get('interest');
   if (interest === 'food') state.type = 'winery';
   if (interest === 'culture') state.q = 'museum monastery fortress archaeology';
@@ -276,6 +276,7 @@
       if (state.type === '__cycling__' && !p.bike) return false;
       if (state.type && state.type !== '__cycling__' && p.ty !== state.type) return false;
       if (state.region && p.g !== state.region) return false;
+      if (state.rating && Number(p.r || 0) < state.rating) return false;
       if (state.visited === 'yes' && !visited[p.s]) return false;
       if (state.visited === 'no' && visited[p.s]) return false;
       if (q && !q.split(/\s+/).some(function (term) { return searchable(p).indexOf(term) >= 0; })) return false;
@@ -677,6 +678,7 @@
       if (area && !pointInPoly(p.la, p.lo, area)) return false;
       if (state.type && p.ty !== state.type) return false;
       if (state.region && p.g !== state.region) return false;
+      if (state.rating && Number(p.r || 0) < state.rating) return false;
       if (mode === 'km' && leg(o, p).km > val) return false;
       return true;
     });
@@ -1028,12 +1030,13 @@
   $('expq').addEventListener('focus', function () { if (state.q) renderList(); });
   $('expq').addEventListener('blur', function () { setTimeout(function () { var q = $('expqlist'); if (q) q.classList.remove('on'); }, 180); });
   $('exptype').addEventListener('change', function () { state.type = this.value; renderList(); suggestNear(); });
+  $('exprating').addEventListener('change', function () { state.rating = Number(this.value || 0); renderList(); suggestNear(); });
   $('expregion').addEventListener('change', function () { state.region = this.value; renderList(); suggestNear(); });
   $('expvisited').addEventListener('change', function () { state.visited = this.value; renderList(); suggestNear(); });
   $('expreset').addEventListener('click', function () {
-    state.q = ''; state.type = ''; state.region = ''; state.visited = '';
+    state.q = ''; state.type = ''; state.region = ''; state.visited = ''; state.rating = 0;
     sugOff = {};
-    $('expq').value = ''; $('exptype').value = ''; $('expregion').value = ''; $('expvisited').value = '';
+    $('expq').value = ''; $('exptype').value = ''; $('exprating').value = ''; $('expregion').value = ''; $('expvisited').value = '';
     renderList(); suggestNear(); map.setView(E.center, E.zoom);
   });
   ['from', 'to'].forEach(function (w) {

@@ -1388,6 +1388,14 @@ def explorer_block(lang, depth, height="72vh", hero=False):
         "he": ("כל המקומות", "ביקרתי", "טרם ביקרתי", "ביקרתי", "סימון כמקום שביקרתי בו"),
         "ar": ("كل الأماكن", "تمت زيارتها", "لم تتم زيارتها", "تمت الزيارة", "وضع علامة تمت الزيارة"),
     }[lang]
+    rating_labels = {
+        "ka": ("ყველა შეფასება", "3★ და მეტი", "4★ და მეტი", "მხოლოდ 5★"),
+        "en": ("All ratings", "3★ and up", "4★ and up", "5★ only"),
+        "ru": ("Все оценки", "3★ и выше", "4★ и выше", "Только 5★"),
+        "fa": ("همه امتیازها", "۳★ به بالا", "۴★ به بالا", "فقط ۵★"),
+        "he": ("כל הדירוגים", "3★ ומעלה", "4★ ומעלה", "5★ בלבד"),
+        "ar": ("كل التقييمات", "3★ فأكثر", "4★ فأكثر", "5★ فقط"),
+    }[lang]
     cfg = J({
         "pts": explorer_points(lang),
         "towns": explorer_towns(lang),
@@ -1410,6 +1418,7 @@ def explorer_block(lang, depth, height="72vh", hero=False):
       <div id="expqlist" class="expqlist" role="listbox"></div>
     </div>
     <select id="exptype" aria-label="{E(x["all_types"])}"><option value="">{E(x["all_types"])}</option>{topts}</select>
+    <select id="exprating" aria-label="{E(rating_labels[0])}"><option value="">{E(rating_labels[0])}</option><option value="3">{E(rating_labels[1])}</option><option value="4">{E(rating_labels[2])}</option><option value="5">{E(rating_labels[3])}</option></select>
     <details class="expfilters">
       <summary>{E({"ka":"მეტი ფილტრი","en":"More filters","ru":"Ещё фильтры","fa":"فیلترهای بیشتر","he":"מסננים נוספים","ar":"مزيد من الفلاتر"}[lang])}</summary>
       <div class="expfilters-pop">
