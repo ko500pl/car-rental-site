@@ -1,0 +1,22 @@
+status: published
+order: 300
+days: 6
+nights: 5
+purpose: hiking
+min_people: 2
+max_people: 8
+distance_km: 720
+drive_time_total: '15:00'
+car_category: offroad
+best_season: july-september
+difficulty: hard
+image: ''
+waypoints: [mestia, becho-mazeri, chalaadi-glacier, koruldi-lakes, adishi, ushguli, shkhara-glacier]
+polyline: []
+sources: [https://georgia.travel/trekking-in-georgia, https://georgia.travel/ushguli-shkhara-glacier-namkvami-lake]
+ka: {name: სვანეთის ალპური წრე, short: მესტია მაზერი ჭალაადი კორულდი ადიში უშგული და შხარა ექვს დღეში., body: აქტიური მაღალმთიანი მარშრუტი მოკლე აკლიმატიზაციას რამდენიმე ჰაიქსა და 4x4 გადასვლას აერთიანებს., plan: '**დღე 1:** მესტია. **დღე 2:** მაზერი. **დღე 3:** ჭალაადი. **დღე 4:** კორულდი → ადიში. **დღე 5:** უშგული. **დღე 6:** შხარა.', tips: [გამყოლი და 4x4 აუცილებელია., მარშრუტი მხოლოდ კარგ ამინდში გაიარეთ.]}
+en: {name: Svaneti Alpine Circuit, short: Mestia Mazeri Chalaadi Koruldi Adishi Ushguli and Shkhara in six days., body: An active highland route combining acclimatisation hikes and 4x4 transfers., plan: '**Day 1:** Mestia. **Day 2:** Mazeri. **Day 3:** Chalaadi. **Day 4:** Koruldi → Adishi. **Day 5:** Ushguli. **Day 6:** Shkhara.', tips: [A guide and 4x4 are essential., Travel only in stable weather.]}
+ru: {name: Альпийский круг Сванети, short: Местия Мазери Чалаади Корулди Адиши Ушгули и Шхара., body: Акклиматизация походы и трансферы 4x4., plan: '**День 1:** Местия. **День 2:** Мазери. **День 3:** Чалаади. **День 4:** Корулди → Адиши. **День 5:** Ушгули. **День 6:** Шхара.', tips: [Нужны гид и 4x4., Только при стабильной погоде.]}
+fa: {name: مدار آلپی سوانتی, short: مستیا مازری چالادی کورولدی آدیشی اوشگولی و شخارا., body: مسیر فعال کوهستانی با سازگاری و 4x4., plan: '**روز ۱:** مستیا. **روز ۲:** مازری. **روز ۳:** چالادی. **روز ۴:** کورولدی ← آدیشی. **روز ۵:** اوشگولی. **روز ۶:** شخارا.', tips: [راهنما و 4x4 ضروری است., فقط در هوای پایدار.]}
+he: {name: המסלול האלפיני של סוואנתי, short: מסטיה מזרי צ׳לאדי קורולדי אדישי אושגולי ושחארה., body: מסלול הררי פעיל עם התאקלמות ורכב 4x4., plan: '**יום 1:** מסטיה. **יום 2:** מזרי. **יום 3:** צ׳לאדי. **יום 4:** קורולדי ← אדישי. **יום 5:** אושגולי. **יום 6:** שחארה.', tips: [מדריך ו-4x4 חיוניים., רק במזג אוויר יציב.]}
+ar: {name: دائرة سفانيتي الألبية, short: ميستيا ومازيري وتشالادي وكورولدي وأديشي وأوشغولي وشخارا., body: مسار جبلي نشط مع تأقلم وتنقل 4x4., plan: '**اليوم 1:** ميستيا. **اليوم 2:** مازيري. **اليوم 3:** تشالادي. **اليوم 4:** كورولدي ← أديشي. **اليوم 5:** أوشغولي. **اليوم 6:** شخارا.', tips: [المرشد و4x4 ضروريان., فقط في طقس مستقر.]}

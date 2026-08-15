@@ -1,0 +1,22 @@
+status: published
+order: 250
+days: 3
+nights: 2
+purpose: nature
+min_people: 2
+max_people: 10
+distance_km: 590
+drive_time_total: '11:30'
+car_category: suv
+best_season: may-october
+difficulty: moderate
+image: ''
+waypoints: [tsalka-reservoir, paravani-tabatskuri-lakes, poka-nunnery, javakheti-national-park, kumurdo-cathedral]
+polyline: []
+sources: [https://georgia.travel/javakheti-protected-areas]
+ka: {name: ჯავახეთის ტბები და ფრინველები, short: სამდღიანი პლატოს ტური წალკიდან ფარავნის ტბასა და ჯავახეთის პარკამდე., body: მშვიდი ბუნების ტური ტბებს ფრინველებზე დაკვირვებასა და ადგილობრივ კულტურას აერთიანებს., plan: '**დღე 1:** წალკა → ტაბაწყური. **დღე 2:** ფარავანი → ფოკა → ეროვნული პარკი. **დღე 3:** კუმურდო.', tips: [თან იქონიეთ ბინოკლი., პლატოზე საღამო ცივია.]}
+en: {name: Javakheti Lakes and Birds, short: Three plateau days from Tsalka to Paravani and Javakheti park., body: A quiet nature tour combining lakes birdwatching and local culture., plan: '**Day 1:** Tsalka → Tabatskuri. **Day 2:** Paravani → Poka → National Park. **Day 3:** Kumurdo.', tips: [Bring binoculars., Plateau evenings are cold.]}
+ru: {name: Озера и птицы Джавахети, short: Три дня от Цалки до Паравани и национального парка., body: Озера наблюдение за птицами и местная культура., plan: '**День 1:** Цалка → Табацкури. **День 2:** Паравани → Пока → парк. **День 3:** Кумурдо.', tips: [Возьмите бинокль., Вечером прохладно.]}
+fa: {name: دریاچه‌ها و پرندگان جاواختی, short: سه روز از تسالکا تا پاراوانی و پارک جاواختی., body: تور آرام طبیعت و تماشای پرندگان., plan: '**روز ۱:** تسالکا ← تاباتسکوری. **روز ۲:** پاراوانی ← پوکا ← پارک. **روز ۳:** کوموردو.', tips: [دوربین دوچشمی بیاورید., شب‌ها سرد است.]}
+he: {name: אגמים וציפורים בג'אוואחתי, short: שלושה ימים מצאלקה לפראוואני ולפארק., body: טבע שקט אגמים וצפרות., plan: '**יום 1:** צאלקה ← טבצקורי. **יום 2:** פראוואני ← פוקה ← הפארק. **יום 3:** קומורדו.', tips: [הביאו משקפת., בערב קר.]}
+ar: {name: بحيرات وطيور جافاخيتي, short: ثلاثة أيام من تسالكا إلى بارافاني والحديقة الوطنية., body: جولة طبيعية هادئة للبحيرات ومراقبة الطيور., plan: '**اليوم 1:** تسالكا ← تاباتسكوري. **اليوم 2:** بارافاني ← بوكا ← الحديقة. **اليوم 3:** كوموردو.', tips: [أحضروا منظارا., المساء بارد.]}

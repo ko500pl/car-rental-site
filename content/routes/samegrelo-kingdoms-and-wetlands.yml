@@ -1,0 +1,22 @@
+status: published
+order: 260
+days: 4
+nights: 3
+purpose: culture
+min_people: 1
+max_people: 14
+distance_km: 480
+drive_time_total: '09:30'
+car_category: economy
+best_season: april-october
+difficulty: easy
+image: ''
+waypoints: [nokalakevi, salkhino-palace, martvili-canyon, dadiani-palace-zugdidi, kolkheti-national-park, poti]
+polyline: []
+sources: [https://georgia.travel/regions/samegrelo-zemo-svaneti]
+ka: {name: სამეგრელო — სამეფოები და ჭარბტენიანი ბუნება, short: ნოქალაქევიდან დადიანების მემკვიდრეობამდე და კოლხეთის პარკამდე., body: ოთხი დღე არქეოლოგიას სასახლეებს კანიონსა და შავი ზღვის ჭარბტენიან ბუნებას აერთიანებს., plan: '**დღე 1:** ნოქალაქევი → სალხინო. **დღე 2:** მარტვილი. **დღე 3:** ზუგდიდი. **დღე 4:** კოლხეთი → ფოთი.', tips: [ნავით გასვლა ამინდზეა დამოკიდებული., მარტვილში დილით მიდით.]}
+en: {name: Samegrelo Kingdoms and Wetlands, short: From Nokalakevi and Dadiani heritage to Kolkheti wetlands., body: Four days of archaeology palaces canyon and Black Sea wetlands., plan: '**Day 1:** Nokalakevi → Salkhino. **Day 2:** Martvili. **Day 3:** Zugdidi. **Day 4:** Kolkheti → Poti.', tips: [Boat trips depend on weather., Visit Martvili early.]}
+ru: {name: Царства и болота Самегрело, short: Нокалакеви наследие Дадиани и Колхидский парк., body: Четыре дня археологии дворцов каньона и природы., plan: '**День 1:** Нокалакеви → Салхино. **День 2:** Мартвили. **День 3:** Зугдиди. **День 4:** Колхети → Поти.', tips: [Лодка зависит от погоды., Посетите Мартвили утром.]}
+fa: {name: پادشاهی‌ها و تالاب‌های سامگرلو, short: از نوکالاکوی تا میراث دادیانی و کلختی., body: چهار روز باستان‌شناسی کاخ دره و تالاب., plan: '**روز ۱:** نوکالاکوی ← سالخینو. **روز ۲:** مارتویلی. **روز ۳:** زوگدیدی. **روز ۴:** کلختی ← پوتی.', tips: [قایق به هوا بستگی دارد., صبح به مارتویلی بروید.]}
+he: {name: ממלכות וביצות סמגרלו, short: מנוקלאקווי ומורשת דדיאני לפארק קולחתי., body: ארבעה ימים של ארכאולוגיה ארמונות קניון וטבע., plan: '**יום 1:** נוקלאקווי ← סלחינו. **יום 2:** מרטווילי. **יום 3:** זוגדידי. **יום 4:** קולחתי ← פוטי.', tips: [השיט תלוי במזג האוויר., הגיעו מוקדם למרטווילי.]}
+ar: {name: ممالك وأراضي ساميغريلو الرطبة, short: من نوكالاكيفي وتراث دادياني إلى كولخيتي., body: أربعة أيام من الآثار والقصور والوادي والطبيعة., plan: '**اليوم 1:** نوكالاكيفي ← سالخينو. **اليوم 2:** مارتفيلي. **اليوم 3:** زوغديدي. **اليوم 4:** كولخيتي ← بوتي.', tips: [القارب يعتمد على الطقس., اذهبوا مبكرا إلى مارتفيلي.]}

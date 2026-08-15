@@ -1,0 +1,22 @@
+status: published
+order: 290
+days: 3
+nights: 2
+purpose: culinary
+min_people: 1
+max_people: 12
+distance_km: 330
+drive_time_total: '07:00'
+car_category: economy
+best_season: may-october
+difficulty: easy
+image: ''
+waypoints: [ozurgeti, nodar-dumbadze-house-museum, sameba-jikheti-monastery, nabeghlavi, shekvetili-dendrological-park, ureki]
+polyline: []
+sources: [https://georgia.travel/rural-tourism-in-georgia, https://georgia.travel/food-wine]
+ka: {name: გურია — ნელი კულინარია და ზღვა, short: ოზურგეთი სოფლის გემოები ნაბეღლავი შეკვეთილი და ურეკის სანაპირო., body: სამდღიანი მსუბუქი ტური გურულ სამზარეულოს ისტორიას მინერალურ წყალსა და ზღვას აერთიანებს., plan: '**დღე 1:** ოზურგეთი → სახლ-მუზეუმი → ჯიხეთი. **დღე 2:** ნაბეღლავი → შეკვეთილი. **დღე 3:** ურეკი.', tips: [ოჯახური სადილი წინასწარ შეუკვეთეთ., სანაპიროსთვის ზაფხული საუკეთესოა.]}
+en: {name: Guria Slow Food and Coast, short: Ozurgeti village flavours Nabeghlavi Shekvetili and Ureki coast., body: Three easy days combining Gurian food stories mineral water and the sea., plan: '**Day 1:** Ozurgeti → museum → Jikheti. **Day 2:** Nabeghlavi → Shekvetili. **Day 3:** Ureki.', tips: [Book family meals ahead., Summer is best for the coast.]}
+ru: {name: Медленная кухня и море Гурии, short: Озургети деревенские вкусы Набеглави Шекветили и Уреки., body: Три легких дня кухни истории минеральной воды и моря., plan: '**День 1:** Озургети → музей → Джихети. **День 2:** Набеглави → Шекветили. **День 3:** Уреки.', tips: [Закажите семейный обед заранее., Для моря лучше лето.]}
+fa: {name: غذای محلی و ساحل گوریا, short: اوزورگتی نابغلاوی شکوتیلی و ساحل اورکی., body: سه روز آرام با غذا تاریخ آب معدنی و دریا., plan: '**روز ۱:** اوزورگتی ← موزه ← جیختی. **روز ۲:** نابغلاوی ← شکوتیلی. **روز ۳:** اورکی.', tips: [غذا را از قبل رزرو کنید., تابستان برای ساحل بهتر است.]}
+he: {name: אוכל איטי וחוף בגוריה, short: אוזורגתי נבגלווי שקוותילי וחוף אורקי., body: שלושה ימים של אוכל היסטוריה מים מינרליים וים., plan: '**יום 1:** אוזורגתי ← מוזיאון ← ג׳יחתי. **יום 2:** נבגלווי ← שקוותילי. **יום 3:** אורקי.', tips: [הזמינו ארוחה מראש., הקיץ מתאים לחוף.]}
+ar: {name: طعام غوريا البطيء والساحل, short: أوزورغيتي ونابيغلافي وشيكفيتيلي وساحل أوريكي., body: ثلاثة أيام من الطعام والتاريخ والمياه المعدنية والبحر., plan: '**اليوم 1:** أوزورغيتي ← المتحف ← جيخيتي. **اليوم 2:** نابيغلافي ← شيكفيتيلي. **اليوم 3:** أوريكي.', tips: [احجزوا الوجبة مسبقا., الصيف أفضل للساحل.]}

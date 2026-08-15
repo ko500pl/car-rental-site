@@ -1,0 +1,22 @@
+status: published
+order: 310
+days: 7
+nights: 6
+purpose: family
+min_people: 2
+max_people: 8
+distance_km: 820
+drive_time_total: '15:00'
+car_category: suv
+best_season: april-october
+difficulty: easy
+image: ''
+waypoints: [tbilisi-botanical-garden, mtatsminda-park, svetitskhoveli-cathedral, borjomi-central-park, kukushka-narrow-gauge-railway, prometheus-cave, sataplia-nature-reserve, batumi-6-may-park-dolphinarium, batumi-botanical-garden]
+polyline: []
+sources: [https://georgia.travel/family-travel]
+ka: {name: ოჯახური საქართველო — 7 მშვიდი დღე, short: თბილისი მცხეთა ბორჯომი ქუთაისი და ბათუმი ბავშვებისთვის მსუბუქი ტემპით., body: ოჯახური მარშრუტი მოკლე გადაადგილებებს პარკებს მღვიმეებს მატარებელსა და ზღვის ქალაქს აერთიანებს., plan: '**დღე 1:** თბილისი. **დღე 2:** მცხეთა. **დღე 3:** ბორჯომი. **დღე 4:** კუკუშკა. **დღე 5:** ქუთაისის მღვიმეები. **დღე 6:** ბათუმი. **დღე 7:** ბოტანიკური ბაღი.', tips: [შუადღის დასვენება დატოვეთ., საბავშვო სავარძელი წინასწარ მოითხოვეთ.]}
+en: {name: Family Georgia in Seven Easy Days, short: Tbilisi Mtskheta Borjomi Kutaisi and Batumi at a child-friendly pace., body: A family route of short transfers parks caves a mountain train and the coast., plan: '**Day 1:** Tbilisi. **Day 2:** Mtskheta. **Day 3:** Borjomi. **Day 4:** Kukushka. **Day 5:** Kutaisi caves. **Day 6:** Batumi. **Day 7:** Botanical Garden.', tips: [Keep a midday break., Request child seats in advance.]}
+ru: {name: Семейная Грузия за 7 спокойных дней, short: Тбилиси Мцхета Боржоми Кутаиси и Батуми с детьми., body: Короткие переезды парки пещеры поезд и море., plan: '**День 1:** Тбилиси. **День 2:** Мцхета. **День 3:** Боржоми. **День 4:** Кукушка. **День 5:** пещеры. **День 6:** Батуми. **День 7:** ботсад.', tips: [Оставьте дневной отдых., Закажите детское кресло.]}
+fa: {name: گرجستان خانوادگی در هفت روز, short: تفلیس متسختا برجومی کوتایسی و باتومی با ریتم کودکان., body: جابه‌جایی کوتاه پارک غار قطار و ساحل., plan: '**روز ۱:** تفلیس. **روز ۲:** متسختا. **روز ۳:** برجومی. **روز ۴:** قطار. **روز ۵:** غارها. **روز ۶:** باتومی. **روز ۷:** باغ.', tips: [استراحت نیمروز داشته باشید., صندلی کودک رزرو کنید.]}
+he: {name: גאורגיה משפחתית בשבעה ימים, short: טביליסי מצחתה בורג׳ומי כותאיסי ובטומי בקצב ילדים., body: נסיעות קצרות פארקים מערות רכבת וחוף., plan: '**יום 1:** טביליסי. **יום 2:** מצחתה. **יום 3:** בורג׳ומי. **יום 4:** הרכבת. **יום 5:** המערות. **יום 6:** בטומי. **יום 7:** הגן.', tips: [השאירו מנוחת צהריים., הזמינו מושב ילדים.]}
+ar: {name: جورجيا العائلية في سبعة أيام, short: تبليسي ومتسخيتا وبورجومي وكوتايسي وباتومي بوتيرة مناسبة للأطفال., body: تنقلات قصيرة وحدائق وكهوف وقطار وساحل., plan: '**اليوم 1:** تبليسي. **اليوم 2:** متسخيتا. **اليوم 3:** بورجومي. **اليوم 4:** القطار. **اليوم 5:** الكهوف. **اليوم 6:** باتومي. **اليوم 7:** الحديقة.', tips: [اتركوا استراحة الظهر., اطلبوا مقعد طفل مسبقا.]}

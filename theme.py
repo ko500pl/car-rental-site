@@ -1015,7 +1015,8 @@ body.booking-open{{overflow:hidden}}
 .planner-toolbar .carmode{{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}}
 .planner-toolbar .carmode .tog{{height:38px!important;padding:5px 7px!important;justify-content:center;font-size:10.5px!important}}
 .planner-toolbar .carmode>select{{display:none!important}}
-.standard-launch .btn{{height:38px;width:100%;padding:7px 10px;white-space:nowrap}}
+.standard-launch{{display:flex;justify-content:flex-start;margin:0 0 10px}}
+.standard-launch .btn{{height:38px;width:auto;padding:7px 14px;white-space:nowrap}}
 .standard-launch .btn span:not(:empty)::before{{content:" ("}}.standard-launch .btn span:not(:empty)::after{{content:")"}}
 .standard-modal{{position:fixed;z-index:2500;inset:0;display:grid;place-items:center;padding:24px;background:rgba(2,8,16,.78);backdrop-filter:blur(9px)}}
 .standard-modal[hidden]{{display:none}}
@@ -1056,9 +1057,7 @@ body.booking-open{{overflow:hidden}}
 .planner-toolbar>.prow{{display:flex;flex-wrap:nowrap;min-width:max-content;margin:0}}
 .planner-toolbar>.prow .btn{{width:auto!important;min-width:0!important;height:34px!important;min-height:34px!important;padding:5px 11px!important;border-radius:8px;font-size:11.5px;white-space:nowrap}}
 .planner-toolbar>.prow{{grid-column:auto / span 2;width:max-content;gap:5px;align-self:end}}
-.planner-toolbar>.standard-launch{{width:max-content;align-self:end}}
-.planner-toolbar>.standard-launch>label{{display:none}}
-.planner-toolbar>.standard-launch .btn{{width:auto!important;min-width:0;height:34px!important;padding:5px 11px!important;border-radius:8px;font-size:11.5px}}
+.workspace-plan>.standard-launch .btn{{min-width:0;height:36px!important;padding:6px 13px!important;border-radius:9px;font-size:12px}}
 .travel-workspace{{position:relative}}
 .workspace-tabs{{display:inline-flex;gap:4px;margin:0 0 8px;padding:4px;background:var(--surface-2);
   border:1px solid var(--line);border-radius:12px}}

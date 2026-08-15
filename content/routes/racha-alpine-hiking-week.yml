@@ -1,0 +1,22 @@
+status: published
+order: 270
+days: 5
+nights: 4
+purpose: hiking
+min_people: 2
+max_people: 8
+distance_km: 610
+drive_time_total: '13:00'
+car_category: suv
+best_season: june-september
+difficulty: hard
+image: ''
+waypoints: [shaori-reservoir, nikortsminda-cathedral, oni, shovi-resort, udziro-lake-buba-glacier, glola]
+polyline: []
+sources: [https://georgia.travel/trekking-in-georgia]
+ka: {name: რაჭის ალპური ჰაიქინგის კვირეული, short: შაორი ნიკორწმინდა შოვი და უძირო ტბის რთული ალპური დღე., body: ხუთდღიანი აქტიური ტური აერთიანებს აკლიმატიზაციას კულტურას და ერთ სრულ ალპურ ლაშქრობას., plan: '**დღე 1:** შაორი → ნიკორწმინდა. **დღე 2:** ონი → შოვი. **დღე 3:** აკლიმატიზაცია. **დღე 4:** უძირო ტბის ჰაიქი. **დღე 5:** გლოლა.', tips: [გამყოლი რეკომენდებულია., ამინდის ფანჯარა წინასწარ შეამოწმეთ.]}
+en: {name: Racha Alpine Hiking Week, short: Shaori Nikortsminda Shovi and a demanding Udziro Lake day., body: Five active days combining acclimatisation culture and one full alpine hike., plan: '**Day 1:** Shaori → Nikortsminda. **Day 2:** Oni → Shovi. **Day 3:** Acclimatise. **Day 4:** Udziro hike. **Day 5:** Glola.', tips: [A guide is recommended., Check the weather window.]}
+ru: {name: Альпийская неделя в Раче, short: Шаори Никорцминда Шови и сложный поход к Удзиро., body: Пять дней акклиматизации культуры и горного похода., plan: '**День 1:** Шаори → Никорцминда. **День 2:** Они → Шови. **День 3:** отдых. **День 4:** Удзиро. **День 5:** Глола.', tips: [Рекомендуется гид., Проверьте погоду.]}
+fa: {name: هفته کوه‌پیمایی آلپی راچا, short: شائوری نیکورتسمیندا شوی و دریاچه اودزیرو., body: پنج روز سازگاری فرهنگ و یک پیاده‌روی کامل., plan: '**روز ۱:** شائوری ← نیکورتسمیندا. **روز ۲:** اونی ← شوی. **روز ۳:** سازگاری. **روز ۴:** اودزیرو. **روز ۵:** گلولا.', tips: [راهنما توصیه می‌شود., هوا را بررسی کنید.]}
+he: {name: שבוע הליכה אלפיני בראצ'ה, short: שאורי ניקורצמינדה שובי ואגם אודזירו., body: חמישה ימים של הסתגלות תרבות והליכה אלפינית., plan: '**יום 1:** שאורי ← ניקורצמינדה. **יום 2:** אוני ← שובי. **יום 3:** הסתגלות. **יום 4:** אודזירו. **יום 5:** גלולה.', tips: [מומלץ מדריך., בדקו מזג אוויר.]}
+ar: {name: أسبوع المشي الألبي في راتشا, short: شاوري ونيكورتسميندا وشوفي وبحيرة أودزيرو., body: خمسة أيام للتأقلم والثقافة ومسير جبلي كامل., plan: '**اليوم 1:** شاوري ← نيكورتسميندا. **اليوم 2:** أوني ← شوفي. **اليوم 3:** تأقلم. **اليوم 4:** أودزيرو. **اليوم 5:** غلولا.', tips: [يوصى بمرشد., تحققوا من الطقس.]}

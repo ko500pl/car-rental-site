@@ -1,0 +1,22 @@
+status: published
+order: 280
+days: 4
+nights: 3
+purpose: wine
+min_people: 2
+max_people: 12
+distance_km: 360
+drive_time_total: '08:30'
+car_category: suv
+best_season: may-october
+difficulty: moderate
+image: ''
+waypoints: [makhuntseti-waterfall, keda-wine-cellars, khulo-cable-car-upper-adjara, skhalta-monastery, green-lake-goderdzi, beshumi]
+polyline: []
+sources: [https://georgia.travel/food-wine]
+ka: {name: ზემო აჭარა — ღვინო და სოფლები, short: ქედის მარნები ხულო სხალთა მწვანე ტბა და ბეშუმი ოთხ დღეში., body: გასტრონომიული მთის ტური აჭარულ ღვინოს სოფლის მასპინძლობასა და მაღალმთიან ხედებს აერთიანებს., plan: '**დღე 1:** მახუნცეთი → ქედა. **დღე 2:** ხულო → სხალთა. **დღე 3:** მწვანე ტბა. **დღე 4:** ბეშუმი.', tips: [დეგუსტაციაზე მძღოლი არ სვამს., ტბამდე SUV გამოიყენეთ.]}
+en: {name: Upper Adjara Wine and Villages, short: Keda cellars Khulo Skhalta Green Lake and Beshumi in four days., body: A mountain food tour combining Adjara wine village hospitality and highland views., plan: '**Day 1:** Makhuntseti → Keda. **Day 2:** Khulo → Skhalta. **Day 3:** Green Lake. **Day 4:** Beshumi.', tips: [The driver must not taste wine., Use an SUV for the lake.]}
+ru: {name: Вино и села Верхней Аджарии, short: Кеда Хуло Схалта Зеленое озеро и Бешуми., body: Вино деревенское гостеприимство и горные виды., plan: '**День 1:** Махунцети → Кеда. **День 2:** Хуло → Схалта. **День 3:** озеро. **День 4:** Бешуми.', tips: [Водитель не дегустирует., До озера нужен SUV.]}
+fa: {name: شراب و روستاهای آجارای بالا, short: کدا خولو اسخالتا دریاچه سبز و بشومی., body: شراب مهمان‌نوازی روستایی و مناظر کوهستانی., plan: '**روز ۱:** ماخونتستی ← کدا. **روز ۲:** خولو ← اسخالتا. **روز ۳:** دریاچه. **روز ۴:** بشومی.', tips: [راننده شراب ننوشد., از SUV استفاده کنید.]}
+he: {name: יין וכפרים באג'רה העליונה, short: קדה חולו סחלתה האגם הירוק ובשומי., body: יין אירוח כפרי ונוף הררי., plan: '**יום 1:** מחונצתי ← קדה. **יום 2:** חולו ← סחלתה. **יום 3:** האגם. **יום 4:** בשומי.', tips: [הנהג אינו טועם יין., השתמשו ב-SUV.]}
+ar: {name: نبيذ وقرى أجارا العليا, short: كيدا وخولو وسخالتا والبحيرة الخضراء وبيشومي., body: نبيذ وضيافة قروية ومناظر جبلية., plan: '**اليوم 1:** ماخونتسيتي ← كيدا. **اليوم 2:** خولو ← سخالتا. **اليوم 3:** البحيرة. **اليوم 4:** بيشومي.', tips: [السائق لا يتذوق النبيذ., استخدموا SUV.]}
