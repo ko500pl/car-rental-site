@@ -1,0 +1,52 @@
+status: published
+order: 190
+days: 5
+nights: 4
+purpose: nature
+min_people: 1
+max_people: 14
+distance_km: 520
+drive_time_total: '11:20'
+car_category: suv
+best_season: may-october
+difficulty: moderate
+image: ''
+waypoints: [batumi-botanical-garden, mtirala-national-park, makhuntseti-waterfall, keda-wine-cellars, khulo-cable-car-upper-adjara, shekvetili-dendrological-park, sameba-jikheti-monastery, nodar-dumbadze-house-museum]
+polyline: []
+sources: [https://georgia.travel/rural-tourism-in-georgia]
+ka:
+  name: აჭარა-გურიის მწვანე გზა
+  short: ხუთი დღე ბოტანიკური ბაღიდან მთირალას, ქედის, ხულოსა და გურიის სოფლებისკენ.
+  body: ნოტიო სუბტროპიკებიდან მთის სოფლებამდე დაგეგმილი გზა აერთიანებს ბუნებას, მცირე მარნებს, მონასტრებსა და გურულ კულტურას.
+  plan: "**დღე 1:** ბათუმის ბოტანიკური ბაღი. **დღე 2:** მთირალა. **დღე 3:** მახუნცეთი → ქედა → ხულო. **დღე 4:** შეკვეთილი. **დღე 5:** ჯიხეთი → ნოდარ დუმბაძის მუზეუმი."
+  tips: [მთირალაში წყალგაუმტარი ფეხსაცმელი იქონიეთ., ხულოს გზაზე დროის მარაგი დატოვეთ.]
+en:
+  name: Adjara-Guria Green Road
+  short: Five days from Batumi's gardens to Mtirala, Keda, Khulo and Gurian villages.
+  body: A route from humid subtropics to mountain villages, small cellars, monasteries and Gurian culture.
+  plan: "**Day 1:** Batumi Botanical Garden. **Day 2:** Mtirala. **Day 3:** Makhuntseti → Keda → Khulo. **Day 4:** Shekvetili. **Day 5:** Jikheti → Nodar Dumbadze Museum."
+  tips: [Use waterproof footwear in Mtirala., Keep extra time for the Khulo road.]
+ru:
+  name: Зелёная дорога Аджарии и Гурии
+  short: Пять дней от садов Батуми к Мтирале, Кеде, Хуло и гурийским сёлам.
+  body: Субтропики, горные сёла, малые погреба, монастыри и культура Гурии.
+  plan: "**День 1:** ботанический сад. **День 2:** Мтирала. **День 3:** Махунцети → Кеда → Хуло. **День 4:** Шекветили. **День 5:** Джихети → музей Думбадзе."
+  tips: [Нужна непромокаемая обувь., Оставьте запас времени.]
+fa:
+  name: جاده سبز آجارا و گوریا
+  short: پنج روز از باغ‌های باتومی تا متیرالا، کدا، خولو و روستاهای گوریا.
+  body: نیمه‌گرمسیری، روستاهای کوهستان، سرداب‌های کوچک و فرهنگ گوریا.
+  plan: "**روز ۱:** باغ باتومی. **روز ۲:** متیرالا. **روز ۳:** ماخونتستی → کدا → خولو. **روز ۴:** شکوتیلی. **روز ۵:** جیختی → موزه دومبادزه."
+  tips: [کفش ضدآب بپوشید., زمان اضافی بگذارید.]
+he:
+  name: הדרך הירוקה של אג'רה וגוריה
+  short: חמישה ימים מגני בטומי למטירלה, קדה, חולי וכפרי גוריה.
+  body: סובטרופיים, כפרי הרים, מרתפים קטנים ותרבות גוריה.
+  plan: "**יום 1:** הגן הבוטני. **יום 2:** מטירלה. **יום 3:** מחונצתי → קדה → חולי. **יום 4:** שקווטילי. **יום 5:** ג'יחתי → מוזיאון דומבדזה."
+  tips: [נעלו נעליים אטומות., השאירו זמן נוסף.]
+ar:
+  name: الطريق الأخضر لأجارا وغوريا
+  short: خمسة أيام من حدائق باتومي إلى متيرالا وكيدا وخولو وقرى غوريا.
+  body: طبيعة شبه استوائية وقرى جبلية وأقبية صغيرة وثقافة غوريا.
+  plan: "**اليوم 1:** حديقة باتومي. **اليوم 2:** متيرالا. **اليوم 3:** ماخونتسيتي ← كيدا ← خولو. **اليوم 4:** شيكفيتيلي. **اليوم 5:** جيخيتي ← متحف دومبادزي."
+  tips: [ارتدوا حذاء مقاوماً للماء., اتركوا وقتاً إضافياً.]

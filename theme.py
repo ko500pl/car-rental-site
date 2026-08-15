@@ -1006,6 +1006,8 @@ body.booking-open{{overflow:hidden}}
 .planner-toolbar>.pf:first-child{{min-width:0}}
 .planner-toolbar .pf label{{font-size:11px;white-space:nowrap;color:var(--ink-3)}}
 .planner-toolbar .pf select{{height:38px;min-width:112px;padding:6px 9px;font-size:13px;border-radius:9px}}
+.planner-toolbar .start-field input{{width:100%;height:38px;min-width:180px;padding:6px 10px;border:1px solid var(--line);
+  border-radius:9px;background:var(--bg);color:var(--ink);font:600 13px/1 var(--font)}}
 .date-pair{{display:flex;gap:5px}}
 .date-pair input{{height:38px;width:132px;padding:6px 8px;border:1px solid var(--line);border-radius:9px;background:var(--bg);color:var(--ink);font:600 12px/1 inherit}}
 .derived-month,.tour-purpose-field,.secondary-planner-field,.planner-toolbar>.pf-check{{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0 0 0 0)!important}}
@@ -1053,7 +1055,7 @@ body.booking-open{{overflow:hidden}}
 .planner-more-in .chip{{font-size:11.5px;padding:5px 9px}}
 .planner-toolbar>.prow{{display:flex;flex-wrap:nowrap;min-width:max-content;margin:0}}
 .planner-toolbar>.prow .btn{{width:auto!important;min-width:0!important;height:34px!important;min-height:34px!important;padding:5px 11px!important;border-radius:8px;font-size:11.5px;white-space:nowrap}}
-.planner-toolbar>.prow{{grid-column:auto;width:max-content;gap:5px;align-self:end}}
+.planner-toolbar>.prow{{grid-column:auto / span 2;width:max-content;gap:5px;align-self:end}}
 .planner-toolbar>.standard-launch{{width:max-content;align-self:end}}
 .planner-toolbar>.standard-launch>label{{display:none}}
 .planner-toolbar>.standard-launch .btn{{width:auto!important;min-width:0;height:34px!important;padding:5px 11px!important;border-radius:8px;font-size:11.5px}}
@@ -1065,6 +1067,8 @@ body.booking-open{{overflow:hidden}}
 .workspace-tabs button.on{{color:var(--ink);background:var(--surface);box-shadow:0 1px 8px #0003}}
 .workspace-plan{{display:none;margin-bottom:8px}}
 .travel-workspace[data-mode="planner"] .workspace-plan{{display:block}}
+.travel-workspace[data-mode="planner"] .planner-toolbar{{margin-bottom:0;padding-bottom:8px}}
+.travel-workspace[data-mode="planner"] .workspace-plan+.explorer{{margin-top:0}}
 .travel-workspace[data-mode="planner"] .exproutebox{{display:none}}
 .travel-workspace[data-mode="route"] .expfind{{display:none}}
 .travel-workspace[data-mode="route"] .exproutebox{{display:block}}

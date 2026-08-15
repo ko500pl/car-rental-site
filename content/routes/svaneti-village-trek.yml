@@ -1,0 +1,52 @@
+status: published
+order: 170
+days: 6
+nights: 5
+purpose: hiking
+min_people: 2
+max_people: 10
+distance_km: 460
+drive_time_total: '10:20'
+car_category: offroad
+best_season: june-september
+difficulty: hard
+image: ''
+waypoints: [mestia, becho-mazeri, koruldi-lakes, adishi, ushguli, shkhara-glacier, svaneti-museum-mestia]
+polyline: []
+sources: [https://georgia.travel/ushguli-shkhara-glacier-namkvami-lake, https://georgia.travel/trekking-in-georgia]
+ka:
+  name: სვანეთის სოფლების ტრეკი
+  short: ექვსი დღე მესტიის, მაზერის, ადიშის, უშგულისა და შხარის მიმართულებით.
+  body: რთული მთის ტური აერთიანებს დღიურ ჰაიქებსა და 4x4 ტრანსფერებს. ადიში–უშგულის მონაკვეთი მხოლოდ შესაბამის სეზონსა და გამოცდილი გამყოლის პირობებში იგეგმება.
+  plan: "**დღე 1:** მესტია. **დღე 2:** მაზერი. **დღე 3:** კორულდის ტბები. **დღე 4:** ადიში. **დღე 5:** უშგული → შხარის მყინვარი. **დღე 6:** მესტიის მუზეუმი."
+  tips: [მრავალდღიან მონაკვეთზე ადგილობრივი გამყოლი აიყვანეთ., მდინარის დონე წინასწარ გადაამოწმეთ.]
+en:
+  name: Svaneti Village Trek
+  short: Six days around Mestia, Mazeri, Adishi, Ushguli and the Shkhara valley.
+  body: A demanding mountain tour combining day hikes and 4x4 transfers; use a qualified local guide for multi-day sections.
+  plan: "**Day 1:** Mestia. **Day 2:** Mazeri. **Day 3:** Koruldi Lakes. **Day 4:** Adishi. **Day 5:** Ushguli → Shkhara Glacier. **Day 6:** Svaneti Museum."
+  tips: [Hire a local guide for multi-day legs., Check river levels.]
+ru:
+  name: Трек по деревням Сванети
+  short: Шесть дней вокруг Местии, Мазери, Адиши, Ушгули и долины Шхары.
+  body: Сложный горный тур с треккингом и трансферами 4x4; нужен местный гид.
+  plan: "**День 1:** Местия. **День 2:** Мазери. **День 3:** Корульди. **День 4:** Адиши. **День 5:** Ушгули → ледник Шхара. **День 6:** музей."
+  tips: [Наймите местного гида., Проверьте уровень рек.]
+fa:
+  name: پیمایش روستاهای سوانتی
+  short: شش روز در مستیا، مازری، آدیشی، اوشگولی و دره شخارا.
+  body: تور دشوار با پیاده‌روی و انتقال 4x4؛ راهنمای محلی لازم است.
+  plan: "**روز ۱:** مستیا. **روز ۲:** مازری. **روز ۳:** کورولدی. **روز ۴:** آدیشی. **روز ۵:** اوشگولی → یخچال شخارا. **روز ۶:** موزه."
+  tips: [راهنمای محلی بگیرید., سطح رودخانه را بررسی کنید.]
+he:
+  name: טרק כפרי סוואנתי
+  short: שישה ימים במסטיה, מזרי, אדישי, אושגולי ועמק שחארה.
+  body: טיול הרים קשה עם הליכה והעברות 4x4; נדרש מדריך מקומי.
+  plan: "**יום 1:** מסטיה. **יום 2:** מזרי. **יום 3:** קורולדי. **יום 4:** אדישי. **יום 5:** אושגולי → קרחון שחארה. **יום 6:** מוזיאון."
+  tips: [שכרו מדריך מקומי., בדקו מפלס נהרות.]
+ar:
+  name: مسار قرى سفانيتي
+  short: ستة أيام في ميستيا ومازيري وأديشي وأوشغولي ووادي شخارا.
+  body: جولة جبلية صعبة مع المشي ونقل 4x4؛ يلزم دليل محلي.
+  plan: "**اليوم 1:** ميستيا. **اليوم 2:** مازيري. **اليوم 3:** كورولدي. **اليوم 4:** أديشي. **اليوم 5:** أوشغولي ← نهر شخارا الجليدي. **اليوم 6:** المتحف."
+  tips: [استعينوا بدليل محلي., تحققوا من مستوى الأنهار.]

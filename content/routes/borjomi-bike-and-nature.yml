@@ -1,0 +1,52 @@
+status: published
+order: 150
+days: 3
+nights: 2
+purpose: cycling
+min_people: 2
+max_people: 12
+distance_km: 280
+drive_time_total: '5:40'
+car_category: suv
+best_season: may-october
+difficulty: moderate
+image: ''
+waypoints: [borjomi-central-park, green-monastery-chitakhevi, borjomi-kharagauli-national-park, bakuriani, timotesubani-monastery, tsalka-reservoir]
+polyline: []
+sources: [https://georgia.travel/, https://www.georgianholidays.com/]
+ka:
+  name: ბორჯომის ველო და ბუნების წრე
+  short: სამი დღე ტყის გზებზე, ბორჯომ-ხარაგაულის პარკსა და ბაკურიანის პლატოზე.
+  body: მხარდაჭერილი ველოტური აერთიანებს პარკის მარტივ მონაკვეთებსა და ბაკურიანის მაღალმთიან გზებს; ზუსტი ტრეკი ამინდის მიხედვით შეირჩევა.
+  plan: "**დღე 1:** ბორჯომი → მწვანე მონასტერი. **დღე 2:** ეროვნული პარკის შერჩეული ბილიკი. **დღე 3:** ბაკურიანი → ტიმოთესუბანი → წალკა."
+  tips: [პარკის ვიზიტორთა ცენტრში ბილიკი დაარეგისტრირეთ., წვიმის ქურთუკი იქონიეთ.]
+en:
+  name: Borjomi Cycling and Nature Loop
+  short: Three days on forest roads, in Borjomi-Kharagauli and on the Bakuriani plateau.
+  body: A supported ride combining easier park sections with highland roads selected for current weather.
+  plan: "**Day 1:** Borjomi → Green Monastery. **Day 2:** selected national-park trail. **Day 3:** Bakuriani → Timotesubani → Tsalka."
+  tips: [Register the trail at the visitor centre., Carry a rain shell.]
+ru:
+  name: Веломаршрут по Боржоми и природе
+  short: Три дня по лесным дорогам, парку Боржоми-Харагаули и плато Бакуриани.
+  body: Велотур с поддержкой и выбором трека по погоде.
+  plan: "**День 1:** Боржоми → Зелёный монастырь. **День 2:** маршрут в нацпарке. **День 3:** Бакуриани → Тимотесубани → Цалка."
+  tips: [Зарегистрируйтесь в визит-центре., Возьмите дождевик.]
+fa:
+  name: حلقه دوچرخه و طبیعت برجومی
+  short: سه روز در جاده‌های جنگلی، پارک برجومی و فلات باکوریانی.
+  body: مسیر پشتیبانی‌شده با انتخاب راه بر اساس هوا.
+  plan: "**روز ۱:** برجومی → صومعه سبز. **روز ۲:** مسیر پارک ملی. **روز ۳:** باکوریانی → تیموتسوبانی → تسالکا."
+  tips: [در مرکز بازدید ثبت‌نام کنید., بارانی همراه داشته باشید.]
+he:
+  name: מסלול אופניים וטבע בבורג'ומי
+  short: שלושה ימים בדרכי יער, בפארק בורג'ומי וברמת בקוריאני.
+  body: רכיבה נתמכת עם בחירת שביל לפי מזג האוויר.
+  plan: "**יום 1:** בורג'ומי → המנזר הירוק. **יום 2:** שביל בפארק. **יום 3:** בקוריאני → טימותסובאני → צאלקה."
+  tips: [הירשמו במרכז המבקרים., קחו מעיל גשם.]
+ar:
+  name: حلقة بورجومي للدراجات والطبيعة
+  short: ثلاثة أيام في طرق الغابات والمنتزه وهضبة باكورياني.
+  body: جولة مدعومة يحدد مسارها حسب الطقس.
+  plan: "**اليوم 1:** بورجومي ← الدير الأخضر. **اليوم 2:** مسار في المنتزه. **اليوم 3:** باكورياني ← تيموتيسوباني ← تسالكا."
+  tips: [سجلوا المسار في مركز الزوار., احملوا معطف مطر.]

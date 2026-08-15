@@ -1873,14 +1873,14 @@ def planner_form_html(lang):
         "ar": ("فترة السفر", "من", "إلى", "نوع الجولة", "جولات جاهزة"),
     }[lang]
     purpose_names = {
-        "ka": ("კლასიკური", "კულინარიული", "ღვინის", "კულტურული", "ბუნება", "ველო", "მთები", "ზღვა", "ოჯახური"),
-        "en": ("Classic", "Culinary", "Wine", "Culture", "Nature", "Cycling", "Mountains", "Beach", "Family"),
-        "ru": ("Классический", "Кулинарный", "Винный", "Культурный", "Природа", "Велотур", "Горы", "Море", "Семейный"),
-        "fa": ("کلاسیک", "آشپزی", "شراب", "فرهنگی", "طبیعت", "دوچرخه‌سواری", "کوهستان", "ساحل", "خانوادگی"),
-        "he": ("קלאסי", "קולינרי", "יין", "תרבות", "טבע", "אופניים", "הרים", "חוף", "משפחתי"),
-        "ar": ("كلاسيكية", "الطهي", "النبيذ", "ثقافية", "الطبيعة", "الدراجات", "الجبال", "الشاطئ", "عائلية"),
+        "ka": ("კლასიკური", "კულინარიული", "ღვინის", "კულტურული", "ბუნება", "ველო", "მთები", "ჰაიქინგი", "ისტორიული", "ზღვა", "ოჯახური"),
+        "en": ("Classic", "Culinary", "Wine", "Culture", "Nature", "Cycling", "Mountains", "Hiking", "History", "Beach", "Family"),
+        "ru": ("Классический", "Кулинарный", "Винный", "Культурный", "Природа", "Велотур", "Горы", "Хайкинг", "Исторический", "Море", "Семейный"),
+        "fa": ("کلاسیک", "آشپزی", "شراب", "فرهنگی", "طبیعت", "دوچرخه‌سواری", "کوهستان", "پیاده‌روی", "تاریخی", "ساحل", "خانوادگی"),
+        "he": ("קלאסי", "קולינרי", "יין", "תרבות", "טבע", "אופניים", "הרים", "הליכה", "היסטורי", "חוף", "משפחתי"),
+        "ar": ("كلاسيكية", "الطهي", "النبيذ", "ثقافية", "الطبيعة", "الدراجات", "الجبال", "المشي", "تاريخية", "الشاطئ", "عائلية"),
     }[lang]
-    purpose_keys = ("classic", "culinary", "wine", "culture", "nature", "cycling", "mountains", "beach", "family")
+    purpose_keys = ("classic", "culinary", "wine", "culture", "nature", "cycling", "mountains", "hiking", "history", "beach", "family")
     purposes = list(zip(purpose_keys, purpose_names))
 
     def opt_pace():
@@ -1889,7 +1889,10 @@ def planner_form_html(lang):
             for v, lbl in ((360, t["pace_easy"]), (480, t["pace_normal"]), (600, t["pace_full"])))
 
     form = f"""<div class="pform planner-toolbar">
-<div class="pf"><label for="start">{E(t['start'])}</label><select id="start"></select></div>
+<div class="pf start-field"><label for="startsearch">{E(t['start'])}</label>
+<input id="startsearch" type="search" list="startoptions" autocomplete="off"
+  role="combobox" aria-autocomplete="list" aria-controls="startoptions">
+<datalist id="startoptions"></datalist><select id="start" hidden aria-hidden="true" tabindex="-1"></select></div>
 <div class="pf period-field"><label>{E(labels[0])}</label><div class="date-pair"><input id="datefrom" type="date" aria-label="{E(labels[1])}"><input id="dateto" type="date" aria-label="{E(labels[2])}"></div></div>
 <div class="pf days-field"><label for="days">{E(t['days'])}</label><div class="days-stepper">
 <button id="daysminus" type="button" aria-label="−">−</button>
@@ -1928,8 +1931,8 @@ def planner_form_html(lang):
 <small>{E(t['all_interests'])}</small></label><div id="interests" class="chips"></div></div></div></details>
 <div class="pf pf-wide prow">
 <button type="button" class="btn" id="build">{E(t['build'])}</button>
-<button type="button" class="btn ghost" id="reset">{E(t['reset'])}</button></div>
-<div class="pf standard-launch"><label>{E(labels[4])}</label><button type="button" class="btn ghost" id="standardopen">{E(labels[4])} <span id="standardcount"></span></button></div>
+<button type="button" class="btn ghost" id="reset">{E(t['reset'])}</button>
+<button type="button" class="btn ghost" id="standardopen">{E(labels[4])} <span id="standardcount"></span></button></div>
 <div class="standard-modal" id="standardmodal" hidden><div class="standard-dialog" role="dialog" aria-modal="true" aria-labelledby="standardtitle">
 <button type="button" class="standard-close" id="standardclose" aria-label="Close">&#10005;</button>
 <div class="standard-dialog-head"><h3 id="standardtitle">{E(labels[4])}</h3><label for="tourpurposemodal">{E(labels[3])}</label><select id="tourpurposemodal">{"".join(f'<option value="{k}">{E(v)}</option>' for k,v in purposes)}</select></div>

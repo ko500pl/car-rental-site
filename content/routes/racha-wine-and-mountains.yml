@@ -1,0 +1,52 @@
+status: published
+order: 130
+days: 4
+nights: 3
+purpose: wine
+min_people: 2
+max_people: 10
+distance_km: 560
+drive_time_total: '11:40'
+car_category: suv
+best_season: may-october
+difficulty: moderate
+image: ''
+waypoints: [nakerala-pass, shaori-reservoir, nikortsminda-cathedral, khvanchkara-wine-zone, ambrolauri, barakoni-church, oni-synagogue, utsera]
+polyline: []
+sources: [https://georgia.travel/georgia-the-cradle-of-wine]
+ka:
+  name: რაჭის ღვინო და მთის სამზარეულო
+  short: ოთხი დღე შაორის, ხვანჭკარის, ამბროლაურისა და უწერის გზაზე.
+  body: ნელი მარშრუტი რაჭის ღვინის ზონას, მთის სამზარეულოს, ტაძრებსა და მინერალურ წყლებს აერთიანებს.
+  plan: "**დღე 1:** ნაქერალა → შაორი → ნიკორწმინდა. **დღე 2:** ხვანჭკარა → ამბროლაური. **დღე 3:** ბარაკონი → ონი. **დღე 4:** უწერა → დაბრუნება."
+  tips: [დეგუსტაცია წინასწარ დაჯავშნეთ., ღამის მართვას მოერიდეთ.]
+en:
+  name: Racha Wine and Mountain Cuisine
+  short: Four days around Shaori, Khvanchkara, Ambrolauri and Utsera.
+  body: A slow route linking Racha wine, mountain cooking, churches and mineral springs.
+  plan: "**Day 1:** Nakerala → Shaori → Nikortsminda. **Day 2:** Khvanchkara → Ambrolauri. **Day 3:** Barakoni → Oni. **Day 4:** Utsera → return."
+  tips: [Reserve tastings ahead., Avoid driving after dark.]
+ru:
+  name: Вино Рачи и горная кухня
+  short: Четыре дня вокруг Шаори, Хванчкары, Амбролаури и Уцеры.
+  body: Спокойный маршрут по винной зоне, кухне, храмам и минеральным источникам Рачи.
+  plan: "**День 1:** Накерала → Шаори → Никорцминда. **День 2:** Хванчкара → Амбролаури. **День 3:** Баракони → Они. **День 4:** Уцера."
+  tips: [Бронируйте дегустации., Не ездите ночью.]
+fa:
+  name: شراب راچا و غذای کوهستان
+  short: چهار روز در شائوری، خوانچکارا، آمبرولائوری و اوتسرا.
+  body: مسیر آرام شراب، غذای کوهستان، کلیساها و چشمه‌ها.
+  plan: "**روز ۱:** ناکرالا → شائوری → نیکورتسمیندا. **روز ۲:** خوانچکارا → آمبرولائوری. **روز ۳:** باراکونی → اونی. **روز ۴:** اوتسرا."
+  tips: [چشیدن شراب را رزرو کنید., شب رانندگی نکنید.]
+he:
+  name: יין ראצ'ה ומטבח הרים
+  short: ארבעה ימים סביב שאורי, חוואנצ'קרה, אמברולאורי ואוצרה.
+  body: מסלול רגוע של יין, אוכל הרים, כנסיות ומעיינות.
+  plan: "**יום 1:** נקרלה → שאורי → ניקורצמינדה. **יום 2:** חוואנצ'קרה → אמברולאורי. **יום 3:** ברקוני → אוני. **יום 4:** אוצרה."
+  tips: [הזמינו טעימות מראש., הימנעו מנהיגת לילה.]
+ar:
+  name: نبيذ راتشا ومطبخ الجبال
+  short: أربعة أيام حول شاوري وخفانتشكارا وأمبرولاوري وأوتسيرا.
+  body: مسار هادئ يجمع النبيذ وطعام الجبال والكنائس والينابيع.
+  plan: "**اليوم 1:** ناكيرالا ← شاوري ← نيكورتسميندا. **اليوم 2:** خفانتشكارا ← أمبرولاوري. **اليوم 3:** باراكوني ← أوني. **اليوم 4:** أوتسيرا."
+  tips: [احجزوا التذوق مسبقاً., تجنبوا القيادة ليلاً.]

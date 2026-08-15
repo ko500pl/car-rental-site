@@ -1,0 +1,52 @@
+status: published
+order: 120
+days: 4
+nights: 3
+purpose: culinary
+min_people: 2
+max_people: 12
+distance_km: 610
+drive_time_total: '11:10'
+car_category: economy
+best_season: all
+difficulty: easy
+image: ''
+waypoints: [bagrati-cathedral, kutaisi-jewish-quarter, gelati-monastery, martvili-canyon, salkhino-palace, dadiani-palace-zugdidi, kolkheti-national-park, poti]
+polyline: []
+sources: [https://georgia.travel/georgian-cuisine, https://georgia.travel/food-wine]
+ka:
+  name: იმერული და მეგრული გემოები
+  short: ოთხდღიანი კულინარიული გზა ქუთაისიდან მარტვილისა და ზუგდიდის გავლით კოლხეთამდე.
+  body: მარშრუტი აერთიანებს იმერულ ხაჭაპურს, მეგრულ სამზარეულოს, ბაზრებსა და დასავლეთ საქართველოს მთავარ კულტურულ და ბუნებრივ ადგილებს.
+  plan: "**დღე 1:** ქუთაისი → ბაგრატი → გელათი. **დღე 2:** მარტვილი → სალხინო. **დღე 3:** ზუგდიდი და მეგრული სუფრა. **დღე 4:** კოლხეთი → ფოთი."
+  tips: [ოჯახური სუფრა წინასწარ შეუკვეთეთ., კანიონების სამუშაო რეჟიმი გადაამოწმეთ.]
+en:
+  name: Imeretian and Megrelian Flavours
+  short: Four culinary days from Kutaisi through Martvili and Zugdidi to Colchic wetlands.
+  body: Imeretian khachapuri, Megrelian cuisine, markets, heritage and nature in one west-Georgia route.
+  plan: "**Day 1:** Kutaisi → Bagrati → Gelati. **Day 2:** Martvili → Salkhino. **Day 3:** Zugdidi and a Megrelian table. **Day 4:** Kolkheti → Poti."
+  tips: [Reserve family meals ahead., Verify canyon opening hours.]
+ru:
+  name: Имеретинские и мегрельские вкусы
+  short: Четыре гастрономических дня от Кутаиси через Мартвили и Зугдиди к Колхиде.
+  body: Имеретинский хачапури, мегрельская кухня, рынки, культура и природа.
+  plan: "**День 1:** Кутаиси → Баграти → Гелати. **День 2:** Мартвили → Салхино. **День 3:** Зугдиди. **День 4:** Колхети → Поти."
+  tips: [Закажите семейный обед заранее., Проверьте часы каньонов.]
+fa:
+  name: طعم‌های ایمرتی و مگرلی
+  short: چهار روز خوراک از کوتایسی تا مارتویلی، زوگدیدی و تالاب‌های کولخیس.
+  body: خاچاپوری ایمرتی، غذای مگرلی، بازارها، فرهنگ و طبیعت.
+  plan: "**روز ۱:** کوتایسی → باگراتی → گلاتی. **روز ۲:** مارتویلی → سالخینو. **روز ۳:** زوگدیدی. **روز ۴:** کولختی → پوتی."
+  tips: [غذای خانوادگی را رزرو کنید., ساعات دره‌ها را بررسی کنید.]
+he:
+  name: טעמי אימרתי ומגרליה
+  short: ארבעה ימים קולינריים מכותאיסי דרך מרטווילי וזוגדידי לקולכתי.
+  body: חצ'פורי אימרתי, מטבח מגרלי, שווקים, מורשת וטבע.
+  plan: "**יום 1:** כותאיסי → בגרטי → גלאתי. **יום 2:** מרטווילי → סלחינו. **יום 3:** זוגדידי. **יום 4:** קולכתי → פותי."
+  tips: [הזמינו ארוחה משפחתית., בדקו שעות פתיחה.]
+ar:
+  name: نكهات إيميريتي وميغريليا
+  short: أربعة أيام طهي من كوتايسي عبر مارتفيلي وزوغديدي إلى كولخيتي.
+  body: خاشابوري إيميريتي والمطبخ الميغريلي والأسواق والتراث والطبيعة.
+  plan: "**اليوم 1:** كوتايسي ← باغراتي ← غيلاتي. **اليوم 2:** مارتفيلي ← سالخينو. **اليوم 3:** زوغديدي. **اليوم 4:** كولخيتي ← بوتي."
+  tips: [احجزوا الوجبة العائلية., تحققوا من ساعات العمل.]

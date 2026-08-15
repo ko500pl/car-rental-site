@@ -1,0 +1,52 @@
+status: published
+order: 160
+days: 4
+nights: 3
+purpose: hiking
+min_people: 1
+max_people: 10
+distance_km: 390
+drive_time_total: '8:10'
+car_category: suv
+best_season: may-october
+difficulty: moderate
+image: ''
+waypoints: [ananuri-fortress, zhinvali-reservoir, jvari-pass-friendship-monument, gergeti-trinity-church, dariali-gorge-gveleti-waterfalls, truso-valley, juta-chaukhi]
+polyline: []
+sources: [https://exploregeorgiatours.com/guide/complete-georgia-itinerary-guide, https://georgia.travel/trekking-in-georgia]
+ka:
+  name: ყაზბეგის ჰაიქინგის ბაზა
+  short: ოთხი დღე გერგეტის, გველეთის, თრუსოსა და ჯუთა-ჭაუხის ბილიკებზე.
+  body: ერთი საცხოვრებელი ბაზიდან დაგეგმილი დღიური ლაშქრობები ამცირებს ბარგის გადატანას და გაძლევთ ამინდის მიხედვით დღეების გადანაცვლების საშუალებას.
+  plan: "**დღე 1:** ჟინვალი → ანანური → ჯვრის უღელტეხილი. **დღე 2:** გერგეტის ჰაიქი → გველეთი. **დღე 3:** თრუსოს ხეობა. **დღე 4:** ჯუთა–ჭაუხის მიმართულება."
+  tips: [თრუსოსა და ჯუთაში ადრე დაიწყეთ., ნისლში მაღალ ბილიკზე არ ახვიდეთ.]
+en:
+  name: Kazbegi Hiking Base
+  short: Four days on the Gergeti, Gveleti, Truso and Juta-Chaukhi trails.
+  body: Day hikes from one base reduce luggage moves and let you swap days for weather.
+  plan: "**Day 1:** Zhinvali → Ananuri → Jvari Pass. **Day 2:** Gergeti hike → Gveleti. **Day 3:** Truso Valley. **Day 4:** Juta–Chaukhi direction."
+  tips: [Start Truso and Juta early., Avoid high trails in fog.]
+ru:
+  name: Хайкинг-база в Казбеги
+  short: Четыре дня на тропах Гергети, Гвелети, Трусо и Джута-Чаухи.
+  body: Радиальные выходы из одной базы позволяют менять дни по погоде.
+  plan: "**День 1:** Жинвали → Ананури → Крестовый перевал. **День 2:** Гергети → Гвелети. **День 3:** Трусо. **День 4:** Джута–Чаухи."
+  tips: [Выходите рано., Не идите высоко в тумане.]
+fa:
+  name: پایگاه پیاده‌روی کازبگی
+  short: چهار روز در مسیرهای گرگتی، گولتی، تروسو و جوتا-چاوخی.
+  body: پیاده‌روی روزانه از یک پایگاه امکان تغییر برنامه با هوا را می‌دهد.
+  plan: "**روز ۱:** ژینوالی → آنانوری → گردنه. **روز ۲:** گرگتی → گولتی. **روز ۳:** تروسو. **روز ۴:** جوتا–چاوخی."
+  tips: [زود شروع کنید., در مه به ارتفاع نروید.]
+he:
+  name: בסיס טיולי קזבגי
+  short: ארבעה ימים בשבילי גרגטי, גוולטי, טרוסו וג'וטה-צ'אוחי.
+  body: טיולי יום מבסיס אחד מאפשרים להתאים את הסדר למזג האוויר.
+  plan: "**יום 1:** ז'ינוואלי → אנאנורי → מעבר ג'ווארי. **יום 2:** גרגטי → גוולטי. **יום 3:** טרוסו. **יום 4:** ג'וטה–צ'אוחי."
+  tips: [צאו מוקדם., אל תעלו בערפל.]
+ar:
+  name: قاعدة المشي في كازبيغي
+  short: أربعة أيام على مسارات غيرغيتي وغفيليتي وتروسو وجوتا-تشاوخي.
+  body: رحلات يومية من قاعدة واحدة تسمح بتغيير الأيام حسب الطقس.
+  plan: "**اليوم 1:** جينفالي ← أنانوري ← الممر. **اليوم 2:** غيرغيتي ← غفيليتي. **اليوم 3:** تروسو. **اليوم 4:** جوتا–تشاوخي."
+  tips: [ابدؤوا مبكراً., لا تصعدوا في الضباب.]

@@ -1,0 +1,52 @@
+status: published
+order: 140
+days: 5
+nights: 4
+purpose: cycling
+min_people: 2
+max_people: 12
+distance_km: 470
+drive_time_total: '8:40'
+car_category: suv
+best_season: may-october
+difficulty: moderate
+image: ''
+waypoints: [david-gareja, sighnaghi, bodbe-monastery, telavi-batonis-tsikhe, alaverdi-cathedral, napareuli, lagodekhi-protected-areas, zhinvali-reservoir]
+polyline: []
+sources: [https://georgia.travel/biking-along-the-kakheti-wine-route, https://georgia.travel/sagarejo-davit-gareja-zhinvali-dam, https://www.spiceroads.com/tours/georgia-cycling-holiday/itinerary]
+ka:
+  name: კახეთის ველო და ღვინის გზა
+  short: ხუთდღიანი მხარდაჭერილი ველოტური დავითგარეჯიდან ალაზნის ველამდე და ჟინვალამდე.
+  body: ოფიციალური კახეთის ველომარშრუტების პრინციპით შედგენილი ტური აერთიანებს მშვიდ გზებს, ღვინის სოფლებსა და ტრანსფერს რთულ მონაკვეთებზე.
+  plan: "**დღე 1:** საგარეჯო–დავითგარეჯა. **დღე 2:** სიღნაღი–ბოდბე. **დღე 3:** თელავი–ალავერდი–ნაფარეული. **დღე 4:** ლაგოდეხის მოკლე წრე. **დღე 5:** ახმეტა–ჟინვალი."
+  tips: [მარშრუტს სჭირდება თანმხლები მანქანა., ჩაფხუტი და სათადარიგო კამერა აუცილებელია.]
+en:
+  name: Kakheti Cycling and Wine Road
+  short: A five-day supported ride from David Gareja across the Alazani valley to Zhinvali.
+  body: Built from official Kakheti cycling corridors, with quiet roads, wine villages and vehicle transfers on unsafe sections.
+  plan: "**Day 1:** Sagarejo–David Gareja. **Day 2:** Sighnaghi–Bodbe. **Day 3:** Telavi–Alaverdi–Napareuli. **Day 4:** Lagodekhi loop. **Day 5:** Akhmeta–Zhinvali."
+  tips: [Use a support vehicle., Helmet and spare tube are mandatory.]
+ru:
+  name: Велосипедный и винный путь Кахети
+  short: Пятидневный велотур от Давид-Гареджи через Алазанскую долину к Жинвали.
+  body: Тихие дороги, винные сёла и трансферы на небезопасных участках.
+  plan: "**День 1:** Сагареджо–Давид-Гареджи. **День 2:** Сигнахи–Бодбе. **День 3:** Телави–Алаверди–Напареули. **День 4:** Лагодехи. **День 5:** Ахмета–Жинвали."
+  tips: [Нужна машина сопровождения., Обязательны шлем и запасная камера.]
+fa:
+  name: مسیر دوچرخه و شراب کاختی
+  short: تور پنج روزه از داویت گارجا تا دره آلازانی و ژینوالی.
+  body: جاده‌های آرام، روستاهای شراب و انتقال با خودرو در بخش‌های دشوار.
+  plan: "**روز ۱:** ساگارجو–داویت گارجا. **روز ۲:** سیغناغی–بودبه. **روز ۳:** تلاوی–آلاوردی–ناپارئولی. **روز ۴:** لاگودخی. **روز ۵:** آخمتا–ژینوالی."
+  tips: [خودروی پشتیبان لازم است., کلاه و تیوب یدکی ضروری است.]
+he:
+  name: דרך האופניים והיין של קאחתי
+  short: חמישה ימי רכיבה מדוד גארג'ה דרך עמק אלאזני לז'ינוואלי.
+  body: כבישים שקטים, כפרי יין והעברות רכב בקטעים קשים.
+  plan: "**יום 1:** סגארג'ו–דוד גארג'ה. **יום 2:** סיגנאגי–בודבה. **יום 3:** תלאווי–אלאוורדי–נפאראולי. **יום 4:** לגודחי. **יום 5:** אחמטה–ז'ינוואלי."
+  tips: [נדרש רכב ליווי., קסדה ופנימית חלופית חובה.]
+ar:
+  name: طريق كاخيتي للدراجات والنبيذ
+  short: خمسة أيام من دافيت غاريجا عبر وادي ألازاني إلى جينفالي.
+  body: طرق هادئة وقرى نبيذ ونقل بالمركبة في المقاطع الصعبة.
+  plan: "**اليوم 1:** ساغاريجو–دافيت غاريجا. **اليوم 2:** سيغناغي–بودبي. **اليوم 3:** تيلافي–ألافيردي–ناباريولي. **اليوم 4:** لاغوديخي. **اليوم 5:** أخميتا–جينفالي."
+  tips: [تلزم مركبة دعم., الخوذة والأنبوب الاحتياطي ضروريان.]

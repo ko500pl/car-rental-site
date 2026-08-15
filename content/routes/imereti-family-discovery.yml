@@ -1,0 +1,52 @@
+status: published
+order: 200
+days: 3
+nights: 2
+purpose: family
+min_people: 2
+max_people: 12
+distance_km: 240
+drive_time_total: '5:10'
+car_category: economy
+best_season: all
+difficulty: easy
+image: ''
+waypoints: [bagrati-cathedral, kutaisi-botanical-garden, sataplia-nature-reserve, prometheus-cave, tskaltubo-spa-town, gelati-monastery]
+polyline: []
+sources: [https://georgia.travel/]
+ka:
+  name: იმერეთი ოჯახთან ერთად
+  short: სამი მშვიდი დღე ქუთაისში, სათაფლიაში, პრომეთეს მღვიმესა და წყალტუბოში.
+  body: მოკლე გადასვლები და მოქნილი გაჩერებები მარშრუტს ბავშვიანი ოჯახებისთვის მოსახერხებელს ხდის.
+  plan: "**დღე 1:** ქუთაისი → ბაგრატი → ბოტანიკური ბაღი. **დღე 2:** სათაფლია → პრომეთეს მღვიმე. **დღე 3:** წყალტუბო → გელათი."
+  tips: [მღვიმეებში თბილი ფენა იქონიეთ., ასაკობრივი შეზღუდვები წინასწარ შეამოწმეთ.]
+en:
+  name: Imereti with the Family
+  short: Three easy days in Kutaisi, Sataplia, Prometheus Cave and Tskaltubo.
+  body: Short transfers and flexible stops make this practical for families with children.
+  plan: "**Day 1:** Kutaisi → Bagrati → Botanical Garden. **Day 2:** Sataplia → Prometheus Cave. **Day 3:** Tskaltubo → Gelati."
+  tips: [Carry a warm layer for caves., Check age restrictions.]
+ru:
+  name: Имерети с семьёй
+  short: Три спокойных дня в Кутаиси, Сатаплии, пещере Прометея и Цхалтубо.
+  body: Короткие переезды и гибкие остановки удобны для семей с детьми.
+  plan: "**День 1:** Кутаиси → Баграти → ботсад. **День 2:** Сатаплия → пещера Прометея. **День 3:** Цхалтубо → Гелати."
+  tips: [Возьмите тёплую одежду., Проверьте возрастные ограничения.]
+fa:
+  name: ایمرتی با خانواده
+  short: سه روز آرام در کوتایسی، ساتاپلیا، غار پرومتئوس و تسکالتوبو.
+  body: جابه‌جایی کوتاه برای خانواده‌ها مناسب است.
+  plan: "**روز ۱:** کوتایسی → باگراتی → باغ. **روز ۲:** ساتاپلیا → غار پرومتئوس. **روز ۳:** تسکالتوبو → گلاتی."
+  tips: [لباس گرم برای غار ببرید., محدودیت سنی را بررسی کنید.]
+he:
+  name: אימרתי עם המשפחה
+  short: שלושה ימים קלים בכותאיסי, סטפליה, מערת פרומתאוס וצקלטובו.
+  body: נסיעות קצרות ועצירות גמישות מתאימות למשפחות.
+  plan: "**יום 1:** כותאיסי → בגרטי → הגן. **יום 2:** סטפליה → מערת פרומתאוס. **יום 3:** צקלטובו → גלאתי."
+  tips: [קחו שכבה חמה., בדקו מגבלות גיל.]
+ar:
+  name: إيميريتي مع العائلة
+  short: ثلاثة أيام سهلة في كوتايسي وساتابليا وكهف بروميثيوس وتسقالتوبو.
+  body: تنقلات قصيرة وتوقفات مرنة مناسبة للعائلات.
+  plan: "**اليوم 1:** كوتايسي ← باغراتي ← الحديقة. **اليوم 2:** ساتابليا ← كهف بروميثيوس. **اليوم 3:** تسقالتوبو ← غيلاتي."
+  tips: [احملوا طبقة دافئة., تحققوا من قيود العمر.]

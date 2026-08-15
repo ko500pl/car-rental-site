@@ -1,0 +1,52 @@
+status: published
+order: 80
+days: 2
+nights: 1
+purpose: history
+min_people: 1
+max_people: 20
+distance_km: 35
+drive_time_total: '1:10'
+car_category: economy
+best_season: all
+difficulty: easy
+image: ''
+waypoints: [georgian-national-museum, freedom-square-old-parliament, sololaki-art-nouveau, betlemi-quarter, narikala-fortress, abanotubani-sulphur-baths, holy-trinity-cathedral-sameba, chronicle-of-georgia]
+polyline: []
+sources: [https://georgia.travel/]
+ka:
+  name: თბილისის ისტორიული ფენები
+  short: ორი დღე ძველი თბილისის, მუზეუმების, ციხისა და ქალაქის მემორიალების გასაცნობად.
+  body: მარშრუტი აერთიანებს ფეხით სავალ ძველ ქალაქს და მოკლე მანქანით გადასვლებს. პირველი დღე ისტორიულ ცენტრს ეთმობა, მეორე — სამებასა და თბილისის ზღვის მემორიალს.
+  plan: "**დღე 1:** ეროვნული მუზეუმი → თავისუფლების მოედანი → სოლოლაკი → ბეთლემი → ნარიყალა → აბანოთუბანი.\n\n**დღე 2:** სამების ტაძარი → საქართველოს ისტორიის მემორიალი."
+  tips: [ძველ ქალაქში ფეხით იარეთ და მანქანა პარკინგზე დატოვეთ., მუზეუმის სამუშაო საათები წინასწარ გადაამოწმეთ.]
+en:
+  name: Layers of Tbilisi History
+  short: Two days through Old Tbilisi, museums, the fortress and city memorials.
+  body: A walk-first route through the historic centre with short transfers on day two.
+  plan: "**Day 1:** National Museum → Freedom Square → Sololaki → Betlemi → Narikala → Abanotubani.\n\n**Day 2:** Sameba Cathedral → Chronicle of Georgia."
+  tips: [Leave the car parked while exploring the old town., Check museum opening hours before departure.]
+ru:
+  name: Исторические слои Тбилиси
+  short: Два дня по Старому Тбилиси, музеям, крепости и городским мемориалам.
+  body: Пеший маршрут по историческому центру с короткими переездами во второй день.
+  plan: "**День 1:** Национальный музей → площадь Свободы → Сололаки → Бетлеми → Нарикала → Абанотубани.\n\n**День 2:** Самеба → Летопись Грузии."
+  tips: [По старому городу лучше ходить пешком., Заранее проверьте часы работы музеев.]
+fa:
+  name: لایه‌های تاریخی تفلیس
+  short: دو روز در تفلیس قدیم، موزه‌ها، قلعه و یادمان‌های شهر.
+  body: مسیر پیاده در مرکز تاریخی با جابه‌جایی‌های کوتاه در روز دوم.
+  plan: "**روز ۱:** موزه ملی → میدان آزادی → سولولاکی → بتلمی → ناریکالا → حمام‌ها.\n\n**روز ۲:** کلیسای سامبا → یادمان تاریخ گرجستان."
+  tips: [در بافت قدیم پیاده‌روی کنید., ساعت موزه‌ها را بررسی کنید.]
+he:
+  name: שכבות ההיסטוריה של טביליסי
+  short: יומיים בעיר העתיקה, במוזיאונים, במבצר ובאתרי ההנצחה.
+  body: מסלול הליכה במרכז ההיסטורי עם נסיעות קצרות ביום השני.
+  plan: "**יום 1:** המוזיאון הלאומי → כיכר החירות → סולולאקי → בתלמי → נריקלה → המרחצאות.\n\n**יום 2:** קתדרלת סמבה → כרוניקת גאורגיה."
+  tips: [השאירו את הרכב וחקרו ברגל., בדקו מראש שעות פתיחה.]
+ar:
+  name: طبقات تاريخ تبليسي
+  short: يومان في البلدة القديمة والمتاحف والقلعة والنصب التذكارية.
+  body: مسار مشي في المركز التاريخي مع تنقلات قصيرة في اليوم الثاني.
+  plan: "**اليوم 1:** المتحف الوطني ← ساحة الحرية ← سولولاكي ← بيتليمي ← ناريكالا ← الحمامات.\n\n**اليوم 2:** كاتدرائية ساميبا ← نصب تاريخ جورجيا."
+  tips: [استكشفوا البلدة القديمة سيراً., تحققوا من ساعات المتاحف.]

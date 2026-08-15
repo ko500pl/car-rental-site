@@ -1,0 +1,52 @@
+status: published
+order: 210
+days: 10
+nights: 9
+purpose: classic
+min_people: 1
+max_people: 16
+distance_km: 1680
+drive_time_total: '31:00'
+car_category: suv
+best_season: may-october
+difficulty: moderate
+image: ''
+waypoints: [tbilisi-botanical-garden, jvari-monastery, svetitskhoveli-cathedral, ananuri-fortress, gergeti-trinity-church, uplistsikhe, borjomi-central-park, vardzia, bagrati-cathedral, martvili-canyon, dadiani-palace-zugdidi, mestia, ushguli, batumi-boulevard-old-town]
+polyline: []
+sources: [https://exploregeorgiatours.com/guide/complete-georgia-itinerary-guide, https://www.enjoy-georgia.com/en/tours-to-georgia/trekking-hiking-in-georgia/roundtrip-in-georgia.html]
+ka:
+  name: საქართველოს დიდი კლასიკური ტური
+  short: ათი დღე თბილისიდან ყაზბეგის, სამხრეთის, იმერეთის, სამეგრელოსა და სვანეთის გავლით ბათუმამდე.
+  body: ფართო მიმოხილვითი მარშრუტი საერთაშორისო ოპერატორების თანმიმდევრობის მიხედვითაა დაბალანსებული და ქალაქებს, მთებს, მემკვიდრეობასა და ბუნებას აერთიანებს.
+  plan: "**დღე 1:** თბილისი. **დღე 2:** მცხეთა → ყაზბეგი. **დღე 3:** გერგეტი. **დღე 4:** უფლისციხე → ბორჯომი. **დღე 5:** ვარძია. **დღე 6:** ქუთაისი. **დღე 7:** მარტვილი → ზუგდიდი. **დღე 8:** მესტია. **დღე 9:** უშგული. **დღე 10:** ბათუმი."
+  tips: [უშგულის გზა ამინდის მიხედვით შეამოწმეთ., ზედიზედ გრძელი მართვის დღეები არ დაამატოთ.]
+en:
+  name: Grand Classic Georgia Tour
+  short: Ten days from Tbilisi through Kazbegi, the south, Imereti, Samegrelo and Svaneti to Batumi.
+  body: A balanced overview based on established operator sequencing, combining cities, mountains, heritage and nature.
+  plan: "**Day 1:** Tbilisi. **Day 2:** Mtskheta → Kazbegi. **Day 3:** Gergeti. **Day 4:** Uplistsikhe → Borjomi. **Day 5:** Vardzia. **Day 6:** Kutaisi. **Day 7:** Martvili → Zugdidi. **Day 8:** Mestia. **Day 9:** Ushguli. **Day 10:** Batumi."
+  tips: [Check the Ushguli road for weather., Do not add consecutive long driving days.]
+ru:
+  name: Большой классический тур по Грузии
+  short: Десять дней от Тбилиси через Казбеги, юг, Имерети, Самегрело и Сванети до Батуми.
+  body: Сбалансированный обзор городов, гор, наследия и природы.
+  plan: "**День 1:** Тбилиси. **День 2:** Мцхета → Казбеги. **День 3:** Гергети. **День 4:** Уплисцихе → Боржоми. **День 5:** Вардзия. **День 6:** Кутаиси. **День 7:** Мартвили → Зугдиди. **День 8:** Местия. **День 9:** Ушгули. **День 10:** Батуми."
+  tips: [Проверьте дорогу в Ушгули., Не добавляйте длинные перегоны подряд.]
+fa:
+  name: تور کلاسیک بزرگ گرجستان
+  short: ده روز از تفلیس تا کازبگی، جنوب، ایمرتی، سامگرلو، سوانتی و باتومی.
+  body: مرور متعادل شهرها، کوه‌ها، میراث و طبیعت.
+  plan: "**روز ۱:** تفلیس. **روز ۲:** متسختا → کازبگی. **روز ۳:** گرگتی. **روز ۴:** اوپلیستسیخه → برجومی. **روز ۵:** واردزیا. **روز ۶:** کوتایسی. **روز ۷:** مارتویلی → زوگدیدی. **روز ۸:** مستیا. **روز ۹:** اوشگولی. **روز ۱۰:** باتومی."
+  tips: [وضع راه اوشگولی را بررسی کنید., روزهای رانندگی طولانی را پشت سر هم نگذارید.]
+he:
+  name: הטיול הקלאסי הגדול בגאורגיה
+  short: עשרה ימים מטביליסי דרך קזבגי, הדרום, אימרתי, סמגרלו וסוואנתי לבטומי.
+  body: סקירה מאוזנת של ערים, הרים, מורשת וטבע.
+  plan: "**יום 1:** טביליסי. **יום 2:** מצחתה → קזבגי. **יום 3:** גרגטי. **יום 4:** אופליסציחה → בורג'ומי. **יום 5:** ורדזיה. **יום 6:** כותאיסי. **יום 7:** מרטווילי → זוגדידי. **יום 8:** מסטיה. **יום 9:** אושגולי. **יום 10:** בטומי."
+  tips: [בדקו את דרך אושגולי., אל תוסיפו ימי נהיגה ארוכים ברצף.]
+ar:
+  name: جولة جورجيا الكلاسيكية الكبرى
+  short: عشرة أيام من تبليسي عبر كازبيغي والجنوب وإيميريتي وساميغريلو وسفانيتي إلى باتومي.
+  body: جولة متوازنة تجمع المدن والجبال والتراث والطبيعة.
+  plan: "**اليوم 1:** تبليسي. **اليوم 2:** متسخيتا ← كازبيغي. **اليوم 3:** غيرغيتي. **اليوم 4:** أوبليستسيخي ← بورجومي. **اليوم 5:** فاردزيا. **اليوم 6:** كوتايسي. **اليوم 7:** مارتفيلي ← زوغديدي. **اليوم 8:** ميستيا. **اليوم 9:** أوشغولي. **اليوم 10:** باتومي."
+  tips: [تحققوا من طريق أوشغولي., لا تضيفوا أيام قيادة طويلة متتالية.]

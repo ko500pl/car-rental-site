@@ -1,0 +1,52 @@
+status: published
+order: 90
+days: 2
+nights: 1
+purpose: history
+min_people: 1
+max_people: 18
+distance_km: 230
+drive_time_total: '4:20'
+car_category: economy
+best_season: all
+difficulty: easy
+image: ''
+waypoints: [jvari-monastery, svetitskhoveli-cathedral, samtavro-monastery, uplistsikhe, gori-fortress-stalin-museum, ateni-sioni-church]
+polyline: []
+sources: [https://georgia.travel/]
+ka:
+  name: მცხეთა, უფლისციხე და ატენის ხეობა
+  short: ორდღიანი ისტორიული მარშრუტი ძველი დედაქალაქიდან კლდეში ნაკვეთ ქალაქამდე.
+  body: მარშრუტი აერთიანებს მცხეთის მთავარ ძეგლებს, უფლისციხეს, გორსა და ატენის სიონს ისე, რომ თითოეულ ადგილზე საკმარისი დრო რჩება.
+  plan: "**დღე 1:** ჯვარი → სვეტიცხოველი → სამთავრო; ღამე მცხეთაში ან გორში.\n\n**დღე 2:** უფლისციხე → გორის ციხე → ატენის სიონი."
+  tips: [უფლისციხეში დახურული ფეხსაცმელი ჩაიცვით., ატენის გზა დღის სინათლეზე გაიარეთ.]
+en:
+  name: Mtskheta, Uplistsikhe and Ateni Valley
+  short: A two-day heritage route from the ancient capital to the rock-hewn city.
+  body: A balanced sequence of Mtskheta monuments, Uplistsikhe, Gori and Ateni Sioni.
+  plan: "**Day 1:** Jvari → Svetitskhoveli → Samtavro.\n\n**Day 2:** Uplistsikhe → Gori Fortress → Ateni Sioni."
+  tips: [Wear closed shoes at Uplistsikhe., Drive the Ateni road in daylight.]
+ru:
+  name: Мцхета, Уплисцихе и долина Атени
+  short: Двухдневный исторический маршрут от древней столицы к пещерному городу.
+  body: Удобная последовательность памятников Мцхеты, Уплисцихе, Гори и Атени.
+  plan: "**День 1:** Джвари → Светицховели → Самтавро.\n\n**День 2:** Уплисцихе → крепость Гори → Атени Сиони."
+  tips: [Наденьте закрытую обувь., Езжайте в Атени засветло.]
+fa:
+  name: متسختا، اوپلیستسیخه و دره آتنی
+  short: مسیر تاریخی دو روزه از پایتخت باستانی تا شهر صخره‌ای.
+  body: ترکیبی متعادل از آثار متسختا، اوپلیستسیخه، گوری و آتنی.
+  plan: "**روز ۱:** جواری → سوتیتسخولی → سامتاورو.\n\n**روز ۲:** اوپلیستسیخه → قلعه گوری → آتنی."
+  tips: [کفش بسته بپوشید., مسیر آتنی را در روشنایی طی کنید.]
+he:
+  name: מצחתה, אופליסציחה ועמק אטני
+  short: מסלול מורשת בן יומיים מהבירה העתיקה לעיר החצובה בסלע.
+  body: שילוב מאוזן של אתרי מצחתה, אופליסציחה, גורי ואטני.
+  plan: "**יום 1:** ג'ווארי → סווטיצחובלי → סמטאברו.\n\n**יום 2:** אופליסציחה → מבצר גורי → אטני סיוני."
+  tips: [נעלו נעליים סגורות., סעו לאטני באור יום.]
+ar:
+  name: متسخيتا وأوبليستسيخي ووادي أتيني
+  short: مسار تراثي ليومين من العاصمة القديمة إلى المدينة الصخرية.
+  body: تسلسل متوازن لمعالم متسخيتا وأوبليستسيخي وغوري وأتيني.
+  plan: "**اليوم 1:** جفاري ← سفيتيتسخوفيلي ← سامتافرو.\n\n**اليوم 2:** أوبليستسيخي ← قلعة غوري ← أتيني."
+  tips: [ارتدوا حذاء مغلقاً., اسلكوا طريق أتيني نهاراً.]

@@ -655,10 +655,44 @@
   // ─── ინტერფეისი ─────────────────────────────────────────────────────────
   function buildForm() {
     var s = EL("start");
+    var startSearch = EL("startsearch"), startOptions = EL("startoptions");
     D.starts.forEach(function (p, i) {
       var o = document.createElement("option");
       o.value = i; o.textContent = p.n; s.appendChild(o);
+      var suggestion = document.createElement("option");
+      suggestion.value = p.n; suggestion.dataset.index = i; startOptions.appendChild(suggestion);
     });
+    function applyStart(index, refresh) {
+      index = Math.max(0, Math.min(D.starts.length - 1, Number(index) || 0));
+      s.value = String(index);
+      startSearch.value = D.starts[index].n;
+      localStorage.setItem("fh-planner-start", D.starts[index].s || String(index));
+      if (window.FH_TRAVEL_EXPLORER && window.FH_TRAVEL_EXPLORER.setOrigin)
+        window.FH_TRAVEL_EXPLORER.setOrigin(D.starts[index]);
+      if (refresh) run();
+    }
+    function matchStart() {
+      var q = startSearch.value.trim().toLocaleLowerCase();
+      if (!q) return -1;
+      var exact = D.starts.findIndex(function (p) { return p.n.toLocaleLowerCase() === q; });
+      if (exact >= 0) return exact;
+      return D.starts.findIndex(function (p) {
+        return p.n.toLocaleLowerCase().indexOf(q) >= 0 || String(p.s || '').toLocaleLowerCase().indexOf(q) >= 0;
+      });
+    }
+    startSearch.addEventListener("change", function () {
+      var index = matchStart();
+      if (index >= 0) applyStart(index, true);
+    });
+    startSearch.addEventListener("keydown", function (e) {
+      if (e.key !== "Enter") return;
+      e.preventDefault();
+      var index = matchStart();
+      if (index >= 0) applyStart(index, true);
+    });
+    var savedStart = localStorage.getItem("fh-planner-start");
+    var savedIndex = D.starts.findIndex(function (p) { return p.s === savedStart; });
+    applyStart(savedIndex >= 0 ? savedIndex : 0, false);
     var m = EL("month"), now = new Date().getMonth() + 1;
     T.months.forEach(function (name, i) {
       var o = document.createElement("option");
@@ -719,7 +753,8 @@
     var from = EL("datefrom").value, to = EL("dateto").value;
     var related = {
       culinary: ["culinary", "wine"], wine: ["culinary", "wine"],
-      cycling: ["cycling", "nature", "mountains"], family: ["family", "culture", "nature", "beach"]
+      cycling: ["cycling", "nature", "mountains"], hiking: ["hiking", "mountains", "nature"],
+      history: ["history", "culture"], family: ["family", "culture", "nature", "beach"]
     };
     var accepted = related[purpose] || [purpose];
     var tours = (D.standardTours || []).filter(function (tour) {
@@ -819,6 +854,9 @@
 
   function run() {
     var start = D.starts[parseInt(EL("start").value, 10)];
+    if (!start) start = D.starts[0];
+    if (window.FH_TRAVEL_EXPLORER && window.FH_TRAVEL_EXPLORER.setOrigin)
+      window.FH_TRAVEL_EXPLORER.setOrigin(start);
     var days = parseInt(EL("days").value, 10);
     var budget = parseInt(EL("pace").value, 10);
     var back = EL("back").checked;

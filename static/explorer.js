@@ -96,14 +96,24 @@
   var routeLayer = L.layerGroup().addTo(map);
   var weatherLayer = L.layerGroup().addTo(map);
   var weatherSeq = 0, weatherTimer = null;
-  var marks = {};
+  var marks = {}, externalOrigin = null;
   /* One canonical map is shared by Explore, point-to-point routing and the
      multi-day planner. Other modules may add their own layers, but must not
      create a second Leaflet instance. */
   window.FH_TRAVEL_MAP = map;
   window.FH_TRAVEL_EXPLORER = {
     map: map,
-    clearRoute: function () { routeLayer.clearLayers(); }
+    clearRoute: function () { routeLayer.clearLayers(); },
+    setOrigin: function (p) {
+      if (!p || !isFinite(p.lat) || !isFinite(p.lon)) return;
+      externalOrigin = {
+        s: p.s || 'planner-origin', n: p.n || '', la: Number(p.lat), lo: Number(p.lon),
+        f: Number(p.f) || 1.4, v: Number(p.v) || 55, rd: 0, el: 0
+      };
+      state.from = null;
+      map.setView([externalOrigin.la, externalOrigin.lo], Math.max(map.getZoom(), 11));
+      suggestNear();
+    }
   };
 
   var visited = {};
@@ -641,6 +651,7 @@
   }
 
   function origin() {
+    if (externalOrigin) return externalOrigin;
     if (me) return me;
     if (state.from && BY[state.from]) return BY[state.from];
     var tb = BY['town:tbilisi'];

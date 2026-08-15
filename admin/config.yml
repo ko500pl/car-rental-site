@@ -448,7 +448,7 @@ collections:
       - {label: "დღეები", name: days, widget: number, value_type: int}
       - {label: "ღამეები", name: nights, widget: number, value_type: int}
       - {label: "ტურის მიზნობრიობა", name: purpose, widget: select, default: classic,
-         options: [classic, culinary, wine, culture, nature, cycling, mountains, beach, family]}
+         options: [classic, culinary, wine, culture, nature, cycling, mountains, hiking, history, beach, family]}
       - {label: "მინიმალური მონაწილეები", name: min_people, widget: number, value_type: int, min: 1, default: 1}
       - {label: "მაქსიმალური მონაწილეები", name: max_people, widget: number, value_type: int, min: 1, default: 8}
       - {label: "ხელმისაწვდომია თარიღიდან", name: available_from, widget: datetime, date_format: "YYYY-MM-DD", time_format: false, required: false}

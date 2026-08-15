@@ -61,6 +61,17 @@ class ProductFeatureTests(unittest.TestCase):
         self.assertIn("new FormData(root)", booking)
         self.assertNotIn('collection(f.db, "bookings")', booking)
 
+    def test_planner_start_search_controls_shared_map_origin(self):
+        source = Path("build.py").read_text(encoding="utf-8")
+        planner = Path("static", "planner.js").read_text(encoding="utf-8")
+        explorer = Path("static", "explorer.js").read_text(encoding="utf-8")
+        self.assertIn('id="startsearch" type="search"', source)
+        self.assertIn('id="startoptions"', source)
+        self.assertIn('FH_TRAVEL_EXPLORER.setOrigin(D.starts[index])', planner)
+        self.assertIn('FH_TRAVEL_EXPLORER.setOrigin(start)', planner)
+        self.assertIn('externalOrigin = {', explorer)
+        self.assertIn('if (externalOrigin) return externalOrigin', explorer)
+
     def test_map_uses_progressive_count_clusters(self):
         explorer = Path("static", "explorer.js").read_text(encoding="utf-8")
         theme = Path("theme.py").read_text(encoding="utf-8")

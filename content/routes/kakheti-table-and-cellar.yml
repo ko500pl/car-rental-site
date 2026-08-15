@@ -1,0 +1,52 @@
+status: published
+order: 110
+days: 3
+nights: 2
+purpose: culinary
+min_people: 2
+max_people: 12
+distance_km: 360
+drive_time_total: '7:20'
+car_category: economy
+best_season: all
+difficulty: easy
+image: ''
+waypoints: [dezerters-bazaar, sighnaghi, bodbe-monastery, gurjaani-kvelatsminda, telavi-batonis-tsikhe, tsinandali-estate, khareba-wine-tunnel]
+polyline: []
+sources: [https://georgia.travel/food-wine, https://traveltogeorgiatours.ge/en/tour/84/10-Day-Food-Adventure-in-Georgia]
+ka:
+  name: კახური სუფრა და მარანი
+  short: სამდღიანი კულინარიული ტური ბაზრიდან პურის, ჩურჩხელისა და ქვევრის ღვინის გამოცდილებამდე.
+  body: ტური აერთიანებს ბაზრის პროდუქტებს, კახურ სუფრას, მცირე ოჯახურ მარნებსა და კულტურულ გაჩერებებს. დეგუსტაციისას მძღოლი არ სვამს.
+  plan: "**დღე 1:** დეზერტირების ბაზარი → სიღნაღი → ბოდბე. **დღე 2:** გურჯაანი → თელავი → ოჯახური კულინარიული მასტერკლასი. **დღე 3:** წინანდალი → ყვარლის ღვინის გვირაბი."
+  tips: [მასტერკლასი წინასწარ დაჯავშნეთ., მძღოლისთვის დაგეგმეთ უალკოჰოლო დეგუსტაცია.]
+en:
+  name: Kakhetian Table and Cellar
+  short: Three culinary days from the market to bread, churchkhela and qvevri wine.
+  body: Markets, family tables, small cellars and cultural stops in one paced itinerary.
+  plan: "**Day 1:** Dezerter Bazaar → Sighnaghi → Bodbe. **Day 2:** Gurjaani → Telavi → family cooking class. **Day 3:** Tsinandali → Kvareli wine tunnel."
+  tips: [Book cooking classes ahead., The driver must not drink.]
+ru:
+  name: Кахетинский стол и винный погреб
+  short: Три гастрономических дня от рынка до хлеба, чурчхелы и вина квеври.
+  body: Рынки, семейные застолья, малые погреба и культурные остановки.
+  plan: "**День 1:** Дезертирский рынок → Сигнахи → Бодбе. **День 2:** Гурджаани → Телави → мастер-класс. **День 3:** Цинандали → винный тоннель Кварели."
+  tips: [Бронируйте мастер-класс заранее., Водитель не дегустирует алкоголь.]
+fa:
+  name: سفره و سرداب کاختی
+  short: سه روز خوراک از بازار تا نان، چرچخلا و شراب کووری.
+  body: بازارها، سفره‌های خانوادگی، سرداب‌های کوچک و توقف‌های فرهنگی.
+  plan: "**روز ۱:** بازار → سیغناغی → بودبه. **روز ۲:** گورجانی → تلاوی → کلاس آشپزی. **روز ۳:** تسیناندالی → تونل شراب کوارلی."
+  tips: [کلاس را از قبل رزرو کنید., راننده الکل ننوشد.]
+he:
+  name: השולחן והמרתף של קאחתי
+  short: שלושה ימים קולינריים מהשוק אל לחם, צ'ורצ'חלה ויין קווברי.
+  body: שווקים, ארוחות משפחתיות, מרתפים קטנים ואתרי תרבות.
+  plan: "**יום 1:** השוק → סיגנאגי → בודבה. **יום 2:** גורג'אני → תלאווי → סדנת בישול. **יום 3:** ציננדלי → מנהרת היין."
+  tips: [הזמינו סדנה מראש., הנהג אינו שותה.]
+ar:
+  name: مائدة وقبو كاخيتي
+  short: ثلاثة أيام طهي من السوق إلى الخبز والتشورتشخيلا ونبيذ الكفيفري.
+  body: أسواق وموائد عائلية وأقبية صغيرة ومحطات ثقافية.
+  plan: "**اليوم 1:** السوق ← سيغناغي ← بودبي. **اليوم 2:** غورجاني ← تيلافي ← ورشة طبخ. **اليوم 3:** تسيناندالي ← نفق النبيذ."
+  tips: [احجزوا الورشة مسبقاً., السائق لا يتذوق الكحول.]
