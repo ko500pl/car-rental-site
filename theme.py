@@ -1431,7 +1431,8 @@ main>.sec+section.sec{{border-top:1px solid #e3e8eb}}
 .road-pass-top{{height:16%;padding:0 3.2%;display:flex;align-items:center;justify-content:space-between;gap:18px;background:#081521;color:#fff;font-size:clamp(8px,1.45cqw,13px);letter-spacing:.13em}}
 .road-pass-top strong{{font-size:clamp(11px,2.1cqw,19px);letter-spacing:.05em;white-space:nowrap;color:#fff}}.road-pass-top strong span{{color:#38bdf8;font-size:1.4em}}
 .road-pass-body{{height:84%;position:relative;display:grid;grid-template-columns:minmax(0,1fr) 34%;gap:4%;padding:3.2% 4%;isolation:isolate}}
-.road-pass-body::before{{content:"";position:absolute;z-index:-1;inset:0;background:url('georgia-id-security-bg.png') center/cover no-repeat;opacity:.58;pointer-events:none}}
+.road-pass-body::before{{content:"";position:absolute;z-index:-2;inset:0;background:linear-gradient(128deg,rgba(219,239,242,.36) 0%,rgba(255,255,255,.12) 43%,rgba(232,240,248,.32) 73%,rgba(239,232,218,.16) 100%);pointer-events:none}}
+.road-pass-body::after{{content:"";position:absolute;z-index:-1;inset:2% 1.5% 1%;background:url('georgian-heritage-watermark.png') center/contain no-repeat;opacity:.48;pointer-events:none}}
 .road-pass-identity{{min-width:0;padding-inline-end:5%;border-inline-end:2px dotted #98a6b4}}
 .road-pass-brand{{display:flex;align-items:center;gap:.8cqw;margin-bottom:1.2cqw}}.road-pass-brand img{{width:17cqw;height:8cqw;object-fit:contain;object-position:top left;transform:translateY(-1cqw)}}.road-pass-brand b{{font-size:clamp(19px,4.15cqw,38px);line-height:1.12;color:#081521}}
 .road-pass-identity h1{{margin:0 0 .6cqw;color:#081521;font-size:clamp(19px,4.15cqw,38px);line-height:1.12}}.road-pass-role{{margin:0 0 1.2cqw;color:#526170;font-size:clamp(8px,1.7cqw,15px);white-space:nowrap}}
