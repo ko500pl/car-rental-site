@@ -4,6 +4,6 @@
   <path d="M124 294h264v58c0 18-14 32-32 32h-19c-17 0-30-13-32-29h-98c-2 16-15 29-32 29h-19c-18 0-32-14-32-32z" fill="#fff"/>
   <path d="m151 286 32-91c8-24 30-40 56-40h34c26 0 48 16 56 40l32 91z" fill="#0b2030"/>
   <circle cx="180" cy="342" r="20" fill="#0f4c81"/><circle cx="332" cy="342" r="20" fill="#0f4c81"/>
-  <text x="256" y="258" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="76" fill="#fff">FH</text>
+  <text x="256" y="258" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="76" fill="#fff">DO</text>
   <defs><linearGradient id="g" x1="68" y1="68" x2="444" y2="444"><stop stop-color="#25bedb"/><stop offset="1" stop-color="#4385f5"/></linearGradient></defs>
 </svg>
