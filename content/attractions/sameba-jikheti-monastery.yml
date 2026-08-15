@@ -6,23 +6,28 @@ elevation: 280
 unesco: false
 featured: false
 order: 55
-image: /assets/photos/sameba-jikheti-monastery-3.jpg
+image: /assets/photos/sameba-jikheti-monastery-summer.jpg
+image_credit:
+  author: M.
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Jikheti_church_summer_2018.jpg
 gallery:
+- image: /assets/photos/sameba-jikheti-monastery-summer.jpg
+  author: M.
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Jikheti_church_summer_2018.jpg
+- image: /assets/photos/sameba-jikheti-monastery-7.jpg
+  author: გრიგოლ
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Jikheti_Monastery7.jpg
 - image: /assets/photos/sameba-jikheti-monastery-3.jpg
   author: გრიგოლ
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Jikheti_Monastery3.jpg
-- image: /assets/photos/sameba-jikheti-monastery-1.jpg
-  author: გრიგოლ
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Jikheti_Monastery1.jpg
-- image: /assets/photos/sameba-jikheti-monastery-2.jpg
-  author: გრიგოლ
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Jikheti_Monastery2.jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true

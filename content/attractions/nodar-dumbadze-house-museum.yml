@@ -6,8 +6,18 @@ elevation: 120
 unesco: false
 featured: false
 order: 58
-image: ''
-gallery: []
+image: /assets/photos/nodar-dumbadze-house-museum.jpg
+image_credit:
+  author: M.
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Nodar_Dumbadze_Museum.jpg
+gallery:
+- image: /assets/photos/nodar-dumbadze-house-museum.jpg
+  author: M.
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Nodar_Dumbadze_Museum.jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true

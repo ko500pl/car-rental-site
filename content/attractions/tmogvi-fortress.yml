@@ -6,23 +6,23 @@ elevation: 1200
 unesco: false
 featured: false
 order: 78
-image: ''
+image: /assets/photos/tmogvi-fortress.jpg
+image_credit:
+  author: ჯაბა ლაბაძე (Jaba1977)
+  license: Attribution required
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:Fortress_of_Tmogvi.jpg
 gallery:
+- image: /assets/photos/tmogvi-fortress.jpg
+  author: ჯაბა ლაბაძე (Jaba1977)
+  license: Attribution required
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:Fortress_of_Tmogvi.jpg
 - image: /assets/photos/tmogvi-fortress-1.webp
   author: toomas.liivamagi
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Mtkvari_j%C3%B5gi_Khertvisi_ja_Vardzia_vahel_-_panoramio.jpg
-- image: /assets/photos/tmogvi-fortress-2.webp
-  author: Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center
-  license: Public domain
-  license_url: ''
-  source: https://commons.wikimedia.org/wiki/File:ISS034-E-62768_-_View_of_Earth.jpg
-- image: /assets/photos/tmogvi-fortress-3.webp
-  author: Rockwurm
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Saga_ephippigera_syriaca_female.jpg
 visit_hours: '2'
 best_season: may-october
 open_year_round: false

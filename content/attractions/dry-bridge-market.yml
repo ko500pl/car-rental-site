@@ -6,8 +6,18 @@ elevation: 395
 unesco: false
 featured: false
 order: 55
-image: ''
+image: /assets/photos/dry-bridge-market.jpg
+image_credit:
+  author: Ekkatterrinna
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Dry_Bridge_Market._Tbilisi.jpg
 gallery:
+- image: /assets/photos/dry-bridge-market.jpg
+  author: Ekkatterrinna
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Dry_Bridge_Market._Tbilisi.jpg
 - image: /assets/photos/dry-bridge-market-1.webp
   author: David1010
   license: CC BY-SA 4.0
@@ -18,11 +28,6 @@ gallery:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Giorgi_Atoneli_street_11.jpg
-- image: /assets/photos/dry-bridge-market-3.webp
-  author: David1010
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Giorgi_Atoneli_street_18_-_Anton_Purtseladze_street_22_(4).jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true

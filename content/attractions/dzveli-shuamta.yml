@@ -6,23 +6,18 @@ elevation: 870
 unesco: false
 featured: false
 order: 25
-image: ''
+image: /assets/photos/dzveli-shuamta-1.webp
+image_credit:
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:View_to_shuamta_-_panoramio.jpg
 gallery:
 - image: /assets/photos/dzveli-shuamta-1.webp
   author: G.N.
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:View_to_shuamta_-_panoramio.jpg
-- image: /assets/photos/dzveli-shuamta-2.webp
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Hunters_house_-_panoramio.jpg
-- image: /assets/photos/dzveli-shuamta-3.webp
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Tsivi_tv_tower_-_panoramio.jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true

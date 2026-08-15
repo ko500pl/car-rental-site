@@ -6,18 +6,13 @@ elevation: 850
 unesco: false
 featured: false
 order: 50
-image: ''
+image: /assets/photos/manavi-fortress-3.webp
+image_credit:
+  author: Shogiradze
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:%E1%83%9B%E1%83%90%E1%83%9C%E1%83%90%E1%83%95%E1%83%98%E1%83%A1_%E1%83%AA%E1%83%98%E1%83%AE%E1%83%94.jpg
 gallery:
-- image: /assets/photos/manavi-fortress-1.webp
-  author: Yasuhiro Kojima
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Chailuri_River_3.jpg
-- image: /assets/photos/manavi-fortress-2.webp
-  author: David1010
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Manavi,_Sagarejo_Municipality,_Georgia.jpg
 - image: /assets/photos/manavi-fortress-3.webp
   author: Shogiradze
   license: CC BY-SA 4.0

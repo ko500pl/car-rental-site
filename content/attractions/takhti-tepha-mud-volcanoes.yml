@@ -6,13 +6,13 @@ elevation: 210
 unesco: false
 featured: false
 order: 85
-image: ''
+image: /assets/photos/takhti-tepha-mud-volcanoes-2.webp
+image_credit:
+  author: Paata vardanashvili
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Takhti_tefa_5.jpg
 gallery:
-- image: /assets/photos/takhti-tepha-mud-volcanoes-1.webp
-  author: Earth Science and Remote Sensing Unit, NASA Johnson Space Center
-  license: Public domain
-  license_url: ''
-  source: https://commons.wikimedia.org/wiki/File:ISS054-E-40734_-_View_of_Earth.jpg
 - image: /assets/photos/takhti-tepha-mud-volcanoes-2.webp
   author: Paata vardanashvili
   license: CC BY-SA 4.0
