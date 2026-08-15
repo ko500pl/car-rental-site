@@ -932,7 +932,7 @@ def render_business_card(lang):
 <article class="road-pass-card" aria-labelledby="card-name">
 <div class="road-pass-top"><span>DRIVE ON • GEORGIA</span><strong>ROAD PASS <span aria-hidden="true">✈</span></strong></div>
 <div class="road-pass-body"><div class="road-pass-identity">
-<div class="road-pass-brand"><img src="/assets/do-logo.png" alt=""><b>Drive On</b></div>
+<div class="road-pass-brand"><img src="/assets/do-logo-clean.png" alt=""><b>Drive On</b></div>
 <h1 id="card-name">{E(name)}</h1><p class="road-pass-role">{E(role)}</p>
 <a class="card-contact-line" href="tel:+995597555565" aria-label="{E(call)}: +995 597 55 55 65"><span aria-hidden="true">☎</span><bdi dir="ltr">+995 597 55 55 65</bdi></a>
 <a class="card-contact-line card-site" href="https://www.rentup.ge/" aria-label="{E(website)}: www.rentup.ge"><span aria-hidden="true">↗</span><bdi dir="ltr">www.rentup.ge</bdi></a>

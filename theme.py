@@ -60,9 +60,9 @@ a:focus-visible{{outline:3px solid var(--accent);outline-offset:2px;border-radiu
 /* Header */
 .site-head{{border-bottom:1px solid var(--line);background:var(--surface);position:sticky;top:0;z-index:20}}
 .head-in{{display:flex;align-items:center;gap:16px;flex-wrap:nowrap;padding:14px 20px;max-width:var(--maxw);margin:0 auto}}
-.logo{{display:flex;align-items:center;gap:8px;font-weight:700;font-size:20px;color:var(--brand-ink);letter-spacing:-.2px}}
+.logo{{display:flex;align-items:flex-start;gap:8px;font-weight:700;font-size:20px;color:var(--brand-ink);letter-spacing:-.2px}}
 .logo:hover{{text-decoration:none}}
-.logo img{{height:{d['logo_height']}px;width:auto;max-width:118px;object-fit:contain}}
+.logo img{{height:{d['logo_height']}px;width:auto;max-width:132px;object-fit:contain;object-position:top left;flex:none}}
 .logo-name{{display:grid;gap:2px;line-height:1.05}}
 .logo .dot{{width:9px;height:9px;border-radius:50%;background:var(--accent)}}
 .logo small{{font-weight:500;font-size:12px;color:var(--ink-3);letter-spacing:.06em;text-transform:uppercase}}
