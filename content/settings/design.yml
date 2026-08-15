@@ -1,7 +1,7 @@
 # ═══ დიზაინის პარამეტრები — იმართება ადმინიდან: Settings → დიზაინი ═══
 # Drive On dark — Claude Design-ის მაკეტის მიხედვით.
 logo_image: "/assets/do-logo-tight.png"
-logo_height: "78"
+logo_height: "62"
 logo_mark: "DO"           # ლოგოს კვადრატში ჩაწერილი ასოები
 
 theme: dark               # dark | light
