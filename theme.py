@@ -1279,6 +1279,10 @@ a{{color:#087f8c}}
 .expside button,.expside .tog{{box-shadow:none}}
 .place-choice{{background:#fff;border-color:#e0e7ec}}
 .place-choice.on{{background:#edf8f7;border-color:#43aeb1}}
+.place-choice.candidate{{background:#f4f6f7;border-color:#dfe5e9;color:#526170}}
+.place-choice.candidate:not(.blocked){{background:#fff;border-color:#b9d7d9;color:#17202b}}
+.place-choice.blocked{{filter:grayscale(1);opacity:.48;cursor:not-allowed}}
+.place-choice.blocked input{{cursor:not-allowed}}
 .legend{{background:#fff;border-color:#e0e7ec}}
 .home-more-wrap{{padding:18px 0 30px;background:#f5f7f9}}
 .home-more{{background:#fff;border-color:#dfe6ec}}

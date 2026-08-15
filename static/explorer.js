@@ -569,7 +569,7 @@
 
   /* ── ჩემი ადგილი, დროის/მანძილის ფილტრი და რუკაზე მოხაზვა ─────────── */
   var me = null, area = null, areaLayer = null, drawing = false;
-  var suggested = [], sugOff = {};
+  var suggested = [], sugOff = {}, sugBlocked = {}, manualSelection = false;
   function publishSelection() {
     var slugs = suggested.filter(function (p) { return !sugOff[p.s]; }).map(function (p) { return p.s; });
     window.FH_TRAVEL_SELECTION = slugs;
@@ -584,8 +584,9 @@
   }
 
   function placeChoice(p, checked, compact) {
-    return '<label class="place-choice' + (compact ? ' compact' : '') + '">' +
-      '<input type="checkbox" data-suggest="' + esc(p.s) + '"' + (checked ? ' checked' : '') + '>' +
+    var blocked = !!sugBlocked[p.s];
+    return '<label class="place-choice' + (compact ? ' compact' : '') + (!checked ? ' candidate' : '') + (blocked ? ' blocked' : '') + '">' +
+      '<input type="checkbox" data-suggest="' + esc(p.s) + '"' + (checked ? ' checked' : '') + (blocked ? ' disabled' : '') + '>' +
       (p.img ? '<img src="' + esc(p.img) + '" alt="" loading="lazy">' : '<span class="place-ph" aria-hidden="true"></span>') +
       '<span class="place-copy"><button class="lnk" type="button" data-go="' + esc(p.s) + '">' + esc(p.n) + '</button>' +
       '<span class="place-line">' + esc(p.t) + ' · ' + esc(p.h) + '</span>' + ratingStars(p) + '</span></label>';
@@ -617,6 +618,15 @@
   }
   function budgetVal() { return parseFloat($('expbudget').value) || (budgetMode() === 'km' ? 100 : 8); }
 
+  function insertionCost(o, route, p) {
+    var base = chainTime(o, route), best = Infinity;
+    for (var i = 0; i <= route.length; i++) {
+      var trial = route.slice(0, i).concat([p], route.slice(i));
+      best = Math.min(best, chainTime(o, trial) - base);
+    }
+    return best;
+  }
+
   function origin() {
     if (me) return me;
     if (state.from && BY[state.from]) return BY[state.from];
@@ -639,11 +649,7 @@
     var box = $('expnear');
     var o = origin();
     var mode = budgetMode(), val = budgetVal();
-    /* Keep manually removed places visible and unchecked, but do not let them
-       consume the budget while calculating their replacements. */
-    var excluded = suggested.filter(function (p) { return !!sugOff[p.s]; });
     var pool = PTS.filter(function (p) {
-      if (sugOff[p.s]) return false;
       if (area && !pointInPoly(p.la, p.lo, area)) return false;
       if (state.type && p.ty !== state.type) return false;
       if (state.region && p.g !== state.region) return false;
@@ -651,11 +657,9 @@
       return true;
     });
     if (!pool.length) {
-      suggested = excluded;
+      suggested = [];
       publishSelection();
-      box.innerHTML = excluded.length
-        ? '<div class="exptot"><b>0/' + excluded.length + '</b><span>' + esc(U.suggest) + '</span></div><div class="suggest-list">' + excluded.map(function (p) { return placeChoice(p, false, false); }).join('') + '</div>'
-        : '<p class="muted sm">' + esc(U.none) + '</p>';
+      box.innerHTML = '<p class="muted sm">' + esc(U.none) + '</p>';
       drawSuggest(o, []);
       return;
     }
@@ -666,7 +670,13 @@
       var cand = pool.slice().sort(function (a, b) {
         return (score2(b, o) - score2(a, o));
       }).slice(0, 60);
-      for (var g = 0; g < 30; g++) {
+      if (manualSelection) {
+        chosen = suggested.filter(function (p) {
+          return !sugOff[p.s] && pool.some(function (x) { return x.s === p.s; });
+        });
+        chosen = order2opt(o, chosen); minutes = chainTime(o, chosen);
+      }
+      for (var g = 0; !manualSelection && g < 30; g++) {
         var best = null, bestPos = 0, bestGain = -Infinity, bestT = 0;
         for (var i = 0; i < cand.length; i++) {
           if (chosen.indexOf(cand[i]) >= 0) continue;
@@ -682,15 +692,31 @@
         chosen.splice(bestPos, 0, best); minutes = bestT;
       }
     } else {
-      chosen = pool.slice().sort(function (a, b) { return leg(o, a).km - leg(o, b).km; }).slice(0, 25);
+      chosen = manualSelection ? suggested.filter(function (p) {
+        return !sugOff[p.s] && pool.some(function (x) { return x.s === p.s; });
+      }) :
+        pool.slice().sort(function (a, b) { return leg(o, a).km - leg(o, b).km; }).slice(0, 25);
     }
     chosen = order2opt(o, chosen);
-    suggested = excluded.concat(chosen.filter(function (p) {
-      return !excluded.some(function (x) { return x.s === p.s; });
-    }));
+    minutes = chainTime(o, chosen);
+    sugBlocked = {};
+    var alternatives = pool.filter(function (p) {
+      return !chosen.some(function (x) { return x.s === p.s; });
+    }).map(function (p) {
+      var extra = mode === 'time' ? insertionCost(o, chosen, p) : leg(o, p).km;
+      return { p:p, extra:extra, fits:mode === 'time' ? minutes + extra <= val * 60 : extra <= val };
+    }).filter(function (x) {
+      /* Only show useful same-direction detours, not every point in Georgia. */
+      return x.fits || x.extra <= (mode === 'time' ? Math.max(90, val * 18) : Math.max(30, val * .35));
+    }).sort(function (a,b) {
+      if (a.fits !== b.fits) return a.fits ? -1 : 1;
+      return (Number(b.p.r || 0) - Number(a.p.r || 0)) || (a.extra - b.extra);
+    }).slice(0, 24);
+    alternatives.forEach(function (x) { sugOff[x.p.s] = true; sugBlocked[x.p.s] = !x.fits; });
+    chosen.forEach(function (p) { sugOff[p.s] = false; });
+    suggested = chosen.concat(alternatives.map(function (x) { return x.p; }));
     publishSelection();
     var active = chosen;
-    minutes = chainTime(o, active);
 
     box.innerHTML =
       '<div class="exptot"><b>' + active.length + '/' + suggested.length + '</b><span>' + esc(U.suggest) + '</span>' +
@@ -999,6 +1025,7 @@
       route();
     }
     if (t && t.hasAttribute && t.hasAttribute('data-suggest')) {
+      manualSelection = true;
       sugOff[t.getAttribute('data-suggest')] = !t.checked;
       document.querySelectorAll('[data-suggest="' + CSS.escape(t.getAttribute('data-suggest')) + '"]').forEach(function (x) {
         if (x !== t) x.checked = t.checked;
