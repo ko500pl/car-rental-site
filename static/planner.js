@@ -3,6 +3,16 @@
 (function () {
   "use strict";
   var D = window.PLANNER_DATA, T = D.t, EL = function (id) { return document.getElementById(id); };
+  var UI_LANG = (document.documentElement.lang || "en").slice(0, 2);
+  var CAR_COPY = {
+    ka: { transport:"ტრანსპორტი", own:"ჩემი მანქანით", ownSaved:"მარშრუტი თქვენი ავტომობილისთვის დაიგეგმა. არჩევანის შეცვლა ნებისმიერ დროს შეგიძლიათ.", driver:"მძღოლით" },
+    en: { transport:"Transport", own:"My own car", ownSaved:"This route is planned for your own vehicle. You can change this choice at any time.", driver:"With driver" },
+    ru: { transport:"Транспорт", own:"На своей машине", ownSaved:"Маршрут рассчитан для вашего автомобиля. Выбор можно изменить в любое время.", driver:"С водителем" },
+    fa: { transport:"حمل‌ونقل", own:"با خودروی خودم", ownSaved:"این مسیر برای خودروی شما برنامه‌ریزی شده است و هر زمان می‌توانید انتخاب را تغییر دهید.", driver:"با راننده" },
+    he: { transport:"תחבורה", own:"ברכב שלי", ownSaved:"המסלול תוכנן לרכב שלך. אפשר לשנות את הבחירה בכל עת.", driver:"עם נהג" },
+    ar: { transport:"وسيلة النقل", own:"بسيارتي", ownSaved:"تم تخطيط المسار لسيارتك ويمكنك تغيير هذا الاختيار في أي وقت.", driver:"مع سائق" }
+  };
+  function carCopy(key, fallback) { return (CAR_COPY[UI_LANG] || CAR_COPY.en)[key] || fallback; }
   window.FH_BRAND_LOGO = window.FH_BRAND_LOGO || new Image();
   if (!window.FH_BRAND_LOGO.src) window.FH_BRAND_LOGO.src = "/assets/sl-logo.png";
   var map, layers = [], DAY_COLORS = ["#0f4c81", "#c8963e", "#1d7a53", "#8e6bb5", "#b5563f",
@@ -503,7 +513,9 @@
   }
   function carCard(res, minimumRank) {
     var mode = carMode();
-    if (mode === "own") return "";
+    if (mode === "own") return '<div class="carrec carrec-own"><div class="carrec-b"><span class="tag">' +
+      esc(T.transport || carCopy("transport", "Transport")) + '</span><h3>' + esc(T.own_car || carCopy("own", "My own car")) +
+      '</h3><p class="pshort">' + esc(T.own_car_saved || carCopy("ownSaved", "This route is planned for your own vehicle. You can change this choice at any time.")) + '</p></div></div>';
     var r = recommendCar(res,minimumRank);
     if (!r.car) return '<div class="carrec carrec-none"><div class="carrec-b">' +
       '<span class="tag">' + esc(T.car_rec) + '</span><h3>' +
@@ -516,7 +528,7 @@
     var roadName = (D.roads && D.roads[r.road]) || r.road;
     return '<div class="carrec">' +
       (r.car.img ? '<img src="' + esc(r.car.img) + '" alt="" loading="lazy">' : '<div class="carrec-ph"></div>') +
-      '<div class="carrec-b"><span class="tag">' + esc(T.car_rec) + '</span>' +
+      '<div class="carrec-b"><span class="tag">' + esc(mode === "driver" ? (T.with_driver || carCopy("driver", "With driver")) : T.car_rec) + '</span>' +
       '<h3>' + esc(r.car.n) + '</h3>' +
       '<p class="pshort">' + esc(r.car.cat_n) + ' · ' + r.car.seats + ' ' + esc(T.seats) +
       (r.car.fuel ? ' · ' + esc(r.car.fuel) + ' l/100' : '') + '</p>' +
@@ -524,7 +536,8 @@
       '<div class="rentrow"><span>' + esc(T.for_days.replace("{n}", days)) + '</span><b>' + total + ' ₾</b></div>' +
       '<p class="pshort why">' + esc(T.why) + ': ' + r.party + ' × ' + esc(T.seats) +
       ' · ' + esc(T.roughest) + ' — ' + esc(roadName) + '</p>' +
-      '<a class="btn sm" href="' + esc(r.car.u) + '">' + esc(T.see_car) + '</a></div></div>';
+      '<div class="row"><button class="btn sm" type="button" data-booking-open data-car="' + esc(r.car.s || r.car.n) + '" data-car-name="' + esc(r.car.n) + '">' + esc(T.book || T.see_car) + '</button>' +
+      '<a class="btn sm ghost" href="' + esc(r.car.u) + '">' + esc(T.see_car) + '</a></div></div></div>';
   }
 
 
@@ -656,9 +669,19 @@
     chipRow("interests", D.types);
     styleRow();
     var pickSel = EL("car");
+    var savedMode = localStorage.getItem("fh-car-mode");
+    if (savedMode) {
+      var savedRadio = document.querySelector('input[name="carmode"][value="' + savedMode + '"]');
+      if (savedRadio) savedRadio.checked = true;
+    }
     document.querySelectorAll('input[name="carmode"]').forEach(function (r) {
-      r.onchange = function () { pickSel.hidden = carMode() !== "pick"; };
+      r.onchange = function () {
+        localStorage.setItem("fh-car-mode", carMode());
+        pickSel.hidden = carMode() !== "pick";
+        if (CUR.route) replan();
+      };
     });
+    pickSel.hidden = carMode() !== "pick";
     var from = EL("datefrom"), to = EL("dateto"), today = new Date();
     function iso(d) { return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
     from.value = iso(today);

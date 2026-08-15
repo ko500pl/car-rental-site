@@ -1347,9 +1347,11 @@ def explorer_block(lang, depth, height="72vh", hero=False):
     js = EXPLORER_JS % {"js": LEAFLET_JS, "cfg": cfg, "exp": ASSET["explorer"]}
     html = f'''<div class="explorer{" hero" if hero else ""}">
   <div class="expbar">
-    <input id="expq" class="expsearch" type="search" placeholder="{E(x["search_ph"])}"
-           aria-label="{E(x["search_ph"])}">
-    <div id="expqlist" class="expqlist" role="listbox"></div>
+    <div class="expsearch-wrap">
+      <input id="expq" class="expsearch" type="search" placeholder="{E(x["search_ph"])}"
+             aria-label="{E(x["search_ph"])}" autocomplete="off">
+      <div id="expqlist" class="expqlist" role="listbox"></div>
+    </div>
     <select id="exptype" aria-label="{E(x["all_types"])}"><option value="">{E(x["all_types"])}</option>{topts}</select>
     <details class="expfilters">
       <summary>{E({"ka":"მეტი ფილტრი","en":"More filters","ru":"Ещё фильтры","fa":"فیلترهای بیشتر","he":"מסננים נוספים","ar":"مزيد من الفلاتر"}[lang])}</summary>
@@ -1378,10 +1380,14 @@ def explorer_block(lang, depth, height="72vh", hero=False):
           <label class="tog sm"><input type="radio" name="expmode" value="km">
             <span>{E(x["by_km"])}</span></label>
         </div>
-        <label class="expslider" id="expbudgetwrap">
-          <span id="expbudgetv">8 {E(u["hrs"])}</span>
-          <input id="expbudget" type="range" min="2" max="72" step="1" value="8">
-        </label>
+        <div class="budget-stepper" id="expbudgetwrap">
+          <button id="expbudgetminus" type="button" aria-label="−">−</button>
+          <label><span class="vh" id="expbudgetlabel">{E(x["by_time"])}</span>
+            <input id="expbudget" type="number" min="0.5" max="72" step="0.5" value="8" inputmode="decimal">
+          </label>
+          <span id="expbudgetv">{E(u["hrs"])}</span>
+          <button id="expbudgetplus" type="button" aria-label="+">+</button>
+        </div>
         <div id="expnear" class="expnear"></div>
       </div>
       <div class="exproutebox">
@@ -1900,6 +1906,8 @@ def planner_form_html(lang):
 <span>{E(t['own_car'])}</span></label>
 <label class="tog"><input type="radio" name="carmode" id="carpick" value="pick">
 <span>{E(t['car_pick'])}</span></label>
+<label class="tog"><input type="radio" name="carmode" id="cardriver" value="driver">
+<span>{E({'ka':'მძღოლით','en':'With driver','ru':'С водителем','fa':'با راننده','he':'עם נהג','ar':'مع سائق'}[lang])}</span></label>
 <select id="car" hidden>
 <option value="economy">{E(cat_label('economy', lang))}</option>
 <option value="suv" selected>{E(cat_label('suv', lang))}</option>

@@ -615,7 +615,7 @@
     var el = document.querySelector('input[name="expmode"]:checked');
     return el ? el.value : 'time';
   }
-  function budgetVal() { return parseInt($('expbudget').value, 10) || 8; }
+  function budgetVal() { return parseFloat($('expbudget').value) || (budgetMode() === 'km' ? 100 : 8); }
 
   function origin() {
     if (me) return me;
@@ -1014,15 +1014,22 @@
   document.querySelectorAll('input[name="expmode"]').forEach(function (r) {
     r.addEventListener('change', function () {
       var b = $('expbudget');
-      if (budgetMode() === 'km') { b.min = 10; b.max = 400; b.step = 10; b.value = 100; }
-      else { b.min = 2; b.max = 72; b.step = 1; b.value = 8; }
+      if (budgetMode() === 'km') { b.min = 5; b.max = 1000; b.step = 5; b.value = 100; }
+      else { b.min = .5; b.max = 72; b.step = .5; b.value = 8; }
       updBudget(); suggestNear();
     });
   });
   function updBudget() {
-    $('expbudgetv').textContent = budgetVal() + ' ' + (budgetMode() === 'km' ? U.km : U.hrs);
+    $('expbudgetv').textContent = budgetMode() === 'km' ? U.km : U.hrs;
   }
   $('expbudget').addEventListener('input', function () { updBudget(); suggestNear(); });
+  function stepBudget(dir) {
+    var b = $('expbudget'), step = budgetMode() === 'km' ? 5 : .5;
+    var next = Math.max(parseFloat(b.min), Math.min(parseFloat(b.max), budgetVal() + dir * step));
+    b.value = next; updBudget(); suggestNear();
+  }
+  $('expbudgetminus').addEventListener('click', function () { stepBudget(-1); });
+  $('expbudgetplus').addEventListener('click', function () { stepBudget(1); });
   updBudget();
   $('expclose').addEventListener('click', close);
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });

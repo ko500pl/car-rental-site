@@ -234,7 +234,9 @@ td:first-child{{font-weight:600;color:var(--ink)}}
 .explorer{{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--surface)}}
 .expbar{{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:12px 14px;
   border-bottom:1px solid var(--line);background:var(--bg-2);position:relative}}
-.expqlist{{display:none;position:absolute;z-index:850;top:calc(100% - 4px);inset-inline-start:14px;width:min(430px,calc(100% - 28px));
+.expsearch-wrap{{position:relative;flex:1 1 240px;min-width:180px}}
+.expsearch-wrap .expsearch{{width:100%}}
+.expqlist{{display:none;position:absolute;z-index:850;top:calc(100% + 6px);inset-inline-start:0;width:100%;
   max-height:420px;overflow:auto;background:var(--surface);border:1px solid var(--line);border-radius:12px;
   box-shadow:0 20px 55px rgba(0,0,0,.48);padding:6px}}
 .expqlist.on{{display:block}}
@@ -245,7 +247,11 @@ td:first-child{{font-weight:600;color:var(--ink)}}
 .expqitem span{{min-width:0}}
 .expqitem b{{display:block;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
 .expqitem small{{display:block;font-size:11px;color:var(--ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
-.expsearch{{flex:1 1 240px;min-width:180px}}
+.expsearch{{min-width:0}}
+.budget-stepper{{display:grid;grid-template-columns:38px minmax(70px,92px) auto 38px;align-items:center;gap:6px}}
+.budget-stepper button{{height:38px;border:1px solid var(--line);border-radius:10px;background:var(--surface-2);color:var(--ink);font:700 18px/1 var(--font);cursor:pointer}}
+.budget-stepper input{{width:100%;height:38px;text-align:center;padding:6px!important}}
+.budget-stepper>span{{font-size:12px;color:var(--ink-2);white-space:nowrap}}
 .expbar input,.expbar select{{font:inherit;font-size:15px;padding:9px 12px;border:1px solid var(--line);
   border-radius:10px;background:var(--surface);color:var(--ink)}}
 .expcount{{font-size:14px;color:var(--ink-3);margin-inline-start:auto}}
@@ -589,6 +595,12 @@ tbody tr:nth-child(even){{background:color-mix(in srgb,#fff 3%,transparent)}}
 .carrec .btn{{margin-top:2px}}
 /* ── account & auth ─────────────────────────────────────────────── */
 .authbox{{margin-inline-start:6px}}
+.notify-center{{position:relative;display:inline-flex;align-items:center}}
+.notify-button{{position:relative;width:42px;height:42px;border:1px solid var(--line);border-radius:50%;background:var(--surface);color:var(--brand);cursor:pointer}}
+.notify-button>span{{font-size:15px}}.notify-button>b{{position:absolute;top:-5px;right:-5px;min-width:19px;height:19px;padding:0 5px;border-radius:10px;background:#e24b55;color:#fff;font:700 11px/19px var(--font)}}
+.notify-pop{{position:absolute;z-index:2600;top:calc(100% + 10px);inset-inline-end:0;width:min(360px,88vw);max-height:440px;overflow:auto;padding:10px;background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:0 24px 70px rgba(0,0,0,.3)}}
+.notify-head,.notify-row{{display:flex;align-items:center;justify-content:space-between;gap:10px}}.notify-head{{padding:5px 7px 10px;border-bottom:1px solid var(--line)}}
+.notify-head a{{font-size:12px}}.notify-row{{padding:8px 5px;border-bottom:1px solid var(--line)}}.notify-row>a{{display:grid;min-width:0;color:var(--ink);text-decoration:none}}.notify-row small{{color:var(--ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}.notify-row>button{{border:0;background:transparent;cursor:pointer}}.notify-row.muted{{opacity:.55}}
 .authlink{{display:inline-flex;align-items:center;gap:8px;background:var(--surface-2);
   border:1px solid var(--line);border-radius:999px;padding:7px 14px;font:inherit;font-size:14px;
   color:var(--ink-2);cursor:pointer}}
@@ -994,9 +1006,10 @@ body.booking-open{{overflow:hidden}}
 .date-pair{{display:flex;gap:5px}}
 .date-pair input{{height:38px;width:132px;padding:6px 8px;border:1px solid var(--line);border-radius:9px;background:var(--bg);color:var(--ink);font:600 12px/1 inherit}}
 .derived-month,.tour-purpose-field,.secondary-planner-field,.planner-toolbar>.pf-check{{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0 0 0 0)!important}}
-.planner-toolbar .carmode label:not(:first-child),.planner-toolbar .carmode>select{{display:none!important}}
 .planner-toolbar .carmode{{min-width:0!important}}
-.planner-toolbar .carmode .tog:first-child{{width:100%;justify-content:center}}
+.planner-toolbar .carmode{{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}}
+.planner-toolbar .carmode .tog{{height:38px!important;padding:5px 7px!important;justify-content:center;font-size:10.5px!important}}
+.planner-toolbar .carmode>select{{display:none!important}}
 .standard-launch .btn{{height:38px;width:100%;padding:7px 10px;white-space:nowrap}}
 .standard-launch .btn span:not(:empty)::before{{content:" ("}}.standard-launch .btn span:not(:empty)::after{{content:")"}}
 .standard-modal{{position:fixed;z-index:2500;inset:0;display:grid;place-items:center;padding:24px;background:rgba(2,8,16,.78);backdrop-filter:blur(9px)}}

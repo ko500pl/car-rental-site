@@ -135,7 +135,43 @@
           esc(T.sign_in || "Sign in") + "</span></button>";
       var b = document.getElementById("authopen");
       if (b) b.onclick = openDialog;
+      if (u) notificationCenter(box, u);
     });
+  }
+
+  /* პირადი და ჯგუფური შეტყობინებების მსუბუქი ცენტრი. დადუმება ინახება
+     კონკრეტული მომხმარებლის ბრაუზერში და არ ცვლის სხვა წევრების ხედს. */
+  function notificationCenter(box, u) {
+    var wrap = document.createElement("div"); wrap.className = "notify-center";
+    wrap.innerHTML = '<button class="notify-button" type="button" aria-label="Messages" aria-expanded="false">' +
+      '<span aria-hidden="true">●</span><b hidden>0</b></button><div class="notify-pop" hidden><div class="notify-head"><strong>Messages</strong><a href="' + esc(C.accountUrl) + '">Open all</a></div><div class="notify-list"><p class="muted">…</p></div></div>';
+    box.insertBefore(wrap, box.firstChild);
+    var button = wrap.querySelector(".notify-button"), pop = wrap.querySelector(".notify-pop"), list = wrap.querySelector(".notify-list");
+    button.onclick = function () { var open = pop.hidden; pop.hidden = !open; button.setAttribute("aria-expanded", String(open)); if (open && wrap._markSeen) wrap._markSeen(); };
+    document.addEventListener("click", function (e) { if (!wrap.contains(e.target)) { pop.hidden = true; button.setAttribute("aria-expanded", "false"); } });
+    boot.then(function () {
+      return M.db.getDocs(M.db.query(M.db.collection(db, "conversations"), M.db.where("memberIds", "array-contains", u.uid)));
+    }).then(function (snap) {
+      var rows = []; snap.forEach(function (d) { rows.push(Object.assign({ id:d.id }, d.data())); });
+      function stamp(r) { return (r.updatedAt && r.updatedAt.seconds || r.updated && r.updated.seconds || 0); }
+      rows.sort(function (a,b) { return stamp(b) - stamp(a); });
+      var muted = {}; try { muted = JSON.parse(localStorage.getItem("fh-muted-" + u.uid) || "{}"); } catch(e) {}
+      var seen = {}; try { seen = JSON.parse(localStorage.getItem("fh-seen-" + u.uid) || "{}"); } catch(e) {}
+      var unread = rows.filter(function (r) { return !muted[r.id] && stamp(r) > (seen[r.id] || 0); }).length;
+      var badge = button.querySelector("b"); badge.textContent = unread; badge.hidden = !unread;
+      wrap._markSeen = function () {
+        rows.forEach(function (r) { seen[r.id] = Math.max(seen[r.id] || 0, stamp(r)); });
+        localStorage.setItem("fh-seen-" + u.uid, JSON.stringify(seen)); badge.hidden = true;
+      };
+      list.innerHTML = rows.length ? rows.slice(0,8).map(function (r) {
+        var name = r.groupName || r.title || r.otherName || (r.kind === "group" ? "Group" : "Conversation");
+        return '<div class="notify-row ' + (muted[r.id] ? 'muted' : '') + '"><a href="' + esc(C.accountUrl) + '"><b>' + esc(name) + '</b><small>' + esc(r.lastMessage || r.preview || '') + '</small></a><button type="button" data-mute="' + esc(r.id) + '" title="Mute">' + (muted[r.id] ? '○' : '🔕') + '</button></div>';
+      }).join('') : '<p class="muted">No messages yet.</p>';
+      list.querySelectorAll('[data-mute]').forEach(function (m) { m.onclick = function () {
+        muted[m.dataset.mute] = !muted[m.dataset.mute]; localStorage.setItem("fh-muted-" + u.uid, JSON.stringify(muted));
+        wrap.remove(); notificationCenter(box, u);
+      }; });
+    }).catch(function () { list.innerHTML = '<p class="muted">Messages are temporarily unavailable.</p>'; });
   }
 
   /* ── UI: შესვლა / რეგისტრაცია ─────────────────────────────────────── */
