@@ -115,19 +115,24 @@
       suggestNear();
     },
     applyTour: function (slugs, tour) {
+      standardTourSlugs = (slugs || []).slice();
+      setStandardTourFocus(true);
       manualSelection = true;
       sugOff = {}; sugBlocked = {}; sugExtra = {};
-      suggested = (slugs || []).map(function (slug) { return BY[slug]; }).filter(Boolean);
+      suggested = standardTourSlugs.map(function (slug) { return BY[slug]; }).filter(Boolean);
       suggested.forEach(function (place) { sugOff[place.s] = false; });
       var hours = Math.max(0.5, Math.min(72, Number(tour && tour.days || 1) * 8));
       var budget = $('expbudget');
       if (budget) { budget.value = String(hours); updBudget(); }
       publishSelection();
       suggestNear();
-      if (suggested.length) {
-        var bounds = L.latLngBounds(suggested.map(function (p) { return [p.la, p.lo]; }));
-        if (externalOrigin) bounds.extend([externalOrigin.la, externalOrigin.lo]);
-        map.fitBounds(bounds.pad(0.16), { maxZoom: 11 });
+      var tourPlaces = standardTourSlugs.map(function (slug) { return BY[slug]; }).filter(Boolean);
+      if (tourPlaces.length) {
+        var bounds = L.latLngBounds(tourPlaces.map(function (p) { return [p.la, p.lo]; }));
+        setTimeout(function () {
+          map.invalidateSize();
+          map.fitBounds(bounds.pad(0.2), { maxZoom: 11, animate: true });
+        }, 0);
       }
     }
   };
@@ -597,6 +602,16 @@
   /* ── ჩემი ადგილი, დროის/მანძილის ფილტრი და რუკაზე მოხაზვა ─────────── */
   var me = null, area = null, areaLayer = null, drawing = false;
   var suggested = [], sugOff = {}, sugBlocked = {}, sugExtra = {}, manualSelection = false;
+  var standardTourSlugs = [], standardTourFocus = false;
+  function setStandardTourFocus(on) {
+    standardTourFocus = !!on;
+    if (standardTourFocus) {
+      if (map.hasLayer(layer)) map.removeLayer(layer);
+    } else if (!map.hasLayer(layer)) {
+      map.addLayer(layer);
+      draw(filtered());
+    }
+  }
   var SUG_LABELS = {
     ka: { selected:'არჩეული', remaining:'დარჩენილი დრო', available:'შეგიძლიათ დაამატოთ', later:'ჯერ არ ეტევა', add:'დამატება', need:'საჭიროა კიდევ' },
     en: { selected:'Selected', remaining:'Time left', available:'Available to add', later:'Does not fit yet', add:'Adds', need:'Needs another' },
@@ -691,6 +706,9 @@
     var o = origin();
     var mode = budgetMode(), val = budgetVal();
     var pool = PTS.filter(function (p) {
+      /* A selected standard tour is an authored itinerary. Keep every one of
+         its stops visible even if an earlier explorer filter is still active. */
+      if (standardTourFocus && standardTourSlugs.indexOf(p.s) >= 0) return true;
       if (area && !pointInPoly(p.la, p.lo, area)) return false;
       if (state.type && p.ty !== state.type) return false;
       if (state.region && p.g !== state.region) return false;
@@ -739,7 +757,9 @@
       }) :
         pool.slice().sort(function (a, b) { return leg(o, a).km - leg(o, b).km; }).slice(0, 25);
     }
-    chosen = order2opt(o, chosen);
+    chosen = standardTourFocus ? chosen.slice().sort(function (a, b) {
+      return standardTourSlugs.indexOf(a.s) - standardTourSlugs.indexOf(b.s);
+    }) : order2opt(o, chosen);
     minutes = chainTime(o, chosen);
     sugBlocked = {}; sugExtra = {};
     var alternatives = pool.filter(function (p) {
@@ -846,7 +866,16 @@
     roadGeom(pts, function (geom) {
       if (mySeq === geomSeq && sugLayer.hasLayer(sugPl)) sugPl.setLatLngs(geom);
     });
-    spatialGroups(list).forEach(function (group) {
+    if (standardTourFocus) {
+      list.forEach(function (p, i) {
+        var marker = L.marker([p.la, p.lo], { icon: L.divIcon({
+          className: 'numpin blue tour-stop', html: '<b>' + (i + 1) + '</b>',
+          iconSize: [30, 30], iconAnchor: [15, 15]
+        }) }).addTo(sugLayer);
+        marker.bindTooltip((i + 1) + '. ' + p.n, { direction: 'top' });
+        marker.on('click', function () { openGroup([p]); });
+      });
+    } else spatialGroups(list).forEach(function (group) {
       var la = 0, lo = 0; group.forEach(function (p) { la += p.la; lo += p.lo; });
       la /= group.length; lo /= group.length;
       var label = group.length;
@@ -1051,7 +1080,7 @@
   $('expvisited').addEventListener('change', function () { state.visited = this.value; renderList(); suggestNear(); });
   $('expreset').addEventListener('click', function () {
     state.q = ''; state.type = ''; state.region = ''; state.visited = ''; state.rating = 0;
-    sugOff = {};
+    sugOff = {}; standardTourSlugs = []; setStandardTourFocus(false);
     $('expq').value = ''; $('exptype').value = ''; $('exprating').value = ''; $('expregion').value = ''; $('expvisited').value = '';
     renderList(); suggestNear(); map.setView(E.center, E.zoom);
   });
