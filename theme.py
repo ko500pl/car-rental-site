@@ -1430,7 +1430,7 @@ main>.sec+section.sec{{border-top:1px solid #e3e8eb}}
 .road-pass-top strong{{font-size:clamp(11px,2.1cqw,19px);letter-spacing:.05em;white-space:nowrap;color:#fff}}.road-pass-top strong span{{color:#38bdf8;font-size:1.4em}}
 .road-pass-body{{height:84%;display:grid;grid-template-columns:minmax(0,1fr) 34%;gap:4%;padding:3.2% 4%}}
 .road-pass-identity{{min-width:0;padding-inline-end:5%;border-inline-end:2px dotted #98a6b4}}
-.road-pass-brand{{display:flex;align-items:center;gap:2.2cqw;margin-bottom:1.2cqw}}.road-pass-brand img{{width:11cqw;height:4.8cqw;object-fit:contain}}.road-pass-brand b{{font-size:clamp(19px,4.15cqw,38px);line-height:1.12;color:#081521}}
+.road-pass-brand{{display:flex;align-items:center;gap:2.2cqw;margin-bottom:1.2cqw}}.road-pass-brand img{{width:13.5cqw;height:6.2cqw;object-fit:contain}}.road-pass-brand b{{font-size:clamp(19px,4.15cqw,38px);line-height:1.12;color:#081521}}
 .road-pass-identity h1{{margin:0 0 .6cqw;color:#081521;font-size:clamp(19px,4.15cqw,38px);line-height:1.12}}.road-pass-role{{margin:0 0 1.2cqw;color:#526170;font-size:clamp(8px,1.7cqw,15px);white-space:nowrap}}
 .card-contact-line{{width:max-content;max-width:100%;display:flex;align-items:center;gap:1.1cqw;margin:.65cqw 0;color:#17202b;font-size:clamp(10px,2cqw,18px);font-weight:700;text-decoration:none}}
 .card-contact-line span{{width:3.7cqw;height:3.7cqw;display:grid;place-items:center;border:1.5px solid #087f8c;border-radius:50%;color:#087f8c;font-size:1.8cqw}}.card-contact-line:hover,.card-site{{color:#087f8c;text-decoration:none}}
