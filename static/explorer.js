@@ -569,7 +569,16 @@
 
   /* ── ჩემი ადგილი, დროის/მანძილის ფილტრი და რუკაზე მოხაზვა ─────────── */
   var me = null, area = null, areaLayer = null, drawing = false;
-  var suggested = [], sugOff = {}, sugBlocked = {}, manualSelection = false;
+  var suggested = [], sugOff = {}, sugBlocked = {}, sugExtra = {}, manualSelection = false;
+  var SUG_LABELS = {
+    ka: { selected:'არჩეული', remaining:'დარჩენილი დრო', available:'შეგიძლიათ დაამატოთ', later:'ჯერ არ ეტევა', add:'დამატება', need:'საჭიროა კიდევ' },
+    en: { selected:'Selected', remaining:'Time left', available:'Available to add', later:'Does not fit yet', add:'Adds', need:'Needs another' },
+    ru: { selected:'Выбрано', remaining:'Осталось времени', available:'Можно добавить', later:'Пока не помещается', add:'Добавит', need:'Нужно ещё' },
+    fa: { selected:'انتخاب‌شده', remaining:'زمان باقی‌مانده', available:'قابل افزودن', later:'هنوز جا نمی‌شود', add:'افزایش', need:'زمان بیشتر' },
+    he: { selected:'נבחרו', remaining:'זמן שנותר', available:'אפשר להוסיף', later:'עדיין לא נכנס', add:'מוסיף', need:'נדרש עוד' },
+    ar: { selected:'المحدد', remaining:'الوقت المتبقي', available:'يمكن إضافته', later:'لا يتسع بعد', add:'يضيف', need:'يحتاج أيضًا' }
+  };
+  var SL = SUG_LABELS[E.lang] || SUG_LABELS.en;
   function publishSelection() {
     var slugs = suggested.filter(function (p) { return !sugOff[p.s]; }).map(function (p) { return p.s; });
     window.FH_TRAVEL_SELECTION = slugs;
@@ -585,11 +594,15 @@
 
   function placeChoice(p, checked, compact) {
     var blocked = !!sugBlocked[p.s];
+    var extra = sugExtra[p.s];
+    var extraText = extra && extra.mode === 'km' ? Math.round(extra.value) + ' ' + U.km : extra ? fmtH(extra.value) : '';
+    var fitNote = !checked && extra ? '<span class="place-fit' + (blocked ? ' blocked' : '') + '">' +
+      esc(blocked ? SL.need : SL.add) + ' ' + esc(extraText) + '</span>' : '';
     return '<label class="place-choice' + (compact ? ' compact' : '') + (!checked ? ' candidate' : '') + (blocked ? ' blocked' : '') + '">' +
       '<input type="checkbox" data-suggest="' + esc(p.s) + '"' + (checked ? ' checked' : '') + (blocked ? ' disabled' : '') + '>' +
       (p.img ? '<img src="' + esc(p.img) + '" alt="" loading="lazy">' : '<span class="place-ph" aria-hidden="true"></span>') +
       '<span class="place-copy"><button class="lnk" type="button" data-go="' + esc(p.s) + '">' + esc(p.n) + '</button>' +
-      '<span class="place-line">' + esc(p.t) + ' · ' + esc(p.h) + '</span>' + ratingStars(p) + '</span></label>';
+      '<span class="place-line">' + esc(p.t) + ' · ' + esc(p.h) + '</span>' + fitNote + ratingStars(p) + '</span></label>';
   }
 
   var basePlaceChoice = placeChoice;
@@ -699,7 +712,7 @@
     }
     chosen = order2opt(o, chosen);
     minutes = chainTime(o, chosen);
-    sugBlocked = {};
+    sugBlocked = {}; sugExtra = {};
     var alternatives = pool.filter(function (p) {
       return !chosen.some(function (x) { return x.s === p.s; });
     }).map(function (p) {
@@ -711,20 +724,31 @@
     }).sort(function (a,b) {
       if (a.fits !== b.fits) return a.fits ? -1 : 1;
       return (Number(b.p.r || 0) - Number(a.p.r || 0)) || (a.extra - b.extra);
-    }).slice(0, 24);
-    alternatives.forEach(function (x) { sugOff[x.p.s] = true; sugBlocked[x.p.s] = !x.fits; });
+    });
+    alternatives.forEach(function (x) {
+      sugOff[x.p.s] = true; sugBlocked[x.p.s] = !x.fits;
+      sugExtra[x.p.s] = { value:x.extra, mode:mode };
+    });
     chosen.forEach(function (p) { sugOff[p.s] = false; });
     suggested = chosen.concat(alternatives.map(function (x) { return x.p; }));
     publishSelection();
     var active = chosen;
 
-    box.innerHTML =
-      '<div class="exptot"><b>' + active.length + '/' + suggested.length + '</b><span>' + esc(U.suggest) + '</span>' +
-      (mode === 'time' ? '<span>' + fmtH(minutes) + ' / ' + val + ' ' + esc(U.hrs) + '</span>'
+    var ready = alternatives.filter(function (x) { return x.fits; });
+    var blocked = alternatives.filter(function (x) { return !x.fits; });
+    var remaining = Math.max(0, val * 60 - minutes);
+    function choiceGroup(label, items, checked, muted) {
+      if (!items.length) return '';
+      return '<section class="choice-group' + (muted ? ' muted' : '') + '"><h4>' + esc(label) +
+        ' <span>' + items.length + '</span></h4><div class="suggest-list">' + items.map(function (item) {
+          return placeChoice(item.p || item, checked, false);
+        }).join('') + '</div></section>';
+    }
+    box.innerHTML = '<div class="exptot"><span><b>' + active.length + '</b> ' + esc(SL.selected) + '</span>' +
+      (mode === 'time' ? '<span><b>' + esc(fmtH(remaining)) + '</b> ' + esc(SL.remaining) + '</span>'
                        : '<span>≤ ' + val + ' ' + esc(U.km) + '</span>') + '</div>' +
-      '<div class="suggest-list">' + suggested.map(function (p) {
-        return placeChoice(p, !sugOff[p.s], false);
-      }).join('') + '</div>';
+      choiceGroup(SL.selected, active, true, false) + choiceGroup(SL.available, ready, false, false) +
+      choiceGroup(SL.later, blocked, false, true);
     drawSuggest(o, active);
   }
 

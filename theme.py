@@ -1283,6 +1283,16 @@ a{{color:#087f8c}}
 .place-choice.candidate:not(.blocked){{background:#fff;border-color:#b9d7d9;color:#17202b}}
 .place-choice.blocked{{filter:grayscale(1);opacity:.48;cursor:not-allowed}}
 .place-choice.blocked input{{cursor:not-allowed}}
+.choice-group{{margin:0 0 12px}}
+.choice-group h4{{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;
+  gap:8px;margin:0 0 6px;padding:7px 8px;background:var(--surface);border-bottom:1px solid var(--line);
+  color:var(--brand-ink);font-size:11.5px;line-height:1.2}}
+.choice-group h4 span{{display:grid;place-items:center;min-width:24px;height:22px;padding:0 6px;border-radius:999px;
+  background:var(--surface-2);color:var(--ink-2);font:700 11px var(--mono)}}
+.choice-group.muted h4{{color:var(--ink-3)}}
+.place-fit{{display:inline-flex;margin-top:3px;padding:2px 6px;border-radius:999px;background:#e8f6f3;
+  color:#167a70;font-size:10px;font-weight:700;line-height:1.25}}
+.place-fit.blocked{{background:#e9edf0;color:#66727e}}
 .legend{{background:#fff;border-color:#e0e7ec}}
 .home-more-wrap{{padding:18px 0 30px;background:#f5f7f9}}
 .home-more{{background:#fff;border-color:#dfe6ec}}
