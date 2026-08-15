@@ -1396,4 +1396,24 @@ main>.sec+section.sec{{border-top:1px solid #e3e8eb}}
   .app-install-card span{{font-size:10px}}
   .app-install-action{{padding-inline:10px}}
 }}
+
+/* Localized electronic business card — Road Pass. */
+.business-card-link{{display:inline-flex;align-items:center;min-height:42px;padding:9px 13px;border:1px solid #ccd8de;border-radius:9px;background:#fff;color:#1d3a42;font-size:13px;font-weight:750;text-decoration:none}}
+.business-card-link:hover{{background:#f2f6f7;text-decoration:none}}
+.digital-card-page{{min-height:calc(100vh - 220px);display:grid;place-items:center;padding:58px 18px;background:#eef2f5}}
+.digital-card-shell{{width:min(900px,100%)}}
+.card-languages{{display:flex;justify-content:center;gap:5px;margin:0 auto 14px;padding:5px;width:max-content;max-width:100%;overflow-x:auto;background:#fff;border:1px solid #dfe6ec;border-radius:12px;box-shadow:0 8px 24px rgba(8,21,33,.08)}}
+.card-languages a{{min-width:39px;padding:7px 9px;border-radius:8px;color:#526170;font-size:12px;font-weight:700;text-align:center;text-decoration:none}}.card-languages a:hover{{background:#e6f4f4;text-decoration:none}}.card-languages a.on{{background:#087f8c;color:#fff}}
+.road-pass-card{{overflow:hidden;background:#fff;border:1px solid #dfe6ec;border-radius:16px;box-shadow:0 24px 64px rgba(8,21,33,.15)}}
+.road-pass-top{{min-height:72px;padding:16px 28px;display:flex;align-items:center;justify-content:space-between;gap:18px;background:#081521;color:#fff;letter-spacing:.13em}}
+.road-pass-top strong{{font-size:18px;letter-spacing:.05em;white-space:nowrap;color:#fff}}.road-pass-top strong span{{color:#38bdf8;font-size:26px}}
+.road-pass-body{{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:34px;padding:38px}}
+.road-pass-identity{{padding-inline-end:34px;border-inline-end:2px dotted #98a6b4}}
+.road-pass-brand{{display:flex;align-items:center;gap:16px;margin-bottom:20px}}.road-pass-brand img{{width:126px;height:66px;object-fit:contain}}.road-pass-brand b{{font-size:30px;color:#081521}}
+.road-pass-identity h1{{margin:0 0 8px;color:#081521;font-size:40px;line-height:1.2}}.road-pass-role{{margin:0 0 24px;color:#526170;font-size:16px}}
+.card-contact-line{{width:max-content;max-width:100%;display:flex;align-items:center;gap:12px;margin:12px 0;color:#17202b;font-size:18px;font-weight:700;text-decoration:none}}
+.card-contact-line span{{width:34px;height:34px;display:grid;place-items:center;border:1.5px solid #087f8c;border-radius:50%;color:#087f8c}}.card-contact-line:hover,.card-site{{color:#087f8c;text-decoration:none}}
+.card-save{{margin-top:18px}}.road-pass-qr{{display:grid;align-content:center;justify-items:center;text-align:center}}.road-pass-qr a{{display:block;padding:12px;border:2px solid #087f8c;border-radius:13px;background:#fff}}.road-pass-qr img{{display:block;width:220px;height:220px}}.road-pass-qr p{{max-width:24ch;margin:13px 0 0;color:#526170;font-size:14px;line-height:1.5}}
+html[dir="rtl"] .road-pass-brand{{flex-direction:row-reverse;justify-content:flex-end}}
+@media(max-width:760px){{.head-actions .business-card-link{{font-size:0;width:42px;padding:0;justify-content:center}}.head-actions .business-card-link::before{{content:"▣";font-size:18px}}.digital-card-page{{padding:28px 12px}}.road-pass-top{{padding:13px 17px;font-size:10px}}.road-pass-top strong{{font-size:13px}}.road-pass-body{{grid-template-columns:1fr;padding:24px;gap:25px}}.road-pass-identity{{padding:0 0 24px;border-inline-end:0;border-bottom:2px dotted #98a6b4}}.road-pass-brand img{{width:94px;height:50px}}.road-pass-brand b{{font-size:24px}}.road-pass-identity h1{{font-size:31px}}.road-pass-role{{font-size:14px}}.road-pass-qr img{{width:190px;height:190px}}}}
 """

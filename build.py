@@ -45,7 +45,8 @@ PAGE_ORDER = ["index", "fleet", "map", "planner", "terms", "faq", "blog",
               "community", "about", "contact", "software", "account"]
 PAGE_SLUG = {"index": "", "account": "account/", "fleet": "fleet/", "pricing": "pricing/", "map": "map/",
              "planner": "planner/", "terms": "terms/", "faq": "faq/", "blog": "blog/",
-             "community": "community/", "about": "about/", "contact": "contact/", "software": "fleet-management-software/"}
+             "community": "community/", "about": "about/", "contact": "contact/", "software": "fleet-management-software/",
+             "card": "business-card/"}
 
 TODAY = date.today().isoformat()
 E = lambda s: html.escape(str(s), quote=True)                # noqa: E731
@@ -551,9 +552,11 @@ def header_html(lang, current):
         f'{CUR if p == current else ""}>{E(u["nav"][p])}</a></li>'
         for p in PAGE_ORDER if p in more_pages)
     langs = "".join(
-        f'<a href="{lang_root(l)}" hreflang="{l}" lang="{l}" '
+        f'<a href="{page_url(l, "card", False) if current == "card" else lang_root(l)}" hreflang="{l}" lang="{l}" '
         f'class="{"on" if l == lang else ""}" title="{E(LANG_LABEL[l])}">{LANG_SHORT[l]}</a>'
         for l in LANGS)
+    card_label = {"ka": "ვიზიტკა", "en": "Business card", "ru": "Визитка",
+                  "fa": "کارت ویزیت", "he": "כרטיס ביקור", "ar": "بطاقة العمل"}[lang]
     logo_img = DESIGN.get("logo_image")
     mark = DESIGN.get("logo_mark") or "".join(w[0] for w in BRAND.split()[:2]).upper()
     logo = (f'<img src="{E(logo_img)}" alt="" aria-hidden="true">'
@@ -565,7 +568,7 @@ def header_html(lang, current):
 <nav class="main" aria-label="{E(u['ui']['nav_label'])}"><ul>{lis}
 <li class="nav-more"><details><summary aria-label="More">•••</summary><ul>{more}</ul></details></li>
 </ul></nav>
-<div class="head-actions"><span class="head-tel"><a dir="ltr" href="tel:{SITE['phone_e164']}">{E(SITE['phone'])}</a></span></div>
+<div class="head-actions"><a class="business-card-link" href="{page_url(lang, 'card', False)}">{E(card_label)}</a><span class="head-tel"><a dir="ltr" href="tel:{SITE['phone_e164']}">{E(SITE['phone'])}</a></span></div>
 </div></header><div class="corner-tools"><div class="langs corner-langs" role="group" aria-label="{E(u['ui']['lang_label'])}">{langs}</div>
 <details class="app-download"><summary aria-label="{E(app_copy[0])}"><span class="app-download-icon" aria-hidden="true">↓</span><span class="app-download-text">{E(app_copy[0])}</span></summary>
 <div class="app-download-menu">
@@ -893,6 +896,60 @@ def render_static_page(lang, page):
                           (u["nav"][page], None)])
     return shell(lang, page, head, crumbs + '<main id="main">' + "".join(body) + "</main>",
                  depth, tail_js)
+
+
+def render_business_card(lang):
+    tx = {
+        "ka": ("შოთა ლომიძე", "ავტო გაქირავება • მძღოლით მომსახურება", "დარეკვა", "ვებგვერდი", "კონტაქტის შენახვა", "დაასკანირე QR და დაამატე კონტაქტებში", "შოთა ლომიძე — Fleet House | ელექტრონული ვიზიტკა", "Fleet House-ის ავტო გაქირავებისა და მძღოლით მომსახურების საკონტაქტო ვიზიტკა."),
+        "en": ("Shota Lomidze", "Car rental • Chauffeur service", "Call", "Website", "Save contact", "Scan the QR code to add the contact", "Shota Lomidze — Fleet House | Business card", "Fleet House car rental and chauffeur service contact card."),
+        "ru": ("Шота Ломидзе", "Аренда автомобилей • Услуги водителя", "Позвонить", "Веб-сайт", "Сохранить контакт", "Отсканируйте QR-код, чтобы добавить контакт", "Шота Ломидзе — Fleet House | Визитка", "Контактная визитка Fleet House: аренда автомобилей и услуги водителя."),
+        "fa": ("شوتا لومیدزه", "اجاره خودرو • خدمات خودرو با راننده", "تماس", "وب‌سایت", "ذخیره مخاطب", "برای افزودن مخاطب، کد QR را اسکن کنید", "شوتا لومیدزه — Fleet House | کارت ویزیت", "کارت تماس خدمات اجاره خودرو و خودرو با راننده Fleet House."),
+        "he": ("שוטה לומידזה", "השכרת רכב • שירות עם נהג", "התקשרו", "אתר", "שמירת איש קשר", "סרקו את קוד ה-QR כדי להוסיף את איש הקשר", "שוטה לומידזה — Fleet House | כרטיס ביקור", "כרטיס קשר לשירותי השכרת רכב ורכב עם נהג של Fleet House."),
+        "ar": ("شوتا لوميدزه", "تأجير السيارات • خدمة سيارة مع سائق", "اتصال", "الموقع", "حفظ جهة الاتصال", "امسح رمز QR لإضافة جهة الاتصال", "شوتا لوميدزه — Fleet House | بطاقة العمل", "بطاقة اتصال لخدمات تأجير السيارات والسيارة مع سائق من Fleet House."),
+    }[lang]
+    name, role, call, website, save, scan, title, desc = tx
+    url = page_url(lang, "card")
+    alternates = {l: page_url(l, "card") for l in LANGS}
+    ld = {"@context": "https://schema.org", "@type": "Person", "name": "Shota Lomidze",
+          "worksFor": {"@type": "Organization", "name": "Fleet House", "url": SITE_URL},
+          "telephone": "+995597555565", "url": url}
+    head = head_html(lang, "card", title, desc, "Fleet House, Shota Lomidze", url,
+                     alternates, 1, ld)
+    def card_lang_href(target):
+        if target == lang:
+            return "./"
+        if lang == "ka":
+            return f"../{target}/business-card/"
+        if target == "ka":
+            return "../../business-card/"
+        return f"../../{target}/business-card/"
+
+    card_langs = "".join(
+        f'<a href="{card_lang_href(l)}" hreflang="{l}" lang="{l}" class="{"on" if l == lang else ""}">{LANG_SHORT[l]}</a>'
+        for l in LANGS)
+    body = f'''<main id="main" class="digital-card-page"><div class="digital-card-shell">
+<nav class="card-languages" aria-label="{E(UI[lang]['ui']['lang_label'])}">{card_langs}</nav>
+<article class="road-pass-card" aria-labelledby="card-name">
+<div class="road-pass-top"><span>FLEET HOUSE • GEORGIA</span><strong>ROAD PASS <span aria-hidden="true">✈</span></strong></div>
+<div class="road-pass-body"><div class="road-pass-identity">
+<div class="road-pass-brand"><img src="/assets/sl-logo.png" alt=""><b>Fleet House</b></div>
+<h1 id="card-name">{E(name)}</h1><p class="road-pass-role">{E(role)}</p>
+<a class="card-contact-line" href="tel:+995597555565" aria-label="{E(call)}: +995 597 55 55 65"><span aria-hidden="true">☎</span><bdi dir="ltr">+995 597 55 55 65</bdi></a>
+<a class="card-contact-line card-site" href="https://www.rentup.ge/" aria-label="{E(website)}: www.rentup.ge"><span aria-hidden="true">↗</span><bdi dir="ltr">www.rentup.ge</bdi></a>
+<a class="btn card-save" href="/assets/shota-lomidze-fleet-house.vcf" download>{E(save)}</a>
+</div><div class="road-pass-qr"><a href="/assets/shota-lomidze-fleet-house.vcf" download aria-label="{E(save)}"><img src="/assets/shota-lomidze-vcard.svg" alt="QR — {E(save)}"></a><p>{E(scan)}</p></div></div>
+</article></div></main>'''
+    depth = 1 if lang == "ka" else 2
+    page = (f'<!DOCTYPE html>\n<html lang="{lang}" dir="{LANG_DIR[lang]}"><head>\n{head}\n</head>'
+            f'<body class="page-card card-standalone">{body}</body></html>')
+    # Keep the generated card fully previewable as a local file as well as on the deployed site.
+    # Root-relative assets resolve against the drive root under file://, so card assets use a
+    # directory-relative prefix here.
+    asset_prefix = "../" if lang == "ka" else "../../"
+    page = page.replace('href="/assets/', f'href="{asset_prefix}assets/')
+    page = page.replace('src="/assets/', f'src="{asset_prefix}assets/')
+    page = page.replace('href="/favicon.svg"', f'href="{asset_prefix}favicon.svg"')
+    return page
 
 
 def render_car(lang, slug, c):
@@ -1888,7 +1945,9 @@ def planner_form_html(lang):
             f'<option value="{v}"{" selected" if v == 480 else ""}>{E(lbl)}</option>'
             for v, lbl in ((360, t["pace_easy"]), (480, t["pace_normal"]), (600, t["pace_full"])))
 
-    form = f"""<div class="pform planner-toolbar">
+    form = f"""<div class="standard-launch">
+<button type="button" class="btn ghost" id="standardopen">{E(labels[4])} <span id="standardcount"></span></button>
+</div><div class="pform planner-toolbar">
 <div class="pf start-field"><label for="startsearch">{E(t['start'])}</label>
 <input id="startsearch" type="search" list="startoptions" autocomplete="off"
   role="combobox" aria-autocomplete="list" aria-controls="startoptions">
@@ -1931,8 +1990,7 @@ def planner_form_html(lang):
 <small>{E(t['all_interests'])}</small></label><div id="interests" class="chips"></div></div></div></details>
 <div class="pf pf-wide prow">
 <button type="button" class="btn" id="build">{E(t['build'])}</button>
-<button type="button" class="btn ghost" id="reset">{E(t['reset'])}</button>
-<button type="button" class="btn ghost" id="standardopen">{E(labels[4])} <span id="standardcount"></span></button></div>
+<button type="button" class="btn ghost" id="reset">{E(t['reset'])}</button></div>
 <div class="standard-modal" id="standardmodal" hidden><div class="standard-dialog" role="dialog" aria-modal="true" aria-labelledby="standardtitle">
 <button type="button" class="standard-close" id="standardclose" aria-label="Close">&#10005;</button>
 <div class="standard-dialog-head"><h3 id="standardtitle">{E(labels[4])}</h3><label for="tourpurposemodal">{E(labels[3])}</label><select id="tourpurposemodal">{"".join(f'<option value="{k}">{E(v)}</option>' for k,v in purposes)}</select></div>
@@ -2290,6 +2348,9 @@ def main():
             else:
                 write(os.path.join(out, rel, "index.html"), render_static_page(lang, page))
             n += 1
+        card_rel = page_url(lang, "card", False).lstrip("/")
+        write(os.path.join(out, card_rel, "index.html"), render_business_card(lang))
+        n += 1
         # Preserve old bookmarked pricing URLs, but send visitors to the fleet where all rates live.
         pricing_rel = lang_root(lang).lstrip("/") + PAGE_SLUG["pricing"]
         fleet_target = page_url(lang, "fleet", False)
