@@ -1,5 +1,5 @@
 # ═══════════════════════════════════════════════════════════════════════
-#  Netlify — Fleet House. საიტს თავად Netlify აწყობს content/*.yml-იდან.
+#  Netlify — Drive On. საიტს თავად Netlify აწყობს content/*.yml-იდან.
 # ═══════════════════════════════════════════════════════════════════════
 [build]
   command = "pip install -r requirements.txt && python3 build.py dist"

@@ -496,7 +496,7 @@ def head_html(lang, current, title, desc, keywords, url, alternates, depth, ld,
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Fleet House">
+<meta name="apple-mobile-web-app-title" content="Drive On">
 <title>{E(title)}</title>
 <meta name="description" content="{E(desc)}">
 <meta name="keywords" content="{E(keywords)}">
@@ -646,7 +646,7 @@ def inquiry_widget(lang, context=""):
         "ar": ("حجز سيارة", "السيارة المختارة", "تاريخ البدء", "تاريخ الإرجاع", "الاسم", "الهاتف / واتساب", "ملاحظات (اختياري)", "واتساب", "إرسال الطلب", "سنتحقق من التوفر سريعًا ونتواصل معك.", "إغلاق")
     }[lang]
     return f'''<div class="booking-dialog" data-booking-dialog hidden role="dialog" aria-modal="true" aria-labelledby="booking-title-{lang}"><div class="booking-modal-card">
-<button class="booking-close" type="button" data-booking-close aria-label="{E(tx[10])}">×</button><div class="booking-brand" aria-hidden="true">SL</div>
+<button class="booking-close" type="button" data-booking-close aria-label="{E(tx[10])}">×</button><div class="booking-brand" aria-hidden="true">DO</div>
 <form class="inquiry-mini" data-inquiry name="rental-inquiry" method="POST" data-netlify="true" netlify-honeypot="company" data-lang="{lang}">
 <input type="hidden" name="form-name" value="rental-inquiry"><input type="hidden" name="context" value="{E(context)}"><input type="hidden" name="requested_car" value=""><input type="hidden" name="page_url" value=""><p class="hp" hidden><label>Company<input name="company" tabindex="-1" autocomplete="off"></label></p>
 <h2 id="booking-title-{lang}">{E(tx[0])}</h2><p class="booking-lead">{E(tx[9])}</p><div class="booking-choice" data-booking-choice hidden><small>{E(tx[1])}</small><strong></strong></div>
@@ -900,20 +900,20 @@ def render_static_page(lang, page):
 
 def render_business_card(lang):
     tx = {
-        "ka": ("შოთა ლომიძე", "ავტო გაქირავება • მძღოლით მომსახურება", "დარეკვა", "ვებგვერდი", "კონტაქტის შენახვა", "დაასკანირე QR და დაამატე კონტაქტებში", "შოთა ლომიძე — Fleet House | ელექტრონული ვიზიტკა", "Fleet House-ის ავტო გაქირავებისა და მძღოლით მომსახურების საკონტაქტო ვიზიტკა."),
-        "en": ("Shota Lomidze", "Car rental • Chauffeur service", "Call", "Website", "Save contact", "Scan the QR code to add the contact", "Shota Lomidze — Fleet House | Business card", "Fleet House car rental and chauffeur service contact card."),
-        "ru": ("Шота Ломидзе", "Аренда автомобилей • Услуги водителя", "Позвонить", "Веб-сайт", "Сохранить контакт", "Отсканируйте QR-код, чтобы добавить контакт", "Шота Ломидзе — Fleet House | Визитка", "Контактная визитка Fleet House: аренда автомобилей и услуги водителя."),
-        "fa": ("شوتا لومیدزه", "اجاره خودرو • خدمات خودرو با راننده", "تماس", "وب‌سایت", "ذخیره مخاطب", "برای افزودن مخاطب، کد QR را اسکن کنید", "شوتا لومیدزه — Fleet House | کارت ویزیت", "کارت تماس خدمات اجاره خودرو و خودرو با راننده Fleet House."),
-        "he": ("שוטה לומידזה", "השכרת רכב • שירות עם נהג", "התקשרו", "אתר", "שמירת איש קשר", "סרקו את קוד ה-QR כדי להוסיף את איש הקשר", "שוטה לומידזה — Fleet House | כרטיס ביקור", "כרטיס קשר לשירותי השכרת רכב ורכב עם נהג של Fleet House."),
-        "ar": ("شوتا لوميدزه", "تأجير السيارات • خدمة سيارة مع سائق", "اتصال", "الموقع", "حفظ جهة الاتصال", "امسح رمز QR لإضافة جهة الاتصال", "شوتا لوميدزه — Fleet House | بطاقة العمل", "بطاقة اتصال لخدمات تأجير السيارات والسيارة مع سائق من Fleet House."),
+        "ka": ("შოთა ლომიძე", "ავტო გაქირავება • მძღოლით მომსახურება", "დარეკვა", "ვებგვერდი", "კონტაქტის შენახვა", "დაასკანირე QR და დაამატე კონტაქტებში", "შოთა ლომიძე — Drive On | ელექტრონული ვიზიტკა", "Drive On-ის ავტო გაქირავებისა და მძღოლით მომსახურების საკონტაქტო ვიზიტკა."),
+        "en": ("Shota Lomidze", "Car rental • Chauffeur service", "Call", "Website", "Save contact", "Scan the QR code to add the contact", "Shota Lomidze — Drive On | Business card", "Drive On car rental and chauffeur service contact card."),
+        "ru": ("Шота Ломидзе", "Аренда автомобилей • Услуги водителя", "Позвонить", "Веб-сайт", "Сохранить контакт", "Отсканируйте QR-код, чтобы добавить контакт", "Шота Ломидзе — Drive On | Визитка", "Контактная визитка Drive On: аренда автомобилей и услуги водителя."),
+        "fa": ("شوتا لومیدزه", "اجاره خودرو • خدمات خودرو با راننده", "تماس", "وب‌سایت", "ذخیره مخاطب", "برای افزودن مخاطب، کد QR را اسکن کنید", "شوتا لومیدزه — Drive On | کارت ویزیت", "کارت تماس خدمات اجاره خودرو و خودرو با راننده Drive On."),
+        "he": ("שוטה לומידזה", "השכרת רכב • שירות עם נהג", "התקשרו", "אתר", "שמירת איש קשר", "סרקו את קוד ה-QR כדי להוסיף את איש הקשר", "שוטה לומידזה — Drive On | כרטיס ביקור", "כרטיס קשר לשירותי השכרת רכב ורכב עם נהג של Drive On."),
+        "ar": ("شوتا لوميدزه", "تأجير السيارات • خدمة سيارة مع سائق", "اتصال", "الموقع", "حفظ جهة الاتصال", "امسح رمز QR لإضافة جهة الاتصال", "شوتا لوميدزه — Drive On | بطاقة العمل", "بطاقة اتصال لخدمات تأجير السيارات والسيارة مع سائق من Drive On."),
     }[lang]
     name, role, call, website, save, scan, title, desc = tx
     url = page_url(lang, "card")
     alternates = {l: page_url(l, "card") for l in LANGS}
     ld = {"@context": "https://schema.org", "@type": "Person", "name": "Shota Lomidze",
-          "worksFor": {"@type": "Organization", "name": "Fleet House", "url": SITE_URL},
+          "worksFor": {"@type": "Organization", "name": "Drive On", "url": SITE_URL},
           "telephone": "+995597555565", "url": url}
-    head = head_html(lang, "card", title, desc, "Fleet House, Shota Lomidze", url,
+    head = head_html(lang, "card", title, desc, "Drive On, Shota Lomidze", url,
                      alternates, 1, ld)
     def card_lang_href(target):
         if target == lang:
@@ -930,9 +930,9 @@ def render_business_card(lang):
     body = f'''<main id="main" class="digital-card-page"><div class="digital-card-shell">
 <nav class="card-languages" aria-label="{E(UI[lang]['ui']['lang_label'])}">{card_langs}</nav>
 <article class="road-pass-card" aria-labelledby="card-name">
-<div class="road-pass-top"><span>FLEET HOUSE • GEORGIA</span><strong>ROAD PASS <span aria-hidden="true">✈</span></strong></div>
+<div class="road-pass-top"><span>DRIVE ON • GEORGIA</span><strong>ROAD PASS <span aria-hidden="true">✈</span></strong></div>
 <div class="road-pass-body"><div class="road-pass-identity">
-<div class="road-pass-brand"><img src="/assets/sl-logo.png" alt=""><b>Fleet House</b></div>
+<div class="road-pass-brand"><img src="/assets/do-logo.png" alt=""><b>Drive On</b></div>
 <h1 id="card-name">{E(name)}</h1><p class="road-pass-role">{E(role)}</p>
 <a class="card-contact-line" href="tel:+995597555565" aria-label="{E(call)}: +995 597 55 55 65"><span aria-hidden="true">☎</span><bdi dir="ltr">+995 597 55 55 65</bdi></a>
 <a class="card-contact-line card-site" href="https://www.rentup.ge/" aria-label="{E(website)}: www.rentup.ge"><span aria-hidden="true">↗</span><bdi dir="ltr">www.rentup.ge</bdi></a>
@@ -2286,7 +2286,7 @@ def render_booking_admin():
     cfg = {k: AUTH.get(k, "") for k in ("apiKey", "authDomain", "projectId",
                                          "storageBucket", "messagingSenderId", "appId")}
     return f'''<!doctype html><html lang="ka"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex,nofollow"><title>ჯავშნების მართვა — Fleet House</title>
+<meta name="robots" content="noindex,nofollow"><title>ჯავშნების მართვა — Drive On</title>
 <link rel="stylesheet" href="{ASSET["css"]}"><style>
 body{{background:#07101a;color:#edf6fc}}#booking-admin{{width:min(1100px,94%);margin:30px auto}}.admin-head{{display:flex;justify-content:space-between;align-items:center}}
 .admin-filters{{display:flex;gap:10px;margin:20px 0}}.admin-booking{{display:grid;grid-template-columns:minmax(250px,1fr) 170px 170px auto;gap:12px;align-items:end;padding:15px;margin:8px 0;border:1px solid #26384a;border-radius:14px;background:#0d1824}}

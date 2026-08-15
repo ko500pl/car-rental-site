@@ -1,5 +1,5 @@
 ka:
-  title: კონტაქტი — მისამართი, ტელეფონი, სამუშაო საათები | Fleet House
+  title: კონტაქტი — მისამართი, ტელეფონი, სამუშაო საათები | Drive On
   desc: >-
     ოფისის მისამართი თბილისში, ტელეფონი, ელფოსტა და სამუშაო საათები. მიწოდების წერტილები თბილისის, ქუთაისისა
     და ბათუმის აეროპორტებში.
@@ -80,7 +80,7 @@ ka:
     rows:
     - cells:
       - იურიდიული სახელი
-      - შპს „Fleet House“
+      - შპს „Drive On“
     - cells:
       - საიდენტიფიკაციო კოდი
       - 4XXXXXXXX
@@ -107,7 +107,7 @@ ka:
     - label: პირობები
       href: /terms/
 en:
-  title: Contact — address, phone, opening hours | Fleet House
+  title: Contact — address, phone, opening hours | Drive On
   desc: >-
     Our office address in Tbilisi, phone numbers, email and opening hours. Pickup points at Tbilisi, Kutaisi
     and Batumi airports.
@@ -188,7 +188,7 @@ en:
     rows:
     - cells:
       - Legal name
-      - Fleet House LLC
+      - Drive On LLC
     - cells:
       - Tax identification number
       - 4XXXXXXXX
@@ -216,7 +216,7 @@ en:
     - label: Terms
       href: /terms/
 ru:
-  title: Контакты — адрес, телефон, часы работы | Fleet House
+  title: Контакты — адрес, телефон, часы работы | Drive On
   desc: >-
     Адрес офиса в Тбилиси, телефон, электронная почта и часы работы. Точки подачи в аэропортах Тбилиси,
     Кутаиси и Батуми.
@@ -297,7 +297,7 @@ ru:
     rows:
     - cells:
       - Юридическое название
-      - ООО «Fleet House»
+      - ООО «Drive On»
     - cells:
       - Идентификационный код
       - 4XXXXXXXX
@@ -325,7 +325,7 @@ ru:
     - label: Условия
       href: /terms/
 fa:
-  title: تماس با ما — نشانی، تلفن، ساعات کاری | Fleet House
+  title: تماس با ما — نشانی، تلفن، ساعات کاری | Drive On
   desc: >-
     نشانی دفتر ما در تفلیس، شماره‌های تلفن، ایمیل و ساعات کاری. نقاط تحویل خودرو در فرودگاه‌های تفلیس،
     کوتایسی و باتومی.
@@ -406,7 +406,7 @@ fa:
     rows:
     - cells:
       - نام حقوقی
-      - Fleet House LLC
+      - Drive On LLC
     - cells:
       - شمارهٔ شناسایی مالیاتی
       - 4XXXXXXXX
@@ -434,7 +434,7 @@ fa:
     - label: شرایط
       href: /terms/
 he:
-  title: צור קשר — כתובת, טלפון, שעות פעילות | Fleet House
+  title: צור קשר — כתובת, טלפון, שעות פעילות | Drive On
   desc: >-
     כתובת המשרד שלנו בטביליסי, מספרי טלפון, דוא"ל ושעות פעילות. נקודות איסוף בשדות התעופה של טביליסי,
     קוטאיסי ובטומי.
@@ -514,7 +514,7 @@ he:
     rows:
     - cells:
       - שם משפטי
-      - Fleet House LLC
+      - Drive On LLC
     - cells:
       - מספר זיהוי לענייני מס
       - 4XXXXXXXX
@@ -542,7 +542,7 @@ he:
     - label: תנאים
       href: /terms/
 ar:
-  title: اتصل بنا — العنوان، الهاتف، ساعات العمل | Fleet House
+  title: اتصل بنا — العنوان، الهاتف، ساعات العمل | Drive On
   desc: >-
     عنوان مكتبنا في تبليسي وأرقام الهاتف والبريد الإلكتروني وساعات العمل. ونقاط الاستلام في مطارات تبليسي
     وكوتايسي وباتومي.
@@ -622,7 +622,7 @@ ar:
     rows:
     - cells:
       - الاسم القانوني
-      - Fleet House LLC
+      - Drive On LLC
     - cells:
       - رقم التعريف الضريبي
       - 4XXXXXXXX

@@ -7,12 +7,12 @@
   }
   var promptEvent = null;
   var copy = {
-    ka: ["Fleet House აპლიკაცია", "დააინსტალირეთ ტელეფონზე და დაგეგმეთ მოგზაურობა სწრაფად.", "ინსტალაცია", "iPhone-ზე: Share → Add to Home Screen"],
-    en: ["Fleet House app", "Install it on your phone and plan trips faster.", "Install", "On iPhone: Share → Add to Home Screen"],
-    ru: ["Приложение Fleet House", "Установите на телефон и планируйте поездки быстрее.", "Установить", "На iPhone: Поделиться → На экран Домой"],
-    fa: ["اپلیکیشن Fleet House", "روی تلفن نصب کنید و سریع‌تر سفر بسازید.", "نصب", "در iPhone: Share → Add to Home Screen"],
-    he: ["אפליקציית Fleet House", "התקינו בטלפון ותכננו טיולים מהר יותר.", "התקנה", "ב-iPhone: Share → Add to Home Screen"],
-    ar: ["تطبيق Fleet House", "ثبّته على هاتفك وخطط للرحلات بسرعة.", "تثبيت", "على iPhone: Share → Add to Home Screen"]
+    ka: ["Drive On აპლიკაცია", "დააინსტალირეთ ტელეფონზე და დაგეგმეთ მოგზაურობა სწრაფად.", "ინსტალაცია", "iPhone-ზე: Share → Add to Home Screen"],
+    en: ["Drive On app", "Install it on your phone and plan trips faster.", "Install", "On iPhone: Share → Add to Home Screen"],
+    ru: ["Приложение Drive On", "Установите на телефон и планируйте поездки быстрее.", "Установить", "На iPhone: Поделиться → На экран Домой"],
+    fa: ["اپلیکیشن Drive On", "روی تلفن نصب کنید و سریع‌تر سفر بسازید.", "نصب", "در iPhone: Share → Add to Home Screen"],
+    he: ["אפליקציית Drive On", "התקינו בטלפון ותכננו טיולים מהר יותר.", "התקנה", "ב-iPhone: Share → Add to Home Screen"],
+    ar: ["تطبيق Drive On", "ثبّته على هاتفك وخطط للرحلات بسرعة.", "تثبيت", "على iPhone: Share → Add to Home Screen"]
   };
   function language() {
     var value = (document.documentElement.lang || "ka").toLowerCase().split("-")[0];

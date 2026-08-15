@@ -14,7 +14,7 @@
   };
   function carCopy(key, fallback) { return (CAR_COPY[UI_LANG] || CAR_COPY.en)[key] || fallback; }
   window.FH_BRAND_LOGO = window.FH_BRAND_LOGO || new Image();
-  if (!window.FH_BRAND_LOGO.src) window.FH_BRAND_LOGO.src = "/assets/sl-logo.png";
+  if (!window.FH_BRAND_LOGO.src) window.FH_BRAND_LOGO.src = "/assets/do-logo.png";
   var map, layers = [], DAY_COLORS = ["#0f4c81", "#c8963e", "#1d7a53", "#8e6bb5", "#b5563f",
                                       "#2b8a9e", "#8f2f52", "#4a76b5", "#3f8f5f", "#a0703c"];
 
@@ -407,7 +407,7 @@
       var grad = ctx.createLinearGradient(0, 0, 1240, 0); grad.addColorStop(0, "#25bfd1"); grad.addColorStop(1, "#3b82f6");
       var brandLogo = window.FH_BRAND_LOGO;
       if (brandLogo && brandLogo.complete && brandLogo.naturalWidth) ctx.drawImage(brandLogo, 60, 38, 130, 92);
-      ctx.fillStyle = "#f4f8fc"; ctx.font = "800 40px sans-serif"; ctx.fillText("Fleet House", 215, 90);
+      ctx.fillStyle = "#f4f8fc"; ctx.font = "800 40px sans-serif"; ctx.fillText("Drive On", 215, 90);
       ctx.fillStyle = "#9fb0c4"; ctx.font = "500 22px sans-serif"; ctx.fillText("TRIP SUMMARY", 215, 126);
       ctx.fillStyle = "#0b1724"; ctx.font = "800 38px sans-serif";
       var y = wrap(ctx, start.n + " · " + res.days.length + " " + T.day, 70, 250, 1100, 48) + 16;

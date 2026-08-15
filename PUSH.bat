@@ -2,7 +2,7 @@
 chcp 65001 >nul
 cd /d "%~dp0"
 echo ==========================================================
-echo   Fleet House  ^>^>  GitHub  (ko500pl/car-rental-site)
+echo   Drive On  ^>^>  GitHub  (ko500pl/car-rental-site)
 echo ==========================================================
 echo.
 if exist ".git\index.lock" del /f /q ".git\index.lock"
@@ -11,7 +11,7 @@ git rm -r -q --cached dist 2>nul
 echo [2/4] staging...
 git add -A
 echo [3/4] commit...
-git commit -m "Fleet House: interactive map homepage, 247 attractions, from-to route planner"
+git commit -m "Drive On: interactive map homepage, 247 attractions, from-to route planner"
 echo [4/4] push...
 git push -u origin main
 echo.

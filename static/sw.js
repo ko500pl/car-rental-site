@@ -1,4 +1,4 @@
-/* Fleet House PWA service worker. Network-first pages, cache-first local assets. */
+/* Drive On PWA service worker. Network-first pages, cache-first local assets. */
 const CACHE = "fleet-house-v2";
 const CORE = ["/", "/map/", "/fleet/", "/account/", "/assets/manifest.webmanifest", "/assets/app-icon-192.png", "/assets/app-icon-512.png"];
 self.addEventListener("install", event => {

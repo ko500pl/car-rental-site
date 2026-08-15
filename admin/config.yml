@@ -236,7 +236,7 @@ collections:
                  {label: "შესავალი", name: lead, widget: text, i18n: true}, *blocks, *seo_title, *seo_desc, *seo_kw]
 
       - name: software
-        label: "პროგრამა (Fleet House Manager)"
+        label: "პროგრამა (Drive On Manager)"
         file: content/pages/software.yml
         i18n: true
         fields: [{label: "მთავარი სათაური", name: h1, widget: string, i18n: true},

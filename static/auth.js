@@ -1,4 +1,4 @@
-/* Fleet House — ანგარიში და შენახული მარშრუტები (Firebase).
+/* Drive On — ანგარიში და შენახული მარშრუტები (Firebase).
    კონფიგურაცია: window.FH_CFG (content/settings/auth.yml-იდან).
    თუ კონფიგურაცია ცარიელია, სკრიპტი ჩუმად ითიშება და საიტი ისე მუშაობს,
    როგორც აქამდე — ავტორიზაციის ღილაკები უბრალოდ არ ჩანს.                */
@@ -185,7 +185,7 @@
     d.innerHTML =
       '<div class="authcard" role="dialog" aria-modal="true" aria-labelledby="authtitle">' +
       '<button class="authx" type="button" aria-label="×">✕</button>' +
-      '<div class="authbrand" aria-hidden="true"><img src="/assets/sl-logo.png" alt=""></div>' +
+      '<div class="authbrand" aria-hidden="true"><img src="/assets/do-logo.png" alt=""></div>' +
       '<h3 id="authtitle">' + esc(T.sign_in || "Sign in") + "</h3>" +
       '<p class="pshort">' + esc(T.why_account || "") + "</p>" +
       '<button class="btn goog" type="button" id="authgoogle">' +
@@ -323,7 +323,7 @@
     on(function (u) {
       if (!u) {
         root.innerHTML = '<div class="account-empty"><div class="account-orbit" aria-hidden="true"><span></span></div>' +
-          '<p class="account-eyebrow">Fleet House</p><h2>' + esc(T.account || "My page") + '</h2><p>' +
+          '<p class="account-eyebrow">Drive On</p><h2>' + esc(T.account || "My page") + '</h2><p>' +
           esc(T.please_sign_in || "") + '</p><div class="account-actions"><button class="btn" type="button" id="accin">' +
           esc(T.sign_in || "Sign in") + '</button><a class="btn ghost" href="' + esc(C.plannerUrl || "/planner/") + '">' +
           esc(T.to_planner || "Planner") + "</a></div></div>";

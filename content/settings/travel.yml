@@ -131,7 +131,7 @@ ka:
     down: ქვემოთ
     remove: ამოღება
     point: წერტილი
-    rate_label: Fleet House-ის შეფასება
+    rate_label: Drive On-ის შეფასება
     gallery: გალერეა
   rent:
     title: დაიქირავე მანქანა ამ მოგზაურობისთვის
@@ -277,7 +277,7 @@ en:
     down: Down
     remove: Remove
     point: Point
-    rate_label: Fleet House rating
+    rate_label: Drive On rating
     gallery: Gallery
   rent:
     title: Rent a car for this trip
@@ -422,7 +422,7 @@ ru:
     down: Вниз
     remove: Убрать
     point: Точка
-    rate_label: Оценка Fleet House
+    rate_label: Оценка Drive On
     gallery: Галерея
   rent:
     title: Возьмите машину для этой поездки
@@ -567,7 +567,7 @@ fa:
     down: پایین
     remove: حذف
     point: نقطه
-    rate_label: امتیاز Fleet House
+    rate_label: امتیاز Drive On
     gallery: گالری
   rent:
     title: برای این سفر خودرو اجاره کنید
@@ -711,7 +711,7 @@ he:
     down: למטה
     remove: הסרה
     point: נקודה
-    rate_label: דירוג Fleet House
+    rate_label: דירוג Drive On
     gallery: גלריה
   rent:
     title: שכרו רכב לטיול הזה
@@ -856,7 +856,7 @@ ar:
     down: أسفل
     remove: إزالة
     point: نقطة
-    rate_label: تقييم Fleet House
+    rate_label: تقييم Drive On
     gallery: المعرض
   rent:
     title: استأجر سيارة لهذه الرحلة

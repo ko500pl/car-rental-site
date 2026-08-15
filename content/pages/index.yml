@@ -1,5 +1,5 @@
 ka:
-  title: დაგეგმე და გააზიარე მოგზაურობა საქართველოში | Fleet House
+  title: დაგეგმე და გააზიარე მოგზაურობა საქართველოში | Drive On
   desc: >-
     დაგეგმე მოგზაურობა საქართველოში, მოარგე მარშრუტი, შეინახე და გაუზიარე მეგობრებსა თუ თანამგზავრებს.
     აღმოაჩინე ადგილები, საჯარო ტურები და საჭიროების შემთხვევაში შესაბამისი ავტომობილი.
@@ -10,7 +10,7 @@ ka:
   hero:
     kicker: თბილისი · ქუთაისი · ბათუმი · მთელი საქართველო
     lead: >-
-      Fleet House აქირავებს ავტომობილებს დღიური, კვირეული და თვიური ვადით. ფასი მოიცავს სრულ სადაზღვევო
+      Drive On აქირავებს ავტომობილებს დღიური, კვირეული და თვიური ვადით. ფასი მოიცავს სრულ სადაზღვევო
       დაფარვას, შეუზღუდავ გარბენს საქართველოს ტერიტორიაზე და 24/7 ტექნიკურ მხარდაჭერას. ეს გვერდი ინფორმაციულია
       — ჯავშნისთვის დაგვირეკეთ ან მოგვწერეთ.
     facts:
@@ -27,7 +27,7 @@ ka:
     text: მოკლედ — რას გთავაზობთ
   - type: p
     text: >-
-      Fleet House არის ავტომობილების გაქირავების კომპანია, რომელიც 2019 წლიდან მუშაობს საქართველოში. ავტოპარკში
+      Drive On არის ავტომობილების გაქირავების კომპანია, რომელიც 2019 წლიდან მუშაობს საქართველოში. ავტოპარკში
       17 ავტომობილია: ეკონომ კლასიდან მაღალი გამავლობის 4x4-ებამდე და 8-ადგილიან მინივენებამდე.
       ავტომობილს ვაქირავებთ როგორც ტურისტებზე, ისე ადგილობრივ კომპანიებზე გრძელვადიანი კორპორატიული ხელშეკრულებით.
   - type: facts
@@ -175,7 +175,7 @@ ka:
       text: 24/7 ცხელი ხაზი; გაუმართაობის შემთხვევაში სანაცვლო ავტომობილი 6 საათში.
     - title: საკუთარი პროგრამული უზრუნველყოფა
       text: >-
-        ავტოპარკს ვმართავთ საკუთარი სისტემით Fleet House Manager — ამიტომ ვიცით ზუსტად რომელი მანქანა როდის თავისუფლდება
+        ავტოპარკს ვმართავთ საკუთარი სისტემით Drive On Manager — ამიტომ ვიცით ზუსტად რომელი მანქანა როდის თავისუფლდება
         და ორმაგი ჯავშანი გამორიცხულია.
     - title: სამენოვანი მომსახურება
       text: ქართული, ინგლისური და რუსული — ხელშეკრულების ჩათვლით.
@@ -210,12 +210,12 @@ ka:
   - type: p
     text: დანარჩენი კითხვები და პასუხები — [FAQ გვერდზე](/faq/).
   - type: h2
-    text: Fleet House Manager — ჩვენი ავტოპარკის მართვის სისტემა
+    text: Drive On Manager — ჩვენი ავტოპარკის მართვის სისტემა
   - type: p
     text: >-
-      Fleet House-ის ავტოპარკს ვმართავთ საკუთარი აპლიკაციით Fleet House Manager. იგივე სისტემა ხელმისაწვდომია სხვა
+      Drive On-ის ავტოპარკს ვმართავთ საკუთარი აპლიკაციით Drive On Manager. იგივე სისტემა ხელმისაწვდომია სხვა
       გაქირავების კომპანიებისთვისაც: ჯავშნები, კონფლიქტების დეტექცია, დღიური P&L, თითო ავტომობილის ROI
-      და უკუგების ვადა, ხარჯები, სესხები და დაზღვევა ერთ ადგილას. დეტალები — [Fleet House Manager-ის გვერდზე](/fleet-management-software/).
+      და უკუგების ვადა, ხარჯები, სესხები და დაზღვევა ერთ ადგილას. დეტალები — [Drive On Manager-ის გვერდზე](/fleet-management-software/).
   - type: cta
     title: ჯავშნა და კონსულტაცია
     text: >-
@@ -229,7 +229,7 @@ ka:
     - label: გაქირავების პირობები
       href: /terms/
 en:
-  title: Plan and Share a Trip in Georgia | Fleet House
+  title: Plan and Share a Trip in Georgia | Drive On
   desc: >-
     Plan a trip across Georgia, shape the route, save it, and share it with friends or fellow travellers.
     Discover places, public trips, and a suitable vehicle when the route calls for one.
@@ -240,7 +240,7 @@ en:
   hero:
     kicker: Tbilisi · Kutaisi · Batumi · all of Georgia
     lead: >-
-      Fleet House rents out cars by the day, the week and the month. The rate includes full insurance coverage,
+      Drive On rents out cars by the day, the week and the month. The rate includes full insurance coverage,
       unlimited mileage within Georgia and 24/7 technical support. This page is informational — call or
       email us to book.
     facts:
@@ -257,7 +257,7 @@ en:
     text: In short — what we offer
   - type: p
     text: >-
-      Fleet House is a car rental company that has been operating in Georgia since 2019. The fleet holds
+      Drive On is a car rental company that has been operating in Georgia since 2019. The fleet holds
       17 vehicles, from economy class through off-road 4x4s to eight-seat minivans. We rent
       to tourists as well as to local companies on long-term corporate contracts.
   - type: facts
@@ -407,7 +407,7 @@ en:
       text: A 24/7 hotline; in the event of a breakdown a replacement car reaches you within 6 hours.
     - title: Our own software
       text: >-
-        We run the fleet on our own system, Fleet House Manager — which is why we know exactly which car frees
+        We run the fleet on our own system, Drive On Manager — which is why we know exactly which car frees
         up when, and double bookings are impossible.
     - title: Service in three languages
       text: Georgian, English and Russian — including the rental agreement.
@@ -440,12 +440,12 @@ en:
   - type: p
     text: More questions and answers are on the [FAQ page](/faq/).
   - type: h2
-    text: Fleet House Manager — our fleet management system
+    text: Drive On Manager — our fleet management system
   - type: p
     text: >-
-      We run the Fleet House fleet on our own app, Fleet House Manager. The same system is available to other rental
+      We run the Drive On fleet on our own app, Drive On Manager. The same system is available to other rental
       companies: bookings, conflict detection, daily P&L, per-vehicle ROI and payback period, expenses,
-      loans and insurance all in one place. Details are on the [Fleet House Manager page](/fleet-management-software/).
+      loans and insurance all in one place. Details are on the [Drive On Manager page](/fleet-management-software/).
   - type: cta
     title: Booking and consultation
     text: >-
@@ -459,7 +459,7 @@ en:
     - label: Rental terms
       href: /terms/
 ru:
-  title: Планируйте и делитесь поездками по Грузии | Fleet House
+  title: Планируйте и делитесь поездками по Грузии | Drive On
   desc: >-
     Планируйте путешествие по Грузии, настраивайте маршрут, сохраняйте его и делитесь с друзьями или попутчиками.
     Открывайте места, публичные поездки и подходящий автомобиль, когда он нужен маршруту.
@@ -470,7 +470,7 @@ ru:
   hero:
     kicker: Тбилиси · Кутаиси · Батуми · вся Грузия
     lead: >-
-      Fleet House сдаёт автомобили в аренду на сутки, недели и месяцы. В стоимость входят полное страховое
+      Drive On сдаёт автомобили в аренду на сутки, недели и месяцы. В стоимость входят полное страховое
       покрытие, неограниченный пробег по территории Грузии и техническая поддержка 24/7. Сайт носит информационный
       характер — для брони позвоните или напишите нам.
     facts:
@@ -487,7 +487,7 @@ ru:
     text: Коротко — что мы предлагаем
   - type: p
     text: >-
-      Fleet House — компания по аренде автомобилей, работающая в Грузии с 2019 года. В автопарке более
+      Drive On — компания по аренде автомобилей, работающая в Грузии с 2019 года. В автопарке более
       17 машин: от эконом-класса до внедорожников 4x4 и восьмиместных минивэнов. Мы сдаём автомобили
       как туристам, так и местным компаниям по долгосрочным корпоративным договорам.
   - type: facts
@@ -637,7 +637,7 @@ ru:
       text: Горячая линия 24/7; при поломке подменный автомобиль в течение 6 часов.
     - title: Собственное программное обеспечение
       text: >-
-        Парком мы управляем через собственную систему Fleet House Manager — поэтому точно знаем, какая машина и
+        Парком мы управляем через собственную систему Drive On Manager — поэтому точно знаем, какая машина и
         когда освобождается, и двойная бронь исключена.
     - title: Обслуживание на трёх языках
       text: Грузинский, английский и русский — включая договор.
@@ -674,12 +674,12 @@ ru:
   - type: p
     text: Остальные вопросы и ответы — [на странице FAQ](/faq/).
   - type: h2
-    text: Fleet House Manager — наша система управления автопарком
+    text: Drive On Manager — наша система управления автопарком
   - type: p
     text: >-
-      Автопарком Fleet House мы управляем через собственное приложение Fleet House Manager. Эта же система доступна
+      Автопарком Drive On мы управляем через собственное приложение Drive On Manager. Эта же система доступна
       другим прокатным компаниям: бронирования, выявление конфликтов, ежедневный P&L, ROI и срок окупаемости
-      по каждой машине, расходы, кредиты и страховки в одном месте. Подробности — [на странице Fleet House Manager](/fleet-management-software/).
+      по каждой машине, расходы, кредиты и страховки в одном месте. Подробности — [на странице Drive On Manager](/fleet-management-software/).
   - type: cta
     title: Бронирование и консультация
     text: >-
@@ -693,7 +693,7 @@ ru:
     - label: Условия аренды
       href: /terms/
 fa:
-  title: برنامه‌ریزی و اشتراک سفر در گرجستان | Fleet House
+  title: برنامه‌ریزی و اشتراک سفر در گرجستان | Drive On
   desc: >-
     سفرتان در گرجستان را برنامه‌ریزی کنید، مسیر را تغییر دهید، ذخیره کنید و با دوستان یا هم‌سفران به اشتراک بگذارید.
     مکان‌ها، سفرهای عمومی و در صورت نیاز مسیر، خودروی مناسب را پیدا کنید.
@@ -704,7 +704,7 @@ fa:
   hero:
     kicker: تفلیس · کوتایسی · باتومی · سراسر گرجستان
     lead: >-
-      Fleet House خودرو را روزانه، هفتگی و ماهانه اجاره می‌دهد. نرخ اعلام‌شده شامل پوشش بیمه کامل، کیلومتر
+      Drive On خودرو را روزانه، هفتگی و ماهانه اجاره می‌دهد. نرخ اعلام‌شده شامل پوشش بیمه کامل، کیلومتر
       نامحدود در داخل گرجستان و پشتیبانی فنی 24/7 است. این صفحه جنبه اطلاع‌رسانی دارد — برای رزرو با ما
       تماس بگیرید یا ایمیل بفرستید.
     facts:
@@ -721,7 +721,7 @@ fa:
     text: به‌طور خلاصه — چه چیزی ارائه می‌دهیم
   - type: p
     text: >-
-      Fleet House شرکت اجاره خودرو است که از سال 2019 در گرجستان فعالیت می‌کند. ناوگان ما 17 خودرو
+      Drive On شرکت اجاره خودرو است که از سال 2019 در گرجستان فعالیت می‌کند. ناوگان ما 17 خودرو
       دارد؛ از کلاس اقتصادی و آفرود 4x4 تا مینی‌ون‌های هشت‌نفره. هم به گردشگران خودرو اجاره می‌دهیم و
       هم به شرکت‌های محلی با قراردادهای بلندمدت سازمانی.
   - type: facts
@@ -868,7 +868,7 @@ fa:
       text: خط تماس 24/7؛ در صورت خرابی، خودروی جایگزین ظرف 6 ساعت به شما می‌رسد.
     - title: نرم‌افزار اختصاصی خودمان
       text: >-
-        ناوگان را با سامانه خودمان، Fleet House Manager، مدیریت می‌کنیم — به همین دلیل دقیقاً می‌دانیم هر خودرو
+        ناوگان را با سامانه خودمان، Drive On Manager، مدیریت می‌کنیم — به همین دلیل دقیقاً می‌دانیم هر خودرو
         چه زمانی آزاد می‌شود و رزرو تکراری غیرممکن است.
     - title: خدمات به سه زبان
       text: گرجی، انگلیسی و روسی — از جمله متن قرارداد اجاره.
@@ -902,12 +902,12 @@ fa:
   - type: p
     text: پرسش‌ها و پاسخ‌های بیشتر در [صفحه پرسش‌های متداول](/faq/) آمده است.
   - type: h2
-    text: Fleet House Manager — سامانه مدیریت ناوگان ما
+    text: Drive On Manager — سامانه مدیریت ناوگان ما
   - type: p
     text: >-
-      ناوگان Fleet House را با اپلیکیشن خودمان، Fleet House Manager، اداره می‌کنیم. همین سامانه در اختیار سایر شرکت‌های
+      ناوگان Drive On را با اپلیکیشن خودمان، Drive On Manager، اداره می‌کنیم. همین سامانه در اختیار سایر شرکت‌های
       اجاره خودرو هم قرار می‌گیرد: رزروها، تشخیص تداخل، سود و زیان روزانه، نرخ بازگشت سرمایه و دوره بازگشت
-      هر خودرو، هزینه‌ها، وام‌ها و بیمه — همه در یک جا. جزئیات در [صفحه Fleet House Manager](/fleet-management-software/).
+      هر خودرو، هزینه‌ها، وام‌ها و بیمه — همه در یک جا. جزئیات در [صفحه Drive On Manager](/fleet-management-software/).
   - type: cta
     title: رزرو و مشاوره
     text: >-
@@ -921,7 +921,7 @@ fa:
     - label: شرایط اجاره
       href: /terms/
 he:
-  title: תכנון ושיתוף טיול בגאורגיה | Fleet House
+  title: תכנון ושיתוף טיול בגאורגיה | Drive On
   desc: >-
     תכננו טיול בגאורגיה, התאימו את המסלול, שמרו ושתפו אותו עם חברים או שותפים למסע.
     גלו מקומות, טיולים ציבוריים ורכב מתאים כאשר המסלול דורש זאת.
@@ -931,7 +931,7 @@ he:
   hero:
     kicker: טביליסי · קוטאיסי · בטומי · בכל גאורגיה
     lead: >-
-      Fleet House משכירה רכבים לפי יום, שבוע וחודש. המחיר כולל כיסוי ביטוחי מלא, קילומטראז' ללא הגבלה בתוך
+      Drive On משכירה רכבים לפי יום, שבוע וחודש. המחיר כולל כיסוי ביטוחי מלא, קילומטראז' ללא הגבלה בתוך
       גאורגיה ותמיכה טכנית 24/7. העמוד הזה הוא מידעי בלבד — להזמנה התקשרו אלינו או שלחו מייל.
     facts:
     - k: רכבים בצי
@@ -947,7 +947,7 @@ he:
     text: בקצרה — מה אנחנו מציעים
   - type: p
     text: >-
-      Fleet House היא חברת השכרת רכב הפועלת בגאורגיה מאז 2019. בצי שלנו 17 רכבים — ממחלקת אקונומי,
+      Drive On היא חברת השכרת רכב הפועלת בגאורגיה מאז 2019. בצי שלנו 17 רכבים — ממחלקת אקונומי,
       דרך רכבי שטח 4x4 ועד מיניוואנים בני שמונה מושבים. אנחנו משכירים גם לתיירים וגם לחברות מקומיות בחוזים
       עסקיים ארוכי טווח.
   - type: facts
@@ -1089,7 +1089,7 @@ he:
       text: קו חם 24/7; במקרה של תקלה רכב חלופי מגיע אליכם תוך 6 שעות.
     - title: תוכנה מבית היוצר שלנו
       text: >-
-        אנחנו מנהלים את הצי במערכת שפיתחנו, Fleet House Manager — ולכן אנחנו יודעים בדיוק איזה רכב מתפנה ומתי,
+        אנחנו מנהלים את הצי במערכת שפיתחנו, Drive On Manager — ולכן אנחנו יודעים בדיוק איזה רכב מתפנה ומתי,
         וכפל הזמנות פשוט לא ייתכן.
     - title: שירות בשלוש שפות
       text: גאורגית, אנגלית ורוסית — כולל חוזה ההשכרה.
@@ -1121,12 +1121,12 @@ he:
   - type: p
     text: שאלות ותשובות נוספות נמצאות ב[עמוד השאלות הנפוצות](/faq/).
   - type: h2
-    text: Fleet House Manager — מערכת ניהול הצי שלנו
+    text: Drive On Manager — מערכת ניהול הצי שלנו
   - type: p
     text: >-
-      את הצי של Fleet House אנחנו מנהלים באפליקציה שפיתחנו, Fleet House Manager. אותה מערכת זמינה גם לחברות השכרה
+      את הצי של Drive On אנחנו מנהלים באפליקציה שפיתחנו, Drive On Manager. אותה מערכת זמינה גם לחברות השכרה
       אחרות: הזמנות, זיהוי התנגשויות, רווח והפסד יומי, ROI ותקופת החזר לכל רכב, הוצאות, הלוואות וביטוחים
-      — הכול במקום אחד. פרטים ב[עמוד Fleet House Manager](/fleet-management-software/).
+      — הכול במקום אחד. פרטים ב[עמוד Drive On Manager](/fleet-management-software/).
   - type: cta
     title: הזמנה וייעוץ
     text: >-
@@ -1140,7 +1140,7 @@ he:
     - label: תנאי השכרה
       href: /terms/
 ar:
-  title: خطط وشارك رحلتك في جورجيا | Fleet House
+  title: خطط وشارك رحلتك في جورجيا | Drive On
   desc: >-
     خطط رحلتك في جورجيا وعدّل المسار واحفظه وشاركه مع الأصدقاء أو رفقاء السفر.
     اكتشف الأماكن والرحلات العامة والسيارة المناسبة عندما يحتاج إليها المسار.
@@ -1151,7 +1151,7 @@ ar:
   hero:
     kicker: تبليسي · كوتايسي · باتومي · جميع أنحاء جورجيا
     lead: >-
-      تؤجّر Fleet House السيارات باليوم والأسبوع والشهر. ويشمل السعر تغطية تأمينية كاملة وكيلومترات غير
+      تؤجّر Drive On السيارات باليوم والأسبوع والشهر. ويشمل السعر تغطية تأمينية كاملة وكيلومترات غير
       محدودة داخل جورجيا ودعماً فنياً 24/7. هذه الصفحة للاطلاع فقط — للحجز اتصل بنا أو أرسل بريداً إلكترونياً.
     facts:
     - k: سيارة في الأسطول
@@ -1167,7 +1167,7 @@ ar:
     text: باختصار — ما الذي نقدمه
   - type: p
     text: >-
-      Fleet House شركة لتأجير السيارات تعمل في جورجيا منذ عام 2019. ويضم أسطولنا 17 سيارة، من
+      Drive On شركة لتأجير السيارات تعمل في جورجيا منذ عام 2019. ويضم أسطولنا 17 سيارة، من
       الفئة الاقتصادية إلى سيارات الدفع الرباعي 4x4 وصولاً إلى الميني فان بثمانية مقاعد. نؤجّر للسياح
       وللشركات المحلية بعقود مؤسسية طويلة الأجل.
   - type: facts
@@ -1312,7 +1312,7 @@ ar:
     - title: مساعدة على الطريق في كل أنحاء البلاد
       text: خط ساخن 24/7؛ وعند حدوث عطل تصلك سيارة بديلة خلال 6 ساعات.
     - title: برنامجنا الخاص
-      text: ندير الأسطول عبر نظامنا الخاص Fleet House Manager — لذلك نعرف بدقة أي سيارة تصبح متاحة ومتى، ويستحيل
+      text: ندير الأسطول عبر نظامنا الخاص Drive On Manager — لذلك نعرف بدقة أي سيارة تصبح متاحة ومتى، ويستحيل
         حدوث حجز مزدوج.
     - title: خدمة بثلاث لغات
       text: الجورجية والإنجليزية والروسية — بما في ذلك عقد الإيجار.
@@ -1346,12 +1346,12 @@ ar:
   - type: p
     text: مزيد من الأسئلة والأجوبة على [صفحة الأسئلة الشائعة](/faq/).
   - type: h2
-    text: Fleet House Manager — نظام إدارة الأسطول لدينا
+    text: Drive On Manager — نظام إدارة الأسطول لدينا
   - type: p
     text: >-
-      ندير أسطول Fleet House عبر تطبيقنا الخاص Fleet House Manager. والنظام نفسه متاح لشركات التأجير الأخرى: الحجوزات،
+      ندير أسطول Drive On عبر تطبيقنا الخاص Drive On Manager. والنظام نفسه متاح لشركات التأجير الأخرى: الحجوزات،
       وكشف التعارضات، والأرباح والخسائر اليومية، والعائد على الاستثمار ومدة الاسترداد لكل سيارة، والمصروفات
-      والقروض والتأمين — كل ذلك في مكان واحد. التفاصيل على [صفحة Fleet House Manager](/fleet-management-software/).
+      والقروض والتأمين — كل ذلك في مكان واحد. التفاصيل على [صفحة Drive On Manager](/fleet-management-software/).
   - type: cta
     title: الحجز والاستشارة
     text: >-

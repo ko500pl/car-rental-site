@@ -1,12 +1,12 @@
 ka:
-  title: ჩვენ შესახებ — Fleet House, ავტოგაქირავება საქართველოში 2019 წლიდან
+  title: ჩვენ შესახებ — Drive On, ავტოგაქირავება საქართველოში 2019 წლიდან
   desc: >-
     კომპანიის ისტორია, ავტოპარკის სტრუქტურა, სამუშაო პრინციპები და საკუთარი ავტოპარკის მართვის სისტემა.
     17 ავტომობილი, 6 ლოკაცია.
   keywords: ავტოგაქირავების კომპანია საქართველოში, rent a car company georgia
   h1: ჩვენ შესახებ
   lead: >-
-    Fleet House ავტომობილებს 2019 წლიდან აქირავებს. დავიწყეთ 8 მანქანით თბილისში — დღეს ავტოპარკში 17
+    Drive On ავტომობილებს 2019 წლიდან აქირავებს. დავიწყეთ 8 მანქანით თბილისში — დღეს ავტოპარკში 17
     ავტომობილია და ვმუშაობთ ექვს ლოკაციაზე.
   blocks:
   - type: h2
@@ -44,7 +44,7 @@ ka:
     text: >-
       გაქირავების ბიზნესში მთავარი მაჩვენებელი ავტომობილის დატვირთვაა — რამდენ პროცენტს ატარებს იგი გაქირავებაში.
       ჩვენი მიზნობრივი დონე წლიურად 65%-ია; საზაფხულო სეზონზე მაჩვენებელი 85%-ს აღწევს, ზამთარში 45%-მდე
-      ეცემა. თითოეული ავტომობილის ROI, ROA და უკუგების ვადა ავტომატურად ითვლება ჩვენს სისტემაში [Fleet House Manager](/fleet-management-software/).
+      ეცემა. თითოეული ავტომობილის ROI, ROA და უკუგების ვადა ავტომატურად ითვლება ჩვენს სისტემაში [Drive On Manager](/fleet-management-software/).
   - type: table
     rowhead: true
     caption: ტიპური ავტომობილის ეკონომიკა (საორიენტაციო მოდელი)
@@ -113,14 +113,14 @@ ka:
     - label: ავტოპარკი
       href: /fleet/
 en:
-  title: About us — Fleet House, car rental in Georgia since 2019
+  title: About us — Drive On, car rental in Georgia since 2019
   desc: >-
     The company's history, the structure of our fleet, how we work and our in-house fleet management system.
     17 vehicles, 6 locations.
   keywords: car rental company Georgia, rent a car company georgia
   h1: About us
   lead: >-
-    Fleet House has been renting out cars since 2019. We started with 8 cars in Tbilisi — today the fleet
+    Drive On has been renting out cars since 2019. We started with 8 cars in Tbilisi — today the fleet
     holds 17 vehicles and we operate from six locations.
   blocks:
   - type: h2
@@ -159,7 +159,7 @@ en:
       The decisive metric in the rental business is utilisation — the share of the year a vehicle actually
       spends on rent. Our target is 65% annually; in the summer season it reaches 85% and in winter it
       falls to around 45%. ROI, ROA and payback period are calculated automatically for every vehicle
-      in our own system, [Fleet House Manager](/fleet-management-software/).
+      in our own system, [Drive On Manager](/fleet-management-software/).
   - type: table
     rowhead: true
     caption: Economics of a typical vehicle (indicative model)
@@ -231,14 +231,14 @@ en:
     - label: Fleet
       href: /fleet/
 ru:
-  title: О нас — Fleet House, аренда авто в Грузии с 2019 года
+  title: О нас — Drive On, аренда авто в Грузии с 2019 года
   desc: >-
     История компании, структура автопарка, принципы работы и собственная система управления автопарком.
     17 автомобилей, 6 локаций.
   keywords: компания по аренде авто в Грузии, rent a car company georgia
   h1: О нас
   lead: >-
-    Fleet House сдаёт автомобили в аренду с 2019 года. Мы начинали с 8 машин в Тбилиси — сегодня в автопарке
+    Drive On сдаёт автомобили в аренду с 2019 года. Мы начинали с 8 машин в Тбилиси — сегодня в автопарке
     17 автомобилей, и мы работаем в шести локациях.
   blocks:
   - type: h2
@@ -276,7 +276,7 @@ ru:
     text: >-
       В прокатном бизнесе главный показатель — загрузка автомобиля, то есть какой процент времени он проводит
       в аренде. Наш целевой уровень — 65% в год; летом показатель достигает 85%, зимой опускается до 45%.
-      ROI, ROA и срок окупаемости каждой машины считаются автоматически в нашей системе [Fleet House Manager](/fleet-management-software/).
+      ROI, ROA и срок окупаемости каждой машины считаются автоматически в нашей системе [Drive On Manager](/fleet-management-software/).
   - type: table
     rowhead: true
     caption: Экономика типового автомобиля (ориентировочная модель)
@@ -347,14 +347,14 @@ ru:
     - label: Автопарк
       href: /fleet/
 fa:
-  title: دربارهٔ ما — Fleet House، اجارهٔ خودرو در گرجستان از 2019
+  title: دربارهٔ ما — Drive On، اجارهٔ خودرو در گرجستان از 2019
   desc: >-
     تاریخچهٔ شرکت، ساختار ناوگان، شیوهٔ کار ما و سامانهٔ داخلی مدیریت ناوگان. 17 خودرو و 6 نمایندگی
     در سراسر گرجستان.
   keywords: شرکت اجاره خودرو در گرجستان, شرکت کرایه ماشین در گرجستان
   h1: دربارهٔ ما
   lead: >-
-    Fleet House از سال 2019 خودرو اجاره می‌دهد. کار را با 8 خودرو در تفلیس آغاز کردیم — امروز ناوگان ما
+    Drive On از سال 2019 خودرو اجاره می‌دهد. کار را با 8 خودرو در تفلیس آغاز کردیم — امروز ناوگان ما
     17 خودرو دارد و از شش نمایندگی فعالیت می‌کنیم.
   blocks:
   - type: h2
@@ -393,7 +393,7 @@ fa:
     text: >-
       شاخص تعیین‌کننده در کسب‌وکار اجاره، ضریب بهره‌برداری است — یعنی سهمی از سال که خودرو واقعاً در اجاره
       است. هدف سالانهٔ ما 65% است؛ در فصل تابستان به 85% می‌رسد و در زمستان تا حدود 45% پایین می‌آید.
-      ROI، ROA و دورهٔ بازگشت سرمایه برای هر خودرو به‌صورت خودکار در سامانهٔ خودمان، [Fleet House Manager](/fleet-management-software/)،
+      ROI، ROA و دورهٔ بازگشت سرمایه برای هر خودرو به‌صورت خودکار در سامانهٔ خودمان، [Drive On Manager](/fleet-management-software/)،
       محاسبه می‌شود.
   - type: table
     rowhead: true
@@ -465,14 +465,14 @@ fa:
     - label: ناوگان
       href: /fleet/
 he:
-  title: עלינו — Fleet House, השכרת רכב בגאורגיה מאז 2019
+  title: עלינו — Drive On, השכרת רכב בגאורגיה מאז 2019
   desc: >-
     ההיסטוריה של החברה, מבנה הצי, איך אנחנו עובדים ומערכת ניהול הצי שפיתחנו בעצמנו. 17 רכבים ו-6
     נקודות שירות.
   keywords: חברת השכרת רכב בגאורגיה, השכרת רכב בגאורגיה חברה
   h1: עלינו
   lead: >-
-    Fleet House משכירה רכבים מאז 2019. התחלנו עם 8 מכוניות בטביליסי — כיום הצי מונה 17 רכבים ואנחנו
+    Drive On משכירה רכבים מאז 2019. התחלנו עם 8 מכוניות בטביליסי — כיום הצי מונה 17 רכבים ואנחנו
     פועלים משש נקודות שירות.
   blocks:
   - type: h2
@@ -509,7 +509,7 @@ he:
     text: >-
       המדד המכריע בענף ההשכרה הוא שיעור הניצולת — חלקה של השנה שבו הרכב אכן מושכר. היעד השנתי שלנו הוא
       65%; בעונת הקיץ הוא מגיע ל-85% ובחורף יורד לכ-45%. ROI, ROA ותקופת ההחזר מחושבים אוטומטית לכל רכב
-      במערכת שפיתחנו, [Fleet House Manager](/fleet-management-software/).
+      במערכת שפיתחנו, [Drive On Manager](/fleet-management-software/).
   - type: table
     rowhead: true
     caption: כלכלה של רכב טיפוסי (מודל להמחשה)
@@ -576,14 +576,14 @@ he:
     - label: הצי
       href: /fleet/
 ar:
-  title: من نحن — Fleet House، تأجير السيارات في جورجيا منذ 2019
+  title: من نحن — Drive On، تأجير السيارات في جورجيا منذ 2019
   desc: >-
     تاريخ الشركة وبنية أسطولنا وطريقة عملنا ونظام إدارة الأسطول الذي طوّرناه بأنفسنا. 17 سيارة
     و6 مواقع في جورجيا.
   keywords: شركة تأجير سيارات في جورجيا, شركة استئجار سيارات في جورجيا
   h1: من نحن
   lead: >-
-    تعمل Fleet House في تأجير السيارات منذ عام 2019. بدأنا بـ 8 سيارات في تبليسي — واليوم يضم الأسطول أكثر
+    تعمل Drive On في تأجير السيارات منذ عام 2019. بدأنا بـ 8 سيارات في تبليسي — واليوم يضم الأسطول أكثر
     17 سيارة ونعمل من ستة مواقع.
   blocks:
   - type: h2
@@ -621,7 +621,7 @@ ar:
     text: >-
       المؤشر الحاسم في قطاع التأجير هو معدّل الاستخدام — أي نسبة أيام السنة التي تكون فيها السيارة مؤجَّرة
       فعلاً. وهدفنا السنوي 65%؛ ويبلغ 85% في موسم الصيف وينخفض شتاءً إلى نحو 45%. وتُحتسب ROI وROA ومدة
-      الاسترداد تلقائياً لكل سيارة في نظامنا الخاص [Fleet House Manager](/fleet-management-software/).
+      الاسترداد تلقائياً لكل سيارة في نظامنا الخاص [Drive On Manager](/fleet-management-software/).
   - type: table
     rowhead: true
     caption: اقتصاديات سيارة نموذجية (نموذج استرشادي)

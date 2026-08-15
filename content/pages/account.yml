@@ -1,5 +1,5 @@
 ka:
-  title: ჩემი გვერდი — შენახული მარშრუტები | Fleet House
+  title: ჩემი გვერდი — შენახული მარშრუტები | Drive On
   desc: თქვენი დაგეგმილი და შესრულებული მარშრუტები, თარიღებით.
   keywords: ''
   h1: ჩემი გვერდი
@@ -8,7 +8,7 @@ ka:
     იმოგზაურებთ.
   blocks: []
 en:
-  title: My page — saved routes | Fleet House
+  title: My page — saved routes | Drive On
   desc: Your planned and completed routes, with their dates.
   keywords: ''
   h1: My page
@@ -17,7 +17,7 @@ en:
     as done once you have driven it.
   blocks: []
 ru:
-  title: Моя страница — сохранённые маршруты | Fleet House
+  title: Моя страница — сохранённые маршруты | Drive On
   desc: Ваши запланированные и выполненные маршруты с датами.
   keywords: ''
   h1: Моя страница
@@ -26,7 +26,7 @@ ru:
     съездите.
   blocks: []
 fa:
-  title: صفحهٔ من — مسیرهای ذخیره‌شده | Fleet House
+  title: صفحهٔ من — مسیرهای ذخیره‌شده | Drive On
   desc: مسیرهای برنامه‌ریزی‌شده و انجام‌شدهٔ شما همراه با تاریخ.
   keywords: ''
   h1: صفحهٔ من
@@ -35,14 +35,14 @@ fa:
     علامت بزنید.
   blocks: []
 he:
-  title: העמוד שלי — מסלולים שמורים | Fleet House
+  title: העמוד שלי — מסלולים שמורים | Drive On
   desc: המסלולים המתוכננים והמבוצעים שלכם, עם התאריכים.
   keywords: ''
   h1: העמוד שלי
   lead: כאן נשמרים המסלולים שבניתם במתכנן — עם התאריך והסטטוס. סמנו כבוצע אחרי הנסיעה.
   blocks: []
 ar:
-  title: صفحتي — المسارات المحفوظة | Fleet House
+  title: صفحتي — المسارات المحفوظة | Drive On
   desc: مساراتك المخططة والمنجزة مع تواريخها.
   keywords: ''
   h1: صفحتي
