@@ -801,10 +801,10 @@
         closeStandardTours();
         run();
         showSelectedTour(tour);
-        if (window.FH_TRAVEL_EXPLORER && window.FH_TRAVEL_EXPLORER.applyTour)
-          window.FH_TRAVEL_EXPLORER.applyTour(tour.wp || [], tour);
         CUR.pool = D.a.slice();
         replan();
+        if (window.FH_TRAVEL_EXPLORER && window.FH_TRAVEL_EXPLORER.applyTour)
+          window.FH_TRAVEL_EXPLORER.applyTour(tour.wp || [], tour);
       };
     });
   }
