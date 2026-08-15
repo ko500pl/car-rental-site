@@ -686,16 +686,28 @@
     function iso(d) { return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
     from.value = iso(today);
     var end = new Date(today); end.setDate(end.getDate() + 2); to.value = iso(end);
-    function syncPeriod() {
+    function syncDatesToDays() {
       if (from.value) EL("month").value = String(new Date(from.value + "T12:00:00").getMonth() + 1);
       if (from.value && to.value) {
         var n = Math.round((new Date(to.value + "T12:00:00") - new Date(from.value + "T12:00:00")) / 86400000) + 1;
-        if (n > 0 && n <= 10) EL("days").value = String(n);
+        if (n > 0 && n <= 30) EL("days").value = String(n);
       }
       renderStandardTours();
     }
-    [from, to, EL("days"), EL("party"), EL("tourpurpose"), EL("month")].forEach(function (x) {
-      if (x) x.addEventListener("change", syncPeriod);
+    function syncDaysToDate() {
+      var n = Math.max(1, Math.min(30, parseInt(EL("days").value, 10) || 1));
+      EL("days").value = String(n);
+      if (from.value) { var d = new Date(from.value + "T12:00:00"); d.setDate(d.getDate() + n - 1); to.value = iso(d); }
+      renderStandardTours();
+    }
+    from.addEventListener("change", syncDatesToDays); to.addEventListener("change", syncDatesToDays);
+    EL("days").addEventListener("change", syncDaysToDate);
+    EL("days").addEventListener("input", function () { if (this.value) syncDaysToDate(); });
+    [["daysminus",-1],["daysplus",1]].forEach(function (pair) {
+      var b=EL(pair[0]); if(b)b.onclick=function(){EL("days").value=String((parseInt(EL("days").value,10)||1)+pair[1]);syncDaysToDate();};
+    });
+    [EL("party"), EL("tourpurpose"), EL("month")].forEach(function (x) {
+      if (x) x.addEventListener("change", renderStandardTours);
     });
   }
 
@@ -738,7 +750,7 @@
         var tour = (D.standardTours || []).find(function (x) { return x.s === button.dataset.chooseTour; });
         if (!tour) return;
         window.FH_TRAVEL_SELECTION = (tour.wp || []).slice();
-        EL("days").value = String(Math.max(1, Math.min(10, tour.days || 1)));
+        EL("days").value = String(Math.max(1, Math.min(30, tour.days || 1)));
         EL("tourpurpose").value = tour.purpose || "classic";
         var modalPurpose = EL("tourpurposemodal");
         if (modalPurpose) modalPurpose.value = EL("tourpurpose").value;

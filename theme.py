@@ -252,6 +252,9 @@ td:first-child{{font-weight:600;color:var(--ink)}}
 .budget-stepper button{{height:38px;border:1px solid var(--line);border-radius:10px;background:var(--surface-2);color:var(--ink);font:700 18px/1 var(--font);cursor:pointer}}
 .budget-stepper input{{width:100%;height:38px;text-align:center;padding:6px!important}}
 .budget-stepper>span{{font-size:12px;color:var(--ink-2);white-space:nowrap}}
+.days-stepper{{display:grid;grid-template-columns:30px minmax(42px,58px) 30px;align-items:center;gap:4px}}
+.days-stepper button{{width:30px;height:38px;padding:0;border:1px solid var(--line);border-radius:8px;background:var(--surface-2);color:var(--ink);font:700 16px/1 var(--font);cursor:pointer}}
+.days-stepper input{{width:100%;height:38px;padding:5px!important;text-align:center;font-weight:700}}
 .expbar input,.expbar select{{font:inherit;font-size:15px;padding:9px 12px;border:1px solid var(--line);
   border-radius:10px;background:var(--surface);color:var(--ink)}}
 .expcount{{font-size:14px;color:var(--ink-3);margin-inline-start:auto}}
@@ -1049,7 +1052,11 @@ body.booking-open{{overflow:hidden}}
 .planner-more-in .chips:not(.styles){{gap:5px}}
 .planner-more-in .chip{{font-size:11.5px;padding:5px 9px}}
 .planner-toolbar>.prow{{display:flex;flex-wrap:nowrap;min-width:max-content;margin:0}}
-.planner-toolbar>.prow .btn{{height:38px;padding:7px 14px;white-space:nowrap}}
+.planner-toolbar>.prow .btn{{width:auto!important;min-width:0!important;height:34px!important;min-height:34px!important;padding:5px 11px!important;border-radius:8px;font-size:11.5px;white-space:nowrap}}
+.planner-toolbar>.prow{{grid-column:auto;width:max-content;gap:5px;align-self:end}}
+.planner-toolbar>.standard-launch{{width:max-content;align-self:end}}
+.planner-toolbar>.standard-launch>label{{display:none}}
+.planner-toolbar>.standard-launch .btn{{width:auto!important;min-width:0;height:34px!important;padding:5px 11px!important;border-radius:8px;font-size:11.5px}}
 .travel-workspace{{position:relative}}
 .workspace-tabs{{display:inline-flex;gap:4px;margin:0 0 8px;padding:4px;background:var(--surface-2);
   border:1px solid var(--line);border-radius:12px}}

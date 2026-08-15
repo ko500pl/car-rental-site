@@ -1891,9 +1891,10 @@ def planner_form_html(lang):
     form = f"""<div class="pform planner-toolbar">
 <div class="pf"><label for="start">{E(t['start'])}</label><select id="start"></select></div>
 <div class="pf period-field"><label>{E(labels[0])}</label><div class="date-pair"><input id="datefrom" type="date" aria-label="{E(labels[1])}"><input id="dateto" type="date" aria-label="{E(labels[2])}"></div></div>
-<div class="pf"><label for="days">{E(t['days'])}</label><select id="days">
-{"".join(f'<option value="{d}"{" selected" if d == 3 else ""}>{d}</option>' for d in range(1, 11))}
-</select></div>
+<div class="pf days-field"><label for="days">{E(t['days'])}</label><div class="days-stepper">
+<button id="daysminus" type="button" aria-label="−">−</button>
+<input id="days" type="number" min="1" max="30" step="1" value="3" inputmode="numeric">
+<button id="daysplus" type="button" aria-label="+">+</button></div></div>
 <div class="pf derived-month"><label for="month">{E(t['month'])}</label><select id="month"></select></div>
 <div class="pf"><label for="party">{E(t['party'])}</label><select id="party">
 {"".join(f'<option value="{n}"{" selected" if n == 2 else ""}>{n}</option>' for n in range(1, 9))}
