@@ -255,6 +255,9 @@ td:first-child{{font-weight:600;color:var(--ink)}}
 .days-stepper{{display:grid;grid-template-columns:30px minmax(42px,58px) 30px;align-items:center;gap:4px}}
 .days-stepper button{{width:30px;height:38px;padding:0;border:1px solid var(--line);border-radius:8px;background:var(--surface-2);color:var(--ink);font:700 16px/1 var(--font);cursor:pointer}}
 .days-stepper input{{width:100%;height:38px;padding:5px!important;text-align:center;font-weight:700}}
+.days-field{{display:grid;grid-template-columns:1fr;align-content:end}}
+.days-field>label{{font-weight:700}}
+.days-help{{display:block;margin-top:2px;font-size:9px;line-height:1;color:var(--ink-3);text-align:center}}
 .expbar input,.expbar select{{font:inherit;font-size:15px;padding:9px 12px;border:1px solid var(--line);
   border-radius:10px;background:var(--surface);color:var(--ink)}}
 .expcount{{font-size:14px;color:var(--ink-3);margin-inline-start:auto}}
@@ -1000,7 +1003,7 @@ body.booking-open{{overflow:hidden}}
 .page-planner .page-head h1{{font-size:26px;margin-bottom:6px}}
 .page-planner .page-head .lead{{font-size:14px;line-height:1.45;max-width:100ch}}
 .planner-controls{{padding:12px 0!important;border-bottom:0}}
-.planner-toolbar{{display:grid;grid-template-columns:minmax(180px,1.5fr) minmax(245px,1.4fr) 72px 72px minmax(155px,1fr) minmax(150px,1fr) auto auto;
+.planner-toolbar{{display:grid;grid-template-columns:minmax(180px,1.5fr) minmax(245px,1.4fr) 126px 88px minmax(155px,1fr) minmax(150px,1fr) auto auto;
   align-items:end;gap:8px;padding:10px 12px;margin:0;overflow:visible;border-radius:14px}}
 .planner-toolbar>.pf{{min-width:0;gap:3px}}
 .planner-toolbar>.pf:first-child{{min-width:0}}
@@ -1015,7 +1018,7 @@ body.booking-open{{overflow:hidden}}
 .planner-toolbar .carmode{{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}}
 .planner-toolbar .carmode .tog{{height:38px!important;padding:5px 7px!important;justify-content:center;font-size:10.5px!important}}
 .planner-toolbar .carmode>select{{display:none!important}}
-.standard-launch{{display:flex;justify-content:flex-start;margin:0 0 10px}}
+.standard-launch{{display:flex;justify-content:flex-start;margin:0 0 6px}}
 .standard-launch .btn{{height:38px;width:auto;padding:7px 14px;white-space:nowrap}}
 .standard-launch .btn span:not(:empty)::before{{content:" ("}}.standard-launch .btn span:not(:empty)::after{{content:")"}}
 .standard-modal{{position:fixed;z-index:2500;inset:0;display:grid;place-items:center;padding:24px;background:rgba(2,8,16,.78);backdrop-filter:blur(9px)}}
@@ -1035,6 +1038,8 @@ body.booking-open{{overflow:hidden}}
 .standard-copy{{min-width:0;display:grid;gap:2px}}
 .standard-copy b{{font-size:12px;line-height:1.3}}
 .standard-copy small{{font-size:10px;color:var(--ink-3)}}
+.standard-meta{{display:flex;flex-wrap:wrap;gap:4px;margin-top:2px}}
+.standard-meta span{{padding:3px 6px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font-size:9.5px;line-height:1.15;color:var(--ink-2)}}
 .standard-copy p{{margin:0;font-size:10.5px;line-height:1.3;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
 .standard-card .btn{{padding:6px 8px;font-size:10.5px}}
 .standard-empty{{font-size:12px;color:var(--ink-3);padding:10px}}
@@ -1064,10 +1069,25 @@ body.booking-open{{overflow:hidden}}
 .workspace-tabs button{{min-height:34px;padding:6px 14px;border:0;border-radius:9px;background:transparent;
   color:var(--ink-3);font:700 12px/1.2 inherit;cursor:pointer}}
 .workspace-tabs button.on{{color:var(--ink);background:var(--surface);box-shadow:0 1px 8px #0003}}
-.workspace-plan{{display:none;margin-bottom:8px}}
+.workspace-plan{{display:none;margin-bottom:4px}}
 .travel-workspace[data-mode="planner"] .workspace-plan{{display:block}}
 .travel-workspace[data-mode="planner"] .planner-toolbar{{margin-bottom:0;padding-bottom:8px}}
 .travel-workspace[data-mode="planner"] .workspace-plan+.explorer{{margin-top:0}}
+.selected-tour-banner{{display:grid;grid-template-columns:minmax(220px,1.2fr) minmax(0,2fr);gap:12px;align-items:center;padding:9px 12px;border-bottom:1px solid var(--line);background:#f7fafb;color:#17202b}}
+.selected-tour-banner[hidden]{{display:none}}
+.selected-tour-banner>div span{{display:block;font-size:9.5px;color:#6b7b8c;text-transform:uppercase;letter-spacing:.04em}}
+.selected-tour-banner>div strong{{display:block;margin-top:2px;font-size:13px;line-height:1.25}}
+.selected-tour-banner dl{{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:0}}
+.selected-tour-banner dl div{{min-width:0}}
+.selected-tour-banner dt{{font-size:9px;color:#718093}}
+.selected-tour-banner dd{{margin:2px 0 0;font-size:11px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
+@media(max-width:760px){{
+  .selected-tour-banner{{grid-template-columns:1fr;padding:8px 10px}}
+  .selected-tour-banner dl{{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  .standard-grid{{grid-template-columns:1fr}}
+  .standard-card{{grid-template-columns:58px minmax(0,1fr) auto}}
+  .standard-card>img{{width:52px;height:46px}}
+}}
 .travel-workspace[data-mode="planner"] .exproutebox{{display:none}}
 .travel-workspace[data-mode="route"] .expfind{{display:none}}
 .travel-workspace[data-mode="route"] .exproutebox{{display:block}}
@@ -1399,20 +1419,22 @@ main>.sec+section.sec{{border-top:1px solid #e3e8eb}}
 /* Localized electronic business card — Road Pass. */
 .business-card-link{{display:inline-flex;align-items:center;min-height:42px;padding:9px 13px;border:1px solid #ccd8de;border-radius:9px;background:#fff;color:#1d3a42;font-size:13px;font-weight:750;text-decoration:none}}
 .business-card-link:hover{{background:#f2f6f7;text-decoration:none}}
+.corner-tools .business-card-corner{{min-height:38px;padding:7px 11px;gap:7px;background:#fff;border-color:#dfe6ec;box-shadow:none;white-space:nowrap}}
+.corner-tools .business-card-corner>span:first-child{{font-size:17px;color:#087f8c}}
 .digital-card-page{{min-height:calc(100vh - 220px);display:grid;place-items:center;padding:58px 18px;background:#eef2f5}}
-.digital-card-shell{{width:min(900px,100%)}}
+.digital-card-shell{{width:min(900px,100%);container-type:inline-size}}
 .card-languages{{display:flex;justify-content:center;gap:5px;margin:0 auto 14px;padding:5px;width:max-content;max-width:100%;overflow-x:auto;background:#fff;border:1px solid #dfe6ec;border-radius:12px;box-shadow:0 8px 24px rgba(8,21,33,.08)}}
 .card-languages a{{min-width:39px;padding:7px 9px;border-radius:8px;color:#526170;font-size:12px;font-weight:700;text-align:center;text-decoration:none}}.card-languages a:hover{{background:#e6f4f4;text-decoration:none}}.card-languages a.on{{background:#087f8c;color:#fff}}
-.road-pass-card{{overflow:hidden;background:#fff;border:1px solid #dfe6ec;border-radius:16px;box-shadow:0 24px 64px rgba(8,21,33,.15)}}
-.road-pass-top{{min-height:72px;padding:16px 28px;display:flex;align-items:center;justify-content:space-between;gap:18px;background:#081521;color:#fff;letter-spacing:.13em}}
-.road-pass-top strong{{font-size:18px;letter-spacing:.05em;white-space:nowrap;color:#fff}}.road-pass-top strong span{{color:#38bdf8;font-size:26px}}
-.road-pass-body{{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:34px;padding:38px}}
-.road-pass-identity{{padding-inline-end:34px;border-inline-end:2px dotted #98a6b4}}
-.road-pass-brand{{display:flex;align-items:center;gap:16px;margin-bottom:20px}}.road-pass-brand img{{width:126px;height:66px;object-fit:contain}}.road-pass-brand b{{font-size:30px;color:#081521}}
-.road-pass-identity h1{{margin:0 0 8px;color:#081521;font-size:40px;line-height:1.2}}.road-pass-role{{margin:0 0 24px;color:#526170;font-size:16px}}
-.card-contact-line{{width:max-content;max-width:100%;display:flex;align-items:center;gap:12px;margin:12px 0;color:#17202b;font-size:18px;font-weight:700;text-decoration:none}}
-.card-contact-line span{{width:34px;height:34px;display:grid;place-items:center;border:1.5px solid #087f8c;border-radius:50%;color:#087f8c}}.card-contact-line:hover,.card-site{{color:#087f8c;text-decoration:none}}
-.card-save{{margin-top:18px}}.road-pass-qr{{display:grid;align-content:center;justify-items:center;text-align:center}}.road-pass-qr a{{display:block;padding:12px;border:2px solid #087f8c;border-radius:13px;background:#fff}}.road-pass-qr img{{display:block;width:220px;height:220px}}.road-pass-qr p{{max-width:24ch;margin:13px 0 0;color:#526170;font-size:14px;line-height:1.5}}
+.road-pass-card{{aspect-ratio:1.8;overflow:hidden;background:#fff;border:1px solid #dfe6ec;border-radius:14px;box-shadow:0 24px 64px rgba(8,21,33,.15)}}
+.road-pass-top{{height:16%;padding:0 3.2%;display:flex;align-items:center;justify-content:space-between;gap:18px;background:#081521;color:#fff;font-size:clamp(8px,1.45cqw,13px);letter-spacing:.13em}}
+.road-pass-top strong{{font-size:clamp(11px,2.1cqw,19px);letter-spacing:.05em;white-space:nowrap;color:#fff}}.road-pass-top strong span{{color:#38bdf8;font-size:1.4em}}
+.road-pass-body{{height:84%;display:grid;grid-template-columns:minmax(0,1fr) 34%;gap:4%;padding:3.2% 4%}}
+.road-pass-identity{{min-width:0;padding-inline-end:5%;border-inline-end:2px dotted #98a6b4}}
+.road-pass-brand{{display:flex;align-items:center;gap:2.2cqw;margin-bottom:1.2cqw}}.road-pass-brand img{{width:11cqw;height:4.8cqw;object-fit:contain}}.road-pass-brand b{{font-size:clamp(19px,4.15cqw,38px);line-height:1.12;color:#081521}}
+.road-pass-identity h1{{margin:0 0 .6cqw;color:#081521;font-size:clamp(19px,4.15cqw,38px);line-height:1.12}}.road-pass-role{{margin:0 0 1.2cqw;color:#526170;font-size:clamp(8px,1.7cqw,15px);white-space:nowrap}}
+.card-contact-line{{width:max-content;max-width:100%;display:flex;align-items:center;gap:1.1cqw;margin:.65cqw 0;color:#17202b;font-size:clamp(10px,2cqw,18px);font-weight:700;text-decoration:none}}
+.card-contact-line span{{width:3.7cqw;height:3.7cqw;display:grid;place-items:center;border:1.5px solid #087f8c;border-radius:50%;color:#087f8c;font-size:1.8cqw}}.card-contact-line:hover,.card-site{{color:#087f8c;text-decoration:none}}
+.road-pass-qr{{display:grid;align-content:center;justify-items:center;text-align:center}}.road-pass-qr a{{display:block;width:min(22cqw,78%);padding:1cqw;border:2px solid #087f8c;border-radius:10px;background:#fff}}.road-pass-qr img{{display:block;width:100%;height:auto}}.road-pass-qr p{{max-width:24ch;margin:1cqw 0 0;color:#526170;font-size:clamp(7px,1.35cqw,12px);line-height:1.35}}
 html[dir="rtl"] .road-pass-brand{{flex-direction:row-reverse;justify-content:flex-end}}
-@media(max-width:760px){{.head-actions .business-card-link{{font-size:0;width:42px;padding:0;justify-content:center}}.head-actions .business-card-link::before{{content:"▣";font-size:18px}}.digital-card-page{{padding:28px 12px}}.road-pass-top{{padding:13px 17px;font-size:10px}}.road-pass-top strong{{font-size:13px}}.road-pass-body{{grid-template-columns:1fr;padding:24px;gap:25px}}.road-pass-identity{{padding:0 0 24px;border-inline-end:0;border-bottom:2px dotted #98a6b4}}.road-pass-brand img{{width:94px;height:50px}}.road-pass-brand b{{font-size:24px}}.road-pass-identity h1{{font-size:31px}}.road-pass-role{{font-size:14px}}.road-pass-qr img{{width:190px;height:190px}}}}
+@media(max-width:760px){{.corner-tools .business-card-corner{{width:38px;padding:0;justify-content:center}}.corner-tools .business-card-corner>span:last-child{{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}}.digital-card-page{{padding:22px 8px;align-items:start}}.road-pass-card{{border-radius:9px}}}}
 """

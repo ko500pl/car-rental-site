@@ -568,13 +568,13 @@ def header_html(lang, current):
 <nav class="main" aria-label="{E(u['ui']['nav_label'])}"><ul>{lis}
 <li class="nav-more"><details><summary aria-label="More">•••</summary><ul>{more}</ul></details></li>
 </ul></nav>
-<div class="head-actions"><a class="business-card-link" href="{page_url(lang, 'card', False)}">{E(card_label)}</a><span class="head-tel"><a dir="ltr" href="tel:{SITE['phone_e164']}">{E(SITE['phone'])}</a></span></div>
+<div class="head-actions"><span class="head-tel"><a dir="ltr" href="tel:{SITE['phone_e164']}">{E(SITE['phone'])}</a></span></div>
 </div></header><div class="corner-tools"><div class="langs corner-langs" role="group" aria-label="{E(u['ui']['lang_label'])}">{langs}</div>
 <details class="app-download"><summary aria-label="{E(app_copy[0])}"><span class="app-download-icon" aria-hidden="true">↓</span><span class="app-download-text">{E(app_copy[0])}</span></summary>
 <div class="app-download-menu">
 <a href="/assets/downloads/fleet-house-android.apk" download><b>{E(app_copy[1])}</b><small>{E(app_copy[3])}</small></a>
 <button type="button" data-ios-install><b>{E(app_copy[2])}</b><small>{E(app_copy[4])}</small></button>
-</div></details><div id="authbox" class="authbox authbox-corner"></div></div>"""
+</div></details><a class="business-card-link business-card-corner" href="{page_url(lang, 'card', False)}" aria-label="{E(card_label)}"><span aria-hidden="true">▣</span><span>{E(card_label)}</span></a><div id="authbox" class="authbox authbox-corner"></div></div>"""
 
 
 def crumbs_html(lang, trail_rel):
@@ -709,31 +709,25 @@ def render_static_page(lang, page):
             "ar": ("ابدأ تخطيط رحلتك", "استكشف الرحلات العامة", "ابدأ مجانًا · تسجيل الدخول مطلوب فقط للحفظ أو المشاركة"),
         }[lang]
         quick = {
-            "ka": (("მაქვს იდეა", "რუკაზე ადგილების აღმოჩენა", "#explore"),
-                   ("მინდა მზა გეგმა", "სტანდარტული ტურიდან დაწყება", "#planner"),
-                   ("მივდივარ სხვებთან", "საჯარო ტურების ნახვა", page_url(lang, "community", False))),
-            "en": (("I have an idea", "Discover places on the map", "#explore"),
-                   ("I want a ready plan", "Start with a standard tour", "#planner"),
-                   ("I want company", "Browse public trips", page_url(lang, "community", False))),
-            "ru": (("У меня есть идея", "Найти места на карте", "#explore"),
-                   ("Мне нужен готовый план", "Начать со стандартного тура", "#planner"),
-                   ("Ищу попутчиков", "Смотреть публичные поездки", page_url(lang, "community", False))),
-            "fa": (("ایده دارم", "کشف مکان‌ها روی نقشه", "#explore"),
-                   ("برنامه آماده می‌خواهم", "شروع با یک تور استاندارد", "#planner"),
-                   ("همسفر می‌خواهم", "مشاهده سفرهای عمومی", page_url(lang, "community", False))),
-            "he": (("יש לי רעיון", "גילוי מקומות במפה", "#explore"),
-                   ("אני רוצה מסלול מוכן", "התחלה מטיול סטנדרטי", "#planner"),
-                   ("אני מחפש שותפים", "צפייה בטיולים ציבוריים", page_url(lang, "community", False))),
-            "ar": (("لدي فكرة", "اكتشف الأماكن على الخريطة", "#explore"),
-                   ("أريد خطة جاهزة", "ابدأ بجولة قياسية", "#planner"),
-                   ("أبحث عن رفقاء", "تصفح الرحلات العامة", page_url(lang, "community", False))),
+            "ka": (("სტანდარტული ტურები", "აირჩიეთ მზა მარშრუტი და მოარგეთ", "#planner", True),
+                   ("Community", "იპოვეთ ჯგუფები და თანამგზავრები", page_url(lang, "community", False), False)),
+            "en": (("Standard tours", "Choose a ready route and customise it", "#planner", True),
+                   ("Community", "Find groups and travel companions", page_url(lang, "community", False), False)),
+            "ru": (("Стандартные туры", "Выберите маршрут и настройте его", "#planner", True),
+                   ("Community", "Найдите группы и попутчиков", page_url(lang, "community", False), False)),
+            "fa": (("تورهای استاندارد", "یک مسیر آماده را انتخاب و شخصی‌سازی کنید", "#planner", True),
+                   ("Community", "گروه‌ها و همسفران را پیدا کنید", page_url(lang, "community", False), False)),
+            "he": (("טיולים סטנדרטיים", "בחרו מסלול מוכן והתאימו אותו", "#planner", True),
+                   ("Community", "מצאו קבוצות ושותפים לטיול", page_url(lang, "community", False), False)),
+            "ar": (("الجولات القياسية", "اختر مسارًا جاهزًا وخصصه", "#planner", True),
+                   ("Community", "اعثر على مجموعات ورفقاء سفر", page_url(lang, "community", False), False)),
         }[lang]
         x = TRAVEL[lang]["exp"]
         facts = "".join(f"<div><b>{E(x2['v'])}</b><span>{E(x2['k'])}</span></div>"
                         for x2 in h["facts"])
         mp, tail_js = travel_workspace_block(lang, depth, "64vh", hero=True, initial="planner")
         quick_html = "".join(
-            f'<a class="home-quick-card" href="{E(q[2])}"><span>{i}</span><div><b>{E(q[0])}</b><small>{E(q[1])}</small></div><i aria-hidden="true">→</i></a>'
+            f'<a class="home-quick-card" href="{E(q[2])}"{" data-open-standard-tour" if q[3] else ""}><span>{i}</span><div><b>{E(q[0])}</b><small>{E(q[1])}</small></div><i aria-hidden="true">→</i></a>'
             for i, q in enumerate(quick, 1))
         body.append(f'<section class="hero home-hero"><div class="wrap wide home-hero-grid">'
                     f'<div class="home-hero-copy"><span class="kicker">{E(h["kicker"])}</span><h1>{E(p["h1"])}</h1>'
@@ -936,7 +930,6 @@ def render_business_card(lang):
 <h1 id="card-name">{E(name)}</h1><p class="road-pass-role">{E(role)}</p>
 <a class="card-contact-line" href="tel:+995597555565" aria-label="{E(call)}: +995 597 55 55 65"><span aria-hidden="true">☎</span><bdi dir="ltr">+995 597 55 55 65</bdi></a>
 <a class="card-contact-line card-site" href="https://www.rentup.ge/" aria-label="{E(website)}: www.rentup.ge"><span aria-hidden="true">↗</span><bdi dir="ltr">www.rentup.ge</bdi></a>
-<a class="btn card-save" href="/assets/shota-lomidze-fleet-house.vcf" download>{E(save)}</a>
 </div><div class="road-pass-qr"><a href="/assets/shota-lomidze-fleet-house.vcf" download aria-label="{E(save)}"><img src="/assets/shota-lomidze-vcard.svg" alt="QR — {E(save)}"></a><p>{E(scan)}</p></div></div>
 </article></div></main>'''
     depth = 1 if lang == "ka" else 2
@@ -1411,6 +1404,13 @@ def explorer_block(lang, depth, height="72vh", hero=False):
     })
     js = EXPLORER_JS % {"js": LEAFLET_JS, "cfg": cfg, "exp": ASSET["explorer"]}
     html = f'''<div class="explorer{" hero" if hero else ""}">
+  <section id="selectedtour" class="selected-tour-banner" hidden aria-live="polite">
+    <div><span id="selectedtourlabel"></span><strong id="selectedtourname"></strong></div>
+    <dl><div><dt id="selectedtourtimelabel"></dt><dd id="selectedtourtime"></dd></div>
+      <div><dt id="selectedtourcarlabel"></dt><dd id="selectedtourcar"></dd></div>
+      <div><dt id="selectedtourgrouplabel"></dt><dd id="selectedtourgroup"></dd></div>
+      <div><dt id="selectedtourregionlabel"></dt><dd id="selectedtourregion"></dd></div></dl>
+  </section>
   <div class="expbar">
     <div class="expsearch-wrap">
       <input id="expq" class="expsearch" type="search" placeholder="{E(x["search_ph"])}"
@@ -1852,12 +1852,12 @@ def fleet_for_planner(lang):
 def planner_data(lang):
     P = PLANNER[lang]
     tour_ui = {
-        "ka": {"day": "დღე", "people": "ადამიანი", "view": "ნახვა"},
-        "en": {"day": "days", "people": "people", "view": "View"},
-        "ru": {"day": "дн.", "people": "чел.", "view": "Открыть"},
-        "fa": {"day": "روز", "people": "نفر", "view": "مشاهده"},
-        "he": {"day": "ימים", "people": "אנשים", "view": "צפייה"},
-        "ar": {"day": "أيام", "people": "أشخاص", "view": "عرض"},
+        "ka": {"day": "დღე", "people": "ადამიანი", "view": "მინდა", "region": "რეგიონი", "car": "ავტომობილი", "time": "ხანგრძლივობა", "group": "რეკომენდებული ჯგუფი", "chosen": "არჩეული სტანდარტული ტური"},
+        "en": {"day": "days", "people": "people", "view": "Choose", "region": "Region", "car": "Vehicle", "time": "Duration", "group": "Recommended group", "chosen": "Selected standard tour"},
+        "ru": {"day": "дн.", "people": "чел.", "view": "Выбрать", "region": "Регион", "car": "Автомобиль", "time": "Длительность", "group": "Рекомендуемая группа", "chosen": "Выбранный стандартный тур"},
+        "fa": {"day": "روز", "people": "نفر", "view": "انتخاب", "region": "منطقه", "car": "خودرو", "time": "مدت", "group": "گروه پیشنهادی", "chosen": "تور استاندارد انتخاب‌شده"},
+        "he": {"day": "ימים", "people": "אנשים", "view": "בחירה", "region": "אזור", "car": "רכב", "time": "משך", "group": "קבוצה מומלצת", "chosen": "טיול סטנדרטי שנבחר"},
+        "ar": {"day": "أيام", "people": "أشخاص", "view": "اختيار", "region": "المنطقة", "car": "المركبة", "time": "المدة", "group": "المجموعة المقترحة", "chosen": "الجولة القياسية المختارة"},
     }[lang]
     purpose_by_route = {
         "kakheti-wine-loop": "culinary", "imereti-caves-canyons": "nature",
@@ -1865,10 +1865,19 @@ def planner_data(lang):
         "vardzia-borjomi-south": "culture", "svaneti-expedition": "mountains",
         "racha-mountain-loop": "nature",
     }
+    car_names = {
+        "ka": {"standard": "სტანდარტული", "4x4": "4X4"}, "en": {"standard": "Standard", "4x4": "4X4"},
+        "ru": {"standard": "Стандарт", "4x4": "4X4"}, "fa": {"standard": "استاندارد", "4x4": "4X4"},
+        "he": {"standard": "רגיל", "4x4": "4X4"}, "ar": {"standard": "قياسية", "4x4": "4X4"},
+    }[lang]
     standard_tours = [{
         "s": slug, "n": route[lang]["name"], "sh": route[lang]["short"],
         "days": int(route["days"]), "nights": int(route["nights"]), "km": int(route["distance_km"]),
         "season": route["best_season"], "purpose": route.get("purpose", purpose_by_route.get(slug, "classic")),
+        "drive": route.get("drive_time_total", ""),
+        "car": "4x4" if route.get("car_category") in ("suv", "offroad") else "standard",
+        "carLabel": car_names["4x4" if route.get("car_category") in ("suv", "offroad") else "standard"],
+        "region": ", ".join(dict.fromkeys(REGIONS[ATTRACTIONS[w]["region"]][lang]["name"] for w in route.get("waypoints", []) if w in ATTRACTIONS)),
         "minPeople": int(route.get("min_people", 1)), "maxPeople": int(route.get("max_people", 8)),
         "availableFrom": route.get("available_from", ""), "availableTo": route.get("available_to", ""),
         "img": route.get("image") or "", "u": route_url(lang, slug, False),
@@ -1965,7 +1974,7 @@ def planner_form_html(lang):
 <div class="pf days-field"><label for="days">{E(t['days'])}</label><div class="days-stepper">
 <button id="daysminus" type="button" aria-label="−">−</button>
 <input id="days" type="number" min="1" max="30" step="1" value="3" inputmode="numeric">
-<button id="daysplus" type="button" aria-label="+">+</button></div></div>
+<button id="daysplus" type="button" aria-label="+">+</button></div><small class="days-help">1–30</small></div>
 <div class="pf derived-month"><label for="month">{E(t['month'])}</label><select id="month"></select></div>
 <div class="pf"><label for="party">{E(t['party'])}</label><select id="party">
 {"".join(f'<option value="{n}"{" selected" if n == 2 else ""}>{n}</option>' for n in range(1, 9))}

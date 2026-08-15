@@ -113,6 +113,22 @@
       state.from = null;
       map.setView([externalOrigin.la, externalOrigin.lo], Math.max(map.getZoom(), 11));
       suggestNear();
+    },
+    applyTour: function (slugs, tour) {
+      manualSelection = true;
+      sugOff = {}; sugBlocked = {}; sugExtra = {};
+      suggested = (slugs || []).map(function (slug) { return BY[slug]; }).filter(Boolean);
+      suggested.forEach(function (place) { sugOff[place.s] = false; });
+      var hours = Math.max(0.5, Math.min(72, Number(tour && tour.days || 1) * 8));
+      var budget = $('expbudget');
+      if (budget) { budget.value = String(hours); updBudget(); }
+      publishSelection();
+      suggestNear();
+      if (suggested.length) {
+        var bounds = L.latLngBounds(suggested.map(function (p) { return [p.la, p.lo]; }));
+        if (externalOrigin) bounds.extend([externalOrigin.la, externalOrigin.lo]);
+        map.fitBounds(bounds.pad(0.16), { maxZoom: 11 });
+      }
     }
   };
 

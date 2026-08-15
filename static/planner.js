@@ -773,11 +773,15 @@
       return;
     }
     var ui = D.tourUi || {};
+    function purposeLabel(key) {
+      var select = EL("tourpurpose"), option = select && Array.prototype.find.call(select.options, function (x) { return x.value === key; });
+      return option ? option.textContent : key;
+    }
     box.innerHTML = tours.map(function (tour) {
       var image = tour.img ? '<img src="' + esc(tour.img) + '" alt="">' : '';
       return '<article class="standard-card" data-tour="' + esc(tour.s) + '">' + image + '<div class="standard-copy"><b>' + esc(tour.n) +
-        '</b><small>' + tour.days + ' ' + (ui.day || '') + ' · ' + tour.minPeople + '–' + tour.maxPeople + ' ' +
-        (ui.people || '') + ' · ' + tour.km + ' km</small><p>' + esc(tour.sh) + '</p></div>' +
+        '</b><div class="standard-meta"><span>' + tour.days + ' ' + (ui.day || '') + '</span><span>' + esc(tour.carLabel || '') +
+        '</span><span>' + esc(purposeLabel(tour.purpose)) + '</span><span>' + esc(tour.region || '') + '</span></div><p>' + esc(tour.sh) + '</p></div>' +
         '<button type="button" class="btn sm" data-choose-tour="' + esc(tour.s) + '">' + (ui.view || 'Choose') + '</button></article>';
     }).join('');
     box.querySelectorAll('[data-choose-tour]').forEach(function (button) {
@@ -786,15 +790,35 @@
         if (!tour) return;
         window.FH_TRAVEL_SELECTION = (tour.wp || []).slice();
         EL("days").value = String(Math.max(1, Math.min(30, tour.days || 1)));
+        EL("days").dispatchEvent(new Event("change", { bubbles: true }));
+        EL("party").value = String(Math.max(1, Math.min(8, tour.minPeople || 2)));
         EL("tourpurpose").value = tour.purpose || "classic";
+        var carMode = tour.car === "4x4" ? "carpick" : "carauto";
+        if (EL(carMode)) EL(carMode).checked = true;
+        if (tour.car === "4x4") EL("car").value = "offroad";
         var modalPurpose = EL("tourpurposemodal");
         if (modalPurpose) modalPurpose.value = EL("tourpurpose").value;
         closeStandardTours();
         run();
+        showSelectedTour(tour);
+        if (window.FH_TRAVEL_EXPLORER && window.FH_TRAVEL_EXPLORER.applyTour)
+          window.FH_TRAVEL_EXPLORER.applyTour(tour.wp || [], tour);
         CUR.pool = D.a.slice();
         replan();
       };
     });
+  }
+  function showSelectedTour(tour) {
+    var panel = EL("selectedtour"), ui = D.tourUi || {};
+    if (!panel || !tour) return;
+    panel.hidden = false;
+    [["selectedtourlabel", ui.chosen], ["selectedtourname", tour.n],
+     ["selectedtourtimelabel", ui.time], ["selectedtourtime", tour.days + " " + (ui.day || "") + (tour.drive ? " · " + tour.drive : "")],
+     ["selectedtourcarlabel", ui.car], ["selectedtourcar", tour.carLabel],
+     ["selectedtourgrouplabel", ui.group], ["selectedtourgroup", tour.minPeople + "–" + tour.maxPeople + " " + (ui.people || "")],
+     ["selectedtourregionlabel", ui.region], ["selectedtourregion", tour.region]].forEach(function (x) {
+       var node = EL(x[0]); if (node) node.textContent = x[1] || "—";
+     });
   }
   function openStandardTours() {
     var modal = EL("standardmodal"), purpose = EL("tourpurposemodal");
@@ -894,6 +918,14 @@
     var standardOpen = EL("standardopen"), standardClose = EL("standardclose"),
         standardModal = EL("standardmodal"), purposeModal = EL("tourpurposemodal");
     if (standardOpen) standardOpen.onclick = openStandardTours;
+    document.querySelectorAll('[data-open-standard-tour]').forEach(function (link) {
+      link.onclick = function (event) {
+        event.preventDefault();
+        var planner = document.getElementById('planner');
+        if (planner) planner.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setTimeout(openStandardTours, 180);
+      };
+    });
     if (standardClose) standardClose.onclick = closeStandardTours;
     if (standardModal) standardModal.onclick = function (e) {
       if (e.target === standardModal) closeStandardTours();
