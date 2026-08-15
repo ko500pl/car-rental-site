@@ -1329,6 +1329,17 @@ html,body{{max-width:100%;overflow-x:hidden}}
   .home-hero-grid{{grid-template-columns:minmax(0,1fr) 320px;gap:22px}}
   .map-intro .map-sub{{white-space:normal}}
 }}
+/* Planner result summary: six compact facts instead of oversized empty cards. */
+#result>.facts{{grid-template-columns:repeat(6,minmax(0,1fr));gap:7px;margin:8px 0 10px}}
+#result>.facts>div{{min-height:54px;padding:8px 11px;border-radius:9px;display:flex;flex-direction:column;justify-content:center}}
+#result>.facts .k{{margin:0 0 2px;font-size:10.5px;line-height:1.25}}
+#result>.facts .v{{font-size:13.5px;line-height:1.25}}
+#result>.psum{{max-width:none;margin:0 0 12px;padding:9px 12px;font-size:12.5px;line-height:1.45}}
+@media(max-width:1100px){{#result>.facts{{grid-template-columns:repeat(3,minmax(0,1fr))}}}}
+@media(max-width:600px){{
+  #result>.facts{{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}}
+  #result>.facts>div{{min-height:50px;padding:7px 9px}}
+}}
 @media(max-width:900px){{
   .home-hero{{padding:16px 0 12px!important}}
   .home-hero h1{{font-size:28px;line-height:1.16;max-width:22ch}}
