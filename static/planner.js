@@ -14,7 +14,7 @@
   };
   function carCopy(key, fallback) { return (CAR_COPY[UI_LANG] || CAR_COPY.en)[key] || fallback; }
   window.FH_BRAND_LOGO = window.FH_BRAND_LOGO || new Image();
-  if (!window.FH_BRAND_LOGO.src) window.FH_BRAND_LOGO.src = "/assets/do-logo-clean.png";
+  if (!window.FH_BRAND_LOGO.src) window.FH_BRAND_LOGO.src = "/assets/do-logo-tight.png";
   var map, layers = [], DAY_COLORS = ["#0f4c81", "#c8963e", "#1d7a53", "#8e6bb5", "#b5563f",
                                       "#2b8a9e", "#8f2f52", "#4a76b5", "#3f8f5f", "#a0703c"];
 

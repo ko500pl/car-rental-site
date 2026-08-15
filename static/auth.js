@@ -185,7 +185,7 @@
     d.innerHTML =
       '<div class="authcard" role="dialog" aria-modal="true" aria-labelledby="authtitle">' +
       '<button class="authx" type="button" aria-label="×">✕</button>' +
-      '<div class="authbrand" aria-hidden="true"><img src="/assets/do-logo-clean.png" alt=""></div>' +
+      '<div class="authbrand" aria-hidden="true"><img src="/assets/do-logo-tight.png" alt=""></div>' +
       '<h3 id="authtitle">' + esc(T.sign_in || "Sign in") + "</h3>" +
       '<p class="pshort">' + esc(T.why_account || "") + "</p>" +
       '<button class="btn goog" type="button" id="authgoogle">' +
