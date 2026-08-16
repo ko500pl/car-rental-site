@@ -2170,8 +2170,13 @@ AI_BOTS = ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-User"
            "DuckAssistBot", "MistralAI-User"]
 
 
-def robots():
-    out = ["User-agent: *", "Allow: /", "Disallow: /admin/", "Disallow: /docs/", ""]
+def robots(include_docs=False):
+    out = ["User-agent: *", "Allow: /", "Disallow: /admin/"]
+    # Only advertise /docs/ when it is actually published; a Disallow line for
+    # a path that does not exist just points at it.
+    if include_docs:
+        out.append("Disallow: /docs/")
+    out.append("")
     for b in AI_BOTS:
         out += [f"User-agent: {b}", "Allow: /", ""]
     out += [f"Sitemap: {SITE_URL}/sitemap.xml", f"Host: {SITE_URL.split('//')[1]}", ""]
@@ -2339,6 +2344,11 @@ def main():
     out = args[0] if args else "dist"
     strict = "--strict" in sys.argv
     validate_only = "--validate-only" in sys.argv
+    # Internal documentation is opt-in. Netlify cannot password-protect a
+    # single path on this plan, so anything shipped under /docs/ is readable
+    # by anyone who knows the URL. Default off means a production build is
+    # safe even when the flag is forgotten.
+    with_docs = "--with-docs" in sys.argv
     report = validate(SITE, CARS_ALL, REGIONS_ALL, ATTRACTIONS_ALL, ROUTES_ALL,
                       PAGES, POSTS_ALL)
     for warning in report.warnings:
@@ -2361,10 +2371,10 @@ def main():
         if os.path.isdir(sdir):
             shutil.copytree(sdir, dst, dirs_exist_ok=True)
 
-    # Internal team documentation. Only the generated HTML ships; the markdown
-    # sources stay in the repository. Kept out of robots.txt and the sitemap —
-    # this is operational documentation, not public content.
-    if os.path.isdir("docs"):
+    # Internal team documentation, only with --with-docs. The markdown sources
+    # never ship. Even when included it stays out of robots.txt and the
+    # sitemap, but noindex is not access control — see docs/08-build-architecture.
+    if with_docs and os.path.isdir("docs"):
         docs_dst = os.path.join(out, "docs")
         os.makedirs(docs_dst, exist_ok=True)
         for name in sorted(os.listdir("docs")):
@@ -2451,7 +2461,7 @@ def main():
             write(os.path.join(out, "data", "attr", lang, f"{slug}.json"),
                   J(attr_detail(lang, slug, a)))
 
-    for name, data in [("sitemap.xml", sitemap()), ("robots.txt", robots()),
+    for name, data in [("sitemap.xml", sitemap()), ("robots.txt", robots(with_docs)),
                        ("llms.txt", llms_txt()), ("llms-full.txt", llms_full_txt()),
                        ("404.html", render_404()), (".nojekyll", "")]:
         write(os.path.join(out, name), data)

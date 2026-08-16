@@ -14,8 +14,17 @@
 <h2>ბრძანებები</h2>
 <p><code>python build.py --validate-only</code> ამოწმებს მონაცემებს. <code>python build.py dist --strict</code> არის production gate და placeholder მონაცემებზე exit code 2-ით ჩერდება.</p>
 <h2>დოკუმენტაცია build-ში</h2>
-<p><code>build.py</code> <code>docs/*.html</code>-ს აკოპირებს <code>dist/docs/</code>-ში, ანუ დოკუმენტაცია პროდუქტთან ერთად ვრცელდება. markdown წყაროები repository-ში რჩება და არ იგზავნება.</p>
-<p>ეს არის <strong>შიდა გუნდის დოკუმენტაცია</strong>: <code>robots.txt</code> მას კრძალავს (<code>Disallow: /docs/</code>), sitemap-ში არ შედის და <code>netlify.toml</code> აყენებს <code>X-Robots-Tag: noindex, nofollow</code>. მაგრამ <strong>ბმულის მცოდნე ნებისმიერს შეუძლია წაკითხვა</strong> — noindex არ არის წვდომის კონტროლი. თუ შიგთავსი კონფიდენციალურად ჩაითვლება, საჭიროა Netlify-ის პაროლით დაცვა ან <code>dist/docs/</code>-ის გამორთვა.</p>
-<p>HTML-ის განახლება: <code>python scripts/build_docs_html.py</code>, შემდეგ build.</p>
+<p>დოკუმენტაცია <strong>ნაგულისხმევად არ ქვეყნდება</strong>. <code>--with-docs</code> ფლაგით <code>build.py</code> <code>docs/*.html</code>-ს აკოპირებს <code>dist/docs/</code>-ში:</p>
+<pre><code>python build.py dist --with-docs
+</code></pre>
+<p>markdown წყაროები არასოდეს იგზავნება.</p>
+<h3>რატომ არის ნაგულისხმევად გამორთული</h3>
+<p>Netlify ამ გეგმაზე <strong>ცალკე გზაზე პაროლს ვერ აყენებს</strong> — მხოლოდ მთელი პროექტის Public/Private არსებობს, ხოლო Private მთელ საიტს დახურავდა. ანუ <code>/docs/</code>-ში გამოქვეყნებულს <strong>ბმულის მცოდნე ნებისმიერი წაიკითხავს</strong>.</p>
+<p><code>robots.txt</code>, sitemap-ის გამორიცხვა და <code>X-Robots-Tag: noindex</code> ინდექსაციას აჩერებს, მაგრამ <strong>noindex წვდომის კონტროლი არ არის</strong>. დოკუმენტაცია შეიცავს publication blocker-ებს, არქიტექტურულ ვალსა და აუდიტის მიგნებებს — ეს საჯარო კონტენტი არ არის.</p>
+<p>ამიტომ ნაგულისხმევი მდგომარეობა უსაფრთხოა მაშინაც, როცა ფლაგი დაგავიწყდებათ. <code>robots.txt</code>-ში <code>Disallow: /docs/</code> მხოლოდ მაშინ ჩნდება, როცა docs რეალურად ქვეყნდება — არარსებულ გზაზე Disallow მასზე მიმანიშნებელია.</p>
+<h3>განახლება</h3>
+<pre><code>python scripts/build_docs_html.py
+python build.py dist --with-docs
+</code></pre>
 <h2>უცვლელი პრინციპები</h2>
 <p>საჯარო URL-ები, ექვსი ენა, RTL, canonical/hreflang და სტატიკური SEO გვერდები შენარჩუნებულია. Firebase არასავალდებულოა და არ გამოიყენება გაქირავების მოთხოვნისთვის.</p></body></html>
