@@ -54,6 +54,7 @@ J = lambda o: json.dumps(o, ensure_ascii=False, indent=2)    # noqa: E731
 JC = lambda o: json.dumps(o, ensure_ascii=False, separators=(",", ":"))  # noqa: E731
 
 
+
 def load(path):
     with open(path, encoding="utf-8") as f:
         return yaml.safe_load(f)
@@ -473,12 +474,18 @@ def _hash(data):
     return hashlib.md5(data).hexdigest()[:10]
 
 
-def write_hashed(out, rel, data, key):
-    """ჩაწერს ფაილს შიგთავსის ჰეშით სახელში — ბრაუზერი ძველს ვეღარ აჩვენებს."""
+def write_hashed(out, rel, data, key, also_plain=False):
+    """ჩაწერს ფაილს შიგთავსის ჰეშით სახელში — ბრაუზერი ძველს ვეღარ აჩვენებს.
+
+    `also_plain` წერს ჰეშის გარეშე ასლსაც. ეს მხოლოდ style.css-ს სჭირდება,
+    რომელსაც Decap CMS-ის preview ფიქსირებული მისამართით ითხოვს. დანარჩენ
+    ფაილებზე ასლი მკვდარი წონაა — HTML ყოველთვის ჰეშიან ვერსიას ბმულობს.
+    """
     base, ext = os.path.splitext(rel)
     name = base + "." + _hash(data) + ext
     write(os.path.join(out, "assets", name), data)
-    write(os.path.join(out, "assets", rel), data)
+    if also_plain:
+        write(os.path.join(out, "assets", rel), data)
     ASSET[key] = "/assets/" + name
     return ASSET[key]
 
@@ -2329,7 +2336,7 @@ def render_404():
     return (f'<!DOCTYPE html><html lang="ka"><head><meta charset="utf-8">'
             f'<meta name="viewport" content="width=device-width, initial-scale=1">'
             f"<title>404 — {E(BRAND)}</title><meta name=\"robots\" content=\"noindex, follow\">"
-            f'<link rel="stylesheet" href="/assets/style.css"></head><body>'
+            f'<link rel="stylesheet" href="{ASSET["css"]}"></head><body>'
             f'{header_html(lang, "index")}<main id="main"><section class="page-head">'
             f'<div class="wrap"><h1>{E(u["ui"]["e404_title"])}</h1>'
             f'<p class="lead">{E(u["ui"]["e404_text"])}</p><ul>{links}</ul>'
@@ -2383,10 +2390,18 @@ def main():
         shutil.rmtree(out)
     os.makedirs(os.path.join(out, "assets"), exist_ok=True)
 
+    # These are written again by write_hashed under a content-hashed name, and
+    # the HTML only ever links the hashed one. Copying the plain source as well
+    # leaves an unversioned duplicate that no page requests but a browser can
+    # still cache indefinitely.
+    hashed_sources = {"explorer.js", "planner.js", "auth.js", "booking.js",
+                      "community.js", "admin-bookings.js", "app.js"}
     for sdir, dst in (("static", os.path.join(out, "assets")),
                       ("admin", os.path.join(out, "admin"))):
         if os.path.isdir(sdir):
-            shutil.copytree(sdir, dst, dirs_exist_ok=True)
+            skip = (lambda d, names: [n for n in names if n in hashed_sources]) \
+                if sdir == "static" else None
+            shutil.copytree(sdir, dst, dirs_exist_ok=True, ignore=skip)
 
     # Internal team documentation, only with --with-docs. The markdown sources
     # never ship. Even when included it stays out of robots.txt and the
@@ -2399,7 +2414,7 @@ def main():
                 shutil.copy2(os.path.join("docs", name),
                              os.path.join(docs_dst, name))
 
-    write_hashed(out, "style.css", build_css(DESIGN), "css")
+    write_hashed(out, "style.css", build_css(DESIGN), "css", also_plain=True)
     for fn, key in (("explorer.js", "explorer"), ("planner.js", "planner"), ("auth.js", "auth"), ("booking.js", "booking"),
                     ("community.js", "community"), ("admin-bookings.js", "admin_bookings"), ("app.js", "app")):
         p = os.path.join("static", fn)
