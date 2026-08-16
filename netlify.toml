@@ -2,7 +2,12 @@
 #  Netlify — Drive On. საიტს თავად Netlify აწყობს content/*.yml-იდან.
 # ═══════════════════════════════════════════════════════════════════════
 [build]
-  command = "pip install -r requirements.txt && python3 build.py dist"
+  # --strict არის publication gate: placeholder კონტაქტებზე ან მთავარი ფოტოს
+  # გარეშე დარჩენილ მანქანებზე build ჩერდება exit code 2-ით და საიტი არ
+  # განახლდება. ეს განზრახ არის — ყალბი საკონტაქტო მონაცემი ცოცხალ დომენზე
+  # არ უნდა მოხვდეს. მოხსნა მხოლოდ მაშინ, თუ შეგნებულად გვინდა
+  # დაუსრულებელი მონაცემით გამოქვეყნება.
+  command = "pip install -r requirements.txt && python3 build.py dist --strict"
   publish = "dist"
 
 [build.environment]
@@ -41,6 +46,12 @@
 
 [[headers]]
   for = "/admin/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+# შიდა გუნდის დოკუმენტაცია — არ ინდექსირდება.
+[[headers]]
+  for = "/docs/*"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
 

@@ -2171,7 +2171,7 @@ AI_BOTS = ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-User"
 
 
 def robots():
-    out = ["User-agent: *", "Allow: /", "Disallow: /admin/", ""]
+    out = ["User-agent: *", "Allow: /", "Disallow: /admin/", "Disallow: /docs/", ""]
     for b in AI_BOTS:
         out += [f"User-agent: {b}", "Allow: /", ""]
     out += [f"Sitemap: {SITE_URL}/sitemap.xml", f"Host: {SITE_URL.split('//')[1]}", ""]
@@ -2360,6 +2360,17 @@ def main():
                       ("admin", os.path.join(out, "admin"))):
         if os.path.isdir(sdir):
             shutil.copytree(sdir, dst, dirs_exist_ok=True)
+
+    # Internal team documentation. Only the generated HTML ships; the markdown
+    # sources stay in the repository. Kept out of robots.txt and the sitemap —
+    # this is operational documentation, not public content.
+    if os.path.isdir("docs"):
+        docs_dst = os.path.join(out, "docs")
+        os.makedirs(docs_dst, exist_ok=True)
+        for name in sorted(os.listdir("docs")):
+            if name.endswith(".html"):
+                shutil.copy2(os.path.join("docs", name),
+                             os.path.join(docs_dst, name))
 
     write_hashed(out, "style.css", build_css(DESIGN), "css")
     for fn, key in (("explorer.js", "explorer"), ("planner.js", "planner"), ("auth.js", "auth"), ("booking.js", "booking"),
