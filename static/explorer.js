@@ -424,6 +424,7 @@
       (d.unesco ? '<span class="tag u">UNESCO</span>' : '') +
       '<span class="tag g">' + esc(d.gn) + '</span></div>' +
       '<div class="expact">' +
+      routeToggleBtn(d.s) +
       '<button class="btn sm visited-toggle' + (visited[d.s] ? ' on' : '') + '" type="button" data-visited="' + esc(d.s) + '">' +
       (visited[d.s] ? '✓ ' : '') + esc(visited[d.s] ? (U.visited_yes || 'Visited') : (U.visited_mark || 'Mark visited')) + '</button>' +
       '<button class="btn sm ghost" type="button" data-review="' + esc(d.s) + '">★ ' + esc(U.write_review || 'Write review') + '</button>' +
@@ -635,6 +636,32 @@
       (r ? '<b>' + r + '</b>' : '') + '</span>';
   }
 
+  // Selecting a place has to be reachable from the detail panel too, not only
+  // from the list checkbox — otherwise a single marker, which opens details
+  // directly, gives no way to add or remove it.
+  function inRoute(slug) { return !sugOff[slug]; }
+
+  function routeToggleBtn(slug) {
+    var on = inRoute(slug);
+    return '<button class="btn sm route-toggle' + (on ? ' on' : '') + '" type="button" ' +
+      'data-route-toggle="' + esc(slug) + '" aria-pressed="' + (on ? 'true' : 'false') + '">' +
+      esc(on ? (U.route_remove || '✓ In route') : (U.route_add || 'Add to route')) + '</button>';
+  }
+
+  function setInRoute(slug, on) {
+    manualSelection = true;
+    sugOff[slug] = !on;
+    document.querySelectorAll('[data-suggest="' + CSS.escape(slug) + '"]').forEach(function (x) {
+      x.checked = on;
+    });
+    document.querySelectorAll('[data-route-toggle="' + CSS.escape(slug) + '"]').forEach(function (b) {
+      b.classList.toggle('on', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      b.textContent = on ? (U.route_remove || '✓ In route') : (U.route_add || 'Add to route');
+    });
+    suggestNear();
+  }
+
   function placeChoice(p, checked, compact) {
     var blocked = !!sugBlocked[p.s];
     var extra = sugExtra[p.s];
@@ -643,7 +670,13 @@
       esc(blocked ? SL.need : SL.add) + ' ' + esc(extraText) + '</span>' : '';
     return '<label class="place-choice' + (compact ? ' compact' : '') + (!checked ? ' candidate' : '') + (blocked ? ' blocked' : '') + '">' +
       '<input type="checkbox" data-suggest="' + esc(p.s) + '"' + (checked ? ' checked' : '') + (blocked ? ' disabled' : '') + '>' +
+      // The thumbnail opens details instead of toggling the checkbox. It has to
+      // be a <button>: a plain <img> inside the <label> would flip the checkbox
+      // on every click, which is what made tapping a photo deselect the place.
+      '<button type="button" class="place-thumb" data-go="' + esc(p.s) + '" title="' +
+      esc(U.open_details || 'View details') + '" aria-label="' + esc(U.open_details || 'View details') + '">' +
       (p.img ? '<img src="' + esc(p.img) + '" alt="" loading="lazy">' : '<span class="place-ph" aria-hidden="true"></span>') +
+      '</button>' +
       '<span class="place-copy"><button class="lnk" type="button" data-go="' + esc(p.s) + '">' + esc(p.n) + '</button>' +
       '<span class="place-line">' + esc(p.t) + ' · ' + esc(p.h) + '</span>' + fitNote + ratingStars(p) + '</span></label>';
   }
@@ -1109,12 +1142,9 @@
       route();
     }
     if (t && t.hasAttribute && t.hasAttribute('data-suggest')) {
-      manualSelection = true;
-      sugOff[t.getAttribute('data-suggest')] = !t.checked;
-      document.querySelectorAll('[data-suggest="' + CSS.escape(t.getAttribute('data-suggest')) + '"]').forEach(function (x) {
-        if (x !== t) x.checked = t.checked;
-      });
-      suggestNear();
+      // One path for both controls, so the checkbox and the detail-panel
+      // button can never disagree about whether a place is in the route.
+      setInRoute(t.getAttribute('data-suggest'), t.checked);
     }
   });
   $('expday').value = window.WX ? WX.iso(0) : '';
@@ -1146,8 +1176,14 @@
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
 
   document.addEventListener('click', function (e) {
-    var t = e.target.closest ? e.target.closest('[data-s],[data-go],[data-set],[data-pick],[data-visited],[data-review]') : null;
+    var t = e.target.closest ? e.target.closest('[data-s],[data-go],[data-set],[data-pick],[data-visited],[data-review],[data-route-toggle]') : null;
     if (!t) return;
+    if (t.hasAttribute('data-route-toggle')) {
+      e.preventDefault(); e.stopPropagation();
+      var rs = t.getAttribute('data-route-toggle');
+      setInRoute(rs, !inRoute(rs));
+      return;
+    }
     if (t.hasAttribute('data-visited')) { e.preventDefault(); e.stopPropagation(); toggleVisited(t.getAttribute('data-visited')); return; }
     if (t.hasAttribute('data-review')) {
       e.preventDefault(); e.stopPropagation();

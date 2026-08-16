@@ -728,27 +728,10 @@ def render_static_page(lang, page):
             "he": ("התחילו לתכנן טיול", "גלו טיולים ציבוריים", "מתחילים בחינם · כניסה נדרשת רק לשמירה או לשיתוף", "טיולים סטנדרטיים", "Community"),
             "ar": ("ابدأ تخطيط رحلتك", "استكشف الرحلات العامة", "ابدأ مجانًا · تسجيل الدخول مطلوب فقط للحفظ أو المشاركة", "الجولات القياسية", "Community"),
         }[lang]
-        quick = {
-            "ka": (("სტანდარტული ტურები", "აირჩიეთ მზა მარშრუტი და მოარგეთ", "#planner", True),
-                   ("Community", "იპოვეთ ჯგუფები და თანამგზავრები", page_url(lang, "community", False), False)),
-            "en": (("Standard tours", "Choose a ready route and customise it", "#planner", True),
-                   ("Community", "Find groups and travel companions", page_url(lang, "community", False), False)),
-            "ru": (("Стандартные туры", "Выберите маршрут и настройте его", "#planner", True),
-                   ("Community", "Найдите группы и попутчиков", page_url(lang, "community", False), False)),
-            "fa": (("تورهای استاندارد", "یک مسیر آماده را انتخاب و شخصی‌سازی کنید", "#planner", True),
-                   ("Community", "گروه‌ها و همسفران را پیدا کنید", page_url(lang, "community", False), False)),
-            "he": (("טיולים סטנדרטיים", "בחרו מסלול מוכן והתאימו אותו", "#planner", True),
-                   ("Community", "מצאו קבוצות ושותפים לטיול", page_url(lang, "community", False), False)),
-            "ar": (("الجولات القياسية", "اختر مسارًا جاهزًا وخصصه", "#planner", True),
-                   ("Community", "اعثر على مجموعات ورفقاء سفر", page_url(lang, "community", False), False)),
-        }[lang]
         x = TRAVEL[lang]["exp"]
         facts = "".join(f"<div><b>{E(x2['v'])}</b><span>{E(x2['k'])}</span></div>"
                         for x2 in h["facts"])
         mp, tail_js = travel_workspace_block(lang, depth, "64vh", hero=True, initial="planner")
-        quick_html = "".join(
-            f'<a class="home-quick-card" href="{E(q[2])}"{" data-open-standard-tour" if q[3] else ""}><span>{i}</span><div><b>{E(q[0])}</b><small>{E(q[1])}</small></div><i aria-hidden="true">→</i></a>'
-            for i, q in enumerate(quick, 1))
         body.append(f'<section class="hero home-hero"><div class="wrap wide home-hero-grid">'
                     f'<div class="home-hero-copy"><span class="kicker">{E(h["kicker"])}</span><h1>{E(p["h1"])}</h1>'
                     f'<p class="lead">{inline(h["lead"], lang)}</p>'
@@ -757,7 +740,6 @@ def render_static_page(lang, page):
                     f'<a class="btn alt" href="#planner" data-open-standard-tour>{E(hero_cta[3])}</a>'
                     f'<a class="btn alt" href="{page_url(lang, "community", False)}">{E(hero_cta[4])}</a></div>'
                     f'<p class="home-hero-note">✓ {E(hero_cta[2])}</p></div>'
-                    f'<aside class="home-quick" aria-label="Quick start">{quick_html}</aside>'
                     f'</div></section>')
         map_section = (f'<section class="sec wide maphero" id="planner"><div class="wrap wide">'
                        f'<div class="map-intro"><h2>{E(x["explore_h"])}</h2>'
@@ -1414,7 +1396,10 @@ def explorer_config(lang, base="/"):
                "nearby_title": u["nearby_title"],
                "visited_yes": visited[3], "visited_mark": visited[4],
                "write_review": {"ka":"რივიუს დაწერა","en":"Write review","ru":"Написать отзыв","fa":"نوشتن نظر","he":"כתיבת ביקורת","ar":"كتابة مراجعة"}[lang],
-               "review_saved": {"ka":"რივიუ შენახულია","en":"Review saved","ru":"Отзыв сохранён","fa":"نظر ذخیره شد","he":"הביקורת נשמרה","ar":"تم حفظ المراجعة"}[lang]},
+               "review_saved": {"ka":"რივიუ შენახულია","en":"Review saved","ru":"Отзыв сохранён","fa":"نظر ذخیره شد","he":"הביקורת נשמרה","ar":"تم حفظ المراجعة"}[lang],
+               "route_add": {"ka":"მარშრუტში დამატება","en":"Add to route","ru":"Добавить в маршрут","fa":"افزودن به مسیر","he":"הוספה למסלול","ar":"إضافة إلى المسار"}[lang],
+               "route_remove": {"ka":"✓ მარშრუტშია","en":"✓ In route","ru":"✓ В маршруте","fa":"✓ در مسیر","he":"✓ במסלול","ar":"✓ في المسار"}[lang],
+               "open_details": {"ka":"დეტალების ნახვა","en":"View details","ru":"Подробнее","fa":"مشاهده جزئیات","he":"הצגת פרטים","ar":"عرض التفاصيل"}[lang]},
     }
 
 

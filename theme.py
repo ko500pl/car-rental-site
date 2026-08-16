@@ -864,6 +864,10 @@ body.auth-open{{overflow:hidden}}
   background:color-mix(in srgb,var(--accent) 9%,var(--surface))}}
 .place-choice input{{width:19px;height:19px;accent-color:var(--accent);cursor:pointer}}
 .place-choice img,.place-ph{{width:50px;height:38px;object-fit:cover;border-radius:7px;background:var(--surface-2);display:block}}
+.place-thumb{{padding:0;border:0;background:none;border-radius:7px;cursor:pointer;line-height:0;flex:none}}
+.place-thumb:hover img,.place-thumb:focus-visible img{{outline:2px solid var(--accent);outline-offset:1px}}
+.place-thumb:focus-visible{{outline:none}}
+.route-toggle.on{{background:var(--brand);color:var(--on-brand);border-color:var(--brand)}}
 .place-copy{{min-width:0;display:block}}
 .place-copy .lnk{{display:block;font-size:12.5px;line-height:1.3;font-weight:650;text-decoration:none;
   white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}}
