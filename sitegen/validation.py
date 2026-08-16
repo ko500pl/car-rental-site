@@ -60,10 +60,16 @@ def validate(site, cars, regions, attractions, routes, pages, posts):
             r.require(ref in attractions and is_public(attractions[ref]),
                       f"route/{slug}: waypoint '{ref}' is missing or unpublished")
 
-    placeholders = ("example.", "000 000", "00 00 00", "/example")
-    for key in ("phone", "mobile", "email", "software_email"):
+    # "000000" without spaces matters too: the whatsapp field stores a bare
+    # E.164 number, and a placeholder there silently breaks the main
+    # conversion path while every displayed number looks correct.
+    placeholders = ("example.", "000 000", "00 00 00", "/example", "000000")
+    for key in ("phone", "mobile", "email", "software_email", "whatsapp"):
         if any(x in str(site.get(key, "")).lower() for x in placeholders):
             r.warnings.append(f"settings/site.yml: '{key}' still contains placeholder data")
+    # A rental site with no reachable number cannot convert at all.
+    if not str(site.get("phone_e164", "")).strip():
+        r.warnings.append("settings/site.yml: 'phone_e164' is empty; no contact number is published")
     if any("example" in str(x).lower() for x in site.get("social", [])):
         r.warnings.append("settings/site.yml: social links still contain placeholder data")
     missing_images = sum(1 for c in cars.values() if is_public(c) and not c.get("image"))

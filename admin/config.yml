@@ -495,12 +495,18 @@ collections:
           - {label: "ბრენდი (ლათინურად)", name: rental_brand, widget: string}
           - {label: "ბრენდი (ქართულად)", name: rental_brand_ka, widget: string}
           - {label: "პროგრამის სახელი", name: software_brand, widget: string}
-          - {label: "ტელეფონი", name: phone, widget: string}
-          - {label: "ტელეფონი (E.164)", name: phone_e164, widget: string, hint: "მაგ. +995322000000"}
-          - {label: "მობილური", name: mobile, widget: string}
-          - {label: "მობილური (E.164)", name: mobile_e164, widget: string}
-          - {label: "ელფოსტა", name: email, widget: string}
-          - {label: "ელფოსტა (პროგრამა)", name: software_email, widget: string}
+          - {label: "ტელეფონი", name: phone, widget: string,
+             hint: "მთავარი ნომერი — ჩანს header-ში, footer-ში და ყველა ღილაკზე. სავალდებულოა."}
+          - {label: "ტელეფონი (E.164)", name: phone_e164, widget: string,
+             hint: "იგივე ნომერი ერთ სტრიქონად, მაგ. +995597555565. სავალდებულოა."}
+          - {label: "WhatsApp ნომერი", name: whatsapp, widget: string, required: false,
+             hint: "მხოლოდ ციფრები, + გარეშე — მაგ. 995597555565. ცარიელი = გამოიყენება მობილური, მისი არქონისას მთავარი ტელეფონი."}
+          - {label: "მობილური", name: mobile, widget: string, required: false,
+             hint: "მეორე ნომერი. თუ ერთი ნომერი გაქვთ, ცარიელი დატოვეთ — საიტზე უბრალოდ არ გამოჩნდება."}
+          - {label: "მობილური (E.164)", name: mobile_e164, widget: string, required: false}
+          - {label: "ელფოსტა", name: email, widget: string, required: false,
+             hint: "ცარიელი = ელფოსტა არსად არ გამოჩნდება. გამოგონილი მისამართი არ ჩაწეროთ."}
+          - {label: "ელფოსტა (პროგრამა)", name: software_email, widget: string, required: false}
           - {label: "საფოსტო ინდექსი", name: address_zip, widget: string}
           - {label: "განედი", name: geo_lat, widget: string}
           - {label: "გრძედი", name: geo_lon, widget: string}
@@ -510,6 +516,10 @@ collections:
           - {label: "USD კურსი", name: usd_rate, widget: number, value_type: float, min: 0.01,
              hint: "GEL იყოფა ამ კურსზე; მიღებული USD ავტომატურად მრგვალდება ქვემოთ მითითებულ ბიჯზე"}
           - {label: "USD დამრგვალების ბიჯი", name: usd_rounding, widget: number, value_type: int, min: 1, default: 10}
+          - {label: "საწვავის ხარჯი (ლ / 100 კმ)", name: fuel_l_100km, widget: number, value_type: float, min: 0.1,
+             hint: "გამოიყენება მარშრუტის საწვავის სავარაუდო ღირებულების გამოსათვლელად"}
+          - {label: "საწვავის ფასი (₾ / ლიტრი)", name: fuel_price_gel, widget: number, value_type: float, min: 0.1,
+             hint: "ფასის ცვლილებისას აქ განაახლეთ — საიტზე ავტომატურად გადაითვლება"}
           - {label: "გახსნის დრო", name: opens, widget: string}
           - {label: "დახურვის დრო", name: closes, widget: string}
           - label: "მისამართი"
@@ -534,7 +544,8 @@ collections:
               - {label: "არაბულად", name: ar, widget: object, fields: [
                   {label: "ქუჩა", name: street, widget: string},
                   {label: "ქალაქი", name: city, widget: string}]}
-          - {label: "სოციალური ქსელები", name: social, widget: list,
+          - {label: "სოციალური ქსელები", name: social, widget: list, required: false,
+             hint: "ცარიელი სია = სოციალური ბმულები არსად არ გამოჩნდება. მხოლოდ რეალური გვერდები დაამატეთ.",
              field: {label: "ბმული", name: url, widget: string}}
 
       - name: design

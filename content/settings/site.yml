@@ -2,12 +2,12 @@ site_url: https://rentup.ge
 rental_brand: Drive On
 rental_brand_ka: დრაივ ონ
 software_brand: Drive On Manager
-phone: +995 32 2 000 000
-phone_e164: '+995322000000'
-mobile: +995 599 00 00 00
-mobile_e164: '+995599000000'
-email: info@example.ge
-software_email: hello@example.ge
+phone: +995 597 55 55 65
+phone_e164: '+995597555565'
+mobile: ''
+mobile_e164: ''
+email: ''
+software_email: ''
 address_zip: 0186
 geo_lat: '41.7245'
 geo_lon: '44.7509'
@@ -36,10 +36,7 @@ address:
   ar:
     street: جادة فاجا-بشافيلا 71
     city: تبليسي
-social:
-- https://www.facebook.com/example
-- https://www.instagram.com/example
-- https://www.linkedin.com/company/example
+social: []
 fuel_l_100km: 8.5
 fuel_price_gel: 3.1
-whatsapp: '995599000000'
+whatsapp: '995597555565'

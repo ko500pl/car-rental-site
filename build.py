@@ -337,7 +337,7 @@ def render_md(text, lang):
 # ══════════════════════════════════════════════════════════════ JSON-LD
 def org_node(lang):
     a = SITE["address"][lang]
-    return {
+    node = {
         "@type": ["AutoRental", "LocalBusiness"],
         "@id": SITE_URL + "/#organization",
         "name": BRAND,
@@ -345,7 +345,6 @@ def org_node(lang):
         "url": SITE_URL + lang_root(lang),
         "description": META[lang]["org_desc"],
         "telephone": SITE["phone_e164"],
-        "email": SITE["email"],
         "foundingDate": SITE["founded"],
         "priceRange": "$$",
         "currenciesAccepted": "GEL, USD, EUR",
@@ -361,8 +360,15 @@ def org_node(lang):
             "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday",
                           "Friday", "Saturday", "Sunday"],
             "opens": SITE["opens"], "closes": SITE["closes"]}],
-        "sameAs": SITE["social"],
     }
+    # Optional contact details: the owner may genuinely have only a phone
+    # number. Emit each key only when it holds a real value, so an empty admin
+    # field never becomes an empty mailto: or a bare sameAs entry.
+    if SITE.get("email"):
+        node["email"] = SITE["email"]
+    if SITE.get("social"):
+        node["sameAs"] = SITE["social"]
+    return node
 
 
 def website_node(lang):
@@ -600,8 +606,8 @@ def footer_html(lang):
 <a href="{page_url(lang, 'contact', False)}">{E(u['nav']['contact'])}</a></nav>
 <div class="foot-contact">
 <a dir="ltr" href="tel:{SITE['phone_e164']}">{E(SITE['phone'])}</a>
-<a dir="ltr" href="tel:{SITE['mobile_e164']}">{E(SITE['mobile'])}</a>
-<a dir="ltr" href="mailto:{SITE['email']}">{E(SITE['email'])}</a>
+{f'''<a dir="ltr" href="tel:{SITE['mobile_e164']}">{E(SITE['mobile'])}</a>''' if SITE.get('mobile') else ''}
+{f'''<a dir="ltr" href="mailto:{SITE['email']}">{E(SITE['email'])}</a>''' if SITE.get('email') else ''}
 <span>{E(a['street'])}, {E(a['city'])}</span></div>
 </div><div class="foot-bottom">
 <span>© {date.today().year} {E(BRAND)}. {E(u['ui']['rights'])}</span>
@@ -619,7 +625,8 @@ def shell(lang, current, head, body, depth, tail=""):
         cfg["accountUrl"] = page_url(lang, "account", False)
         cfg["plannerUrl"] = page_url(lang, "map", False) + "#planner"
         cfg["booking"] = BOOKING
-        cfg["whatsapp"] = str(SITE.get("whatsapp") or SITE.get("mobile_e164", "")).replace("+", "").replace(" ", "")
+        cfg["whatsapp"] = str(SITE.get("whatsapp") or SITE.get("mobile_e164")
+                              or SITE.get("phone_e164", "")).replace("+", "").replace(" ", "")
         cfg["siteUrl"] = SITE_URL
         cfg["t"] = {k: u["ui"][k] for k in (
             "account", "sign_in", "sign_up", "sign_out", "with_google", "or_email", "email",
@@ -805,8 +812,11 @@ def render_static_page(lang, page):
             f'<section class="sec"><div class="wrap"><h2>{E(contact_tx[0])}</h2>'
             f'<dl class="facts contact-facts">'
             f'<div><dt class="k">{E(contact_tx[1])}</dt><dd class="v"><a dir="ltr" href="tel:{E(SITE["phone_e164"])}">{E(SITE["phone"])}</a></dd></div>'
-            f'<div><dt class="k">{E(contact_tx[2])}</dt><dd class="v"><a dir="ltr" href="tel:{E(SITE["mobile_e164"])}">{E(SITE["mobile"])}</a></dd></div>'
-            f'<div><dt class="k">{E(contact_tx[3])}</dt><dd class="v"><a href="mailto:{E(SITE["email"])}">{E(SITE["email"])}</a></dd></div>'
+            + (f'<div><dt class="k">{E(contact_tx[2])}</dt><dd class="v"><a dir="ltr" href="tel:{E(SITE["mobile_e164"])}">{E(SITE["mobile"])}</a></dd></div>'
+               if SITE.get("mobile") else "")
+            + (f'<div><dt class="k">{E(contact_tx[3])}</dt><dd class="v"><a href="mailto:{E(SITE["email"])}">{E(SITE["email"])}</a></dd></div>'
+               if SITE.get("email") else "")
+            +
             f'<div><dt class="k">{E(contact_tx[4])}</dt><dd class="v">{E(addr["street"])}, {E(addr["city"])} {E(SITE["address_zip"])}</dd></div>'
             f'<div><dt class="k">{E(contact_tx[5])}</dt><dd class="v">{E(SITE["opens"])}–{E(SITE["closes"])}</dd></div></dl>'
             f'<p>{E(contact_tx[6])}</p><h2>{E(uu["f_title"])}</h2>'
@@ -1639,7 +1649,10 @@ def cheapest_price(cat):
 
 def wa_link(lang, text=""):
     import urllib.parse as _u
-    num = SITE.get("whatsapp") or SITE.get("mobile_e164", "").lstrip("+")
+    # One number is enough: fall back to the main phone when no separate
+    # mobile is configured, so the WhatsApp handoff never silently dies.
+    num = (SITE.get("whatsapp") or SITE.get("mobile_e164")
+           or SITE.get("phone_e164", "")).lstrip("+")
     msg = text or UI[lang]["ui"].get("wa_msg", "")
     return f'https://wa.me/{num}?text={_u.quote(msg)}'
 
