@@ -688,7 +688,7 @@ tbody tr:nth-child(even){{background:color-mix(in srgb,#fff 3%,transparent)}}
 .rating-pick{{display:flex;gap:6px;flex-wrap:wrap}}.rating-pick label{{margin:0}}.rating-pick input{{position:absolute;opacity:0}}
 .rating-pick span{{display:block;padding:8px 11px;border:1px solid var(--line);border-radius:10px;color:#fbbf24;cursor:pointer}}
 .rating-pick input:checked+span{{background:rgba(251,191,36,.12);border-color:#fbbf24}}
-.reviewform textarea{{width:100%;min-height:120px;margin-top:6px;padding:11px 13px;border:1px solid var(--line);border-radius:12px;background:#07101a;color:var(--ink);font:inherit;resize:vertical}}
+.reviewform textarea{{width:100%;min-height:120px;margin-top:6px;padding:11px 13px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);font:inherit;resize:vertical}}
 @media(max-width:720px){{.accjournal{{grid-template-columns:1fr}}}}
 .btn.sm.ghost{{padding:7px 13px}}
 .btn.wa{{background:#1faa53;color:#fff;box-shadow:0 6px 20px rgba(31,170,83,.25)}}
@@ -823,7 +823,7 @@ body.auth-open{{overflow:hidden}}
 .authbrand span{{font-weight:850;font-size:14px;color:#04222b}}.authbrand img{{display:block;width:108px;height:58px;object-fit:contain}}
 .authcard h3{{font-size:24px;line-height:1.25;color:#f4f8fc}}
 .authcard .pshort{{font-size:14px;line-height:1.65;margin-bottom:18px}}
-.authcard input{{height:48px;padding:11px 13px;margin-top:6px;border-radius:12px;background:#07101a;transition:.18s ease}}
+.authcard input{{height:48px;padding:11px 13px;margin-top:6px;border-radius:12px;background:var(--bg);color:var(--ink);transition:.18s ease}}
 .authcard input:focus{{outline:0;border-color:var(--brand);box-shadow:0 0 0 3px color-mix(in srgb,var(--brand) 22%,transparent)}}
 .authx{{width:40px;height:40px;border-radius:11px}}
 .btn.goog{{min-height:48px;margin-top:0;border:1px solid #d6dce4}}
@@ -911,7 +911,7 @@ body.auth-open{{overflow:hidden}}
 .booking-dialog{{position:fixed;inset:0;z-index:9998;display:grid;place-items:center;padding:18px;background:rgba(2,8,16,.8);backdrop-filter:blur(10px)}}
 .booking-dialog[hidden]{{display:none}}
 body.booking-open{{overflow:hidden}}
-.booking-modal-card{{position:relative;width:min(560px,100%);max-height:calc(100dvh - 36px);overflow:auto;padding:28px;border:1px solid rgba(148,163,184,.2);border-radius:22px;background:linear-gradient(180deg,#101b29,#0a141f);box-shadow:0 32px 90px rgba(0,0,0,.6)}}
+.booking-modal-card{{position:relative;width:min(560px,100%);max-height:calc(100dvh - 36px);overflow:auto;padding:28px;border:1px solid var(--line);border-radius:22px;background:var(--surface);box-shadow:0 32px 90px rgba(0,0,0,.34)}}
 .booking-close{{position:absolute;inset-block-start:14px;inset-inline-end:14px;width:40px;height:40px;border:1px solid var(--line);border-radius:11px;background:var(--surface-2);color:var(--muted);font-size:25px;line-height:1;cursor:pointer}}
 .booking-brand{{display:grid;place-items:center;width:58px;height:46px;margin-bottom:15px;border-radius:13px;background:linear-gradient(135deg,#24bce2,#4385f5);color:#062333;font-weight:900;box-shadow:0 10px 28px rgba(43,184,230,.22)}}
 .inquiry-mini{{margin:0;padding:0;background:transparent}}
@@ -921,7 +921,9 @@ body.booking-open{{overflow:hidden}}
 .booking-choice small{{color:var(--muted);font-size:11px}}.booking-choice strong{{font-size:14px;color:var(--ink)}}
 .inquiry-grid{{display:grid;grid-template-columns:1fr 1fr;gap:11px}}
 .inquiry-grid label{{display:grid;gap:5px;font-size:12px;color:var(--muted)}}
-.inquiry-grid input,.inquiry-grid textarea{{width:100%;min-width:0;padding:10px 12px;border:1px solid var(--line);border-radius:11px;background:#07101a;color:var(--ink);font:inherit}}
+.inquiry-grid input,.inquiry-grid textarea{{width:100%;min-width:0;padding:10px 12px;border:1px solid var(--line);border-radius:11px;background:var(--bg);color:var(--ink);font:inherit}}
+.inquiry-grid input::placeholder,.inquiry-grid textarea::placeholder{{color:var(--ink-3)}}
+.inquiry-grid input:focus-visible,.inquiry-grid textarea:focus-visible{{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}}
 .inquiry-grid input{{height:46px}}.inquiry-grid textarea{{resize:vertical;min-height:68px}}
 .inquiry-notes{{grid-column:1/-1}}
 .inquiry-actions{{display:grid;grid-template-columns:1.4fr 1fr;gap:10px;margin-top:15px}}
