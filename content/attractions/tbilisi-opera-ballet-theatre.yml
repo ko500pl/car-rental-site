@@ -1,0 +1,26 @@
+region: tbilisi
+type: theatre
+lat: 41.7011065
+lon: 44.7963095
+elevation: 425
+unesco: false
+featured: false
+order: 67
+image: ''
+gallery: []
+visit_hours: '3'
+best_season: all
+open_year_round: true
+entry_fee: ticket
+distance_tbilisi_km: 1
+drive_time_tbilisi: '0:05'
+road: paved
+car_category: economy
+nearby: [rustaveli-national-theatre, georgian-national-museum, mtatsminda-pantheon]
+sources: [https://opera.ge/eng]
+ka: {name: თბილისის ოპერისა და ბალეტის თეატრი, short: ზაქარია ფალიაშვილის სახელობის ოპერისა და ბალეტის სახელმწიფო თეატრი რუსთაველის გამზირზე., body: მარშრუტში შედის შენობის ნახვა და, რეპერტუარის არსებობის შემთხვევაში, ოპერის ან ბალეტის წარმოდგენა., tip: წარმოდგენების თარიღები იცვლება და ბილეთი წინასწარ უნდა შეიძინოთ., route: რუსთაველის გამზირზეა; მეტრო რუსთაველიდან რამდენიმე წუთის სავალია.}
+en: {name: Tbilisi Opera and Ballet Theatre, short: The Zakaria Paliashvili State Opera and Ballet Theatre on Rustaveli Avenue., body: See the landmark building and, when scheduled, attend an opera or ballet performance., tip: Performance dates change and advance booking is strongly recommended., route: On Rustaveli Avenue, a short walk from Rustaveli metro.}
+ru: {name: Тбилисский театр оперы и балета, short: Государственный театр имени Закарии Палиашвили на проспекте Руставели., body: Осмотрите здание и при наличии афиши посетите оперу или балет., tip: Расписание меняется; покупайте билеты заранее., route: Несколько минут пешком от метро Руставели.}
+fa: {name: تئاتر اپرا و باله تفلیس, short: تئاتر دولتی زکریا پالیاشویلی در خیابان روستاولی., body: ساختمان را ببینید و در صورت اجرا اپرا یا باله تماشا کنید., tip: تاریخ اجراها تغییر می‌کند؛ بلیت را زودتر بخرید., route: چند دقیقه پیاده از مترو روستاولی.}
+he: {name: בית האופרה והבלט של טביליסי, short: התיאטרון הממלכתי על שם זכריה פליאשווילי בשדרת רוסתוולי., body: בקרו בבניין ובמידת האפשר צפו באופרה או בבלט., tip: לוחות המופעים משתנים; הזמינו מראש., route: הליכה קצרה מתחנת המטרו רוסתוולי.}
+ar: {name: مسرح أوبرا وباليه تبليسي, short: مسرح زكريا بالياشفيلي الحكومي على شارع روستافيلي., body: شاهد المبنى واحضر عرض أوبرا أو باليه إذا كان متاحاً., tip: تتغير المواعيد؛ احجز مسبقاً., route: مسافة قصيرة سيراً من مترو روستافيلي.}

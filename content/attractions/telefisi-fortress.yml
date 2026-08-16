@@ -1,0 +1,66 @@
+region: imereti
+type: fortress
+lat: 42.07124
+lon: 42.236407
+elevation: 180
+unesco: false
+featured: false
+order: 258
+image: /assets/photos/telefisi-fortress.jpg
+image_credit:
+  author: Samtredia Municipality
+  license: Official tourism source
+  license_url: https://www.samtredia.gov.ge/en/tourism/truismobjects.html
+  source: https://www.samtredia.gov.ge/images/istoriuliekskursi/telefisiscixe.jpg
+gallery:
+- image: /assets/photos/telefisi-fortress.jpg
+  author: Samtredia Municipality
+  license: Official tourism source
+  license_url: https://www.samtredia.gov.ge/en/tourism/truismobjects.html
+  source: https://www.samtredia.gov.ge/images/istoriuliekskursi/telefisiscixe.jpg
+visit_hours: '1'
+best_season: all
+open_year_round: true
+entry_fee: free
+distance_tbilisi_km: 250
+drive_time_tbilisi: '3:40'
+road: mostly_paved
+car_category: suv
+nearby:
+- zando-st-george-monastery
+ka:
+  name: ტელეფისის ციხე (ტოლები)
+  short: ადრეული შუა საუკუნეების ციხის ნანგრევები სოფელ ტოლებში, რიონის ხეობის ისტორიულ გზაზე.
+  body: ტელეფისის ციხე სამტრედიის მუნიციპალიტეტის სოფელ ტოლებში მდებარეობს. ციხე რიონის ხეობის გზას აკონტროლებდა. წერილობით წყაროებში ეს ადგილი 553 წლის ბრძოლასთანაა დაკავშირებული. დღეს ადგილზე ნანგრევებია შემორჩენილი, ამიტომ მონახულება ისტორიული ლანდშაფტის ნახვაა და არა სრულად აღდგენილი ციხის დათვალიერება.
+  tip: ნანგრევებზე ფრთხილად იარეთ, არ ახვიდეთ მორყეულ კედლებზე და წვიმის შემდეგ ჩაიცვით მყარი ფეხსაცმელი.
+  route: სამტრედიიდან გაემართეთ სოფელ ტოლებისკენ. ბოლო მისადგომზე გამოიყენეთ რუკის ზუსტი ნიშნული და ადგილობრივებს გადაამოწმეთ უსაფრთხო მისასვლელი.
+en:
+  name: Telefisi Fortress (Tolebi)
+  short: Early-medieval fortress ruins in Tolebi, overlooking a historic route through the Rioni valley.
+  body: Telefisi Fortress is in the village of Tolebi, Samtredia Municipality. It controlled a route through the Rioni valley and is associated in written sources with a battle in 553. Only ruins survive today, so the visit is about the historic landscape rather than a restored castle.
+  tip: Walk carefully among the ruins, avoid unstable walls and wear firm shoes after rain.
+  route: Drive from Samtredia toward Tolebi, then use the exact map pin and confirm the safest final approach locally.
+ru:
+  name: Крепость Телефиси (Толеби)
+  short: Руины раннесредневековой крепости в Толеби на историческом пути долины Риони.
+  body: Крепость Телефиси находится в селе Толеби муниципалитета Самтредиа. Она контролировала путь через долину Риони и связана в письменных источниках с битвой 553 года. Сегодня сохранились руины, а не восстановленный замок.
+  tip: Осторожно ходите среди руин, не поднимайтесь на неустойчивые стены и после дождя надевайте прочную обувь.
+  route: Из Самтредиа направляйтесь в Толеби, затем используйте точную отметку на карте и уточните безопасный подъезд у местных жителей.
+fa:
+  name: دژ تلفیسی (تولبی)
+  short: ویرانه‌های دژ اوایل قرون وسطی در تولبی بر مسیر تاریخی دره ریونی.
+  body: دژ تلفیسی در روستای تولبی شهرداری سامتردیا قرار دارد. این دژ مسیر دره ریونی را کنترل می‌کرد و در منابع با نبرد سال ۵۵۳ مرتبط است. امروز تنها ویرانه‌ها باقی مانده‌اند.
+  tip: میان ویرانه‌ها با احتیاط راه بروید و پس از باران کفش مناسب بپوشید.
+  route: از سامتردیا به تولبی بروید و برای بخش پایانی از نشان دقیق نقشه و راهنمایی محلی استفاده کنید.
+he:
+  name: מבצר טלפיסי (טולבי)
+  short: שרידי מבצר מראשית ימי הביניים בטולבי, על נתיב היסטורי בעמק הריוני.
+  body: מבצר טלפיסי נמצא בכפר טולבי שבמועצת סמטרדיה. הוא שלט בדרך בעמק הריוני ומקושר במקורות לקרב בשנת 553. כיום נותרו במקום חורבות בלבד.
+  tip: לכו בזהירות בין השרידים, אל תטפסו על קירות לא יציבים ונעלו נעליים מתאימות אחרי גשם.
+  route: סעו מסמטרדיה לטולבי והשתמשו בסימון המדויק במפה ובמידע מקומי לקטע האחרון.
+ar:
+  name: قلعة تيليفيسي (توليبي)
+  short: أطلال قلعة من أوائل العصور الوسطى في توليبي على طريق تاريخي بوادي ريوني.
+  body: تقع قلعة تيليفيسي في قرية توليبي ببلدية سامتريديا. كانت تسيطر على طريق وادي ريوني وترتبط في المصادر بمعركة سنة 553. لم يبق اليوم سوى الأطلال.
+  tip: تحركوا بحذر بين الأطلال ولا تتسلقوا الجدران غير المستقرة وارتدوا حذاء مناسباً بعد المطر.
+  route: اتجهوا من سامتريديا إلى توليبي ثم استخدموا علامة الخريطة الدقيقة واسألوا محلياً عن المدخل الآمن.

@@ -67,6 +67,7 @@ ka:
     beach: პლაჟი
     ski: სათხილამურო
     archaeology: არქეოლოგია
+    theatre: თეატრი და სპექტაკლი
   exp:
     search_ph: მოძებნეთ ადგილი…
     all_types: ყველა ტიპი
@@ -211,6 +212,7 @@ en:
     beach: Beach
     ski: Ski area
     archaeology: Archaeology
+    theatre: Theatre & performance
   exp:
     search_ph: Search a place…
     all_types: All types
@@ -357,6 +359,7 @@ ru:
     beach: Пляж
     ski: Горнолыжный курорт
     archaeology: Археология
+    theatre: Театр и спектакль
   exp:
     search_ph: Найти место…
     all_types: Все типы
@@ -502,6 +505,7 @@ fa:
     beach: ساحل
     ski: پیست اسکی
     archaeology: باستان‌شناسی
+    theatre: تئاتر و اجرا
   exp:
     search_ph: جست‌وجوی مکان…
     all_types: همهٔ گونه‌ها
@@ -647,6 +651,7 @@ he:
     beach: חוף
     ski: אתר סקי
     archaeology: ארכיאולוגיה
+    theatre: תיאטרון ומופע
   exp:
     search_ph: חיפוש מקום…
     all_types: כל הסוגים
@@ -791,6 +796,7 @@ ar:
     beach: شاطئ
     ski: منطقة تزلج
     archaeology: آثار
+    theatre: مسرح وعروض
   exp:
     search_ph: ابحث عن مكان…
     all_types: كل الأنواع

@@ -51,6 +51,7 @@ PAGE_SLUG = {"index": "", "account": "account/", "fleet": "fleet/", "pricing": "
 TODAY = date.today().isoformat()
 E = lambda s: html.escape(str(s), quote=True)                # noqa: E731
 J = lambda o: json.dumps(o, ensure_ascii=False, indent=2)    # noqa: E731
+JC = lambda o: json.dumps(o, ensure_ascii=False, separators=(",", ":"))  # noqa: E731
 
 
 def load(path):
@@ -456,6 +457,7 @@ LEAFLET_JS = "/assets/leaflet/leaflet.js"
 
 ASSET = {"css": "/assets/style.css", "explorer": "/assets/explorer.js",
          "planner": "/assets/planner.js"}
+TRAVEL_ASSET = {}
 
 
 def _hash(data):
@@ -930,7 +932,7 @@ def render_business_card(lang):
 <h1 id="card-name">{E(name)}</h1><p class="road-pass-role">{E(role)}</p>
 <a class="card-contact-line" href="tel:+995597555565" aria-label="{E(call)}: +995 597 55 55 65"><span aria-hidden="true">☎</span><bdi dir="ltr">+995 597 55 55 65</bdi></a>
 <a class="card-contact-line card-site" href="https://www.rentup.ge/" aria-label="{E(website)}: www.rentup.ge"><span aria-hidden="true">↗</span><bdi dir="ltr">www.rentup.ge</bdi></a>
-</div><div class="road-pass-qr"><a href="/assets/shota-lomidze-fleet-house.vcf" download aria-label="{E(save)}"><img src="/assets/shota-lomidze-vcard.svg" alt="QR — {E(save)}"></a><p>{E(scan)}</p></div></div>
+</div><div class="road-pass-qr"><a href="/assets/shota-lomidze-drive-on.vcf" download aria-label="{E(save)}"><img src="/assets/shota-lomidze-vcard.svg" alt="QR — {E(save)}"></a><p>{E(scan)}</p></div></div>
 </article></div></main>'''
     depth = 1 if lang == "ka" else 2
     page = (f'<!DOCTYPE html>\n<html lang="{lang}" dir="{LANG_DIR[lang]}"><head>\n{head}\n</head>'
@@ -1124,6 +1126,7 @@ TYPE_COLOR = {
     "mountain": "#5b7c4a", "nature": "#3f8f5f", "town": "#c8963e",
     "museum": "#a0703c", "winery": "#8f2f52", "spa": "#3f9f8f",
     "beach": "#d8a13a", "ski": "#4a76b5", "archaeology": "#7a6a4f",
+    "theatre": "#b43f72",
 }
 
 
@@ -1354,10 +1357,41 @@ def attr_detail(lang, slug, a):
 
 
 EXPLORER_JS = """
-<script src="%(js)s"></script>
-<script src="/assets/weather.js"></script>
-<script>window.EXP=%(cfg)s;</script>
-<script src="%(exp)s"></script>"""
+<script>window.FH_EXP_BASE=%(base)s;</script>
+<script defer src="%(js)s"></script>
+<script defer src="/assets/weather.js"></script>
+<script defer src="%(data)s"></script>
+<script defer src="%(exp)s"></script>"""
+
+
+def get_visit_labels(lang):
+    return {
+        "ka": ("ყველა ადგილი", "ნამყოფი ვარ", "არ ვარ ნამყოფი", "ნამყოფი ვარ", "ნამყოფად მონიშვნა"),
+        "en": ("All places", "Visited", "Not visited", "Visited", "Mark as visited"),
+        "ru": ("Все места", "Посещённые", "Не посещённые", "Посещено", "Отметить посещённым"),
+        "fa": ("همه مکان‌ها", "بازدید شده", "بازدید نشده", "بازدید شده", "علامت‌گذاری به‌عنوان بازدیدشده"),
+        "he": ("כל המקומות", "ביקרתי", "טרם ביקרתי", "ביקרתי", "סימון כמקום שביקרתי בו"),
+        "ar": ("كل الأماكن", "تمت زيارتها", "لم تتم زيارتها", "تمت الزيارة", "وضع علامة تمت الزيارة"),
+    }[lang]
+
+
+def explorer_config(lang, base="/"):
+    x = TRAVEL[lang]["exp"]
+    u = TRAVEL[lang]["ui"]
+    visited = get_visit_labels(lang)
+    return {
+        "pts": explorer_points(lang),
+        "towns": explorer_towns(lang),
+        "lang": lang, "base": base, "center": [42.15, 43.6], "zoom": 7,
+        "planner": page_url(lang, "map", False) + "#planner",
+        "ui": {**{k: v for k, v in x.items()},
+               "hrs": u["hrs"], "km": u["km"], "h_short": u["hrs"], "days": u["days"],
+               "tip_title": u["tip_title"], "route_title": u["route_title"],
+               "nearby_title": u["nearby_title"],
+               "visited_yes": visited[3], "visited_mark": visited[4],
+               "write_review": {"ka":"რივიუს დაწერა","en":"Write review","ru":"Написать отзыв","fa":"نوشتن نظر","he":"כתיבת ביקורת","ar":"كتابة مراجعة"}[lang],
+               "review_saved": {"ka":"რივიუ შენახულია","en":"Review saved","ru":"Отзыв сохранён","fa":"نظر ذخیره شد","he":"הביקורת נשמרה","ar":"تم حفظ المراجعة"}[lang]},
+    }
 
 
 def explorer_block(lang, depth, height="72vh", hero=False):
@@ -1373,14 +1407,7 @@ def explorer_block(lang, depth, height="72vh", hero=False):
     topts += f'<option value="__cycling__">{E(bike_label)}</option>'
     ropts = "".join(f'<option value="{E(k)}">{E(r[lang]["name"])}</option>'
                     for k, r in REGIONS.items())
-    visit_labels = {
-        "ka": ("ყველა ადგილი", "ნამყოფი ვარ", "არ ვარ ნამყოფი", "ნამყოფი ვარ", "ნამყოფად მონიშვნა"),
-        "en": ("All places", "Visited", "Not visited", "Visited", "Mark as visited"),
-        "ru": ("Все места", "Посещённые", "Не посещённые", "Посещено", "Отметить посещённым"),
-        "fa": ("همه مکان‌ها", "بازدید شده", "بازدید نشده", "بازدید شده", "علامت‌گذاری به‌عنوان بازدیدشده"),
-        "he": ("כל המקומות", "ביקרתי", "טרם ביקרתי", "ביקרתי", "סימון כמקום שביקרתי בו"),
-        "ar": ("كل الأماكن", "تمت زيارتها", "لم تتم زيارتها", "تمت الزيارة", "وضع علامة تمت الزيارة"),
-    }[lang]
+    visit_labels = get_visit_labels(lang)
     rating_labels = {
         "ka": ("ყველა შეფასება", "3★ და მეტი", "4★ და მეტი", "მხოლოდ 5★"),
         "en": ("All ratings", "3★ and up", "4★ and up", "5★ only"),
@@ -1389,20 +1416,8 @@ def explorer_block(lang, depth, height="72vh", hero=False):
         "he": ("כל הדירוגים", "3★ ומעלה", "4★ ומעלה", "5★ בלבד"),
         "ar": ("كل التقييمات", "3★ فأكثر", "4★ فأكثر", "5★ فقط"),
     }[lang]
-    cfg = J({
-        "pts": explorer_points(lang),
-        "towns": explorer_towns(lang),
-        "lang": lang, "base": base, "center": [42.15, 43.6], "zoom": 7,
-        "planner": page_url(lang, "map", False) + "#planner",
-        "ui": {**{k: v for k, v in x.items()},
-               "hrs": u["hrs"], "km": u["km"], "h_short": u["hrs"], "days": u["days"],
-               "tip_title": u["tip_title"], "route_title": u["route_title"],
-               "nearby_title": u["nearby_title"],
-               "visited_yes": visit_labels[3], "visited_mark": visit_labels[4],
-               "write_review": {"ka":"რივიუს დაწერა","en":"Write review","ru":"Написать отзыв","fa":"نوشتن نظر","he":"כתיבת ביקורת","ar":"كتابة مراجعة"}[lang],
-               "review_saved": {"ka":"რივიუ შენახულია","en":"Review saved","ru":"Отзыв сохранён","fa":"نظر ذخیره شد","he":"הביקורת נשמרה","ar":"تم حفظ المراجعة"}[lang]},
-    })
-    js = EXPLORER_JS % {"js": LEAFLET_JS, "cfg": cfg, "exp": ASSET["explorer"]}
+    js = EXPLORER_JS % {"js": LEAFLET_JS, "base": J(base),
+                        "data": TRAVEL_ASSET[lang], "exp": ASSET["explorer"]}
     html = f'''<div class="explorer{" hero" if hero else ""}">
   <section id="selectedtour" class="selected-tour-banner" hidden aria-live="polite">
     <div><span id="selectedtourlabel"></span><strong id="selectedtourname"></strong></div>
@@ -1502,12 +1517,16 @@ def render_map_page(lang):
     target = page_url(lang, "index", False)
     canonical = page_url(lang, "index")
     direction = "rtl" if lang in ("fa", "he", "ar") else "ltr"
+    loading = {"ka":"რუკა იტვირთება…","en":"Loading the map…","ru":"Карта загружается…","fa":"در حال بارگذاری نقشه…","he":"המפה נטענת…","ar":"جارٍ تحميل الخريطة…"}[lang]
     return f'''<!doctype html><html lang="{lang}" dir="{direction}"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,follow"><link rel="canonical" href="{E(canonical)}">
 <meta http-equiv="refresh" content="0;url={E(target)}#explore">
-<title>{E(UI[lang]["nav"]["map"])}</title></head><body>
-<p><a href="{E(target)}#explore">{E(UI[lang]["nav"]["index"])}</a></p>
+<title>{E(UI[lang]["nav"]["map"])}</title><style>
+html,body{{height:100%;margin:0}}body{{display:grid;place-items:center;background:#f2f6f8;color:#17313a;font:600 15px/1.5 system-ui,sans-serif}}
+.load{{display:flex;align-items:center;gap:12px}}.spin{{width:22px;height:22px;border:3px solid #cbdde1;border-top-color:#078995;border-radius:50%;animation:r .7s linear infinite}}@keyframes r{{to{{transform:rotate(360deg)}}}}
+</style></head><body>
+<div class="load" role="status"><span class="spin"></span><span>{E(loading)}</span></div>
 <script>(function(){{var h=location.hash||'#explore';location.replace({J(target)}+(location.search||'')+h);}})();</script>
 </body></html>'''
 
@@ -1947,15 +1966,23 @@ def planner_form_html(lang):
         "he": ("תקופת הנסיעה", "מתאריך", "עד תאריך", "סוג הטיול", "טיולים מוכנים"),
         "ar": ("فترة السفر", "من", "إلى", "نوع الجولة", "جولات جاهزة"),
     }[lang]
-    purpose_names = {
-        "ka": ("კლასიკური", "კულინარიული", "ღვინის", "კულტურული", "ბუნება", "ველო", "მთები", "ჰაიქინგი", "ისტორიული", "ზღვა", "ოჯახური"),
-        "en": ("Classic", "Culinary", "Wine", "Culture", "Nature", "Cycling", "Mountains", "Hiking", "History", "Beach", "Family"),
-        "ru": ("Классический", "Кулинарный", "Винный", "Культурный", "Природа", "Велотур", "Горы", "Хайкинг", "Исторический", "Море", "Семейный"),
-        "fa": ("کلاسیک", "آشپزی", "شراب", "فرهنگی", "طبیعت", "دوچرخه‌سواری", "کوهستان", "پیاده‌روی", "تاریخی", "ساحل", "خانوادگی"),
-        "he": ("קלאסי", "קולינרי", "יין", "תרבות", "טבע", "אופניים", "הרים", "הליכה", "היסטורי", "חוף", "משפחתי"),
-        "ar": ("كلاسيكية", "الطهي", "النبيذ", "ثقافية", "الطبيعة", "الدراجات", "الجبال", "المشي", "تاريخية", "الشاطئ", "عائلية"),
+    geo_labels = {
+        "ka": ("ჩემი მდებარეობა", "მდებარეობას ვადგენთ…", "მდებარეობა ვერ განისაზღვრა"),
+        "en": ("My location", "Locating…", "Location could not be determined"),
+        "ru": ("Моё местоположение", "Определяем…", "Не удалось определить местоположение"),
+        "fa": ("موقعیت من", "در حال یافتن…", "موقعیت پیدا نشد"),
+        "he": ("המיקום שלי", "מאתר…", "לא ניתן לאתר את המיקום"),
+        "ar": ("موقعي", "جارٍ تحديد الموقع…", "تعذر تحديد الموقع"),
     }[lang]
-    purpose_keys = ("classic", "culinary", "wine", "culture", "nature", "cycling", "mountains", "hiking", "history", "beach", "family")
+    purpose_names = {
+        "ka": ("კლასიკური", "კულინარიული", "ღვინის", "კულტურული", "ბუნება", "ველო", "მთები", "ჰაიქინგი", "ისტორიული", "ზღვა", "ოჯახური", "თეატრი და სპექტაკლი"),
+        "en": ("Classic", "Culinary", "Wine", "Culture", "Nature", "Cycling", "Mountains", "Hiking", "History", "Beach", "Family", "Theatre & performance"),
+        "ru": ("Классический", "Кулинарный", "Винный", "Культурный", "Природа", "Велотур", "Горы", "Хайкинг", "Исторический", "Море", "Семейный", "Театр и спектакль"),
+        "fa": ("کلاسیک", "آشپزی", "شراب", "فرهنگی", "طبیعت", "دوچرخه‌سواری", "کوهستان", "پیاده‌روی", "تاریخی", "ساحل", "خانوادگی", "تئاتر و اجرا"),
+        "he": ("קלאסי", "קולינרי", "יין", "תרבות", "טבע", "אופניים", "הרים", "הליכה", "היסטורי", "חוף", "משפחתי", "תיאטרון ומופע"),
+        "ar": ("كلاسيكية", "الطهي", "النبيذ", "ثقافية", "الطبيعة", "الدراجات", "الجبال", "المشي", "تاريخية", "الشاطئ", "عائلية", "مسرح وعروض"),
+    }[lang]
+    purpose_keys = ("classic", "culinary", "wine", "culture", "nature", "cycling", "mountains", "hiking", "history", "beach", "family", "performance")
     purposes = list(zip(purpose_keys, purpose_names))
 
     def opt_pace():
@@ -1967,8 +1994,10 @@ def planner_form_html(lang):
 <button type="button" class="btn ghost" id="standardopen">{E(labels[4])} <span id="standardcount"></span></button>
 </div><div class="pform planner-toolbar">
 <div class="pf start-field"><label for="startsearch">{E(t['start'])}</label>
-<input id="startsearch" type="search" list="startoptions" autocomplete="off"
+<div class="start-input-row"><input id="startsearch" type="search" list="startoptions" autocomplete="off"
   role="combobox" aria-autocomplete="list" aria-controls="startoptions">
+<button type="button" id="startgeo" class="start-geo" data-label="{E(geo_labels[0])}"
+ data-loading="{E(geo_labels[1])}" data-error="{E(geo_labels[2])}">⌖ <span>{E(geo_labels[0])}</span></button></div>
 <datalist id="startoptions"></datalist><select id="start" hidden aria-hidden="true" tabindex="-1"></select></div>
 <div class="pf period-field"><label>{E(labels[0])}</label><div class="date-pair"><input id="datefrom" type="date" aria-label="{E(labels[1])}"><input id="dateto" type="date" aria-label="{E(labels[2])}"></div></div>
 <div class="pf days-field"><label for="days">{E(t['days'])}</label><div class="days-stepper">
@@ -1976,9 +2005,10 @@ def planner_form_html(lang):
 <input id="days" type="number" min="1" max="30" step="1" value="3" inputmode="numeric">
 <button id="daysplus" type="button" aria-label="+">+</button></div><small class="days-help">1–30</small></div>
 <div class="pf derived-month"><label for="month">{E(t['month'])}</label><select id="month"></select></div>
-<div class="pf"><label for="party">{E(t['party'])}</label><select id="party">
-{"".join(f'<option value="{n}"{" selected" if n == 2 else ""}>{n}</option>' for n in range(1, 9))}
-</select></div>
+<div class="pf party-field"><label for="party">{E(t['party'])}</label><div class="party-stepper">
+<button id="partyminus" type="button" aria-label="−">−</button>
+<input id="party" type="number" min="1" max="8" step="1" value="2" inputmode="numeric">
+<button id="partyplus" type="button" aria-label="+">+</button></div><small class="party-help">1–8</small></div>
 <div class="pf tour-purpose-field"><label for="tourpurpose">{E(labels[3])}</label><select id="tourpurpose">{"".join(f'<option value="{k}">{E(v)}</option>' for k,v in purposes)}</select></div>
 <div class="pf pf-wide carmode">
 <label class="tog"><input type="radio" name="carmode" id="carauto" value="auto" checked>
@@ -2049,8 +2079,7 @@ if(window.FH_TRAVEL_MAP)setTimeout(function(){window.FH_TRAVEL_MAP.invalidateSiz
 w.querySelectorAll('[data-workmode]').forEach(function(b){b.onclick=function(){setMode(b.dataset.workmode);history.replaceState(null,'','#'+b.dataset.workmode);};});
 window.addEventListener('hashchange',function(){var m=location.hash.slice(1);if(/^(explore|route|planner)$/.test(m))setMode(m);});
 var first=location.hash.slice(1);setMode(/^(explore|route|planner)$/.test(first)?first:(w.dataset.mode||'explore'));})();</script>'''
-    js = (f'<script>window.PLANNER_DATA={J(planner_data(lang))};</script>\n' +
-          explore_js + f'\n<script src="{ASSET["planner"]}"></script>\n' + mode_js)
+    js = explore_js + f'\n<script defer src="{ASSET["planner"]}"></script>\n' + mode_js
     return html, js
 
 
@@ -2337,6 +2366,11 @@ def main():
         p = os.path.join("static", fn)
         if os.path.exists(p):
             write_hashed(out, fn, open(p, encoding="utf-8").read(), key)
+    for lang in LANGS:
+        payload = ("window.EXP=" + JC(explorer_config(lang, "/")) + ";\n" +
+                   "window.PLANNER_DATA=" + JC(planner_data(lang)) + ";\n")
+        TRAVEL_ASSET[lang] = write_hashed(out, f"travel-{lang}.js", payload,
+                                          f"travel_{lang}")
     write(os.path.join(out, "admin", "bookings.html"), render_booking_admin())
     up = os.path.join("static", "uploads")
     if os.path.isdir(up):

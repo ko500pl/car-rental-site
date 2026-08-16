@@ -656,12 +656,19 @@
   function buildForm() {
     var s = EL("start");
     var startSearch = EL("startsearch"), startOptions = EL("startoptions");
-    D.starts.forEach(function (p, i) {
+    var customStart = null;
+    try { customStart = JSON.parse(localStorage.getItem("fh-planner-custom-start") || "null"); } catch (_) {}
+    if (customStart && Number.isFinite(Number(customStart.lat)) && Number.isFinite(Number(customStart.lon))) {
+      customStart.lat = Number(customStart.lat); customStart.lon = Number(customStart.lon);
+      D.starts.unshift(customStart);
+    }
+    function addStartOption(p, i) {
       var o = document.createElement("option");
       o.value = i; o.textContent = p.n; s.appendChild(o);
       var suggestion = document.createElement("option");
       suggestion.value = p.n; suggestion.dataset.index = i; startOptions.appendChild(suggestion);
-    });
+    }
+    D.starts.forEach(addStartOption);
     function applyStart(index, refresh) {
       index = Math.max(0, Math.min(D.starts.length - 1, Number(index) || 0));
       s.value = String(index);
@@ -740,7 +747,41 @@
     [["daysminus",-1],["daysplus",1]].forEach(function (pair) {
       var b=EL(pair[0]); if(b)b.onclick=function(){EL("days").value=String((parseInt(EL("days").value,10)||1)+pair[1]);syncDaysToDate();};
     });
-    [EL("party"), EL("tourpurpose"), EL("month")].forEach(function (x) {
+    var geoButton = EL("startgeo");
+    if (geoButton) geoButton.addEventListener("click", function () {
+      var label = geoButton.dataset.label || "My location";
+      var span = geoButton.querySelector("span");
+      if (!navigator.geolocation) {
+        if (span) span.textContent = geoButton.dataset.error || label;
+        setTimeout(function () { if (span) span.textContent = label; }, 2500);
+        return;
+      }
+      geoButton.disabled = true;
+      if (span) span.textContent = geoButton.dataset.loading || label;
+      navigator.geolocation.getCurrentPosition(function (pos) {
+        var point = {s:"my-location", n:label, lat:Number(pos.coords.latitude), lon:Number(pos.coords.longitude), f:1.4, v:50};
+        var old = D.starts.findIndex(function (p) { return p.s === "my-location"; });
+        if (old >= 0) D.starts[old] = point; else D.starts.unshift(point);
+        s.innerHTML = ""; startOptions.innerHTML = ""; D.starts.forEach(addStartOption);
+        localStorage.setItem("fh-planner-custom-start", JSON.stringify(point));
+        applyStart(D.starts.findIndex(function (p) { return p.s === "my-location"; }), true);
+        geoButton.disabled = false; if (span) span.textContent = label;
+      }, function () {
+        geoButton.disabled = false; if (span) span.textContent = geoButton.dataset.error || label;
+        setTimeout(function () { if (span) span.textContent = label; }, 2500);
+      }, {enableHighAccuracy:true, timeout:15000, maximumAge:60000});
+    });
+    function syncParty() {
+      var party = Math.max(1, Math.min(8, parseInt(EL("party").value, 10) || 1));
+      EL("party").value = String(party);
+      renderStandardTours();
+    }
+    EL("party").addEventListener("change", syncParty);
+    EL("party").addEventListener("input", function () { if (this.value) syncParty(); });
+    [["partyminus",-1],["partyplus",1]].forEach(function (pair) {
+      var b=EL(pair[0]); if(b)b.onclick=function(){EL("party").value=String((parseInt(EL("party").value,10)||1)+pair[1]);syncParty();};
+    });
+    [EL("tourpurpose"), EL("month")].forEach(function (x) {
       if (x) x.addEventListener("change", renderStandardTours);
     });
   }
@@ -766,7 +807,7 @@
     }).sort(function (a, b) {
       var ap = a.purpose === purpose ? 0 : 2, bp = b.purpose === purpose ? 0 : 2;
       return (Math.abs(a.days - days) * 4 + ap) - (Math.abs(b.days - days) * 4 + bp) || a.days - b.days;
-    }).slice(0, 6);
+    }).slice(0, 100);
     count.textContent = tours.length ? tours.length : "";
     if (!tours.length) {
       box.innerHTML = '<div class="standard-empty">' + (T.no_results || "No matching tours") + '</div>';

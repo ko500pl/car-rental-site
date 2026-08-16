@@ -29,6 +29,27 @@ class AttractionMediaTests(unittest.TestCase):
         names = {p.stem for p in (ROOT / "content" / "attractions").glob("*.yml")}
         self.assertIn("sameba-jikheti-monastery", names)
         self.assertIn("nodar-dumbadze-house-museum", names)
+        self.assertIn("zando-st-george-monastery", names)
+        self.assertIn("telefisi-fortress", names)
+
+    def test_dezerters_bazaar_is_fully_removed(self):
+        self.assertFalse((ROOT / "content" / "attractions" / "dezerters-bazaar.yml").exists())
+        offenders = []
+        needles = ("dezerter", "дезерт", "دزرت", "דזרט")
+        for path in (ROOT / "content").rglob("*.yml"):
+            text = path.read_text(encoding="utf-8-sig").lower()
+            if any(needle in text for needle in needles):
+                offenders.append(path.relative_to(ROOT).as_posix())
+        self.assertEqual(offenders, [])
+
+    def test_attraction_car_categories_are_supported(self):
+        invalid = []
+        supported = {"economy", "suv", "offroad"}
+        for path in (ROOT / "content" / "attractions").glob("*.yml"):
+            data = yaml.safe_load(path.read_text(encoding="utf-8-sig"))
+            if data.get("car_category") not in supported:
+                invalid.append((path.stem, data.get("car_category")))
+        self.assertEqual(invalid, [])
 
     def test_duplicate_media_is_reportable(self):
         """Keep duplicate detection measurable while the photo audit is resolved."""

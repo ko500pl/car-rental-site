@@ -252,12 +252,12 @@ td:first-child{{font-weight:600;color:var(--ink)}}
 .budget-stepper button{{height:38px;border:1px solid var(--line);border-radius:10px;background:var(--surface-2);color:var(--ink);font:700 18px/1 var(--font);cursor:pointer}}
 .budget-stepper input{{width:100%;height:38px;text-align:center;padding:6px!important}}
 .budget-stepper>span{{font-size:12px;color:var(--ink-2);white-space:nowrap}}
-.days-stepper{{display:grid;grid-template-columns:30px minmax(42px,58px) 30px;align-items:center;gap:4px}}
-.days-stepper button{{width:30px;height:38px;padding:0;border:1px solid var(--line);border-radius:8px;background:var(--surface-2);color:var(--ink);font:700 16px/1 var(--font);cursor:pointer}}
-.days-stepper input{{width:100%;height:38px;padding:5px!important;text-align:center;font-weight:700}}
-.days-field{{display:grid;grid-template-columns:1fr;align-content:end}}
-.days-field>label{{font-weight:700}}
-.days-help{{display:block;margin-top:2px;font-size:9px;line-height:1;color:var(--ink-3);text-align:center}}
+.days-stepper,.party-stepper{{display:grid;grid-template-columns:30px minmax(42px,58px) 30px;align-items:center;gap:4px}}
+.days-stepper button,.party-stepper button{{width:30px;height:38px;padding:0;border:1px solid var(--line);border-radius:8px;background:var(--surface-2);color:var(--ink);font:700 16px/1 var(--font);cursor:pointer}}
+.days-stepper input,.party-stepper input{{width:100%;height:38px;padding:5px!important;text-align:center;font-weight:700}}
+.days-field,.party-field{{display:grid;grid-template-columns:1fr;align-content:end}}
+.days-field>label,.party-field>label{{font-weight:700}}
+.days-help,.party-help{{display:block;margin-top:2px;font-size:9px;line-height:1;color:var(--ink-3);text-align:center}}
 .expbar input,.expbar select{{font:inherit;font-size:15px;padding:9px 12px;border:1px solid var(--line);
   border-radius:10px;background:var(--surface);color:var(--ink)}}
 .expcount{{font-size:14px;color:var(--ink-3);margin-inline-start:auto}}
@@ -1005,8 +1005,8 @@ body.booking-open{{overflow:hidden}}
 .page-planner .page-head h1{{font-size:26px;margin-bottom:6px}}
 .page-planner .page-head .lead{{font-size:14px;line-height:1.45;max-width:100ch}}
 .planner-controls{{padding:12px 0!important;border-bottom:0}}
-.planner-toolbar{{display:grid;grid-template-columns:minmax(180px,1.5fr) minmax(245px,1.4fr) 126px 88px minmax(155px,1fr) minmax(150px,1fr) auto auto;
-  align-items:end;gap:8px;padding:10px 12px;margin:0;overflow:visible;border-radius:14px}}
+.planner-toolbar{{display:grid;grid-template-columns:minmax(180px,1.5fr) minmax(245px,1.4fr) 126px 126px minmax(155px,1fr) minmax(150px,1fr) auto auto;
+  grid-auto-rows:max-content;align-content:start;align-items:end;gap:8px;padding:10px 12px 6px;margin:0;overflow:visible;border-radius:14px}}
 .planner-toolbar>.pf{{min-width:0;gap:3px}}
 .planner-toolbar>.pf:first-child{{min-width:0}}
 .planner-toolbar .pf label{{font-size:11px;white-space:nowrap;color:var(--ink-3)}}
@@ -1063,7 +1063,7 @@ body.booking-open{{overflow:hidden}}
 .planner-more-in .chip{{font-size:11.5px;padding:5px 9px}}
 .planner-toolbar>.prow{{display:flex;flex-wrap:nowrap;min-width:max-content;margin:0}}
 .planner-toolbar>.prow .btn{{width:auto!important;min-width:0!important;height:34px!important;min-height:34px!important;padding:5px 11px!important;border-radius:8px;font-size:11.5px;white-space:nowrap}}
-.planner-toolbar>.prow{{grid-column:auto / span 2;width:max-content;gap:5px;align-self:end}}
+.planner-toolbar>.prow{{grid-column:1/-1;width:max-content;gap:5px;align-self:end}}
 .workspace-plan>.standard-launch .btn{{min-width:0;height:36px!important;padding:6px 13px!important;border-radius:9px;font-size:12px}}
 .travel-workspace{{position:relative}}
 .workspace-tabs{{display:inline-flex;gap:4px;margin:0 0 8px;padding:4px;background:var(--surface-2);
@@ -1071,10 +1071,15 @@ body.booking-open{{overflow:hidden}}
 .workspace-tabs button{{min-height:34px;padding:6px 14px;border:0;border-radius:9px;background:transparent;
   color:var(--ink-3);font:700 12px/1.2 inherit;cursor:pointer}}
 .workspace-tabs button.on{{color:var(--ink);background:var(--surface);box-shadow:0 1px 8px #0003}}
-.workspace-plan{{display:none;margin-bottom:4px}}
+.workspace-plan{{display:none;margin:0}}
 .travel-workspace[data-mode="planner"] .workspace-plan{{display:block}}
-.travel-workspace[data-mode="planner"] .planner-toolbar{{margin-bottom:0;padding-bottom:8px}}
+.travel-workspace[data-mode="planner"] .planner-toolbar{{margin:0!important;padding-bottom:6px}}
 .travel-workspace[data-mode="planner"] .workspace-plan+.explorer{{margin-top:0}}
+.travel-workspace[data-mode="planner"] .expbar{{min-height:0;padding-block:8px}}
+.travel-workspace[data-mode="planner"] .standard-launch{{margin-bottom:4px}}
+.travel-workspace[data-mode="planner"] .days-field,
+.travel-workspace[data-mode="planner"] .party-field{{width:126px;min-width:126px}}
+.selected-tour-banner:has(#selectedtourname:empty){{display:none!important}}
 .selected-tour-banner{{display:grid;grid-template-columns:minmax(220px,1.2fr) minmax(0,2fr);gap:12px;align-items:center;padding:9px 12px;border-bottom:1px solid var(--line);background:#f7fafb;color:#17202b}}
 .selected-tour-banner[hidden]{{display:none}}
 .selected-tour-banner>div span{{display:block;font-size:9.5px;color:#6b7b8c;text-transform:uppercase;letter-spacing:.04em}}
@@ -1431,13 +1436,46 @@ main>.sec+section.sec{{border-top:1px solid #e3e8eb}}
 .road-pass-top{{height:16%;padding:0 3.2%;display:flex;align-items:center;justify-content:space-between;gap:18px;background:#081521;color:#fff;font-size:clamp(8px,1.45cqw,13px);letter-spacing:.13em}}
 .road-pass-top strong{{font-size:clamp(11px,2.1cqw,19px);letter-spacing:.05em;white-space:nowrap;color:#fff}}.road-pass-top strong span{{color:#38bdf8;font-size:1.4em}}
 .road-pass-body{{height:84%;position:relative;display:grid;grid-template-columns:minmax(0,1fr) 34%;gap:4%;padding:3.2% 4%;isolation:isolate}}
-.road-pass-body::before{{content:"";position:absolute;z-index:-1;inset:0;background:url('georgia-id-security-bg.png') center/cover no-repeat;opacity:.58;pointer-events:none}}
-.road-pass-identity{{min-width:0;padding-inline-end:5%;border-inline-end:2px dotted #98a6b4}}
-.road-pass-brand{{display:flex;align-items:center;gap:.8cqw;margin-bottom:1.2cqw}}.road-pass-brand img{{width:17cqw;height:8cqw;object-fit:contain;object-position:top left;transform:translateY(-1cqw)}}.road-pass-brand b{{font-size:clamp(19px,4.15cqw,38px);line-height:1.12;color:#081521}}
-.road-pass-identity h1{{margin:0 0 .6cqw;color:#081521;font-size:clamp(19px,4.15cqw,38px);line-height:1.12}}.road-pass-role{{margin:0 0 1.2cqw;color:#526170;font-size:clamp(8px,1.7cqw,15px);white-space:nowrap}}
-.card-contact-line{{width:max-content;max-width:100%;display:flex;align-items:center;gap:1.1cqw;margin:.65cqw 0;color:#17202b;font-size:clamp(10px,2cqw,18px);font-weight:700;text-decoration:none}}
+.road-pass-body::before{{content:"";position:absolute;z-index:-2;inset:0;background:repeating-linear-gradient(0deg,rgba(8,127,140,.035) 0 1px,transparent 1px 18px),repeating-linear-gradient(90deg,rgba(8,127,140,.035) 0 1px,transparent 1px 18px),linear-gradient(128deg,rgba(219,239,242,.28) 0%,rgba(255,255,255,.08) 43%,rgba(232,240,248,.25) 73%,rgba(239,232,218,.12) 100%);pointer-events:none}}
+.road-pass-body::after{{content:"";position:absolute;z-index:-1;inset:0;background:url('georgian-heritage-watermark.webp') center/100% 100% no-repeat;opacity:1;filter:brightness(.68) contrast(1.75) saturate(1.12);pointer-events:none}}
+.road-pass-identity{{min-width:0;padding-inline-end:5%;border-inline-end:2px dotted #98a6b4;background:linear-gradient(90deg,rgba(255,255,255,.48) 0%,rgba(255,255,255,.3) 66%,transparent 100%);border-radius:8px 0 0 8px}}
+.road-pass-brand{{display:flex;align-items:center;gap:.8cqw;margin-bottom:1.2cqw}}.road-pass-brand img{{width:17cqw;height:8cqw;object-fit:contain;object-position:top left;transform:translateY(-1cqw)}}.road-pass-brand b{{font-size:clamp(19px,4.15cqw,38px);line-height:1.12;color:#081521;text-shadow:0 0 8px #fff,0 0 4px #fff}}
+.road-pass-identity h1{{margin:0 0 .6cqw;color:#081521;font-size:clamp(19px,4.15cqw,38px);line-height:1.12;text-shadow:0 0 9px #fff,0 0 5px #fff}}.road-pass-role{{margin:0 0 1.2cqw;color:#526170;font-size:clamp(8px,1.7cqw,15px);white-space:nowrap;text-shadow:0 0 7px #fff,0 0 4px #fff}}
+.card-contact-line{{width:max-content;max-width:100%;display:flex;align-items:center;gap:1.1cqw;margin:.65cqw 0;color:#17202b;font-size:clamp(10px,2cqw,18px);font-weight:700;text-decoration:none;text-shadow:0 0 7px #fff,0 0 4px #fff}}
 .card-contact-line span{{width:3.7cqw;height:3.7cqw;display:grid;place-items:center;border:1.5px solid #087f8c;border-radius:50%;color:#087f8c;font-size:1.8cqw}}.card-contact-line:hover,.card-site{{color:#087f8c;text-decoration:none}}
-.road-pass-qr{{display:grid;align-content:center;justify-items:center;text-align:center}}.road-pass-qr a{{display:block;width:min(22cqw,78%);padding:1cqw;border:2px solid #087f8c;border-radius:10px;background:#fff}}.road-pass-qr img{{display:block;width:100%;height:auto}}.road-pass-qr p{{max-width:24ch;margin:1cqw 0 0;color:#526170;font-size:clamp(7px,1.35cqw,12px);line-height:1.35}}
+.road-pass-qr{{display:grid;align-content:center;justify-items:center;text-align:center;background:rgba(255,255,255,.58);border-radius:10px}}.road-pass-qr a{{display:block;width:min(22cqw,78%);padding:1cqw;border:2px solid #087f8c;border-radius:10px;background:#fff}}.road-pass-qr img{{display:block;width:100%;height:auto}}.road-pass-qr p{{max-width:24ch;margin:1cqw 0 0;color:#526170;font-size:clamp(7px,1.35cqw,12px);line-height:1.35}}
 html[dir="rtl"] .road-pass-brand{{flex-direction:row-reverse;justify-content:flex-end}}
 @media(max-width:760px){{.corner-tools .business-card-corner{{width:38px;padding:0;justify-content:center}}.corner-tools .business-card-corner>span:last-child{{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}}.digital-card-page{{padding:22px 8px;align-items:start}}.road-pass-card{{border-radius:9px}}}}
+
+/* Site canvas inspired by the Road Pass business-card security pattern. */
+body{{
+  background-color:#f2f6f8;
+  background-image:
+    linear-gradient(rgba(255,255,255,.76),rgba(255,255,255,.76)),
+    url('/assets/georgia-id-security-bg.webp');
+  background-repeat:no-repeat,no-repeat;
+  background-position:center top,center top;
+  background-size:cover,cover;
+  background-attachment:fixed,fixed;
+}}
+.planner-toolbar .start-input-row{{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:5px}}
+.planner-toolbar .start-input-row input{{min-width:0}}
+.planner-toolbar .start-geo{{height:38px;padding:0 9px;border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink-2);font:inherit;font-size:11px;white-space:nowrap;cursor:pointer}}
+.planner-toolbar .start-geo:hover,.planner-toolbar .start-geo:focus-visible{{border-color:var(--accent);color:var(--ink)}}
+.planner-toolbar .start-geo:disabled{{opacity:.65;cursor:wait}}
+.site-head{{background:rgba(255,255,255,.94)}}
+.home-hero{{background:rgba(255,255,255,.82)!important}}
+.maphero{{background:rgba(246,249,250,.80)!important}}
+.home-more-wrap{{background:rgba(255,255,255,.76)}}
+.home-more-wrap .sec:nth-of-type(even),main>.sec.alt{{background:rgba(247,249,250,.84)}}
+.home-more-wrap .sec:nth-of-type(odd),main>.sec:not(.alt):not(.maphero){{background:rgba(255,255,255,.84)}}
+.digital-card-page{{
+  background-color:#eef4f7;
+  background-image:linear-gradient(rgba(255,255,255,.66),rgba(255,255,255,.66)),url('/assets/georgia-id-security-bg.webp');
+  background-position:center;
+  background-size:cover;
+}}
+@media(max-width:900px){{
+  body{{background-attachment:scroll,scroll;background-size:auto 100vh,auto 100vh}}
+}}
 """

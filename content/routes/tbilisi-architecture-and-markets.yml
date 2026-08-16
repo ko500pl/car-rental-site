@@ -11,11 +11,11 @@ car_category: economy
 best_season: year-round
 difficulty: easy
 image: ''
-waypoints: [sololaki-art-nouveau, georgian-national-museum, dry-bridge-market, dezerters-bazaar, abanotubani-sulphur-baths, chronicle-of-georgia]
+waypoints: [sololaki-art-nouveau, georgian-national-museum, dry-bridge-market, abanotubani-sulphur-baths, chronicle-of-georgia]
 polyline: []
 sources: [https://georgia.travel/cities-towns/tbilisi]
-ka: {name: თბილისი — არქიტექტურა და ბაზრები, short: ორდღიანი ქალაქის ტური სოლოლაკის სადარბაზოებიდან ძველ ბაზრებსა და აბანოთუბნამდე., body: მშვიდი ქალაქური მარშრუტი აერთიანებს არქიტექტურას, მუზეუმს, ბაზრებსა და თბილისის ცოცხალ უბნებს., plan: '**დღე 1:** სოლოლაკი → ეროვნული მუზეუმი → მშრალი ხიდი. **დღე 2:** დეზერტირების ბაზარი → აბანოთუბანი → ქრონიკები.', tips: [ბაზარში დილით მიდით., აბანო წინასწარ დაჯავშნეთ.]}
-en: {name: Tbilisi Architecture and Markets, short: Two city days from Sololaki entrances to old markets and Abanotubani., body: A relaxed urban route combining architecture museums markets and living neighbourhoods., plan: '**Day 1:** Sololaki → National Museum → Dry Bridge. **Day 2:** Dezerter Bazaar → Abanotubani → Chronicle.', tips: [Visit the market in the morning., Reserve the bath in advance.]}
+ka: {name: თბილისი — არქიტექტურა და ბაზრები, short: ორდღიანი ქალაქის ტური სოლოლაკის სადარბაზოებიდან ძველ ბაზრებსა და აბანოთუბნამდე., body: მშვიდი ქალაქური მარშრუტი აერთიანებს არქიტექტურას, მუზეუმს, ბაზრებსა და თბილისის ცოცხალ უბნებს., plan: '**დღე 1:** სოლოლაკი → ეროვნული მუზეუმი → მშრალი ხიდი. **დღე 2:** აბანოთუბანი → საქართველოს მატიანე.', tips: [მშრალ ხიდზე დილით მიდით., აბანო წინასწარ დაჯავშნეთ.]}
+en: {name: Tbilisi Architecture and Markets, short: Two city days from Sololaki entrances to old markets and Abanotubani., body: A relaxed urban route combining architecture museums markets and living neighbourhoods., plan: '**Day 1:** Sololaki → National Museum → Dry Bridge. **Day 2:** Abanotubani → Chronicle of Georgia.', tips: [Visit Dry Bridge in the morning., Reserve the bath in advance.]}
 ru: {name: Архитектура и рынки Тбилиси, short: Два дня от парадных Сололаки до рынков и Абанотубани., body: Спокойный городской маршрут по архитектуре музеям и живым кварталам., plan: '**День 1:** Сололаки → музей → Сухой мост. **День 2:** рынок → Абанотубани → Хроники.', tips: [Идите на рынок утром., Забронируйте баню заранее.]}
 fa: {name: معماری و بازارهای تفلیس, short: دو روز شهری از سولولاکی تا بازارها و آبانوتوبانی., body: مسیری آرام میان معماری موزه بازار و محله‌های زنده., plan: '**روز ۱:** سولولاکی ← موزه ← پل خشک. **روز ۲:** بازار ← آبانوتوبانی ← یادمان.', tips: [صبح به بازار بروید., حمام را رزرو کنید.]}
 he: {name: אדריכלות ושווקים בטביליסי, short: יומיים מסולולאקי לשווקים ולאבנוטובני., body: מסלול עירוני רגוע של אדריכלות מוזיאונים ושכונות חיות., plan: '**יום 1:** סולולאקי ← מוזיאון ← הגשר היבש. **יום 2:** שוק ← אבנוטובני ← האנדרטה.', tips: [בקרו בשוק בבוקר., הזמינו מרחץ מראש.]}

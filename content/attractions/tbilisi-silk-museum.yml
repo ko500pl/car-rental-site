@@ -34,7 +34,6 @@ drive_time_tbilisi: 0:15
 road: paved
 car_category: economy
 nearby:
-- dezerters-bazaar
 - fabrika-marjanishvili
 - dry-bridge-market
 - rustaveli-avenue

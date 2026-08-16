@@ -1,0 +1,27 @@
+status: published
+order: 81
+days: 1
+nights: 0
+purpose: performance
+min_people: 1
+max_people: 8
+distance_km: 9
+drive_time_total: '0:35'
+car_category: economy
+best_season: all
+difficulty: easy
+image: ''
+waypoints: [marjanishvili-theatre, tbilisi-opera-ballet-theatre, rustaveli-national-theatre, gabriadze-theatre-clock-tower]
+polyline: []
+sources: [https://marjanishvili.com/, https://opera.ge/eng, https://rustavelitheatre.ge/]
+ka:
+  name: თბილისის თეატრებისა და სპექტაკლების დღე
+  short: ოთხი მნიშვნელოვანი თეატრი ერთ კულტურულ მარშრუტში და საღამოს არჩეული სპექტაკლი.
+  body: დღისით ნახეთ თეატრების არქიტექტურა და უბნები, საღამოს კი დაესწარით იმ სპექტაკლს, რომელიც თქვენს თარიღზე გადის.
+  plan: "მარჯანიშვილის თეატრი → ოპერისა და ბალეტის თეატრი → რუსთაველის თეატრი → გაბრიაძის თეატრი და საათის კოშკი → წინასწარ არჩეული საღამოს წარმოდგენა."
+  tips: [სპექტაკლების განრიგი მუდმივად იცვლება — ბილეთი ოფიციალური საიტიდან წინასწარ შეიძინეთ., ცენტრში უმჯობესია ფეხით და მეტროთი გადაადგილდეთ.]
+en: {name: Tbilisi Theatre and Performance Day, short: Four major theatres in one cultural circuit with a chosen evening performance., body: Explore the venues and neighbourhoods by day and attend whichever production is scheduled for your date., plan: "Marjanishvili Theatre → Opera and Ballet Theatre → Rustaveli Theatre → Gabriadze Theatre and Clock Tower → pre-booked evening performance.", tips: [Schedules change frequently; buy through the official venue in advance., Walk or use the metro in the centre.]}
+ru: {name: День театров и спектаклей Тбилиси, short: Четыре важных театра и выбранный вечерний спектакль., body: Днём познакомьтесь с театрами и кварталами, вечером посетите постановку по афише вашей даты., plan: "Марджанишвили → Опера и балет → Руставели → театр Габриадзе → заранее выбранный спектакль.", tips: [Афиша меняется; покупайте на официальном сайте заранее., В центре удобнее пешком и на метро.]}
+fa: {name: روز تئاتر و اجرا در تفلیس, short: چهار تئاتر مهم و یک اجرای عصرگاهی انتخابی., body: روز بناها و محله‌ها را ببینید و شب اجرای تاریخ خود را تماشا کنید., plan: "مارجانیشویلی ← اپرا و باله ← روستاولی ← گابریادزه ← اجرای رزروشده.", tips: [برنامه‌ها تغییر می‌کنند؛ از سایت رسمی رزرو کنید., در مرکز پیاده یا با مترو بروید.]}
+he: {name: יום תיאטרון ומופעים בטביליסי, short: ארבעה תיאטראות חשובים ומופע ערב לבחירה., body: בקרו במבנים ובשכונות ביום וצפו במופע המתאים לתאריך בערב., plan: "מרג'נישווילי ← אופרה ובלט ← רוסתוולי ← גבריאדזה ← מופע שהוזמן מראש.", tips: [התוכנייה משתנה; הזמינו באתר הרשמי., לכו ברגל או השתמשו במטרו במרכז.]}
+ar: {name: يوم مسارح وعروض تبليسي, short: أربعة مسارح مهمة مع عرض مسائي مختار., body: شاهد المباني والأحياء نهاراً واحضر عرض تاريخك مساءً., plan: "مارجانيشفيلي ← الأوبرا والباليه ← روستافيلي ← غابريادزه ← عرض محجوز.", tips: [تتغير البرامج؛ احجز من الموقع الرسمي., تنقل مشياً أو بالمترو في المركز.]}

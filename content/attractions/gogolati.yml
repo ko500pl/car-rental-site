@@ -1,0 +1,26 @@
+region: racha-lechkhumi
+type: town
+lat: 42.5236416
+lon: 42.9005173
+elevation: 900
+unesco: false
+featured: true
+order: 66
+image: ''
+gallery: []
+visit_hours: '1.5'
+best_season: all
+open_year_round: true
+entry_fee: free
+distance_tbilisi_km: 285
+drive_time_tbilisi: '4:30'
+road: mostly_paved
+car_category: economy
+nearby: [shaori-reservoir, nikortsminda-cathedral, ambrolauri]
+sources: [https://georgia.travel/villages/gogolati]
+ka: {name: გოგოლათის ისტორიული სოფელი, short: კულტურული მემკვიდრეობის სტატუსის მქონე სოფელი ძველი კოლხური ოდა-სახლებითა და მოჩუქურთმებული აივნებით., body: გოგოლათი ღია ცის ქვეშ მუზეუმივითაა — საუკუნოვანი ხის ოდა-სახლები უნიკალური ჩუქურთმებით, შარეულას ხეობა, მღვიმეები და ჩანჩქერები., tip: საცხოვრებელ სახლებს პატივი ეცით და ეზოში შესვლამდე ნებართვა ითხოვეთ., route: ქუთაისიდან დაახლოებით 1 საათი 45 წუთი; ბოლო სოფლის გზა მშვიდად გაიარეთ.}
+en: {name: Historic Village of Gogolati, short: A heritage village of old Colchian oda houses and richly carved balconies., body: Gogolati feels like an open-air museum with centuries-old wooden houses, the Shareula valley, caves and waterfalls., tip: These are lived-in homes; ask permission before entering a courtyard., route: About 1 hour 45 minutes from Kutaisi; take the final village road slowly.}
+ru: {name: Историческое село Гоголати, short: Охраняемое село со старыми колхидскими домами и резными балконами., body: 'Гоголати напоминает музей под открытым небом: деревянные дома, долина Шареулы, пещеры и водопады.', tip: Это жилые дома; перед входом во двор спросите разрешение., route: Около 1 ч 45 мин от Кутаиси; по сельской дороге двигайтесь медленно.}
+fa: {name: روستای تاریخی گوگولاتی, short: روستای میراثی با خانه‌های چوبی کولخی و بالکن‌های کنده‌کاری‌شده., body: گوگولاتی مانند موزه روباز با خانه‌های قدیمی و دره شارئولا است., tip: خانه‌ها مسکونی‌اند؛ برای ورود اجازه بگیرید., route: حدود یک ساعت و ۴۵ دقیقه از کوتایسی.}
+he: {name: הכפר ההיסטורי גוגולאטי, short: כפר מורשת עם בתי עץ קולכיים ומרפסות מגולפות., body: גוגולאטי הוא מעין מוזיאון פתוח של בתי עץ עתיקים ועמק שראולה., tip: הבתים מאוכלסים; בקשו רשות לפני כניסה לחצר., route: כשעה ו־45 דקות מקוטאיסי.}
+ar: {name: قرية غوغولاتي التاريخية, short: قرية تراثية بمنازل كولخية خشبية وشرفات منحوتة., body: تبدو غوغولاتي كمتحف مفتوح للمنازل القديمة ووادي شاريولا., tip: المنازل مأهولة؛ اطلب الإذن قبل دخول الساحات., route: نحو ساعة و45 دقيقة من كوتايسي.}

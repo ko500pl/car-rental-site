@@ -11,26 +11,26 @@ car_category: economy
 best_season: all
 difficulty: easy
 image: ''
-waypoints: [dezerters-bazaar, sighnaghi, bodbe-monastery, gurjaani-kvelatsminda, telavi-batonis-tsikhe, tsinandali-estate, khareba-wine-tunnel]
+waypoints: [sighnaghi, bodbe-monastery, gurjaani-kvelatsminda, telavi-batonis-tsikhe, tsinandali-estate, khareba-wine-tunnel]
 polyline: []
 sources: [https://georgia.travel/food-wine, https://traveltogeorgiatours.ge/en/tour/84/10-Day-Food-Adventure-in-Georgia]
 ka:
   name: კახური სუფრა და მარანი
   short: სამდღიანი კულინარიული ტური ბაზრიდან პურის, ჩურჩხელისა და ქვევრის ღვინის გამოცდილებამდე.
   body: ტური აერთიანებს ბაზრის პროდუქტებს, კახურ სუფრას, მცირე ოჯახურ მარნებსა და კულტურულ გაჩერებებს. დეგუსტაციისას მძღოლი არ სვამს.
-  plan: "**დღე 1:** დეზერტირების ბაზარი → სიღნაღი → ბოდბე. **დღე 2:** გურჯაანი → თელავი → ოჯახური კულინარიული მასტერკლასი. **დღე 3:** წინანდალი → ყვარლის ღვინის გვირაბი."
+  plan: "**დღე 1:** სიღნაღი → ბოდბე. **დღე 2:** გურჯაანი → თელავი → ოჯახური კულინარიული მასტერკლასი. **დღე 3:** წინანდალი → ყვარლის ღვინის გვირაბი."
   tips: [მასტერკლასი წინასწარ დაჯავშნეთ., მძღოლისთვის დაგეგმეთ უალკოჰოლო დეგუსტაცია.]
 en:
   name: Kakhetian Table and Cellar
   short: Three culinary days from the market to bread, churchkhela and qvevri wine.
   body: Markets, family tables, small cellars and cultural stops in one paced itinerary.
-  plan: "**Day 1:** Dezerter Bazaar → Sighnaghi → Bodbe. **Day 2:** Gurjaani → Telavi → family cooking class. **Day 3:** Tsinandali → Kvareli wine tunnel."
+  plan: "**Day 1:** Sighnaghi → Bodbe. **Day 2:** Gurjaani → Telavi → family cooking class. **Day 3:** Tsinandali → Kvareli wine tunnel."
   tips: [Book cooking classes ahead., The driver must not drink.]
 ru:
   name: Кахетинский стол и винный погреб
   short: Три гастрономических дня от рынка до хлеба, чурчхелы и вина квеври.
   body: Рынки, семейные застолья, малые погреба и культурные остановки.
-  plan: "**День 1:** Дезертирский рынок → Сигнахи → Бодбе. **День 2:** Гурджаани → Телави → мастер-класс. **День 3:** Цинандали → винный тоннель Кварели."
+  plan: "**День 1:** Сигнахи → Бодбе. **День 2:** Гурджаани → Телави → мастер-класс. **День 3:** Цинандали → винный тоннель Кварели."
   tips: [Бронируйте мастер-класс заранее., Водитель не дегустирует алкоголь.]
 fa:
   name: سفره و سرداب کاختی

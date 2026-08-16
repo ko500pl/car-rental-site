@@ -1,0 +1,26 @@
+region: tbilisi
+type: theatre
+lat: 41.7087660
+lon: 44.7946127
+elevation: 410
+unesco: false
+featured: false
+order: 68
+image: ''
+gallery: []
+visit_hours: '2.5'
+best_season: all
+open_year_round: true
+entry_fee: ticket
+distance_tbilisi_km: 2
+drive_time_tbilisi: '0:10'
+road: paved
+car_category: economy
+nearby: [tbilisi-opera-ballet-theatre, dry-bridge-market, rustaveli-national-theatre]
+sources: [https://marjanishvili.com/]
+ka: {name: კოტე მარჯანიშვილის თეატრი, short: საქართველოს წამყვანი დრამატული თეატრი მარჯანიშვილის ქუჩაზე, დიდი და მცირე სცენებით., body: თეატრი აერთიანებს კლასიკურ და თანამედროვე რეპერტუარს; კონკრეტული სპექტაკლი აირჩიეთ მოგზაურობის თარიღის მიხედვით., tip: სეზონი და ყოველდღიური პროგრამა წინასწარ ნახეთ ოფიციალურ საიტზე., route: მარჯანიშვილის ქუჩა 8; მეტრო მარჯანიშვილიდან ფეხით რამდენიმე წუთია.}
+en: {name: Kote Marjanishvili Theatre, short: A leading Georgian drama theatre with main and small stages on Marjanishvili Street., body: Its repertoire combines classic and contemporary work; choose the actual performance for your travel date., tip: Check the current season and daily programme on the official site., route: 8 Marjanishvili Street, a short walk from Marjanishvili metro.}
+ru: {name: Театр имени Коте Марджанишвили, short: Один из ведущих драматических театров Грузии с большой и малой сценами., body: Выберите конкретный спектакль по афише на дату поездки., tip: Проверьте сезон и программу на официальном сайте., route: Ул. Марджанишвили 8, рядом с метро.}
+fa: {name: تئاتر کوته مارجانیشویلی, short: تئاتر برجسته گرجستان با صحنه اصلی و کوچک., body: اجرای مشخص را بر اساس تاریخ سفر از برنامه انتخاب کنید., tip: فصل و برنامه روزانه را در سایت رسمی بررسی کنید., route: خیابان مارجانیشویلی ۸، نزدیک مترو.}
+he: {name: תיאטרון קוטה מרג'נישווילי, short: תיאטרון דרמה גאורגי מוביל עם במה ראשית ובמה קטנה., body: בחרו את המופע לפי התוכנייה בתאריך הנסיעה., tip: בדקו את העונה והתוכנית באתר הרשמי., route: רחוב מרג'נישווילי 8, ליד המטרו.}
+ar: {name: مسرح كوتي مارجانيشفيلي, short: مسرح درامي جورجي رائد بمسرحين رئيسي وصغير., body: اختر العرض الفعلي وفق برنامج تاريخ السفر., tip: تحقق من الموسم والبرنامج اليومي على الموقع الرسمي., route: شارع مارجانيشفيلي 8 قرب المترو.}

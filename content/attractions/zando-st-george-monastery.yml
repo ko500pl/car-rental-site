@@ -1,0 +1,66 @@
+region: imereti
+type: monastery
+lat: 42.0633
+lon: 42.3202
+elevation: 300
+unesco: false
+featured: false
+order: 257
+image: /assets/photos/zando-st-george-monastery.jpg
+image_credit:
+  author: Samtredia Municipality
+  license: Official tourism source
+  license_url: https://www.samtredia.gov.ge/en/tourism/truismobjects.html
+  source: https://www.samtredia.gov.ge/images/istoriuliekskursi/zandosmonasteri.jpg
+gallery:
+- image: /assets/photos/zando-st-george-monastery.jpg
+  author: Samtredia Municipality
+  license: Official tourism source
+  license_url: https://www.samtredia.gov.ge/en/tourism/truismobjects.html
+  source: https://www.samtredia.gov.ge/images/istoriuliekskursi/zandosmonasteri.jpg
+visit_hours: '1.5'
+best_season: all
+open_year_round: true
+entry_fee: free
+distance_tbilisi_km: 245
+drive_time_tbilisi: '3:35'
+road: mostly_paved
+car_category: suv
+nearby:
+- telefisi-fortress
+ka:
+  name: ზანდოს წმინდა გიორგის მონასტერი
+  short: XVI საუკუნის სამნავიანი ბაზილიკა სოფელ გამოჩინებულში, კოლხეთის დაბლობის ფართო ხედით.
+  body: ზანდოს წმინდა გიორგის მამათა მონასტერი სოფელ გამოჩინებულის ზემოთ დგას. სამტრედიის მუნიციპალიტეტის ოფიციალური აღწერით, ტაძარი XVI საუკუნის სამნავიანი ბაზილიკაა. მთას ადრე ზანდო ერქვა, დღეს კი გამოჩინებული ჰქვია. ადგილიდან კოლხეთის დაბლობზე ფართო პანორამა იშლება.
+  tip: მოკრძალებული სამოსი იქონიეთ და ღვთისმსახურების დროს სიმშვიდე დაიცავით. ბოლო ადგილობრივი გზის მდგომარეობა წვიმის შემდეგ გადაამოწმეთ.
+  route: სამტრედიიდან იმოძრავეთ სოფელ გამოჩინებულისკენ და მონასტრის ადგილობრივ ნიშნებს მიჰყევით. ბოლო მონაკვეთი მთისკენ ადის.
+en:
+  name: Zando St George Monastery
+  short: A 16th-century three-nave basilica above Gamochinebuli, with a broad Colchian lowland panorama.
+  body: Zando Monastery of St George stands above the village of Gamochinebuli. Samtredia Municipality describes the church as a 16th-century three-nave basilica. The mountain was formerly called Zando and is now known as Gamochinebuli. Wide views open over the Colchian lowland.
+  tip: Dress respectfully and keep quiet during services. Check the final local-road condition after heavy rain.
+  route: Drive from Samtredia toward Gamochinebuli and follow local signs to the monastery; the final section climbs the mountain.
+ru:
+  name: Монастырь Святого Георгия Зандо
+  short: Трёхнефная базилика XVI века над селом Гамочинебули с панорамой Колхидской низменности.
+  body: Монастырь Святого Георгия Зандо расположен над селом Гамочинебули. По данным муниципалитета Самтредиа, храм является трёхнефной базиликой XVI века. Раньше гора называлась Зандо, сегодня — Гамочинебули. Отсюда открывается широкий вид на Колхидскую низменность.
+  tip: Соблюдайте тишину и выбирайте скромную одежду. После дождя уточните состояние последнего участка дороги.
+  route: Из Самтредиа следуйте к селу Гамочинебули, затем по местным указателям к монастырю.
+fa:
+  name: صومعه سنت جورج زاندو
+  short: بازیلیکای سه‌شبستانی سده شانزدهم بالای روستای گاموچینبولی با چشم‌انداز دشت کولخیس.
+  body: صومعه سنت جورج زاندو بالای روستای گاموچینبولی قرار دارد. شهرداری سامتردیا آن را بازیلیکای سه‌شبستانی سده شانزدهم معرفی می‌کند. این کوه پیش‌تر زاندو نام داشت و امروز گاموچینبولی خوانده می‌شود.
+  tip: پوشش محترمانه و سکوت را رعایت کنید و پس از باران وضعیت بخش پایانی راه را بررسی کنید.
+  route: از سامتردیا به سوی گاموچینبولی بروید و تابلوهای محلی صومعه را دنبال کنید.
+he:
+  name: מנזר גאורגי הקדוש בזנדו
+  short: בזיליקה תלת־ספינתית מן המאה ה־16 מעל גמוצ'ינבולי, עם תצפית אל שפלת קולכיס.
+  body: מנזר גאורגי הקדוש בזנדו ניצב מעל הכפר גמוצ'ינבולי. עיריית סמטרדיה מתארת אותו כבזיליקה תלת־ספינתית מן המאה ה־16. ההר נקרא בעבר זנדו וכיום גמוצ'ינבולי.
+  tip: יש להתלבש בצניעות ולשמור על שקט. אחרי גשם כדאי לבדוק את מצב קטע הדרך האחרון.
+  route: נוסעים מסמטרדיה לכיוון גמוצ'ינבולי ועוקבים אחר השילוט המקומי למנזר.
+ar:
+  name: دير القديس جورج في زاندو
+  short: بازيليكا بثلاث بلاطات من القرن السادس عشر فوق غاموتشينيبولي وإطلالة على سهل كولخيس.
+  body: يقع دير القديس جورج في زاندو فوق قرية غاموتشينيبولي. تصفه بلدية سامتريديا بأنه بازيليكا بثلاث بلاطات من القرن السادس عشر. كان الجبل يسمى زاندو سابقاً ويعرف اليوم باسم غاموتشينيبولي.
+  tip: ارتدوا ملابس محتشمة وحافظوا على الهدوء، وتحققوا من حالة الجزء الأخير من الطريق بعد المطر.
+  route: انطلقوا من سامتريديا نحو غاموتشينيبولي واتبعوا اللافتات المحلية إلى الدير.

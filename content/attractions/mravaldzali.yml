@@ -1,0 +1,26 @@
+region: racha-lechkhumi
+type: monastery
+lat: 42.5122
+lon: 43.3403
+elevation: 1840
+unesco: false
+featured: true
+order: 65
+image: ''
+gallery: []
+visit_hours: '1.5'
+best_season: may-october
+open_year_round: false
+entry_fee: free
+distance_tbilisi_km: 295
+drive_time_tbilisi: '4:25'
+road: mostly_paved
+car_category: suv
+nearby: [oni, oni-synagogue, utsera]
+sources: [https://georgia.travel/villages/mravaldzali]
+ka: {name: მრავალძალის წმინდა გიორგის ეკლესია, short: ზღვის დონიდან 1 840 მეტრზე მდებარე X საუკუნის ეკლესია და სიყვარულის ტბის პანორამა., body: მრავალძალის მთიან სოფელში მდებარე წმინდა გიორგის ეკლესია რაჭის ერთ-ერთი გამორჩეული სალოცავია. აქედან იშლება მაღალი რაჭის ხედები და ახლოსაა გულის ფორმის სიყვარულის ტბა., tip: მშრალ ამინდში და დღისით იმგზავრეთ; ბოლო მონაკვეთზე მაღალი კლირენსი სასურველია., route: ონიდან სოფლის გზით მრავალძალისკენ; გამგზავრებამდე ადგილობრივად გადაამოწმეთ გზის მდგომარეობა.}
+en: {name: Mravaldzali St George Church, short: A 10th-century church at 1,840 metres with mountain panoramas and the nearby Lake of Love., body: Mravaldzali's St George Church is one of Racha's most revered highland shrines. The village also gives access to panoramic views and the heart-shaped Lake of Love., tip: Travel in daylight and dry weather; higher clearance is useful on the final section., route: Approach from Oni by the local road and confirm current conditions before leaving.}
+ru: {name: Церковь Святого Георгия в Мравалдзали, short: Храм X века на высоте 1840 метров с панорамой гор и озером Любви., body: Высокогорный храм Святого Георгия — одно из почитаемых мест Рачи. Рядом находятся панорамные точки и озеро в форме сердца., tip: Езжайте днём и в сухую погоду; на последнем участке полезен высокий клиренс., route: Подъезд из Они по местной дороге; заранее уточните её состояние.}
+fa: {name: کلیسای سنت جورج مراوالدزالی, short: کلیسای سده دهم در ارتفاع ۱۸۴۰ متر با چشم‌انداز کوهستان., body: زیارتگاه کوهستانی مراوالدزالی از مکان‌های مهم راچا است و در نزدیکی دریاچه عشق قرار دارد., tip: در روشنایی روز و هوای خشک بروید؛ خودروی بلند بهتر است., route: از اونی وارد جاده محلی شوید و وضعیت راه را بررسی کنید.}
+he: {name: כנסיית סנט ג׳ורג׳ במרוואלדזרי, short: כנסייה מן המאה העשירית בגובה 1,840 מטר עם נוף הרים., body: המקדש ההררי הוא מן האתרים הנערצים של ראצ׳ה ולידו אגם האהבה., tip: סעו באור יום ובמזג אוויר יבש; מרווח גחון גבוה מועיל., route: הגיעו מאוני בדרך המקומית ובדקו את מצבה מראש.}
+ar: {name: كنيسة القديس جورج في مرافالدزالي, short: كنيسة من القرن العاشر على ارتفاع 1840 متراً مع مشاهد جبلية., body: ضريح مرافالدزالي الجبلي من أهم مواقع راتشا وبالقرب منه بحيرة الحب., tip: سافر نهاراً وفي طقس جاف؛ الخلوص المرتفع مفيد., route: الوصول من أوني عبر الطريق المحلي مع التحقق من حالته.}

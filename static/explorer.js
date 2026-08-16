@@ -3,6 +3,7 @@
 (function () {
   var E = window.EXP;
   if (!E || !window.L) return;
+  if (window.FH_EXP_BASE) E.base = window.FH_EXP_BASE;
   var U = E.ui, PTS = E.pts, TOWNS = E.towns || [], BY = {};
   PTS.forEach(function (p) { BY[p.s] = p; });
   TOWNS.forEach(function (p) { BY[p.s] = p; });
