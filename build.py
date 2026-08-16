@@ -932,6 +932,7 @@ def render_business_card(lang):
 <h1 id="card-name">{E(name)}</h1><p class="road-pass-role">{E(role)}</p>
 <a class="card-contact-line" href="tel:+995597555565" aria-label="{E(call)}: +995 597 55 55 65"><span aria-hidden="true">☎</span><bdi dir="ltr">+995 597 55 55 65</bdi></a>
 <a class="card-contact-line card-site" href="https://www.rentup.ge/" aria-label="{E(website)}: www.rentup.ge"><span aria-hidden="true">↗</span><bdi dir="ltr">www.rentup.ge</bdi></a>
+<a class="btn card-save" href="/assets/shota-lomidze-drive-on.vcf" download>{E(save)}</a>
 </div><div class="road-pass-qr"><a href="/assets/shota-lomidze-drive-on.vcf" download aria-label="{E(save)}"><img src="/assets/shota-lomidze-vcard.svg" alt="QR — {E(save)}"></a><p>{E(scan)}</p></div></div>
 </article></div></main>'''
     depth = 1 if lang == "ka" else 2
