@@ -709,13 +709,17 @@ def render_static_page(lang, page):
         h = dict(p["hero"])
         h.update(HOME_HERO[lang])
         p["h1"] = h["h1"]
+        # (primary CTA, public trips, note, standard tours, community)
+        # Standard tours and public trips are different products — curated
+        # build-time routes versus user-published trips — so they stay as
+        # separate buttons instead of one label covering both.
         hero_cta = {
-            "ka": ("დაიწყე ტურის დაგეგმვა", "ნახე საჯარო ტურები", "დაწყება უფასოა · რეგისტრაცია მხოლოდ შენახვისა და გაზიარებისთვის დაგჭირდება"),
-            "en": ("Start planning your trip", "Explore public trips", "Start for free · Sign in only when you want to save or share"),
-            "ru": ("Начать планирование", "Смотреть публичные поездки", "Начните бесплатно · Вход нужен только для сохранения и публикации"),
-            "fa": ("برنامه‌ریزی سفر را شروع کنید", "سفرهای عمومی را ببینید", "شروع رایگان است · ورود فقط برای ذخیره یا اشتراک‌گذاری لازم است"),
-            "he": ("התחילו לתכנן טיול", "גלו טיולים ציבוריים", "מתחילים בחינם · כניסה נדרשת רק לשמירה או לשיתוף"),
-            "ar": ("ابدأ تخطيط رحلتك", "استكشف الرحلات العامة", "ابدأ مجانًا · تسجيل الدخول مطلوب فقط للحفظ أو المشاركة"),
+            "ka": ("დაიწყე ტურის დაგეგმვა", "ნახე საჯარო ტურები", "დაწყება უფასოა · რეგისტრაცია მხოლოდ შენახვისა და გაზიარებისთვის დაგჭირდება", "სტანდარტული ტურები", "Community"),
+            "en": ("Start planning your trip", "Explore public trips", "Start for free · Sign in only when you want to save or share", "Standard tours", "Community"),
+            "ru": ("Начать планирование", "Смотреть публичные поездки", "Начните бесплатно · Вход нужен только для сохранения и публикации", "Стандартные туры", "Community"),
+            "fa": ("برنامه‌ریزی سفر را شروع کنید", "سفرهای عمومی را ببینید", "شروع رایگان است · ورود فقط برای ذخیره یا اشتراک‌گذاری لازم است", "تورهای استاندارد", "Community"),
+            "he": ("התחילו לתכנן טיול", "גלו טיולים ציבוריים", "מתחילים בחינם · כניסה נדרשת רק לשמירה או לשיתוף", "טיולים סטנדרטיים", "Community"),
+            "ar": ("ابدأ تخطيط رحلتك", "استكشف الرحلات العامة", "ابدأ مجانًا · تسجيل الدخول مطلوب فقط للحفظ أو المشاركة", "الجولات القياسية", "Community"),
         }[lang]
         quick = {
             "ka": (("სტანდარტული ტურები", "აირჩიეთ მზა მარშრუტი და მოარგეთ", "#planner", True),
@@ -742,7 +746,9 @@ def render_static_page(lang, page):
                     f'<div class="home-hero-copy"><span class="kicker">{E(h["kicker"])}</span><h1>{E(p["h1"])}</h1>'
                     f'<p class="lead">{inline(h["lead"], lang)}</p>'
                     f'<div class="home-hero-actions"><a class="btn" href="#planner">{E(hero_cta[0])}</a>'
-                    f'<a class="btn alt" href="{page_url(lang, "community", False)}">{E(hero_cta[1])}</a></div>'
+                    f'<a class="btn alt" href="{page_url(lang, "community", False)}">{E(hero_cta[1])}</a>'
+                    f'<a class="btn alt" href="#planner" data-open-standard-tour>{E(hero_cta[3])}</a>'
+                    f'<a class="btn alt" href="{page_url(lang, "community", False)}">{E(hero_cta[4])}</a></div>'
                     f'<p class="home-hero-note">✓ {E(hero_cta[2])}</p></div>'
                     f'<aside class="home-quick" aria-label="Quick start">{quick_html}</aside>'
                     f'</div></section>')
@@ -2004,9 +2010,7 @@ def planner_form_html(lang):
             f'<option value="{v}"{" selected" if v == 480 else ""}>{E(lbl)}</option>'
             for v, lbl in ((360, t["pace_easy"]), (480, t["pace_normal"]), (600, t["pace_full"])))
 
-    form = f"""<div class="standard-launch">
-<button type="button" class="btn ghost" id="standardopen">{E(labels[4])} <span id="standardcount"></span></button>
-</div><div class="pform planner-toolbar">
+    form = f"""<div class="pform planner-toolbar">
 <div class="pf start-field"><label for="startsearch">{E(t['start'])}</label>
 <div class="start-input-row"><input id="startsearch" type="search" list="startoptions" autocomplete="off"
   role="combobox" aria-autocomplete="list" aria-controls="startoptions">

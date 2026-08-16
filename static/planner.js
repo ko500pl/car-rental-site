@@ -808,7 +808,7 @@
       var ap = a.purpose === purpose ? 0 : 2, bp = b.purpose === purpose ? 0 : 2;
       return (Math.abs(a.days - days) * 4 + ap) - (Math.abs(b.days - days) * 4 + bp) || a.days - b.days;
     }).slice(0, 100);
-    count.textContent = tours.length ? tours.length : "";
+    if (count) count.textContent = tours.length ? tours.length : "";
     if (!tours.length) {
       box.innerHTML = '<div class="standard-empty">' + (T.no_results || "No matching tours") + '</div>';
       return;
