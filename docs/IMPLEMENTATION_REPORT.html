@@ -1,0 +1,68 @@
+<!doctype html><html lang="ka"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Implementation report</title><style>body{font:15px/1.65 system-ui;max-width:940px;margin:36px auto;padding:0 22px;color:#172033}a{color:#087ea4}h1,h2{line-height:1.2}h1{font-size:30px}h2{margin-top:30px;border-top:1px solid #dce2ea;padding-top:18px}h3{margin-top:22px}code{background:#eef2f6;padding:2px 5px;border-radius:4px}pre{background:#eef2f6;padding:12px 14px;border-radius:8px;overflow-x:auto}pre code{background:none;padding:0}li{margin:5px 0}table{border-collapse:collapse;width:100%;margin:14px 0;display:block;overflow-x:auto}th,td{border:1px solid #dce2ea;padding:7px 10px;text-align:left;vertical-align:top}th{background:#f7fafc}blockquote{margin:14px 0;padding:10px 16px;border-left:3px solid #087ea4;background:#f7fafc}blockquote p{margin:6px 0}.back{display:inline-block;margin-bottom:18px}.meta{color:#64748b;font-size:13px}</style></head><body><a class="back" href="00-DOCUMENTATION-INDEX.html">← დოკუმენტაციის ინდექსი</a><div class="meta">ლოკალური დოკუმენტაცია · 2026-08-16</div>
+<h1>Implementation report</h1>
+<p>Prepared: 2026-08-14<br />
+Scope: local implementation and verification; nothing deployed or pushed.</p>
+<h2>Completed</h2>
+<ul>
+<li>Preserved the Python/static HTML/Decap architecture and six-language/RTL output.</li>
+<li>Added curated important road-leg overrides and conservative difficult-road metadata.</li>
+<li>Unified planner towns and accommodation lookup through <code>places.yml</code>.</li>
+<li>Passed year-round and seasonal data into planner decisions and added long-drive/winter warnings.</li>
+<li>Unified vehicle requirement ranking. The recommender now returns no vehicle instead of suggesting one below the safe minimum.</li>
+<li>Added contextual WhatsApp handoff using the admin-managed number.</li>
+<li>Replaced Firebase rental booking with static Netlify-compatible inquiry forms; Firebase remains limited to optional accounts/trip sync.</li>
+<li><strong>Correction (2026-08-16):</strong> only the <em>write</em> path was removed. The account bookings view (<code>static/auth.js:370</code>), the admin bookings console (<code>static/admin-bookings.js:29</code>) and the <code>extensionRequests</code>/car-review features that depend on <code>bookingId</code> still read a <code>bookings</code> collection that nothing writes to. This is a dead branch, not a finished feature — see <a href="LOCAL_IMPLEMENTATION_STATUS.html">docs/LOCAL_IMPLEMENTATION_STATUS.md</a>.</li>
+<li>Added a compact reusable inquiry form to homepage, fleet, map/planner and tourism pages, plus the detailed car request form.</li>
+<li>Expanded car CMS fields for availability, franchise, insurance, mileage, minimum rental, additional driver, child seat, airport delivery and cross-border rules.</li>
+<li>Added availability-aware Car Offer structured data and excluded unavailable cars from planner recommendations.</li>
+<li>Added attraction hero LCP attributes and safe lazy loading for ordinary images.</li>
+<li>Added OG fallback files for Persian, Hebrew and Arabic.</li>
+<li>Changed sitemap <code>lastmod</code> from build date to each source file's modification date.</li>
+<li>Added multilingual map search data, progressive count clusters, visited/unvisited state and cycling candidates already present in the local product work.</li>
+<li>Added strict placeholder validation and documented the owner workflow in <code>ADMIN_SETUP.md</code>.</li>
+</ul>
+<h2>Bugs fixed</h2>
+<ul>
+<li>Mountain travel estimates: curated road legs take precedence over straight-line fallback.</li>
+<li>Overnight/hotel mismatch: one town source now drives both labels and hotel selection.</li>
+<li>Winter safety: year-round destinations remain eligible, while winter mountain travel raises the vehicle floor and warnings.</li>
+<li>Required/recommended car contradiction: both use the strictest shared rank; unsafe fallback was removed.</li>
+<li>Dead-end conversion: tourist traffic can now continue to contextual WhatsApp or a form.</li>
+<li>Misleading sitemap freshness: content-specific dates replace a universal build date.</li>
+<li>Missing social images: all six language fallbacks exist.</li>
+</ul>
+<h2>Admin capabilities</h2>
+<p>From <code>/admin/</code> the owner can create, edit, publish, archive and order cars; upload main/gallery images; manage specifications, three GEL price tiers, deposit, availability and commercial conditions; edit multilingual content; and change site identity, logo, contacts, address, hours and social links. Published content feeds the generated pages automatically.</p>
+<h2>Remaining manual owner inputs</h2>
+<ul>
+<li>Replace placeholder phone/mobile/WhatsApp and email values.</li>
+<li>Replace placeholder social links and confirm the real business address/details.</li>
+<li>Upload real main photos for all 17 published vehicles and verify their real specifications, rates and availability.</li>
+<li>Supply only real testimonials/reviews if that feature is populated.</li>
+<li>Configure hosting OAuth and, only if account sync is wanted, real Firebase credentials.</li>
+</ul>
+<h2>Remaining limitations</h2>
+<ul>
+<li>Route estimates are planning estimates, not live road-condition guarantees. Mountain access must still be confirmed near travel time.</li>
+<li>No payment gateway, live inventory lock or transactional booking database was added; phase one ends at inquiry.</li>
+<li>Source mtimes are used for sitemap dates. A future CMS <code>updated_at</code> field or Git commit date can replace them.</li>
+<li>Tbilisi no-car-day rental-window adjustment and a full browser layout regression suite remain phase-two work.</li>
+<li>Responsive source-image variants are not generated yet; hero dimensions, priority and sizes are set.</li>
+</ul>
+<h2>Future availability integration point</h2>
+<p>Replace the current <code>fleet_for_planner()</code> availability filter with a build-time export or small read-only availability API. Preserve the inquiry payload contract (car, dates, pickup/return, itinerary and page URL) so a fleet-management system can consume it later.</p>
+<h2>Deployment steps</h2>
+<ol>
+<li>Complete the manual owner inputs above in Admin/content.</li>
+<li>Run <code>python build.py --validate-only</code>.</li>
+<li>Run <code>python build.py dist --strict</code>; it must finish without warnings.</li>
+<li>Commit and push only after review.</li>
+<li>Deploy <code>dist</code>, configure GitHub OAuth, then test <code>/admin/</code>, a WhatsApp inquiry and a form submission on the real domain.</li>
+</ol>
+<h2>Tests</h2>
+<ul>
+<li>JavaScript syntax: passed for <code>planner.js</code> and <code>booking.js</code>.</li>
+<li>Python unit/content tests: 22/22 passed.</li>
+<li>Full generated-site build: generated successfully; console-only Unicode output required UTF-8 on Windows.</li>
+<li>Strict publication build: intentionally blocked by real owner-data requirements — placeholder contacts/social URLs and 17 missing vehicle main images. These values were not fabricated.</li>
+</ul></body></html>

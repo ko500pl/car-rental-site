@@ -1,0 +1,83 @@
+<!doctype html><html lang="ka"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Attraction file spec — content/attractions/<slug>.yml</title><style>body{font:15px/1.65 system-ui;max-width:940px;margin:36px auto;padding:0 22px;color:#172033}a{color:#087ea4}h1,h2{line-height:1.2}h1{font-size:30px}h2{margin-top:30px;border-top:1px solid #dce2ea;padding-top:18px}h3{margin-top:22px}code{background:#eef2f6;padding:2px 5px;border-radius:4px}pre{background:#eef2f6;padding:12px 14px;border-radius:8px;overflow-x:auto}pre code{background:none;padding:0}li{margin:5px 0}table{border-collapse:collapse;width:100%;margin:14px 0;display:block;overflow-x:auto}th,td{border:1px solid #dce2ea;padding:7px 10px;text-align:left;vertical-align:top}th{background:#f7fafc}blockquote{margin:14px 0;padding:10px 16px;border-left:3px solid #087ea4;background:#f7fafc}blockquote p{margin:6px 0}.back{display:inline-block;margin-bottom:18px}.meta{color:#64748b;font-size:13px}</style></head><body><a class="back" href="00-DOCUMENTATION-INDEX.html">← დოკუმენტაციის ინდექსი</a><div class="meta">ლოკალური დოკუმენტაცია · 2026-08-16</div>
+<h1>Attraction file spec — content/attractions/<slug>.yml</h1>
+<p>Every file is UTF-8 YAML with EXACTLY this key order. Copy the shape from
+<code>content/attractions/ananuri-fortress.yml</code> (read it first — it is the reference).</p>
+<pre><code class="language-yaml">region: &lt;one of: tbilisi | shida-kartli | kvemo-kartli | mtskheta-mtianeti |
+                kakheti | samtskhe-javakheti | imereti | racha-lechkhumi |
+                samegrelo-zemo-svaneti | guria | adjara&gt;
+type: &lt;one of: archaeology beach canyon cave fortress lake monastery mountain
+               museum nature ski spa town waterfall winery&gt;
+lat: 41.1234          # 4 decimals, must be inside Georgia
+lon: 44.1234
+elevation: 830        # metres, integer
+unesco: false
+featured: false       # true for at most 2 places per region
+order: 30             # integer, any value 10..90
+image: ''
+gallery: []
+visit_hours: '1'      # '0.5' '1' '1.5' '2' '3' '4' '6' — realistic time ON SITE
+best_season: &lt;all | may-october | june-september | december-march&gt;
+open_year_round: true
+entry_fee: free       # 'free' or e.g. '15 ₾' / '5 ₾'
+distance_tbilisi_km: 70          # integer, by ROAD not straight line
+drive_time_tbilisi: '1:20'       # 'H:MM'
+road: &lt;paved | mostly_paved | gravel | 4x4_only&gt;
+car_category: &lt;economy | suv | offroad&gt;
+nearby:                # 2–4 slugs that really exist in content/attractions/
+- some-existing-slug
+ka: {name, short, body, tip, route}
+en: {…}
+ru: {…}
+fa: {…}
+he: {…}
+ar: {…}
+</code></pre>
+<h2>The six language blocks</h2>
+<p>Each of <code>ka en ru fa he ar</code> has the same five fields:</p>
+<ul>
+<li><strong>name</strong> — the place name in that language.</li>
+<li><strong>short</strong> — ONE sentence, 12–25 words. Ends with a full stop.</li>
+<li><strong>body</strong> — 280–420 words of real, specific, readable description. This is the
+  main text a visitor reads. It must contain concrete facts: century, who built
+  it, what survives, what you actually see, why it matters, how the site
+  changes with season or light. Markdown allowed: <code>**bold**</code> for the opening
+  clause, and a bulleted list where a place genuinely has separate parts.
+  Separate paragraphs with a BLANK LINE.</li>
+<li><strong>tip</strong> — 60–110 words of practical advice: how long it really takes, stairs
+  or steep ground, dress code, toilets, parking, food nearby, winter/summer
+  caveats, whether a guide or booking is needed.</li>
+<li><strong>route</strong> — 60–110 words: the driving route from Tbilisi (road name/number
+  where you are sure), distance, time, road surface and condition, where to
+  refuel, where to park, and which car category is enough.</li>
+</ul>
+<h2>Hard rules</h2>
+<ol>
+<li><strong>Only real places.</strong> If you are not certain a place exists and roughly
+   where it is, leave it out. Never invent a monastery, a canyon or a museum.</li>
+<li><strong>Coordinates must be right to ~2 km.</strong> They are validated against a
+   Georgia bounding box AND against <code>distance_tbilisi_km</code>; a file that fails
+   validation is deleted.</li>
+<li><code>distance_tbilisi_km</code> must be plausible for the road route — always LONGER
+   than the straight-line distance, typically 1.2×–2.5× depending on terrain.</li>
+<li>Do not copy sentences between the six languages mechanically — write each
+   one so it reads naturally. Same facts, native phrasing.</li>
+<li>Persian, Hebrew and Arabic are right-to-left; write plain text, no
+   directional marks, no Latin transliteration in brackets.</li>
+<li>No prices for tours, no phone numbers, no opening hours that change — those
+   go stale. <code>entry_fee</code> is the only money figure.</li>
+<li><code>nearby</code> must reference slugs that exist. Run
+   <code>ls content/attractions/</code> to check before writing.</li>
+<li>Slug: lowercase ASCII, hyphens, descriptive, e.g. <code>tsromi-church</code>,
+   <code>dzveli-shuamta</code>, <code>okrostsqali-gorge</code>.</li>
+</ol>
+<h2>Writing quality</h2>
+<p>The reference file <code>ananuri-fortress.yml</code> sets the bar. Aim for a well-edited
+guidebook: specific, calm, no marketing adjectives, no "breathtaking",
+no "hidden gem", no exclamation marks. Tell the reader something they did not
+know. If a place is often disappointing, say what is worth it and what is not.</p>
+<h2>How to write the files</h2>
+<p>Write each file with the Write tool, one file per attraction. Use a literal
+block or folded scalars exactly like the reference file. Verify at the end:</p>
+<pre><code>python -c &quot;import yaml,glob;[yaml.safe_load(open(f,encoding='utf-8')) for f in glob.glob('content/attractions/*.yml')];print('yaml ok')&quot;
+</code></pre>
+<p>Report back only: the list of slugs you created, and anything you skipped and why.</p></body></html>

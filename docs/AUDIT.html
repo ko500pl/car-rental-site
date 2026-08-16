@@ -1,0 +1,567 @@
+<!doctype html><html lang="ka"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Drive On — პროდუქტისა და ტექნიკური აუდიტი</title><style>body{font:15px/1.65 system-ui;max-width:940px;margin:36px auto;padding:0 22px;color:#172033}a{color:#087ea4}h1,h2{line-height:1.2}h1{font-size:30px}h2{margin-top:30px;border-top:1px solid #dce2ea;padding-top:18px}h3{margin-top:22px}code{background:#eef2f6;padding:2px 5px;border-radius:4px}pre{background:#eef2f6;padding:12px 14px;border-radius:8px;overflow-x:auto}pre code{background:none;padding:0}li{margin:5px 0}table{border-collapse:collapse;width:100%;margin:14px 0;display:block;overflow-x:auto}th,td{border:1px solid #dce2ea;padding:7px 10px;text-align:left;vertical-align:top}th{background:#f7fafc}blockquote{margin:14px 0;padding:10px 16px;border-left:3px solid #087ea4;background:#f7fafc}blockquote p{margin:6px 0}.back{display:inline-block;margin-bottom:18px}.meta{color:#64748b;font-size:13px}</style></head><body><a class="back" href="00-DOCUMENTATION-INDEX.html">← დოკუმენტაციის ინდექსი</a><div class="meta">ლოკალური დოკუმენტაცია · 2026-08-16</div>
+<h1>Drive On — პროდუქტისა და ტექნიკური აუდიტი</h1>
+<blockquote>
+<p>⚠️ <strong>ისტორიული დოკუმენტი — 2026-08-11.</strong> ნაწილი მიგნებებისა უკვე გასწორებულია. მიმდინარე მდგომარეობისთვის იხილეთ <a href="LOCAL_IMPLEMENTATION_STATUS.html">docs/LOCAL_IMPLEMENTATION_STATUS.md</a>. სტატუსი პუნქტებზე მოცემულია ბოლოს, „პრიორიტეტული TOP-10" ცხრილში (გადამოწმდა 2026-08-16).</p>
+</blockquote>
+<p><em>თარიღი: 2026-08-11 · აუდიტის მეთოდი: კოდის სრული წაკითხვა (build.py, theme.py, static/planner.js, static/explorer.js, static/auth.js, static/weather.js, content/), Playwright-ტესტები localhost:8899-ზე (1500px და 390px, ka/en/ar), 1789 დაგენერირებული გვერდის სკრიპტული შემოწმება. ყველა ციფრი გაზომილია, ყველა დასკვნა — გადამოწმებული.</em></p>
+<hr />
+<h2>შეჯამება</h2>
+<p>საიტი ტექნიკურად სუფთაა (0 კონსოლის შეცდომა, 0 გატეხილი განლაგება, 0 მკვდარი ბმული 84 შემოწმებულიდან, ვალიდური JSON-LD 30 გვერდის შერჩევაში), მაგრამ <strong>პროდუქტად ჯერ არ არსებობს</strong>: ჯავშნის ვერანაირი გზა გარდა placeholder-ტელეფონისა, 0/17 ავტომობილს აქვს ფოტო და მთელი საიტი example.ge დომენზეა აწყობილი. ტოპ-5 რისკი:</p>
+<ol>
+<li><strong>site_url = <code>https://www.example.ge</code></strong> — ყველა canonical, sitemap, OG და JSON-LD მკვდარ დომენზე მიდის; ამ სახით ინდექსაცია გამორიცხულია.</li>
+<li><strong>კონვერსიის გზა გაწყვეტილია</strong>: 247 ღირსშესანიშნაობის გვერდიდან ერთადერთი მოქმედება <code>tel:+995322000000</code> (placeholder); კონტაქტის გვერდზე ფორმა არ არის, wa.me ბმული მთელ საიტზე — 0 ცალი.</li>
+<li><strong>explorer.js-ში ორი <code>suggest</code> ფუნქციაა და მეორე თიშავს პირველს</strong> — „საიდან→სად“ ველებში კრეფისას ჩამონათვალი საერთოდ არ ჩნდება (Playwright-ით დადასტურებული); ხელსაწყო კლავიატურით გამოუყენებელია.</li>
+<li><strong>დამგეგმავის დროის მოდელი მთის გზებზე ~3-ჯერ ცდება</strong> — გეგმაში მოხვდა დღე „უშგული→გორი 265 კმ · 4სთ19წთ“ (რეალურად 8+ სთ) და ღამისთევის აბსურდები („ღამისთევა: თელავი“ + თბილისის სასტუმროების სია, როცა ტურისტი ძველ თბილისშია).</li>
+<li><strong>17 ავტომობილიდან არცერთს არ აქვს ფოტო, არ არსებობს არც ერთი მიმოხილვა/რეიტინგი</strong> — ნდობის ელემენტები, რომლითაც Blue Car Rental/Lava/Localrent ყიდიან, სრულად აკლია.</li>
+</ol>
+<hr />
+<h2>1. ტუროპერატორის პერსპექტივა</h2>
+<p>ტესტები: <code>/en/planner/</code> — 1, 3, 5 და 10-დღიანი გეგმები; სტილები classic/mountains/family; თვეები აგვისტო/იანვარი; სტარტები თბილისი/ბათუმი; carmode auto/pick.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>სიმძიმე</th>
+<th>დასკვნა</th>
+<th>ფაილი/გვერდი</th>
+<th>რეკომენდაცია</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.1</td>
+<td>კრიტიკული</td>
+<td><strong>მთის მონაკვეთების დროები არარეალურია.</strong> მოდელი (haversine × f, სიჩქარე v) კალიბრებულია მხოლოდ თბილისიდან მანძილით; ორ მთის წერტილს შორის საშუალდება ცდება. გაზომილი: ცაგერი→უშგული მოდელით 76 კმ / 1სთ20წთ (რეალურად ~105 კმ / 3.5–4.5 სთ ზაგარის 4x4 უღელტეხილით); 10-დღიან გეგმაში დღე 9 = „უშგული→გორი 265 კმ · 4სთ19წთ“ ერთი გაჩერებით — რეალურად 8–9 სთ.</td>
+<td><code>build.py:1375-1386</code> (<code>road_model</code>), <code>static/planner.js:20-27</code> (<code>leg</code>)</td>
+<td>მთავარი ~50 დერეფნისთვის რეალური leg-მატრიცა (OSRM-ით ერთჯერადად დათვლილი build-ზე) ან მინიმუმ რეგიონული f/v კოეფიციენტები სვანეთს/თუშეთს/რაჭას; „hard“ ლიმიტი: დღეში &gt;6 სთ ტარება = გაფრთხილება.</td>
+</tr>
+<tr>
+<td>1.2</td>
+<td>კრიტიკული</td>
+<td><strong>ღამისთევის ქალაქი და სასტუმროები ერთმანეთს ეწინააღმდეგება.</strong> დღე მთავრდება სიონის ტაძართან (ძველი თბილისი), ტექსტი: „Overnight: Telavi · Where to stay: Kartli, Argo Palace, GTM“ — ლეიბლი თელავია (თბილისი <code>CITY_NAME</code>-ში საერთოდ არ არის, 8 ქალაქიდან უახლოესი თელავი გამოდის), სასტუმროები კი თბილისისაა (<code>hotels.yml</code>-ის tbilisi სია). ბათუმის ტესტში ზუგდიდთან დასრულებულ დღეს „Overnight: Kutaisi“ მიაწერა.</td>
+<td><code>build.py:1390-1407</code> (<code>CITY_NAME</code> — 8 ქალაქი), <code>static/planner.js:460-464</code> (<code>nearestTown</code>) vs <code>435-452</code> (<code>hotelsHtml</code> — 37 ქალაქი <code>places.yml</code>-იდან)</td>
+<td>ორივე ფუნქციამ ერთი წყარო (<code>places.yml</code>-ის city სია) გამოიყენოს; თბილისი დაემატოს; „ღამისთევა“ არჩეული სასტუმროს ქალაქს დაემთხვეს.</td>
+</tr>
+<tr>
+<td>1.3</td>
+<td>მაღალი</td>
+<td><strong>დღეები უთანაბროდ იტვირთება.</strong> 10-დღიანი classic: დღე 3 და 4 = თითო გაჩერება, დასრულება 14:02–14:22; family 3-დღიანი მთავრდება 12:47/13:20/14:34 (დღის ბიუჯეტი 6 სთ, გამოყენებულია ~4). ამავდროულად mountains-გეგმაში დღეები 18:53–18:54-ზე მთავრდება (ზამთარში — სიბნელეში; მზის ჩასვლის ცნება მოდელს არ აქვს).</td>
+<td><code>static/planner.js:175-208</code> (<code>splitDays</code> — გლობალური მარშრუტის თანმიმდევრული ჭრა)</td>
+<td>დაბალანსება: დარჩენილი დღეების ბიუჯეტის გადანაწილება; დღის დასრულების დროის ჩვენება და ზამთრის თვეებში 17:00-ის შემდეგ ტარების გაფრთხილება.</td>
+</tr>
+<tr>
+<td>1.4</td>
+<td>მაღალი</td>
+<td><strong>„მთები“ სტილი ბოტანიკურ ბაღებს გეგმავს.</strong> ბათუმიდან 2-დღიანი mountains = Dandalo Bridge, Shekvetili Dendrological Park, ზუგდიდის/ბათუმის ბოტანიკური ბაღები, კოლხეთის ტბა — 0 მთა. მიზეზი: სტილის types მხოლოდ ქულას მატებს (boost), ფილტრი არ არის, და „nature“ ტიპში ბაღებიც შედის.</td>
+<td><code>static/planner.js:45-55</code> (<code>STYLE_RULES</code>), <code>129-137</code> (<code>score</code>)</td>
+<td>სტილს მიეცეს რბილი ფილტრიც (მაგ. ≥60% გაჩერება სტილის ტიპებიდან) ან ცალკე <code>subtype</code> ბაღებისთვის.</td>
+</tr>
+<tr>
+<td>1.5</td>
+<td>მაღალი</td>
+<td><strong>ზამთრის ლოგიკა არ არსებობს.</strong> იანვრის 5-დღიან mountains-გეგმაში ჯვრის უღელტეხილი (2379 მ) შედის და მანქანად Toyota Prius-ი (economy) რჩება — პროფესიულად მიუღებელია. ამასთან <code>seasonOK</code> may-october ობიექტებს ზამთარში საერთოდ შლის: გერგეტი (<code>open_year_round: true</code>) დეკემბრის გეგმაში ვერ მოხვდება, თუმცა ზამთრის მთავარი ხედია — <code>open_year_round</code> ველი დამგეგმავს საერთოდ არ გადაეცემა.</td>
+<td><code>static/planner.js:60-66</code> (<code>seasonOK</code>), <code>build.py:1434-1447</code> (<code>planner_data</code> — <code>open_year_round</code> არ ექსპორტდება)</td>
+<td><code>open_year_round</code> გადაეცეს JSON-ს; ზამთარში (XII–III) მთის უღელტეხილებზე მინიმუმ AWD/4x4 + „ჯაჭვები/ზამთრის საბურავი“ შენიშვნა.</td>
+</tr>
+<tr>
+<td>1.6</td>
+<td>მაღალი</td>
+<td><strong>„საჭირო მანქანა“ და რეკომენდებული მანქანა ერთმანეთს ეწინააღმდეგება.</strong> 10-დღიანი გეგმის ფაქტებში „Car needed = Off-road 4x4“, ბარათი კი Hyundai Tucson-ს (SUV) გვთავაზობს — ფაქტები <code>car_category</code>-ზეა აგებული, რეკომენდაცია <code>road</code>-ზე, და ორი შკალა სცდება (უშგული: <code>car_category: offroad</code>, <code>road: gravel</code>).</td>
+<td><code>static/planner.js:260-267</code> (maxCar) vs <code>396-409</code> (<code>recommendCar</code>)</td>
+<td>ერთი შკალა: რეკომენდაციამ ორივედან მაქსიმალური მოთხოვნა აიღოს.</td>
+</tr>
+<tr>
+<td>1.7</td>
+<td>საშუალო</td>
+<td><strong>ლანჩი უჩინრად ინთქმება.</strong> დღე 1: Abanotubani-დან გასვლა 13:41, Narikala-ში მისვლა 14:26, გზა „1 კმ · 1 წთ“ — 45-წუთიანი ლანჩი დროში ჩაითვალა, მაგრამ გეგმაში ხაზი არ ჩანს; მომხმარებლისთვის დრო „იკარგება“.</td>
+<td><code>static/planner.js:139, 180-192</code> (<code>LUNCH=45</code>)</td>
+<td>ლანჩის ცალკე ხაზი დროით და (სურვილისას) რესტორნის ქალაქით.</td>
+</tr>
+<tr>
+<td>1.8</td>
+<td>საშუალო</td>
+<td><strong>სამუშაო საათები/დასვენების დღეები არ არსებობს.</strong> გეგმა მუზეუმს ორშაბათსაც ჩასვამს (მაგ. Silk Museum, სტალინის მუზეუმი), ვარძიას — მისი დაკეტვის საათის მიღმა. მონაცემებში <code>entry_fee</code> არის, <code>opening_hours</code> — არა.</td>
+<td><code>content/attractions/*.yml</code> (ველი არ არსებობს)</td>
+<td><code>opening_hours</code>/<code>closed_days</code> ველი ATTRACTION_SPEC-ში და მინიმუმ გაფრთხილება გეგმაში.</td>
+</tr>
+<tr>
+<td>1.9</td>
+<td>საშუალო</td>
+<td><strong>პირველი 1–2 დღე ყოველთვის თბილისის ფეხით სასეირნო დღეებია მანქანით.</strong> default 3-დღიანი გეგმის დღეები 1–2 მთლიანად ძველი თბილისია (დღე 1: 6 კმ / 12 წთ ტარება), მაგრამ ბარათი მაინც Prius-ის ქირაობას ითვლის სამივე დღეზე — ტუროპერატორი თბილისის დღეს მანქანის გარეშე დაგეგმავდა.</td>
+<td>Playwright-ტესტი <code>default3</code>; <code>static/planner.js:411-431</code> (<code>carCard</code> — rate × days)</td>
+<td>„თბილისის დღეები მანქანის გარეშე“ ოფცია, ქირის დღეების შესაბამისი შემცირებით — ეს ფასსაც ამცირებს და ნდობასაც მატებს.</td>
+</tr>
+<tr>
+<td>1.10</td>
+<td>დაბალი</td>
+<td>სასტუმროს ბმულები OSM-ის წერტილზე მიდის (<code>openstreetmap.org/?mlat=…</code>) — ჯავშნის გზა და შემოსავლის (აფილიაციის) შანსი ნულია.</td>
+<td><code>static/planner.js:447-451</code></td>
+<td>Booking/Agoda აფილიაციური ბმული ან საკუთარი პარტნიორული სია.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>2. Frontend-ინჟინრის პერსპექტივა</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>სიმძიმე</th>
+<th>დასკვნა</th>
+<th>ფაილი/გვერდი</th>
+<th>რეკომენდაცია</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2.1</td>
+<td>კრიტიკული</td>
+<td><strong>სახელების კოლიზია: <code>explorer.js</code>-ში ორი <code>function suggest</code>.</strong> ხაზი 303 — autocomplete <code>suggest(which)</code>, ხაზი 349 — დღის შემოთავაზებების <code>suggest()</code>. Hoisting-ის გამო მეორე ფარავს პირველს: <code>/en/map/</code>-ზე „საიდან“ ველში „bat“-ის აკრეფაზე <code>#expfromlist</code> ცარიელი რჩება (გაზომილი: innerHTML length = 0) და ყოველ კლავიშზე მძიმე „რა ჩაეტევა დღეში“ ალგორითმი ეშვება. A→B მარშრუტი მხოლოდ რუკაზე ქალაქის წერტილზე კლიკით აეწყობა.</td>
+<td><code>static/explorer.js:303</code> და <code>:349</code>, wiring <code>:632</code></td>
+<td>გადაერქვას ერთ-ერთი (<code>suggestEndpoint(which)</code>); სმოუკ-ტესტი: აკრეფა → სია ჩნდება.</td>
+</tr>
+<tr>
+<td>2.2</td>
+<td>მაღალი</td>
+<td><strong>გეომეტრიის კოდი 3 ეგზემპლარადაა და სემანტიკა სცდება.</strong> planner.js <code>leg()</code> სიჩქარეებს ასაშუალებს (<code>(a.v+b.v)/2</code>, ხაზი 23) + ქალაქის წესი (&lt;12 კმ → ≤32 კმ/სთ); explorer.js <code>leg()</code> მინიმუმს იღებს (<code>Math.min(a.v,b.v)</code>, ხაზი 31) წესის გარეშე; build.py-ს <code>_hav</code> მესამე ასლია. ერთი და იგივე მონაკვეთი ორ ხელსაწყოში სხვადასხვა დროს აჩვენებს.</td>
+<td><code>static/planner.js:10-27</code>, <code>static/explorer.js:19-34</code>, <code>build.py:1366-1372</code></td>
+<td>ერთი <code>geo.js</code> მოდული ორივე გვერდზე; build.py-ში პარამეტრები JSON-ით გადავიდეს.</td>
+</tr>
+<tr>
+<td>2.3</td>
+<td>მაღალი</td>
+<td><strong>187 KB JSON ჩაშენებულია ყოველ დამგეგმავის გვერდში.</strong> გაზომილი: en გვერდი 204 KB, აქედან <code>PLANNER_DATA</code> 190 KB; ka 187/202 KB; ar 184/198 KB. EXP-კონფიგი 130 KB — მთავარ გვერდზეც და /map/-ზეც. ცალკე ფაილად ქეშირებადი არ არის, ყოველ ვიზიტზე ხელახლა იტვირთება და HTML-პარსერს აჩერებს.</td>
+<td><code>build.py:1539</code> (<code>render_planner</code> tail), <code>1005-1015</code> (<code>explorer_block</code>)</td>
+<td><code>/assets/planner-&lt;lang&gt;.&lt;hash&gt;.json</code> + <code>fetch()</code> (კომენტარი planner.js:2 სწორედ ამას გვპირდება — კოდი ჩამორჩა); EXP-ს იგივე.</td>
+</tr>
+<tr>
+<td>2.4</td>
+<td>მაღალი</td>
+<td><strong>LCP/CLS ღირსშესანიშნაობის გვერდებზე:</strong> hero-ფოტოს არ აქვს <code>width/height</code> (layout shift) და აქვს <code>loading="lazy"</code> — LCP-ელემენტის lazy-ჩატვირთვა აჭიანურებს რენდერს; <code>srcset</code> არსად არის. ფოტოები: max 1100px, მედიანა 119 KB, მაქსიმუმი 448 KB (birtvisi-fortress.webp).</td>
+<td><code>build.py:818-836</code> (<code>photo_html</code>); <code>dist/en/attractions/gergeti-trinity-church/</code> (გადამოწმებული მარკუპი)</td>
+<td>hero-ზე <code>loading="eager"</code>+<code>fetchpriority="high"</code>+ზომები; 480/800/1100 srcset; 250 KB+ ფაილების რეკომპრესია.</td>
+</tr>
+<tr>
+<td>2.5</td>
+<td>მაღალი</td>
+<td><strong>წვდომადობა:</strong> (ა) ფილტრის/სტილის ჩიპები <code>&lt;button&gt;</code>-ებია <code>aria-pressed</code>-ის გარეშე (გაზომილი: null) — ეკრანის წამკითხველი ჩართულ/გამორთულს ვერ არჩევს; (ბ) დამგეგმავის ↑/↓/✕ ღილაკები 24×24px (WCAG 2.5.8 მინიმუმი 24px-ზეა ზღვარზე, კომფორტული 44px); (გ) Leaflet-ის circleMarker-ები კლავიატურით მიუწვდომელია და A→B-ს ტექსტური ალტერნატივა გატეხილია (2.1); (დ) <code>:focus-visible</code> მხოლოდ <code>a</code>-ზეა სტილიზებული.</td>
+<td><code>static/planner.js:554-563</code> (<code>chipRow</code>), <code>theme.py:54</code></td>
+<td><code>aria-pressed</code> toggle-ზე; ღილაკები ≥40px მობილურზე; <code>button:focus-visible</code> სტილი.</td>
+</tr>
+<tr>
+<td>2.6</td>
+<td>საშუალო</td>
+<td><strong>მობილურზე (390px) რუკის გვერდი „რუკის გარეშეა“:</strong> expgrid ერთ სვეტად ეწყობა და გვერდითი პანელი 941px სიმაღლისაა — რუკა (540px) მხოლოდ ~2.5 ეკრანის ჩასქროლვის შემდეგ ჩანს. Overflow/გატეხილი განლაგება არ დაფიქსირდა (სქროლის სიგანე = viewport ყველა ტესტზე).</td>
+<td>Playwright: <code>.expside</code> 348×941, <code>#expmap</code> 348×540</td>
+<td>მობილურზე რუკა პირველი ან ჩამკეცავი პანელი (tabs: რუკა/სია/მარშრუტი).</td>
+</tr>
+<tr>
+<td>2.7</td>
+<td>საშუალო</td>
+<td>Save-flow <code>prompt()</code>/<code>confirm()</code>-ზეა აგებული (თარიღი ტექსტად „YYYY-MM-DD“) — iOS Safari-ზე უხეში UX და ვალიდაცია არ არსებობს.</td>
+<td><code>static/planner.js:355-369</code></td>
+<td>პატარა დიალოგი <code>&lt;input type="date"&gt;</code>-ით.</td>
+</tr>
+<tr>
+<td>2.8</td>
+<td>დაბალი</td>
+<td>Google Fonts CSS render-blocking-ია 6 ენაზე (fa/he/ar-ზე +1 ფონტი); Leaflet ლოკალურია (კარგი).</td>
+<td><code>build.py:420-427</code></td>
+<td><code>font-display:swap</code> უკვე დგას; საკმარისია preload ან self-host.</td>
+</tr>
+<tr>
+<td>2.9</td>
+<td>დაბალი</td>
+<td>გლობალური <code>window._fhEdit</code> + პოპაპში inline <code>onclick="window._fhEdit.add('…')"</code> სტრინგით — slug-ში აპოსტროფი კოდს გატეხავს (ამჟამად slug-ები უსაფრთხოა, მაგრამ ეს კონვენციაზეა დამოკიდებული).</td>
+<td><code>static/planner.js:498-500</code></td>
+<td>დელეგირებული event listener პოპაპშიც.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>3. Backend/არქიტექტურის პერსპექტივა</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>სიმძიმე</th>
+<th>დასკვნა</th>
+<th>ფაილი/გვერდი</th>
+<th>რეკომენდაცია</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3.1</td>
+<td>კრიტიკული</td>
+<td><strong><code>site_url: https://www.example.ge</code> და მთელი საკონტაქტო placeholder-ია</strong> — canonical-ები, sitemap-ის 1782 URL, OG, JSON-LD <code>@id</code>-ები, llms.txt — ყველა მკვდარ დომენზე. ეს კონფიგის ერთი ხაზია, მაგრამ სანამ არ შეიცვლება, ყველა SEO/GEO ინვესტიცია ნულია.</td>
+<td><code>content/settings/site.yml:1</code></td>
+<td>რეალური დომენი + build-ის ბოლოს assert, რომ <code>example.</code> პროდაქშენ-არტეფაქტში არ მოხვდეს.</td>
+</tr>
+<tr>
+<td>3.2</td>
+<td>მაღალი</td>
+<td><strong>ერთი 1822-ხაზიანი build.py + 634-ხაზიანი theme.py, ტესტების გარეშე, HTML სტრიქონების კონკატენაციით.</strong> თავად build სწრაფია (გაზომილი: 8.7 წმ / 1788 გვერდი / 102 MB) — მასშტაბის პრობლემა ჯერ არ არის; რისკი რეგრესიაა: ერთი შეცდომა f-string-ში 1788 გვერდს ტეხავს და ვერავინ ამჩნევს.</td>
+<td><code>build.py</code>, <code>theme.py</code></td>
+<td>CI-ში 3 სმოუკ-ტესტი (HTML-ვალიდაცია შერჩევაზე, JSON-LD parse, შიდა ბმულების შემოწმება — ეს აუდიტის სკრიპტები პირდაპირ გამოდგება); რენდერების დაშლა მოდულებად მოგვიანებით.</td>
+</tr>
+<tr>
+<td>3.3</td>
+<td>მაღალი</td>
+<td><strong>theme.py-ს „dark design layer“ (ხაზი 373+) უპირობოდ ემატება</strong> — <code>theme: light</code> გადართვისას <code>color-scheme:dark</code>, თეთრი hover-ები და footer-ის შავი mix მაინც დარჩება; light-თემა დე ფაქტო არ არსებობს, თუმცა კონფიგი გვპირდება. (Dark-ზე კონტრასტი კარგია: გაზომილი ink-2/bg 8.8:1, ღილაკი 7.0:1.)</td>
+<td><code>theme.py:14, 373-634</code></td>
+<td>layer-ი <code>if dark:</code>-ში ჩაიკეტოს ან light-ვარიანტები დაემატოს.</td>
+</tr>
+<tr>
+<td>3.4</td>
+<td>საშუალო</td>
+<td><strong>localStorage-მარშრუტები დროებითი გადაწყვეტაა</strong>: Firebase გამორთულია (<code>auth.yml: enabled: false</code>), მარშრუტები ბრაუზერს ებმება — Safari ITP 7 დღეში შლის, მოწყობილობებს შორის სინქრონი არ არის; account-გვერდი ამ დროს navbar-შია („My page“). Firestore-ის წესები FIREBASE.md-ში კორექტულია (uid-შემოწმება create/read/update/delete-ზე).</td>
+<td><code>static/auth.js:12-88</code>, <code>content/settings/auth.yml</code>, <code>FIREBASE.md:57-68</code></td>
+<td>ეს სწორი არქიტექტურაა — სერვერი აქ არ სჭირდება; უბრალოდ ჩაირთოს Firebase და UI-ში გაჩნდეს „შენახულია მხოლოდ ამ ბრაუზერში“ გაფრთხილება local-რეჟიმში.</td>
+</tr>
+<tr>
+<td>3.5</td>
+<td>საშუალო</td>
+<td><strong>რას სჭირდება რეალურად სერვერი და რას — არა:</strong> ჯავშნის ფორმა/ლიდები — არა (Netlify Forms/Formspree + wa.me); მიმოხილვები — თითქმის არა (მოდერაცია საჭიროა, Firestore + Cloud Function საკმარისია); <strong>ხელმისაწვდომობის კალენდარი და დადასტურებული ჯავშანი — კი</strong> (double-booking-ის პრევენცია ატომურ ჩანაწერს ითხოვს; Drive On Manager-თან ინტეგრაციის წერტილი). ეს ზღვარი პროექტში დოკუმენტირებული არ არის და RESEARCH.md-ის გეგმებს კითხვის ნიშნის ქვეშ აყენებს.</td>
+<td>—</td>
+<td>ფაზა 1: ფორმა+WA (სერვერის გარეშე); ფაზა 2: availability API Manager-იდან read-only; ფაზა 3: ონლაინ ჯავშანი.</td>
+</tr>
+<tr>
+<td>3.6</td>
+<td>საშუალო</td>
+<td><strong>Build არაატომურია:</strong> <code>shutil.rmtree(out)</code> → თანმიმდევრული ჩაწერა; in-place განახლებისას (როგორც ახლა dist+HTTP-სერვერი) ვიზიტორი ნახევრად აშენებულ საიტს მოხვდება.</td>
+<td><code>build.py:1746-1752</code></td>
+<td>აშენება დროებით დირექტორიაში + atomic rename, ან CI-დეპლოი (netlify.toml უკვე არსებობს).</td>
+</tr>
+<tr>
+<td>3.7</td>
+<td>საშუალო</td>
+<td><strong>admin/ (Decap CMS) placeholder-რეპოზიტორითაა გამოქვეყნებული</strong> (<code>repo: ko500pl/car-rental-site</code>) და dist-ში ყოველ build-ზე კოპირდება; robots.txt კრძალავს, მაგრამ URL საჯაროდ წვდომადია.</td>
+<td><code>admin/config.yml:6-8</code>, <code>build.py:1755-1758</code></td>
+<td>რეალური repo/OAuth ან admin-ის გამორიცხვა პროდაქშენ-build-იდან ფლაგით.</td>
+</tr>
+<tr>
+<td>3.8</td>
+<td>დაბალი</td>
+<td><code>weather.js</code>-ის <code>iso()</code> UTC-ს იყენებს — თბილისის 00:00–04:00 შუალედში „დღეს“ გუშინდელ თარიღს აბრუნებს და ამინდი ერთი დღით ცდება.</td>
+<td><code>static/weather.js:68-72</code></td>
+<td>ლოკალური თარიღის ფორმატირება.</td>
+</tr>
+<tr>
+<td>3.9</td>
+<td>დაბალი</td>
+<td>ჰეშირებული ფაილები მხოლოდ style.css/planner/explorer/auth-ია; <code>weather.js</code>, leaflet და 1482 ცალი <code>/data/attr/*.json</code> (12 MB) ჰეშის გარეშეა — ქეშის ინვალიდაცია განახლებისას არ იმუშავებს.</td>
+<td><code>build.py:404-411, 1806-1811</code></td>
+<td>ერთიანი hashed-asset გზა + long-cache ჰედერები netlify.toml-ში.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. დირექტორის/მარკეტოლოგის პერსპექტივა (კონვერსია)</h2>
+<p><em>გზა გაზომილია: ღირსშესანიშნაობის გვერდი → rentbox-ის ღილაკი = <code>tel:</code> ბმული (დესკტოპზე უქმი); ან CTA → <code>/contact/</code> → იქ ფორმა არ არის (ბლოკები: h2/facts/note/table/ul/cta — მხოლოდ ტელეფონი/ელფოსტა/მისამართი). ანუ ერთადერთი კონვერსია — სატელეფონო ზარი placeholder-ნომერზე.</em></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>სიმძიმე</th>
+<th>დასკვნა</th>
+<th>ფაილი/გვერდი</th>
+<th>რეკომენდაცია</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4.1</td>
+<td>კრიტიკული</td>
+<td><strong>ჯავშნის მოქმედება არ არსებობს.</strong> ფორმა — 0; wa.me/WhatsApp deep-link — 0 (grep მთელ dist-ზე), მიუხედავად იმისა, რომ კონტაქტის გვერდი „Mobile / WhatsApp“-ს ტექსტად ასახელებს; ტელეფონი ყველგან placeholder <code>+995 32 2 000 000</code>. RESEARCH.md-ის #1 ნაკლი ამ build-შიც შეუსრულებელია.</td>
+<td><code>content/pages/contact.yml</code>, <code>content/settings/site.yml</code>, ყველა CTA (<code>build.py:679-683</code>)</td>
+<td>wa.me ბმული წინასწარ შევსებული ტექსტით (მანქანა+თარიღები+აყვანის ადგილი) ყველა rentbox/carrec/CTA-ში — ეს S-effort-ია და სერვერს არ ითხოვს; პარალელურად Netlify Forms.</td>
+</tr>
+<tr>
+<td>4.2</td>
+<td>კრიტიკული</td>
+<td><strong>0/17 ავტომობილს აქვს ფოტო, gallery ყველგან ცარიელია</strong> — car-გვერდი პროდუქტის გვერდი ვერ არის; Playwright: <code>/en/fleet/toyota-rav4/</code> — 0 <code>&lt;img&gt;</code> მთელ გვერდზე. Blue/Lava-ს ბარათი ფოტო+ფასი+ღილაკია.</td>
+<td><code>content/cars/*.yml</code> (<code>image: null</code>)</td>
+<td>თითო მანქანაზე მინიმუმ 4 რეალური ფოტო; ეს ასევე ააქტიურებს og:image-ს და product-სქემის image-ს.</td>
+</tr>
+<tr>
+<td>4.3</td>
+<td>მაღალი</td>
+<td><strong>დამგეგმავი ითვლის ფასს (კარგი ანკერი: „Prius 75₾/დღე · 3 დღე 225₾“), მაგრამ CTA ზოგად კონტაქტზე აგდებს</strong> — არჩეული მანქანა/თარიღები/მარშრუტი იკარგება. იგივე rentbox-ში: „from 75₾ + საწვავი ~X₾“ კარგი anchoring-ია, ღილაკი კი მხოლოდ tel:.</td>
+<td><code>static/planner.js:285-287, 420-430</code>, <code>build.py:1196-1217</code></td>
+<td>„დაჯავშნე ეს მანქანა ამ თარიღებზე“ → wa.me/ფორმა query-პარამეტრებით.</td>
+</tr>
+<tr>
+<td>4.4</td>
+<td>მაღალი</td>
+<td><strong>ნდობის ელემენტები ნულია:</strong> არც ერთი მიმოხილვა (aggregateRating/Review — 0 საიტზე), სოციალური ბმულები <code>facebook.com/example</code>; ამასთან შეუმოწმებელი მარკეტინგული პრეტენზიები placeholder-კომპანიისთვის („ავტოპარკი 120“, საიტზე კი 17 მანქანა; „საშუალო ასაკი 4 წელი“; „ჩანაცვლება 6 საათში“). შეუსაბამობა fleet_size=120 vs 17 გამოქვეყნებული — სანდოობის რისკია.</td>
+<td><code>content/settings/site.yml</code> (<code>fleet_size: '120'</code>, <code>social</code>), მთავარი გვერდი</td>
+<td>Google Reviews-ის რეალური ვიჯეტი/იმპორტი + პრეტენზიების დადასტურება ან წაშლა; fleet_size-ის სინქრონი რეალურ პარკთან.</td>
+</tr>
+<tr>
+<td>4.5</td>
+<td>მაღალი</td>
+<td><strong>ვალუტა მხოლოდ ₾-ია</strong> — სამიზნე აუდიტორია (fa/he/ar/en) ლარის კურსს არ იცნობს; <code>usd_rate: 2.7</code> კონფიგში დევს და <strong>არსად გამოიყენება</strong> (grep: 0 შედეგი build.py/theme.py/JS-ში).</td>
+<td><code>content/settings/site.yml</code></td>
+<td>ფასებთან „≈ $28/day“ მეორე ხაზი — მონაცემი უკვე არსებობს.</td>
+</tr>
+<tr>
+<td>4.6</td>
+<td>საშუალო</td>
+<td><strong>Urgency/რისკის მოხსნის ელემენტები არ არის:</strong> depoziti ცხრილში კარგადაა, მაგრამ არსად ჩანს გაუქმების პოლიტიკა ბარათზე, „უფასო გაუქმება X დღემდე“, მინიმალური ასაკი/სტაჟი car-გვერდზე — Localrent ამ ველებით ხურავს ეჭვებს.</td>
+<td><code>build.py:626-697</code> (<code>render_car</code>)</td>
+<td>3 bullet ყოველ car-გვერდზე: გაუქმება/დეპოზიტი/მინ. ასაკი.</td>
+</tr>
+<tr>
+<td>4.7</td>
+<td>საშუალო</td>
+<td><strong>ბლოგი 4 სტატიაა</strong> (build output: „4 სტატია“) და არც ერთი არ არის კონვერსიულ intent-ზე („N დღე საქართველოში“, „ფასები თვეების მიხედვით“) — ტრაფიკის ის ფენა, რომლითაც Lava/Northbound ცხოვრობს, ცარიელია (დეტალები RESEARCH.md §3.2 — აქ არ ვიმეორებ; ვადასტურებ, რომ ამ build-ში არაფერია დამატებული).</td>
+<td><code>content/posts/</code></td>
+<td>RESEARCH-ის #5/#6/#7 გვერდები დამგეგმავის ალგორითმით დაგენერირდეს build-ზე.</td>
+</tr>
+<tr>
+<td>4.8</td>
+<td>დაბალი</td>
+<td>„for 1 days“ (მხ. რიცხვის ფორმა) დამგეგმავის ფასის ბარათში en-ზე — წვრილმანი, მაგრამ ფასის ბარათი კონვერსიის წერტილია.</td>
+<td><code>static/planner.js:427</code> (<code>T.for_days.replace</code>)</td>
+<td>მრავლობითობის მარტივი წესი ენების მიხედვით.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>5. SEO/GEO აუდიტორის პერსპექტივა</h2>
+<p><em>შემოწმდა სკრიპტით 1789 გვერდი: title/description სიგრძეები, hreflang, JSON-LD parse (30 გვერდის შერჩევა), OG-ფოლბექები, sitemap.</em></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>სიმძიმე</th>
+<th>დასკვნა</th>
+<th>ფაილი/გვერდი</th>
+<th>რეკომენდაცია</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5.1</td>
+<td>კრიტიკული</td>
+<td>ყველა canonical/hreflang/sitemap/JSON-LD URL <code>https://www.example.ge</code>-ზეა (იხ. 3.1) — დანარჩენი SEO ამის გარეშე აზრს კარგავს.</td>
+<td><code>content/settings/site.yml</code></td>
+<td>დომენის დაყენება პირველ რიგში.</td>
+</tr>
+<tr>
+<td>5.2</td>
+<td>მაღალი</td>
+<td><strong>Description-ები სისტემურად გრძელია: 1714/1789 გვერდი &gt;160 სიმბოლო (მაქს. 203)</strong> — კოდი ყველგან 176–178-ზე ჭრის (<code>[:178]</code>), რაც თავიდანვე ლიმიტს აჭარბებს; Google თითქმის ყველა გვერდზე თვითონ გადაწერს სნიპეტს.</td>
+<td><code>build.py:634, 1155, 1244, 1319</code></td>
+<td>ჭრა ~155-ზე, სიტყვის საზღვარზე.</td>
+</tr>
+<tr>
+<td>5.3</td>
+<td>მაღალი</td>
+<td><strong>Title-ების 26% (466) &gt;60 სიმბოლოა, 26 გვერდი &gt;70</strong>; ღირსშესანიშნაობებზე ≥55 სიმბოლოს შემთხვევაში <code>title[:74]</code> შუა სიტყვაზე ჭრის და ბრენდს კარგავს — მაგ. ru: „Узкоколейка «Кукушка» … — Музей, 2:25 “ (74 სიმბ., ბოლოში ჩამოჭრილი „От Тбилиси“).</td>
+<td><code>build.py:1239-1240</code></td>
+<td>შაბლონის გადაწყობა: სახელი — ტიპი</td>
+</tr>
+<tr>
+<td>5.4</td>
+<td>მაღალი</td>
+<td><strong>og:image 404-ია fa/he/ar-ის 171 გვერდზე:</strong> ფოლბექი <code>/assets/og-{lang}.png</code>-ს აგებს, ფაილები კი მხოლოდ ka/en/ru-სთვის არსებობს (გაზომილი: თითო ენაზე 57 გვერდი ფოლბექზეა). WhatsApp/Telegram-ში გაზიარებისას — ცარიელი ბარათი ზუსტად იმ ენებზე, საიდანაც მესინჯერ-ტრაფიკი მოდის.</td>
+<td><code>build.py:420</code>, <code>dist/assets/og-*.png</code>, <code>make_og.py</code></td>
+<td>og-fa/he/ar გენერაცია (make_og.py უკვე არსებობს) ან ენა-ნეიტრალური ერთი ფოლბექი.</td>
+</tr>
+<tr>
+<td>5.5</td>
+<td>მაღალი</td>
+<td><strong>დამგეგმავისა და explorer-ის მთელი ღირებულება crawler-ისთვის უხილავია:</strong> planner-გვერდის no-JS ტექსტი სულ 632 სიმბოლოა; A→B პასუხები („რა ვნახო თბილისი–ბათუმის გზაზე“) მხოლოდ JS-შია. ეს RESEARCH.md §3.2 #4-ის დადასტურებაა გაზომვით — pre-render ჯერ არ გაკეთებულა.</td>
+<td><code>dist/en/planner/index.html</code>, <code>static/explorer.js</code></td>
+<td>~40–60 წყვილის სტატიკური გვერდები build-ზე + 3/5/7/10-დღიანი pre-rendered გეგმები.</td>
+</tr>
+<tr>
+<td>5.6</td>
+<td>საშუალო</td>
+<td><strong>JSON-LD ვალიდურია</strong> (30 გვერდის შერჩევა — 0 parse-შეცდომა; Car, TouristAttraction, TouristTrip, FAQPage, OfferCatalog სწორადაა აწყობილი), მაგრამ აკლია: <code>aggregateRating</code>/<code>Review</code> (0 საიტზე), <code>Offer.priceValidUntil</code>, FAQPage ტურისტულ გვერდებზე (მხოლოდ /faq/-ზეა).</td>
+<td><code>build.py:274-386</code></td>
+<td>რეალური მიმოხილვების პაიპლაინი → aggregateRating; FAQ-ბლოკები attraction/route გვერდებზე.</td>
+</tr>
+<tr>
+<td>5.7</td>
+<td>საშუალო</td>
+<td><strong>sitemap-ში ყველა 1782 URL-ს <code>lastmod = build-ის დღე</code> და <code>changefreq=weekly</code> აქვს</strong> — ყოველ build-ზე ყველაფერი „განახლებულია“, სიგნალი უფასურდება.</td>
+<td><code>build.py:1549-1585</code></td>
+<td>lastmod კონტენტ-ფაილის რეალური mtime/გიტ-თარიღიდან.</td>
+</tr>
+<tr>
+<td>5.8</td>
+<td>დაბალი</td>
+<td>hreflang სრულია (6 ენა + x-default, გვერდსა და sitemap-შიც — გადამოწმდა attraction-გვერდზე); robots.txt 20 AI-ბოტს უშვებს, llms.txt/llms-full.txt გენერირდება — GEO-საფუძველი კონკურენტებზე უკეთესია. მხოლოდ დომენი აფუჭებს (5.1).</td>
+<td><code>dist/robots.txt</code>, <code>dist/llms.txt</code></td>
+<td>— (დომენის შემდეგ ხელუხლებლად იმუშავებს)</td>
+</tr>
+<tr>
+<td>5.9</td>
+<td>დაბალი</td>
+<td>account-გვერდი სწორადაა <code>noindex</code> და sitemap-გარეთ; /admin/ disallow-შია. შიდა ბმულები: 84 შემოწმებული — 0 გატეხილი.</td>
+<td><code>build.py:436</code></td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>6. QA პერსპექტივა</h2>
+<p><em>გარბენი: 16 გვერდი (home, /map/, /planner/, /account/, attraction, car × ka/en/ar) × 2 viewport (1500px, 390px). გაზომილი: console errors, <code>scrollingElement.scrollWidth &gt; innerWidth</code>, <code>naturalWidth===0</code> სურათები; + 84 შიდა ბმულის სტატუსი; + ინტერაქციული ტესტები.</em></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>სიმძიმე</th>
+<th>დასკვნა</th>
+<th>ფაილი/გვერდი</th>
+<th>რეკომენდაცია</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6.1</td>
+<td>—</td>
+<td><strong>სუფთა შედეგები:</strong> 0 კონსოლის შეცდომა, 0 pageerror, 0 ჰორიზონტალური overflow ორივე viewport-ზე სამივე ენაზე (RTL ar ჩათვლით), 0 გატეხილი სურათი, 84/84 შიდა ბმული 200.</td>
+<td>ყველა ტესტირებული გვერდი</td>
+<td>ეს ტესტები CI-ში გადავიდეს (სკრიპტები მზადაა).</td>
+</tr>
+<tr>
+<td>6.2</td>
+<td>კრიტიკული</td>
+<td>A→B autocomplete არ მუშაობს (დეტალურად 2.1) — ფუნქციური რეგრესია, რომელსაც ვერც ერთი სტატიკური შემოწმება ვერ დაიჭერდა.</td>
+<td><code>/en/map/</code>, <code>static/explorer.js</code></td>
+<td>ფიქსი + ინტერაქციული სმოუკ-ტესტი.</td>
+</tr>
+<tr>
+<td>6.3</td>
+<td>მაღალი</td>
+<td>Car-გვერდებზე 0 სურათია (imgs=0 ორივე viewport-ზე) — ბარათებში ტექსტური placeholder რჩება (<code>&lt;div class="ph"&gt;სახელი&lt;/div&gt;</code>).</td>
+<td><code>/en/fleet/toyota-rav4/</code>, <code>build.py:639-640</code></td>
+<td>ფოტოების ატვირთვა (იხ. 4.2).</td>
+</tr>
+<tr>
+<td>6.4</td>
+<td>საშუალო</td>
+<td>დამგეგმავის რედაქტირების ღილაკები (↑/↓/✕) 24×24px-ია 390px-ზე — თითით აცდენა ადვილია; ჩიპები 38px — მისაღები.</td>
+<td><code>/en/planner/</code> მობილური</td>
+<td>≥40px hit-area მობილურზე.</td>
+</tr>
+<tr>
+<td>6.5</td>
+<td>საშუალო</td>
+<td>მობილურზე /map/-ის რუკა 941px პანელის ქვემოთაა (იხ. 2.6); დამგეგმავზე ფორმა-რუკა-შედეგი თანმიმდევრობა მუშაობს, თუმცა შედეგამდე ჩასქროლვა გრძელია.</td>
+<td><code>/en/map/</code>, <code>/en/planner/</code> 390px</td>
+<td>tabs/accordion მობილურ განლაგებაში.</td>
+</tr>
+<tr>
+<td>6.6</td>
+<td>საშუალო</td>
+<td>Account-გვერდი local-რეჟიმში მუშაობს (ტრიპების შენახვა/წაშლა OK), მაგრამ არსად ჩანს, რომ მონაცემი მხოლოდ ამ ბრაუზერშია (იხ. 3.4); ka/en-ზე ჩატვირთვისას შეცდომები არ დაფიქსირებულა.</td>
+<td><code>/account/</code>, <code>/en/account/</code></td>
+<td>„ინახება ამ ბრაუზერში“ ბეჯი local-რეჟიმში.</td>
+</tr>
+<tr>
+<td>6.7</td>
+<td>დაბალი</td>
+<td>en-ზე „for 1 days“ (იხ. 4.8); ka/ar ტექსტებში ანალოგიური ფორმըს შეცდომა არ შემიმჩნევია.</td>
+<td><code>/en/planner/</code></td>
+<td>plural-წესები.</td>
+</tr>
+<tr>
+<td>6.8</td>
+<td>დაბალი</td>
+<td>404-გვერდი მხოლოდ ქართულია ყველა ენის მისამართზე და hashed-CSS-ის ნაცვლად <code>/assets/style.css</code>-ს იყენებს — მუშაობს, მაგრამ ენა არასწორია en/ar ვიზიტორისთვის.</td>
+<td><code>build.py:1724-1736</code></td>
+<td>ენების მიხედვით 404 ან მინიმუმ ორენოვანი ტექსტი.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>პრიორიტეტული TOP-10</h2>
+<p>სტატუსი გადამოწმდა 2026-08-16, კოდზე.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>სამუშაო</th>
+<th>Effort</th>
+<th>სტატუსი</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>დომენის/ტელეფონის/ელფოსტის/სოციალურის რეალური მნიშვნელობები</strong> site.yml-ში (3.1, 4.1, 5.1)</td>
+<td><strong>S</strong></td>
+<td>⚠️ ნაწილობრივ — <code>site_url: https://rentup.ge</code> გასწორდა; ტელეფონი, mobile, ელფოსტა და სოციალური ბმულები <strong>ჯერ placeholder-ია</strong> და strict build-ს ბლოკავს</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>explorer.js-ის <code>suggest</code> კოლიზიის ფიქსი</strong> (2.1)</td>
+<td><strong>S</strong></td>
+<td>✅ გასწორდა — მეორე ფუნქცია <code>suggestNear</code> (<code>static/explorer.js:705</code>)</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>wa.me deep-link + Netlify Forms</strong> (4.1, 4.3)</td>
+<td><strong>S–M</strong></td>
+<td>✅ გაკეთდა — <code>static/booking.js</code>, კონტექსტური ფორმა და WhatsApp; ნომერი <code>site.yml</code>-იდან</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>ავტოპარკის ფოტოები</strong> (17 მანქანა) (4.2, 6.3)</td>
+<td><strong>M</strong></td>
+<td>❌ <strong>არ გაკეთებულა</strong> — 17-ვე გამოქვეყნებულ მანქანას მთავარი ფოტო აკლია; strict build blocker</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>ღამისთევის ქალაქი/სასტუმროს ერთიანი წყარო</strong> (1.2)</td>
+<td><strong>S</strong></td>
+<td>✅ გასწორდა — ერთი წყარო <code>places.yml</code></td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>მთის leg-ების რეალისტური დროები</strong> + „&gt;6 სთ“ გაფრთხილება (1.1, 1.3)</td>
+<td><strong>M–L</strong></td>
+<td>✅ გაკეთდა — curated <code>road_legs.yml</code> და კონსერვატიული გაფრთხილებები</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>A→B და „N დღე საქართველოში“ გვერდების pre-render</strong> (5.5, RESEARCH #4/#5)</td>
+<td><strong>M</strong></td>
+<td>❌ <strong>არ გაკეთებულა</strong> — <code>/drive/</code>, <code>/itineraries/</code> URL-ოჯახები არ არსებობს</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>Description ≤155 / title-შაბლონი</strong> + og-fa/he/ar (5.2–5.4)</td>
+<td><strong>S</strong></td>
+<td>⚠️ ნაწილობრივ — og ექვსივე ენაზე არსებობს; description ისევ 178 სიმბოლოზე იჭრება (<code>build.py:959</code>)</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>PLANNER_DATA ცალკე hashed JSON</strong> + hero eager/srcset (2.3, 2.4)</td>
+<td><strong>M</strong></td>
+<td>⚠️ ნაწილობრივ — hero LCP ატრიბუტები დაემატა; <code>PLANNER_DATA</code> ისევ inline-ია (<code>build.py:2372</code>)</td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>QA-სკრიპტების CI-ში ჩასმა</strong> და Firebase-ის ჩართვა (3.2, 3.4)</td>
+<td><strong>M</strong></td>
+<td>⚠️ ნაწილობრივ — 26 ლოკალური ტესტი არსებობს; CI და Firebase ჩართვა არა</td>
+</tr>
+</tbody>
+</table>
+<h3>სხვა ღია პუნქტები</h3>
+<ul>
+<li><strong>3.6 არაატომური build</strong> — <code>rmtree(out)</code> → თანმიმდევრული ჩაწერა; in-place განახლებისას ვიზიტორი ნახევრად აშენებულ საიტს მოხვდება. ღიაა.</li>
+<li><strong>3.7 admin/ placeholder repo</strong> — გადასამოწმებელია <code>admin/config.yml</code>.</li>
+<li><strong>3.8 weather.js UTC</strong> — ღიაა.</li>
+<li><strong>4.5 USD ვალუტა</strong> — ✅ <code>usd_rate: 2.6</code> ახლა გამოიყენება (იხ. <a href="02-pricing-commercial.html">docs/02-pricing-commercial.md</a>).</li>
+<li><strong>4.4 fleet_size</strong> — ✅ <code>'17'</code>, რეგრესიის ტესტი კრძალავს ძველ „120+“ განცხადებებს.</li>
+<li><strong>5.7 sitemap lastmod</strong> — ✅ წყარო ფაილის mtime.</li>
+</ul>
+<hr />
+<p><em>შენიშვნა: აუდიტი read-only იყო — კოდში ცვლილება არ შესულა. ერთადერთი დამხმარე build გაეშვა დროებით დირექტორიაში (<code>/tmp/audit/dist-test</code>) დროის გასაზომად.</em></p></body></html>

@@ -1,0 +1,445 @@
+<!doctype html><html lang="ka"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>კონკურენტების კვლევა და განვითარების გეგმა</title><style>body{font:15px/1.65 system-ui;max-width:940px;margin:36px auto;padding:0 22px;color:#172033}a{color:#087ea4}h1,h2{line-height:1.2}h1{font-size:30px}h2{margin-top:30px;border-top:1px solid #dce2ea;padding-top:18px}h3{margin-top:22px}code{background:#eef2f6;padding:2px 5px;border-radius:4px}pre{background:#eef2f6;padding:12px 14px;border-radius:8px;overflow-x:auto}pre code{background:none;padding:0}li{margin:5px 0}table{border-collapse:collapse;width:100%;margin:14px 0;display:block;overflow-x:auto}th,td{border:1px solid #dce2ea;padding:7px 10px;text-align:left;vertical-align:top}th{background:#f7fafc}blockquote{margin:14px 0;padding:10px 16px;border-left:3px solid #087ea4;background:#f7fafc}blockquote p{margin:6px 0}.back{display:inline-block;margin-bottom:18px}.meta{color:#64748b;font-size:13px}</style></head><body><a class="back" href="00-DOCUMENTATION-INDEX.html">← დოკუმენტაციის ინდექსი</a><div class="meta">ლოკალური დოკუმენტაცია · 2026-08-16</div>
+<h1>კონკურენტების კვლევა და განვითარების გეგმა</h1>
+<p><strong>თარიღი:</strong> 2026-08-11 · <strong>ობიექტი:</strong> Drive On — ავტოგაქირავება + ტურისტული ფენა (247 ღირსშესანიშნაობა, 11 რეგიონი, 7 მარშრუტი, დამგეგმავი, A→B ხელსაწყო, ამინდი, ავტომობილის რეკომენდაცია), 6 ენა, სტატიკური საიტი (<code>build.py</code> → <code>dist/</code>), Decap CMS ადმინი.</p>
+<p><strong>მეთოდი:</strong> გაანალიზდა 20 საიტი ოთხ კატეგორიაში — (1) ავტოგაქირავების კომპანიები, რომლებმაც ტურისტული ფენა ააშენეს, (2) მარშრუტისა და მოგზაურობის დამგეგმავები, (3) ქვეყნის ტურისტული პორტალები, (4) ქართული კონკურენტები. თითოეულზე დაფიქსირდა: რა არის ინტერაქცია, რა მონაცემს აჩვენებს ერთ ადგილზე, როგორ შემოსავალობს, როგორია URL-სტრუქტურა და რა აბრუნებს მომხმარებელს.</p>
+<hr />
+<h2>1. განხილული საიტები</h2>
+<table>
+<thead>
+<tr>
+<th>საიტი</th>
+<th>კატეგორია</th>
+<th>რას აკეთებს საუკეთესოდ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.northbound.is/">northbound.is</a></td>
+<td>ავტოგაქირავება (Iceland)</td>
+<td><strong>Price Watch</strong> — ფასის შეტყობინება ძებნაზე + საწვავის კალკულატორი მიმდინარე ფასით (€1.41/ლ) + ფასის სეზონური გრაფიკი. ბლოგი: <code>/blog/[id]/[slug]</code></td>
+</tr>
+<tr>
+<td><a href="https://www.bluecarrental.is/blog/golden-circle-directions-an-iceland-car-rental-guide/">bluecarrental.is</a></td>
+<td>ავტოგაქირავება (Iceland)</td>
+<td><strong>მარშრუტის გვერდი გაჩერებებს შორის მანძილითა და დროით</strong> („Þingvellir→Geysir 60 კმ, 50 წთ“), თითო გაჩერებაზე პარკინგის ფასი, სეზონური 4x4-რჩევა, 6-კითხვიანი FAQ, მუდმივი ჯავშნის ვიჯეტი გვერდის თავში</td>
+</tr>
+<tr>
+<td><a href="https://www.lavacarrental.is/information-iceland">lavacarrental.is</a></td>
+<td>ავტოგაქირავება (Iceland)</td>
+<td><strong>თვეობრივი და დღეობრივი გვერდების ქარხანა</strong>: <code>/information-iceland/driving-iceland-[month]</code> × 12 და <code>best-iceland-[3\|5\|7\|8\|10\|12\|14\|21]-day-itinerary</code>, ზამთრის/ზაფხულის ვარიანტებით + „Cost of an Iceland Trip in 2026“</td>
+</tr>
+<tr>
+<td><a href="https://www.hertz.is/iceland-travel-info/iceland-attractions-map/">hertz.is</a></td>
+<td>ავტოგაქირავება (Iceland)</td>
+<td><strong>რეგიონული რუკის გვერდი, სადაც ყოველი რეგიონი პირდაპირ ავტომობილის კლასზეა მიბმული</strong> (ზამთარი → 4x4, ზაფხული → camper), მოდელის დონემდე (Sorento, Defender)</td>
+</tr>
+<tr>
+<td><a href="https://www.firefly.is/iceland-map/iceland-attractions-map/">firefly.is</a></td>
+<td>ავტოგაქირავება (Iceland)</td>
+<td><strong>URL-ოჯახი <code>/iceland-map/[route]-map/</code></strong> — ცალკე გვერდი ყოველ მარშრუტზე, ჯავშნის ვიჯეტით რუკის ზემოთ</td>
+</tr>
+<tr>
+<td><a href="https://www.gocarrental.is/blog/guides/">gocarrental.is</a></td>
+<td>ავტოგაქირავება (Iceland)</td>
+<td>სახელმძღვანელოების ცალკე ჰაბი <code>/blog/guides/</code> და უტილიტარული პოსტები („15 აპლიკაცია, რომელიც გჭირდება“)</td>
+</tr>
+<tr>
+<td><a href="https://www.discovercars.com/georgia">discovercars.com/georgia</a></td>
+<td>აგრეგატორი</td>
+<td><strong>ფასის სეზონურობის გამჭვირვალობა</strong>: „ყველაზე იაფი თვე — ნოემბერი $34.70/დღე, აგვისტო $61.20/დღე“ + ქვეყნის მართვის ფაქტები (სიჩქარე, პრომილე, საწვავის ფასი) ერთ ბლოკში</td>
+</tr>
+<tr>
+<td><a href="https://www.sixt.com/magazine/">sixt.com/magazine</a></td>
+<td>ავტოგაქირავება (გლობალური)</td>
+<td><strong>მონაცემებზე დაფუძნებული კონტენტი</strong> — „SIXT-მა გააანალიზა…“ ტიპის საკუთარი კვლევები, რომლებზეც პრესა ბმულობს; <code>/magazine/[category]/[slug]/</code></td>
+</tr>
+<tr>
+<td><a href="https://roadtrippers.com/">roadtrippers.com</a></td>
+<td>დამგეგმავი</td>
+<td><strong>ექსპორტი და ლიმიტებით მონეტიზაცია</strong>: PDF + GPX მხოლოდ ფასიან გეგმაზე; უფასოში 1 მარშრუტი / 3 გაჩერება, Basic $35.99/წელი … Premium $59.99/წელი. 5 მლნ POI, „Plan with autopilot“ 42 მლნ რეალურ მარშრუტზე</td>
+</tr>
+<tr>
+<td><a href="https://wanderlog.com/">wanderlog.com</a></td>
+<td>დამგეგმავი</td>
+<td><strong>SEO-ქარხანა</strong>: <code>/list/geoCategory/104680/attractions</code> („Top 50 things to do in Tbilisi“, აგრეგირებული 44 წყაროდან) და <code>/drive/between/9658/10080/tbilisi-to-batumi-drive</code> („31 Best Stops Between Tbilisi and Batumi“) გაჩერებაზე მეტრიკით <strong>„8 წუთი გზიდან, გზის 57%“</strong></td>
+</tr>
+<tr>
+<td><a href="https://trips.furkot.com/">trips.furkot.com</a></td>
+<td>დამგეგმავი</td>
+<td><strong>დღიური მართვის ლიმიტი</strong> — გეგმა ისე იწყობა, რომ ღამით არ იმგზავროთ; ღამის გასათევის ავტომატური შეთავაზება; საწვავის სადგურები ფასებით; შემოსავალი აფილირებული ჯავშნებიდან</td>
+</tr>
+<tr>
+<td><a href="https://www.bikemap.net/en/premium/">bikemap.net/premium</a></td>
+<td>დამგეგმავი</td>
+<td><strong>გადახდისუნარიანი ფენა უფასო ხელსაწყოზე</strong>: ოფლაინ რუკა, GPX/KML, სიმაღლის პროფილი, ამინდი ქარის გრაფიკით — €9/თვე, €39/წელი, €149.99 სამუდამოდ</td>
+</tr>
+<tr>
+<td><a href="https://www.peecho.com/case-studies/polarsteps">polarsteps.com</a></td>
+<td>დამგეგმავი</td>
+<td><strong>მთელი შემოსავალი ერთი პროდუქტიდან</strong> — მომხმარებლის საკუთარი მოგზაურობისგან დაბეჭდილი წიგნი; იდეა თავად მომხმარებლებმა მოითხოვეს</td>
+</tr>
+<tr>
+<td><a href="https://guidetoiceland.is/">guidetoiceland.is</a></td>
+<td>ქვეყნის პორტალი</td>
+<td><strong>ღირსშესანიშნაობის სრული შაბლონი</strong> (<a href="https://guidetoiceland.is/travel-iceland/drive/gullfoss">Gullfoss</a>): მანძილი, დრო, სამუშაო საათები, ბილეთი, <strong>პარკინგის ფასი, ხელმისაწვდომობა ეტლისთვის, „საჭირო დრო 45–90 წთ“</strong>, ექსპერტის ავტორობა (გეომეცნიერი), 10 ახლომდებარე ობიექტი მანძილით, გასაყიდი ტურები. იტინერარები <code>/you-guide/[slug]</code></td>
+</tr>
+<tr>
+<td><a href="https://www.visitscotland.com/travel-planning/touring/north-coast-500">visitscotland.com</a></td>
+<td>ქვეყნის პორტალი</td>
+<td><strong>ერთი დასახელებული მარშრუტის ბრენდი</strong> (NC500, 516 მილი, „დაუთმეთ 5–7 დღე“) + პასუხისმგებლიანი ტურიზმის ბლოკი (ერთ ზოლიან გზაზე მართვა, მხოლოდ ნებადართული პარკინგი)</td>
+</tr>
+<tr>
+<td><a href="https://georgia.travel/">georgia.travel</a></td>
+<td>ქვეყნის პორტალი (ოფიციალური)</td>
+<td><code>/itinerary</code>, <code>/map</code>, <code>/popular-trips</code>, <code>/choose-your-experience</code> — მაგრამ მხოლოდ 2 ენაზე და დამგეგმავი ფაქტობრივად ფილტრია, არა დღეების გეგმა</td>
+</tr>
+<tr>
+<td><a href="https://safetravel.is/">safetravel.is</a></td>
+<td>უსაფრთხოება (Iceland)</td>
+<td><strong>გზისა და ამინდის სტატუსი როგორც დაბრუნების მიზეზი</strong> — ზამთარში ეს გვერდი ბრაუზერშია შენახული; მოგზაურობის გეგმის გაზიარება 112-თან</td>
+</tr>
+<tr>
+<td><a href="https://naniko.ge/">naniko.ge</a></td>
+<td>ქართული კონკურენტი</td>
+<td>ონლაინ ჯავშანი „2 წუთში“, ერთმხრივი გაქირავება ერევანამდე, მძღოლიანი სერვისი. <strong>მხოლოდ EN/RU, ტურისტული ფენა არ აქვს</strong></td>
+</tr>
+<tr>
+<td><a href="https://og.ge/">og.ge</a></td>
+<td>ქართული კონკურენტი</td>
+<td><strong>კონკურენტებთან შედარების ცხრილი</strong> გვერდზე + $0 ფრანშიზა + „OG Drive Club“ + კონკრეტული მთის მარშრუტების რჩევები („როგორ მივიდეთ თრუსოში/ჯუთაში მანქანით“). EN/RU</td>
+</tr>
+<tr>
+<td><a href="https://starcar.ge/blog/tbilisi-to-batumi-distance-routes-driving-time-complete-road-guide">starcar.ge</a></td>
+<td>ქართული კონკურენტი</td>
+<td><strong>A→B ბლოგ-გვერდები სეგმენტების ცხრილით</strong> (თბილისი–გორი 85 კმ ≈ 1 სთ), ორი ალტერნატიული მარშრუტი (ხაშური/ქუთაისი vs გოდერძი), FAQ. ერთენოვანი (EN)</td>
+</tr>
+<tr>
+<td><a href="https://www.localrent.com/en/georgia/">localrent.com/en/georgia</a></td>
+<td>აგრეგატორი (საქართველო)</td>
+<td><strong>ნდობის არქიტექტურა</strong>: Trustpilot 4.8 / 4,509 შეფასება, დეპოზიტის ზღვარი ფილტრად, ყველა გადასახადი ფასში, რეალური ავტომობილის ფოტო. URL: <code>/[lang]/[country]/[city]/</code></td>
+</tr>
+<tr>
+<td><a href="https://gotrip.ge/">gotrip.ge</a></td>
+<td>ქართული კონკურენტი (მძღოლი)</td>
+<td><strong>ფიქსირებული ფასი მარშრუტზე</strong> + <code>/transfer/from-[a]-to-[b]</code> URL-ოჯახი + მძღოლის არჩევა რეიტინგითა და ფოტოთი (500+)</td>
+</tr>
+<tr>
+<td><a href="https://wander-lush.org/driving-in-georgia-car-rental-tbilisi/">wander-lush.org</a></td>
+<td>ბლოგი (ჩვენი მთავარი SEO-კონკურენტი)</td>
+<td><strong>ის იკავებს „car rental Georgia“-ს ინფორმაციულ ინტენტს</strong>: პირადი გამოცდილება 5 წლის, საკუთარი Google-რუკა გზების მდგომარეობით, 15+ FAQ, თარიღიანი განახლებები („რიკოთის ჩქაროსნული, 2025 დეკემბერი“), 105 კომენტარი</td>
+</tr>
+<tr>
+<td><a href="https://georgia-roadtrip.com/7-days-itinerary/">georgia-roadtrip.com</a></td>
+<td>ქართული კონკურენტი</td>
+<td><code>/itineraries/7-days-itinerary/</code>, <code>/itineraries/10-days-itinerary/</code>, <code>/itineraries/georgia-14-days-itinerary/</code> — დღეების დაშლა ღამის გასათევებით</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>2. რაში ვართ უკვე თანაბრად ან წინ</h2>
+<p>მოკლედ და პატიოსნად — ეს რეალურად ჩვენი უპირატესობებია, არა თავის მოტყუება:</p>
+<ol>
+<li><strong>მონაცემის სიღრმე ერთ ობიექტზე.</strong> ჩვენ 247-ვე ობიექტზე გვაქვს სტრუქტურირებული: კოორდინატები, სიმაღლე, დათვალიერების დრო, მანძილი და დრო თბილისიდან, გზის ტიპი, საჭირო ავტომობილის კატეგორია, სეზონი, ბილეთის ფასი, ახლომდებარე ობიექტები. <strong>hertz.is-ს და firefly.is-ს ეს არ აქვთ საერთოდ</strong> — მათ Google-რუკის embed და აღწერითი ტექსტი აქვთ. guidetoiceland.is ამ სიღრმეს მხოლოდ ტოპ ობიექტებზე აღწევს.</li>
+<li><strong>6 ენა, მათ შორის სამი RTL.</strong> naniko.ge — 2 ენა, og.ge — 2, starcar.ge — 1. <strong>ეს არის ჩვენი ერთადერთი მკაფიო სტრუქტურული უპირატესობა ქართულ ბაზარზე</strong> და ის სპარსულ/არაბულ/ებრაულ ბაზრებზეა მიმართული, სადაც კონკურენცია პრაქტიკულად არ არის.</li>
+<li><strong>A→B „რა ღირს გზაზე შეჩერება“ რეალურ დროში.</strong> wanderlog-ის <code>/drive/between/</code> არის რედაქტორული, წინასწარ აწყობილი გვერდი; ჩვენი <code>/map/</code>-ის explorer დეტურის სლაიდერით რეალურად ითვლის. ქართულ კონკურენტებთან ანალოგი <strong>არ არსებობს</strong>.</li>
+<li><strong>დღეების დამგეგმავი ტემპით და დროის ბიუჯეტით.</strong> ჩვენი <code>planner.js</code> აკეთებს იმას, რასაც furkot-ის დღიური ლიმიტი (6/8/10 სთ), პლუს სეზონურად დაკეტილი ობიექტების გამორიცხვა და ავტომობილის კატეგორიის რეკომენდაცია. georgia.travel-ის <code>/itinerary</code> ამის გვერდით ფილტრია.</li>
+<li><strong>ამინდი თითო წერტილზე თითო დღეს, უფასოდ</strong> (Open-Meteo). bikemap ამას €39/წელში ყიდის; ისლანდიური გამქირავებლები საერთოდ არ აკეთებენ.</li>
+<li><strong>AI-ძიებისთვის მზადება.</strong> <code>llms.txt</code> (35 KB) + <code>llms-full.txt</code> (330 KB) + 20 AI-კროულერის პირდაპირი დაშვება — <strong>არცერთ განხილულ საიტს ეს არ აქვს</strong>. ეს რეალური, თუმცა დროებითი ფორა.</li>
+<li><strong>სქემის სიმდიდრე:</strong> <code>TouristAttraction</code> კოორდინატებით, <code>TouristDestination</code>, <code>TouristTrip</code> იტინერარით, <code>FAQPage</code>, <code>OfferCatalog</code> — guidetoiceland.is-ის დონე.</li>
+<li><strong>Core Web Vitals.</strong> JS მხოლოდ ორ გვერდზეა. bluecarrental.is და northbound.is ყოველ გვერდზე იტვირთებიან ჯავშნის ვიჯეტით, ტრეკერებით და embed-რუკებით.</li>
+</ol>
+<p><strong>რაშიც ცალსახად ჩამორჩენა გვაქვს, ერთი წინადადებით:</strong> ყველა განხილული ავტოგაქირავების საიტს აქვს ჯავშნის ძრავა თარიღებით და ფასით, ჩვენ — ტელეფონის ნომერი და WhatsApp-ის ბმული.</p>
+<hr />
+<h2>3. 17 ყველაზე ღირებული ნაკლი</h2>
+<p>ეფორტი: <strong>S</strong> ≈ 1–2 დღე · <strong>M</strong> ≈ 3–10 დღე · <strong>L</strong> ≈ 2 კვირაზე მეტი. „ბექენდი“ = სჭირდება თუ არა სერვერი, თუ სტატიკურ საიტზე მუშაობს.</p>
+<h3>3.1 კონვერსია</h3>
+<p><strong>1. ჯავშნის/შეთავაზების ფორმა საერთოდ არ არსებობს</strong>
+სად ვნახეთ: bluecarrental.is და lavacarrental.is-ს ვიჯეტი <strong>ყოველი ბლოგ-გვერდის თავშია</strong>; firefly.is-ს ღირსშესანიშნაობების რუკის ზემოთაც; naniko.ge — „ჯავშანი 2 წუთში“; og.ge — ჯავშანი + WhatsApp/Telegram/Viber.
+რატომ: ჩვენი მთელი ტურისტული ფენა — 247 გვერდი × 6 ენა — დღეს <strong>ჩიხია</strong>. ტრაფიკის კონვერტაციის ერთადერთი გზა <code>tel:</code>-ია, რაც ირანელი/ისრაელელი მკითხველისთვის, რომელიც დაგეგმვის ეტაპზეა, არაფერს ნიშნავს.
+რა გავაკეთოთ <strong>სტატიკურზეც</strong>: (ა) ველების ნაკრები — აყვანის ადგილი/თარიღი/დაბრუნება/ავტომობილის კლასი — Netlify Forms-ით ან Formspree-ით; (ბ) იმავე ველებიდან აწყობილი <strong>WhatsApp deep-link წინასწარ შევსებული ტექსტით</strong> („გამარჯობა, მჭირდება RAV4, 12–19 სექტემბერი, თბილისის აეროპორტი“); (გ) <code>Offer</code> schema-ში <code>priceValidUntil</code> და <code>availability</code>.
+ეფორტი: <strong>M</strong> · ბექენდი: <strong>არა</strong> (ფორმის სერვისი საკმარისია; რეალური ხელმისაწვდომობის კალენდარი = L + ბექენდი).</p>
+<p><strong>2. ტურისტულ გვერდებზე კონვერსიის ელემენტი არ დევს</strong>
+სად ვნახეთ: bluecarrental.is-ის Golden Circle-ის გვერდი ბოლოში ჩამოთვლის ექვს ავტომობილის კატეგორიას ბმულებით; hertz.is ყოველ რეგიონს კონკრეტულ კლასს და მოდელს უკავშირებს.
+რატომ: ჩვენ უკვე გვაქვს <code>car_category</code> ყოველ ობიექტზე და <code>driving</code> პირობები ყოველ რეგიონზე — ეს მონაცემი გვერდზე ჩანს, მაგრამ <strong>არ არის ღილაკი „ამ კატეგორიის ავტომობილები“ ფასთან ერთად და თარიღების ველთან ერთად</strong>.
+ეფორტი: <strong>S</strong> · ბექენდი: <strong>არა</strong>.</p>
+<p><strong>3. ხარჯის კალკულატორი არ გვაქვს</strong>
+სად ვნახეთ: northbound.is-ის საწვავის კალკულატორი მიმდინარე ფასით და Orkan-ის ფასდაკლების ბარათი; lavacarrental.is-ის „Cost of an Iceland Trip in 2026“.
+რატომ: ჩვენ ვიცით ყოველი მარშრუტის კმ და ყოველი ობიექტის ბილეთის ფასი — შეგვიძლია დამგეგმავის გამოსავალს დავამატოთ „საწვავი + ქირა + ბილეთები + სავარაუდო ღამის გასათევი“. ეს არის ის ერთი ციფრი, რომელსაც მომხმარებელი ეძებს და რომელსაც კონკურენტი არ აძლევს.
+ეფორტი: <strong>S–M</strong> · ბექენდი: <strong>არა</strong> (საწვავის ფასი — ველი <code>content/settings/</code>-ში, ადმინიდან იცვლება).</p>
+<h3>3.2 ტრაფიკი / SEO</h3>
+<p><strong>4. A→B ხელსაწყო Google-სთვის უხილავია</strong>
+სად ვნახეთ: wanderlog <code>/drive/between/9658/10080/tbilisi-to-batumi-drive</code> = „31 Best Stops Between Tbilisi and Batumi“; starcar.ge რანჟირდება <code>/blog/tbilisi-to-batumi-distance-routes-driving-time-complete-road-guide</code>-ით.
+რატომ: ჩვენი explorer JS-შია — არც Google, არც ChatGPT ვერ ხედავს პასუხს კითხვაზე „რა ვნახო თბილისი–ბათუმის გზაზე“. <strong>ეს არის ჩვენი ყველაზე დიდი დანაკარგი</strong> — ალგორითმი უკვე დაწერილია, უბრალოდ build-ზე არ ირენდერება.
+რა გავაკეთოთ: <code>build.py</code>-ში იმავე მათემატიკით წინასწარ დავარენდეროთ ~40–60 წყვილი (თბილისი↔ბათუმი/ქუთაისი/მესტია/სტეფანწმინდა/სიღნაღი/ახალციხე; ქუთაისის აეროპორტი↔ყველგან). თითო გვერდზე wanderlog-ის ფორმატით: მთლიანი კმ და დრო, ტოპ ქალაქი შუაში, გაჩერებები <strong>„X წუთი გზიდან, გზის Y%“</strong> მეტრიკით.
+ეფორტი: <strong>M</strong> · ბექენდი: <strong>არა</strong>.</p>
+<p><strong>5. „N დღე საქართველოში“ გვერდები არ არსებობს</strong>
+სად ვნახეთ: lavacarrental.is <code>best-iceland-[3|5|7|8|10|12|14|21]-day-itinerary</code> ზაფხულის/ზამთრის ვარიანტებით; guidetoiceland.is <code>/you-guide/what-to-do-with-5-days-in-iceland</code>; georgia-roadtrip.com <code>/itineraries/7-days-itinerary/</code>.
+რატომ: „7 days in Georgia itinerary“ ტიპის მოთხოვნა არის მთავარი ინფორმაციული შესასვლელი და მას დღეს ბლოგერები და ტუროპერატორები იკავებენ. ჩვენ გვაქვს 7 დასახელებული მარშრუტი, მაგრამ <strong>არცერთი გვერდი არ არის ხანგრძლივობით გასაღებული</strong>.
+რა გავაკეთოთ: 3/5/7/10/14 დღე × ზაფხული/ზამთარი, გენერირებული <strong>ჩვენივე დამგეგმავის ალგორითმით</strong>, ხელით დაწერილი შესავლით და ღამის გასათევებით. თითოეულ გვერდზე ღილაკი „გახსენი ეს გეგმა დამგეგმავში“ (URL-პარამეტრებით).
+ეფორტი: <strong>M</strong> · ბექენდი: <strong>არა</strong>.</p>
+<p><strong>6. სეზონური/თვეობრივი გვერდები არ არსებობს</strong>
+სად ვნახეთ: lavacarrental.is <code>/information-iceland/driving-iceland-[month]</code> × 12; northbound.is „A Guide to Visiting Iceland in September“.
+რატომ: საქართველოში სეზონურობა უფრო მკვეთრია, ვიდრე ისლანდიაში — აბანოს უღელტეხილი, გოდერძი, თუშეთი (ივნისი–ოქტომბერი), გუდაური, ომალო. ჩვენ <strong>უკვე გვაქვს</strong> <code>best_season</code> და <code>open_year_round</code> ყოველ ობიექტზე, ე.ი. 12 თვის გვერდი ავტომატურად აიწყობა: „აგვისტოში ღიაა 247-დან 241; დაკეტილია …; ამ თვეს გჭირდებათ …“.
+ეფორტი: <strong>M</strong> (12 × 6 ენა = 72 გვერდი, გენერირებული) · ბექენდი: <strong>არა</strong>.</p>
+<p><strong>7. თემატური ინდექს-გვერდები არ არსებობს</strong>
+სად ვნახეთ: guidetoiceland.is-ის თემატური რუკები (ჩანჩქერები, ცხელი წყლები, გამოქვაბულები, „Game of Thrones“-ის ლოკაციები); wanderlog-ის კატეგორიული სიები ერთ ქალაქზე; firefly.is <code>/iceland-map/[route]-map/</code>.
+რატომ: ჩვენ <code>type</code> ველი უკვე გვაქვს ყოველ ობიექტზე, მაგრამ <code>/attractions/</code>-ის გარდა ინდექსი არ არსებობს. „საქართველოს ჩანჩქერები“, „UNESCO საქართველოში“, „საქართველოს გამოქვაბულები“, „ღვინის მარნები კახეთში“, „სად გჭირდებათ 4x4“ — <strong>ეს ყველაზე იაფი გვერდების მოცულობის ზრდაა, ერთი ციკლი <code>build.py</code>-ში.</strong>
+ეფორტი: <strong>S</strong> · ბექენდი: <strong>არა</strong>.</p>
+<p><strong>8. შედარებითი გვერდები („X vs Y“) არ არსებობს</strong>
+სად ვნახეთ: og.ge-ს კონკურენტების შედარების ცხრილი; northbound.is მთლიანად შედარების ძრავაა; wander-lush.org სამი ვარიანტის შედარებით რანჟირდება; northbound-ის „Should I Rent a Car in Iceland?“.
+რატომ: შედარებითი ინტენტი კონვერსიასთან ყველაზე ახლოსაა.
+რა გავაკეთოთ: „ავტოგაქირავება vs GoTrip-ის მძღოლი vs ტაქსი vs მარშრუტკა“, „4x4 თუ სედანი საქართველოში“, „აყვანა აეროპორტში თუ ქალაქში“, „გაქირავება თბილისში vs ქუთაისში vs ბათუმში“.
+⚠️ <strong>სამართლებრივი შენიშვნა:</strong> დასახელებულ კონკურენტთან შედარება უნდა იყოს ფაქტობრივი, თარიღიანი და წყაროზე მითითებული — <a href="https://matsne.gov.ge/en/document/view/31840">რეკლამის შესახებ საქართველოს კანონი</a> კრძალავს არაკეთილსინდისიერ და შეცდომაში შემყვან შედარებით რეკლამას. უსაფრთხო და ისეთივე ეფექტური ვარიანტი — <strong>გადაადგილების ხერხების</strong> შედარება (ქირა/მძღოლი/ტაქსი/საზოგადოებრივი), არა კომპანიების.
+ეფორტი: <strong>M</strong> · ბექენდი: <strong>არა</strong>.</p>
+<p><strong>9. ფასის სეზონურობის გვერდი არ არსებობს</strong>
+სად ვნახეთ: discovercars.com/georgia აქვეყნებს „იაფი თვე ნოემბერი $34.70/დღე vs აგვისტო $61.20/დღე — 43% სხვაობა“ გრაფიკით.
+რატომ: ეს არის უბრენდო ტრაფიკის მაგნიტი და ამავე დროს ჯავშნის ადრე გაკეთების არგუმენტი. ჩვენ ჩვენივე რეალური სამი ფასი უკვე გვაქვს ავტომობილებში.
+⚠️ გამოვაქვეყნოთ <strong>მხოლოდ ჩვენი საკუთარი, რეალური</strong> ფასები; „ბაზრის საშუალო“-ს გამოგონება არ შეიძლება.
+ეფორტი: <strong>S</strong> · ბექენდი: <strong>არა</strong>.</p>
+<p><strong>10. ტურისტულ გვერდებზე FAQ-ბლოკები არ არის</strong>
+სად ვნახეთ: bluecarrental.is-ის ყოველ მარშრუტულ გვერდზე 6-კითხვიანი FAQ; northbound.is-ის ცალკე პოსტი „Top Traveler Questions“; wander-lush.org-ს 15+ კითხვა.
+რატომ: ორმაგი მოგება — <code>FAQPage</code> rich result Google-ში და პირდაპირ ციტირებადი აბზაცი ChatGPT/Perplexity-სთვის. ჩვენ <code>FAQPage</code> მხოლოდ <code>/faq/</code>-ზეა.
+რა გავაკეთოთ: 4–6 კითხვა თითო ღირსშესანიშნაობასა და მარშრუტზე („შეიძლება თუ არა ვარძიაში სედანით?“, „რამდენი ღირს შესვლა?“, „ზამთარში ღიაა?“) — პასუხები <strong>უკვე გვაქვს სტრუქტურირებულ ველებში</strong>, ე.ი. ავტომატურად აიწყობა.
+ეფორტი: <strong>M</strong> · ბექენდი: <strong>არა</strong>.</p>
+<h3>3.3 პროდუქტი და დაბრუნების მიზეზი</h3>
+<p><strong>11. დამგეგმავის შედეგი ჩიხია — მხოლოდ ბეჭდვა</strong>
+სად ვნახეთ: roadtrippers ექსპორტს PDF-ად და GPX-ად ($35.99/წელი); bikemap GPX/KML და ოფლაინ რუკას (€39/წელი); wanderlog სინქრონიზაციასა და თანარედაქტირებას.
+რატომ: მომხმარებელი გეგმას აწყობს დესკტოპზე, მაგრამ იყენებს ტელეფონში მანქანაში. ეს გადასვლა დღეს გატეხილია, ე.ი. გეგმა იკარგება და ბრენდიც მასთან ერთად.
+რა გავაკეთოთ, <strong>სრულიად სტატიკურად</strong>: (ა) გეგმის კოდირება URL-hash-ში → გასაზიარებელი ბმული + QR; (ბ) <strong>„Google Maps-ში გახსნა“ თითო დღეზე</strong> — <code>https://www.google.com/maps/dir/?api=1&amp;origin=…&amp;destination=…&amp;waypoints=a|b|c&amp;travelmode=driving</code> (ლიმიტი 9 waypoint დესკტოპზე, 3 მობილურზე — ამიტომ დღეობრივად); (გ) GPX ფაილის აწყობა ბრაუზერში; (დ) <code>.ics</code> თითო დღეზე კალენდარისთვის; (ე) სუფთა ბეჭდვის CSS.
+ეფორტი: <strong>S–M</strong> · ბექენდი: <strong>არა</strong>.</p>
+<p><strong>12. შეფასებები და რეიტინგები არსად არ არის</strong>
+სად ვნახეთ: wanderlog თითო ადგილზე აჩვენებს Google 4.7 (11,029) და TripAdvisor 4.7 (1,001); guidetoiceland.is — „9.6, 19,952 დადასტურებული შეფასება“; localrent — Trustpilot 4.8 / 4,509; naniko.ge და og.ge — მომხმარებელთა ციტატები.
+რატომ: ვარსკვლავები SERP-ში CTR-ს ზრდის და <code>AggregateRating</code> schema-ს გარეშე ჩვენ ვერასდროს გამოვჩნდებით ისე, როგორც კონკურენტები.
+⚠️ <strong>გამოგონილი შეფასებები დაუშვებელია:</strong> ეს არის შეცდომაში შემყვანი კომერციული პრაქტიკა <a href="https://matsne.gov.ge/en/document/view/5420598">მომხმარებლის უფლებების დაცვის შესახებ საქართველოს კანონის</a> მიხედვით, ეწინააღმდეგება Google-ის სტრუქტურული მონაცემების პოლიტიკას (მოჰყვება ხელით სანქცია) და, EU-ს ბაზრებზე მიმართული გვერდებისთვის, არაკეთილსინდისიერი კომერციული პრაქტიკის დირექტივას. ასევე <strong>არ შეიძლება</strong> Google/TripAdvisor-ის რეიტინგების ჩამოქაჩვა და ჩვენს გვერდზე მარკირება — ეს მათი პირობების დარღვევაცაა და schema-ს წესებისაც.
+<strong>კანონიერი გზა:</strong> (ა) Google Business Profile-ისა და Trustpilot-ის პროფილების გაშვება და მათი ვიჯეტის ჩასმა; (ბ) გაქირავების შემდეგ ავტომატური თხოვნა შეფასებაზე; (გ) <code>AggregateRating</code> მხოლოდ <strong>ჩვენს რეალურად მიღებულ</strong> შეფასებებზე, <code>sameAs</code>-ით პროფილებზე; (დ) ღირსშესანიშნაობებზე რეიტინგის ნაცვლად ვაჩვენოთ ის, რაც ჩვენ გვაქვს და სხვას არა — დათვალიერების დრო, გზის ტიპი, ხალხმრავლობა თვეების მიხედვით.
+ეფორტი: <strong>S</strong> (ვიჯეტი) / <strong>M</strong> (სქემა + შეგროვების პროცესი) · ბექენდი: <strong>არა</strong> (მესამე მხარის სერვისი).</p>
+<p><strong>13. „რომელი მანქანა მჭირდება“ ცალკე გვერდად არ არსებობს</strong>
+სად ვნახეთ: bluecarrental.is-ის „2WD vs 4x4“ და საოჯახო ავტომობილის სახელმძღვანელოები; hertz.is რეგიონს პირდაპირ კლასზე ამაგრებს.
+რატომ: ლოგიკა უკვე დაწერილია დამგეგმავში, მაგრამ დამარხულია მის შიგნით. ცალკე გვერდი <code>/fleet/which-car/</code> — მგზავრების რაოდენობა + ბარგი + თვე + რეგიონები (თუშეთი/სვანეთი/რაჭა → 4x4) → 2–3 კონკრეტული ავტომობილი ფასით — არის სუფთა კონვერსიის ხელსაწყო და SEO-გვერდი ერთდროულად.
+ეფორტი: <strong>S</strong> · ბექენდი: <strong>არა</strong>.</p>
+<p><strong>14. გზების მდგომარეობის გვერდი არ არსებობს</strong>
+სად ვნახეთ: safetravel.is და road.is — ზამთარში ისლანდიაში მოგზაურის ყველაზე ხშირად გახსნილი გვერდები; ეს არის ბრენდის მთავარი „დაბრუნების მიზეზი“.
+რატომ: საქართველოში ეს უფრო მწვავეა (ჯვრის უღელტეხილი, აბანო, გოდერძი, ზეკარი). <strong>მაგრამ:</strong> <a href="https://www.georoad.ge/?act=news&amp;func=menu&amp;lang=eng&amp;uid=1391243029">georoad.ge-ს „current condition of roads“</a> რეალურად არქივია (ბოლო ჩანაწერი 2014), API/RSS არ აქვს — ცოცხალი წყარო არის საგზაო დეპარტამენტის ცხელი ხაზი და სოცქსელი.
+რა გავაკეთოთ: <code>content/settings/road_status.yml</code> (ადმინიდან რედაქტირებადი) — უღელტეხილი / სტატუსი / თარიღი / შენიშვნა; გამოჩნდეს <code>/road-status/</code> გვერდზე, შესაბამის ღირსშესანიშნაობებზე და დამგეგმავის გაფრთხილებაში.
+⚠️ <strong>არ დავარქვათ „live“.</strong> ყოველ ჩანაწერზე უნდა ეწეროს „განახლდა TT.MM.YYYY, წყარო: საგზაო დეპარტამენტი“ — მანუალურად განახლებული მონაცემის რეალურ დროში გასაღება შეცდომაში შეყვანაა და ამინდის დროს საშიშიც.
+ეფორტი: <strong>S–M</strong> · ბექენდი: <strong>არა</strong> (ადმინი უკვე გვაქვს).</p>
+<p><strong>15. ელფოსტის შეგროვება და დაბრუნების მექანიკა არ არსებობს</strong>
+სად ვნახეთ: northbound.is-ის <strong>Price Watch</strong> („ფასი დაეცემა — შეგატყობინებთ“); guidetoiceland.is-ის VIP Club; og.ge-ს OG Drive Club; polarsteps, რომელიც <strong>შემოსავლის 100%-ს</strong> მომხმარებლის საკუთარი მოგზაურობიდან დაბეჭდილი წიგნით იღებს.
+რატომ: დღეს ვიზიტორს ჩვენთან დასაბრუნებელი მიზეზი არ აქვს. მოგზაურობა 2–6 თვით ადრე იგეგმება — ეს არის ზუსტად ის ფანჯარა, რომელსაც ელფოსტა ფარავს.
+რა გავაკეთოთ მინიმალურად: (ა) „გამომიგზავნე ჩემი გეგმა“ ღილაკი დამგეგმავში; (ბ) სეზონური სია — „თუშეთის გზა გაიხსნა“, „გოდერძი დაიკეტა“; (გ) ფასის შეტყობინება მხოლოდ იმ შემთხვევაში, თუ რეალურად გვექნება სეზონური ფასდაკლებები.
+ეფორტი: <strong>S</strong> (ფორმა) / <strong>M</strong> (სეგმენტები) · ბექენდი: <strong>არა</strong> (Buttondown/MailerLite).</p>
+<h3>3.4 მონაცემი და კონტენტი</h3>
+<p><strong>16. ობიექტზე აკლია პრაქტიკული ველები, რომლებსაც კონკურენტები აჩვენებენ</strong>
+სად ვნახეთ: guidetoiceland.is-ის Gullfoss — პარკინგი (უფასო/ფასიანი), ვიზიტორთა ცენტრის საათები, ეტლით ხელმისაწვდომობა, „საჭირო დრო 45–90 წთ“; bluecarrental.is — პარკინგის ფასი თითო გაჩერებაზე („~1,000 ISK“).
+რა გვაკლია: სამუშაო საათები და <strong>ბოლო შესვლის დრო</strong>, პარკინგი (უფასო/ფასიანი + პარკინგის კოორდინატები), ტუალეტი, მხოლოდ ნაღდი ფული, ეტლით ხელმისაწვდომობა, მობილური კავშირი, <strong>ბოლო ბენზინგასამართი მონაკვეთამდე</strong>, დრონის წესები (მოქმედ მონასტრებში აკრძალულია — ეს ვარძიაზე ტექსტში წერია, მაგრამ ველად არა).
+რატომ: ეს არის ზუსტად ის, რასაც LLM-ი ციტირებს და რის გამოც ადამიანი გვერდზე ბრუნდება მანქანაში ჯდომისას.
+ეფორტი: <strong>M</strong> (247 ჩანაწერი, მაგრამ ველების უმეტესობა ენანეიტრალურია) · ბექენდი: <strong>არა</strong>.</p>
+<p><strong>17. UGC და ჩამოსატვირთი მასალა არ არსებობს</strong>
+სად ვნახეთ: roadtrippers მთლიანად მომხმარებლის დამატებულ ადგილებსა და ფოტოებზეა აშენებული; wanderlog რეალურ ვიზიტორთა ციტატებს აჩვენებს; guidetoiceland.is თემატურ რუკებს; bikemap ოფლაინ რუკას ყიდის.
+რა გავაკეთოთ: (ა) უფასო <code>PDF</code> — „საქართველოს საგზაო რუკა + 247 ადგილი“ ელფოსტის სანაცვლოდ; (ბ) რეგიონის <code>GPX/KML</code> ჩამოსატვირთად; (გ) მოდერირებული „მოგზაურობის ანგარიში“ — ფორმა → ადმინის დამტკიცება → <code>content/posts</code>.
+⚠️ ფოტოებზე მხოლოდ საკუთარი ან ლიცენზირებული მასალა, <code>ImageObject</code>-ში <code>creditText</code> და <code>license</code>.
+ეფორტი: <strong>M</strong> · ბექენდი: <strong>არა</strong> (ფორმის სერვისი).</p>
+<hr />
+<h2>4. რა გავაკეთოთ შემდეგ — 6 პრიორიტეტი</h2>
+<blockquote>
+<p><strong>ეს არის გეგმა, არა შესრულებული სამუშაო.</strong> სტატუსი გადამოწმდა 2026-08-16 <code>build.py</code>-სა და <code>dist/</code>-ზე.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>რა</th>
+<th>ეფორტი</th>
+<th>სტატუსი 2026-08-16</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>შეთავაზების ფორმა + WhatsApp deep-link ყოველ ტურისტულ გვერდზე</strong> (ნაკლი 1, 2)</td>
+<td>M</td>
+<td>✅ გაკეთდა — <code>static/booking.js</code>, კონტექსტური ფორმა + wa.me</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>თემატური ინდექსები</strong> <code>/attractions/waterfalls/</code>, <code>/unesco/</code>, <code>/caves/</code>, <code>/wine/</code>, <code>/4x4/</code> (ნაკლი 7)</td>
+<td>S</td>
+<td>❌ არ არსებობს — <code>type</code> ველი მზადაა, ციკლი <code>build.py</code>-ში არ დაწერილა</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>A→B გვერდების წინასწარი რენდერი</strong> <code>/drive/tbilisi-batumi/</code> × 40–60 წყვილი (ნაკლი 4)</td>
+<td>M</td>
+<td>❌ არ არსებობს — <code>/drive/</code> URL-ოჯახი არ გენერირდება</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>დამგეგმავის გამოსავალი: ბმული + Google Maps + GPX + ICS</strong> (ნაკლი 11)</td>
+<td>S–M</td>
+<td>❌ არ არსებობს — <code>planner.js</code>-ში GPX/ICS/Maps ექსპორტი 0</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>„N დღე საქართველოში“ 3/5/7/10/14 + 12 თვის გვერდი</strong> (ნაკლი 5, 6)</td>
+<td>M</td>
+<td>❌ არ არსებობს — <code>/itineraries/</code>, <code>/travel/&lt;month&gt;/</code> არ გენერირდება</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>რეალური შეფასებების არხი: GBP + Trustpilot → <code>AggregateRating</code></strong> (ნაკლი 12)</td>
+<td>S + პროცესი</td>
+<td>❌ არ დაწყებულა — ყალბი schema სწორად არ იქმნება, მაგრამ რეალური არხიც არ არსებობს</td>
+</tr>
+</tbody>
+</table>
+<p><strong>რატომ არის ეს მნიშვნელოვანი:</strong> #2–#5 არის ის სამუშაო, სადაც <strong>ალგორითმი უკვე დაწერილია და მხოლოდ build-ზე რენდერი აკლია</strong> — ყველაზე მაღალი ROI კოდის სტრიქონზე. სანამ ისინი არ გაკეთდება, 2,000+ გენერირებული გვერდი იმ ინტენტს ვერ იჭერს, რომლითაც კონკურენტები რანჟირდებიან.</p>
+<p><strong>მაგრამ პირველ რიგში:</strong> publication blocker-ები (რეალური კონტაქტები და 17 ავტომობილის ფოტო) ამ სიაზე მაღლა დგას — მათ გარეშე ვერცერთი ახალი გვერდი ვერ გამოქვეყნდება. იხილეთ <a href="LOCAL_IMPLEMENTATION_STATUS.html">docs/LOCAL_IMPLEMENTATION_STATUS.md</a>.</p>
+<hr />
+<h2>5. SEO / GEO სტრუქტურა — რითი რანჟირდებიან ისინი და რა არ გვაქვს</h2>
+<h3>5.1 URL-ის შაბლონები, რომლებიც უნდა დავამატოთ</h3>
+<p>ქართული root-ზე + <code>/en/</code>, <code>/ru/</code>, <code>/fa/</code>, <code>/he/</code>, <code>/ar/</code> — ეს სწორია და უნდა დარჩეს. აკლია შემდეგი ოჯახები:</p>
+<table>
+<thead>
+<tr>
+<th>ახალი შაბლონი</th>
+<th>ვისგან</th>
+<th>მაგალითი</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/drive/&lt;a&gt;-&lt;b&gt;/</code></td>
+<td>wanderlog <code>/drive/between/{id}/{id}/{a}-to-{b}-drive</code></td>
+<td><code>/drive/tbilisi-batumi/</code></td>
+</tr>
+<tr>
+<td><code>/itineraries/&lt;n&gt;-days/</code></td>
+<td>lavacarrental <code>best-iceland-7-day-itinerary</code>, guidetoiceland <code>/you-guide/…</code>, georgia-roadtrip <code>/itineraries/7-days-itinerary/</code></td>
+<td><code>/itineraries/7-days/</code></td>
+</tr>
+<tr>
+<td><code>/travel/&lt;month&gt;/</code></td>
+<td>lavacarrental <code>/information-iceland/driving-iceland-august</code></td>
+<td><code>/travel/august/</code></td>
+</tr>
+<tr>
+<td><code>/attractions/&lt;type&gt;/</code></td>
+<td>guidetoiceland-ის თემატური რუკები, wanderlog-ის კატეგორიული სიები</td>
+<td><code>/attractions/waterfalls/</code></td>
+</tr>
+<tr>
+<td><code>/map/&lt;region-or-route&gt;/</code></td>
+<td>firefly <code>/iceland-map/golden-circle-iceland-map/</code></td>
+<td><code>/map/georgian-military-road/</code></td>
+</tr>
+<tr>
+<td><code>/compare/&lt;a&gt;-vs-&lt;b&gt;/</code></td>
+<td>og.ge-ს შედარების ცხრილი, northbound „Should I Rent a Car…“</td>
+<td><code>/compare/rental-vs-driver/</code></td>
+</tr>
+<tr>
+<td><code>/pricing/by-month/</code></td>
+<td>discovercars.com/georgia-ს სეზონური ფასის ბლოკი</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>/road-status/</code></td>
+<td>safetravel.is</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>/fleet/which-car/</code></td>
+<td>bluecarrental-ის „2WD vs 4x4“</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>ყოველ ახალ ოჯახზე აუცილებელია <code>hreflang</code> ექვსივე ენაზე + <code>x-default</code> და <code>sitemap.xml</code>-ში <code>xhtml:link</code> ალტერნატივები — ისევე როგორც არსებულ 1,782 URL-ზე.</p>
+<h3>5.2 შიდა ბმულები</h3>
+<p>დღეს გვაქვს: ობიექტი → ახლომდებარე (3–4) და ობიექტი → რეგიონი. ეს ძალიან ბრტყელი გრაფია.</p>
+<p>დასამატებელი, კონკურენტების მიხედვით:
+- <strong>ობიექტი → მარშრუტები, რომლებშიც ის შედის</strong> — wanderlog-ის „Mentioned on N other lists“ ზუსტად ამ სიგნალს იყენებს. ჩვენ <code>routes/*.yml</code>-ში თანმიმდევრობა უკვე გვაქვს, ე.ი. უკუბმული უფასოდ აიწყობა.
+- <strong>ობიექტი → თვეები, როცა ის ღიაა</strong> (<code>best_season</code>-იდან) და ↔ თემატური ინდექსი (<code>type</code>-იდან).
+- <strong>ობიექტი → საჭირო ავტომობილის კატეგორია ფასით</strong> — hertz.is-ის მოდელი (რეგიონი → კლასი → კონკრეტული მოდელი).
+- <strong>რეგიონი × თემა ბადე</strong>: <code>/regions/kakheti/</code> ↔ <code>/attractions/wine/</code> ჯვარედინი ბლოკებით.
+- <strong>A→B გვერდი → ორივე ქალაქის გვერდი და გზაზე მდებარე ყოველი ობიექტი</strong> — wanderlog-ის <code>/explore/9658/tbilisi</code> ბმულის ანალოგი.
+- <strong>დაკავშირებული სტატიების ბლოკი</strong> ყოველი ტურისტული გვერდის ბოლოს — bluecarrental.is-ის Golden Circle-ის გვერდი 6 დაკავშირებულ პოსტს და 6 ავტომობილის კატეგორიას ბმულობს.</p>
+<h3>5.3 Schema — რა გვაქვს და რა აკლია</h3>
+<p>უკვე გვაქვს: <code>AutoRental</code>, <code>LocalBusiness</code>, <code>WebSite</code>, <code>WebPage</code>, <code>BreadcrumbList</code>, <code>FAQPage</code>, <code>OfferCatalog</code>, <code>Car</code>, <code>Offer</code>, <code>UnitPriceSpecification</code>, <code>BlogPosting</code>, <code>TouristAttraction</code>, <code>TouristDestination</code>, <code>TouristTrip</code>, <code>ItemList</code>, <code>GeoCoordinates</code>, <code>PostalAddress</code>, <code>OpeningHoursSpecification</code>, <code>SoftwareApplication</code>.</p>
+<p>აკლია:
+- <strong><code>AggregateRating</code> + <code>Review</code></strong> — მხოლოდ რეალურ შეფასებებზე (იხ. ნაკლი 12); <code>sameAs</code> GBP/Trustpilot პროფილებზე.
+- <strong><code>openingHoursSpecification</code> ღირსშესანიშნაობაზე</strong> (დღეს მხოლოდ ბიზნესზეა) — guidetoiceland-ის Gullfoss-ის შაბლონი.
+- <strong><code>HowTo</code></strong> — „როგორ მივიდეთ ვარძიაში თბილისიდან“ ბლოკზე, რომელიც უკვე გვაქვს ტექსტად.
+- <strong><code>TouristTrip.subTrip</code></strong> — თითო დღე ცალკე <code>TouristTrip</code>-ად „N დღე“ გვერდებზე.
+- <strong><code>Product</code> / <code>Vehicle</code> + <code>Offer</code></strong> <code>priceValidUntil</code>, <code>availability</code>, <code>areaServed</code>-ით — მარტო <code>Car</code> საკმარისი არაა შეთავაზების rich result-ისთვის.
+- <strong><code>ImageObject</code></strong> <code>license</code> + <code>creditText</code>-ით ყველა ფოტოზე.
+- <strong><code>Event</code></strong> — რთველი, თბილისობა, სეზონური ღონისძიებები (georgia.travel-ს ღონისძიებების ლისტინგი აქვს, ჩვენ არა).
+- <strong><code>SpeakableSpecification</code></strong> — „სწრაფი ფაქტების“ ბლოკზე.
+- <strong><code>dateModified</code> ყოველ გვერდზე</strong> — wander-lush.org-ის სიახლის სიგნალი ერთ-ერთი მიზეზია, რის გამოც ის ჩვენს ბაზარზე რანჟირდება.</p>
+<h3>5.4 კონტენტის ფორმატები, რომლებითაც ისინი რანჟირდებიან და ჩვენ არ გვაქვს</h3>
+<ol>
+<li><strong>„A-დან B-მდე“ და „საუკეთესო გაჩერებები A-სა და B-ს შორის“</strong> — wanderlog, starcar.ge.</li>
+<li><strong>„N დღე ქვეყანაში“</strong>, სეზონის ვარიანტებით — lavacarrental, guidetoiceland, georgia-roadtrip.</li>
+<li><strong>თვეობრივი გვერდები</strong> — lavacarrental × 12.</li>
+<li><strong>„X vs Y“ შედარებები</strong> — og.ge, northbound.</li>
+<li><strong>ხარჯის/ბიუჯეტის გვერდი</strong> — lavacarrental „Cost of an Iceland Trip in 2026“, northbound-ის საწვავის კალკულატორი.</li>
+<li><strong>ფასის სეზონურობის მონაცემი გრაფიკით</strong> — discovercars.</li>
+<li><strong>თემატური ტოპ-სიები</strong> („15 ჩანჩქერი“, „10 UNESCO ძეგლი“) — guidetoiceland, wanderlog.</li>
+<li><strong>საკუთარი მონაცემური კვლევა</strong>, რომელზეც პრესა ბმულობს — sixt.com/magazine-ის „ქალაქები ყველაზე მოკლე ლოდინით“. ჩვენი ვერსია: „247 ობიექტი — რამდენი კმ და საათი სჭირდება საქართველოს სრულად შემოვლას“, „რომელი უღელტეხილი რამდენ ხანს არის დაკეტილი“.</li>
+<li><strong>FAQ-ბლოკი ყოველი ტურისტული გვერდის ბოლოს</strong> — bluecarrental.</li>
+<li><strong>ავტორის ხილული ექსპერტიზა</strong> — guidetoiceland Gullfoss-ს გეომეცნიერს აწერს; wander-lush 5 წლის პირად გამოცდილებას. ჩვენი გვერდები ავტორის გარეშეა → E-E-A-T-ის სუსტი მხარე.</li>
+</ol>
+<h3>5.5 GEO (AI-ძიება) — სად ვართ წინ და სად გვაქვს ერთი დიდი ხვრელი</h3>
+<p>წინ ვართ: <code>llms.txt</code> + <code>llms-full.txt</code> + 20 AI-კროულერის დაშვება — არცერთ განხილულ საიტს არ აქვს.</p>
+<p><strong>მთავარი ხვრელი:</strong> ჩვენი ორი საუკეთესო პასუხი — „რა ვნახო A-სა და B-ს შორის“ და „როგორი გეგმა გამოვა 7 დღეზე“ — <strong>მხოლოდ JavaScript-ში არსებობს</strong>. არც Googlebot-ი, არც GPTBot/ClaudeBot/PerplexityBot ვერ იღებენ ამ პასუხს. სწორედ ამიტომ არის ნაკლი 4 და 5 ასე მაღლა პრიორიტეტში: <strong>პასუხი HTML-ში უნდა იყოს, ხელსაწყო კი დამატებით.</strong></p>
+<p>დანარჩენი GEO-გაუმჯობესებები:
+- <strong>„სწრაფი ფაქტების“ ბლოკი გვერდის თავში</strong>, თვითკმარი წინადადებებით — wanderlog-ის სტილი: „ჯვრის მონასტერი — 8 წუთი მთავარი გზიდან, ბათუმისკენ გზის 57%“. ასეთ წინადადებას LLM-ი პირდაპირ ციტირებს.
+- <strong>ყოველ ციფრს პირველწყარო</strong>: შესვლის ფასი — დაცული ტერიტორიების სააგენტო; ამინდი — Open-Meteo; გზის სტატუსი — საგზაო დეპარტამენტი; მანძილი — ჩვენი გაზომვა. წყაროიანი ფაქტი უფრო ხშირად ხვდება პასუხში.
+- <strong>მანქანურად წაკითხვადი <code>/data/attractions.json</code></strong> (247 ჩანაწერი ყველა ველით), მითითებული <code>llms.txt</code>-იდან — დღეს <code>dist/data/points-*.json</code> არსებობს, მაგრამ რუკის საჭიროებებზეა მოჭრილი და საჯაროდ დოკუმენტირებული არაა.
+- <strong>თარიღიანი განახლება ყოველ გვერდზე</strong> (<code>dateModified</code> + ხილული „განახლდა“) — ეს wander-lush.org-ის მთავარი იარაღია.
+- <strong>ბრენდის ერთგვაროვანი NAP</strong> GBP-ზე, Trustpilot-ზე, 2GIS-ზე, TripAdvisor-ზე + <code>sameAs</code> — LLM-ები ერთეულ ფაქტს ჯვარედინად ამოწმებენ.</p>
+<h3>5.6 რისი გაკეთება არ შეიძლება</h3>
+<table>
+<thead>
+<tr>
+<th>ცდუნება</th>
+<th>რატომ არ შეიძლება</th>
+<th>კანონიერი ალტერნატივა</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>გამოგონილი შეფასებები / <code>AggregateRating</code> რეალური შეფასებების გარეშე</td>
+<td>შეცდომაში შემყვანი კომერციული პრაქტიკა მომხმარებლის უფლებების დაცვის კანონით; Google-ის ხელით სანქცია</td>
+<td>GBP + Trustpilot, ავტომატური თხოვნა გაქირავების შემდეგ, სქემა მხოლოდ რეალურზე</td>
+</tr>
+<tr>
+<td>Google/TripAdvisor-ის რეიტინგების ჩამოქაჩვა ღირსშესანიშნაობებზე</td>
+<td>პლატფორმის პირობებისა და schema-ს წესების დარღვევა</td>
+<td>ჩვენი საკუთარი, უნიკალური მეტრიკები: დათვალიერების დრო, გზის ტიპი, სეზონი, ხალხმრავლობა</td>
+</tr>
+<tr>
+<td>„Live road conditions“ ხელით განახლებულ მონაცემზე</td>
+<td>შეცდომაში შეყვანა + უსაფრთხოების რისკი</td>
+<td>ხილული ბეჭედი „განახლდა TT.MM.YYYY · წყარო: საგზაო დეპარტამენტი“</td>
+</tr>
+<tr>
+<td>დასახელებული კონკურენტის ფასების შედარება წყაროს გარეშე</td>
+<td>არაკეთილსინდისიერი შედარებითი რეკლამა რეკლამის შესახებ კანონით</td>
+<td>გადაადგილების <strong>ხერხების</strong> შედარება, ან თარიღიანი, წყაროზე მითითებული ციტირება</td>
+</tr>
+<tr>
+<td>„უფასო გაუქმება / შეუზღუდავი კილომეტრაჟი“ მარკეტინგულ ბლოკებში</td>
+<td>თუ <code>/terms/</code> სხვას წერს — შეცდომაში შემყვანი კომერციული პრაქტიკა</td>
+<td>ყოველი ასეთი ბეჯი ერთი წყაროდან (<code>content/settings/</code>) იკვებოს, რომელიც <code>/terms/</code>-საც კვებავს</td>
+</tr>
+<tr>
+<td>სხვისი ფოტოები ღირსშესანიშნაობებზე</td>
+<td>საავტორო უფლება</td>
+<td>საკუთარი გადაღება ან ლიცენზირებული, <code>ImageObject.license</code> + <code>creditText</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>წყაროები</h2>
+<p><a href="https://www.northbound.is/">northbound.is</a> · <a href="https://www.northbound.is/blog/category/planning-your-trip">northbound.is/blog/category/planning-your-trip</a> · <a href="https://www.bluecarrental.is/blog/golden-circle-directions-an-iceland-car-rental-guide/">bluecarrental.is — Golden Circle guide</a> · <a href="https://www.lavacarrental.is/information-iceland">lavacarrental.is/information-iceland</a> · <a href="https://www.hertz.is/iceland-travel-info/iceland-attractions-map/">hertz.is — Iceland attractions map</a> · <a href="https://www.firefly.is/iceland-map/iceland-attractions-map/">firefly.is — Iceland attractions map</a> · <a href="https://www.gocarrental.is/blog/guides/">gocarrental.is/blog/guides</a> · <a href="https://www.discovercars.com/georgia">discovercars.com/georgia</a> · <a href="https://www.sixt.com/magazine/">sixt.com/magazine</a> · <a href="https://roadtrippers.com/">roadtrippers.com</a> · <a href="https://support.roadtrippers.com/hc/en-us/articles/10941513564692-Exporting-Your-Trip">Roadtrippers — exporting your trip</a> · <a href="https://wanderlog.com/">wanderlog.com</a> · <a href="https://wanderlog.com/list/geoCategory/104680/attractions">wanderlog — Tbilisi attractions list</a> · <a href="https://wanderlog.com/drive/between/9658/10080/tbilisi-to-batumi-drive">wanderlog — Tbilisi to Batumi drive</a> · <a href="https://trips.furkot.com/">trips.furkot.com</a> · <a href="https://www.bikemap.net/en/premium/">bikemap.net/premium</a> · <a href="https://www.peecho.com/case-studies/polarsteps">Polarsteps case study (Peecho)</a> · <a href="https://guidetoiceland.is/">guidetoiceland.is</a> · <a href="https://guidetoiceland.is/travel-iceland/drive/gullfoss">guidetoiceland — Gullfoss</a> · <a href="https://guidetoiceland.is/you-guide">guidetoiceland — itineraries</a> · <a href="https://guidetoiceland.is/travel-info/maps-of-iceland">guidetoiceland — maps of Iceland</a> · <a href="https://www.visitscotland.com/travel-planning/touring/north-coast-500">visitscotland — North Coast 500</a> · <a href="https://georgia.travel/">georgia.travel</a> · <a href="https://safetravel.is/">safetravel.is</a> · <a href="https://naniko.ge/">naniko.ge</a> · <a href="https://og.ge/">og.ge</a> · <a href="https://starcar.ge/blog/tbilisi-to-batumi-distance-routes-driving-time-complete-road-guide">starcar.ge — Tbilisi to Batumi</a> · <a href="https://www.localrent.com/en/georgia/">localrent.com/en/georgia</a> · <a href="https://gotrip.ge/">gotrip.ge</a> · <a href="https://wander-lush.org/driving-in-georgia-car-rental-tbilisi/">wander-lush.org — driving in Georgia</a> · <a href="https://georgia-roadtrip.com/7-days-itinerary/">georgia-roadtrip.com — 7 days</a> · <a href="https://www.georoad.ge/?act=news&amp;func=menu&amp;lang=eng&amp;uid=1391243029">georoad.ge — current condition of roads</a> · <a href="https://developers.google.com/maps/documentation/urls/get-started">Google Maps URLs API</a> · <a href="https://matsne.gov.ge/en/document/view/5420598">მომხმარებლის უფლებების დაცვის შესახებ საქართველოს კანონი</a> · <a href="https://matsne.gov.ge/en/document/view/31840">რეკლამის შესახებ საქართველოს კანონი</a></p></body></html>

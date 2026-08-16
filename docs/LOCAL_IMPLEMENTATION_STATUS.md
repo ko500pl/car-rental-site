@@ -1,40 +1,81 @@
-# Local implementation status
+# ლოკალური იმპლემენტაციის სტატუსი
 
-Last reviewed: 2026-08-14. This describes the local branch only. Nothing was deployed or pushed.
+**ეს არის პროექტის ერთადერთი მიმდინარე სტატუს-დოკუმენტი.** სხვა დოკუმენტებში (AUDIT.md, REQUIREMENTS_MATRIX.md, IMPLEMENTATION_REPORT.md) მოცემული რიცხვები ეხება მათი დაწერის თარიღს.
 
-## Completed locally
+განახლდა: 2026-08-16 · branch `harden-static-rental-funnel` · deploy და DNS არ შეცვლილა.
 
-- One Leaflet travel workspace provides discovery, route and planner modes.
-- Six-language KA/EN/RU/FA/HE/AR generated site with RTL and multilingual place search.
-- Progressive map clusters, real-road routing integration, traffic layer, GPS/manual location, visited filtering and cycling candidates.
-- Curated difficult-road legs, conservative winter warnings, unified overnight/hotel towns and a strict safe vehicle recommendation floor.
-- Static rental inquiry forms with contextual WhatsApp and Netlify Forms fallback on cars and relevant entry/tourism pages.
-- Admin management for car status, availability, photos, three GEL tiers, deposit, franchise, insurance, mileage and extra services.
-- Optional accounts, saved trips and community contracts remain isolated from the core public/rental path.
-- PWA manifest/service worker provides an installable responsive web-app base.
+## გადამოწმებული რიცხვები
 
-## Verified locally
+ყველა ქვემოთ მოცემული მნიშვნელობა გაზომილია 2026-08-16-ს, ამ branch-ზე:
 
-- 22 automated unit/content/data-contract tests pass.
-- JavaScript source syntax passes.
-- Full build succeeds: 1,800 HTML pages, 17 cars, 4 articles and 6 languages.
-- Generated contact details use the central site settings source.
-- Generated car gallery supports the CMS object format without broken image URLs.
-- Strict build returns exit code 2 for unresolved publication warnings.
+| მაჩვენებელი | მნიშვნელობა |
+|---|---|
+| ავტომატური ტესტი | 26 / 26 გადის |
+| სრული build | 2,004 გვერდი (17 ავტომობილი, 4 სტატია, 6 ენა) |
+| `dist/` ბოლო გენერაცია | 2,014 HTML ფაილი |
+| ღირსშესანიშნაობა | 257 |
+| strict build | **ბლოკავს** (იხ. publication blockers) |
 
-## Production blockers requiring owner data
+## მუშაობს
 
-- Real phone, mobile/WhatsApp, email and social links.
-- Real main/gallery photos and confirmed availability for all 17 published cars.
-- Final human verification that every attraction photo depicts the correct place.
-- Hosting OAuth and optional Firebase configuration after local acceptance.
+- ერთი Leaflet სამუშაო სივრცე: დაგეგმვა / აღმოჩენა / მარშრუტი.
+- ექვსენოვანი KA/EN/RU/FA/HE/AR გენერაცია RTL-ით და მრავალენოვანი ძებნით.
+- პროგრესული კლასტერები, რეალურ გზებზე მარშრუტი, traffic, GPS/ხელით მდებარეობა, ნამყოფის ფილტრი, ველოკანდიდატები.
+- Curated რთული გზების matrix, ზამთრის კონსერვატიული გაფრთხილებები, ერთიანი ღამისთევა/სასტუმრო, მკაცრი ავტომობილის მინიმუმი.
+- სტანდარტული ტურები და ადგილის რეიტინგის ფილტრი.
+- სტატიკური გაქირავების მოთხოვნა: WhatsApp + Netlify Forms, კონტექსტით.
+- ადმინისტრაცია: სტატუსი, ხელმისაწვდომობა, ფოტოები, სამი GEL ტარიფი, დეპოზიტი, ფრანშიზა, დაზღვევა, გარბენი, დამატებითი სერვისები.
+- PWA manifest/service worker.
 
-## Intentionally not implemented
+## ცნობილი არქიტექტურული ვალი — Firebase booking
 
-- Payment gateway, realtime fleet locking or automatically confirmed booking.
-- Fabricated reviews, prices, availability, photos or business facts.
-- Signed native App Store/Google Play packages; the current deliverable is a PWA base.
+**გაქირავების საჯარო ნაკადი სტატიკურია** (`static/booking.js` → WhatsApp / Netlify Forms). ეს არის ფაზა 1-ის სწორი და მოქმედი გზა.
 
-## Final release step
+**მაგრამ Firebase-ის ძველი booking ფენა ბოლომდე არ ამოღებულა:**
 
-After owner data is supplied: run validation and strict build, review locally, then commit/push and deploy only with explicit approval.
+- `bookings` კოლექციას **არცერთი კოდი არ წერს** — `addDoc(collection(db,'bookings'))` არსად არსებობს;
+- `static/auth.js:370` და `static/admin-bookings.js:29` მას მხოლოდ **კითხულობენ**;
+- `extensionRequests` და მანქანის `reviews` წერისას `bookingId`-ს ეყრდნობიან, ანუ ისინიც მიუწვდომელია.
+
+შედეგი: ანგარიშის გვერდზე „ჩემი ჯავშნები" და ადმინის ჯავშნების კონსოლი ყოველთვის ცარიელი იქნება. ეს **მკვდარი ტოტია**, არა დასრულებული ფუნქცია.
+
+გადაწყვეტილება საჭიროა ორიდან ერთი:
+1. ფენა წაიშალოს, სანამ ფაზა 3 (რეალური ჯავშანი) არ დადგება; ან
+2. შენარჩუნდეს, მაგრამ UI-ში აშკარად აღინიშნოს, რომ ჯერ არ არის აქტიური.
+
+სანამ ეს არ გადაწყდება, [REQUIREMENTS_MATRIX.md](REQUIREMENTS_MATRIX.md)-ის შესაბამისი სტრიქონები „დასრულებულად" არ ჩაითვლება.
+
+## Publication blockers — მფლობელის მონაცემები
+
+strict build-ის რეალური გამოსავალი 2026-08-16:
+
+```
+WARNING: settings/site.yml: 'phone' still contains placeholder data
+WARNING: settings/site.yml: 'mobile' still contains placeholder data
+WARNING: settings/site.yml: 'email' still contains placeholder data
+WARNING: settings/site.yml: 'software_email' still contains placeholder data
+WARNING: settings/site.yml: social links still contain placeholder data
+WARNING: cars: 17 published records have no main image
+ERROR: strict mode treats warnings as publication blockers
+```
+
+ეს სია **2026-08-14-დან უცვლელია**. ის არ არის პროგრამირების ამოცანა — საჭიროა რეალური ტელეფონი, WhatsApp, ელფოსტა, სოციალური ბმულები და 17 ავტომობილის მთავარი ფოტო. სანამ არ შეივსება, ყველა სხვა სამუშაო გამოქვეყნებამდე ვერ მიდის.
+
+დამატებით საჭიროა: ღირსშესანიშნაობების ფოტოების ადამიანური ვიზუალური დადასტურება; hosting OAuth და (სურვილისამებრ) Firebase კონფიგურაცია.
+
+## განზრახ არ არის გაკეთებული
+
+- გადახდის gateway, realtime fleet lock, ავტომატურად დადასტურებული ჯავშანი.
+- გამოგონილი შეფასება, ფასი, ხელმისაწვდომობა, ფოტო ან ბიზნეს-ფაქტი.
+- ხელმოწერილი App Store / Google Play პაკეტი; deliverable არის PWA.
+
+## დაუდოკუმენტირებელი არტეფაქტი
+
+repo-ს root-ში დევს `Drive-On-release.apk` (42MB) და `mobile/fleet_house_app/`, მაშინ როცა ყველა დოკუმენტი PWA-ს ასახელებს deliverable-ად. ამ native ნაწილს მართვადი დოკუმენტი არ აქვს — საჭიროა ან დოკუმენტირება, ან repo-დან ამოღება.
+
+## შემდეგი ნაბიჯი
+
+1. მფლობელის მონაცემები (ზემოთ) — ხსნის strict build-ს.
+2. Firebase booking ფენის გადაწყვეტა (წაშლა ან აშკარა „არააქტიური" მდგომარეობა).
+3. [RESEARCH.md](../RESEARCH.md)-ის პრიორიტეტები #2 და #3 — ალგორითმი დაწერილია, build-ზე რენდერი აკლია.
+4. მხოლოდ ამის შემდეგ: commit/push, deploy, production smoke test.

@@ -12,6 +12,7 @@ Scope: local implementation and verification; nothing deployed or pushed.
 - Unified vehicle requirement ranking. The recommender now returns no vehicle instead of suggesting one below the safe minimum.
 - Added contextual WhatsApp handoff using the admin-managed number.
 - Replaced Firebase rental booking with static Netlify-compatible inquiry forms; Firebase remains limited to optional accounts/trip sync.
+  - **Correction (2026-08-16):** only the *write* path was removed. The account bookings view (`static/auth.js:370`), the admin bookings console (`static/admin-bookings.js:29`) and the `extensionRequests`/car-review features that depend on `bookingId` still read a `bookings` collection that nothing writes to. This is a dead branch, not a finished feature — see [docs/LOCAL_IMPLEMENTATION_STATUS.md](docs/LOCAL_IMPLEMENTATION_STATUS.md).
 - Added a compact reusable inquiry form to homepage, fleet, map/planner and tourism pages, plus the detailed car request form.
 - Expanded car CMS fields for availability, franchise, insurance, mileage, minimum rental, additional driver, child seat, airport delivery and cross-border rules.
 - Added availability-aware Car Offer structured data and excluded unavailable cars from planner recommendations.

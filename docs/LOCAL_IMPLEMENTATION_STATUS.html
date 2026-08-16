@@ -1,0 +1,87 @@
+<!doctype html><html lang="ka"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>ლოკალური იმპლემენტაციის სტატუსი</title><style>body{font:15px/1.65 system-ui;max-width:940px;margin:36px auto;padding:0 22px;color:#172033}a{color:#087ea4}h1,h2{line-height:1.2}h1{font-size:30px}h2{margin-top:30px;border-top:1px solid #dce2ea;padding-top:18px}h3{margin-top:22px}code{background:#eef2f6;padding:2px 5px;border-radius:4px}pre{background:#eef2f6;padding:12px 14px;border-radius:8px;overflow-x:auto}pre code{background:none;padding:0}li{margin:5px 0}table{border-collapse:collapse;width:100%;margin:14px 0;display:block;overflow-x:auto}th,td{border:1px solid #dce2ea;padding:7px 10px;text-align:left;vertical-align:top}th{background:#f7fafc}blockquote{margin:14px 0;padding:10px 16px;border-left:3px solid #087ea4;background:#f7fafc}blockquote p{margin:6px 0}.back{display:inline-block;margin-bottom:18px}.meta{color:#64748b;font-size:13px}</style></head><body><a class="back" href="00-DOCUMENTATION-INDEX.html">← დოკუმენტაციის ინდექსი</a><div class="meta">ლოკალური დოკუმენტაცია · 2026-08-16</div>
+<h1>ლოკალური იმპლემენტაციის სტატუსი</h1>
+<p><strong>ეს არის პროექტის ერთადერთი მიმდინარე სტატუს-დოკუმენტი.</strong> სხვა დოკუმენტებში (AUDIT.md, REQUIREMENTS_MATRIX.md, IMPLEMENTATION_REPORT.md) მოცემული რიცხვები ეხება მათი დაწერის თარიღს.</p>
+<p>განახლდა: 2026-08-16 · branch <code>harden-static-rental-funnel</code> · deploy და DNS არ შეცვლილა.</p>
+<h2>გადამოწმებული რიცხვები</h2>
+<p>ყველა ქვემოთ მოცემული მნიშვნელობა გაზომილია 2026-08-16-ს, ამ branch-ზე:</p>
+<table>
+<thead>
+<tr>
+<th>მაჩვენებელი</th>
+<th>მნიშვნელობა</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ავტომატური ტესტი</td>
+<td>26 / 26 გადის</td>
+</tr>
+<tr>
+<td>სრული build</td>
+<td>2,004 გვერდი (17 ავტომობილი, 4 სტატია, 6 ენა)</td>
+</tr>
+<tr>
+<td><code>dist/</code> ბოლო გენერაცია</td>
+<td>2,014 HTML ფაილი</td>
+</tr>
+<tr>
+<td>ღირსშესანიშნაობა</td>
+<td>257</td>
+</tr>
+<tr>
+<td>strict build</td>
+<td><strong>ბლოკავს</strong> (იხ. publication blockers)</td>
+</tr>
+</tbody>
+</table>
+<h2>მუშაობს</h2>
+<ul>
+<li>ერთი Leaflet სამუშაო სივრცე: დაგეგმვა / აღმოჩენა / მარშრუტი.</li>
+<li>ექვსენოვანი KA/EN/RU/FA/HE/AR გენერაცია RTL-ით და მრავალენოვანი ძებნით.</li>
+<li>პროგრესული კლასტერები, რეალურ გზებზე მარშრუტი, traffic, GPS/ხელით მდებარეობა, ნამყოფის ფილტრი, ველოკანდიდატები.</li>
+<li>Curated რთული გზების matrix, ზამთრის კონსერვატიული გაფრთხილებები, ერთიანი ღამისთევა/სასტუმრო, მკაცრი ავტომობილის მინიმუმი.</li>
+<li>სტანდარტული ტურები და ადგილის რეიტინგის ფილტრი.</li>
+<li>სტატიკური გაქირავების მოთხოვნა: WhatsApp + Netlify Forms, კონტექსტით.</li>
+<li>ადმინისტრაცია: სტატუსი, ხელმისაწვდომობა, ფოტოები, სამი GEL ტარიფი, დეპოზიტი, ფრანშიზა, დაზღვევა, გარბენი, დამატებითი სერვისები.</li>
+<li>PWA manifest/service worker.</li>
+</ul>
+<h2>ცნობილი არქიტექტურული ვალი — Firebase booking</h2>
+<p><strong>გაქირავების საჯარო ნაკადი სტატიკურია</strong> (<code>static/booking.js</code> → WhatsApp / Netlify Forms). ეს არის ფაზა 1-ის სწორი და მოქმედი გზა.</p>
+<p><strong>მაგრამ Firebase-ის ძველი booking ფენა ბოლომდე არ ამოღებულა:</strong></p>
+<ul>
+<li><code>bookings</code> კოლექციას <strong>არცერთი კოდი არ წერს</strong> — <code>addDoc(collection(db,'bookings'))</code> არსად არსებობს;</li>
+<li><code>static/auth.js:370</code> და <code>static/admin-bookings.js:29</code> მას მხოლოდ <strong>კითხულობენ</strong>;</li>
+<li><code>extensionRequests</code> და მანქანის <code>reviews</code> წერისას <code>bookingId</code>-ს ეყრდნობიან, ანუ ისინიც მიუწვდომელია.</li>
+</ul>
+<p>შედეგი: ანგარიშის გვერდზე „ჩემი ჯავშნები" და ადმინის ჯავშნების კონსოლი ყოველთვის ცარიელი იქნება. ეს <strong>მკვდარი ტოტია</strong>, არა დასრულებული ფუნქცია.</p>
+<p>გადაწყვეტილება საჭიროა ორიდან ერთი:
+1. ფენა წაიშალოს, სანამ ფაზა 3 (რეალური ჯავშანი) არ დადგება; ან
+2. შენარჩუნდეს, მაგრამ UI-ში აშკარად აღინიშნოს, რომ ჯერ არ არის აქტიური.</p>
+<p>სანამ ეს არ გადაწყდება, <a href="REQUIREMENTS_MATRIX.html">REQUIREMENTS_MATRIX.md</a>-ის შესაბამისი სტრიქონები „დასრულებულად" არ ჩაითვლება.</p>
+<h2>Publication blockers — მფლობელის მონაცემები</h2>
+<p>strict build-ის რეალური გამოსავალი 2026-08-16:</p>
+<pre><code>WARNING: settings/site.yml: 'phone' still contains placeholder data
+WARNING: settings/site.yml: 'mobile' still contains placeholder data
+WARNING: settings/site.yml: 'email' still contains placeholder data
+WARNING: settings/site.yml: 'software_email' still contains placeholder data
+WARNING: settings/site.yml: social links still contain placeholder data
+WARNING: cars: 17 published records have no main image
+ERROR: strict mode treats warnings as publication blockers
+</code></pre>
+<p>ეს სია <strong>2026-08-14-დან უცვლელია</strong>. ის არ არის პროგრამირების ამოცანა — საჭიროა რეალური ტელეფონი, WhatsApp, ელფოსტა, სოციალური ბმულები და 17 ავტომობილის მთავარი ფოტო. სანამ არ შეივსება, ყველა სხვა სამუშაო გამოქვეყნებამდე ვერ მიდის.</p>
+<p>დამატებით საჭიროა: ღირსშესანიშნაობების ფოტოების ადამიანური ვიზუალური დადასტურება; hosting OAuth და (სურვილისამებრ) Firebase კონფიგურაცია.</p>
+<h2>განზრახ არ არის გაკეთებული</h2>
+<ul>
+<li>გადახდის gateway, realtime fleet lock, ავტომატურად დადასტურებული ჯავშანი.</li>
+<li>გამოგონილი შეფასება, ფასი, ხელმისაწვდომობა, ფოტო ან ბიზნეს-ფაქტი.</li>
+<li>ხელმოწერილი App Store / Google Play პაკეტი; deliverable არის PWA.</li>
+</ul>
+<h2>დაუდოკუმენტირებელი არტეფაქტი</h2>
+<p>repo-ს root-ში დევს <code>Drive-On-release.apk</code> (42MB) და <code>mobile/fleet_house_app/</code>, მაშინ როცა ყველა დოკუმენტი PWA-ს ასახელებს deliverable-ად. ამ native ნაწილს მართვადი დოკუმენტი არ აქვს — საჭიროა ან დოკუმენტირება, ან repo-დან ამოღება.</p>
+<h2>შემდეგი ნაბიჯი</h2>
+<ol>
+<li>მფლობელის მონაცემები (ზემოთ) — ხსნის strict build-ს.</li>
+<li>Firebase booking ფენის გადაწყვეტა (წაშლა ან აშკარა „არააქტიური" მდგომარეობა).</li>
+<li><a href="RESEARCH.html">RESEARCH.md</a>-ის პრიორიტეტები #2 და #3 — ალგორითმი დაწერილია, build-ზე რენდერი აკლია.</li>
+<li>მხოლოდ ამის შემდეგ: commit/push, deploy, production smoke test.</li>
+</ol></body></html>

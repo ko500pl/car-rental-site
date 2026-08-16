@@ -1,4 +1,5 @@
-<!doctype html><html lang="ka"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>09 qa operations</title><style>body{font:15px/1.65 system-ui;max-width:940px;margin:36px auto;padding:0 22px;color:#172033}a{color:#087ea4}h1,h2{line-height:1.2}h1{font-size:30px}h2{margin-top:30px;border-top:1px solid #dce2ea;padding-top:18px}code{background:#eef2f6;padding:2px 5px;border-radius:4px}li{margin:5px 0}.back{display:inline-block;margin-bottom:18px}.meta{color:#64748b;font-size:13px}</style></head><body><a class="back" href="00-DOCUMENTATION-INDEX.html">← დოკუმენტაციის ინდექსი</a><div class="meta">ლოკალური დოკუმენტაცია · 2026-08-14</div><h1>ტესტირება, გამოქვეყნება და აღდგენა</h1>
+<!doctype html><html lang="ka"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>ტესტირება, გამოქვეყნება და აღდგენა</title><style>body{font:15px/1.65 system-ui;max-width:940px;margin:36px auto;padding:0 22px;color:#172033}a{color:#087ea4}h1,h2{line-height:1.2}h1{font-size:30px}h2{margin-top:30px;border-top:1px solid #dce2ea;padding-top:18px}h3{margin-top:22px}code{background:#eef2f6;padding:2px 5px;border-radius:4px}pre{background:#eef2f6;padding:12px 14px;border-radius:8px;overflow-x:auto}pre code{background:none;padding:0}li{margin:5px 0}table{border-collapse:collapse;width:100%;margin:14px 0;display:block;overflow-x:auto}th,td{border:1px solid #dce2ea;padding:7px 10px;text-align:left;vertical-align:top}th{background:#f7fafc}blockquote{margin:14px 0;padding:10px 16px;border-left:3px solid #087ea4;background:#f7fafc}blockquote p{margin:6px 0}.back{display:inline-block;margin-bottom:18px}.meta{color:#64748b;font-size:13px}</style></head><body><a class="back" href="00-DOCUMENTATION-INDEX.html">← დოკუმენტაციის ინდექსი</a><div class="meta">ლოკალური დოკუმენტაცია · 2026-08-16</div>
+<h1>ტესტირება, გამოქვეყნება და აღდგენა</h1>
 <h2>ადგილობრივი შემოწმება</h2>
 <ol>
 <li>content validation;</li>
@@ -10,4 +11,15 @@
 <li>strict production build.</li>
 </ol>
 <p>Strict build აჩერებს placeholder კონტაქტებს, სოციალურ ბმულებს და მთავარი ფოტოს გარეშე გამოქვეყნებულ მანქანებს. მიმდინარე რეალური მფლობელის მონაცემების არქონის გამო production gate განზრახ დაკეტილია.</p>
-<p>Git commit არის აღდგენის ძირითადი წერტილი. წაშლას არქივირება სჯობს. deploy/push კეთდება მხოლოდ ლოკალური მიღებისა და მფლობელის მონაცემების შევსების შემდეგ.</p></body></html>
+<h2>Windows: build-ის კონსოლის კოდირება</h2>
+<p><code>build.py</code> დასასრულს ბეჭდავს <code>✔</code> სიმბოლოს. Windows-ის ნაგულისხმევ cp1252 კონსოლზე ეს იძლევა <code>UnicodeEncodeError</code>-ს <strong>მას შემდეგ, რაც გვერდები უკვე დაგენერირდა</strong> — build რეალურად წარმატებულია, მაგრამ exit code არასწორია. ყოველთვის გაუშვით:</p>
+<pre><code>PYTHONIOENCODING=utf-8 python build.py dist --strict
+</code></pre>
+<p>წინააღმდეგ შემთხვევაში CI ან სკრიპტი წარმატებულ build-ს ჩავარდნილად ჩათვლის.</p>
+<h2>დოკუმენტაციის HTML</h2>
+<p><code>docs/*.html</code> გენერირებულია და ხელით არ იცვლება. <code>docs/</code>-ში markdown-ის შეცვლის შემდეგ გაუშვით:</p>
+<pre><code>PYTHONIOENCODING=utf-8 python scripts/build_docs_html.py
+</code></pre>
+<h2>აღდგენა და git</h2>
+<p>Git commit არის აღდგენის ძირითადი წერტილი. წაშლას არქივირება სჯობს. deploy/push კეთდება მხოლოდ ლოკალური მიღებისა და მფლობელის მონაცემების შევსების შემდეგ.</p>
+<p><strong>merge-ის დაუსრულებელ მდგომარეობაში მუშაობა აკრძალულია.</strong> თუ <code>git status</code> აჩვენებს „unmerged paths", კონფლიქტის ტექსტურად გასწორება საკმარისი არ არის — საჭიროა <code>git add</code> და commit. სანამ ეს არ გაკეთდება, აღდგენის წერტილი არ არსებობს და <code>git merge --abort</code> გაანადგურებს გასწორებულ ფაილებს.</p></body></html>

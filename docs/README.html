@@ -1,0 +1,274 @@
+<!doctype html><html lang="ka"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>ავტოგაქირავების ვებგვერდი + ადმინ-პანელი + საქართველოს ტურისტული რუკა</title><style>body{font:15px/1.65 system-ui;max-width:940px;margin:36px auto;padding:0 22px;color:#172033}a{color:#087ea4}h1,h2{line-height:1.2}h1{font-size:30px}h2{margin-top:30px;border-top:1px solid #dce2ea;padding-top:18px}h3{margin-top:22px}code{background:#eef2f6;padding:2px 5px;border-radius:4px}pre{background:#eef2f6;padding:12px 14px;border-radius:8px;overflow-x:auto}pre code{background:none;padding:0}li{margin:5px 0}table{border-collapse:collapse;width:100%;margin:14px 0;display:block;overflow-x:auto}th,td{border:1px solid #dce2ea;padding:7px 10px;text-align:left;vertical-align:top}th{background:#f7fafc}blockquote{margin:14px 0;padding:10px 16px;border-left:3px solid #087ea4;background:#f7fafc}blockquote p{margin:6px 0}.back{display:inline-block;margin-bottom:18px}.meta{color:#64748b;font-size:13px}</style></head><body><a class="back" href="00-DOCUMENTATION-INDEX.html">← დოკუმენტაციის ინდექსი</a><div class="meta">ლოკალური დოკუმენტაცია · 2026-08-16</div>
+<h1>ავტოგაქირავების ვებგვერდი + ადმინ-პანელი + საქართველოს ტურისტული რუკა</h1>
+<p>ექვსენოვანი სტატიკური საიტი ადმინ-პანელით. მთელი კონტენტი — ტექსტი, ფასები,
+ავტომობილები ფოტოებით, ბლოგი, 82 ღირსშესანიშნაობა, 11 რეგიონი, 7 მარშრუტი,
+ბრენდი და დიზაინის პარამეტრები — იმართება <code>/admin/</code>-იდან ბრაუზერიდან.</p>
+<ul>
+<li><strong>786 გვერდი</strong> = (10 გვერდი + 17 ავტომობილი + 4 სტატია + 11 რეგიონი + 82 ღირსშესანიშნაობა + 7 მარშრუტი) × <strong>6 ენა</strong></li>
+<li>ენები: <strong>ქართული · English · Русский · فارسی · עברית · العربية</strong> (ბოლო სამი RTL)</li>
+<li>Google-ისა და AI-ძიების (ChatGPT, Perplexity, Claude, Gemini) ოპტიმიზაცია</li>
+<li>ადმინი — Decap CMS: ცვლილება იწერება GitHub-ში, საიტი თავად გადაიწყობა 1–2 წუთში</li>
+</ul>
+<p><strong>JavaScript მხოლოდ რუკის გვერდებზეა</strong> (Leaflet, ლოკალურად ჩადებული).
+კომერციული გვერდები — მთავარი, ავტოპარკი, ფასები, პირობები, FAQ, კონტაქტი —
+სრულიად JS-ის გარეშეა.</p>
+<hr />
+<h2>1. სწრაფი დაწყება</h2>
+<pre><code class="language-bash">pip install -r requirements.txt
+python3 build.py dist
+python3 -m http.server 8000 --directory dist
+</code></pre>
+<p>მონაცემების ცალკე შემოწმება:</p>
+<pre><code class="language-bash">python3 build.py --validate-only
+python3 build.py dist --strict
+</code></pre>
+<p><code>--strict</code> განკუთვნილია საჯარო გამოქვეყნებისთვის: build შეჩერდება placeholder
+კონტაქტების, დაკარგული ავტომობილის ფოტოების, არასრული ექვსენოვანი ტექსტის ან
+გატეხილი რეგიონი/ღირსშესანიშნაობა/მარშრუტის კავშირის აღმოჩენისას. ახალი
+ავტომობილი, რეგიონი, ღირსშესანიშნაობა და მარშრუტი ადმინში <code>draft</code> სტატუსით
+იქმნება; საჯაროდ მხოლოდ <code>published</code> ჩანაწერი ჩანს, ხოლო <code>archived</code> ინახება და
+საიტიდან იმალება.</p>
+<p><strong>ადმინის ლოკალური ტესტი</strong> (GitHub-ის გარეშე):</p>
+<pre><code class="language-bash">npx decap-server          # ცალკე ტერმინალში
+# → http://localhost:8000/admin/  →  &quot;Login&quot;
+</code></pre>
+<hr />
+<h2>2. გაშვება: ნაბიჯ-ნაბიჯ</h2>
+<h3>ნაბიჯი 1 — GitHub რეპოზიტორია</h3>
+<pre><code class="language-bash">git init &amp;&amp; git add . &amp;&amp; git commit -m &quot;car rental site&quot;
+git branch -M main
+git remote add origin https://github.com/&lt;user&gt;/&lt;repo&gt;.git
+git push -u origin main
+</code></pre>
+<p>რეპოზიტორია შეიძლება იყოს პრივატული — ადმინი ორივე შემთხვევაში მუშაობს.</p>
+<h3>ნაბიჯი 2 — Netlify</h3>
+<p>Netlify → <strong>Add new site → Import an existing project</strong> → აირჩიეთ რეპოზიტორია.
+Build command და publish directory ავტომატურად აიღება <code>netlify.toml</code>-იდან.
+შემდეგ <strong>Domain settings</strong> → დაამატეთ დომენი (SSL ავტომატურია).</p>
+<h3>ნაბიჯი 3 — ადმინის ავტორიზაცია</h3>
+<ol>
+<li>GitHub → <strong>Settings → Developer settings → OAuth Apps → New OAuth App</strong>
+   - Homepage URL: <code>https://&lt;თქვენი-დომენი&gt;</code>
+   - Authorization callback URL: <code>https://api.netlify.com/auth/done</code></li>
+<li>Netlify → <strong>Site configuration → Access control → OAuth → Install provider → GitHub</strong>
+   → ჩასვით Client ID და Secret.</li>
+<li><code>admin/config.yml</code> → <code>backend.repo: &lt;user&gt;/&lt;repo&gt;</code></li>
+<li>Push → <code>https://&lt;დომენი&gt;/admin/</code> → <strong>Login with GitHub</strong></li>
+</ol>
+<h3>ნაბიჯი 4 — მომხმარებლების დამატება</h3>
+<p>GitHub → რეპოზიტორია → <strong>Settings → Collaborators → Add people</strong> → role: <strong>Write</strong>.
+ცალკე პაროლები არ არსებობს; ყოველი ცვლილება Git-ის ისტორიაშია (ვინ, როდის, რა).</p>
+<hr />
+<h2>3. რა იმართება ადმინიდან</h2>
+<table>
+<thead>
+<tr>
+<th>განყოფილება</th>
+<th>რას მოიცავს</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>გვერდები</strong></td>
+<td>10 გვერდის სრული ტექსტი ექვსივე ენაზე — სათაურები, აბზაცები, ცხრილები, ბარათები, FAQ, ღილაკები</td>
+</tr>
+<tr>
+<td><strong>ავტომობილები</strong></td>
+<td>ფოტო + გალერეა, ტექ. მახასიათებლები, სამი ფასი, დეპოზიტი. ახალი მანქანა ავტომატურად ჩნდება ავტოპარკში, ცალკე გვერდზე და sitemap-ში</td>
+</tr>
+<tr>
+<td><strong>ბლოგი</strong></td>
+<td>სტატიები Markdown-რედაქტორით, სურათით, დრაფტის რეჟიმით</td>
+</tr>
+<tr>
+<td><strong>ღირსშესანიშნაობები</strong></td>
+<td>82 ობიექტი: კოორდინატები, ტიპი, დათვალიერების დრო, მანძილი და დრო თბილისიდან, გზის ტიპი, საჭირო ავტომობილი, სეზონი, შესვლის ფასი + აღწერა, რჩევა და მარშრუტი ექვს ენაზე</td>
+</tr>
+<tr>
+<td><strong>რეგიონები</strong></td>
+<td>11 რეგიონი: რუკის ცენტრი და მასშტაბი, ფერი, აღწერა, მართვის პირობები</td>
+</tr>
+<tr>
+<td><strong>მარშრუტები</strong></td>
+<td>7 მზა მარშრუტი: დღეები, კილომეტრაჟი, სირთულე, ობიექტების თანმიმდევრობა, რუკაზე დახაზული ხაზი, დღეების გეგმა</td>
+</tr>
+<tr>
+<td><strong>პარამეტრები → საიტი</strong></td>
+<td>დომენი, ბრენდი, ტელეფონები, ელფოსტა, მისამართი, კოორდინატები, სოცქსელები</td>
+</tr>
+<tr>
+<td><strong>პარამეტრები → დიზაინი</strong></td>
+<td>ლოგო, 10 ფერი, ფონტები, მომრგვალება, სიგანე, hero-ს სტილი</td>
+</tr>
+<tr>
+<td><strong>მენიუ და წარწერები</strong></td>
+<td>მენიუ, ფუტერი, ღილაკები, 404, ტურისტული ტერმინოლოგია</td>
+</tr>
+</tbody>
+</table>
+<p>ცვლილების შენახვა → GitHub commit → ავტომატური გადაწყობა → <strong>1–2 წუთში საიტზე</strong>.</p>
+<blockquote>
+<p>ფოტოები იტვირთება ადმინიდან <code>static/uploads/</code>-ში. რეკომენდებული ზომა:
+ავტომობილი 1200×750, ღირსშესანიშნაობა 1200×750, ბლოგი 1200×675; WebP ან JPG &lt; 300 KB.</p>
+</blockquote>
+<hr />
+<h2>4. რუკა და მარშრუტები</h2>
+<p><code>/map/</code> — ინტერაქტიული Leaflet რუკა: 82 ნიშანი ტიპის მიხედვით ფერადი, 7 მარშრუტი
+დახაზული ხაზებით, popup-ში დათვალიერების დრო, მანძილი და გზის ტიპი.</p>
+<ul>
+<li><strong>რეგიონის გვერდი</strong> (<code>/regions/kakheti/</code>) — რეგიონის რუკა მისი ობიექტებით,
+  მართვის პირობები, სრული სია.</li>
+<li><strong>ობიექტის გვერდი</strong> (<code>/attractions/vardzia/</code>) — ციფრების ზოლი (დრო, მანძილი,
+  გზა, ავტომობილი, სეზონი, ფასი), დეტალური აღწერა, პრაქტიკული რჩევა,
+  მარშრუტი თბილისიდან, მინი-რუკა და ახლომდებარე ადგილები.</li>
+<li><strong>მარშრუტის გვერდი</strong> (<code>/routes/svaneti-expedition/</code>) — დღეების გეგმა,
+  ობიექტების თანმიმდევრობა, ხაზი რუკაზე, რჩევები.</li>
+</ul>
+<p>Leaflet ლოკალურადაა ჩადებული (<code>static/leaflet/</code>) — გარე CDN-ზე დამოკიდებულება არ არის.
+რუკის ფილა მოდის OpenStreetMap-იდან.</p>
+<p><strong>მოცულობა რეგიონების მიხედვით:</strong> კახეთი 12 · მცხეთა-მთიანეთი 9 · იმერეთი 9 ·
+სამეგრელო-ზემო სვანეთი 9 · თბილისი 8 · სამცხე-ჯავახეთი 8 · აჭარა 8 ·
+ქვემო ქართლი 5 · შიდა ქართლი 5 · რაჭა-ლეჩხუმი 5 · გურია 4.</p>
+<p>ოკუპირებული ტერიტორიები (აფხაზეთი, ცხინვალის რეგიონი) შეგნებულად არ არის —
+იქ დაქირავებული ავტომობილით გასვლა არ არის ნებადართული.</p>
+<hr />
+<h2>5. სტრუქტურა</h2>
+<pre><code>content/
+  settings/  site.yml  design.yml  ui.yml  meta.yml  travel.yml
+             categories.yml  specs.yml
+  pages/*.yml         10 გვერდი, თითოში ka/en/ru/fa/he/ar
+  cars/*.yml          17 ავტომობილი
+  posts/*.yml         4 სტატია
+  regions/*.yml       11 რეგიონი
+  attractions/*.yml   82 ღირსშესანიშნაობა
+  routes/*.yml        7 მარშრუტი
+admin/       index.html · config.yml  ← აქ იცვლება repo
+static/      favicon, OG სურათები, leaflet/, uploads/
+build.py     გენერატორი        theme.py   CSS (იგება design.yml-იდან)
+yaml_io.py   YAML ჰელფერი      make_og.py OG სურათები (playwright)
+dist/        აწყობილი საიტი — ეს იტვირთება ჰოსტინგზე
+</code></pre>
+<h3>URL-ები</h3>
+<p>ქართული — root; დანარჩენი — <code>/en/</code>, <code>/ru/</code>, <code>/fa/</code>, <code>/he/</code>, <code>/ar/</code> პრეფიქსით.</p>
+<table>
+<thead>
+<tr>
+<th>გვერდი</th>
+<th>ბილიკი</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>მთავარი</td>
+<td><code>/</code></td>
+</tr>
+<tr>
+<td>ავტოპარკი / ავტომობილი</td>
+<td><code>/fleet/</code> · <code>/fleet/toyota-rav4/</code></td>
+</tr>
+<tr>
+<td>ფასები</td>
+<td><code>/pricing/</code></td>
+</tr>
+<tr>
+<td>რუკა</td>
+<td><code>/map/</code></td>
+</tr>
+<tr>
+<td>რეგიონი</td>
+<td><code>/regions/kakheti/</code></td>
+</tr>
+<tr>
+<td>ღირსშესანიშნაობა</td>
+<td><code>/attractions/vardzia/</code></td>
+</tr>
+<tr>
+<td>მარშრუტი</td>
+<td><code>/routes/kakheti-wine-loop/</code></td>
+</tr>
+<tr>
+<td>პირობები · კითხვები</td>
+<td><code>/terms/</code> · <code>/faq/</code></td>
+</tr>
+<tr>
+<td>ბლოგი</td>
+<td><code>/blog/</code> · <code>/blog/&lt;slug&gt;/</code></td>
+</tr>
+<tr>
+<td>ჩვენ შესახებ · კონტაქტი</td>
+<td><code>/about/</code> · <code>/contact/</code></td>
+</tr>
+<tr>
+<td>პროგრამა</td>
+<td><code>/fleet-management-software/</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>6. ძიებაში აღმოჩენადობა</h2>
+<h3>Google</h3>
+<ul>
+<li>უნიკალური <code>title</code> და <code>description</code> <strong>ყველა 786 გვერდზე</strong> — ავტომატურად შემოწმებული</li>
+<li><code>canonical</code> + <code>hreflang</code> ექვსივე ენაზე + <code>x-default</code></li>
+<li><code>sitemap.xml</code> — 786 URL, თითოს ექვსენოვანი <code>xhtml:link</code> ალტერნატივებით</li>
+<li>JSON-LD <code>@graph</code>: <code>AutoRental</code> + <code>LocalBusiness</code>, <code>WebSite</code>, <code>WebPage</code>,
+  <code>BreadcrumbList</code>, <code>FAQPage</code>, <code>OfferCatalog</code>, <code>SoftwareApplication</code>, <code>Car</code>,
+  <code>BlogPosting</code>, <strong><code>TouristAttraction</code></strong> (კოორდინატებით), <strong><code>TouristDestination</code></strong>,
+  <strong><code>TouristTrip</code></strong> (მარშრუტის იტინერარით), <code>ItemList</code></li>
+<li>ლოკალური SEO: <code>PostalAddress</code>, <code>GeoCoordinates</code>, <code>openingHoursSpecification</code></li>
+<li>JS მხოლოდ რუკის გვერდებზე → Core Web Vitals პრაქტიკულად იდეალური</li>
+<li>RTL სწორად: <code>dir="rtl"</code>, ლოგიკური CSS თვისებები, ტელეფონები <code>&lt;bdi dir="ltr"&gt;</code>-ში</li>
+</ul>
+<h3>AI-ძიება</h3>
+<ul>
+<li><code>robots.txt</code> პირდაპირ უშვებს <strong>20 AI-კროულერს</strong> (GPTBot, OAI-SearchBot,
+  ClaudeBot, PerplexityBot, Google-Extended, CCBot…), <code>/admin/</code> დახურულია</li>
+<li><strong><code>/llms.txt</code></strong> (35 KB) — ფაქტების რეზიუმე: ავტოპარკი ფასებით, 82 ღირსშესანიშნაობა
+  დროით/მანძილით/გზით, მარშრუტები, რეგიონები, კონტაქტი</li>
+<li><strong><code>/llms-full.txt</code></strong> (330 KB) — მთელი საიტის ტექსტი ერთ ფაილად</li>
+<li>კონტენტი ამოსაღები ფაქტების სახითაა: ცხრილები, კითხვა-პასუხი, თვითკმარი
+  მტკიცებები („ვარძია — 3 სთ დათვალიერება, 265 კმ თბილისიდან, 4:20“)</li>
+</ul>
+<hr />
+<h2>7. გაშვების შემდეგ</h2>
+<ol>
+<li><strong>Google Search Console</strong> — დომენის დადასტურება, <code>sitemap.xml</code>-ის გაგზავნა.</li>
+<li><strong>Bing Webmaster Tools</strong> — ChatGPT-ის ძიება Bing-ის ინდექსს იყენებს.</li>
+<li><strong>Google Business Profile</strong> — იმავე სახელით, მისამართით, ტელეფონით (NAP).</li>
+<li><strong>დირექტორიები</strong> — Yell.ge, TripAdvisor, Facebook, 2GIS: იდენტური მონაცემები.</li>
+<li><strong>ვალიდაცია</strong> — validator.schema.org და search.google.com/test/rich-results.</li>
+<li><strong>ფოტოები</strong> — ავტომობილებზეც და ღირსშესანიშნაობებზეც ჯერ placeholder-ებია.</li>
+</ol>
+<hr />
+<h2>8. რა უნდა შეამოწმოთ გამოქვეყნებამდე</h2>
+<blockquote>
+<p>⚠️ ფასები, ავტომობილების მოდელები, ფრანშიზები, რეკვიზიტები და კონტაქტები
+შევსებულია ტიპური <strong>საორიენტაციო</strong> მნიშვნელობებით. ყველა ციფრი უნდა
+შეამოწმოთ და ჩაანაცვლოთ ფაქტობრივით.</p>
+</blockquote>
+<ul>
+<li>[ ] <code>პარამეტრები → საიტი</code>: დომენი, ბრენდი, ტელეფონები, მისამართი, კოორდინატები</li>
+<li>[ ] <code>კონტაქტი</code>: რეკვიზიტები (ს/კ, ბანკი), ოფისების ცხრილი</li>
+<li>[ ] <code>ფასები</code>: სამივე ცხრილი, დამატებითი სერვისები, დეპოზიტები</li>
+<li>[ ] <code>პირობები</code>: უნდა ემთხვეოდეს რეალურ ხელშეკრულებას</li>
+<li>[ ] <code>ავტომობილები</code>: რეალური მოდელები + ფოტოები</li>
+<li>[ ] <code>დიზაინი</code>: ლოგო და ფერები</li>
+<li>[ ] <strong>სპარსული, ებრაული, არაბული ტექსტი</strong> — თარგმანი ხარისხიანია, მაგრამ
+      ფასებისა და პირობების გვერდზე მშობლიური ენის მატარებლის გადახედვა ღირს</li>
+<li>[ ] <strong>ღირსშესანიშნაობების ფაქტები</strong> — შესვლის ფასები და სეზონები იცვლება;
+      გზების მდგომარეობა (განსაკუთრებით თუშეთი, სვანეთი, ხევსურეთი, რაჭა)
+      ყოველ სეზონზე უნდა გადამოწმდეს</li>
+</ul>
+<hr />
+<h2>9. ტექნიკური შენიშვნები</h2>
+<p><strong>ბლოკების ტიპები</strong> (ადმინში „Add ბლოკი“): H2/H3, აბზაცი, ყურადღების ბლოკი, სია,
+დანომრილი სია, ცხრილი, ციფრების ზოლი, ბარათები, FAQ, CTA, ავტომობილების ბადე.
+ტექსტში მუშაობს <code>**მსხვილი**</code> და <code>[ბმული](/pricing/)</code> — ენის პრეფიქსი ავტომატურად ემატება.</p>
+<p><strong>ახალი ენის დამატება:</strong> <code>build.py</code> → <code>ALL_LANGS</code>, <code>LANG_LABEL</code>, <code>LANG_SHORT</code>,
+<code>OG_LOCALE</code>, <code>LANG_DIR</code>, <code>fmt_date</code>; საჭიროებისას <code>LANG_FONT</code>. შემდეგ ყველა
+<code>content/**/*.yml</code>-ს დაამატეთ ახალი ენის ბლოკი. <code>LANGS</code> თავად გამოითვლება
+იმ ენებით, რომლებზეც სრული თარგმანია — ნახევრად თარგმნილი ენა ბილდს არ ტეხს.</p>
+<p><strong>ალტერნატიული ადმინი:</strong> <code>admin/index.html</code>-ში კომენტარშია <strong>Sveltia CMS</strong> —
+იგივე <code>config.yml</code>, უფრო სწრაფი ინტერფეისი.</p>
+<p><strong>ანალიტიკა</strong> ჩაშენებული არ არის. Netlify Analytics ან Cloudflare Web Analytics
+სერვერული მხრიდან მუშაობს და გვერდს არ ამძიმებს.</p></body></html>

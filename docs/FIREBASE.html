@@ -1,0 +1,118 @@
+<!doctype html><html lang="ka"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>ანგარიშების ჩართვა — Firebase (15 წუთი)</title><style>body{font:15px/1.65 system-ui;max-width:940px;margin:36px auto;padding:0 22px;color:#172033}a{color:#087ea4}h1,h2{line-height:1.2}h1{font-size:30px}h2{margin-top:30px;border-top:1px solid #dce2ea;padding-top:18px}h3{margin-top:22px}code{background:#eef2f6;padding:2px 5px;border-radius:4px}pre{background:#eef2f6;padding:12px 14px;border-radius:8px;overflow-x:auto}pre code{background:none;padding:0}li{margin:5px 0}table{border-collapse:collapse;width:100%;margin:14px 0;display:block;overflow-x:auto}th,td{border:1px solid #dce2ea;padding:7px 10px;text-align:left;vertical-align:top}th{background:#f7fafc}blockquote{margin:14px 0;padding:10px 16px;border-left:3px solid #087ea4;background:#f7fafc}blockquote p{margin:6px 0}.back{display:inline-block;margin-bottom:18px}.meta{color:#64748b;font-size:13px}</style></head><body><a class="back" href="00-DOCUMENTATION-INDEX.html">← დოკუმენტაციის ინდექსი</a><div class="meta">ლოკალური დოკუმენტაცია · 2026-08-16</div>
+<h1>ანგარიშების ჩართვა — Firebase (15 წუთი)</h1>
+<p>საიტი ისე მუშაობს, თითქოს ავტორიზაცია არ არსებობს, სანამ <code>content/settings/auth.yml</code>-ში
+<code>enabled: true</code> არ დაწერეთ და გასაღებები არ ჩასვით. ანუ ჯერ მშვიდად შეგიძლიათ ყველაფერი
+გამართოთ და მერე ჩართოთ.</p>
+<hr />
+<h2>1. პროექტის შექმნა</h2>
+<ol>
+<li><a href="https://console.firebase.google.com">https://console.firebase.google.com</a> → <strong>Add project</strong> → სახელი: <code>fleet-house</code></li>
+<li>Google Analytics — შეგიძლიათ გამორთოთ, არ არის საჭირო</li>
+<li>მარცხნივ <strong>Build → Authentication → Get started</strong>
+   - <strong>Email/Password</strong> → Enable
+   - <strong>Google</strong> → Enable → აირჩიეთ support email</li>
+<li><strong>Build → Firestore Database → Create database</strong> → <strong>Production mode</strong> → რეგიონი: <code>eur3</code> (ევროპა)</li>
+</ol>
+<blockquote>
+<p>რეგიონი ევროპაში აირჩიეთ — მომხმარებელთა მონაცემები ევროპაში დარჩება,
+რაც GDPR-ის თვალსაზრისით ბევრად მარტივია.</p>
+</blockquote>
+<h2>2. ვებ-აპლიკაციის დამატება</h2>
+<p><strong>Project settings</strong> (ჭანჭიკი) → <strong>Your apps</strong> → <strong>Web</strong> (<code>&lt;/&gt;</code>) → სახელი <code>fleet-house-web</code>
+→ Register app. მიიღებთ ასეთ ბლოკს:</p>
+<pre><code class="language-js">const firebaseConfig = {
+  apiKey: &quot;AIza…&quot;,
+  authDomain: &quot;fleet-house.firebaseapp.com&quot;,
+  projectId: &quot;fleet-house&quot;,
+  storageBucket: &quot;fleet-house.appspot.com&quot;,
+  messagingSenderId: &quot;123456789&quot;,
+  appId: &quot;1:123456789:web:abc123&quot;
+};
+</code></pre>
+<p>ეს მნიშვნელობები ჩასვით <code>content/settings/auth.yml</code>-ში და <code>enabled</code> გახადეთ <code>true</code>.</p>
+<blockquote>
+<p><strong>ეს გასაღებები საჯაროა და ასე უნდა იყოს.</strong> Firebase-ის უსაფრთხოება პაროლზე კი არა,
+ქვემოთ მოცემულ წესებზეა დამოკიდებული. ისინი ბრაუზერში მაინც ჩანს.</p>
+</blockquote>
+<h2>3. დომენის დაშვება</h2>
+<p><strong>Authentication → Settings → Authorized domains → Add domain</strong></p>
+<p>დაამატეთ:
+- <code>subtle-naiad-c2db5d.netlify.app</code> (ან თქვენი Netlify-ის მისამართი)
+- თქვენი დომენი, როცა მიაბამთ — მაგ. <code>fleethouse.ge</code> და <code>www.fleethouse.ge</code></p>
+<p>ამის გარეშე Google-ით შესვლა არ იმუშავებს.</p>
+<h2>4. Firestore-ის წესები — აუცილებელი</h2>
+<p><strong>Firestore Database → Rules</strong> → ჩასვით ზუსტად ეს და <strong>Publish</strong>:</p>
+<pre><code>rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /trips/{tripId} {
+      // წაკითხვა და შეცვლა შეუძლია მხოლოდ იმ მომხმარებელს, ვისიც არის ჩანაწერი
+      allow read, update, delete: if request.auth != null
+                                  &amp;&amp; resource.data.uid == request.auth.uid;
+
+      // შექმნისას uid უნდა ემთხვეოდეს შემსვლელს და ველები შეზღუდულია
+      allow create: if request.auth != null
+                    &amp;&amp; request.resource.data.uid == request.auth.uid
+                    &amp;&amp; request.resource.data.keys().hasOnly(
+                         ['uid','title','date','days','stops','km','url','status','created'])
+                    &amp;&amp; request.resource.data.title is string
+                    &amp;&amp; request.resource.data.title.size() &lt;= 120
+                    &amp;&amp; request.resource.data.stops.size() &lt;= 200;
+    }
+
+    // ყველაფერი დანარჩენი — აკრძალული
+    match /{document=**} { allow read, write: if false; }
+  }
+}
+</code></pre>
+<p>ეს წესები ნიშნავს: <strong>ერთ მომხმარებელს მეორის მარშრუტები ვერანაირად ვერ ნახავს.</strong></p>
+<h2>5. ლიმიტები (უფასო Spark გეგმა)</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>უფასო ლიმიტი</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Firestore წაკითხვა</td>
+<td>50 000 / დღეში</td>
+</tr>
+<tr>
+<td>Firestore ჩაწერა</td>
+<td>20 000 / დღეში</td>
+</tr>
+<tr>
+<td>შენახული მონაცემები</td>
+<td>1 GB</td>
+</tr>
+<tr>
+<td>ავტორიზაცია</td>
+<td>შეუზღუდავი (email + Google)</td>
+</tr>
+</tbody>
+</table>
+<p>ერთი მარშრუტი ≈ 2 კბ. ანუ 1 GB ≈ ნახევარი მილიონი შენახული მარშრუტი.
+ამ მასშტაბამდე ბევრი გაქვთ.</p>
+<h2>6. რაც იურიდიულად უნდა გააკეთოთ</h2>
+<p>ავტორიზაციის ჩართვა ნიშნავს, რომ პერსონალურ მონაცემებს ამუშავებთ. საჭიროა:</p>
+<ol>
+<li><strong>კონფიდენციალურობის პოლიტიკა</strong> — მოამზადეთ <code>content/pages/privacy.yml</code>-ის მიხედვით
+   (პროექტი უკვე დაწერილია, იურისტმა უნდა შეამოწმოს)</li>
+<li><strong>მომსახურების პირობები</strong> — <code>content/pages/terms.yml</code></li>
+<li><strong>Google Cloud-ის DPA</strong> — Firebase Console → Project settings → Privacy &amp; security →
+   მიიღეთ Data Processing Amendment</li>
+<li>საქართველოს პერსონალურ მონაცემთა დაცვის სამსახურში რეგისტრაცია, თუ საჭიროა —
+   ეს იურისტმა უნდა შეაფასოს</li>
+</ol>
+<h2>7. შემოწმება</h2>
+<ol>
+<li><code>enabled: true</code> + გასაღებები → <code>PUSH.bat</code></li>
+<li>საიტზე ჰედერში გამოჩნდება <strong>შესვლა</strong></li>
+<li>შედით Google-ით → დაგეგმეთ მარშრუტი → <strong>მარშრუტის შენახვა</strong> → თარიღი და სახელი</li>
+<li><strong>ჩემი გვერდი</strong> → უნდა ჩანდეს დაგეგმილში</li>
+<li><strong>შესრულებულად მონიშვნა</strong> → გადავა „შესრულებულში"</li>
+</ol>
+<p>თუ Google-ით შესვლა <code>auth/unauthorized-domain</code>-ს აბრუნებს — მე-3 ნაბიჯი გამოგრჩათ.</p></body></html>

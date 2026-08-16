@@ -1,4 +1,5 @@
-<!doctype html><html lang="ka"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>08 build architecture</title><style>body{font:15px/1.65 system-ui;max-width:940px;margin:36px auto;padding:0 22px;color:#172033}a{color:#087ea4}h1,h2{line-height:1.2}h1{font-size:30px}h2{margin-top:30px;border-top:1px solid #dce2ea;padding-top:18px}code{background:#eef2f6;padding:2px 5px;border-radius:4px}li{margin:5px 0}.back{display:inline-block;margin-bottom:18px}.meta{color:#64748b;font-size:13px}</style></head><body><a class="back" href="00-DOCUMENTATION-INDEX.html">← დოკუმენტაციის ინდექსი</a><div class="meta">ლოკალური დოკუმენტაცია · 2026-08-14</div><h1>არქიტექტურა და build</h1>
+<!doctype html><html lang="ka"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>არქიტექტურა და build</title><style>body{font:15px/1.65 system-ui;max-width:940px;margin:36px auto;padding:0 22px;color:#172033}a{color:#087ea4}h1,h2{line-height:1.2}h1{font-size:30px}h2{margin-top:30px;border-top:1px solid #dce2ea;padding-top:18px}h3{margin-top:22px}code{background:#eef2f6;padding:2px 5px;border-radius:4px}pre{background:#eef2f6;padding:12px 14px;border-radius:8px;overflow-x:auto}pre code{background:none;padding:0}li{margin:5px 0}table{border-collapse:collapse;width:100%;margin:14px 0;display:block;overflow-x:auto}th,td{border:1px solid #dce2ea;padding:7px 10px;text-align:left;vertical-align:top}th{background:#f7fafc}blockquote{margin:14px 0;padding:10px 16px;border-left:3px solid #087ea4;background:#f7fafc}blockquote p{margin:6px 0}.back{display:inline-block;margin-bottom:18px}.meta{color:#64748b;font-size:13px}</style></head><body><a class="back" href="00-DOCUMENTATION-INDEX.html">← დოკუმენტაციის ინდექსი</a><div class="meta">ლოკალური დოკუმენტაცია · 2026-08-16</div>
+<h1>არქიტექტურა და build</h1>
 <h2>მიზანი</h2>
 <p>საიტი რჩება static-first სისტემად: YAML კონტენტი → Python გენერატორი → ცალკეული HTML გვერდები → ჰოსტინგი. React/Next.js ან მუდმივი ბიზნეს-ბაზა საჭირო არ არის.</p>
 <h2>ძირითადი ნაწილები</h2>
@@ -12,5 +13,9 @@
 </ul>
 <h2>ბრძანებები</h2>
 <p><code>python build.py --validate-only</code> ამოწმებს მონაცემებს. <code>python build.py dist --strict</code> არის production gate და placeholder მონაცემებზე exit code 2-ით ჩერდება.</p>
+<h2>დოკუმენტაცია build-ში</h2>
+<p><code>build.py</code> <code>docs/*.html</code>-ს აკოპირებს <code>dist/docs/</code>-ში, ანუ დოკუმენტაცია პროდუქტთან ერთად ვრცელდება. markdown წყაროები repository-ში რჩება და არ იგზავნება.</p>
+<p>ეს არის <strong>შიდა გუნდის დოკუმენტაცია</strong>: <code>robots.txt</code> მას კრძალავს (<code>Disallow: /docs/</code>), sitemap-ში არ შედის და <code>netlify.toml</code> აყენებს <code>X-Robots-Tag: noindex, nofollow</code>. მაგრამ <strong>ბმულის მცოდნე ნებისმიერს შეუძლია წაკითხვა</strong> — noindex არ არის წვდომის კონტროლი. თუ შიგთავსი კონფიდენციალურად ჩაითვლება, საჭიროა Netlify-ის პაროლით დაცვა ან <code>dist/docs/</code>-ის გამორთვა.</p>
+<p>HTML-ის განახლება: <code>python scripts/build_docs_html.py</code>, შემდეგ build.</p>
 <h2>უცვლელი პრინციპები</h2>
 <p>საჯარო URL-ები, ექვსი ენა, RTL, canonical/hreflang და სტატიკური SEO გვერდები შენარჩუნებულია. Firebase არასავალდებულოა და არ გამოიყენება გაქირავების მოთხოვნისთვის.</p></body></html>

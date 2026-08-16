@@ -1,0 +1,165 @@
+<!doctype html><html lang="ka"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>მოთხოვნების შესრულების მატრიცა — ლოკალური ვერსია</title><style>body{font:15px/1.65 system-ui;max-width:940px;margin:36px auto;padding:0 22px;color:#172033}a{color:#087ea4}h1,h2{line-height:1.2}h1{font-size:30px}h2{margin-top:30px;border-top:1px solid #dce2ea;padding-top:18px}h3{margin-top:22px}code{background:#eef2f6;padding:2px 5px;border-radius:4px}pre{background:#eef2f6;padding:12px 14px;border-radius:8px;overflow-x:auto}pre code{background:none;padding:0}li{margin:5px 0}table{border-collapse:collapse;width:100%;margin:14px 0;display:block;overflow-x:auto}th,td{border:1px solid #dce2ea;padding:7px 10px;text-align:left;vertical-align:top}th{background:#f7fafc}blockquote{margin:14px 0;padding:10px 16px;border-left:3px solid #087ea4;background:#f7fafc}blockquote p{margin:6px 0}.back{display:inline-block;margin-bottom:18px}.meta{color:#64748b;font-size:13px}</style></head><body><a class="back" href="00-DOCUMENTATION-INDEX.html">← დოკუმენტაციის ინდექსი</a><div class="meta">ლოკალური დოკუმენტაცია · 2026-08-16</div>
+<h1>მოთხოვნების შესრულების მატრიცა — ლოკალური ვერსია</h1>
+<p>შედგენილია: 2026-08-14 · გადამოწმდა: 2026-08-16. ეს შეფასება ეხება მხოლოდ ლოკალურ build-ს. GitHub-ზე push, production deploy, DNS და rentup.ge არ შეცვლილა.</p>
+<blockquote>
+<p><strong>მიმდინარე სტატუსისთვის იხილეთ <a href="LOCAL_IMPLEMENTATION_STATUS.html">LOCAL_IMPLEMENTATION_STATUS.md</a>.</strong> ამ დოკუმენტში 2026-08-16-ის გადამოწმებით შესწორდა ჯავშნის სტრიქონები და ტესტების რაოდენობა.</p>
+</blockquote>
+<h2>დასრულებული და ლოკალურად შემოწმებული</h2>
+<table>
+<thead>
+<tr>
+<th>მოთხოვნა</th>
+<th>სტატუსი</th>
+<th>შემოწმების მტკიცებულება</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>თემატურად დაყოფილი HTML და 6 ენა</td>
+<td>დასრულებული</td>
+<td>სრული build ქმნის 1,800 HTML გვერდს KA/EN/RU/FA/HE/AR ენებზე</td>
+</tr>
+<tr>
+<td>ადმინის მიერ მანქანების დამატება/რედაქტირება/არქივირება და ფასები</td>
+<td>დასრულებული</td>
+<td>Decap admin სქემა, სტატუსები, რიცხვითი ვალიდაცია, immutable slug და build preflight</td>
+</tr>
+<tr>
+<td>GEL ძირითადი ფასი; USD 2.6 კურსით ათეულზე დამრგვალება</td>
+<td>დასრულებული</td>
+<td>ავტომატური ტესტები ამოწმებს ტარიფებსა და დამრგვალების მაგალითებს</td>
+</tr>
+<tr>
+<td>ავტოპარკის რეალური რაოდენობა 17</td>
+<td>დასრულებული</td>
+<td>კონტენტი/მეტა ექვსივე ენაზე გასწორდა; რეგრესიის ტესტი კრძალავს ძველ 120+ განცხადებებს</td>
+</tr>
+<tr>
+<td>ერთი საერთო Leaflet რუკა: მთავარი/რუკა/დამგეგმავი</td>
+<td>დასრულებული</td>
+<td>ერთ <code>travel-workspace</code> კომპონენტში არის Places/Route/Planner რეჟიმები და მხოლოდ ერთი <code>#expmap</code></td>
+</tr>
+<tr>
+<td>გზებზე აგებული მარშრუტი და TomTom traffic</td>
+<td>დასრულებული ლოკალურად</td>
+<td>TomTom routing/traffic + OSRM fallback; სწორი ხაზის რეჟიმი აღარ არის ნაგულისხმევი</td>
+</tr>
+<tr>
+<td>მრავალენოვანი ქალაქის/ადგილის ძებნა და suggestion-ები</td>
+<td>დასრულებული</td>
+<td>ყველა 249 ადგილის ექვსენოვანი საძიებო სახელები მოწმდება ტესტით</td>
+</tr>
+<tr>
+<td>ადგილის არჩევა/მოხსნა, ერთეული marker-ის იგივე ფუნქცია</td>
+<td>დასრულებული</td>
+<td>checkbox-ები და marker/cluster panel იყენებს ერთ selected-set-ს</td>
+</tr>
+<tr>
+<td>ნამყოფი/არანამყოფი, ნაცრისფერი მდგომარეობა და ისტორია</td>
+<td>დასრულებული</td>
+<td>local fallback + authenticated <code>userPlaces</code>, თარიღიანი ისტორია და ორივე ფილტრი</td>
+</tr>
+<tr>
+<td>ველოგზები, სასტუმროები, კულინარია, მიზნობრივი ტურები</td>
+<td>დასრულებული</td>
+<td>cycling filter, hotels dataset, მიზნობრივი planner და სტანდარტული ტურები</td>
+</tr>
+<tr>
+<td>პერიოდი, ხალხის რაოდენობა, დღეები და სტანდარტული ტურები</td>
+<td>დასრულებული</td>
+<td>Planner რეჟიმში არის თარიღები/party/days/purpose და 6 შესაბამისი ბარათი</td>
+</tr>
+<tr>
+<td>ჯგუფები მიზნობრიობით, საჯარო/პირადი ტურები და შეტყობინებები</td>
+<td>დასრულებული ლოკალურად</td>
+<td>Firestore მონაცემთა კონტრაქტი, ჯგუფში გაწევრიანება, conversations/messages UI</td>
+</tr>
+<tr>
+<td>შეფასებები, შთაბეჭდილებები და ფოტოები</td>
+<td>დასრულებული ლოკალურად</td>
+<td>reviews + Storage ატვირთვა; ზომა/MIME/ownership წესები</td>
+</tr>
+<tr>
+<td>ტურის მოგონებების ფოტოები</td>
+<td>დასრულებული ლოკალურად</td>
+<td><code>tripMemories</code>, მრავალფაილიანი ატვირთვა და პირადი გალერეა</td>
+</tr>
+<tr>
+<td>მანქანის გაქირავების მოთხოვნა</td>
+<td>დასრულებული</td>
+<td>სტატიკური ფორმა + WhatsApp (<code>static/booking.js</code>); ფაზა 1 მთავრდება მოთხოვნით, არა დადასტურებული ჯავშნით</td>
+</tr>
+<tr>
+<td>დაჯავშნა გადახდის ვალდებულებით</td>
+<td><strong>არა — მკვდარი ტოტი</strong></td>
+<td><code>bookings</code> კოლექციას არცერთი კოდი არ წერს; <code>auth.js:370</code> და <code>admin-bookings.js:29</code> მხოლოდ კითხულობენ. UI არსებობს, მონაცემი — არა</td>
+</tr>
+<tr>
+<td>ბოლო დღის გაგრძელება და ადმინის ფასდაკლების წესები</td>
+<td><strong>არა — დამოკიდებულია ზემოთ</strong></td>
+<td><code>extensionRequests</code> წერა <code>bookingId</code>-ს ითხოვს, რომელიც არ იქმნება; კონსოლი ცარიელია</td>
+</tr>
+<tr>
+<td>PWA Android/iPhone ბაზა</td>
+<td>დასრულებული</td>
+<td>manifest, service worker და installable responsive web app</td>
+</tr>
+<tr>
+<td>მობილური კომპაქტურობა</td>
+<td>დასრულებული</td>
+<td>390×844 შემოწმება: horizontal overflow არაა; რუკა სიაზე წინ და 594px სიმაღლით</td>
+</tr>
+<tr>
+<td>ავტომატური scroll-down-ის გაუქმება</td>
+<td>დასრულებული</td>
+<td>საიტის საკუთარ კოდში ავტომატური <code>scrollTo/scrollIntoView</code> ნაკადი არ არის</td>
+</tr>
+</tbody>
+</table>
+<h2>დასრულებული კოდი, მაგრამ production ინფრასტრუქტურას მოითხოვს</h2>
+<table>
+<thead>
+<tr>
+<th>ნაწილი</th>
+<th>რა აკლია საბოლოო გაშვებამდე</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Google ავტორიზაცია</td>
+<td>Firebase Google provider, authorized domains და rules deployment</td>
+</tr>
+<tr>
+<td>რეალური გადახდა</td>
+<td>არჩეული ბანკი/PSP, საიდუმლო გასაღებები და trusted server callback; UI თვითნებურად არ ადასტურებს გადახდას</td>
+</tr>
+<tr>
+<td>ადმინისტრატორის ანგარიში</td>
+<td>Firebase custom claim <code>admin=true</code>; პაროლი კოდში განზრახ არ ინახება</td>
+</tr>
+<tr>
+<td>დაჯავშნის კონფლიქტი/შეტყობინება</td>
+<td>trusted backend/job, რომელიც ამოწმებს ხელმისაწვდომობას და აგზავნის ბოლო-დღის შეთავაზებას</td>
+</tr>
+<tr>
+<td>App Store / Google Play</td>
+<td>PWA მზადაა; signed native store packages ცალკე release პროექტია</td>
+</tr>
+</tbody>
+</table>
+<h2>რეალური მონაცემებით შესავსები publication blockers</h2>
+<ul>
+<li>რეალური ტელეფონი, მობილური, ელფოსტები და სოციალური ბმულები ჯერ placeholder-ებია.</li>
+<li>17 მანქანას ადმინისტრატორის რეალური მთავარი/გალერეის ფოტოები სჭირდება.</li>
+<li>ღირსშესანიშნაობების ყველა ფოტოს ფაქტობრივი სისწორის საბოლოო ადამიანური დადასტურება საჭიროა; ავტომატური აუდიტი ადასტურებს ფაილების არსებობას, არა გამოსახულების შინაარსობრივ ნამდვილობას.</li>
+</ul>
+<h2>ლოკალური QA შედეგი</h2>
+<ul>
+<li>ავტომატური ტესტები: 26/26 წარმატებული (2026-08-16; დოკუმენტის შედგენისას იყო 15).</li>
+<li>JavaScript syntax check: წარმატებული.</li>
+<li>სრული build: 2,004 გვერდი, 17 მანქანა, 4 სტატია, 6 ენა (2026-08-16; შედგენისას 1,800).</li>
+<li>strict publication build: განზრახ დაბლოკილია ზემოთ ჩამოთვლილი რეალური საკონტაქტო მონაცემებისა და მანქანის ფოტოების გამო.</li>
+<li>Browser smoke test: desktop და 390×844 mobile; console error 0, horizontal overflow 0.</li>
+</ul>
+<h2>საბოლოო დარჩენილი ნაბიჯი</h2>
+<p>რეალური მონაცემების მიღებისა და ლოკალური მიღების შემდეგ: commit/push, Firebase/hosting/rules deploy, auth/payment secrets, production smoke test და მხოლოდ ამის შემდეგ domain publication.</p></body></html>

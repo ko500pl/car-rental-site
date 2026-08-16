@@ -1,0 +1,37 @@
+<!doctype html><html lang="ka"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>ადმინისტრაციის გამართვა</title><style>body{font:15px/1.65 system-ui;max-width:940px;margin:36px auto;padding:0 22px;color:#172033}a{color:#087ea4}h1,h2{line-height:1.2}h1{font-size:30px}h2{margin-top:30px;border-top:1px solid #dce2ea;padding-top:18px}h3{margin-top:22px}code{background:#eef2f6;padding:2px 5px;border-radius:4px}pre{background:#eef2f6;padding:12px 14px;border-radius:8px;overflow-x:auto}pre code{background:none;padding:0}li{margin:5px 0}table{border-collapse:collapse;width:100%;margin:14px 0;display:block;overflow-x:auto}th,td{border:1px solid #dce2ea;padding:7px 10px;text-align:left;vertical-align:top}th{background:#f7fafc}blockquote{margin:14px 0;padding:10px 16px;border-left:3px solid #087ea4;background:#f7fafc}blockquote p{margin:6px 0}.back{display:inline-block;margin-bottom:18px}.meta{color:#64748b;font-size:13px}</style></head><body><a class="back" href="00-DOCUMENTATION-INDEX.html">← დოკუმენტაციის ინდექსი</a><div class="meta">ლოკალური დოკუმენტაცია · 2026-08-16</div>
+<h1>ადმინისტრაციის გამართვა</h1>
+<p>საიტის ყოველდღიური მართვა ხდება <code>https://თქვენი-დომენი/admin/</code> მისამართიდან. პაროლი ან OAuth secret რეპოზიტორიაში არ ინახება.</p>
+<h2>1. საიტის გამოქვეყნება</h2>
+<ol>
+<li>GitHub-ზე გახსენით <code>ko500pl/car-rental-site</code> და დარწმუნდით, რომ მფლობელს აქვს <strong>Write</strong> ან <strong>Admin</strong> წვდომა.</li>
+<li>ჰოსტინგზე დაუკავშირეთ ეს რეპოზიტორია.</li>
+<li>build command: <code>python build.py dist --strict</code>; publish directory: <code>dist</code>.</li>
+<li>strict build არ გაუშვებს საიტს, სანამ რეალური ტელეფონი, ელფოსტა, სოციალური ბმულები და მანქანის მთავარი ფოტოები არ შეივსება.</li>
+</ol>
+<h2>2. GitHub OAuth</h2>
+<ol>
+<li>GitHub → Settings → Developer settings → OAuth Apps → New OAuth App.</li>
+<li>Homepage URL-ში ჩაწერეთ რეალური დომენი.</li>
+<li>callback URL გამოიყენეთ თქვენი ჰოსტინგის OAuth gateway-ის ინსტრუქციის მიხედვით.</li>
+<li>Client Secret შეინახეთ მხოლოდ ჰოსტინგის უსაფრთხო პარამეტრებში — არა ფაილებში.</li>
+<li>ავტორიზებული რედაქტორი უნდა იყოს GitHub repository collaborator.</li>
+</ol>
+<h2>3. შესვლა</h2>
+<p>გახსენით <code>/admin/</code>, დააჭირეთ <strong>Login with GitHub</strong> და დაადასტურეთ წვდომა. ცალკე „მთავარი ადმინის პაროლი“ ამ არქიტექტურაში არ არსებობს და კოდში არ უნდა ჩაიწეროს.</p>
+<h2>4. კონტაქტები და ბიზნეს ინფორმაცია</h2>
+<p>Admin → პარამეტრები → საიტი. აქ იცვლება ბრენდი, ლოგო, დომენი, ტელეფონი, WhatsApp, ელფოსტა, მისამართი, კოორდინატები, სამუშაო საათები და სოციალური ბმულები. WhatsApp ნომერი შეიყვანეთ საერთაშორისო ფორმატით, მხოლოდ ციფრებით.</p>
+<h2>5. მანქანის დამატება ან შეცვლა</h2>
+<p>Admin → ავტომობილები → New Automobile. შეავსეთ სტატუსი, კატეგორია, ტექნიკური მონაცემები, ადგილები, ფასები, დეპოზიტი, დაზღვევა/ფრანშიზა, გარბენის ლიმიტი, მინიმალური ვადა და ყველა ექვსი ენა. ახალი ჩანაწერის უსაფრთხო საწყისი სტატუსია <strong>draft</strong>.</p>
+<h2>6. ფოტოების ატვირთვა</h2>
+<p>„მთავარი ფოტო“ გამოიყენება ავტოპარკში, რეკომენდაციასა და სოციალურ გაზიარებაში. რეკომენდებულია 1200×750 WebP/JPG. დამატებითი ფოტოები დაამატეთ Gallery-ში. დაუმთავრებელი გალერეა გატეხილ სურათს არ აჩვენებს.</p>
+<h2>7. ფასები</h2>
+<p>მანქანაში შეავსეთ GEL-ის 1–6, 7–29 და 30+ დღის ტარიფები. დოლარი ითვლება ავტომატურად 2.6 კურსით და მრგვალდება 10 დოლარამდე; მანქანაში USD ხელით არ იწერება.</p>
+<h2>8. გამოქვეყნება და დამალვა</h2>
+<ul>
+<li><strong>draft</strong> — საიტზე არ ჩანს;</li>
+<li><strong>published</strong> — ჩანს გვერდებზე, რეკომენდაციაში, sitemap-სა და schema-ში;</li>
+<li><strong>archived</strong> — ინახება ადმინისტრაციაში, საჯაროდ არ ჩანს;</li>
+<li>„ამჟამად ხელმისაწვდომია“ გამორთვისას გვერდი შეიძლება დარჩეს, მაგრამ დამგეგმავი მას აღარ ურჩევს.</li>
+</ul>
+<h2>9. გამოქვეყნებამდე შემოწმება</h2>
+<p>გაუშვით <code>python build.py --validate-only</code>, შემდეგ <code>python build.py dist --strict</code>. შეცდომის ტექსტი მიუთითებს შესავსებ ველს. მხოლოდ წარმატებული strict build არის წარმოებისთვის მზად.</p></body></html>
