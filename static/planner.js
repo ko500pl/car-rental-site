@@ -255,8 +255,8 @@
        · drag the ⠿ handle
        · tap the handle → inline up/down buttons appear for that row
        · focus a row and press Alt+ArrowUp / Alt+ArrowDown
-     Removal is press-and-hold, plus Delete on a focused row, both landing on
-     the same in-row confirmation. */
+     Removal is unchecking the row's checkbox, or Delete on a focused row,
+     both recoverable from the undo strip. */
   var PENDING_FLASH = null, UNDO = null, LIVE = null, dragState = null, replanQueued = false;
   var REDUCE = window.matchMedia ? matchMedia("(prefers-reduced-motion:reduce)").matches : false;
 
@@ -318,8 +318,8 @@
     if (!root || root.dataset.gestures) return;
     root.dataset.gestures = "1";
 
-    var LONG_MS = 500, MOVE_TOL = 10, EDGE = 72, EDGE_MAX = 18;
-    var drag = null, press = null, raf = 0, suppressUntil = 0, lastTarget = null, lastSwap = 0;
+    var EDGE = 72, EDGE_MAX = 18;
+    var drag = null, raf = 0, suppressUntil = 0, lastTarget = null, lastSwap = 0;
 
     function rowOf(t) { return t && t.closest ? t.closest("li.pstop:not(.pconfirm)") : null; }
 
@@ -327,66 +327,38 @@
     // uncaught error here would abort the rest of the pointerdown handler.
     function capture(id) { try { root.setPointerCapture(id); } catch (err) { /* ignore */ } }
 
-    /* ---------- inline confirmation (no modal: nothing to trap, no scroll jump) */
-    function showConfirm(row) {
-      closeConfirm();
-      var slug = row.dataset.slug, name = rowName(row);
-      row.classList.add("pconfirm");
-      row.dataset.restore = row.innerHTML;
-      row.dataset.name = name;          // .pname is gone once the row is swapped
-      row.innerHTML = '<span class="pstop-t"><b>' + esc(tpl(T.remove_q, name)) + "</b></span>" +
-        '<span class="pconfirm-b">' +
-        '<button type="button" class="btn sm ghost" data-pcancel>' + esc(T.remove_no) + "</button>" +
-        '<button type="button" class="btn sm pdanger" data-pdel="' + esc(slug) + '">' +
-        esc(T.remove_yes) + "</button></span>";
-      var cancel = row.querySelector("[data-pcancel]");
-      if (cancel) cancel.focus({ preventScroll: true });
-      announce(tpl(T.remove_q, name));
-    }
-    function closeConfirm() {
-      var row = root.querySelector("li.pstop.pconfirm");
-      if (!row) return;
-      row.classList.remove("pconfirm");
-      if (row.dataset.restore) { row.innerHTML = row.dataset.restore; delete row.dataset.restore; }
+    /* ---------- removal: uncheck, with undo rather than a confirmation
+       Confirmation interrupts every removal to guard against the rare misclick;
+       undo interrupts none and still recovers it. The route is regenerated from
+       CUR.route, so restoring is exact. */
+    function dropStop(slug, row) {
+      var name = row ? rowName(row) : "";
+      UNDO = CUR.route.slice();
+      editRemove(slug);
+      announce(tpl(T.removed, name));
+      showUndo(name);
     }
 
-    /* ---------- long press */
-    function startPress(row, e) {
-      press = { id: e.pointerId, row: row, x: e.clientX, y: e.clientY };
-      var bar = row.querySelector(".ppress");
-      press.bar = bar;
-      row.classList.add("ppressing");
-      // The timer alone decides when the press completes. The bar is only
-      // feedback — never hang the trigger on an animation callback.
-      press.timer = setTimeout(fire, LONG_MS);
-      if (bar) {
-        if (REDUCE || !bar.animate) {
-          // theme.py forces transition:none under prefers-reduced-motion, so a
-          // CSS-driven fill would sit at scaleX(0) forever. Show it at once.
-          bar.style.transform = "scaleX(1)";
-        } else {
-          press.anim = bar.animate([{ transform: "scaleX(0)" }, { transform: "scaleX(1)" }],
-            { duration: LONG_MS - 130, delay: 130, fill: "forwards", easing: "linear" });
-        }
+    function showUndo(name) {
+      var bar = document.getElementById("pundobar");
+      if (!bar) {
+        bar = document.createElement("div");
+        bar.id = "pundobar"; bar.className = "pundobar";
+        // The strip lives on <body>, outside #result, so the delegated handler
+        // there never sees it — it needs its own listener.
+        bar.addEventListener("click", function (e) {
+          if (!e.target.closest("[data-pundo]") || !UNDO) return;
+          CUR.route = UNDO; UNDO = null;
+          bar.classList.remove("on");
+          replan();
+        });
+        document.body.appendChild(bar);
       }
-      window.addEventListener("scroll", cancelPress, { passive: true, capture: true });
-    }
-    function fire() {
-      if (!press) return;
-      var row = press.row;
-      cancelPress();
-      if (navigator.vibrate) navigator.vibrate(18);
-      suppressUntil = Date.now() + 500;   // the release must not follow the <a href>
-      showConfirm(row);
-    }
-    function cancelPress() {
-      if (!press) return;
-      if (press.timer) clearTimeout(press.timer);
-      if (press.anim) { press.anim.onfinish = null; press.anim.cancel(); }
-      press.row.classList.remove("ppressing");
-      if (press.bar) press.bar.style.transform = "";
-      window.removeEventListener("scroll", cancelPress, true);
-      press = null;
+      bar.innerHTML = "<span>" + esc(tpl(T.removed, name)) + "</span>" +
+        '<button type="button" class="btn sm" data-pundo>' + esc(T.undo) + "</button>";
+      bar.classList.add("on");
+      clearTimeout(showUndo.t);
+      showUndo.t = setTimeout(function () { bar.classList.remove("on"); }, 7000);
     }
 
     /* ---------- drag */
@@ -453,16 +425,9 @@
         capture(e.pointerId);
         return;
       }
-      if (e.target.closest("button") || root.querySelector(".pconfirm")) return;
-      startPress(row, e);
-      capture(e.pointerId);
     });
 
     root.addEventListener("pointermove", function (e) {
-      if (press && e.pointerId === press.id &&
-          (Math.abs(e.clientX - press.x) > MOVE_TOL || Math.abs(e.clientY - press.y) > MOVE_TOL)) {
-        cancelPress();                                  // turned into a scroll
-      }
       if (!drag || e.pointerId !== drag.id) return;
       drag.x = e.clientX; drag.y = e.clientY;
       if (!drag.live) engage();
@@ -471,7 +436,6 @@
     }, { passive: false });
 
     root.addEventListener("pointerup", function (e) {
-      if (press && e.pointerId === press.id) { cancelPress(); return; }
       if (!drag || e.pointerId !== drag.id) return;
       var live = drag.live, slug = drag.row.dataset.slug;
       cleanupDrag();
@@ -482,11 +446,10 @@
     });
 
     root.addEventListener("pointercancel", function () {
-      cancelPress();
       if (drag) { var wasLive = drag.live; cleanupDrag(); if (wasLive) replan(); }
     });
 
-    root.addEventListener("contextmenu", function (e) { if (press || drag) e.preventDefault(); });
+    root.addEventListener("contextmenu", function (e) { if (drag) e.preventDefault(); });
 
     // Capture phase, so a gesture that ends over the place link cannot navigate.
     // Our own controls are exempt: the confirmation appears the instant the
@@ -520,26 +483,30 @@
     }
 
     root.addEventListener("click", function (e) {
-      var t = e.target.closest ? e.target.closest("[data-pmv],[data-pdel],[data-pcancel],[data-pdone],[data-padd],[data-pundo]") : null;
+      var t = e.target.closest ? e.target.closest("[data-pmv],[data-pdone],[data-padd],[data-pundo]") : null;
       if (!t) return;
       e.preventDefault();
       if (t.hasAttribute("data-pmv")) {
         dragState = "pointer";
         editMove(t.dataset.s, parseInt(t.dataset.pmv, 10));
-      } else if (t.hasAttribute("data-pdel")) {
-        var crow = t.closest("li.pstop");
-        UNDO = CUR.route.slice();
-        editRemove(t.dataset.pdel);
-        announce(tpl(T.removed, (crow && crow.dataset.name) || ""));
-      } else if (t.hasAttribute("data-pcancel") || t.hasAttribute("data-pdone")) {
-        closeConfirm();
+      } else if (t.hasAttribute("data-pdone")) {
         var r2 = t.closest("li.pstop");
         if (r2 && r2.classList.contains("preorder")) toggleReorderMode(r2);
       } else if (t.hasAttribute("data-padd")) {
         editAdd(t.dataset.padd, t.dataset.after);
       } else if (t.hasAttribute("data-pundo") && UNDO) {
-        CUR.route = UNDO; UNDO = null; replan();
+        CUR.route = UNDO; UNDO = null;
+        var bar = document.getElementById("pundobar");
+        if (bar) bar.classList.remove("on");
+        replan();
       }
+    });
+
+    // Unchecking is the removal gesture, so listen for change, not click.
+    root.addEventListener("change", function (e) {
+      var cb = e.target;
+      if (!cb.hasAttribute || !cb.hasAttribute("data-pdrop") || cb.checked) return;
+      dropStop(cb.getAttribute("data-pdrop"), cb.closest("li.pstop"));
     });
 
     /* ---------- keyboard: the path drag can never provide (2.1.1) */
@@ -553,9 +520,7 @@
         editMove(row.dataset.slug, e.key === "ArrowUp" ? -1 : 1);
       } else if (e.key === "Delete" || e.key === "Backspace") {
         e.preventDefault();
-        showConfirm(row);
-      } else if (e.key === "Escape") {
-        closeConfirm();
+        dropStop(row.dataset.slug, row);
       }
     });
   }
@@ -653,14 +618,21 @@
              " " + T.km + " · " + fmtH(it.legMin) + "</li>" +
              '<li class="pstop" data-slug="' + esc(it.a.s) + '">' +
              '<button type="button" class="pgrab" data-pgrab aria-label="' +
-             esc((T.reorder_label || "Reorder {name}").replace("{name}", it.a.n)) +
-             '" aria-expanded="false"></button>' +
-             '<span class="pnum">' + (ii + 1) + "</span>" +
+             esc(tpl(T.reorder_label, it.a.n)) + '" aria-expanded="false"></button>' +
+             // Unchecking removes the stop, matching how places are picked and
+             // dropped in the map list. Undo covers the misclick.
+             '<input type="checkbox" class="pcheck" checked data-pdrop="' + esc(it.a.s) +
+             '" aria-label="' + esc(tpl(T.keep_label, it.a.n)) + '">' +
+             (it.a.img ? '<img class="pthumb" src="' + esc(it.a.img) + '" alt="" loading="lazy" ' +
+                         'width="76" height="52" draggable="false">' : '<span class="pthumb ph"></span>') +
              '<span class="pstop-t">' +
              '<a class="pname" draggable="false" href="' + it.a.u + '">' + esc(it.a.n) + "</a>" +
-             '<span class="pdur">' + T.visit + " " + fmtH(it.visit) + " · " + T.arrive + " " +
-             clock(it.arrive) + "</span></span>" +
-             '<span class="ppress" aria-hidden="true"></span></li>';
+             '<span class="pdur">' + esc(it.a.tl || "") + " · " + fmtH(it.visit) +
+             " · " + T.arrive + " " + clock(it.arrive) + "</span>" +
+             (it.a.rt ? '<span class="prate"><i>' + "★".repeat(Math.floor(it.a.rt)) +
+                        "☆".repeat(Math.max(0, 5 - Math.floor(it.a.rt))) + "</i><b>" +
+                        it.a.rt + "</b></span>" : "") +
+             "</span></li>";
         var opt = alongTheWay(prev, it.a, planSlugs(res), pool);
         if (opt.length) {
           /* +დრო = რეალური ჩასმის დანამატი: (prev→o) + (o→აქ) − (prev→აქ) + ვიზიტი */

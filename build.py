@@ -1926,6 +1926,9 @@ def planner_data(lang):
             "c": "",
             "img": a.get("image") or "", "road": a["road"],
             "rd": ROAD_RANK_NUM.get(a["road"], 0), "el": a.get("elevation") or 0,
+            # Localised type label and rating, so an itinerary row can carry the
+            # same facts as a map list card. "r" is already the region here.
+            "tl": tl(lang, "type", a["type"]), "rt": a.get("rating") or 0,
         })
     towns = [i for i in items if i["ty"] == "town"]
     starts = [{"s": "tbilisi", "n": P["starts"][0], "lat": TB_LAT, "lon": TB_LON, "f": 1.4, "v": 55}]

@@ -51,7 +51,8 @@ ka:
     km: კმ
     recalc: ხელახლა დათვლა
     day_plan: დღეების გეგმა
-    drag_hint: 'გადაათრიეთ ⠿ თანმიმდევრობის შესაცვლელად · წასაშლელად ხანგრძლივად დააჭირეთ გაჩერებას'
+    drag_hint: 'გადაათრიეთ ⠿ თანმიმდევრობის შესაცვლელად · მონიშვნის მოხსნა შლის გაჩერებას'
+    keep_label: 'გეგმაში დატოვება: {name}'
     reorder_label: 'გადაადგილება: {name}'
     move_up: 'ზემოთ'
     move_down: 'ქვემოთ'
@@ -182,7 +183,8 @@ en:
     km: km
     recalc: Recalculate
     day_plan: Day by day
-    drag_hint: 'Drag ⠿ to reorder · press and hold a stop to remove it'
+    drag_hint: 'Drag ⠿ to reorder · clear the checkbox to remove a stop'
+    keep_label: 'Keep {name} in the plan'
     reorder_label: 'Reorder {name}'
     move_up: 'Move up'
     move_down: 'Move down'
@@ -315,7 +317,8 @@ ru:
     km: км
     recalc: Пересчитать
     day_plan: План по дням
-    drag_hint: 'Перетащите ⠿, чтобы изменить порядок · нажмите и удерживайте, чтобы удалить'
+    drag_hint: 'Перетащите ⠿, чтобы изменить порядок · снимите галочку, чтобы удалить'
+    keep_label: 'Оставить {name} в плане'
     reorder_label: 'Переместить: {name}'
     move_up: 'Вверх'
     move_down: 'Вниз'
@@ -452,7 +455,8 @@ fa:
     km: کیلومتر
     recalc: محاسبه دوباره
     day_plan: برنامه روزبه‌روز
-    drag_hint: 'برای جابه‌جایی ⠿ را بکشید · برای حذف، روی توقف فشار دهید و نگه دارید'
+    drag_hint: 'برای جابه‌جایی ⠿ را بکشید · برای حذف، تیک را بردارید'
+    keep_label: '{name} در برنامه بماند'
     reorder_label: 'جابه‌جایی {name}'
     move_up: 'بالا'
     move_down: 'پایین'
@@ -583,7 +587,8 @@ he:
     km: ק"מ
     recalc: חישוב מחדש
     day_plan: תוכנית יום‑יום
-    drag_hint: 'גררו ⠿ כדי לשנות סדר · לחצו והחזיקו על עצירה כדי להסיר'
+    drag_hint: 'גררו ⠿ כדי לשנות סדר · הסירו את הסימון כדי למחוק עצירה'
+    keep_label: 'להשאיר את {name} בתוכנית'
     reorder_label: 'שינוי סדר: {name}'
     move_up: 'למעלה'
     move_down: 'למטה'
@@ -714,7 +719,8 @@ ar:
     km: كم
     recalc: إعادة الحساب
     day_plan: البرنامج يوماً بيوم
-    drag_hint: 'اسحب ⠿ لإعادة الترتيب · اضغط مطولًا على محطة لإزالتها'
+    drag_hint: 'اسحب ⠿ لإعادة الترتيب · أزل علامة الاختيار لحذف محطة'
+    keep_label: 'إبقاء {name} في الخطة'
     reorder_label: 'إعادة ترتيب {name}'
     move_up: 'أعلى'
     move_down: 'أسفل'

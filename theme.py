@@ -377,9 +377,8 @@ td:first-child{{font-weight:600;color:var(--ink)}}
    112x84 thumbnail, three lines of text and a column of three 24px buttons —
    about 180px per stop. */
 .pstop{{display:flex;align-items:center;gap:10px;position:relative;flex-wrap:wrap;
-  min-height:52px;padding:8px 12px;margin:0 0 4px;border:1px solid var(--line-2);
-  border-radius:9px;background:var(--bg-2);overflow:hidden;
-  -webkit-touch-callout:none;user-select:none;-webkit-user-select:none;touch-action:pan-y}}
+  min-height:68px;padding:8px 12px;margin:0 0 6px;border:1px solid var(--line-2);
+  border-radius:10px;background:var(--bg-2);overflow:hidden;touch-action:pan-y}}
 .pstop-t{{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}}
 .pname{{font-size:15px;line-height:1.3;font-weight:600;color:var(--ink);text-decoration:none;
   overflow:hidden;text-overflow:ellipsis;white-space:nowrap;user-select:auto;-webkit-user-select:auto}}
@@ -409,20 +408,29 @@ td:first-child{{font-weight:600;color:var(--ink)}}
 body.pdrag-active{{user-select:none;-webkit-user-select:none;overscroll-behavior:contain;cursor:grabbing}}
 .pstop.pmoved{{outline:2px solid var(--brand);outline-offset:1px}}
 
-.ppress{{position:absolute;inset:0;pointer-events:none;border-radius:inherit;opacity:0;
-  background:rgba(181,86,63,.26);transform:scaleX(0);transform-origin:left center}}
-[dir="rtl"] .ppress{{transform-origin:right center}}
-.pstop.ppressing .ppress{{opacity:1}}
-.pstop.pconfirm{{border-color:#b5563f;background:rgba(181,86,63,.1)}}
-.pconfirm-b{{display:flex;gap:6px;flex:none}}
-.pdanger{{background:#b5563f;border-color:#b5563f;color:#fff}}
+.pcheck{{flex:none;width:19px;height:19px;accent-color:var(--brand);cursor:pointer;margin:0}}
+.pthumb{{width:76px;height:52px;object-fit:cover;border-radius:7px;flex:none;background:var(--surface-2)}}
+.pthumb.ph{{display:block}}
+.prate{{font-size:12px;color:var(--ink-3);display:flex;align-items:center;gap:5px}}
+.prate i{{font-style:normal;color:#e0a32e;letter-spacing:.5px}}
+.prate b{{font-weight:700;color:var(--ink-2)}}
+
+/* Removal is recoverable, so it needs somewhere to offer the way back. */
+.pundobar{{position:fixed;inset-block-end:16px;inset-inline-start:50%;transform:translateX(-50%) translateY(140%);
+  z-index:9100;display:flex;align-items:center;gap:12px;max-width:calc(100% - 24px);
+  padding:10px 12px 10px 16px;border-radius:12px;background:var(--ink);color:#fff;
+  box-shadow:0 12px 30px rgba(0,0,0,.32);transition:transform .18s ease;pointer-events:none}}
+.pundobar.on{{transform:translateX(-50%) translateY(0);pointer-events:auto}}
+.pundobar span{{font-size:13.5px}}
+.pundobar .btn{{flex:none}}
 
 @media(max-width:760px){{
-  .pstop{{min-height:56px;padding:9px 10px;gap:8px}}
+  .pstop{{min-height:70px;padding:9px 10px;gap:8px}}
   .pgrab{{width:22px;height:44px}}
+  .pthumb{{width:62px;height:46px}}
   .pname{{font-size:14.5px}}
 }}
-@media print{{.pgrab,.ppress,.pstops-help{{display:none}}}}
+@media print{{.pgrab,.pcheck,.pstops-help,.pundobar{{display:none}}}}
 .popt{{font-size:13.5px;color:var(--ink-3);padding:6px 0 8px 16px;margin-inline-start:5px}}
 .popt i{{font-style:normal;color:var(--ok);font-weight:600}}
 .pnight{{font-size:14.5px;color:var(--ink-2);border-top:1px solid var(--line-2);margin-top:12px;padding-top:11px}}
