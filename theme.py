@@ -367,13 +367,62 @@ td:first-child{{font-weight:600;color:var(--ink)}}
 .pday h3 small{{font-weight:500;font-size:14px;color:var(--ink-3)}}
 .pdot{{width:12px;height:12px;border-radius:50%;display:inline-block;flex:none}}
 .pstops{{list-style:none;margin:0;padding:0;max-width:none}}
-.pstops li{{margin:0;padding:0 0 0 2px}}
-.pleg{{font-size:13.5px;color:var(--ink-3);padding:7px 0 7px 14px;border-inline-start:2px dashed var(--line);margin-inline-start:5px}}
-.pstop{{display:flex;flex-direction:column;gap:3px;padding:11px 14px;border:1px solid var(--line-2);
-  border-radius:9px;background:var(--bg-2);margin:0 0 2px}}
-.pstop b{{font-size:16.5px}}
-.pmeta{{font-size:14px;color:var(--brand-2);font-weight:600}}
-.pshort{{font-size:14.5px;color:var(--ink-2)}}
+.pstops li{{margin:0}}
+.pleg{{font-size:12px;line-height:1.35;color:var(--ink-3);padding:3px 0 3px 14px;
+  border-inline-start:2px dashed var(--line);margin-inline-start:16px;pointer-events:none}}
+.pleg-back{{pointer-events:auto;font-size:12.5px;padding-block:6px}}
+.pstops-help{{font-size:12.5px;color:var(--ink-3);margin:0 0 10px}}
+
+/* One compact row: name, and the visit length under it. The old card stacked a
+   112x84 thumbnail, three lines of text and a column of three 24px buttons —
+   about 180px per stop. */
+.pstop{{display:flex;align-items:center;gap:10px;position:relative;flex-wrap:wrap;
+  min-height:52px;padding:8px 12px;margin:0 0 4px;border:1px solid var(--line-2);
+  border-radius:9px;background:var(--bg-2);overflow:hidden;
+  -webkit-touch-callout:none;user-select:none;-webkit-user-select:none;touch-action:pan-y}}
+.pstop-t{{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}}
+.pname{{font-size:15px;line-height:1.3;font-weight:600;color:var(--ink);text-decoration:none;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;user-select:auto;-webkit-user-select:auto}}
+.pname:hover{{text-decoration:underline}}
+.pdur{{font-size:12.5px;line-height:1.3;color:var(--brand-2);font-weight:600}}
+.pnum{{flex:none;display:grid;place-items:center;width:20px;height:20px;border-radius:50%;
+  background:var(--surface-2);color:var(--ink-3);font-size:11.5px;font-weight:700}}
+
+/* The only control on the row. touch-action:none so a drag from the handle is
+   not stolen by page scrolling; the rest of the row keeps pan-y. */
+.pgrab{{flex:none;width:28px;height:40px;padding:0;border:0;border-radius:7px;cursor:grab;
+  background:none;touch-action:none;
+  background-image:radial-gradient(circle,var(--ink-3) 1.6px,transparent 1.7px);
+  background-size:6px 6px;background-position:center;background-repeat:repeat-y;
+  width:16px;background-clip:padding-box}}
+.pgrab:hover,.pgrab:focus-visible{{background-color:var(--surface-2)}}
+.pgrab:active{{cursor:grabbing}}
+.pstop.preorder{{border-color:var(--brand)}}
+.pmovebar{{flex-basis:100%;display:flex;gap:6px;flex-wrap:wrap;padding-top:6px}}
+
+.pstops.pdragging .pleg{{opacity:.25}}
+.pstop.pghost{{opacity:.28;border-style:dashed}}
+.pstop.pghost>*{{visibility:hidden}}
+.pfloat{{position:fixed;left:0;top:0;z-index:9000;pointer-events:none;margin:0;
+  box-shadow:0 10px 26px rgba(0,0,0,.38);border-color:var(--brand);background:var(--surface);
+  will-change:transform}}
+body.pdrag-active{{user-select:none;-webkit-user-select:none;overscroll-behavior:contain;cursor:grabbing}}
+.pstop.pmoved{{outline:2px solid var(--brand);outline-offset:1px}}
+
+.ppress{{position:absolute;inset:0;pointer-events:none;border-radius:inherit;opacity:0;
+  background:rgba(181,86,63,.26);transform:scaleX(0);transform-origin:left center}}
+[dir="rtl"] .ppress{{transform-origin:right center}}
+.pstop.ppressing .ppress{{opacity:1}}
+.pstop.pconfirm{{border-color:#b5563f;background:rgba(181,86,63,.1)}}
+.pconfirm-b{{display:flex;gap:6px;flex:none}}
+.pdanger{{background:#b5563f;border-color:#b5563f;color:#fff}}
+
+@media(max-width:760px){{
+  .pstop{{min-height:56px;padding:9px 10px;gap:8px}}
+  .pgrab{{width:22px;height:44px}}
+  .pname{{font-size:14.5px}}
+}}
+@media print{{.pgrab,.ppress,.pstops-help{{display:none}}}}
 .popt{{font-size:13.5px;color:var(--ink-3);padding:6px 0 8px 16px;margin-inline-start:5px}}
 .popt i{{font-style:normal;color:var(--ok);font-weight:600}}
 .pnight{{font-size:14.5px;color:var(--ink-2);border-top:1px solid var(--line-2);margin-top:12px;padding-top:11px}}
@@ -589,7 +638,6 @@ tbody tr:nth-child(even){{background:color-mix(in srgb,#fff 3%,transparent)}}
 .tog input{{accent-color:var(--brand)}}
 .pstop{{display:flex;gap:14px;align-items:flex-start}}
 .pstop-t{{flex:1;min-width:0}}
-.pthumb{{width:112px;height:84px;object-fit:cover;border-radius:10px;flex:none}}
 .carrec{{display:grid;grid-template-columns:260px 1fr;gap:22px;align-items:center;
   background:var(--surface);border:1px solid var(--line);border-radius:16px;
   padding:20px 24px;margin:0 0 26px}}
@@ -746,11 +794,10 @@ tbody tr:nth-child(even){{background:color-mix(in srgb,#fff 3%,transparent)}}
 .numpin.tour-stop b{{width:30px;height:30px;font-size:13px;background:#0f8f98;color:#fff;
   border:3px solid #fff;box-shadow:0 0 0 4px rgba(15,143,152,.2),0 5px 14px rgba(0,0,0,.28)}}
 .wpbtns{{display:inline-flex;gap:4px;margin-inline-start:8px}}
-.wpbtns button,.pstop-b button{{border:1px solid var(--line);background:var(--surface-2);
+.wpbtns button{{border:1px solid var(--line);background:var(--surface-2);
   color:var(--ink-2);border-radius:6px;width:24px;height:24px;cursor:pointer;font-size:12px;
   line-height:1}}
-.wpbtns button:hover,.pstop-b button:hover{{border-color:var(--brand);color:#fff}}
-.pstop-b{{display:flex;flex-direction:column;gap:4px;flex:none}}
+.wpbtns button:hover{{border-color:var(--brand);color:#fff}}
 .paddbtn{{border:1px solid var(--line);background:var(--surface-2);color:var(--ok);
   border-radius:6px;width:22px;height:22px;cursor:pointer;font-size:13px;line-height:1;
   vertical-align:middle}}
@@ -779,7 +826,6 @@ tbody tr:nth-child(even){{background:color-mix(in srgb,#fff 3%,transparent)}}
 .pwx{{display:inline-flex;gap:6px;align-items:center;margin-inline-start:10px}}
 @media(max-width:760px){{
   .carrec{{grid-template-columns:1fr}}
-  .pthumb{{width:78px;height:60px}}
   .card-img img{{height:140px}}
 }}
 .page-head .tag{{font-size:13px}}

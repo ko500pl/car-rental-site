@@ -247,6 +247,319 @@
   function replan() {
     render(splitDays(CUR.route, CUR.start, CUR.days, CUR.budget, CUR.back), CUR.start, CUR.pool);
   }
+  /* ── reorder / remove gestures ──────────────────────────────────────────
+     render() replaces #result wholesale, so everything here is delegated from
+     the container and bound exactly once. Three ways to reorder, because drag
+     alone is unreachable by keyboard (WCAG 2.1.1) and by anyone who cannot
+     perform a dragging movement (2.5.7 requires a single-pointer alternative):
+       · drag the ⠿ handle
+       · tap the handle → inline up/down buttons appear for that row
+       · focus a row and press Alt+ArrowUp / Alt+ArrowDown
+     Removal is press-and-hold, plus Delete on a focused row, both landing on
+     the same in-row confirmation. */
+  var PENDING_FLASH = null, UNDO = null, LIVE = null, dragState = null, replanQueued = false;
+  var REDUCE = window.matchMedia ? matchMedia("(prefers-reduced-motion:reduce)").matches : false;
+
+  function announce(msg) {
+    if (!LIVE) {
+      // Must live outside #result: a live region recreated by innerHTML never
+      // announces, because assistive tech only reports changes to a node it
+      // was already observing.
+      LIVE = document.createElement("p");
+      LIVE.className = "vh"; LIVE.setAttribute("role", "status");
+      LIVE.setAttribute("aria-live", "polite"); LIVE.setAttribute("aria-atomic", "true");
+      document.body.appendChild(LIVE);
+    }
+    LIVE.textContent = "";
+    setTimeout(function () { LIVE.textContent = msg; }, 60);
+  }
+
+  function tpl(s, name) { return String(s || "").replace("{name}", name); }
+  function rowName(li) {
+    var a = li.querySelector(".pname"); return a ? a.textContent : "";
+  }
+
+  function flashMoved(box) {
+    if (!PENDING_FLASH) return;
+    var li = box.querySelector('li.pstop[data-slug="' + CSS.escape(PENDING_FLASH) + '"]');
+    PENDING_FLASH = null;
+    if (!li) return;
+    li.classList.add("pmoved");
+    setTimeout(function () { li.classList.remove("pmoved"); }, 1400);
+    var day = li.closest(".pday");
+    var pos = Array.prototype.indexOf.call(
+      li.parentNode.querySelectorAll("li.pstop"), li) + 1;
+    announce(rowName(li) + " — " + (day ? day.querySelector("h3").textContent.trim() : "") +
+             ", " + pos);
+    var btn = li.querySelector(".pgrab");
+    if (btn && dragState === "keyboard") btn.focus({ preventScroll: true });
+  }
+
+  function commitOrder(movedSlug) {
+    // Read the order back off the DOM rather than computing indices: the days
+    // are derived from one flat CUR.route, so document order is the answer and
+    // dragging between days needs no special case.
+    var order = [], byslug = {};
+    EL("result").querySelectorAll("li.pstop[data-slug]").forEach(function (li) {
+      order.push(li.dataset.slug);
+    });
+    CUR.route.forEach(function (a) { byslug[a.s] = a; });
+    var next = order.map(function (s) { return byslug[s]; }).filter(Boolean);
+    if (next.length !== CUR.route.length) return replan();
+    if (next.every(function (a, i) { return a === CUR.route[i]; })) return;
+    UNDO = CUR.route.slice();
+    CUR.route = next;
+    PENDING_FLASH = movedSlug;
+    replan();
+  }
+
+  function bindStopGestures() {
+    var root = EL("result");
+    if (!root || root.dataset.gestures) return;
+    root.dataset.gestures = "1";
+
+    var LONG_MS = 500, MOVE_TOL = 10, EDGE = 72, EDGE_MAX = 18;
+    var drag = null, press = null, raf = 0, suppressUntil = 0, lastTarget = null, lastSwap = 0;
+
+    function rowOf(t) { return t && t.closest ? t.closest("li.pstop:not(.pconfirm)") : null; }
+
+    // Throws if the pointer was already released or was never real. An
+    // uncaught error here would abort the rest of the pointerdown handler.
+    function capture(id) { try { root.setPointerCapture(id); } catch (err) { /* ignore */ } }
+
+    /* ---------- inline confirmation (no modal: nothing to trap, no scroll jump) */
+    function showConfirm(row) {
+      closeConfirm();
+      var slug = row.dataset.slug, name = rowName(row);
+      row.classList.add("pconfirm");
+      row.dataset.restore = row.innerHTML;
+      row.dataset.name = name;          // .pname is gone once the row is swapped
+      row.innerHTML = '<span class="pstop-t"><b>' + esc(tpl(T.remove_q, name)) + "</b></span>" +
+        '<span class="pconfirm-b">' +
+        '<button type="button" class="btn sm ghost" data-pcancel>' + esc(T.remove_no) + "</button>" +
+        '<button type="button" class="btn sm pdanger" data-pdel="' + esc(slug) + '">' +
+        esc(T.remove_yes) + "</button></span>";
+      var cancel = row.querySelector("[data-pcancel]");
+      if (cancel) cancel.focus({ preventScroll: true });
+      announce(tpl(T.remove_q, name));
+    }
+    function closeConfirm() {
+      var row = root.querySelector("li.pstop.pconfirm");
+      if (!row) return;
+      row.classList.remove("pconfirm");
+      if (row.dataset.restore) { row.innerHTML = row.dataset.restore; delete row.dataset.restore; }
+    }
+
+    /* ---------- long press */
+    function startPress(row, e) {
+      press = { id: e.pointerId, row: row, x: e.clientX, y: e.clientY };
+      var bar = row.querySelector(".ppress");
+      press.bar = bar;
+      row.classList.add("ppressing");
+      // The timer alone decides when the press completes. The bar is only
+      // feedback — never hang the trigger on an animation callback.
+      press.timer = setTimeout(fire, LONG_MS);
+      if (bar) {
+        if (REDUCE || !bar.animate) {
+          // theme.py forces transition:none under prefers-reduced-motion, so a
+          // CSS-driven fill would sit at scaleX(0) forever. Show it at once.
+          bar.style.transform = "scaleX(1)";
+        } else {
+          press.anim = bar.animate([{ transform: "scaleX(0)" }, { transform: "scaleX(1)" }],
+            { duration: LONG_MS - 130, delay: 130, fill: "forwards", easing: "linear" });
+        }
+      }
+      window.addEventListener("scroll", cancelPress, { passive: true, capture: true });
+    }
+    function fire() {
+      if (!press) return;
+      var row = press.row;
+      cancelPress();
+      if (navigator.vibrate) navigator.vibrate(18);
+      suppressUntil = Date.now() + 500;   // the release must not follow the <a href>
+      showConfirm(row);
+    }
+    function cancelPress() {
+      if (!press) return;
+      if (press.timer) clearTimeout(press.timer);
+      if (press.anim) { press.anim.onfinish = null; press.anim.cancel(); }
+      press.row.classList.remove("ppressing");
+      if (press.bar) press.bar.style.transform = "";
+      window.removeEventListener("scroll", cancelPress, true);
+      press = null;
+    }
+
+    /* ---------- drag */
+    function engage() {
+      var r = drag.row.getBoundingClientRect();
+      drag.dx = drag.x - r.left; drag.dy = drag.y - r.top;
+      drag.float = drag.row.cloneNode(true);
+      drag.float.classList.add("pfloat");
+      drag.float.removeAttribute("data-slug");
+      drag.float.style.width = r.width + "px";
+      document.body.appendChild(drag.float);
+      drag.row.classList.add("pghost");
+      var list = drag.row.closest(".pstops"); if (list) list.classList.add("pdragging");
+      document.body.classList.add("pdrag-active");
+      drag.live = true;
+      paint();
+    }
+    function paint() {
+      drag.float.style.transform =
+        "translate3d(" + (drag.x - drag.dx) + "px," + (drag.y - drag.dy) + "px,0)";
+    }
+    function reposition() {
+      // Vertical list: clientY only. Using clientX would invert under RTL.
+      var el = document.elementFromPoint(drag.x, drag.y);
+      var over = el && el.closest ? el.closest("li.pstop") : null;
+      if (!over || over === drag.row || over.classList.contains("pfloat")) return;
+      var r = over.getBoundingClientRect(), mid = r.top + r.height / 2;
+      if (Math.abs(drag.y - mid) < 6) return;                    // deadband at the seam
+      if (over === lastTarget && Date.now() - lastSwap < 90) return;
+      if (drag.y < mid) over.parentNode.insertBefore(drag.row, over);
+      else over.parentNode.insertBefore(drag.row, over.nextSibling);
+      lastTarget = over; lastSwap = Date.now();
+      if (navigator.vibrate) navigator.vibrate(8);
+    }
+    function edgeScroll() {
+      var v = 0;
+      if (drag.y < EDGE) v = -Math.ceil(EDGE_MAX * (EDGE - drag.y) / EDGE);
+      else if (drag.y > innerHeight - EDGE) v = Math.ceil(EDGE_MAX * (drag.y - (innerHeight - EDGE)) / EDGE);
+      drag.vel = v;
+      if (v && !raf) raf = requestAnimationFrame(tick);
+    }
+    function tick() {
+      raf = 0;
+      if (!drag || !drag.vel) return;
+      scrollBy(0, drag.vel); paint(); reposition();
+      raf = requestAnimationFrame(tick);
+    }
+    function cleanupDrag() {
+      if (!drag) return;
+      if (drag.float) drag.float.remove();
+      drag.row.classList.remove("pghost");
+      var list = drag.row.closest(".pstops"); if (list) list.classList.remove("pdragging");
+      document.body.classList.remove("pdrag-active");
+      if (raf) cancelAnimationFrame(raf);
+      raf = 0; drag = null; lastTarget = null;
+    }
+
+    root.addEventListener("pointerdown", function (e) {
+      if (e.button > 0) return;
+      var row = rowOf(e.target);
+      if (!row) return;
+      if (e.target.closest("[data-pgrab]")) {
+        drag = { id: e.pointerId, row: row, x: e.clientX, y: e.clientY };
+        capture(e.pointerId);
+        return;
+      }
+      if (e.target.closest("button") || root.querySelector(".pconfirm")) return;
+      startPress(row, e);
+      capture(e.pointerId);
+    });
+
+    root.addEventListener("pointermove", function (e) {
+      if (press && e.pointerId === press.id &&
+          (Math.abs(e.clientX - press.x) > MOVE_TOL || Math.abs(e.clientY - press.y) > MOVE_TOL)) {
+        cancelPress();                                  // turned into a scroll
+      }
+      if (!drag || e.pointerId !== drag.id) return;
+      drag.x = e.clientX; drag.y = e.clientY;
+      if (!drag.live) engage();
+      e.preventDefault();
+      paint(); reposition(); edgeScroll();
+    }, { passive: false });
+
+    root.addEventListener("pointerup", function (e) {
+      if (press && e.pointerId === press.id) { cancelPress(); return; }
+      if (!drag || e.pointerId !== drag.id) return;
+      var live = drag.live, slug = drag.row.dataset.slug;
+      cleanupDrag();
+      if (!live) { toggleReorderMode(rowOf(e.target)); return; }  // tap, not drag
+      suppressUntil = Date.now() + 400;
+      dragState = "pointer";
+      commitOrder(slug);
+    });
+
+    root.addEventListener("pointercancel", function () {
+      cancelPress();
+      if (drag) { var wasLive = drag.live; cleanupDrag(); if (wasLive) replan(); }
+    });
+
+    root.addEventListener("contextmenu", function (e) { if (press || drag) e.preventDefault(); });
+
+    // Capture phase, so a gesture that ends over the place link cannot navigate.
+    // Our own controls are exempt: the confirmation appears the instant the
+    // long press completes, and a quick tap on "remove" lands inside this same
+    // window — suppressing it would make the button look dead.
+    root.addEventListener("click", function (e) {
+      if (Date.now() >= suppressUntil) return;
+      if (e.target.closest &&
+          e.target.closest("[data-pcancel],[data-pdel],[data-pmv],[data-pdone],[data-padd],[data-pundo]")) return;
+      e.preventDefault(); e.stopPropagation();
+    }, true);
+
+    /* ---------- tap the handle: single-pointer alternative to dragging (2.5.7) */
+    function toggleReorderMode(row) {
+      if (!row) return;
+      var open = row.classList.toggle("preorder");
+      var grab = row.querySelector(".pgrab");
+      if (grab) grab.setAttribute("aria-expanded", open ? "true" : "false");
+      var bar = row.querySelector(".pmovebar");
+      if (bar) bar.remove();
+      if (!open) return;
+      var slug = row.dataset.slug;
+      var b = document.createElement("span");
+      b.className = "pmovebar";
+      b.innerHTML = '<button type="button" class="btn sm ghost" data-pmv="-1" data-s="' +
+        esc(slug) + '">↑ ' + esc(T.move_up) + "</button>" +
+        '<button type="button" class="btn sm ghost" data-pmv="1" data-s="' + esc(slug) + '">↓ ' +
+        esc(T.move_down) + "</button>" +
+        '<button type="button" class="btn sm" data-pdone>' + esc(T.reorder_done) + "</button>";
+      row.appendChild(b);
+    }
+
+    root.addEventListener("click", function (e) {
+      var t = e.target.closest ? e.target.closest("[data-pmv],[data-pdel],[data-pcancel],[data-pdone],[data-padd],[data-pundo]") : null;
+      if (!t) return;
+      e.preventDefault();
+      if (t.hasAttribute("data-pmv")) {
+        dragState = "pointer";
+        editMove(t.dataset.s, parseInt(t.dataset.pmv, 10));
+      } else if (t.hasAttribute("data-pdel")) {
+        var crow = t.closest("li.pstop");
+        UNDO = CUR.route.slice();
+        editRemove(t.dataset.pdel);
+        announce(tpl(T.removed, (crow && crow.dataset.name) || ""));
+      } else if (t.hasAttribute("data-pcancel") || t.hasAttribute("data-pdone")) {
+        closeConfirm();
+        var r2 = t.closest("li.pstop");
+        if (r2 && r2.classList.contains("preorder")) toggleReorderMode(r2);
+      } else if (t.hasAttribute("data-padd")) {
+        editAdd(t.dataset.padd, t.dataset.after);
+      } else if (t.hasAttribute("data-pundo") && UNDO) {
+        CUR.route = UNDO; UNDO = null; replan();
+      }
+    });
+
+    /* ---------- keyboard: the path drag can never provide (2.1.1) */
+    root.addEventListener("keydown", function (e) {
+      var grab = e.target.closest ? e.target.closest(".pgrab") : null;
+      var row = grab ? grab.closest("li.pstop") : null;
+      if (!row) return;
+      if (e.altKey && (e.key === "ArrowUp" || e.key === "ArrowDown")) {
+        e.preventDefault();
+        dragState = "keyboard";
+        editMove(row.dataset.slug, e.key === "ArrowUp" ? -1 : 1);
+      } else if (e.key === "Delete" || e.key === "Backspace") {
+        e.preventDefault();
+        showConfirm(row);
+      } else if (e.key === "Escape") {
+        closeConfirm();
+      }
+    });
+  }
+
   function editRemove(slug) {
     CUR.route = CUR.route.filter(function (a) { return a.s !== slug; });
     replan();
@@ -255,14 +568,18 @@
     var i = CUR.route.findIndex(function (a) { return a.s === slug; });
     var j = i + dir;
     if (i < 0 || j < 0 || j >= CUR.route.length) return;
+    UNDO = CUR.route.slice();
     var t = CUR.route[i]; CUR.route[i] = CUR.route[j]; CUR.route[j] = t;
+    PENDING_FLASH = slug;
     replan();
   }
   function editAdd(slug, afterSlug) {
     var a = D.a.find(function (x) { return x.s === slug; });
     if (!a || CUR.route.some(function (x) { return x.s === slug; })) return;
     var i = afterSlug ? CUR.route.findIndex(function (x) { return x.s === afterSlug; }) : -1;
-    if (i >= 0) CUR.route.splice(i, 0, a); else CUR.route.push(a);
+    // splice(i) would insert *before* the reference stop, but the suggestion is
+    // offered as "on the way after this stop" — insert after it.
+    if (i >= 0) CUR.route.splice(i + 1, 0, a); else CUR.route.push(a);
     replan();
   }
   window._fhEdit = { rm: editRemove, mv: editMove, add: editAdd };
@@ -317,7 +634,8 @@
          '</p><div class="row"><button class="btn wa" type="button" id="plannerwa">WhatsApp</button>'+
          '<a class="btn ghost" href="' + D.url.fleet + '">' + D.nav.fleet + "</a></div></div>";
 
-    h += "<h2>" + T.day_plan + "</h2>";
+    h += "<h2>" + T.day_plan + "</h2>" +
+         '<p class="pstops-help">' + esc(T.drag_hint || "") + "</p>";
     res.days.forEach(function (d, di) {
       var col = DAY_COLORS[di % DAY_COLORS.length];
       h += '<div class="pday"><h3><span class="pdot" style="background:' + col + '"></span>' +
@@ -326,27 +644,27 @@
       if(d.drive>480)h+='<div class="note error">⚠ '+esc(T.very_long_drive||"Very long driving day — split this itinerary")+'</div>';
       else if(d.drive>360)h+='<div class="note">⚠ '+esc(T.long_drive||"More than 6 hours of driving")+'</div>';
       if(winter&&d.items.some(function(x){return (x.a.el||0)>1200||x.a.rd>=1;}))h+='<div class="note">❄ '+esc(T.winter_warning||"Winter tyres are required; carry snow chains and verify current road conditions.")+'</div>';
-      h += '<ol class="pstops">';
+      // role="list" because list-style:none strips list semantics in Safari/VoiceOver,
+      // and position-in-list is the whole point of a reorderable itinerary.
+      h += '<ol class="pstops" role="list">';
       var prev = di === 0 ? start : res.days[di - 1].items.slice(-1)[0].a;
       d.items.forEach(function (it, ii) {
-        h += "<li><div class=\"pleg\">" + T.drive + " " + Math.round(it.legKm) + " " + T.km +
-             " · " + fmtH(it.legMin) + "</div>" +
-             '<div class="pstop">' +
-             (it.a.img ? '<img class="pthumb" src="' + esc(it.a.img) + '" alt="" loading="lazy" ' +
-                         'width="112" height="84">' : '') +
-             '<div class="pstop-t"><b><a href="' + it.a.u + '">' + esc(it.a.n) + "</a></b>" +
-             '<span class="pmeta">' + T.arrive + " " + clock(it.arrive) + " · " + T.visit + " " +
-             fmtH(it.visit) + " · " + T.depart + " " + clock(it.depart) + "</span>" +
-             '<span class="pshort">' + esc(it.a.sh) + "</span></div>" +
-             '<span class="pstop-b">' +
-             '<button type="button" data-pmv="-1" data-s="' + esc(it.a.s) + '" title="↑">↑</button>' +
-             '<button type="button" data-pmv="1" data-s="' + esc(it.a.s) + '" title="↓">↓</button>' +
-             '<button type="button" data-prm="' + esc(it.a.s) + '" title="✕">✕</button>' +
-             '</span></div>';
+        h += '<li class="pleg" aria-hidden="true">' + T.drive + " " + Math.round(it.legKm) +
+             " " + T.km + " · " + fmtH(it.legMin) + "</li>" +
+             '<li class="pstop" data-slug="' + esc(it.a.s) + '">' +
+             '<button type="button" class="pgrab" data-pgrab aria-label="' +
+             esc((T.reorder_label || "Reorder {name}").replace("{name}", it.a.n)) +
+             '" aria-expanded="false"></button>' +
+             '<span class="pnum">' + (ii + 1) + "</span>" +
+             '<span class="pstop-t">' +
+             '<a class="pname" draggable="false" href="' + it.a.u + '">' + esc(it.a.n) + "</a>" +
+             '<span class="pdur">' + T.visit + " " + fmtH(it.visit) + " · " + T.arrive + " " +
+             clock(it.arrive) + "</span></span>" +
+             '<span class="ppress" aria-hidden="true"></span></li>';
         var opt = alongTheWay(prev, it.a, planSlugs(res), pool);
         if (opt.length) {
           /* +დრო = რეალური ჩასმის დანამატი: (prev→o) + (o→აქ) − (prev→აქ) + ვიზიტი */
-          h += '<div class="popt">' + T.optional + ": " +
+          h += '<li class="popt">' + T.optional + ": " +
                opt.map(function (o) {
                  var addMin = Math.max(0, leg(prev, o.p).min + leg(o.p, it.a).min -
                                           leg(prev, it.a).min) + o.p.h * 60;
@@ -354,15 +672,14 @@
                         fmtH(addMin) + "</i>" +
                         ' <button type="button" class="paddbtn" data-padd="' + esc(o.p.s) +
                         '" data-after="' + esc(it.a.s) + '">＋</button>';
-               }).join(" · ") + "</div>";
+               }).join(" · ") + "</li>";
         }
-        h += "</li>";
         prev = it.a;
       });
       if (d.back) {
-        h += '<li><div class="pleg">' + T.back_to + " " + esc(start.n) + " — " +
+        h += '<li class="pleg pleg-back">' + T.back_to + " " + esc(start.n) + " — " +
              Math.round(d.back.km) + " " + T.km + " · " + fmtH(d.back.min) +
-             " · " + T.arrive + " " + clock(d.back.arrive) + "</div></li>";
+             " · " + T.arrive + " " + clock(d.back.arrive) + "</li>";
       }
       h += "</ol>";
       var lastA = d.items.slice(-1)[0].a;
@@ -448,15 +765,7 @@
     }
     var jpg=document.getElementById("tourjpg"),pdf=document.getElementById("tourpdf"),print=document.getElementById("tourprint"); if(jpg)jpg.onclick=saveJpg;if(pdf)pdf.onclick=savePdf;if(print)print.onclick=function(){window.print();};
     var plannerWa=document.getElementById("plannerwa");if(plannerWa)plannerWa.onclick=function(){var cfg=window.FH_CFG||{},num=String(cfg.whatsapp||"").replace(/\D/g,"");if(!num)return;var msg="Hello, I want to rent "+(rentalCar?rentalCar.n:"a suitable car")+" for "+tripName+". Route: "+planSlugs(res).join(", ")+". Distance: "+Math.round(totKm)+" km. Page: "+location.href;window.open("https://wa.me/"+num+"?text="+encodeURIComponent(msg),"_blank","noopener");};
-    box.querySelectorAll("[data-prm]").forEach(function (b) {
-      b.onclick = function () { editRemove(b.dataset.prm); };
-    });
-    box.querySelectorAll("[data-pmv]").forEach(function (b) {
-      b.onclick = function () { editMove(b.dataset.s, parseInt(b.dataset.pmv, 10)); };
-    });
-    box.querySelectorAll("[data-padd]").forEach(function (b) {
-      b.onclick = function () { editAdd(b.dataset.padd, b.dataset.after); };
-    });
+    flashMoved(box);
     var sv = document.getElementById("savetrip");
     if (sv) sv.onclick = function () {
       var stops = [];
@@ -978,6 +1287,7 @@
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape" && standardModal && !standardModal.hidden) closeStandardTours();
     });
+    bindStopGestures();
     var workspace = document.querySelector('.travel-workspace');
     renderStandardTours();
     if (workspace && workspace.dataset.mode === 'planner') run();

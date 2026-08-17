@@ -51,6 +51,16 @@ ka:
     km: კმ
     recalc: ხელახლა დათვლა
     day_plan: დღეების გეგმა
+    drag_hint: 'გადაათრიეთ ⠿ თანმიმდევრობის შესაცვლელად · წასაშლელად ხანგრძლივად დააჭირეთ გაჩერებას'
+    reorder_label: 'გადაადგილება: {name}'
+    move_up: 'ზემოთ'
+    move_down: 'ქვემოთ'
+    reorder_done: 'მზადაა'
+    remove_q: 'წავშალოთ {name} გეგმიდან?'
+    remove_yes: 'წაშლა'
+    remove_no: 'გაუქმება'
+    removed: '{name} წაიშალა'
+    undo: 'დაბრუნება'
     download: გეგმის შენახვა
     season_warn: სეზონურად დახურული ობიექტები გამოირიცხა
     need_car: საჭირო ავტომობილი
@@ -172,6 +182,16 @@ en:
     km: km
     recalc: Recalculate
     day_plan: Day by day
+    drag_hint: 'Drag ⠿ to reorder · press and hold a stop to remove it'
+    reorder_label: 'Reorder {name}'
+    move_up: 'Move up'
+    move_down: 'Move down'
+    reorder_done: 'Done'
+    remove_q: 'Remove {name} from the plan?'
+    remove_yes: 'Remove'
+    remove_no: 'Cancel'
+    removed: '{name} removed'
+    undo: 'Undo'
     download: Save the plan
     season_warn: Seasonally closed sights were excluded
     need_car: Car needed
@@ -295,6 +315,16 @@ ru:
     km: км
     recalc: Пересчитать
     day_plan: План по дням
+    drag_hint: 'Перетащите ⠿, чтобы изменить порядок · нажмите и удерживайте, чтобы удалить'
+    reorder_label: 'Переместить: {name}'
+    move_up: 'Вверх'
+    move_down: 'Вниз'
+    reorder_done: 'Готово'
+    remove_q: 'Удалить {name} из плана?'
+    remove_yes: 'Удалить'
+    remove_no: 'Отмена'
+    removed: '{name} удалён'
+    undo: 'Вернуть'
     download: Сохранить план
     season_warn: Сезонно закрытые объекты исключены
     need_car: Нужен автомобиль
@@ -422,6 +452,16 @@ fa:
     km: کیلومتر
     recalc: محاسبه دوباره
     day_plan: برنامه روزبه‌روز
+    drag_hint: 'برای جابه‌جایی ⠿ را بکشید · برای حذف، روی توقف فشار دهید و نگه دارید'
+    reorder_label: 'جابه‌جایی {name}'
+    move_up: 'بالا'
+    move_down: 'پایین'
+    reorder_done: 'انجام شد'
+    remove_q: '{name} از برنامه حذف شود؟'
+    remove_yes: 'حذف'
+    remove_no: 'انصراف'
+    removed: '{name} حذف شد'
+    undo: 'بازگرداندن'
     download: ذخیره برنامه
     season_warn: جاذبه‌های فصلی بسته کنار گذاشته شدند
     need_car: خودروی لازم
@@ -543,6 +583,16 @@ he:
     km: ק"מ
     recalc: חישוב מחדש
     day_plan: תוכנית יום‑יום
+    drag_hint: 'גררו ⠿ כדי לשנות סדר · לחצו והחזיקו על עצירה כדי להסיר'
+    reorder_label: 'שינוי סדר: {name}'
+    move_up: 'למעלה'
+    move_down: 'למטה'
+    reorder_done: 'סיום'
+    remove_q: 'להסיר את {name} מהתוכנית?'
+    remove_yes: 'הסרה'
+    remove_no: 'ביטול'
+    removed: '{name} הוסר'
+    undo: 'ביטול פעולה'
     download: שמירת התוכנית
     season_warn: אתרים שסגורים עונתית הוצאו
     need_car: רכב נדרש
@@ -664,6 +714,16 @@ ar:
     km: كم
     recalc: إعادة الحساب
     day_plan: البرنامج يوماً بيوم
+    drag_hint: 'اسحب ⠿ لإعادة الترتيب · اضغط مطولًا على محطة لإزالتها'
+    reorder_label: 'إعادة ترتيب {name}'
+    move_up: 'أعلى'
+    move_down: 'أسفل'
+    reorder_done: 'تم'
+    remove_q: 'إزالة {name} من الخطة؟'
+    remove_yes: 'إزالة'
+    remove_no: 'إلغاء'
+    removed: 'تمت إزالة {name}'
+    undo: 'تراجع'
     download: حفظ الخطة
     season_warn: استُبعدت المعالم المغلقة موسمياً
     need_car: السيارة المطلوبة
