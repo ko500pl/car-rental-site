@@ -490,12 +490,12 @@ nav.main a{{font-size:13.5px;padding:6px 9px}}
 @media print{{ .site-head,.site-foot,.cta{{display:none}} body{{font-size:12pt}} }}
 
 /* ═══════════════ Drive On — dark design layer ═══════════════ */
-::selection{{background:color-mix(in srgb,var(--brand) 40%,transparent);color:#fff}}
+::selection{{background:color-mix(in srgb,var(--brand) 22%,transparent)}}
 ::-webkit-scrollbar{{width:11px;height:11px}}
 ::-webkit-scrollbar-track{{background:var(--bg)}}
 ::-webkit-scrollbar-thumb{{background:var(--line);border-radius:99px;border:3px solid var(--bg)}}
 ::-webkit-scrollbar-thumb:hover{{background:var(--ink-3)}}
-input,select,textarea,button{{color-scheme:dark}}
+input,select,textarea,button{{color-scheme:light}}
 
 /* header */
 .site-head{{background:color-mix(in srgb,var(--bg) 86%,#000);backdrop-filter:blur(10px);
@@ -507,8 +507,8 @@ input,select,textarea,button{{color-scheme:dark}}
   box-shadow:0 4px 14px color-mix(in srgb,var(--brand) 34%,transparent)}}
 .logo small{{color:var(--ink-3);font-size:11.5px;letter-spacing:.14em}}
 nav.main a{{color:var(--ink-2);border-radius:9px;padding:7px 11px}}
-nav.main a:hover{{background:var(--surface-2);color:#fff}}
-nav.main a[aria-current="page"]{{background:transparent;color:#fff;font-weight:700}}
+nav.main a:hover{{background:var(--bg-3);color:var(--ink)}}
+nav.main a[aria-current="page"]{{background:var(--brand);color:#fff;font-weight:600}}
 .langs{{border:0;padding:3px;background:var(--surface-2);border-radius:999px;gap:2px}}
 .langs a{{padding:5px 10px;border-radius:999px;font-size:12.5px;color:var(--ink-3);text-transform:uppercase}}
 .langs a:hover{{background:color-mix(in srgb,#fff 8%,transparent)}}
@@ -525,8 +525,7 @@ nav.main a[aria-current="page"]{{background:transparent;color:#fff;font-weight:7
 /* page top glow */
 .crumbs{{position:relative}}
 main{{position:relative}}
-body::before{{content:"";position:fixed;inset-inline:0;top:0;height:420px;pointer-events:none;z-index:0;
-  background:radial-gradient(120% 100% at 50% 0%,color-mix(in srgb,var(--brand) 13%,transparent) 0%,transparent 62%)}}
+
 .site-head,main,.site-foot{{z-index:1}}
 .site-head{{position:sticky;top:0;z-index:30}}
 main,.site-foot{{position:relative}}
@@ -550,7 +549,7 @@ h1,h2,h3,h4{{color:var(--brand-ink)}}
 .facts div{{background:var(--surface);border:1px solid var(--line);border-radius:12px}}
 .facts{{gap:12px;border:0;background:none}}
 .facts .k{{font-size:12.5px;color:var(--ink-3);letter-spacing:.02em}}
-.facts .v{{font-family:var(--mono);font-size:17px;color:#fff;font-weight:600;letter-spacing:-.01em}}
+.facts .v{{font-family:var(--mono);font-size:17px;color:var(--brand-ink);font-weight:600;letter-spacing:-.01em}}
 .price,.exptot b{{font-family:var(--mono)}}
 
 /* buttons */
@@ -559,7 +558,7 @@ h1,h2,h3,h4{{color:var(--brand-ink)}}
 .btn:hover{{filter:brightness(1.08);text-decoration:none}}
 .btn.ghost,.btn.alt{{background:var(--surface-2);color:var(--brand-ink);border:1px solid var(--line);
   box-shadow:none}}
-.btn.ghost:hover,.btn.alt:hover{{border-color:var(--brand);color:#fff;filter:none}}
+.btn.ghost:hover,.btn.alt:hover{{border-color:var(--brand);color:var(--brand);filter:none}}
 
 /* surfaces */
 .card,.car,.post-c,.pday,.pform,.legend,.explorer{{background:var(--surface);border-color:var(--line)}}
@@ -569,7 +568,7 @@ thead th{{background:var(--surface-2);color:var(--brand-ink)}}
 tbody tr:nth-child(even){{background:color-mix(in srgb,#fff 3%,transparent)}}
 .note{{background:color-mix(in srgb,var(--accent) 10%,var(--surface));border-inline-start-color:var(--accent);
   color:var(--ink-2)}}
-.article strong,.article b{{color:#fff}}
+.article strong,.article b{{color:var(--brand-ink)}}
 .article a{{color:var(--brand-2);text-decoration:underline;text-underline-offset:3px}}
 
 /* explorer on dark */
@@ -582,8 +581,8 @@ tbody tr:nth-child(even){{background:color-mix(in srgb,#fff 3%,transparent)}}
 .exptot{{background:var(--surface-2)}}
 .expclose{{background:var(--surface-2);color:var(--ink-2);border-color:var(--line)}}
 .chip{{background:var(--surface-2);color:var(--ink-2);border-color:var(--line)}}
-.chip:hover{{border-color:var(--brand);color:#fff}}
-.chip.on{{background:var(--grad);color:var(--on-brand);border-color:transparent}}
+.chip:hover{{border-color:var(--brand);color:var(--brand)}}
+.chip.on{{background:var(--brand);color:#fff;border-color:var(--brand)}}
 .leaflet-container{{background:var(--bg-2)}}
 .leaflet-popup-content-wrapper,.leaflet-popup-tip{{background:var(--surface);color:var(--ink)}}
 .leaflet-tooltip{{background:var(--surface);color:var(--ink);border-color:var(--line)}}
@@ -600,11 +599,11 @@ tbody tr:nth-child(even){{background:color-mix(in srgb,#fff 3%,transparent)}}
 .attr-grid{{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:34px;align-items:start}}
 .rentbox{{position:sticky;top:96px;background:var(--surface);border:1px solid var(--line);
   border-radius:16px;padding:22px 24px}}
-.rentbox h3{{margin:0 0 8px;font-size:19px;color:#fff}}
+.rentbox h3{{margin:0 0 8px;font-size:19px;color:var(--brand-ink)}}
 .rentbox p{{margin:0 0 16px;font-size:14.5px;color:var(--ink-2);line-height:1.6}}
 .rentrow{{display:flex;justify-content:space-between;align-items:baseline;gap:12px;
   font-size:14.5px;color:var(--ink-2);padding:7px 0;border-bottom:1px solid var(--line)}}
-.rentrow b{{font-family:var(--mono);color:#fff;font-weight:600;font-size:15px}}
+.rentrow b{{font-family:var(--mono);color:var(--ok);font-weight:700;font-size:15px}}
 .rentbox .btn{{display:flex;width:100%;justify-content:center;margin-top:16px}}
 .rentnote{{font-size:12.5px;color:var(--ink-3);text-align:center;margin:10px 0 0;line-height:1.5}}
 .tagrow{{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px}}
@@ -637,11 +636,11 @@ tbody tr:nth-child(even){{background:color-mix(in srgb,#fff 3%,transparent)}}
 .chip.style b{{display:block;font-size:15px;color:var(--brand-ink);font-weight:700;margin-bottom:3px}}
 .chip.style small{{display:block;font-size:12.5px;color:var(--ink-3);line-height:1.45}}
 .chip.style.on{{border-color:var(--brand);background:color-mix(in srgb,var(--brand) 12%,var(--surface))}}
-.chip.style.on b{{color:#fff}}
+.chip.style.on b{{color:var(--brand)}}
 .carmode{{display:flex;flex-direction:row;gap:10px;flex-wrap:wrap;align-items:center;justify-content:flex-start}}
 .tog{{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);
   border-radius:999px;padding:9px 16px;font-size:14.5px;cursor:pointer;color:var(--ink-2)}}
-.tog:has(input:checked){{border-color:var(--brand);color:#fff;
+.tog:has(input:checked){{border-color:var(--brand);color:var(--brand-ink);
   background:color-mix(in srgb,var(--brand) 14%,var(--surface))}}
 .tog input{{accent-color:var(--brand)}}
 .pstop{{display:flex;gap:14px;align-items:flex-start}}
@@ -651,7 +650,7 @@ tbody tr:nth-child(even){{background:color-mix(in srgb,#fff 3%,transparent)}}
   padding:20px 24px;margin:0 0 26px}}
 .carrec img{{width:100%;height:auto;border-radius:12px}}
 .carrec-ph{{width:100%;aspect-ratio:16/10;border-radius:12px;background:var(--surface-2)}}
-.carrec h3{{margin:8px 0 4px;font-size:21px;color:#fff}}
+.carrec h3{{margin:8px 0 4px;font-size:21px;color:var(--brand-ink)}}
 .carrec .rentrow:last-of-type{{border-bottom:0}}
 .carrec .why{{margin:10px 0 14px;font-size:13px;color:var(--ink-3)}}
 .carrec .btn{{margin-top:2px}}
@@ -666,7 +665,7 @@ tbody tr:nth-child(even){{background:color-mix(in srgb,#fff 3%,transparent)}}
 .authlink{{display:inline-flex;align-items:center;gap:8px;background:var(--surface-2);
   border:1px solid var(--line);border-radius:999px;padding:7px 14px;font:inherit;font-size:14px;
   color:var(--ink-2);cursor:pointer}}
-.authlink:hover{{border-color:var(--brand);color:#fff;text-decoration:none}}
+.authlink:hover{{border-color:var(--brand);color:var(--brand);text-decoration:none}}
 .ava{{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:12px;
   font-weight:700;background:var(--grad);color:var(--on-brand)}}
 .authdlg{{position:fixed;inset:0;z-index:900;background:rgba(2,6,12,.72);display:grid;
@@ -674,7 +673,7 @@ tbody tr:nth-child(even){{background:color-mix(in srgb,#fff 3%,transparent)}}
 .authcard{{position:relative;width:min(420px,100%);background:var(--surface);
   border:1px solid var(--line);border-radius:18px;padding:26px 26px 22px;
   box-shadow:0 30px 80px rgba(0,0,0,.5);max-height:92vh;overflow:auto}}
-.authcard h3{{margin:0 0 6px;font-size:22px;color:#fff}}
+.authcard h3{{margin:0 0 6px;font-size:22px;color:var(--brand-ink)}}
 .authcard label{{display:block;font-size:13px;color:var(--ink-3);margin:0 0 10px}}
 .authcard input{{width:100%;font:inherit;font-size:15px;padding:10px 12px;margin-top:4px;
   border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink)}}
@@ -703,12 +702,12 @@ tbody tr:nth-child(even){{background:color-mix(in srgb,#fff 3%,transparent)}}
 .profile-avatar i{{position:absolute;inset:auto 2px 2px auto;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;background:var(--brand);color:#04222b;font:900 16px/1 sans-serif;border:2px solid var(--surface)}}
 .profile-avatar.loading{{opacity:.55;pointer-events:none}}
 .avatar-change{{display:block;margin-top:5px;padding:0;border:0;background:none;color:var(--brand-2);font:inherit;font-size:12px;font-weight:700;cursor:pointer}}
-.acchead b{{display:block;color:#fff;font-size:17px}}
+.acchead b{{display:block;color:var(--brand-ink);font-size:17px}}
 .acchead span{{font-size:13.5px;color:var(--ink-3)}}
 .tripcard{{background:var(--surface);border:1px solid var(--line);border-radius:14px;
   padding:16px 20px;margin:0 0 12px}}
 .tripcard.done{{opacity:.72;border-inline-start:3px solid var(--ok)}}
-.tripmeta b{{color:#fff;font-size:17px;display:block}}
+.tripmeta b{{color:var(--brand-ink);font-size:17px;display:block}}
 .tripmeta span{{font-size:13px;color:var(--ink-3);font-family:var(--mono)}}
 .triprow{{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}}
 .memory-upload{{cursor:pointer}}.memory-upload input{{position:absolute;inline-size:1px;block-size:1px;opacity:0}}
@@ -766,7 +765,7 @@ tbody tr:nth-child(even){{background:color-mix(in srgb,#fff 3%,transparent)}}
 .expfind{{padding:9px 11px;border-bottom:1px solid var(--line);background:var(--surface);min-height:0}}
 .expfindrow{{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:7px}}
 .expfindrow .btn{{padding:7px 10px;font-size:12.5px}}
-.expfindrow .btn.on{{border-color:var(--accent);color:#fff;
+.expfindrow .btn.on{{border-color:var(--accent);color:var(--brand-ink);
   background:color-mix(in srgb,var(--accent) 18%,var(--surface))}}
 .expmodes{{display:flex;gap:6px;margin-bottom:6px}}
 .tog.sm{{padding:6px 12px;font-size:13px}}
@@ -805,7 +804,7 @@ tbody tr:nth-child(even){{background:color-mix(in srgb,#fff 3%,transparent)}}
 .wpbtns button{{border:1px solid var(--line);background:var(--surface-2);
   color:var(--ink-2);border-radius:6px;width:24px;height:24px;cursor:pointer;font-size:12px;
   line-height:1}}
-.wpbtns button:hover{{border-color:var(--brand);color:#fff}}
+.wpbtns button:hover{{border-color:var(--brand);color:var(--brand)}}
 .paddbtn{{border:1px solid var(--line);background:var(--surface-2);color:var(--ok);
   border-radius:6px;width:22px;height:22px;cursor:pointer;font-size:13px;line-height:1;
   vertical-align:middle}}
@@ -816,7 +815,7 @@ tbody tr:nth-child(even){{background:color-mix(in srgb,#fff 3%,transparent)}}
 .pstay a{{color:var(--brand-2)}}
 .pstay small{{color:var(--ink-3);font-size:11px;display:block;margin-top:2px}}
 .wx{{display:inline-flex;align-items:baseline;gap:4px;font-family:var(--mono);font-size:14px;
-  color:#fff;white-space:nowrap}}
+  color:var(--brand-ink);white-space:nowrap}}
 .wx small{{color:var(--ink-3);font-size:12px}}
 .wxr{{color:#7dd3fc;font-size:12px}}
 .wxbox{{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--surface-2);
@@ -1316,14 +1315,14 @@ body.booking-open{{overflow:hidden}}
 :root{{
   --ink:#17202b;--ink-2:#526170;--ink-3:#718091;--line:#dfe6ec;--line-2:#e9eef2;
   --bg:#f5f7f9;--bg-2:#eef2f5;--bg-3:#e7edf1;--surface:#ffffff;--surface-2:#f7f9fb;
-  --brand:#087f8c;--brand-2:#066d78;--brand-ink:#102a32;--accent:#087f8c;--on-brand:#fff;
+  --brand:#0d94ae;--brand-2:#0b8399;--brand-ink:#102a32;--accent:#0d94ae;--on-brand:#fff;
   --radius:12px
 }}
 body{{font-size:14px;line-height:1.5;background:var(--bg);color:var(--ink)}}
-a{{color:#087f8c}}
+a{{color:#0d94ae}}
 .site-head{{background:#fff}}
-.btn,.head-tel a{{min-height:42px;padding:9px 16px;border-radius:9px;background:#087f8c;color:#fff;font-weight:750}}
-.btn:hover,.head-tel a:hover{{background:#066d78;text-decoration:none}}
+.btn,.head-tel a{{min-height:42px;padding:9px 16px;border-radius:9px;background:#0d94ae;color:#fff;font-weight:750}}
+.btn:hover,.head-tel a:hover{{background:#0b8399;text-decoration:none}}
 .btn.alt,.btn.ghost{{background:#fff;color:#1d3a42;border:1px solid #ccd8de}}
 .btn.alt:hover,.btn.ghost:hover{{background:#f2f6f7;color:#102a32}}
 
@@ -1331,7 +1330,7 @@ a{{color:#087f8c}}
 .home-hero{{padding:40px 0 34px!important;background:#fff!important;border-bottom:1px solid var(--line)!important;color:var(--ink)!important}}
 .home-hero-grid{{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(330px,.75fr);gap:clamp(30px,6vw,88px);align-items:center}}
 .home-hero-copy{{min-width:0}}
-.home-hero .kicker{{margin:0 0 10px;color:#087f8c;font-size:11px;letter-spacing:.08em}}
+.home-hero .kicker{{margin:0 0 10px;color:#0d94ae;font-size:11px;letter-spacing:.08em}}
 .home-hero h1{{max-width:16ch;margin:0 0 12px;color:#15262d;font-size:clamp(32px,4.2vw,54px);line-height:1.08;letter-spacing:-.035em}}
 .home-hero .lead{{max-width:58ch;margin:0 0 20px;color:#526170;font-size:15px;line-height:1.55}}
 .home-hero-actions{{display:flex;gap:9px;flex-wrap:wrap}}
@@ -1339,11 +1338,11 @@ a{{color:#087f8c}}
 .home-quick{{display:grid;gap:8px;padding:8px;border:1px solid #dfe6ec;border-radius:16px;background:#f7f9fb}}
 .home-quick-card{{display:grid;grid-template-columns:32px minmax(0,1fr) auto;align-items:center;gap:10px;min-height:64px;padding:10px 12px;border:1px solid transparent;border-radius:11px;color:#17202b;background:#fff;text-decoration:none}}
 .home-quick-card:hover{{border-color:#a9cbd0;background:#fbfefe;text-decoration:none}}
-.home-quick-card>span{{display:grid;place-items:center;width:30px;height:30px;border-radius:8px;background:#e6f4f4;color:#087f8c;font-size:12px;font-weight:800}}
+.home-quick-card>span{{display:grid;place-items:center;width:30px;height:30px;border-radius:8px;background:#e7f4f7;color:#0d94ae;font-size:12px;font-weight:800}}
 .home-quick-card div{{display:grid;gap:2px}}
 .home-quick-card b{{font-size:13px;color:#17202b}}
 .home-quick-card small{{font-size:11px;color:#718091}}
-.home-quick-card i{{font-style:normal;color:#087f8c;font-size:18px}}
+.home-quick-card i{{font-style:normal;color:#0d94ae;font-size:18px}}
 
 /* Keep the map central and remove decorative detours. */
 .journey-flow{{padding:22px 0;background:#f5f7f9}}
@@ -1352,7 +1351,7 @@ a{{color:#087f8c}}
 .journey-flow-head p{{font-size:12.5px}}
 .journey-steps{{gap:8px}}
 .journey-steps article{{min-height:0;padding:12px 14px;border-radius:10px;background:#fff}}
-.journey-steps article>span{{width:28px;height:28px;font-size:11px;background:#e6f4f4;color:#087f8c}}
+.journey-steps article>span{{width:28px;height:28px;font-size:11px;background:#e7f4f7;color:#0d94ae}}
 .journey-steps h3{{font-size:13px}}
 .journey-steps p{{font-size:11.5px}}
 .maphero{{padding:22px 0 28px!important;background:#f5f7f9}}
@@ -1368,7 +1367,7 @@ a{{color:#087f8c}}
 .expside{{background:#fff}}
 .expside button,.expside .tog{{box-shadow:none}}
 .place-choice{{background:#fff;border-color:#e0e7ec}}
-.place-choice.on{{background:#edf8f7;border-color:#43aeb1}}
+.place-choice.on{{background:#edf8f7;border-color:#0d94ae}}
 .place-choice.candidate{{background:#f4f6f7;border-color:#dfe5e9;color:#526170}}
 .place-choice.candidate:not(.blocked){{background:#fff;border-color:#b9d7d9;color:#17202b}}
 .place-choice.blocked{{filter:grayscale(1);opacity:.48;cursor:not-allowed}}
@@ -1381,7 +1380,7 @@ a{{color:#087f8c}}
   background:var(--surface-2);color:var(--ink-2);font:700 11px var(--mono)}}
 .choice-group.muted h4{{color:var(--ink-3)}}
 .place-fit{{display:inline-flex;margin-top:3px;padding:2px 6px;border-radius:999px;background:#e8f6f3;
-  color:#167a70;font-size:10px;font-weight:700;line-height:1.25}}
+  color:#0b7a55;font-size:10px;font-weight:700;line-height:1.25}}
 .place-fit.blocked{{background:#e9edf0;color:#66727e}}
 .legend{{background:#fff;border-color:#e0e7ec}}
 .home-more-wrap{{padding:18px 0 30px;background:#f5f7f9}}
@@ -1394,7 +1393,7 @@ a{{color:#087f8c}}
   .head-in{{padding:20px 14px 16px;gap:15px}}
   .logo{{padding:2px 5px 14px}}
   nav.main a{{padding:9px 11px;color:#526170;font-size:12.5px}}
-  nav.main a[aria-current="page"]{{background:#e8f3f4;color:#14505a;box-shadow:inset 3px 0 0 #1597a3}}
+  nav.main a[aria-current="page"]{{background:#e7f4f7;color:#0b2f4d;box-shadow:inset 3px 0 0 #0d94ae}}
   .head-tel a{{font-size:11.5px}}
   .langs{{background:#f3f6f8;border-radius:10px}}
   .corner-tools .corner-langs,.corner-tools .authlink,.authbox .authlink{{background:#fff!important;color:#17202b;border:1px solid #dfe6ec}}
@@ -1474,7 +1473,7 @@ main>.sec+section.sec{{border-top:1px solid #e3e8eb}}
 .app-install-card div{{display:grid;gap:2px}}
 .app-install-card strong{{font-size:13px;line-height:1.3}}
 .app-install-card span{{font-size:11px;line-height:1.35;color:#667681}}
-.app-install-action{{min-height:38px;padding:7px 12px;border:0;border-radius:10px;background:#0d8e98;color:#fff;font:700 12px var(--font);cursor:pointer}}
+.app-install-action{{min-height:38px;padding:7px 12px;border:0;border-radius:10px;background:#0d94ae;color:#fff;font:700 12px var(--font);cursor:pointer}}
 .app-install-close{{width:28px;height:28px;padding:0;border:0;background:transparent;color:#657681;font-size:20px;cursor:pointer}}
 @media(max-width:600px){{
   .app-install-card{{inset-inline:10px;bottom:10px;width:auto;grid-template-columns:42px minmax(0,1fr) auto 24px;padding:10px;gap:8px;border-radius:14px}}
@@ -1487,11 +1486,11 @@ main>.sec+section.sec{{border-top:1px solid #e3e8eb}}
 .business-card-link{{display:inline-flex;align-items:center;min-height:42px;padding:9px 13px;border:1px solid #ccd8de;border-radius:9px;background:#fff;color:#1d3a42;font-size:13px;font-weight:750;text-decoration:none}}
 .business-card-link:hover{{background:#f2f6f7;text-decoration:none}}
 .corner-tools .business-card-corner{{min-height:38px;padding:7px 11px;gap:7px;background:#fff;border-color:#dfe6ec;box-shadow:none;white-space:nowrap}}
-.corner-tools .business-card-corner>span:first-child{{font-size:17px;color:#087f8c}}
+.corner-tools .business-card-corner>span:first-child{{font-size:17px;color:#0d94ae}}
 .digital-card-page{{min-height:calc(100vh - 220px);display:grid;place-items:center;padding:58px 18px;background:#eef2f5}}
 .digital-card-shell{{width:min(900px,100%);container-type:inline-size}}
 .card-languages{{display:flex;justify-content:center;gap:5px;margin:0 auto 14px;padding:5px;width:max-content;max-width:100%;overflow-x:auto;background:#fff;border:1px solid #dfe6ec;border-radius:12px;box-shadow:0 8px 24px rgba(8,21,33,.08)}}
-.card-languages a{{min-width:39px;padding:7px 9px;border-radius:8px;color:#526170;font-size:12px;font-weight:700;text-align:center;text-decoration:none}}.card-languages a:hover{{background:#e6f4f4;text-decoration:none}}.card-languages a.on{{background:#087f8c;color:#fff}}
+.card-languages a{{min-width:39px;padding:7px 9px;border-radius:8px;color:#526170;font-size:12px;font-weight:700;text-align:center;text-decoration:none}}.card-languages a:hover{{background:#e7f4f7;text-decoration:none}}.card-languages a.on{{background:#0d94ae;color:#fff}}
 .road-pass-card{{aspect-ratio:1.8;overflow:hidden;background:#fff;border:1px solid #dfe6ec;border-radius:14px;box-shadow:0 24px 64px rgba(8,21,33,.15)}}
 .road-pass-top{{height:16%;padding:0 3.2%;display:flex;align-items:center;justify-content:space-between;gap:18px;background:#081521;color:#fff;font-size:clamp(8px,1.45cqw,13px);letter-spacing:.13em}}
 .road-pass-top strong{{font-size:clamp(11px,2.1cqw,19px);letter-spacing:.05em;white-space:nowrap;color:#fff}}.road-pass-top strong span{{color:#38bdf8;font-size:1.4em}}
@@ -1502,8 +1501,8 @@ main>.sec+section.sec{{border-top:1px solid #e3e8eb}}
 .road-pass-brand{{display:flex;align-items:center;gap:.8cqw;margin-bottom:1.2cqw}}.road-pass-brand img{{width:17cqw;height:8cqw;object-fit:contain;object-position:top left;transform:translateY(-1cqw)}}.road-pass-brand b{{font-size:clamp(19px,4.15cqw,38px);line-height:1.12;color:#081521;text-shadow:0 0 8px #fff,0 0 4px #fff}}
 .road-pass-identity h1{{margin:0 0 .6cqw;color:#081521;font-size:clamp(19px,4.15cqw,38px);line-height:1.12;text-shadow:0 0 9px #fff,0 0 5px #fff}}.road-pass-role{{margin:0 0 1.2cqw;color:#526170;font-size:clamp(8px,1.7cqw,15px);white-space:nowrap;text-shadow:0 0 7px #fff,0 0 4px #fff}}
 .card-contact-line{{width:max-content;max-width:100%;display:flex;align-items:center;gap:1.1cqw;margin:.65cqw 0;color:#17202b;font-size:clamp(10px,2cqw,18px);font-weight:700;text-decoration:none;text-shadow:0 0 7px #fff,0 0 4px #fff}}
-.card-contact-line span{{width:3.7cqw;height:3.7cqw;display:grid;place-items:center;border:1.5px solid #087f8c;border-radius:50%;color:#087f8c;font-size:1.8cqw}}.card-contact-line:hover,.card-site{{color:#087f8c;text-decoration:none}}
-.road-pass-qr{{display:grid;align-content:center;justify-items:center;text-align:center;background:rgba(255,255,255,.58);border-radius:10px}}.road-pass-qr a{{display:block;width:min(22cqw,78%);padding:1cqw;border:2px solid #087f8c;border-radius:10px;background:#fff}}.road-pass-qr img{{display:block;width:100%;height:auto}}.road-pass-qr p{{max-width:24ch;margin:1cqw 0 0;color:#526170;font-size:clamp(7px,1.35cqw,12px);line-height:1.35}}
+.card-contact-line span{{width:3.7cqw;height:3.7cqw;display:grid;place-items:center;border:1.5px solid #0d94ae;border-radius:50%;color:#0d94ae;font-size:1.8cqw}}.card-contact-line:hover,.card-site{{color:#0d94ae;text-decoration:none}}
+.road-pass-qr{{display:grid;align-content:center;justify-items:center;text-align:center;background:rgba(255,255,255,.58);border-radius:10px}}.road-pass-qr a{{display:block;width:min(22cqw,78%);padding:1cqw;border:2px solid #0d94ae;border-radius:10px;background:#fff}}.road-pass-qr img{{display:block;width:100%;height:auto}}.road-pass-qr p{{max-width:24ch;margin:1cqw 0 0;color:#526170;font-size:clamp(7px,1.35cqw,12px);line-height:1.35}}
 html[dir="rtl"] .road-pass-brand{{flex-direction:row-reverse;justify-content:flex-end}}
 @media(max-width:760px){{.corner-tools .business-card-corner{{width:38px;padding:0;justify-content:center}}.corner-tools .business-card-corner>span:last-child{{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}}.digital-card-page{{padding:22px 8px;align-items:start}}.road-pass-card{{border-radius:9px}}}}
 
@@ -1538,4 +1537,75 @@ body{{
 @media(max-width:900px){{
   body{{background-attachment:scroll,scroll;background-size:auto 100vh,auto 100vh}}
 }}
+
+/* ═══════════ Drive On Pages — მომხმარებლის ღია მაკეტის ზუსტი ფენა ═══════════ */
+:root{{
+  --ink:#0e2333;--ink-2:#5a6b7b;--ink-3:#718091;--line:#dde5ec;--line-2:#e9eef2;
+  --bg:#f4f7f9;--bg-2:#eef3f7;--bg-3:#eef3f7;--surface:#ffffff;--surface-2:#f7f9fb;
+  --brand:#0b2f4d;--brand-2:#0d94ae;--brand-ink:#0e2333;--accent:#0d94ae;--on-brand:#fff;
+  --ok:#0b7a55;--radius:12px
+}}
+body{{font-size:15px;line-height:1.55;color:var(--ink);
+  background:#f4f7f9;background-image:none;background-attachment:scroll}}
+a{{color:#0b5f73}}
+.site-head{{background:#fff}}
+.home-hero{{background:#fff!important;border-bottom:1px solid var(--line)!important}}
+.maphero{{background:#f4f7f9!important;border-block:1px solid var(--line)}}
+.home-more-wrap{{background:#fff}}
+.home-more-wrap .sec:nth-of-type(even),main>.sec.alt{{background:#f7f9fb}}
+.home-more-wrap .sec:nth-of-type(odd),main>.sec:not(.alt):not(.maphero){{background:#fff}}
+.digital-card-page{{background-color:#eef2f5;background-image:none}}
+.btn,.head-tel a{{min-height:40px;padding:9px 16px;border-radius:10px;background:#0d94ae;color:#fff;
+  font-weight:600;box-shadow:none}}
+.btn:hover,.head-tel a:hover{{background:#0b8399;text-decoration:none;filter:none}}
+.btn.alt{{background:var(--brand);color:#fff;border:0}}
+.btn.alt:hover{{background:#123f63;color:#fff}}
+.btn.ghost{{background:#fff;color:var(--ink);border:1px solid var(--line)}}
+.btn.ghost:hover{{background:#fff;color:var(--brand);border-color:var(--brand)}}
+.btn.wa{{background:#1faa53}}
+.head-tel a{{background:#fff;color:var(--brand);border:1px solid var(--brand);font-size:14px}}
+.head-tel a:hover{{background:var(--brand);color:#fff}}
+@media(min-width:1001px){{
+  body{{padding-inline-start:0}}
+  .site-head{{position:sticky;top:0;inset-inline:auto;width:auto;height:auto;min-height:0;
+    border-inline-end:0;border-bottom:1px solid var(--line);overflow:visible;z-index:40}}
+  .head-in{{min-height:0;width:auto;max-width:var(--maxw);margin:0 auto;padding:10px 560px 10px 22px;
+    display:flex;flex-direction:row;align-items:center;flex-wrap:wrap;row-gap:8px;gap:14px}}
+  .logo{{display:flex;align-items:center;gap:10px;padding:0;border-bottom:0;font-size:17px}}
+  .logo img{{height:40px;width:auto}}
+  .logo .logo-name{{display:flex;flex-direction:column;line-height:1.3}}
+  .logo small{{font-size:11px;line-height:1.3;letter-spacing:.02em;white-space:normal}}
+  nav.main{{width:auto;margin:0;order:5;flex-basis:100%;overflow:visible}}
+  nav.main ul{{display:flex;flex-direction:row;flex-wrap:wrap;gap:8px;width:auto}}
+  nav.main li{{width:auto;margin:0}}
+  nav.main a{{width:auto;padding:9px 14px;border-radius:10px;font-size:13.5px;font-weight:600;
+    color:var(--ink);background:#fff;border:1px solid var(--line);box-shadow:none}}
+  nav.main a:hover{{background:var(--bg-3);color:var(--ink)}}
+  nav.main a[aria-current="page"]{{background:var(--brand);border-color:var(--brand);color:#fff;box-shadow:none}}
+  .nav-more{{margin-top:0}}
+  .nav-more summary{{display:inline-flex;align-items:center;min-height:0;height:auto;padding:9px 14px;
+    border-radius:10px;border:1px solid var(--line);background:#fff;letter-spacing:.14em}}
+  .nav-more details>ul{{position:absolute;inset-inline-end:auto;inset-inline-start:0;top:calc(100% + 8px);
+    min-width:200px;margin:0!important;padding:8px!important;background:#fff;border:1px solid var(--line);
+    border-radius:12px;box-shadow:0 18px 45px rgba(9,30,48,.16)}}
+  .nav-more details>ul a{{white-space:nowrap;font-size:13px;border:0;background:transparent;width:100%}}
+  .nav-more details>ul a:hover{{background:var(--bg-3)}}
+  .head-actions{{margin:0 0 0 auto;width:auto;display:flex;flex-direction:row;align-items:center;gap:10px}}
+  .head-tel{{order:0}}
+  .head-tel a{{width:auto;justify-content:center;padding:8px 15px;font-size:13.5px}}
+  .corner-tools{{position:absolute;inset-block-start:12px}}
+}}
+.corner-tools .corner-langs{{background:#fff;border:1px solid var(--line)}}
+.corner-tools .corner-langs a.on{{background:var(--brand);color:#fff}}
+.site-foot{{background:#0b2f4d;color:#c2d3e2;border-top:0}}
+.site-foot h2{{color:#fff}}
+.site-foot a{{color:#dbe7f1}}
+.foot-bottom{{border-top:1px solid rgba(255,255,255,.16);color:#9fb6c9}}
+.card,.car,.tripcard,.pday{{border-radius:12px;box-shadow:none}}
+.chip{{border-radius:999px}}
+.chip.on{{background:var(--brand);color:#fff;border-color:var(--brand)}}
+.tag{{background:#e7f4f7;color:#0b5f73}}
+.ok-note{{display:block;font-size:12px;font-weight:600;color:var(--ok);margin:2px 0 6px}}
+.warn-note{{display:block;font-size:12px;font-weight:600;color:#8c5a00;margin:2px 0 6px}}
+.car .ph{{background:#e8edf0;border-bottom:1px dashed #cfdae3;color:var(--ink-2)}}
 """

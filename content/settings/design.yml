@@ -1,24 +1,24 @@
 # ═══ დიზაინის პარამეტრები — იმართება ადმინიდან: Settings → დიზაინი ═══
-# Drive On dark — Claude Design-ის მაკეტის მიხედვით.
+# Drive On light — „Drive On Pages" მაკეტის ზუსტი ტოკენები.
 logo_image: "/assets/do-logo-tight.png"
 logo_height: "62"
 logo_mark: "DO"           # ლოგოს კვადრატში ჩაწერილი ასოები
 
-theme: dark               # dark | light
+theme: light               # dark | light
 
-color_brand: "#22b8d6"    # ძირითადი ფერი (ღილაკები, აქცენტები)
-color_brand_2: "#38bdf8"  # hover / ბმულები
-color_brand_ink: "#e8f6fb" # სათაურების ფერი მუქ ფონზე
-color_accent: "#2dd4bf"   # ტეგები, ლოგოს ნიშანი
-color_accent_2: "#3b82f6" # გრადიენტის მეორე ბოლო
-color_ink: "#eef4fa"      # ძირითადი ტექსტი
-color_ink_2: "#9fb0c2"    # მეორეხარისხოვანი ტექსტი
-color_bg: "#080c11"       # გვერდის ფონი
-color_bg_2: "#0e151d"     # ბარათები / ალტერნატიული სექცია
-color_bg_3: "#141e29"     # hover, ჩიპები
-color_line: "#1e2a37"     # ჩარჩოები
-color_ok: "#34d399"       # ფასის ფერი
-color_on_brand: "#04222b" # ტექსტი ღია ღილაკზე
+color_brand: "#0b2f4d"    # ძირითადი ფერი (ღილაკები, აქცენტები)
+color_brand_2: "#0b5f73"  # hover / ბმულები
+color_brand_ink: "#0e2333" # სათაურების ფერი მუქ ფონზე
+color_accent: "#0d94ae"   # ტეგები, ლოგოს ნიშანი
+color_accent_2: "#0d94ae" # გრადიენტის მეორე ბოლო
+color_ink: "#0e2333"      # ძირითადი ტექსტი
+color_ink_2: "#5a6b7b"    # მეორეხარისხოვანი ტექსტი
+color_bg: "#f4f7f9"       # გვერდის ფონი
+color_bg_2: "#ffffff"     # ბარათები / ალტერნატიული სექცია
+color_bg_3: "#eef3f7"     # hover, ჩიპები
+color_line: "#dde5ec"     # ჩარჩოები
+color_ok: "#0b7a55"       # ფასის ფერი
+color_on_brand: "#ffffff" # ტექსტი ღია ღილაკზე
 
 font_family: '"Noto Sans Georgian","Noto Sans","Segoe UI",system-ui,sans-serif'
 font_mono: 'ui-monospace,"JetBrains Mono","SFMono-Regular",Consolas,"Liberation Mono",monospace'
@@ -27,6 +27,6 @@ base_font_size: "15"
 radius: "12"
 max_width: "1200"
 
-hero_style: gradient       # gradient | solid | image
+hero_style: solid       # gradient | solid | image
 hero_image: ""
 hero_overlay: "0.62"
