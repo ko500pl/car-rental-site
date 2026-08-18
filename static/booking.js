@@ -80,6 +80,28 @@
     ['datefrom','dateto','expday'].forEach(function(id){var el=document.getElementById(id);if(el)el.addEventListener('change',rememberDates);});
   }
   function bootInquiry(){document.querySelectorAll('[data-inquiry]').forEach(initInquiry);bootDialog();}
-  function bootAll(){boot();bootInquiry();}
+  /* GitHub Pages-ზე ფორმის POST-ს მიმღები არ აქვს — Netlify Forms-ს AJAX-ით
+     ვაწვდით ძველი Netlify მისამართიდან, რომ ლიდები ისევ შეგროვდეს. */
+  var NETLIFY_ORIGIN='https://subtle-naiad-c2db5d.netlify.app';
+  function ajaxifyForms(){
+    if(location.hostname.indexOf('netlify.app')>=0)return; /* Netlify-ზე ჩვეულებრივ მუშაობს */
+    document.querySelectorAll('form[data-netlify]').forEach(function(f){
+      f.addEventListener('submit',function(e){
+        e.preventDefault();
+        if(!f.reportValidity())return;
+        var pu=f.querySelector('[name="page_url"]');if(pu)pu.value=location.href;
+        var body=new URLSearchParams(new FormData(f)).toString();
+        var st=f.querySelector('.inquiry-status')||f.querySelector('[role="status"]');
+        if(!st){st=document.createElement('p');st.className='inquiry-status';st.setAttribute('role','status');f.appendChild(st);}
+        st.textContent='…';
+        fetch(NETLIFY_ORIGIN+'/',{method:'POST',mode:'no-cors',
+          headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body})
+          .then(function(){var l=f.dataset.lang||document.documentElement.lang||'en';
+            st.textContent=(l==='ka')?'✓ მოთხოვნა გაგზავნილია — მალე დაგიკავშირდებით':'✓ Sent — we will contact you shortly';f.reset();})
+          .catch(function(){st.textContent='✗';});
+      });
+    });
+  }
+  function bootAll(){boot();bootInquiry();ajaxifyForms();}
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", bootAll); else bootAll();
 }());
