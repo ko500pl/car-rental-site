@@ -609,7 +609,7 @@ def header_html(lang, current):
 <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
 </summary>
 <div class="head-app-menu">
-<a href="/assets/downloads/fleet-house-android.apk" download>
+<a href="/assets/downloads/rentup-android.apk" download>
 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5"></path><path d="M4 19h16"></path></svg>
 <span><b>{E(app_copy[1])}</b><small>{E(app_copy[3])}</small></span></a>
 <span class="head-app-soon">
@@ -653,7 +653,7 @@ def footer_html(lang):
 <a href="{page_url(lang, 'fleet', False)}">{E(u['nav']['fleet'])}</a>
 <a href="{page_url(lang, 'contact', False)}">{E(u['nav']['contact'])}</a>
 <a href="{page_url(lang, 'card', False)}">{E(card_label)}</a>
-<a href="/assets/downloads/fleet-house-android.apk" download>{E(app_label)}</a></nav>
+<a href="/assets/downloads/rentup-android.apk" download>{E(app_label)}</a></nav>
 <div class="foot-contact">
 <a dir="ltr" href="tel:{SITE['phone_e164']}">{E(SITE['phone'])}</a>
 {f'''<a dir="ltr" href="tel:{SITE['mobile_e164']}">{E(SITE['mobile'])}</a>''' if SITE.get('mobile') else ''}
