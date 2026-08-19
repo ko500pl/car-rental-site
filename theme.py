@@ -1652,4 +1652,34 @@ body{{padding-inline-start:0!important}}
 main h1{{font-size:clamp(26px,3.4vw,33px);line-height:1.15;font-weight:700}}
 .home-hero h1{{font-size:clamp(30px,4.5vw,40px)}}
 main .lead,p.lead{{font-size:15px;color:var(--ink-2)}}
+/* ── მაკეტის სექციები: სათაური + მარჯვენა ღილაკები, ბარათების ბადეები ── */
+.sec-head{{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:14px}}
+.sec-head>div{{flex:1 1 320px}}
+.sec-head h2{{margin:0 0 4px;font-size:24px;font-weight:700}}
+.sec-head .lead{{margin:0}}
+.sec-head .btn{{flex:0 0 auto}}
+.tour-grid{{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(420px,100%),1fr));gap:14px}}
+.tourcard{{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;
+  display:flex;flex-direction:column}}
+.tourcard .ph{{min-height:150px;background:#e8edf0;border-bottom:1px dashed #cfdae3;
+  display:grid;place-items:center;color:var(--ink-2);font-size:13px;padding:8px;text-align:center}}
+.tourcard .ph img{{width:100%;height:170px;object-fit:cover;display:block}}
+.tourcard .in{{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}}
+.tourcard .in>.btns{{margin-top:auto}}
+.trow{{display:flex;align-items:baseline;justify-content:space-between;gap:10px}}
+.trow h3{{margin:0;font-size:16px;font-weight:700}}
+.trow h3 a{{color:var(--ink);text-decoration:none}}
+.trow h3 a:hover{{color:var(--brand-2)}}
+.trow .p{{color:var(--accent);font-weight:700;font-size:15px;white-space:nowrap}}
+.trow .p small{{color:var(--ink-2);font-weight:400}}
+.trow .tag{{flex:0 0 auto}}
+.meta{{margin:0;font-size:13px;color:var(--ink-2)}}
+.tiers{{margin:0;font-size:13px;color:var(--ink-2)}}
+.btns{{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}}
+.btn.sm{{min-height:36px;padding:7px 13px;font-size:13px;border-radius:10px}}
+.car .in{{display:flex;flex-direction:column;gap:6px}}
+.car .in .sub{{margin:0;font-size:13.5px}}
+.car .in>.btns{{margin-top:auto}}
+.journey-steps article{{background:#fff;border:1px solid var(--line);border-radius:12px;
+  box-shadow:none}}
 """

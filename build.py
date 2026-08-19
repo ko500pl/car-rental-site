@@ -297,27 +297,43 @@ def render_block(b, lang):
     raise ValueError(f"უცნობი ბლოკის ტიპი: {t}")
 
 
-def cars_grid(category, lang):
+DETAILS_LABEL = {"ka": "დეტალები", "en": "Details", "ru": "Подробнее",
+                 "fa": "جزئیات", "he": "פרטים", "ar": "التفاصيل"}
+
+
+def cars_grid(category, lang, limit=None):
+    # Drive On Pages მაკეტის ბარათი: სახელი + ფირუზი ფასი ერთ ხაზზე, მეტა,
+    # ვადიანი ფასები, ფირუზი „დაჯავშნა" + ghost „დეტალები".
     items = [(s, c) for s, c in CARS.items() if not category or c["category"] == category]
+    if limit:
+        items = items[:limit]
     out = []
     for slug, c in items:
         L = c[lang]
         img = c.get("image")
         ph = (f'<div class="ph"><img src="{E(img)}" alt="{E(L["name"])} — '
               f'{E(cat_label(c["category"], lang))}" loading="lazy" width="640" height="400"></div>'
-              if img else f'<div class="ph">{E(L["name"])}</div>')
-        feats = "".join(f"<li>{inline(x, lang)}</li>" for x in L.get("features", [])[:3])
+              if img else f'<div class="ph">{E(L["name"])} — ფოტო</div>' if lang == "ka"
+              else f'<div class="ph">{E(L["name"])}</div>')
+        feats = " · ".join(re.sub(r"<[^>]+>", "", inline(x, lang)) for x in L.get(
+            "features", [])[:3])
         unit = SPECS["units"]["day"][lang]
+        p7 = c.get("price_7_29")
+        p30 = c.get("price_30")
+        tiers = ""
+        if p7 and p30:
+            tiers = (f'<p class="tiers">7–29: {E(money(p7))} · 30+: {E(money(p30))}</p>')
         out.append(
             f'<article class="car">{ph}<div class="in">'
-            f'<h3><a href="{car_url(lang, slug, False)}">{E(L["name"])}</a></h3>'
-            f'<p class="sub">{E(L.get("summary", ""))}</p><ul>{feats}</ul>'
-            f'<div class="foot"><span class="p">{E(money(c["price_1_6"]))} '
-            f'<small>/ {E(unit)}</small></span>'
-            f'<span class="car-actions"><a class="more" href="{car_url(lang, slug, False)}">'
-            f'{E(UI[lang]["ui"]["more"])} →</a>'
-            f'<button class="book-car-link" type="button" data-booking-open data-car="{E(slug)}" data-car-name="{E(L["name"])}">'
-            f'{E(BOOKING_TEXT[lang]["book"])}</button></span></div></div></article>')
+            f'<div class="trow"><h3><a href="{car_url(lang, slug, False)}">{E(L["name"])}</a></h3>'
+            f'<span class="p">{E(money(c["price_1_6"]))} <small>/ {E(unit)}</small></span></div>'
+            f'<p class="sub">{E(L.get("summary", ""))}</p>'
+            + (f'<p class="meta">{feats}</p>' if feats else "")
+            + tiers +
+            f'<div class="btns"><button class="btn sm" type="button" data-booking-open '
+            f'data-car="{E(slug)}" data-car-name="{E(L["name"])}">{E(BOOKING_TEXT[lang]["book"])}</button>'
+            f'<a class="btn sm ghost" href="{car_url(lang, slug, False)}">{E(DETAILS_LABEL[lang])}</a>'
+            f'</div></div></article>')
     return f'<div class="cars">{"".join(out)}</div>'
 
 
@@ -794,6 +810,60 @@ def render_static_page(lang, page):
                     f'<a class="text-link" href="{page_url(lang, "community", False)}">{E(flow[11])} →</a>'
                     f'</div><div class="journey-steps">{steps}</div></div></section>')
         body.append(map_section)
+        # ── Drive On Pages მაკეტის სექციები: სტანდარტული ტურები + ავტოპარკი ──
+        tt = {
+            "ka": ("სტანდარტული ტურები", "მზა მარშრუტები ღამისთევებით, რეალური სავალი დროებით და რეკომენდებული ავტომობილით.",
+                   "დღე", "კმ", "ნახვა", "დაგეგმვა", "ყველა ტურის ნახვა",
+                   "ავტოპარკი", "რომელი მანქანები გვაქვს — ფასი დამოკიდებულია ვადაზე: 1–6, 7–29 და 30+ დღე.",
+                   "ყველა ავტომობილი"),
+            "en": ("Standard tours", "Ready-made routes with overnights, realistic drive times and a recommended vehicle.",
+                   "days", "km", "View", "Plan", "See all tours",
+                   "Fleet", "Our vehicles — pricing depends on duration: 1–6, 7–29 and 30+ days.",
+                   "All vehicles"),
+            "ru": ("Стандартные туры", "Готовые маршруты с ночёвками, реальным временем в пути и рекомендованным автомобилем.",
+                   "дн.", "км", "Смотреть", "Спланировать", "Все туры",
+                   "Автопарк", "Наши автомобили — цена зависит от срока: 1–6, 7–29 и 30+ дней.",
+                   "Все автомобили"),
+            "fa": ("تورهای استاندارد", "مسیرهای آماده با اقامت شبانه، زمان واقعی رانندگی و خودروی پیشنهادی.",
+                   "روز", "کیلومتر", "مشاهده", "برنامه‌ریزی", "همه تورها",
+                   "ناوگان", "خودروهای ما — قیمت به مدت بستگی دارد: ۱–۶، ۷–۲۹ و ۳۰+ روز.",
+                   "همه خودروها"),
+            "he": ("טיולים סטנדרטיים", "מסלולים מוכנים עם לינות, זמני נסיעה מציאותיים ורכב מומלץ.",
+                   "ימים", "ק״מ", "צפייה", "תכנון", "כל הטיולים",
+                   "צי הרכבים", "הרכבים שלנו — המחיר תלוי במשך: 1–6, 7–29 ו-30+ ימים.",
+                   "כל הרכבים"),
+            "ar": ("الجولات القياسية", "مسارات جاهزة مع مبيت وأوقات قيادة واقعية وسيارة موصى بها.",
+                   "أيام", "كم", "عرض", "خطط", "كل الجولات",
+                   "الأسطول", "سياراتنا — السعر حسب المدة: 1–6، 7–29 و30+ يومًا.",
+                   "كل السيارات"),
+        }[lang]
+        tcards = []
+        for slug, route in list(ROUTES.items())[:4]:
+            R = route[lang]
+            rimg = route.get("image")
+            rph = (f'<div class="ph"><img src="{E(rimg)}" alt="{E(R["name"])}" loading="lazy" '
+                   f'width="640" height="360"></div>' if rimg
+                   else f'<div class="ph">{E(R["name"])}{" — ფოტო" if lang == "ka" else ""}</div>')
+            days = int(route["days"])
+            km = int(route["distance_km"])
+            ru_ = route_url(lang, slug, False)
+            tcards.append(
+                f'<article class="tourcard">{rph}<div class="in">'
+                f'<div class="trow"><h3><a href="{ru_}">{E(R["name"])}</a></h3>'
+                f'<span class="tag">{days} {E(tt[2])}</span></div>'
+                f'<p class="meta">{days} {E(tt[2])} · {km} {E(tt[3])}</p>'
+                f'<p class="sub">{E(R.get("short", ""))}</p>'
+                f'<div class="btns"><a class="btn sm" href="{ru_}">{E(tt[4])}</a>'
+                f'<a class="btn sm ghost" href="#planner" data-open-standard-tour>{E(tt[5])}</a>'
+                f'</div></div></article>')
+        body.append(f'<section class="sec home-tours"><div class="wrap">'
+                    f'<div class="sec-head"><div><h2>{E(tt[0])}</h2><p class="lead">{E(tt[1])}</p></div>'
+                    f'<a class="btn ghost" href="#planner" data-open-standard-tour>{E(tt[6])}</a></div>'
+                    f'<div class="tour-grid">{"".join(tcards)}</div></div></section>')
+        body.append(f'<section class="sec alt home-fleet"><div class="wrap">'
+                    f'<div class="sec-head"><div><h2>{E(tt[7])}</h2><p class="lead">{E(tt[8])}</p></div>'
+                    f'<a class="btn alt" href="{page_url(lang, "fleet", False)}">{E(tt[9])}</a></div>'
+                    f'{cars_grid(None, lang, limit=3)}</div></section>')
     else:
         body.append(f'<section class="page-head"><div class="wrap"><h1>{E(p["h1"])}</h1>'
                     f'<p class="lead">{inline(p["lead"], lang)}</p></div></section>')
