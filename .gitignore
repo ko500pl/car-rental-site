@@ -10,6 +10,8 @@ dist-*/
 *.zip
 *.zip.done
 *.apk
+!static/downloads/rentup-android.apk
+!static/downloads/fleet-house-android.apk
 
 # Local Netlify folder
 .netlify
