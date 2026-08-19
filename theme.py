@@ -1652,6 +1652,252 @@ body{{padding-inline-start:0!important}}
 main h1{{font-size:clamp(26px,3.4vw,33px);line-height:1.15;font-weight:700}}
 .home-hero h1{{font-size:clamp(30px,4.5vw,40px)}}
 main .lead,p.lead{{font-size:15px;color:var(--ink-2)}}
+/* ═══ Drive On Trip Workspace — მაკეტის ზუსტი სტილები ═══ */
+.dow{{background:#f4f7f9;border:1px solid var(--line);border-radius:12px;overflow:hidden;
+  display:flex;flex-direction:column}}
+.dow [hidden]{{display:none!important}}
+.dow .do-scroll{{scrollbar-width:thin}}
+.dow .do-scroll::-webkit-scrollbar{{width:8px;height:8px}}
+.dow .do-scroll::-webkit-scrollbar-thumb{{background:#cfdae3;border-radius:8px}}
+.dow-intro{{display:flex;align-items:flex-end;gap:20px;padding:12px 16px;background:#fff;
+  border-bottom:1px solid var(--line)}}
+.dow-h1{{margin:0;font-size:clamp(24px,3vw,38px);line-height:1.1;font-weight:700;letter-spacing:-.01em}}
+.dow-sub{{margin:0;font-size:14px;color:var(--ink-2);max-width:560px}}
+.dow-intro-b{{display:flex;gap:8px;margin-inline-start:auto;flex:0 0 auto}}
+.dow-btn{{height:42px;padding:0 16px;border:0;border-radius:10px;font-size:14px;font-weight:600;
+  cursor:pointer;display:inline-flex;align-items:center;justify-content:center}}
+.dow-btn.navy{{background:var(--brand);color:#fff}}
+.dow-btn.navy:hover{{background:#123f66}}
+.dow-btn.outline{{background:#fff;color:var(--brand);border:1px solid var(--brand)}}
+.dow-btn.outline:hover{{background:#eef4f8}}
+.dow-btn.ghost{{background:#fff;color:var(--ink);border:1px solid var(--line)}}
+.dow-btn.ghost:hover{{background:#f1f6f8}}
+.dow-btn.teal{{background:var(--accent);color:#fff;text-align:start;justify-content:flex-start;
+  padding:0 12px;font-size:13px}}
+.dow-btn.teal:hover{{background:#0b7f96}}
+.dow-btn.teal.big{{height:44px;font-size:14px}}
+.dow-btn.sm{{height:36px;padding:0 12px;font-size:13px}}
+.dow-formwrap{{background:#fff;border-bottom:1px solid var(--line);padding:10px 16px;
+  display:flex;flex-direction:column;gap:8px;position:relative;z-index:60}}
+.dow-prow{{display:grid;grid-template-columns:minmax(200px,1.5fr) auto 150px 150px 132px 132px minmax(180px,1fr);
+  gap:8px;align-items:end}}
+.dow-f{{display:flex;flex-direction:column;gap:4px;position:relative;min-width:0}}
+.dow-f>label,.dow-f>span{{font-size:11px;font-weight:600;color:var(--ink-2)}}
+.dow-f input,.dow-f select{{height:42px;padding:0 10px;border:1px solid var(--line);
+  border-radius:10px;background:#fff;width:100%;font-size:14px;color:var(--ink)}}
+.dow-f input[type=date]{{padding:0 8px;min-width:0}}
+.dow-fbtn{{height:42px;padding:0 12px;border:1px solid var(--line);border-radius:10px;background:#fff;
+  display:flex;align-items:center;gap:6px;white-space:nowrap;font-size:13px;cursor:pointer;color:var(--ink)}}
+.dow-fbtn:hover{{background:#f1f6f8}}
+.dow-step{{height:42px;display:grid;grid-template-columns:38px 1fr 38px;border:1px solid var(--line);
+  border-radius:10px;overflow:hidden;background:#fff}}
+.dow-step button{{border:0;background:#fff;font-size:16px;font-weight:600;cursor:pointer;color:var(--ink)}}
+.dow-step button:first-child{{border-inline-end:1px solid var(--line)}}
+.dow-step button:last-child{{border-inline-start:1px solid var(--line)}}
+.dow-step button:hover{{background:#f1f6f8}}
+.dow-step div{{display:grid;place-items:center;font-size:14px;font-weight:600;white-space:nowrap}}
+.dow-suggest{{position:absolute;top:70px;inset-inline:0;max-height:236px;overflow:auto;background:#fff;
+  border:1px solid var(--line);border-radius:10px;box-shadow:0 12px 24px rgba(14,35,51,.14);z-index:80}}
+.dow-suggest button{{display:flex;width:100%;align-items:center;gap:8px;padding:9px 10px;border:0;
+  border-bottom:1px solid #f0f4f7;background:#fff;text-align:start;cursor:pointer}}
+.dow-suggest button:hover{{background:#f1f6f8}}
+.dow-suggest b{{font-size:13px;font-weight:600;color:var(--ink)}}
+.dow-suggest small{{font-size:12px;color:var(--ink-2);margin-inline-start:auto}}
+.dow-sug-none{{padding:12px 10px;font-size:13px;color:var(--ink-2)}}
+.dow-brow{{display:flex;align-items:center;gap:10px;flex-wrap:wrap}}
+.dow-bud{{display:flex;align-items:center;gap:8px;padding:6px 8px;border:1px solid var(--line);
+  border-radius:10px;background:#fbfdfe}}
+.dow-bud>span{{font-size:12px;font-weight:600;color:var(--ink-2);white-space:nowrap}}
+.dow-budstep{{display:grid;grid-template-columns:30px 60px 30px;height:32px;border:1px solid var(--line);
+  border-radius:8px;overflow:hidden;background:#fff}}
+.dow-budstep button{{border:0;background:#fff;font-weight:600;cursor:pointer;color:var(--ink)}}
+.dow-budstep button:first-child{{border-inline-end:1px solid var(--line)}}
+.dow-budstep button:last-child{{border-inline-start:1px solid var(--line)}}
+.dow-budstep input{{border:0;text-align:center;font-size:13px;font-weight:600;min-width:0;color:var(--ink)}}
+.dow-bydaybtn{{height:32px;padding:0 8px;border:1px solid var(--line);border-radius:8px;background:#fff;
+  font-size:12px;cursor:pointer;color:var(--ink)}}
+.dow-bydaybtn:hover{{background:#f1f6f8}}
+.dow-meterwrap{{flex:1;min-width:240px;display:flex;flex-direction:column;gap:4px}}
+.dow-meterlabels{{display:flex;gap:12px;font-size:12px;color:var(--ink-2)}}
+.dow-meterlabels strong{{color:var(--ink)}}
+.dow-meterlabels strong.ok{{color:var(--ok)}}
+.dow-meter{{height:8px;background:#e9eff4;border-radius:999px;overflow:hidden}}
+.dow-meter>div{{height:100%;background:var(--accent);width:0}}
+.dow-tripbtns{{display:flex;align-items:center;gap:6px}}
+.dow-msg{{font-size:12px;color:var(--ok)}}
+.dow-tourchip{{display:flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid #cbe8ee;
+  border-radius:10px;background:#eefafc}}
+.dow-tourchip b{{font-size:12px;font-weight:700;color:#0b5f73}}
+.dow-tourchip span{{font-size:12px;color:var(--ink-2)}}
+.dow-tourchip button{{width:24px;height:24px;border:1px solid #cbe8ee;border-radius:8px;background:#fff;
+  line-height:1;cursor:pointer}}
+.dow-daygrid{{display:flex;gap:8px;flex-wrap:wrap;padding:8px;border:1px solid var(--line);
+  border-radius:10px;background:#fbfdfe}}
+.dow-dayrow{{display:flex;align-items:center;gap:6px;padding:4px 6px;border:1px solid #e6edf2;
+  border-radius:8px;background:#fff}}
+.dow-dayrow span{{font-size:12px;color:var(--ink-2)}}
+.dow-dayrow b{{font-size:12px;font-weight:600;min-width:38px;text-align:center}}
+.dow-dayrow button{{width:24px;height:24px;border:1px solid var(--line);border-radius:6px;background:#fff;cursor:pointer}}
+.dow-tabs{{display:none;gap:6px;padding:8px 12px;background:#fff;border-bottom:1px solid var(--line)}}
+.dow-tabs button{{flex:1;height:40px;border:1px solid var(--line);border-radius:10px;background:#fff;
+  font-size:13px;font-weight:600;cursor:pointer;color:var(--ink)}}
+.dow-tabs button.on{{background:var(--brand);border-color:var(--brand);color:#fff}}
+.dow-ws{{flex:1 1 auto;min-height:320px;display:grid;grid-template-columns:352px 1fr;height:72vh}}
+.dow-places{{background:#fff;border-inline-end:1px solid var(--line);display:flex;flex-direction:column;
+  min-height:0;overflow:hidden}}
+.dow-filters{{padding:10px 12px;border-bottom:1px solid #eef3f6;display:flex;flex-direction:column;gap:8px}}
+.dow-filters input[type=search]{{height:40px;padding:0 10px;border:1px solid var(--line);border-radius:10px;
+  background:#fff;font-size:14px;color:var(--ink)}}
+.dow-chiprow{{display:flex;gap:6px;flex-wrap:wrap}}
+.dow-chip{{height:30px;padding:0 10px;border:1px solid var(--line);border-radius:999px;background:#fff;
+  color:var(--ink);font-size:12px;font-weight:600;cursor:pointer}}
+.dow-chip.on{{background:var(--brand);border-color:var(--brand);color:#fff}}
+.dow-selrow{{display:flex;gap:6px}}
+.dow-selrow select{{flex:1;height:38px;padding:0 8px;border:1px solid var(--line);border-radius:10px;
+  background:#fff;font-size:13px;min-width:0;color:var(--ink)}}
+.dow-counters{{display:flex;justify-content:space-between;font-size:12px;color:var(--ink-2)}}
+.dow-list{{flex:1;min-height:0;overflow:auto}}
+.dow-place{{display:flex;gap:10px;padding:9px 12px;border-bottom:1px solid #f1f5f8;align-items:flex-start;
+  background:#fff}}
+.dow-place.on{{background:#f4fcfd}}
+.dow-place.dim .dow-place-n{{color:#4d5b69}}
+.dow-place input[type=checkbox]{{width:18px;height:18px;margin-top:12px;accent-color:var(--accent);flex:0 0 auto}}
+.dow-place-main{{flex:1;min-width:0;display:flex;gap:10px;border:0;background:transparent;padding:0;
+  text-align:start;cursor:pointer}}
+.dow-ava{{width:44px;height:44px;border-radius:8px;background:#e8eff4;color:var(--brand);display:grid;
+  place-items:center;font-size:13px;font-weight:700;flex:0 0 auto}}
+.dow-place-t{{display:flex;flex-direction:column;gap:2px;min-width:0}}
+.dow-place-t>span{{font-size:12px;color:var(--ink-2)}}
+.dow-place-n{{font-size:14px;font-weight:600;line-height:1.25;color:var(--ink)}}
+.dow-info{{width:30px;height:30px;margin-top:7px;border:1px solid var(--line);border-radius:8px;
+  background:#fff;flex:0 0 auto;cursor:pointer;display:grid;place-items:center}}
+.dow-info:hover{{background:#f1f6f8}}
+.dow-empty{{padding:24px 16px;display:flex;flex-direction:column;gap:8px;align-items:flex-start}}
+.dow-empty b{{font-size:14px;font-weight:600}}
+.dow-empty span{{font-size:13px;color:var(--ink-2)}}
+.dow-mapcol{{position:relative;min-height:0;background:#eaf0f4}}
+#dowmap{{position:absolute;inset:0;background:#eaf0f4}}
+#dowmap .leaflet-container{{font-family:inherit}}
+.do-cluster{{background:#0b2f4d;color:#fff;border:2px solid #fff;border-radius:999px;display:grid;
+  place-items:center;font-weight:700;font-size:13px;box-shadow:0 0 0 3px rgba(11,47,77,.14)}}
+.do-pin{{border-radius:999px;border:2px solid #fff;display:grid;place-items:center;font-size:11px;
+  font-weight:700;color:#fff;box-shadow:0 1px 2px rgba(14,35,51,.3)}}
+.do-wx{{background:rgba(255,255,255,.86);border:1px solid #dde5ec;border-radius:8px;padding:1px 6px;
+  font-size:11px;color:#5a6b7b;white-space:nowrap}}
+.dow-mapover{{position:absolute;top:10px;inset-inline:10px;display:flex;gap:8px;align-items:flex-start;
+  pointer-events:none;z-index:400}}
+.dow-routechips{{flex:1;min-width:0;display:flex;gap:6px;overflow:auto;pointer-events:auto;padding:2px}}
+.dow-stop{{display:flex;align-items:center;gap:6px;padding:5px 8px;background:#fff;border:1px solid var(--line);
+  border-radius:999px;box-shadow:0 1px 2px rgba(14,35,51,.08);white-space:nowrap}}
+.dow-stop b{{font-size:12px;font-weight:600}}
+.dow-stop small{{font-size:11px;color:var(--ink-2)}}
+.dow-stop button{{width:20px;height:20px;border:1px solid var(--line);border-radius:6px;background:#fff;
+  font-size:10px;cursor:pointer;padding:0}}
+.dow-stop-i{{width:20px;height:20px;border-radius:999px;background:var(--brand);color:#fff;font-size:11px;
+  font-weight:700;display:grid;place-items:center;flex:0 0 auto}}
+.dow-routepanel .dow-stop{{border-radius:10px;white-space:normal}}
+.dow-routepanel .dow-stop b{{font-size:13px;min-width:0}}
+.dow-routepanel .dow-stop small{{margin-inline-start:auto;white-space:nowrap}}
+.dow-mapbtns{{display:flex;gap:6px;pointer-events:auto}}
+.dow-mapbtns button{{height:34px;padding:0 10px;border:1px solid var(--line);border-radius:10px;
+  background:#fff;font-size:12px;font-weight:600;cursor:pointer;color:var(--ink)}}
+.dow-mapbtns button.on{{background:#e6f6f9}}
+.dow-status{{position:absolute;top:56px;left:50%;transform:translateX(-50%);padding:6px 12px;
+  background:#0b2f4d;color:#fff;border-radius:999px;font-size:12px;z-index:420}}
+.dow-status.err{{background:#fff;border:1px solid #e6c9c4;color:#8c2d20}}
+.dow-legend{{position:absolute;bottom:10px;inset-inline-start:10px;display:flex;gap:10px;padding:7px 10px;
+  background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:10px;font-size:11px;
+  color:var(--ink-2);z-index:400;flex-wrap:wrap}}
+.dow-legend span{{display:flex;align-items:center;gap:5px}}
+.dow-legend i{{width:10px;height:10px;border-radius:999px;display:inline-block}}
+.dow-car{{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px;display:flex;
+  flex-direction:column;gap:6px}}
+.dow-car.float{{position:absolute;bottom:10px;inset-inline-end:10px;width:330px;
+  box-shadow:0 8px 20px rgba(14,35,51,.12);z-index:400}}
+.dow-car-h{{display:flex;justify-content:space-between;align-items:baseline;gap:8px}}
+.dow-car-n{{font-size:14px;font-weight:700}}
+.dow-car-p{{font-size:13px;font-weight:700;color:var(--ok)}}
+.dow-car-s,.dow-car-r{{font-size:12px;color:var(--ink-2)}}
+.dow-detail{{position:absolute;top:56px;inset-inline-end:10px;width:308px;max-height:calc(100% - 130px);
+  overflow:auto;background:#fff;border:1px solid var(--line);border-radius:12px;
+  box-shadow:0 10px 26px rgba(14,35,51,.14);padding:12px;display:flex;flex-direction:column;gap:8px;z-index:410}}
+.dow-dhead{{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}}
+.dow-dhead b{{font-size:15px;font-weight:700}}
+.dow-dhead button,.dow-dh-r button{{width:26px;height:26px;border:1px solid var(--line);border-radius:8px;
+  background:#fff;cursor:pointer}}
+.dow-ditem{{display:flex;flex-direction:column;gap:4px;padding:8px;border:1px solid #eef3f6;border-radius:10px}}
+.dow-ditem b{{font-size:14px;font-weight:600}}
+.dow-ditem>span{{font-size:12px;color:var(--ink-2)}}
+.dow-ditem-b{{display:flex;gap:6px;margin-top:2px;flex-wrap:wrap;align-items:center}}
+.dow-ditem-b .a{{height:34px;padding:0 10px;border:0;border-radius:8px;background:var(--brand);color:#fff;
+  font-size:12px;font-weight:600;cursor:pointer}}
+.dow-ditem-b .v{{height:34px;padding:0 10px;border:1px solid var(--line);border-radius:8px;background:#fff;
+  font-size:12px;cursor:pointer;color:var(--ink)}}
+.dow-ditem-link{{font-size:12px}}
+.dow-routepanel{{padding:10px 12px;border-bottom:1px solid #eef3f6;display:flex;flex-direction:column;
+  gap:8px;background:#fbfdfe}}
+.dow-rpmeta{{display:flex;gap:10px;font-size:12px;color:var(--ink-2);flex-wrap:wrap}}
+.dow-rpmeta strong{{color:var(--ink)}}
+.dow-rpmeta strong.ok{{color:var(--ok)}}
+.dow-nostops{{font-size:13px;color:var(--ink-2)}}
+.dow-overlay{{position:fixed;inset:0;background:rgba(14,35,51,.42);z-index:900;display:flex}}
+.dow-overlay.right{{justify-content:flex-end}}
+.dow-overlay.center{{display:grid;place-items:center;padding:16px}}
+.dow-overlay[hidden]{{display:none}}
+.dow-scrim{{flex:1;border:0;background:transparent;cursor:pointer}}
+.dow-overlay.center .dow-scrim{{position:absolute;inset:0;width:100%;height:100%}}
+.dow-drawer{{width:520px;max-width:100%;background:#fff;height:100%;overflow:auto;display:flex;
+  flex-direction:column}}
+.dow-drawerhead{{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);padding:12px;
+  display:flex;flex-direction:column;gap:8px;z-index:5}}
+.dow-dh-r{{display:flex;justify-content:space-between;align-items:center}}
+.dow-dh-r>span{{font-size:17px;font-weight:700}}
+.dow-dh-r button{{width:32px;height:32px}}
+.dow-drawerhead input{{height:40px;padding:0 10px;border:1px solid var(--line);border-radius:10px;
+  font-size:14px;color:var(--ink)}}
+.dow-tf{{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:6px}}
+.dow-tf select{{height:38px;border:1px solid var(--line);border-radius:10px;background:#fff;font-size:12px;
+  padding:0 6px;min-width:0;color:var(--ink)}}
+.dow-tlist{{padding:12px;display:flex;flex-direction:column;gap:10px}}
+.dow-tour{{display:grid;grid-template-columns:132px 1fr;gap:10px;border:1px solid var(--line);
+  border-radius:12px;overflow:hidden;background:#fff}}
+.dow-tour-ph{{position:relative;min-height:132px;background:#eef3f6;display:grid;place-items:center;
+  font-size:12px;color:var(--ink-2);padding:6px;text-align:center}}
+.dow-tour-ph img{{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}}
+.dow-tour-in{{display:flex;flex-direction:column;gap:4px;padding:10px 10px 10px 0}}
+.dow-tour-in b{{font-size:15px;font-weight:700}}
+.dow-tour-in>span{{font-size:12px;color:var(--ink-2)}}
+.dow-tour-in button{{margin-top:4px;height:38px;padding:0 12px;border:0;border-radius:10px;
+  background:var(--brand);color:#fff;font-size:13px;font-weight:600;text-align:start;align-self:flex-start;
+  cursor:pointer}}
+[dir=rtl] .dow-tour-in{{padding:10px 0 10px 10px}}
+.dow-modal{{width:460px;max-width:100%;background:#fff;border-radius:12px;border:1px solid var(--line);
+  padding:14px;display:flex;flex-direction:column;gap:10px;position:relative;z-index:2}}
+.dow-bdone{{display:flex;flex-direction:column;gap:8px;padding:12px;border:1px solid #cfe9dd;
+  border-radius:10px;background:#f2fbf7}}
+.dow-bdone b{{font-size:14px;font-weight:700;color:var(--ok)}}
+.dow-bcar{{padding:10px;border:1px solid #eef3f6;border-radius:10px;display:flex;flex-direction:column;gap:4px}}
+.dow-bcar span:first-child{{font-size:13px;font-weight:600}}
+.dow-bcar span:last-child{{font-size:12px;color:var(--ink-2)}}
+#dowbform{{display:flex;flex-direction:column;gap:10px}}
+.dow-brow2{{display:grid;grid-template-columns:1fr 1fr;gap:8px}}
+.dow-brow2 label{{display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--ink-2)}}
+.dow-brow2 input{{height:42px;padding:0 10px;border:1px solid var(--line);border-radius:10px;
+  font-size:14px;color:var(--ink)}}
+.dow-alert{{font-size:12px;color:#8c2d20}}
+.maphero .wrap{{padding-block:0}}
+@media(max-width:1180px){{.dow-prow{{grid-template-columns:repeat(3,minmax(0,1fr))}}}}
+@media(max-width:960px){{
+  .dow-ws{{grid-template-columns:1fr;height:auto;min-height:70vh}}
+  .dow-places{{display:var(--m-places,none);border-inline-end:0;max-height:60vh}}
+  .dow-mapcol{{display:var(--m-map,none);height:60vh}}
+  .dow-intro{{flex-direction:column;align-items:flex-start}}
+  .dow-h1{{font-size:26px}}
+  .dow-prow{{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  .dow-tabs{{display:flex}}
+  .dow-drawer{{width:100%}}
+  .dow-car.float{{width:calc(100% - 20px)}}
+}}
 /* ── მაკეტის სექციები: სათაური + მარჯვენა ღილაკები, ბარათების ბადეები ── */
 .sec-head{{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:14px}}
 .sec-head>div{{flex:1 1 320px}}

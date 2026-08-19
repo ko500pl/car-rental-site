@@ -479,7 +479,7 @@ LEAFLET_JS = "/assets/leaflet/leaflet.js"
 
 
 ASSET = {"css": "/assets/style.css", "explorer": "/assets/explorer.js",
-         "planner": "/assets/planner.js"}
+         "planner": "/assets/planner.js", "workspace": "/assets/workspace.js"}
 TRAVEL_ASSET = {}
 
 
@@ -767,9 +767,7 @@ def render_static_page(lang, page):
                     f'<p class="home-hero-note">✓ {E(hero_cta[2])}</p></div>'
                     f'</div></section>')
         map_section = (f'<section class="sec wide maphero" id="planner"><div class="wrap wide">'
-                       f'<div class="map-intro"><h2>{E(x["explore_h"])}</h2>'
-                       f'<p class="map-sub">{E(x["explore_sub"])}</p></div>'
-                       f'{mp}{legend_html(lang)}</div></section>')
+                       f'{mp}</div></section>')
         flow = {
             "ka": ("დაგეგმე. მოარგე. გააზიარე.", "მოგზაურობის სრული გზა ერთ სივრცეში.",
                    "1", "დაგეგმე", "მიუთითე დრო, ინტერესები და თანამგზავრები.",
@@ -2140,38 +2138,172 @@ def planner_form_html(lang):
     return form
 
 
+DOW_UI = {
+    "ka": dict(h1="დაგეგმე მოგზაურობა საქართველოში", lead="აირჩიე ადგილები რუკაზე, დაითვალე დრო დღეების მიხედვით და გააზიარე მარშრუტი. მანქანა, ქირაობა ან მძღოლი ბოლოს ემატება.", plan="დაგეგმე მოგზაურობა", tours="სტანდარტული ტურები", origin="საწყისი ადგილი", origin_ph="ქალაქი ან ადგილი", myLoc="ჩემი მდებარეობა", start="დაწყება", end="დასრულება", days="რამდენი დღე", people="რამდენი ხართ", transport="ტრანსპორტი", t_suggest="შემომთავაზეთ მანქანა", t_own="ჩემი მანქანით ვარ", t_rent="მანქანის ქირაობა მინდა", t_driver="მძღოლი მჭირდება", dayTime="დღიური დრო", byDay="დღეების მიხედვით", chosen="არჩეული დრო", used="გამოყენებული", left="დარჩენილი", save="მარშრუტის შენახვა", share="გაზიარება", searchPlace="ადგილის ძებნა", allCats="ყველა კატეგორია", allRegs="ყველა რეგიონი", tabPlaces="ადგილები", tabMap="რუკა", tabRoute="მარშრუტი", traffic="ტრაფიკი", weather="ამინდი", book="მანქანის დაჯავშნა", legend_sel="არჩეული", legend_ok="ხელმისაწვდომი", legend_nofit="დროში არ ეტევა", legend_vis="ნამყოფი", loadingRoute="მარშრუტი იგება…", routeErr="გზის სერვისი მიუწვდომელია — ნაჩვენებია სავარაუდო ხაზი", emptyT="ფილტრებს ადგილი არ ემთხვევა", emptyS="გაზარდეთ დღიური დრო ან მოხსენით ფილტრი.", clearF="ფილტრების გასუფთავება", noStops="მარშრუტი ცარიელია — აირჩიეთ ადგილები სიიდან ან სტანდარტული ტური.", tourSearch="ტურის ძებნა", f_dur="ხანგრძლივობა", f_type="ტიპი", f_season="სეზონი", f_car="ავტომობილი", noTours="ამ ფილტრით ტური არ არის", offF="ფილტრის მოხსნა", bTitle="მანქანის დაჯავშნა", bName="სახელი", bPhone="ტელეფონი", bInvalid="შეავსეთ სახელი და ტელეფონი", bSend="მოთხოვნის გაგზავნა", bDoneT="მოთხოვნა გაიგზავნა"),
+    "en": dict(h1="Plan a trip in Georgia", lead="Pick places on the map, count the time day by day and share the route. A car, a rental or a driver comes last.", plan="Plan a trip", tours="Standard tours", origin="Starting point", origin_ph="City or place", myLoc="My location", start="From", end="To", days="How many days", people="How many of you", transport="Transport", t_suggest="Suggest me a car", t_own="I have my own car", t_rent="I want to rent a car", t_driver="I need a driver", dayTime="Hours per day", byDay="Per day", chosen="Budget", used="Used", left="Left", save="Save route", share="Share", searchPlace="Search a place", allCats="All categories", allRegs="All regions", tabPlaces="Places", tabMap="Map", tabRoute="Route", traffic="Traffic", weather="Weather", book="Book the car", legend_sel="Selected", legend_ok="Available", legend_nofit="Doesn't fit the time", legend_vis="Visited", loadingRoute="Building the route…", routeErr="Road service unavailable — showing an approximate line", emptyT="No places match the filters", emptyS="Increase the daily time or remove a filter.", clearF="Clear filters", noStops="The route is empty — pick places from the list or a standard tour.", tourSearch="Search tours", f_dur="Duration", f_type="Type", f_season="Season", f_car="Vehicle", noTours="No tours for this filter", offF="Remove filter", bTitle="Book the car", bName="Name", bPhone="Phone", bInvalid="Fill in name and phone", bSend="Send request", bDoneT="Request sent"),
+    "ru": dict(h1="Спланируйте поездку по Грузии", lead="Выберите места на карте, посчитайте время по дням и поделитесь маршрутом. Машина, аренда или водитель — в конце.", plan="Спланировать поездку", tours="Готовые туры", origin="Начальная точка", origin_ph="Город или место", myLoc="Моё местоположение", start="С", end="По", days="Сколько дней", people="Сколько вас", transport="Транспорт", t_suggest="Предложите машину", t_own="Я на своей машине", t_rent="Хочу арендовать машину", t_driver="Нужен водитель", dayTime="Часов в день", byDay="По дням", chosen="Бюджет", used="Использовано", left="Осталось", save="Сохранить маршрут", share="Поделиться", searchPlace="Поиск места", allCats="Все категории", allRegs="Все регионы", tabPlaces="Места", tabMap="Карта", tabRoute="Маршрут", traffic="Трафик", weather="Погода", book="Забронировать машину", legend_sel="Выбрано", legend_ok="Доступно", legend_nofit="Не помещается по времени", legend_vis="Посещено", loadingRoute="Строим маршрут…", routeErr="Сервис дорог недоступен — показана примерная линия", emptyT="Нет мест по фильтрам", emptyS="Увеличьте дневное время или снимите фильтр.", clearF="Сбросить фильтры", noStops="Маршрут пуст — выберите места из списка или готовый тур.", tourSearch="Поиск тура", f_dur="Длительность", f_type="Тип", f_season="Сезон", f_car="Автомобиль", noTours="Нет туров по этому фильтру", offF="Снять фильтр", bTitle="Бронирование машины", bName="Имя", bPhone="Телефон", bInvalid="Заполните имя и телефон", bSend="Отправить запрос", bDoneT="Запрос отправлен"),
+    "fa": dict(h1="سفر خود در گرجستان را برنامه‌ریزی کنید", lead="مکان‌ها را روی نقشه انتخاب کنید، زمان را روزبه‌روز بشمارید و مسیر را به اشتراک بگذارید. خودرو، اجاره یا راننده در پایان.", plan="برنامه‌ریزی سفر", tours="تورهای استاندارد", origin="نقطهٔ شروع", origin_ph="شهر یا مکان", myLoc="موقعیت من", start="از", end="تا", days="چند روز", people="چند نفرید", transport="حمل‌ونقل", t_suggest="خودرو پیشنهاد دهید", t_own="با خودروی خودم هستم", t_rent="می‌خواهم خودرو اجاره کنم", t_driver="راننده لازم دارم", dayTime="ساعت در روز", byDay="به تفکیک روز", chosen="زمان انتخابی", used="مصرف‌شده", left="باقی‌مانده", save="ذخیرهٔ مسیر", share="اشتراک‌گذاری", searchPlace="جست‌وجوی مکان", allCats="همهٔ دسته‌ها", allRegs="همهٔ مناطق", tabPlaces="مکان‌ها", tabMap="نقشه", tabRoute="مسیر", traffic="ترافیک", weather="آب‌وهوا", book="رزرو خودرو", legend_sel="انتخاب‌شده", legend_ok="در دسترس", legend_nofit="در زمان نمی‌گنجد", legend_vis="بازدیدشده", loadingRoute="در حال ساخت مسیر…", routeErr="سرویس جاده در دسترس نیست — خط تقریبی نمایش داده می‌شود", emptyT="مکانی با این فیلترها نیست", emptyS="زمان روزانه را افزایش دهید یا فیلتر را بردارید.", clearF="پاک‌کردن فیلترها", noStops="مسیر خالی است — از فهرست مکان انتخاب کنید یا توری استاندارد.", tourSearch="جست‌وجوی تور", f_dur="مدت", f_type="نوع", f_season="فصل", f_car="خودرو", noTours="توری با این فیلتر نیست", offF="حذف فیلتر", bTitle="رزرو خودرو", bName="نام", bPhone="تلفن", bInvalid="نام و تلفن را پر کنید", bSend="ارسال درخواست", bDoneT="درخواست ارسال شد"),
+    "he": dict(h1="תכננו טיול בגאורגיה", lead="בחרו מקומות על המפה, חשבו את הזמן לפי ימים ושתפו את המסלול. רכב, השכרה או נהג — בסוף.", plan="לתכנן טיול", tours="טיולים סטנדרטיים", origin="נקודת מוצא", origin_ph="עיר או מקום", myLoc="המיקום שלי", start="מתאריך", end="עד", days="כמה ימים", people="כמה אתם", transport="תחבורה", t_suggest="הציעו לי רכב", t_own="אני עם רכב משלי", t_rent="רוצה לשכור רכב", t_driver="צריך נהג", dayTime="שעות ביום", byDay="לפי ימים", chosen="תקציב זמן", used="בשימוש", left="נותר", save="שמירת מסלול", share="שיתוף", searchPlace="חיפוש מקום", allCats="כל הקטגוריות", allRegs="כל האזורים", tabPlaces="מקומות", tabMap="מפה", tabRoute="מסלול", traffic="תנועה", weather="מזג אוויר", book="הזמנת רכב", legend_sel="נבחר", legend_ok="זמין", legend_nofit="לא נכנס בזמן", legend_vis="ביקרתי", loadingRoute="בונים מסלול…", routeErr="שירות הדרכים אינו זמין — מוצג קו משוער", emptyT="אין מקומות למסננים", emptyS="הגדילו את הזמן היומי או הסירו מסנן.", clearF="ניקוי מסננים", noStops="המסלול ריק — בחרו מקומות מהרשימה או טיול סטנדרטי.", tourSearch="חיפוש טיול", f_dur="משך", f_type="סוג", f_season="עונה", f_car="רכב", noTours="אין טיולים למסנן זה", offF="הסרת מסנן", bTitle="הזמנת רכב", bName="שם", bPhone="טלפון", bInvalid="מלאו שם וטלפון", bSend="שליחת בקשה", bDoneT="הבקשה נשלחה"),
+    "ar": dict(h1="خطط رحلتك في جورجيا", lead="اختر الأماكن على الخريطة، واحسب الوقت يوماً بيوم، وشارك المسار. السيارة أو الاستئجار أو السائق في النهاية.", plan="خطط رحلة", tours="جولات قياسية", origin="نقطة البداية", origin_ph="مدينة أو مكان", myLoc="موقعي", start="من", end="إلى", days="كم يوماً", people="كم عددكم", transport="التنقل", t_suggest="اقترحوا لي سيارة", t_own="لدي سيارتي الخاصة", t_rent="أريد استئجار سيارة", t_driver="أحتاج سائقاً", dayTime="ساعات في اليوم", byDay="حسب الأيام", chosen="الوقت المختار", used="المستخدم", left="المتبقي", save="حفظ المسار", share="مشاركة", searchPlace="ابحث عن مكان", allCats="كل الفئات", allRegs="كل المناطق", tabPlaces="الأماكن", tabMap="الخريطة", tabRoute="المسار", traffic="الحركة", weather="الطقس", book="احجز السيارة", legend_sel="مختار", legend_ok="متاح", legend_nofit="لا يتسع في الوقت", legend_vis="تمت زيارته", loadingRoute="جارٍ بناء المسار…", routeErr="خدمة الطرق غير متاحة — يظهر خط تقريبي", emptyT="لا أماكن تطابق الفلاتر", emptyS="زد الوقت اليومي أو أزل فلتراً.", clearF="مسح الفلاتر", noStops="المسار فارغ — اختر أماكن من القائمة أو جولة قياسية.", tourSearch="ابحث عن جولة", f_dur="المدة", f_type="النوع", f_season="الموسم", f_car="السيارة", noTours="لا جولات بهذا الفلتر", offF="إزالة الفلتر", bTitle="حجز السيارة", bName="الاسم", bPhone="الهاتف", bInvalid="املأ الاسم والهاتف", bSend="إرسال الطلب", bDoneT="تم إرسال الطلب")}
+
+DOW_JS_T = {
+    "ka": dict(h="სთ", m="წთ", day="დღე", day1="დღე", person="ადამიანი", km="კმ", place="ადგილი", places="ადგილი", total="სულ", chosenN="არჩეული", visit="დათვალიერება", visited="ნამყოფი", notVisited="არ ვარ ნამყოფი", fitsTime="ეტევა დროში", noFit="დროში არ ეტევა", details="დეტალები", road="გზა", inGroup="ადგილი ამ ჯგუფში", placeDetails="ადგილის დეტალები", removeStop="მარშრუტიდან მოშორება", addStop="მარშრუტში დამატება", markVisited="ნამყოფად მონიშვნა", visitedYes="ნამყოფი ✓", fullPage="სრული გვერდი →", saved="შენახულია ✓", linkCopied="ბმული დაკოპირდა ✓", shareOpened="გაზიარება გაიხსნა", stop="გაჩერება", myLocName="ჩემი მდებარეობა", notFound="ვერ მოიძებნა — სცადეთ სხვა სახელი", seat="ადგილი", per100="ლ / 100 კმ", sum="სულ", need4="მარშრუტში მაღალმთიანი გზაა — 4×4 რეკომენდებულია", noNeed4="მარშრუტი ასფალტის გზებზეა — სტანდარტული კლასი საკმარისია", chooseTour="ამ ტურის არჩევა", onRoad="გზაში"),
+    "en": dict(h="h", m="min", day="days", day1="day", person="people", km="km", place="places", places="places", total="Total", chosenN="Selected", visit="visit", visited="Visited", notVisited="Not visited", fitsTime="Fits the time", noFit="Doesn't fit the time", details="Details", road="drive", inGroup="places in this group", placeDetails="Place details", removeStop="Remove from route", addStop="Add to route", markVisited="Mark as visited", visitedYes="Visited ✓", fullPage="Full page →", saved="Saved ✓", linkCopied="Link copied ✓", shareOpened="Share opened", stop="stops", myLocName="My location", notFound="Nothing found — try another name", seat="seats", per100="l / 100 km", sum="total", need4="The route includes high-mountain roads — 4×4 recommended", noNeed4="The route is on paved roads — a standard class is enough", chooseTour="Choose this tour", onRoad="on the road"),
+    "ru": dict(h="ч", m="мин", day="дн.", day1="день", person="чел.", km="км", place="мест", places="мест", total="Всего", chosenN="Выбрано", visit="осмотр", visited="Посещено", notVisited="Не посещено", fitsTime="Помещается", noFit="Не помещается по времени", details="Детали", road="в пути", inGroup="мест в этой группе", placeDetails="Детали места", removeStop="Убрать из маршрута", addStop="Добавить в маршрут", markVisited="Отметить посещённым", visitedYes="Посещено ✓", fullPage="Полная страница →", saved="Сохранено ✓", linkCopied="Ссылка скопирована ✓", shareOpened="Открыт шеринг", stop="остановок", myLocName="Моё местоположение", notFound="Не найдено — попробуйте другое имя", seat="мест", per100="л / 100 км", sum="итого", need4="В маршруте высокогорные дороги — рекомендуем 4×4", noNeed4="Маршрут по асфальту — достаточно стандартного класса", chooseTour="Выбрать этот тур", onRoad="в пути"),
+    "fa": dict(h="س", m="د", day="روز", day1="روز", person="نفر", km="کم", place="مکان", places="مکان", total="مجموع", chosenN="انتخاب‌شده", visit="بازدید", visited="بازدیدشده", notVisited="بازدیدنشده", fitsTime="در زمان می‌گنجد", noFit="در زمان نمی‌گنجد", details="جزئیات", road="در راه", inGroup="مکان در این گروه", placeDetails="جزئیات مکان", removeStop="حذف از مسیر", addStop="افزودن به مسیر", markVisited="علامت بازدید", visitedYes="بازدید ✓", fullPage="صفحهٔ کامل →", saved="ذخیره شد ✓", linkCopied="پیوند کپی شد ✓", shareOpened="اشتراک‌گذاری باز شد", stop="توقف", myLocName="موقعیت من", notFound="یافت نشد — نام دیگری امتحان کنید", seat="صندلی", per100="ل/۱۰۰کم", sum="جمع", need4="مسیر شامل جاده‌های کوهستانی است — 4×4 توصیه می‌شود", noNeed4="مسیر آسفالت است — کلاس استاندارد کافی است", chooseTour="انتخاب این تور", onRoad="در راه"),
+    "he": dict(h="ש׳", m="דק׳", day="ימים", day1="יום", person="אנשים", km='ק"מ', place="מקומות", places="מקומות", total='סה"כ', chosenN="נבחרו", visit="ביקור", visited="ביקרתי", notVisited="טרם ביקרתי", fitsTime="נכנס בזמן", noFit="לא נכנס בזמן", details="פרטים", road="נסיעה", inGroup="מקומות בקבוצה", placeDetails="פרטי מקום", removeStop="הסרה מהמסלול", addStop="הוספה למסלול", markVisited="סימון כביקרתי", visitedYes="ביקרתי ✓", fullPage="עמוד מלא →", saved="נשמר ✓", linkCopied="הקישור הועתק ✓", shareOpened="השיתוף נפתח", stop="עצירות", myLocName="המיקום שלי", notFound="לא נמצא — נסו שם אחר", seat="מושבים", per100='ל/100 ק"מ', sum='סה"כ', need4="במסלול דרכים הרריות — מומלץ 4×4", noNeed4="המסלול על כבישים סלולים — מחלקה רגילה מספיקה", chooseTour="בחירת הטיול", onRoad="בדרך"),
+    "ar": dict(h="س", m="د", day="أيام", day1="يوم", person="أشخاص", km="كم", place="أماكن", places="أماكن", total="المجموع", chosenN="المختار", visit="زيارة", visited="تمت زيارته", notVisited="لم تتم زيارته", fitsTime="يتسع في الوقت", noFit="لا يتسع في الوقت", details="التفاصيل", road="طريق", inGroup="أماكن في هذه المجموعة", placeDetails="تفاصيل المكان", removeStop="إزالة من المسار", addStop="إضافة إلى المسار", markVisited="وضع علامة زيارة", visitedYes="تمت الزيارة ✓", fullPage="الصفحة الكاملة →", saved="تم الحفظ ✓", linkCopied="تم نسخ الرابط ✓", shareOpened="فُتحت المشاركة", stop="توقفات", myLocName="موقعي", notFound="لم يُعثر — جرّب اسماً آخر", seat="مقاعد", per100="ل/100كم", sum="الإجمالي", need4="المسار يتضمن طرقاً جبلية — يُنصح بـ 4×4", noNeed4="المسار على طرق معبدة — الفئة القياسية كافية", chooseTour="اختيار هذه الجولة", onRoad="في الطريق")}
+
+
 def travel_workspace_block(lang, depth, height="72vh", hero=False, initial="explore"):
-    """Shared travel workspace used on home, map and planner pages."""
-    explore, explore_js = explorer_block(lang, depth, height, hero)
-    labels = {
-        "ka": ("დაგეგმე", "აღმოაჩინე", "მარშრუტი"),
-        "en": ("Plan", "Explore", "Route"),
-        "ru": ("План", "Открыть", "Маршрут"),
-        "fa": ("برنامه‌ریزی", "کاوش", "مسیر"),
-        "he": ("תכנון", "גילוי", "מסלול"),
-        "ar": ("خطط", "استكشف", "المسار"),
+    """Drive On Trip Workspace — მომხმარებლის მაკეტის ზუსტი განლაგება."""
+    base = rel_prefix(depth)
+    U = DOW_UI[lang]
+    types = sorted({a["type"] for a in ATTRACTIONS.values()},
+                   key=lambda t: tl(lang, "type", t))
+    topts = "".join(f'<option value="{E(t)}">{E(tl(lang, "type", t))}</option>' for t in types)
+    ropts = "".join(f'<option value="{E(k)}">{E(r[lang]["name"])}</option>'
+                    for k, r in REGIONS.items())
+    seasons = sorted({r.get("best_season", "") for r in ROUTES.values() if r.get("best_season")})
+    sopts = "".join(f'<option value="{E(s)}">{E(tl(lang, "season", s))}</option>' for s in seasons)
+    purposes = sorted({r.get("purpose", "classic") for r in ROUTES.values()})
+    purpose_names = {
+        "ka": {"classic": "კლასიკური", "culinary": "კულინარიული", "wine": "ღვინის", "culture": "კულტურული", "nature": "ბუნება", "cycling": "ველო", "mountains": "მთები", "hiking": "ჰაიქინგი", "history": "ისტორიული", "beach": "ზღვა", "family": "ოჯახური", "performance": "თეატრი"},
+        "en": {"classic": "Classic", "culinary": "Culinary", "wine": "Wine", "culture": "Culture", "nature": "Nature", "cycling": "Cycling", "mountains": "Mountains", "hiking": "Hiking", "history": "History", "beach": "Beach", "family": "Family", "performance": "Theatre"},
+        "ru": {"classic": "Классический", "culinary": "Кулинарный", "wine": "Винный", "culture": "Культурный", "nature": "Природа", "cycling": "Вело", "mountains": "Горы", "hiking": "Хайкинг", "history": "Исторический", "beach": "Море", "family": "Семейный", "performance": "Театр"},
+        "fa": {"classic": "کلاسیک", "culinary": "آشپزی", "wine": "شراب", "culture": "فرهنگی", "nature": "طبیعت", "cycling": "دوچرخه", "mountains": "کوهستان", "hiking": "پیاده‌روی", "history": "تاریخی", "beach": "ساحل", "family": "خانوادگی", "performance": "تئاتر"},
+        "he": {"classic": "קלאסי", "culinary": "קולינרי", "wine": "יין", "culture": "תרבות", "nature": "טבע", "cycling": "אופניים", "mountains": "הרים", "hiking": "הליכה", "history": "היסטורי", "beach": "חוף", "family": "משפחתי", "performance": "תיאטרון"},
+        "ar": {"classic": "كلاسيكية", "culinary": "طهي", "wine": "نبيذ", "culture": "ثقافية", "nature": "طبيعة", "cycling": "دراجات", "mountains": "جبال", "hiking": "مشي", "history": "تاريخية", "beach": "شاطئ", "family": "عائلية", "performance": "مسرح"},
     }[lang]
-    form = planner_form_html(lang)
-    html = f'''<section class="travel-workspace" data-mode="{E(initial)}">
-  <div class="workspace-tabs" role="tablist" aria-label="Travel tools">
-    <button type="button" data-workmode="planner">{E(labels[0])}</button>
-    <button type="button" data-workmode="explore">{E(labels[1])}</button>
-    <button type="button" data-workmode="route">{E(labels[2])}</button>
-  </div>
-  <div class="workspace-plan">{form}</div>
-  {explore}
-  <div id="result" class="workspace-result"></div>
+    popts = "".join(f'<option value="{E(p)}">{E(purpose_names.get(p, p))}</option>' for p in purposes)
+    copts = "".join(f'<option value="{c}">{E(cat_label(c, lang))}</option>'
+                    for c in ("economy", "suv", "offroad"))
+    html = f'''<section class="dow" id="dow">
+<div class="dow-intro"><div><h2 class="dow-h1">{E(U["h1"])}</h2>
+<p class="dow-sub">{E(U["lead"])}</p></div>
+<div class="dow-intro-b"><button type="button" id="dowplan" class="dow-btn navy">{E(U["plan"])}</button>
+<button type="button" id="dowtours" class="dow-btn outline">{E(U["tours"])}</button></div></div>
+<div class="dow-formwrap">
+<div class="dow-prow">
+<div class="dow-f dow-f-origin"><label for="doworigin">{E(U["origin"])}</label>
+<input id="doworigin" type="text" autocomplete="off" placeholder="{E(U["origin_ph"])}" aria-label="{E(U["origin"])}">
+<div id="dowsuggest" class="dow-suggest do-scroll" role="listbox" hidden></div></div>
+<div class="dow-f dow-f-btn"><span>&nbsp;</span>
+<button type="button" id="dowmyloc" class="dow-fbtn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0d94ae" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v3M12 19v3M2 12h3M19 12h3"></path></svg> <span>{E(U["myLoc"])}</span></button></div>
+<div class="dow-f"><label for="dowstart">{E(U["start"])}</label><input id="dowstart" type="date"></div>
+<div class="dow-f"><label for="dowend">{E(U["end"])}</label><input id="dowend" type="date"></div>
+<div class="dow-f"><span>{E(U["days"])}</span><div class="dow-step">
+<button type="button" id="dowdaysminus" aria-label="−">−</button><div id="dowdays"></div>
+<button type="button" id="dowdaysplus" aria-label="+">+</button></div></div>
+<div class="dow-f"><span>{E(U["people"])}</span><div class="dow-step">
+<button type="button" id="dowpplminus" aria-label="−">−</button><div id="dowpeople"></div>
+<button type="button" id="dowpplplus" aria-label="+">+</button></div></div>
+<div class="dow-f"><label for="dowtransport">{E(U["transport"])}</label><select id="dowtransport">
+<option value="suggest">{E(U["t_suggest"])}</option><option value="own">{E(U["t_own"])}</option>
+<option value="rent">{E(U["t_rent"])}</option><option value="driver">{E(U["t_driver"])}</option></select></div>
+</div>
+<div class="dow-brow">
+<div class="dow-bud"><span>{E(U["dayTime"])}</span>
+<div class="dow-budstep"><button type="button" id="dowbudminus" aria-label="−">−</button>
+<input id="dowbudget" aria-label="{E(U["dayTime"])}">
+<button type="button" id="dowbudplus" aria-label="+">+</button></div>
+<button type="button" id="dowbyday" class="dow-bydaybtn">{E(U["byDay"])}</button></div>
+<div class="dow-meterwrap"><div class="dow-meterlabels">
+<span>{E(U["chosen"])} <strong id="dowchosen"></strong></span>
+<span>{E(U["used"])} <strong id="dowused"></strong></span>
+<span>{E(U["left"])} <strong id="dowleft" class="ok"></strong></span></div>
+<div class="dow-meter"><div id="dowmeter"></div></div></div>
+<div id="dowactions" class="dow-tripbtns" hidden>
+<button type="button" id="dowsave" class="dow-btn outline sm">{E(U["save"])}</button>
+<button type="button" id="dowshare" class="dow-btn ghost sm">{E(U["share"])}</button>
+<span id="dowmsg" role="status" class="dow-msg"></span></div>
+<div id="dowtourchip" class="dow-tourchip" hidden><b id="dowtourname"></b>
+<span id="dowtourmeta"></span><button type="button" id="dowtourclear" aria-label="×">×</button></div>
+</div>
+<div id="dowdaygrid" class="dow-daygrid" hidden></div>
+</div>
+<div class="dow-tabs">
+<button type="button" id="dowtab-places">{E(U["tabPlaces"])}</button>
+<button type="button" id="dowtab-map">{E(U["tabMap"])}</button>
+<button type="button" id="dowtab-route">{E(U["tabRoute"])}</button></div>
+<div class="dow-ws">
+<div class="dow-places do-scroll">
+<div id="dowroutepanel" class="dow-routepanel" hidden>
+<div class="dow-rpmeta"><span>{E(U["used"])} <strong id="dowrpused"></strong></span>
+<span>{E(U["left"])} <strong id="dowrpleft" class="ok"></strong></span></div>
+<div id="dowroutelist"></div>
+<span id="downostops" class="dow-nostops">{E(U["noStops"])}</span>
+<div id="dowcar2" class="dow-car static" hidden><div class="dow-car-h"><span class="dow-car-n"></span>
+<span class="dow-car-p"></span></div><span class="dow-car-s"></span><span class="dow-car-r"></span>
+<button type="button" class="dow-btn teal" data-dow-book>{E(U["book"])}</button></div>
+</div>
+<div class="dow-filters">
+<input id="dowq" type="search" placeholder="{E(U["searchPlace"])}" aria-label="{E(U["searchPlace"])}">
+<div id="dowchips" class="dow-chiprow"></div>
+<div class="dow-selrow">
+<select id="dowcat" aria-label="{E(U["allCats"])}"><option value="">{E(U["allCats"])}</option>{topts}</select>
+<select id="dowreg" aria-label="{E(U["allRegs"])}"><option value="">{E(U["allRegs"])}</option>{ropts}</select></div>
+<div class="dow-counters"><span id="dowcount"></span><span id="dowselcount"></span></div>
+</div>
+<div id="dowlist" class="dow-list do-scroll"></div>
+<div id="dowempty" class="dow-empty" hidden><b>{E(U["emptyT"])}</b><span>{E(U["emptyS"])}</span>
+<button type="button" id="dowreset" class="dow-fbtn">{E(U["clearF"])}</button></div>
+</div>
+<div class="dow-mapcol">
+<div id="dowmap" role="application" aria-label="{E(U["tabMap"])}"></div>
+<div class="dow-mapover">
+<div id="dowroutechips" class="dow-routechips do-scroll"></div>
+<div class="dow-mapbtns">
+<button type="button" id="dowtraffic" aria-pressed="false">{E(U["traffic"])}</button>
+<button type="button" id="dowweather" aria-pressed="true">{E(U["weather"])}</button></div></div>
+<div id="dowloading" class="dow-status" role="status" hidden>{E(U["loadingRoute"])}</div>
+<div id="dowerror" class="dow-status err" role="status" hidden>{E(U["routeErr"])}</div>
+<div class="dow-legend">
+<span><i style="background:#0d94ae"></i>{E(U["legend_sel"])}</span>
+<span><i style="background:#0b2f4d"></i>{E(U["legend_ok"])}</span>
+<span><i style="background:#b9c6d1"></i>{E(U["legend_nofit"])}</span>
+<span><i style="background:#7f8c99;opacity:.55"></i>{E(U["legend_vis"])}</span></div>
+<div id="dowcar" class="dow-car float" hidden><div class="dow-car-h"><span class="dow-car-n"></span>
+<span class="dow-car-p"></span></div><span class="dow-car-s"></span><span class="dow-car-r"></span>
+<button type="button" class="dow-btn teal" data-dow-book>{E(U["book"])}</button></div>
+<div id="dowdetail" class="dow-detail do-scroll" role="dialog" hidden>
+<div class="dow-dhead"><b id="dowdtitle"></b>
+<button type="button" id="dowdclose" aria-label="×">×</button></div>
+<div id="dowdbody"></div></div>
+</div>
+</div>
+<div id="dowdrawer" class="dow-overlay right" hidden>
+<button type="button" id="dowtback" class="dow-scrim" aria-label="×"></button>
+<div class="dow-drawer do-scroll" role="dialog" aria-label="{E(U["tours"])}">
+<div class="dow-drawerhead"><div class="dow-dh-r"><span>{E(U["tours"])}</span>
+<button type="button" id="dowtclose" aria-label="×">×</button></div>
+<input id="dowtq" type="search" placeholder="{E(U["tourSearch"])}" aria-label="{E(U["tourSearch"])}">
+<div class="dow-tf">
+<select id="dowtf-dur" aria-label="{E(U["f_dur"])}"><option value="">{E(U["f_dur"])}</option>
+<option value="1-2">1–2</option><option value="3-4">3–4</option><option value="5+">5+</option></select>
+<select id="dowtf-type" aria-label="{E(U["f_type"])}"><option value="">{E(U["f_type"])}</option>{popts}</select>
+<select id="dowtf-season" aria-label="{E(U["f_season"])}"><option value="">{E(U["f_season"])}</option>{sopts}</select>
+<select id="dowtf-car" aria-label="{E(U["f_car"])}"><option value="">{E(U["f_car"])}</option>{copts}</select></div></div>
+<div id="dowtlist" class="dow-tlist"></div>
+<div id="dowtempty" class="dow-empty" hidden><b>{E(U["noTours"])}</b>
+<button type="button" id="dowtreset" class="dow-fbtn">{E(U["offF"])}</button></div>
+</div></div>
+<div id="dowbooking" class="dow-overlay center" hidden>
+<button type="button" id="dowbback" class="dow-scrim" aria-label="×"></button>
+<div class="dow-modal" role="dialog" aria-label="{E(U["bTitle"])}">
+<div class="dow-dh-r"><span>{E(U["bTitle"])}</span>
+<button type="button" id="dowbclose" aria-label="×">×</button></div>
+<div id="dowbdone" class="dow-bdone" hidden><b>{E(U["bDoneT"])}</b><span id="dowbsum2"></span></div>
+<div id="dowbform"><div class="dow-bcar"><span id="dowbcar"></span><span id="dowbsum"></span></div>
+<div class="dow-brow2"><label>{E(U["bName"])}<input id="dowbname"></label>
+<label>{E(U["bPhone"])}<input id="dowbphone"></label></div>
+<span id="dowbinvalid" role="alert" class="dow-alert" hidden>{E(U["bInvalid"])}</span>
+<button type="button" id="dowbsend" class="dow-btn teal big">{E(U["bSend"])}</button></div>
+</div></div>
 </section>'''
-    mode_js = '''<script>(function(){
-var w=document.querySelector('.travel-workspace');if(!w)return;
-function setMode(m){w.dataset.mode=m;w.querySelectorAll('[data-workmode]').forEach(function(b){
-b.classList.toggle('on',b.dataset.workmode===m);b.setAttribute('aria-selected',b.dataset.workmode===m?'true':'false');});
-if(m==='planner')document.dispatchEvent(new CustomEvent('fh:planner'));
-if(window.FH_TRAVEL_MAP)setTimeout(function(){window.FH_TRAVEL_MAP.invalidateSize();},40);}
-w.querySelectorAll('[data-workmode]').forEach(function(b){b.onclick=function(){setMode(b.dataset.workmode);history.replaceState(null,'','#'+b.dataset.workmode);};});
-window.addEventListener('hashchange',function(){var m=location.hash.slice(1);if(/^(explore|route|planner)$/.test(m))setMode(m);});
-var first=location.hash.slice(1);setMode(/^(explore|route|planner)$/.test(first)?first:(w.dataset.mode||'explore'));})();</script>'''
-    js = explore_js + f'\n<script defer src="{ASSET["planner"]}"></script>\n' + mode_js
+    js = (EXPLORER_JS % {"js": LEAFLET_JS, "base": J(base),
+                         "data": TRAVEL_ASSET[lang], "exp": ASSET["workspace"]}
+          + f'\n<script>window.DOWT={J(DOW_JS_T[lang])};</script>')
     return html, js
 
 
@@ -2482,7 +2614,8 @@ def main():
                              os.path.join(docs_dst, name))
 
     write_hashed(out, "style.css", build_css(DESIGN), "css", also_plain=True)
-    for fn, key in (("explorer.js", "explorer"), ("planner.js", "planner"), ("auth.js", "auth"), ("booking.js", "booking"),
+    for fn, key in (("explorer.js", "explorer"), ("planner.js", "planner"), ("workspace.js", "workspace"),
+                    ("auth.js", "auth"), ("booking.js", "booking"),
                     ("community.js", "community"), ("admin-bookings.js", "admin_bookings"), ("app.js", "app")):
         p = os.path.join("static", fn)
         if os.path.exists(p):
