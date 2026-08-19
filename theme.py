@@ -1555,48 +1555,89 @@ a{{color:#0b5f73}}
 .home-more-wrap .sec:nth-of-type(even),main>.sec.alt{{background:#f7f9fb}}
 .home-more-wrap .sec:nth-of-type(odd),main>.sec:not(.alt):not(.maphero){{background:#fff}}
 .digital-card-page{{background-color:#eef2f5;background-image:none}}
-.btn,.head-tel a{{min-height:40px;padding:9px 16px;border-radius:10px;background:#0d94ae;color:#fff;
+.btn{{min-height:40px;padding:9px 16px;border-radius:10px;background:#0d94ae;color:#fff;
   font-weight:600;box-shadow:none}}
-.btn:hover,.head-tel a:hover{{background:#0b8399;text-decoration:none;filter:none}}
+.btn:hover{{background:#0b8399;text-decoration:none;filter:none}}
 .btn.alt{{background:var(--brand);color:#fff;border:0}}
 .btn.alt:hover{{background:#123f63;color:#fff}}
 .btn.ghost{{background:#fff;color:var(--ink);border:1px solid var(--line)}}
 .btn.ghost:hover{{background:#fff;color:var(--brand);border-color:var(--brand)}}
 .btn.wa{{background:#1faa53}}
-.head-tel a{{background:#fff;color:var(--brand);border:1px solid var(--brand);font-size:14px}}
-.head-tel a:hover{{background:var(--brand);color:#fff}}
-@media(min-width:1001px){{
-  body{{padding-inline-start:0}}
-  .site-head{{position:sticky;top:0;inset-inline:auto;width:auto;height:auto;min-height:0;
-    border-inline-end:0;border-bottom:1px solid var(--line);overflow:visible;z-index:40}}
-  .head-in{{min-height:0;width:auto;max-width:var(--maxw);margin:0 auto;padding:10px 560px 10px 22px;
-    display:flex;flex-direction:row;align-items:center;flex-wrap:wrap;row-gap:8px;gap:14px}}
-  .logo{{display:flex;align-items:center;gap:10px;padding:0;border-bottom:0;font-size:17px}}
-  .logo img{{height:40px;width:auto}}
-  .logo .logo-name{{display:flex;flex-direction:column;line-height:1.3}}
-  .logo small{{font-size:11px;line-height:1.3;letter-spacing:.02em;white-space:normal}}
-  nav.main{{width:auto;margin:0;order:5;flex-basis:100%;overflow:visible}}
-  nav.main ul{{display:flex;flex-direction:row;flex-wrap:wrap;gap:8px;width:auto}}
-  nav.main li{{width:auto;margin:0}}
-  nav.main a{{width:auto;padding:9px 14px;border-radius:10px;font-size:13.5px;font-weight:600;
-    color:var(--ink);background:#fff;border:1px solid var(--line);box-shadow:none}}
-  nav.main a:hover{{background:var(--bg-3);color:var(--ink)}}
-  nav.main a[aria-current="page"]{{background:var(--brand);border-color:var(--brand);color:#fff;box-shadow:none}}
-  .nav-more{{margin-top:0}}
-  .nav-more summary{{display:inline-flex;align-items:center;min-height:0;height:auto;padding:9px 14px;
-    border-radius:10px;border:1px solid var(--line);background:#fff;letter-spacing:.14em}}
-  .nav-more details>ul{{position:absolute;inset-inline-end:auto;inset-inline-start:0;top:calc(100% + 8px);
-    min-width:200px;margin:0!important;padding:8px!important;background:#fff;border:1px solid var(--line);
-    border-radius:12px;box-shadow:0 18px 45px rgba(9,30,48,.16)}}
-  .nav-more details>ul a{{white-space:nowrap;font-size:13px;border:0;background:transparent;width:100%}}
-  .nav-more details>ul a:hover{{background:var(--bg-3)}}
-  .head-actions{{margin:0 0 0 auto;width:auto;display:flex;flex-direction:row;align-items:center;gap:10px}}
-  .head-tel{{order:0}}
-  .head-tel a{{width:auto;justify-content:center;padding:8px 15px;font-size:13.5px}}
-  .corner-tools{{position:absolute;inset-block-start:12px}}
+/* ── ჰედერი — Drive On Pages მაკეტის ზუსტი განლაგება (ყველა სიგანეზე) ── */
+.sr-only{{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}}
+body{{padding-inline-start:0!important}}
+.site-head{{position:sticky!important;top:0;inset-inline:auto!important;width:auto!important;
+  height:auto!important;min-height:0!important;background:#fff;border-bottom:0;border-inline-end:0;
+  overflow:visible;z-index:70;box-shadow:none;backdrop-filter:none}}
+.head-top{{display:flex;align-items:center;gap:10px;min-height:56px;padding:6px 16px;background:#fff;
+  border-bottom:1px solid var(--line)}}
+.head-sp{{flex:1 1 0}}
+.head-top .logo{{display:flex;align-items:center;gap:10px;padding:0;border:0;margin:0;width:auto;
+  font-size:15px;color:var(--ink);text-decoration:none}}
+.head-top .logo img{{height:34px;width:auto;display:block}}
+.head-top .logo-name{{display:flex;flex-direction:column;line-height:1.15;font-weight:700}}
+.head-top .logo-name small{{font-size:11px;color:var(--ink-2);font-weight:400;letter-spacing:.01em}}
+.lang-nav select{{height:40px;padding:0 8px;border:1px solid var(--line);border-radius:10px;
+  background:#fff;color:var(--ink);font:inherit;font-size:13px;cursor:pointer}}
+.head-top .authbox{{position:static!important;inset:auto!important;display:flex;align-items:center;
+  gap:8px;width:auto!important}}
+.head-top .authlink{{display:flex;align-items:center;gap:8px;height:40px;padding:0 10px;
+  border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--ink);
+  font-size:13px;font-weight:500;text-decoration:none;cursor:pointer;box-shadow:none;width:auto!important}}
+.head-top .authlink:hover{{border-color:var(--brand);color:var(--brand)}}
+.head-top .authlink .ava{{width:30px;height:30px;margin-inline-start:-6px;border-radius:999px;
+  background:var(--accent);color:#fff;font-size:12px;font-weight:700;display:grid;place-items:center;
+  overflow:hidden;flex:0 0 auto}}
+.head-top .authlink .ava img{{width:100%;height:100%;object-fit:cover;border-radius:999px}}
+.head-top .notify-button{{position:relative;width:40px;height:40px;border:1px solid var(--line);
+  border-radius:10px;background:#fff;display:grid;place-items:center;cursor:pointer;color:var(--brand)}}
+.head-top .notify-button b{{position:absolute;top:-4px;inset-inline-end:-4px;min-width:17px;height:17px;
+  padding:0 4px;background:#c0392b;color:#fff;border-radius:999px;font-size:10px;font-weight:700;
+  display:grid;place-items:center}}
+.head-tabs{{display:flex;align-items:center;gap:6px;padding:10px 16px;background:#fff;
+  border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none}}
+.head-tabs::-webkit-scrollbar{{display:none}}
+.head-tabs ul{{display:flex;align-items:center;gap:6px;list-style:none;margin:0;padding:0}}
+.head-tabs li{{margin:0;width:auto;display:block}}
+.head-tabs ul a{{display:flex;align-items:center;height:40px;padding:0 14px;border:1px solid var(--line);
+  border-radius:10px;background:#fff;color:var(--ink);font-size:13px;font-weight:600;
+  white-space:nowrap;text-decoration:none;box-shadow:none;width:auto}}
+.head-tabs ul a:hover{{background:var(--bg-3);color:var(--ink)}}
+.head-tabs ul a[aria-current="page"]{{background:var(--brand);border-color:var(--brand);color:#fff}}
+.head-tabs .nav-more{{margin:0;position:relative}}
+.head-tabs .nav-more summary{{display:flex;align-items:center;height:40px;min-height:0;padding:0 14px;
+  border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink-2);
+  font-weight:700;letter-spacing:.14em;cursor:pointer}}
+.head-tabs .nav-more summary:hover,.head-tabs .nav-more details[open] summary{{background:var(--bg-3);
+  color:var(--ink)}}
+.head-tabs .nav-more details>ul{{position:absolute;inset-inline-start:0;inset-inline-end:auto;
+  top:calc(100% + 8px);min-width:200px;margin:0!important;padding:8px!important;background:#fff;
+  border:1px solid var(--line);border-radius:12px;box-shadow:0 18px 45px rgba(9,30,48,.16);
+  display:block!important;z-index:80}}
+.head-tabs .nav-more details>ul li{{display:block}}
+.head-tabs .nav-more details>ul a{{border:0;background:transparent;width:100%;height:auto;
+  padding:8px 10px;font-size:13px;white-space:nowrap;border-radius:8px}}
+.head-tabs .nav-more details>ul a:hover{{background:var(--bg-3)}}
+.plan-cta{{display:flex;align-items:center;height:40px;padding:0 14px;border:1px solid var(--brand);
+  border-radius:10px;background:#fff;color:var(--brand);font-size:13px;font-weight:600;
+  white-space:nowrap;text-decoration:none;flex:0 0 auto}}
+.plan-cta:hover{{background:var(--brand);color:#fff;text-decoration:none}}
+@media(min-width:900px){{
+  .head-tabs{{overflow:visible;flex-wrap:wrap}}
 }}
-.corner-tools .corner-langs{{background:#fff;border:1px solid var(--line)}}
-.corner-tools .corner-langs a.on{{background:var(--brand);color:#fff}}
+@media(max-width:640px){{
+  .head-top{{min-height:52px;padding:6px 12px}}
+  .head-top .logo img{{height:30px}}
+  .head-top .logo-name small{{display:none}}
+  .head-tabs{{padding:8px 12px}}
+  .head-top .authtext{{display:none}}
+  .head-top .authlink{{width:40px!important;justify-content:center;padding:0}}
+  .head-top .authlink .ava{{margin-inline-start:0}}
+}}
+@media(max-width:899px){{
+  .head-tabs .nav-more details>ul{{position:fixed;top:112px;inset-inline-start:auto;
+    inset-inline-end:12px}}
+}}
 .site-foot{{background:#0b2f4d;color:#c2d3e2;border-top:0}}
 .site-foot h2{{color:#fff}}
 .site-foot a{{color:#dbe7f1}}
@@ -1608,4 +1649,7 @@ a{{color:#0b5f73}}
 .ok-note{{display:block;font-size:12px;font-weight:600;color:var(--ok);margin:2px 0 6px}}
 .warn-note{{display:block;font-size:12px;font-weight:600;color:#8c5a00;margin:2px 0 6px}}
 .car .ph{{background:#e8edf0;border-bottom:1px dashed #cfdae3;color:var(--ink-2)}}
+main h1{{font-size:clamp(26px,3.4vw,33px);line-height:1.15;font-weight:700}}
+.home-hero h1{{font-size:clamp(30px,4.5vw,40px)}}
+main .lead,p.lead{{font-size:15px;color:var(--ink-2)}}
 """

@@ -555,9 +555,8 @@ def header_html(lang, current):
         "ar": ("التطبيق", "Android APK", "iPhone / iOS", "تنزيل لأندرويد", "تعليمات التثبيت"),
     }[lang]
     CUR = ' aria-current="page"'
-    # Trip planning and community are the product's primary navigation.
-    # Fleet stays available, but appears contextually and in the secondary menu.
-    more_pages = {"fleet", "terms", "faq", "blog", "software"}
+    # Drive On Pages მაკეტი: ტაბები — მთავარი გვერდები; დანარჩენი "..." მენიუში.
+    more_pages = {"terms", "faq", "blog", "software"}
     lis = "".join(
         f'<li><a href="{page_url(lang, "map", False) + "#planner" if p == "planner" else page_url(lang, p, False)}"'
         f'{CUR if p == current else ""}>{E(u["nav"][p])}</a></li>'
@@ -566,30 +565,34 @@ def header_html(lang, current):
         f'<li><a href="{page_url(lang, p, False)}"'
         f'{CUR if p == current else ""}>{E(u["nav"][p])}</a></li>'
         for p in PAGE_ORDER if p in more_pages)
-    langs = "".join(
-        f'<a href="{page_url(l, "card", False) if current == "card" else lang_root(l)}" hreflang="{l}" lang="{l}" '
-        f'class="{"on" if l == lang else ""}" title="{E(LANG_LABEL[l])}">{LANG_SHORT[l]}</a>'
+    lang_opts = "".join(
+        f'<option value="{page_url(l, "card", False) if current == "card" else lang_root(l)}"'
+        f'{" selected" if l == lang else ""}>{E(LANG_LABEL[l])}</option>'
         for l in LANGS)
-    card_label = {"ka": "ვიზიტკა", "en": "Business card", "ru": "Визитка",
-                  "fa": "کارت ویزیت", "he": "כרטיס ביקור", "ar": "بطاقة العمل"}[lang]
+    lang_links = "".join(
+        f'<a href="{page_url(l, "card", False) if current == "card" else lang_root(l)}" hreflang="{l}" lang="{l}">'
+        f'{LANG_SHORT[l]}</a> ' for l in LANGS)
+    plan_label = {"ka": "დაგეგმე მოგზაურობა", "en": "Plan a trip", "ru": "Спланируйте поездку",
+                  "fa": "سفر را برنامه‌ریزی کنید", "he": "תכננו נסיעה", "ar": "خطّط رحلتك"}[lang]
     logo_img = DESIGN.get("logo_image")
     mark = DESIGN.get("logo_mark") or "".join(w[0] for w in BRAND.split()[:2]).upper()
     logo = (f'<img src="{E(logo_img)}" alt="" aria-hidden="true">'
             f'<span class="logo-name">{E(BRAND)} <small>{E(u["ui"]["logo_sub"])}</small></span>' if logo_img
             else f'<span class="mark" aria-hidden="true">{E(mark)}</span>'
-                 f'{E(BRAND)} <small>{E(u["ui"]["logo_sub"])}</small>')
-    return f"""<header class="site-head"><div class="head-in">
+                 f'<span class="logo-name">{E(BRAND)} <small>{E(u["ui"]["logo_sub"])}</small></span>')
+    return f"""<header class="site-head"><div class="head-top">
 <a class="logo" href="{lang_root(lang)}">{logo}</a>
-<nav class="main" aria-label="{E(u['ui']['nav_label'])}"><ul>{lis}
+<span class="head-sp"></span>
+<label class="lang-nav"><span class="sr-only">{E(u['ui']['lang_label'])}</span>
+<select onchange="location.href=this.value">{lang_opts}</select></label>
+<noscript><span class="lang-links">{lang_links}</span></noscript>
+<div id="authbox" class="authbox"></div>
+</div>
+<nav class="head-tabs" aria-label="{E(u['ui']['nav_label'])}"><ul>{lis}
 <li class="nav-more"><details><summary aria-label="More">•••</summary><ul>{more}</ul></details></li>
-</ul></nav>
-<div class="head-actions"><span class="head-tel"><a dir="ltr" href="tel:{SITE['phone_e164']}">{E(SITE['phone'])}</a></span></div>
-</div></header><div class="corner-tools"><div class="langs corner-langs" role="group" aria-label="{E(u['ui']['lang_label'])}">{langs}</div>
-<details class="app-download"><summary aria-label="{E(app_copy[0])}"><span class="app-download-icon" aria-hidden="true">↓</span><span class="app-download-text">{E(app_copy[0])}</span></summary>
-<div class="app-download-menu">
-<a href="/assets/downloads/fleet-house-android.apk" download><b>{E(app_copy[1])}</b><small>{E(app_copy[3])}</small></a>
-<button type="button" data-ios-install><b>{E(app_copy[2])}</b><small>{E(app_copy[4])}</small></button>
-</div></details><a class="business-card-link business-card-corner" href="{page_url(lang, 'card', False)}" aria-label="{E(card_label)}"><span aria-hidden="true">▣</span><span>{E(card_label)}</span></a><div id="authbox" class="authbox authbox-corner"></div></div>"""
+</ul><span class="head-sp"></span>
+<a class="plan-cta" href="{page_url(lang, 'map', False)}#planner">{E(plan_label)}</a></nav>
+</header>"""
 
 
 def crumbs_html(lang, trail_rel):
@@ -607,10 +610,16 @@ def crumbs_html(lang, trail_rel):
 def footer_html(lang):
     u = UI[lang]
     a = SITE["address"][lang]
+    card_label = {"ka": "ვიზიტკა", "en": "Business card", "ru": "Визитка",
+                  "fa": "کارت ویزیت", "he": "כרטיס ביקור", "ar": "بطاقة العمل"}[lang]
+    app_label = {"ka": "აპლიკაცია (Android APK)", "en": "App (Android APK)", "ru": "Приложение (Android APK)",
+                 "fa": "اپلیکیشن (Android APK)", "he": "אפליקציה (Android APK)", "ar": "التطبيق (Android APK)"}[lang]
     return f"""<footer class="site-foot"><div class="wrap"><div class="foot-compact">
 <nav aria-label="{E(u['ui']['foot_pages'])}">
 <a href="{page_url(lang, 'fleet', False)}">{E(u['nav']['fleet'])}</a>
-<a href="{page_url(lang, 'contact', False)}">{E(u['nav']['contact'])}</a></nav>
+<a href="{page_url(lang, 'contact', False)}">{E(u['nav']['contact'])}</a>
+<a href="{page_url(lang, 'card', False)}">{E(card_label)}</a>
+<a href="/assets/downloads/fleet-house-android.apk" download>{E(app_label)}</a></nav>
 <div class="foot-contact">
 <a dir="ltr" href="tel:{SITE['phone_e164']}">{E(SITE['phone'])}</a>
 {f'''<a dir="ltr" href="tel:{SITE['mobile_e164']}">{E(SITE['mobile'])}</a>''' if SITE.get('mobile') else ''}
@@ -736,9 +745,9 @@ def render_static_page(lang, page):
                     f'<div class="home-hero-copy"><span class="kicker">{E(h["kicker"])}</span><h1>{E(p["h1"])}</h1>'
                     f'<p class="lead">{inline(h["lead"], lang)}</p>'
                     f'<div class="home-hero-actions"><a class="btn" href="#planner">{E(hero_cta[0])}</a>'
-                    f'<a class="btn alt" href="{page_url(lang, "community", False)}">{E(hero_cta[1])}</a>'
-                    f'<a class="btn alt" href="#planner" data-open-standard-tour>{E(hero_cta[3])}</a>'
-                    f'<a class="btn alt" href="{page_url(lang, "community", False)}">{E(hero_cta[4])}</a></div>'
+                    f'<a class="btn ghost" href="{page_url(lang, "community", False)}">{E(hero_cta[1])}</a>'
+                    f'<a class="btn ghost" href="#planner" data-open-standard-tour>{E(hero_cta[3])}</a>'
+                    f'<a class="btn ghost" href="{page_url(lang, "community", False)}">{E(hero_cta[4])}</a></div>'
                     f'<p class="home-hero-note">✓ {E(hero_cta[2])}</p></div>'
                     f'</div></section>')
         map_section = (f'<section class="sec wide maphero" id="planner"><div class="wrap wide">'
