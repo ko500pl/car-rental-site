@@ -749,16 +749,33 @@
       start: st.start, end: st.end, people: st.people, stops: st.selected.slice()
     };
   }
+  /* შენახვა — ანგარიშზე (Firebase). შეუსვლელ მომხმარებელს ლოგინის
+     ფანჯარა უხტება; შესვლისთანავე დაწყებული შენახვა თავად სრულდება. */
+  var pendingSave = null, retryReg = false;
+  function regSaveRetry() {
+    if (retryReg || !window.FH || !window.FH.on) return;
+    retryReg = true;
+    window.FH.on(function (u) {
+      if (u && pendingSave) { var p = pendingSave; pendingSave = null; cloudSave(p); }
+    });
+  }
+  function cloudSave(payload) {
+    window.FH.saveTrip(payload).then(function () {
+      flash(T.saved);
+    }).catch(function (e) {
+      if (e === 'no-user') { pendingSave = payload; regSaveRetry(); flash(T.signinToSave); }
+      else flash(T.saveErr || T.sendErr);
+    });
+  }
   $('dowsave').onclick = function () {
-    var trip = tripObj(), saved = [];
+    var trip = tripObj();
+    var payload = { title: trip.name, date: trip.start, days: st.days,
+      stops: st.selected.map(function (s) { return { n: (BY[s] || {}).n || s }; }), url: shareUrl() };
+    if (window.FH && !window.FH.local && window.FH.saveTrip) { cloudSave(payload); return; }
+    var saved = [];
     try { saved = JSON.parse(localStorage.getItem('do-trips') || '[]'); } catch (e) { saved = []; }
     saved.push(trip);
     try { localStorage.setItem('do-trips', JSON.stringify(saved)); } catch (e) {}
-    if (window.FH && window.FH.addTrip) {
-      try {
-        window.FH.addTrip({ title: trip.name, date: trip.start, days: st.days, stops: st.selected.map(function (s) { return { n: (BY[s] || {}).n || s }; }), url: shareUrl() });
-      } catch (e) {}
-    }
     flash(T.saved);
   };
   function shareUrl() {

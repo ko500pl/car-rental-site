@@ -595,7 +595,18 @@
       box.appendChild(card);
     });
   }
+  var cloudCountFetched = false;
   function renderAccount() {
+    if (st.tab === 'account' && !cloudCountFetched && cloudMode()) {
+      cloudCountFetched = true;
+      window.FH.listTrips().then(function (list) {
+        if (list && list.length !== undefined) {
+          st.savedCount = list.length;
+          var el = $('doaacc-saved');
+          if (el) el.textContent = String(list.length);
+        }
+      }).catch(function () {});
+    }
     var vals = {
       'doaacc-planned': String(st.selected.length ? 1 : 0),
       'doaacc-saved': String(st.savedCount),
@@ -704,16 +715,39 @@
     return location.href.split('#')[0] + '#trip=' + encodeURIComponent(
       st.selected.join(',') + ';o=' + st.origin.n + ';s=' + st.start + ';d=' + st.days);
   }
+  /* შენახვა — ანგარიშზე (Firebase). შეუსვლელს ლოგინის ფანჯარა უხტება;
+     შესვლისთანავე დაწყებული შენახვა თავად სრულდება. */
+  function cloudMode() { return !!(window.FH && !window.FH.local && window.FH.saveTrip); }
+  var pendingSave = null, retryReg = false;
+  function savedOk() {
+    st.tripMsg = T.saved;
+    flash(T.saved);
+    renderRoute(); renderAccount();
+    setTimeout(function () { st.tripMsg = ''; var el = $('doatripmsg'); if (el) el.textContent = ''; }, 2500);
+  }
+  function regSaveRetry() {
+    if (retryReg || !window.FH || !window.FH.on) return;
+    retryReg = true;
+    window.FH.on(function (u) {
+      if (u && pendingSave) { var p = pendingSave; pendingSave = null; cloudSave(p); }
+    });
+  }
+  function cloudSave(payload) {
+    window.FH.saveTrip(payload).then(function () { st.savedCount += 1; savedOk(); }).catch(function (e) {
+      if (e === 'no-user') { pendingSave = payload; regSaveRetry(); flash(T.signinToSave); }
+      else flash(T.saveErr);
+    });
+  }
   $('doasave').onclick = function () {
+    var payload = { title: tripName(), date: st.start, days: Math.max(1, st.days),
+      stops: st.selected.map(function (s) { return { n: (BY[s] || {}).n || s }; }), url: shareUrl() };
+    if (cloudMode()) { cloudSave(payload); return; }
     var saved = [];
     try { saved = JSON.parse(localStorage.getItem('do-trips') || '[]'); } catch (e) { saved = []; }
     saved.push({ name: tripName(), start: st.start, end: st.end, stops: st.selected.slice() });
     try { localStorage.setItem('do-trips', JSON.stringify(saved)); } catch (e) {}
     st.savedCount = saved.length;
-    st.tripMsg = T.saved;
-    flash(T.saved);
-    renderRoute(); renderAccount();
-    setTimeout(function () { st.tripMsg = ''; var el = $('doatripmsg'); if (el) el.textContent = ''; }, 2500);
+    savedOk();
   };
   $('doashare').onclick = function () {
     var text = tripName() + ' · ' + st.start + ' – ' + st.end + ' · ' + st.selected.length;
@@ -792,6 +826,8 @@
 
   window.DOA_GO = function (k) {
     if (k === 'visited') { st.visitedFilter = 'yes'; goTab('map'); }
+    else if (k === 'saved' && cloudMode() && T.accountUrl) location.href = T.accountUrl;
+    else if (k === 'saved') goTab('route');
     else goTab(k);
   };
 

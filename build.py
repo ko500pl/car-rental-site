@@ -600,6 +600,9 @@ def header_html(lang, current):
     return f"""<header class="site-head"><div class="head-top">
 <a class="logo" href="{lang_root(lang)}">{logo}</a>
 <span class="head-sp"></span>
+<a class="head-app" href="{lang_root(lang)}app/">
+<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5"></rect><path d="M10.5 18.5h3"></path></svg>
+<span>{E(app_copy[0])}</span></a>
 <label class="lang-nav"><span class="sr-only">{E(u['ui']['lang_label'])}</span>
 <select onchange="location.href=this.value">{lang_opts}</select></label>
 <noscript><span class="lang-links">{lang_links}</span></noscript>
@@ -2163,6 +2166,19 @@ DOW_JS_T = {
     "he": dict(h="ש׳", m="דק׳", day="ימים", day1="יום", person="אנשים", km='ק"מ', place="מקומות", places="מקומות", total='סה"כ', chosenN="נבחרו", visit="ביקור", visited="ביקרתי", notVisited="טרם ביקרתי", fitsTime="נכנס בזמן", noFit="לא נכנס בזמן", details="פרטים", road="נסיעה", inGroup="מקומות בקבוצה", placeDetails="פרטי מקום", removeStop="הסרה מהמסלול", addStop="הוספה למסלול", markVisited="סימון כביקרתי", visitedYes="ביקרתי ✓", fullPage="עמוד מלא →", saved="נשמר ✓", linkCopied="הקישור הועתק ✓", shareOpened="השיתוף נפתח", stop="עצירות", myLocName="המיקום שלי", notFound="לא נמצא — נסו שם אחר", seat="מושבים", per100='ל/100 ק"מ', sum='סה"כ', need4="במסלול דרכים הרריות — מומלץ 4×4", noNeed4="המסלול על כבישים סלולים — מחלקה רגילה מספיקה", chooseTour="בחירת הטיול", onRoad="בדרך", ratingAll="★ הכל", noFitNeed="לא נכנס — צריך עוד בערך", undo="שחזור", tourApplied="הטיול הוחל על המפה", teaserA="רכבים מ-", teaserB="₾/יום — בחרו מקומות ותראו את המחיר למסלול", sending="שולח…", moveUp="הקדמה", moveDown="דחייה", removeL="הסרה", almostOut="הזמן כמעט נגמר"),
     "ar": dict(h="س", m="د", day="أيام", day1="يوم", person="أشخاص", km="كم", place="أماكن", places="أماكن", total="المجموع", chosenN="المختار", visit="زيارة", visited="تمت زيارته", notVisited="لم تتم زيارته", fitsTime="يتسع في الوقت", noFit="لا يتسع في الوقت", details="التفاصيل", road="طريق", inGroup="أماكن في هذه المجموعة", placeDetails="تفاصيل المكان", removeStop="إزالة من المسار", addStop="إضافة إلى المسار", markVisited="وضع علامة زيارة", visitedYes="تمت الزيارة ✓", fullPage="الصفحة الكاملة →", saved="تم الحفظ ✓", linkCopied="تم نسخ الرابط ✓", shareOpened="فُتحت المشاركة", stop="توقفات", myLocName="موقعي", notFound="لم يُعثر — جرّب اسماً آخر", seat="مقاعد", per100="ل/100كم", sum="الإجمالي", need4="المسار يتضمن طرقاً جبلية — يُنصح بـ 4×4", noNeed4="المسار على طرق معبدة — الفئة القياسية كافية", chooseTour="اختيار هذه الجولة", onRoad="في الطريق", ratingAll="★ الكل", noFitNeed="لا يتسع — تحتاج نحو", undo="تراجع", tourApplied="طُبّقت الجولة على الخريطة", teaserA="سيارات من", teaserB="لاري/يوم — اختر أماكن لترى سعر مسارك", sending="جارٍ الإرسال…", moveUp="تقديم", moveDown="تأخير", removeL="إزالة", almostOut="الوقت أوشك على النفاد")}
 
+_DOW_SAVE_T = {
+    "ka": ("შედით ანგარიშში, რომ მარშრუტი შეინახოთ", "შენახვა ვერ მოხერხდა — სცადეთ ხელახლა"),
+    "en": ("Sign in to save your route", "Could not save — try again"),
+    "ru": ("Войдите, чтобы сохранить маршрут", "Не удалось сохранить — попробуйте ещё раз"),
+    "fa": ("برای ذخیره مسیر وارد شوید", "ذخیره نشد — دوباره تلاش کنید"),
+    "he": ("התחברו כדי לשמור את המסלול", "השמירה נכשלה — נסו שוב"),
+    "ar": ("سجّل الدخول لحفظ المسار", "تعذر الحفظ — حاول مجدداً"),
+}
+for _l, _v in _DOW_SAVE_T.items():
+    DOW_JS_T[_l]["signinToSave"], DOW_JS_T[_l]["saveErr"] = _v
+
+
+
 
 def travel_workspace_block(lang, depth, height="72vh", hero=False, initial="explore"):
     """Drive On Trip Workspace — მომხმარებლის მაკეტის ზუსტი განლაგება."""
@@ -2603,6 +2619,28 @@ DOA_STYLE = """
   .app-install-card span{font-size:12px;color:#5a6b7b}
   .app-install-action{height:40px;padding:0 14px;border:0;border-radius:10px;background:#0b2f4d;color:#fff;font-size:13px;font-weight:600}
   .app-install-close{width:32px;height:32px;border:0;background:transparent;font-size:16px;color:#5a6b7b}
+  .authdlg{position:fixed;inset:0;z-index:950;background:rgba(14,35,51,.5);display:flex;align-items:center;justify-content:center;padding:16px}
+  .authcard{position:relative;width:min(420px,100%);max-height:90vh;overflow:auto;background:#fff;border:1px solid #dde5ec;border-radius:16px;padding:20px;box-shadow:0 18px 40px rgba(14,35,51,.25)}
+  .authcard h3{margin:0 0 6px;font-size:22px;color:#0e2333}
+  .authcard .pshort{margin:0 0 14px;font-size:13px;color:#5a6b7b}
+  .authbrand img{height:30px;margin-bottom:10px}
+  .authcard label{display:block;font-size:13px;color:#5a6b7b;margin:0 0 10px}
+  .authcard input{width:100%;font:inherit;font-size:15px;height:46px;padding:0 12px;margin-top:4px;border:1px solid #dde5ec;border-radius:10px;background:#fff;color:#0e2333}
+  .authcard .btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:46px;margin:0 0 10px;border:0;border-radius:10px;background:#0b2f4d;color:#fff;font-size:14px;font-weight:600}
+  .authcard .btn.goog{background:#fff;color:#0e2333;border:1px solid #dde5ec}
+  .authcard .btn.goog .gicon svg{width:18px;height:18px;display:block}
+  .authcard .facebook{background:#1877f2;color:#fff}
+  .authcard .fbicon{font-weight:800}
+  .author{display:flex;align-items:center;gap:10px;margin:4px 0 12px;color:#5a6b7b;font-size:12px}
+  .author:before,.author:after{content:"";flex:1;height:1px;background:#dde5ec}
+  .autherr{display:none;font-size:13px;color:#8c2d20;margin:0 0 8px}
+  .autherr.show{display:block}
+  .authrow{display:flex;gap:8px}
+  .authx{position:absolute;top:10px;inset-inline-end:10px;width:38px;height:38px;border:1px solid #dde5ec;border-radius:10px;background:#fff;font-size:14px}
+  .lnk{border:0;background:none;color:#0b5f73;font-size:13px;padding:4px 0;text-decoration:underline}
+  .authsignup{margin:6px 0 0}
+  .authnote{margin:10px 0 0;font-size:11px;color:#718091}
+  body.auth-open{overflow:hidden}
 """
 
 
@@ -2614,8 +2652,24 @@ def render_app_page(lang):
              f'<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
              f'<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={gf}&display=swap">') if gf else ""
     lang_urls = {l: lang_root(l) + "app/" for l in LANGS}
+    u = UI[lang]
+    fh_cfg = {k: AUTH.get(k, "") for k in ("apiKey", "authDomain", "projectId",
+                                           "storageBucket", "messagingSenderId", "appId")}
+    fh_cfg["accountUrl"] = page_url(lang, "account", False)
+    fh_cfg["plannerUrl"] = page_url(lang, "map", False) + "#planner"
+    fh_cfg["siteUrl"] = SITE_URL
+    fh_cfg["whatsapp"] = str(SITE.get("whatsapp") or SITE.get("mobile_e164")
+                             or SITE.get("phone_e164", "")).replace("+", "").replace(" ", "")
+    fh_cfg["t"] = {k: u["ui"][k] for k in (
+        "account", "sign_in", "sign_up", "sign_out", "with_google", "or_email", "email",
+        "password", "forgot", "reset_sent", "why_account", "legal_note", "please_sign_in",
+        "no_trips", "to_planner", "planned", "done", "mark_done", "mark_planned", "open",
+        "delete", "confirm_del", "days", "stops", "save_trip", "saved") if k in u["ui"]}
     doat = dict(t)
     doat["langUrls"] = lang_urls
+    doat["accountUrl"] = fh_cfg["accountUrl"]
+    doat["signinToSave"] = _DOW_SAVE_T[lang][0]
+    doat["saveErr"] = _DOW_SAVE_T[lang][1]
     lang_opts = "".join(
         f'<option value="{l}"{" selected" if l == lang else ""}>{l.upper()}</option>' for l in LANGS)
     tr_opts = "".join(
@@ -2829,7 +2883,7 @@ def render_app_page(lang):
         <span style="font-size:15px;font-weight:600">{E(t["accPlanned"])}</span>
         <span id="doaacc-planned" style="font-size:14px;color:#5a6b7b">0</span>
       </button>
-      <button type="button" data-acc="route" style="display:flex;justify-content:space-between;align-items:center;gap:8px;min-height:56px;padding:12px;background:#fff;border:1px solid #dde5ec;border-radius:14px;text-align:start">
+      <button type="button" data-acc="saved" style="display:flex;justify-content:space-between;align-items:center;gap:8px;min-height:56px;padding:12px;background:#fff;border:1px solid #dde5ec;border-radius:14px;text-align:start">
         <span style="font-size:15px;font-weight:600">{E(t["accSaved"])}</span>
         <span id="doaacc-saved" style="font-size:14px;color:#5a6b7b">0</span>
       </button>
@@ -2898,7 +2952,7 @@ def render_app_page(lang):
 
   <div id="doatoast" role="status" hidden style="position:absolute;left:12px;right:12px;bottom:80px;z-index:800;padding:12px 14px;background:#0b2f4d;color:#fff;border-radius:12px;font-size:14px;text-align:center"></div>
 </div>
-<script>window.DOAT={J(doat)};</script>
+<script>window.DOAT={J(doat)};window.FH_CFG={J(fh_cfg)};</script>
 <script>
 document.addEventListener('click',function(e){{var b=e.target.closest('[data-acc]');if(!b||!window.DOA_GO)return;window.DOA_GO(b.getAttribute('data-acc'));}});
 </script>
@@ -2906,6 +2960,7 @@ document.addEventListener('click',function(e){{var b=e.target.closest('[data-acc
 <script src="{LEAFLET_JS}"></script>
 <script defer src="/assets/weather.js"></script>
 <script defer src="{ASSET["app_mobile"]}"></script>
+<script type="module" src="{ASSET.get("auth", "/assets/auth.js")}"></script>
 <script defer src="{ASSET.get("app", "/assets/app.js")}"></script>
 </body>
 </html>"""

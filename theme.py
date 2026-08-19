@@ -1579,6 +1579,10 @@ body{{padding-inline-start:0!important}}
 .head-top .logo-name small{{font-size:11px;color:var(--ink-2);font-weight:400;letter-spacing:.01em}}
 .lang-nav select{{height:40px;padding:0 8px;border:1px solid var(--line);border-radius:10px;
   background:#fff;color:var(--ink);font:inherit;font-size:13px;cursor:pointer}}
+.head-app{{display:flex;align-items:center;gap:7px;height:40px;padding:0 12px;border:1px solid #0d94ae;
+  border-radius:10px;background:#eefafc;color:#0b5f73;font-size:13px;font-weight:700;white-space:nowrap}}
+.head-app:hover{{background:#0d94ae;border-color:#0d94ae;color:#fff;text-decoration:none}}
+@media(max-width:760px){{.head-app span{{display:none}}.head-app{{width:40px;padding:0;justify-content:center}}}}
 .head-top .authbox{{position:static!important;inset:auto!important;display:flex;align-items:center;
   gap:8px;width:auto!important}}
 .head-top .authlink{{display:flex;align-items:center;gap:8px;height:40px;padding:0 10px;
