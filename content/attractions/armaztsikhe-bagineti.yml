@@ -8,24 +8,12 @@ featured: false
 order: 18
 image: /assets/photos/armaztsikhe-bagineti.webp
 gallery:
-- image: /assets/photos/armaztsikhe-bagineti-1.webp
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%E1%83%9E%E1%83%9D%E1%83%9B%E1%83%9E%E1%83%94%E1%83%A3%E1%83%A1%E1%83%98%E1%83%A1_%E1%83%AE%E1%83%98%E1%83%93%E1%83%98_(G.N._2011).jpg
-- image: /assets/photos/armaztsikhe-bagineti-2.webp
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%E1%83%9E%E1%83%9D%E1%83%9B%E1%83%9E%E1%83%94%E1%83%A3%E1%83%A1%E1%83%98%E1%83%A1_%E1%83%AE%E1%83%98%E1%83%93%E1%83%98_(G.N._2011)-2.jpg
-- image: /assets/photos/armaztsikhe-bagineti-3.webp
+- image: /assets/photos/armaztsikhe-bagineti-4.webp
   author: Kober
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: >-
-    https://commons.wikimedia.org/wiki/File:Ruins_of_the_former_headquarters_of_the_Tbilisi_Geophysical_Observatory,_Karsani,_Georgia1.jpg
+    https://commons.wikimedia.org/wiki/File:Armaztsikhe_archaeological_site_open-air_museum,_Mtskheta,_Georgia_22.jpg
 visit_hours: '1.5'
 best_season: may-october
 open_year_round: true
@@ -327,8 +315,9 @@ ar:
     اقتصادية دون عناء. اترك السيارة في نهاية الممر واصعد خمس دقائق سيراً. لا وقود ولا متاجر في هذا القسم
     الأخير، فتزود في متسخيتا أو تبليسي.
 image_credit:
-  author: Thomas Depenbusch from Waldbröl, Germany
-  license: CC BY 2.0
-  license_url: https://creativecommons.org/licenses/by/2.0
-  source: https://commons.wikimedia.org/wiki/File:Bridge_in_Mtskheta,_Georgia.jpg
+  author: Kober
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: >-
+    https://commons.wikimedia.org/wiki/File:Armaztsikhe_archaeological_site_open-air_museum,_Mtskheta,_Georgia_10.jpg
 rating: 3.5

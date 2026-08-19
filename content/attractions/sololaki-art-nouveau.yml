@@ -8,21 +8,11 @@ featured: false
 order: 38
 image: /assets/photos/sololaki-art-nouveau.webp
 gallery:
-- image: /assets/photos/sololaki-art-nouveau-1.webp
-  author: Giftzwerg 88
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Stadtansicht_Tiflis_59.jpg
-- image: /assets/photos/sololaki-art-nouveau-2.webp
-  author: Jaba1977
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Tbilisi,_Lermontovi_St.jpg
-- image: /assets/photos/sololaki-art-nouveau-3.webp
-  author: Gobrona
-  license: Public domain
-  license_url: ''
-  source: https://commons.wikimedia.org/wiki/File:Alexander_Kartveli_commemorative_plaque_(Tbilisi).jpg
+- image: /assets/photos/sololaki-art-nouveau-4.webp
+  author: travelgeorgia.ru
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Sololaki_panorama._Tbilisi_(Photo_A._Muhranoff,_2011).jpg
 visit_hours: '1.5'
 best_season: all
 open_year_round: true
@@ -355,8 +345,8 @@ ar:
     مشياً على أي حال. وإن أوقفت في الشارع فاستخدم الأماكن المخططة في لادو أساتياني واقرأ اللافتات. وسيارة
     اقتصادية صغيرة هي الخيار المعقول الوحيد هنا.
 image_credit:
-  author: whereisemil from Munich, Germany
-  license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: https://commons.wikimedia.org/wiki/File:Graffiti_in_Tbilisi_(19).jpg
+  author: Tamar kurtanidze
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:%E1%83%9B%E1%83%AC%E1%83%94%E1%83%A0%E1%83%90%E1%83%9A%E1%83%97%E1%83%90_%E1%83%A1%E1%83%90%E1%83%AE%E1%83%9A%E1%83%98.jpg
 rating: 3.5

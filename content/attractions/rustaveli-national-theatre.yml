@@ -6,7 +6,7 @@ elevation: 420
 unesco: false
 featured: false
 order: 66
-image: ''
+image: /assets/photos/rustaveli-national-theatre.webp
 gallery: []
 visit_hours: '2.5'
 best_season: all
@@ -24,3 +24,8 @@ ru: {name: Национальный театр Руставели, short: Одн
 fa: {name: تئاتر ملی روستاولی, short: یکی از صحنه‌های اصلی نمایش گرجستان در خیابان روستاولی., body: بازدید از ساختمان تاریخی را با اجرای موجود در تاریخ سفر ترکیب کنید., tip: برنامه و بلیت را از پیش بررسی کنید., route: در خیابان روستاولی و نزدیک مترو است.}
 he: {name: התיאטרון הלאומי רוסתוולי, short: אחת מבמות הדרמה המרכזיות של גאורגיה בשדרת רוסתוולי., body: אפשר לשלב ביקור בבניין ההיסטורי עם מופע בתאריך הנבחר., tip: בדקו מראש תוכנייה וכרטיסים., route: בשדרת רוסתוולי; נוח להגיע ברגל מהמטרו.}
 ar: {name: مسرح روستافيلي الوطني, short: أحد أهم مسارح الدراما في جورجيا على شارع روستافيلي., body: يمكن جمع زيارة المبنى التاريخي مع عرض متاح في تاريخ الرحلة., tip: تحقق من البرنامج والتذاكر مسبقاً., route: يقع على شارع روستافيلي ويسهل الوصول إليه من المترو.}
+image_credit:
+  author: DDohler
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Rustaveli_National_Theater_in_Georgia_(Europe),_built_19th_century_in_Rococo_style.jpg

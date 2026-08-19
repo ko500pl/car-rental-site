@@ -13,12 +13,6 @@ gallery:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Bell_tower_of_Gergeti_Trinity_Church.jpg
-- image: /assets/photos/gergeti-trinity-church-2.webp
-  author: t.przechlewski
-  license: CC BY 3.0
-  license_url: https://creativecommons.org/licenses/by/3.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%E1%83%92%E1%83%94%E1%83%A0%E1%83%92%E1%83%94%E1%83%A2%E1%83%98%E1%83%A1_%E1%83%A1%E1%83%90%E1%83%9B%E1%83%94%E1%83%91%E1%83%90,_Georgia_-_panoramio_(3).jpg
 - image: /assets/photos/gergeti-trinity-church-3.webp
   author: t.przechlewski
   license: CC BY 3.0
@@ -255,8 +249,8 @@ ar:
     تريده فعلاً كروس أوفر أو دفع رباعي، لأن تجاوز سيارة قادمة يعني وضع عجلتين على التراب. وفي الشتاء السلاسل
     والدفع الرباعي ضروريان. والوقود في باسانوري أو كازبيغي.
 image_credit:
-  author: Jonathan Cardy
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Gergeti_from_Church_02.jpg
+  author: Max Benidze
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Kazbek,_Gergeti_Trinity_Church_2017.jpg
 rating: 5.0

@@ -8,21 +8,11 @@ featured: false
 order: 45
 image: /assets/photos/shekvetili-dendrological-park.webp
 gallery:
-- image: /assets/photos/shekvetili-dendrological-park-1.webp
-  author: Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center
-  license: Public domain
-  license_url: ''
-  source: https://commons.wikimedia.org/wiki/File:ISS038-E-43672_-_View_of_Earth.jpg
-- image: /assets/photos/shekvetili-dendrological-park-2.webp
-  author: Earth Science and Remote Sensing Unit, NASA Johnson Space Center
-  license: Public domain
-  license_url: ''
-  source: https://commons.wikimedia.org/wiki/File:ISS062-E-9491_-_View_of_Earth.jpg
-- image: /assets/photos/shekvetili-dendrological-park-3.webp
-  author: Earth Science and Remote Sensing Unit, NASA Johnson Space Center
-  license: Public domain
-  license_url: ''
-  source: https://commons.wikimedia.org/wiki/File:ISS062-E-9490_-_View_of_Earth.jpg
+- image: /assets/photos/shekvetili-dendrological-park-4.webp
+  author: ShotaNino
+  license: CC0
+  license_url: https://creativecommons.org/publicdomain/zero/1.0
+  source: https://commons.wikimedia.org/wiki/File:%E1%83%91%E1%83%90%E1%83%9B%E1%83%91%E1%83%A3%E1%83%99%E1%83%98%E1%83%A1_%E1%83%91%E1%83%98%E1%83%9A%E1%83%98%E1%83%99%E1%83%98.jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true
@@ -247,8 +237,8 @@ ar:
     ساعات وخمس وأربعين دقيقة. الطريق معبّد كله. ومدخل الحديقة بين أوريكي وشيكفيتيلي واللافتة على الطريق
     الرئيسي واضحة. وعند البوابة موقف كبير مجاني. الوقود في لانتشخوتي وأوريكي. وسيارة اقتصادية تكفي تماماً.
 image_credit:
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Guria,_Georgia_-_panoramio.jpg
+  author: Gaga.vaa
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Shekvetili_Park.jpg
 rating: 4.0

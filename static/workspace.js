@@ -414,11 +414,19 @@
     }
     $('dowactions').hidden = !(st.selected.length || $('dowmsg').textContent);
 
-    /* list */
+    /* list — ჯერ არჩეულები, მერე ხელმისაწვდომები, ჩამქრალები ბოლოში */
     var list = visible();
     $('dowcount').textContent = T.total + ' ' + list.length + ' ' + T.place;
     $('dowselcount').textContent = T.chosenN + ' ' + st.selected.length;
     var selIdx = {}; st.selected.forEach(function (s, i) { selIdx[s] = i + 1; });
+    var fitCache = {};
+    list.forEach(function (p) { fitCache[p.s] = selIdx[p.s] ? 0 : (fits(p) ? 1 : 2); });
+    list = list.slice().sort(function (a, b) {
+      var d = fitCache[a.s] - fitCache[b.s];
+      if (d) return d;
+      if (fitCache[a.s] === 0) return selIdx[a.s] - selIdx[b.s];
+      return 0;
+    });
     var lb = $('dowlist');
     lb.innerHTML = '';
     list.forEach(function (p) {

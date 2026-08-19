@@ -9,20 +9,15 @@ order: 62
 image: /assets/photos/gabriadze-theatre-clock-tower.webp
 gallery:
 - image: /assets/photos/gabriadze-theatre-clock-tower-1.webp
-  author: Marcin Konsek
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:2014_Tbilisi,_Domy_na_Starym_Mie%C5%9Bcie_(03).jpg
+  author: Andrew Milligan sumo
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:The_Clock_Tower,_Tbilisi,_Georgia_(48808607966).jpg
 - image: /assets/photos/gabriadze-theatre-clock-tower-2.webp
-  author: Marcin Konsek
+  author: Benreis
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:2014_Tbilisi,_Wie%C5%BCa_na_rogu.jpg
-- image: /assets/photos/gabriadze-theatre-clock-tower-3.webp
-  author: Daibo Taku
-  license: CC BY 3.0
-  license_url: https://creativecommons.org/licenses/by/3.0
-  source: https://commons.wikimedia.org/wiki/File:Dzveli_Tbilisi,_Tbilisi,_Georgia_-_panoramio_(240).jpg
+  source: https://commons.wikimedia.org/wiki/File:Rezo_Gabriadze_Marionette_Theater_Clock_Tower_(2).jpg
 visit_hours: '0.5'
 best_season: all
 open_year_round: true
@@ -282,8 +277,8 @@ ar:
     وهو أقرب موقف منظم. والبديل الأماكن المخططة على صعود باراتاشفيلي. وللعرض المسائي يتوفر مكان عادة في
     موقف ريكه. وسيارة اقتصادية تكفي.
 image_credit:
-  author: Alexxx1979
+  author: Benreis
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Tbilisi_IMG_8922_1920.jpg
+  source: https://commons.wikimedia.org/wiki/File:Rezo_Gabriadze_Marionette_Theater_Clock_Tower_(1).jpg
 rating: 3.0

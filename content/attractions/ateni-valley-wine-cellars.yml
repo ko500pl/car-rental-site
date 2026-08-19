@@ -7,22 +7,7 @@ unesco: false
 featured: false
 order: 80
 image: /assets/photos/ateni-valley-wine-cellars.webp
-gallery:
-- image: /assets/photos/ateni-valley-wine-cellars-1.webp
-  author: GuramGraphy
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Veres_gvtismshoblis_eklesia_(1)_02.jpg
-- image: /assets/photos/ateni-valley-wine-cellars-2.webp
-  author: GuramGraphy
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Veres_gvtismshoblis_eklesia_(1)_03.jpg
-- image: /assets/photos/ateni-valley-wine-cellars-3.webp
-  author: GuramGraphy
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Veres_gvtismshoblis_eklesia_(1)_01.jpg
+gallery: []
 visit_hours: '3'
 best_season: may-october
 open_year_round: true
@@ -241,8 +226,8 @@ ar:
     والإسفلت متكسر في مواضع، ويتحول إلى حصى في القرى العليا، وإن كانت سيارة اقتصادية تتدبره بسهولة في
     الطقس الجاف. تزوّد بالوقود في غوري؛ فلا محطة في الوادي.
 image_credit:
-  author: Jaba1977
+  author: ანი ბირთველიშვილი
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Ateni,_Sioni_church.jpg
+  source: https://commons.wikimedia.org/wiki/File:Atenis_xeoba.jpg
 rating: 4.0

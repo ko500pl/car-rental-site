@@ -9,20 +9,10 @@ order: 65
 image: /assets/photos/fabrika-marjanishvili.webp
 gallery:
 - image: /assets/photos/fabrika-marjanishvili-1.webp
-  author: bckirkup
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Tbilisi_-_panoramio_(1).jpg
-- image: /assets/photos/fabrika-marjanishvili-2.webp
-  author: Zblace
+  author: Tabeabenlakehal
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Mutant_Radio_(Tbilisi)_2023_06_53_07_882000.jpg
-- image: /assets/photos/fabrika-marjanishvili-3.webp
-  author: Unknown authorUnknown author
-  license: CC BY 4.0
-  license_url: https://creativecommons.org/licenses/by/4.0
-  source: https://commons.wikimedia.org/wiki/File:Margarita_Maghalashvili.jpg
+  source: https://commons.wikimedia.org/wiki/File:Courtyard_view_of_Fabrika_Tbilisi.jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true
@@ -345,8 +335,8 @@ ar:
     تُوجد نهاراً عادة ولا تُوجد مساءً. وبديل جيد شوارع محطة مترو مارجانيشفيلي على بعد خمس دقائق مشياً.
     ولا تدخل بالسيارة إلى الأفنية الضيقة، فالخروج أصعب من الدخول. وسيارة اقتصادية تكفي.
 image_credit:
-  author: Robot8A
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Tiflis_14_45_41_879000.jpeg
+  author: Alf Altendorf
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Fabrika_Tbilisi,_an_urban_culture_hub_in_the_capital_of_Georgia.jpg
 rating: 4.0

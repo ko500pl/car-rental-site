@@ -14,9 +14,7 @@ gallery:
   license_url: https://creativecommons.org/licenses/by-sa/2.0
   source: https://commons.wikimedia.org/wiki/File:Poti_(14520503879).jpg
 - image: /assets/photos/poti-2.webp
-  author: >-
-    I would appreciate being notified if you use my work outside Wikimedia. More of my work can be found
-    in my personal gall
+  author: Aktron
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Poti,_autobusov%C3%A9_n%C3%A1dra%C5%BE%C3%AD.jpg
@@ -25,6 +23,11 @@ gallery:
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Poti_%E2%80%93_Aerial.jpg
+- image: /assets/photos/poti-4.webp
+  author: Berdo Maghularia from Kutaisi, Gerogia
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Cathedral_in_Poti.jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true
@@ -375,8 +378,8 @@ ar:
     بالوقود في سامتريديا أو سيناكي، وإن كانت في بوتي نفسها محطات. والسيارة الاقتصادية كافية تماماً للطريق
     كله في أي فصل.
 image_credit:
-  author: Berdo Maghularia from Kutaisi, Gerogia
-  license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: https://commons.wikimedia.org/wiki/File:Cathedral_in_Poti.jpg
+  author: Kojima Yasuhiro
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0
+  source: https://commons.wikimedia.org/wiki/File:Poti_Lighthouse_1.jpg
 rating: 4.0

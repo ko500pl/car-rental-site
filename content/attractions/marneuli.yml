@@ -13,17 +13,12 @@ gallery:
   license: Attribution
   license_url: ''
   source: https://commons.wikimedia.org/wiki/File:Marneuli_Cultural_Centre.JPG
-- image: /assets/photos/marneuli-2.webp
-  author: Jelger Groeneveld
-  license: CC BY 2.0
-  license_url: https://creativecommons.org/licenses/by/2.0
+- image: /assets/photos/marneuli-4.webp
+  author: Mostafa Meraji
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: >-
-    https://commons.wikimedia.org/wiki/File:2020_parliamentary_elections_in_Marneuli_city_(Kvemo_Kartli)_-_mobile_ballot_box.jpg
-- image: /assets/photos/marneuli-3.webp
-  author: Jelger Groeneveld
-  license: CC BY 2.0
-  license_url: https://creativecommons.org/licenses/by/2.0
-  source: https://commons.wikimedia.org/wiki/File:2020_parliamentary_elections_in_Marneuli_city_(Kvemo_Kartli).jpg
+    https://commons.wikimedia.org/wiki/File:Marneuli_%E1%83%9B%E1%83%90%E1%83%A0%E1%83%9C%E1%83%94%E1%83%A3%E1%83%9A%E1%83%98_%D9%85%D8%A7%D8%B1%D9%86%D8%A6%D9%88%D9%84%DB%8C_10.jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true
@@ -241,8 +236,9 @@ ar:
     أرمينيا وأذربيجان، فحركة الشاحنات كثيفة والتجاوز يحتاج حذراً. الطريق معبّد بكامله وبحالة جيدة. ومحطات
     الوقود متقاربة على امتداده. والوقوف في المركز مجاني، لكن إيجاد مكان قرب السوق صباحاً يحتاج صبراً.
 image_credit:
-  author: Zviad Avaliani
-  license: Attribution
-  license_url: ''
-  source: https://commons.wikimedia.org/wiki/File:Marneuli_Self_Government.JPG
+  author: Mostafa Meraji
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: >-
+    https://commons.wikimedia.org/wiki/File:Marneuli_%E1%83%9B%E1%83%90%E1%83%A0%E1%83%9C%E1%83%94%E1%83%A3%E1%83%9A%E1%83%98_%D9%85%D8%A7%D8%B1%D9%86%D8%A6%D9%88%D9%84%DB%8C_03.jpg
 rating: 4.0

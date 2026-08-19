@@ -8,21 +8,12 @@ featured: false
 order: 45
 image: /assets/photos/batumi-archaeological-museum.webp
 gallery:
-- image: /assets/photos/batumi-archaeological-museum-1.webp
-  author: jagermesh from Ukraine
-  license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: https://commons.wikimedia.org/wiki/File:Gorgiladze_street,_Batumi.jpg
-- image: /assets/photos/batumi-archaeological-museum-2.webp
-  author: jagermesh from Ukraine
-  license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: https://commons.wikimedia.org/wiki/File:Gamsakhurdia_Street,_Batumi.jpg
-- image: /assets/photos/batumi-archaeological-museum-3.webp
-  author: 23artashes
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Batumi,_summer_2018_02.jpg
+- image: /assets/photos/batumi-archaeological-museum-4.webp
+  author: Aleksey Muhranoff
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: >-
+    https://commons.wikimedia.org/wiki/File:Batumi_Archaeology_Museum_(Photo_A._Muhranoff_2011).jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -259,8 +250,8 @@ ar:
     البحري. الوقوف في الشوارع القريبة مدفوع لكنه متاح عادة نهاراً. الوقود متوفر في كوتايسي وأوزورغيتي
     وعند مدخل باتومي. وسيارة اقتصادية تكفي تماماً.
 image_credit:
-  author: jagermesh from Ukraine
-  license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: https://commons.wikimedia.org/wiki/File:Batumi,_street.jpg
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Batumi_Archeological_Museum.jpg
 rating: 3.0

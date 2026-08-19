@@ -14,16 +14,6 @@ gallery:
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: >-
     https://commons.wikimedia.org/wiki/File:%E1%83%9B%E1%83%94%E1%83%A2%E1%83%94%E1%83%AE%E1%83%98_%E1%83%94%E1%83%99%E1%83%9A%E1%83%94%E1%83%A1%E1%83%98%E1%83%90_07.jpg
-- image: /assets/photos/metekhi-church-2.webp
-  author: Goichev
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Metexi11.jpg
-- image: /assets/photos/metekhi-church-3.webp
-  author: Alexxx1979
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Tbilisi_The_Metekhi_Church_of_Assumption_IMG_8842_1920.jpg
 visit_hours: '0.5'
 best_season: all
 open_year_round: true
@@ -298,8 +288,8 @@ ar:
     هو الموقف السفلي في حديقة ريكه، ومنه عشر دقائق صعوداً سيراً، أو الأماكن المخططة نحو شارع غولوا وأفلابري.
     ومن محطة مترو أفلابري أيضاً عشر دقائق مشياً. وسيارة اقتصادية تكفي.
 image_credit:
-  author: Goichev
+  author: Alexxx1979
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Metexi940.jpg
+  source: https://commons.wikimedia.org/wiki/File:Tbilisi_The_Metekhi_Church_of_Assumption_IMG_8842_1920.jpg
 rating: 3.0

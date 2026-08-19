@@ -13,16 +13,6 @@ gallery:
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Okatse_visitor_centrum_2019_1.jpg
-- image: /assets/photos/okatse-canyon-2.webp
-  author: Cechenochilus
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Carabus_(Neoplectes)_martviliensis_martviliensis_2.jpg
-- image: /assets/photos/okatse-canyon-3.webp
-  author: FingerWiki
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Okatse_Canyon,_Imereti,_Georgia.jpg
 visit_hours: '3'
 best_season: may-october
 open_year_round: true
@@ -256,8 +246,8 @@ ar:
     في مواضع، وإن كانت سيارة اقتصادية تتدبرها. وتترك السيارة في موقف مركز الزوار ولا تتقدم أبعد من ذلك
     بالطريق. املأ الخزان في كوتايسي أو خوني؛ فلا محطة وقود في غوردي نفسها.
 image_credit:
-  author: Paata vardanashvili
+  author: FingerWiki
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Okatse_27.jpg
+  source: https://commons.wikimedia.org/wiki/File:Okatse_Canyon,_Imereti,_Georgia.jpg
 rating: 4.0

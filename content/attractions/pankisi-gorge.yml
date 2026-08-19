@@ -13,11 +13,6 @@ gallery:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Amphitheatre_Monument,_Duisi,_Pankisi_Gorge,_Georgia.jpg
-- image: /assets/photos/pankisi-gorge-2.webp
-  author: Hundnase
-  license: CC0
-  license_url: http://creativecommons.org/publicdomain/zero/1.0/deed.en
-  source: https://commons.wikimedia.org/wiki/File:Wikipedia_Workshop_Duisi_--_February_2025.jpg
 - image: /assets/photos/pankisi-gorge-3.webp
   author: Hundnase
   license: CC BY-SA 4.0
@@ -309,8 +304,8 @@ ar:
     في عمق الوادي، ينتهي الإسفلت ويتابع مسلك ترابي. زوّد الوقود في أخميتا. وسيارة اقتصادية تكفي حتى القرى
     نفسها.
 image_credit:
-  author: Ivan Ruggiero
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:A_guidepost_in_Duisi,_Pankisi_Valley.jpg
+  author: Aleksey Muhranoff
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Pankisi_Gorge,_Georgia._Upper_part_of_the_valley.jpg
 rating: 4.0

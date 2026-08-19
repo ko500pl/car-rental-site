@@ -9,10 +9,10 @@ order: 20
 image: /assets/photos/gori-fortress-stalin-museum.webp
 gallery:
 - image: /assets/photos/gori-fortress-stalin-museum-1.webp
-  author: Adam Jones from Kelowna, BC, Canada
-  license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: https://commons.wikimedia.org/wiki/File:Detail_of_War_Memorial,_Gori,_Georgia_(2).jpg
+  author: Stolbovsky
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Stalin_Museum,_Gori_04.jpg
 - image: /assets/photos/gori-fortress-stalin-museum-2.webp
   author: Giorgi Balakhadze
   license: CC BY-SA 4.0
@@ -234,9 +234,8 @@ ar:
     السيارة في الساحة الكبيرة أمام المتحف. وكل شيء إسفلت وأي فئة سيارة تفي. والوقود متوفر على الطريق السريع
     أو عند مدخل البلدة، وأوبليستسيخي على بعد 15 كم فقط.
 image_credit:
-  author: ქსნის ხეობა
+  author: Armineaghayan
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%E1%83%92%E1%83%9D%E1%83%A0%E1%83%98._%E1%83%AC%E1%83%94%E1%83%A0%E1%83%94%E1%83%97%E1%83%9A%E1%83%98%E1%83%A1_%E1%83%A5%E1%83%A3%E1%83%A9%E1%83%90_1.jpg
+  source: https://commons.wikimedia.org/wiki/File:Gori_fortress_by_ArmAg_(1).JPG
 rating: 5.0

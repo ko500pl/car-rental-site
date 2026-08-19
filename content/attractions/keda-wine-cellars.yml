@@ -7,23 +7,6 @@ unesco: false
 featured: false
 order: 42
 image: /assets/photos/keda-wine-cellars.webp
-gallery:
-- image: /assets/photos/keda-wine-cellars-1.webp
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%E1%83%96%E1%83%95%E1%83%90%E1%83%A0%E1%83%98%E1%83%A1_%E1%83%94%E1%83%99%E1%83%9A%E1%83%94%E1%83%A1%E1%83%98%E1%83%90_(G.N._2011).jpg
-- image: /assets/photos/keda-wine-cellars-2.webp
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Zvare_Saint_George_Chaple_(G.N._2006)-2.jpg
-- image: /assets/photos/keda-wine-cellars-3.webp
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Zvare_(G.N._2012).jpg
 visit_hours: '3'
 best_season: all
 open_year_round: true
@@ -225,8 +208,8 @@ ar:
     لكنه ضيق كثير الالتواء ورطب في الغالب. الوقود في باتومي وكيدا. الوقوف عند الساحة المركزية مجاني. وسيارة
     اقتصادية تكفي ما لم يكن القبو عالياً على المنحدر.
 image_credit:
-  author: Yasuhiro Kojima
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Confluence_of_Merisi_and_Acharistskali.jpg
+  author: Aleksey Muhranoff
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Keda,_Adjara,_Georgia.jpg
 rating: 4.0

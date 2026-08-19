@@ -7,24 +7,7 @@ unesco: false
 featured: false
 order: 55
 image: /assets/photos/adjara-art-museum.webp
-gallery:
-- image: /assets/photos/adjara-art-museum-1.webp
-  author: w0zny
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:Georgian_Orthodox_(former_Catholic)_Cathedral_of_the_Mother_of_God_Bebop_Drone_2015-08-26T175325%2B0000_8A3973.jpg
-- image: /assets/photos/adjara-art-museum-2.webp
-  author: w0zny
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:Georgian_Orthodox_(former_Catholic)_Cathedral_of_the_Mother_of_God_Bebop_Drone_2015-08-26T175348%2B0000_8A3973.jpg
-- image: /assets/photos/adjara-art-museum-3.webp
-  author: Soghomon Matevosyan
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Batumi_Cathedral_(46).jpg
+gallery: []
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -261,8 +244,8 @@ ar:
     في الوسط مدفوع ومزدحم صيفاً، فاترك السيارة على بعد شارعين وامشِ. الوقود في كوتايسي وأوزورغيتي وكوبوليتي.
     وسيارة اقتصادية تكفي.
 image_credit:
-  author: Ephraim Stillberg
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Batumi_church.jpg
+  author: Yasuhiro Kojima
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:State_Art_Museum_of_Adjara.jpg
 rating: 3.0

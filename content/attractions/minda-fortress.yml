@@ -6,7 +6,7 @@ elevation: 820
 unesco: false
 featured: false
 order: 68
-image: ''
+image: /assets/photos/minda-fortress.webp
 gallery: []
 visit_hours: '1.5'
 best_season: may-october
@@ -24,3 +24,8 @@ ru: {name: Крепость Минда, short: Руины средневеков
 fa: {name: قلعه میندا, short: ویرانه قلعه قرون وسطایی بر فراز صخره نزدیک تسسی., body: دیوارها و سه برج باقی مانده و مسیر باریک و دشوار است., tip: فقط در هوای خشک و با کفش مناسب بروید., route: پیاده از روستای تسسی و با راهنمایی محلی.}
 he: {name: מצודת מינדה, short: שרידי מצודה מימי הביניים על צוק ליד הכפר צסי., body: נותרו חומות ושלושה מגדלים והעלייה צרה ותובענית., tip: עלו רק במזג אוויר יבש ובנעליים מתאימות., route: הליכה מהכפר צסי לאחר בירור מקומי.}
 ar: {name: قلعة ميندا, short: أطلال قلعة من العصور الوسطى فوق نتوء صخري قرب تسيزي., body: بقيت الأسوار وثلاثة أبراج والمسار ضيق وصعب., tip: اصعد في طقس جاف وبحذاء مناسب فقط., route: صعود مشياً من قرية تسيزي بعد سؤال السكان.}
+image_credit:
+  author: Yasuhiro Kojima
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:2015-08-29_(40)_Mindatsikhe.jpg

@@ -9,20 +9,10 @@ order: 80
 image: /assets/photos/chokhatauri.webp
 gallery:
 - image: /assets/photos/chokhatauri-1.webp
-  author: Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center
-  license: Public domain
-  license_url: ''
-  source: https://commons.wikimedia.org/wiki/File:ISS046-E-10549_-_View_of_Earth.jpg
-- image: /assets/photos/chokhatauri-2.webp
-  author: Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center
-  license: Public domain
-  license_url: ''
-  source: https://commons.wikimedia.org/wiki/File:ISS031-E-5734_-_View_of_Earth.jpg
-- image: /assets/photos/chokhatauri-3.webp
-  author: Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center
-  license: Public domain
-  license_url: ''
-  source: https://commons.wikimedia.org/wiki/File:ISS031-E-5732_-_View_of_Earth.jpg
+  author: შალვა მინდაძე 11
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Chokhatauri_Center.jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true
@@ -242,8 +232,8 @@ ar:
     الوقود في كوتايسي وفي تشوخاتاوري نفسها، وهي آخر محطة حقيقية على طريق باخمارو. وسيارة اقتصادية تكفي
     تماماً حتى البلدة.
 image_credit:
-  author: Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center
-  license: Public domain
-  license_url: ''
-  source: https://commons.wikimedia.org/wiki/File:ISS046-E-10548_-_View_of_Earth.jpg
+  author: M.
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Cholhatauri,_view_from_Shua_Amagleba.jpg
 rating: 4.0

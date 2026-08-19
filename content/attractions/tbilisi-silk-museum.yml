@@ -8,23 +8,12 @@ featured: false
 order: 85
 image: /assets/photos/tbilisi-silk-museum.webp
 gallery:
-- image: /assets/photos/tbilisi-silk-museum-1.webp
+- image: /assets/photos/tbilisi-silk-museum-4.webp
   author: Davit butulashvili
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: >-
-    https://commons.wikimedia.org/wiki/File:%E1%83%93%E1%83%90%E1%83%95%E1%83%98%E1%83%97_%E1%83%90%E1%83%A6%E1%83%9B%E1%83%90%E1%83%A8%E1%83%94%E1%83%9C%E1%83%94%E1%83%91%E1%83%9A%E1%83%98%E1%83%A1_%E1%83%92%E1%83%90%E1%83%9B%E1%83%96%E1%83%98%E1%83%A0%E1%83%98_03.jpg
-- image: /assets/photos/tbilisi-silk-museum-2.webp
-  author: Annie99o99
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:109_Agmashenebeli.jpg
-- image: /assets/photos/tbilisi-silk-museum-3.webp
-  author: Santel01
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%E1%83%90%E1%83%A0%E1%83%A2%E1%83%9D%E1%83%A1_%E1%83%91%E1%83%90%E1%83%A6%E1%83%98.jpg
+    https://commons.wikimedia.org/wiki/File:%E1%83%90%E1%83%91%E1%83%A0%E1%83%94%E1%83%A8%E1%83%A3%E1%83%9B%E1%83%98%E1%83%A1_%E1%83%A1%E1%83%90%E1%83%AE%E1%83%94%E1%83%9A%E1%83%9B%E1%83%AC%E1%83%98%E1%83%A4%E1%83%9D_%E1%83%9B%E1%83%A3%E1%83%96%E1%83%94%E1%83%A3%E1%83%9B%E1%83%98-National_Silk_Museum_01.jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -360,8 +349,8 @@ ar:
     والمشي ثماني إلى عشر دقائق. ومحطة مترو مارجانيشفيلي على بعد عشر إلى اثنتي عشرة دقيقة سيراً. وسيارة
     اقتصادية تكفي.
 image_credit:
-  author: Aurdur from Paris / Lyon, France
-  license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: https://commons.wikimedia.org/wiki/File:Agmashenebeli_Avenue,_Tbilisi,_G%C3%A9orgie,_2014.jpg
+  author: Surprizi
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Tbilisi_State_Silk_Museum.jpg
 rating: 3.0

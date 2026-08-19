@@ -8,24 +8,12 @@ featured: true
 order: 20
 image: /assets/photos/abanotubani-sulphur-baths.webp
 gallery:
-- image: /assets/photos/abanotubani-sulphur-baths-1.webp
-  author: Mostafameraji
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
+- image: /assets/photos/abanotubani-sulphur-baths-4.webp
+  author: Andrew Milligan sumo
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
   source: >-
-    https://commons.wikimedia.org/wiki/File:Cityscapes_of_Tbilisi_HDR_photo_%D8%B4%D9%87%D8%B1_%D8%AA%D9%81%D9%84%DB%8C%D8%B3_%D9%BE%D8%A7%DB%8C%D8%AA%D8%AE%D8%AA_%DA%AF%D8%B1%D8%AC%D8%B3%D8%AA%D8%A7%D9%86_%E1%83%97%E1%83%91%E1%83%98%E1%83%9A%E1%83%98%E1%83%A1%E1%83%98_17.jpg
-- image: /assets/photos/abanotubani-sulphur-baths-2.webp
-  author: Mostafameraji
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:Alleys_in_Tbilisi_HDR_Photos_%DA%A9%D9%88%DA%86%D9%87_%D9%87%D8%A7_%D8%AF%D8%B1_%D8%AA%D9%81%D9%84%DB%8C%D8%B3_04.jpg
-- image: /assets/photos/abanotubani-sulphur-baths-3.webp
-  author: Mostafameraji
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:Alleys_in_Tbilisi_HDR_Photos_%DA%A9%D9%88%DA%86%D9%87_%D9%87%D8%A7_%D8%AF%D8%B1_%D8%AA%D9%81%D9%84%DB%8C%D8%B3_03.jpg
+    https://commons.wikimedia.org/wiki/File:Sulphur_Baths,_Tbilisi_(50501860146).jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true
@@ -266,9 +254,9 @@ ar:
     خمس دقائق عبر الجسر. الطريق كله معبّد وأي فئة سيارة تفي بالغرض. والعثور على مكان في المساء أصعب من
     الوصول إلى هنا أصلاً.
 image_credit:
-  author: Mostafameraji
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  author: Ephraim Stillberg
+  license: Public domain
+  license_url: ''
   source: >-
-    https://commons.wikimedia.org/wiki/File:Tbilisi_%E1%83%97%E1%83%91%E1%83%98%E1%83%9A%E1%83%98%E1%83%A1%E1%83%98_%D8%AA%D9%81%D9%84%DB%8C%D8%B3_03.jpg
+    https://commons.wikimedia.org/wiki/File:Tbilisi_Sulphur_Baths.jpg
 rating: 4.5

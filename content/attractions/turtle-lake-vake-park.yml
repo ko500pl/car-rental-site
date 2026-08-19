@@ -13,11 +13,11 @@ gallery:
   license: CC BY-SA 2.0
   license_url: https://creativecommons.org/licenses/by-sa/2.0
   source: https://commons.wikimedia.org/wiki/File:Parco_Vake.jpg
-- image: /assets/photos/turtle-lake-vake-park-2.webp
-  author: Photo by D.Papuashvili
+- image: /assets/photos/turtle-lake-vake-park-4.webp
+  author: Department of State/U.S. embassy to Georgia
   license: Public domain
   license_url: ''
-  source: https://commons.wikimedia.org/wiki/File:Chavchavadze_Ave..jpg
+  source: https://commons.wikimedia.org/wiki/File:Turtle_Lake,_Tbilisi_(1).jpg
 - image: /assets/photos/turtle-lake-vake-park-3.webp
   author: Jelger Groeneveld
   license: CC BY 4.0
@@ -256,8 +256,8 @@ ar:
     طوال المسافة. وفي الشتاء يحتاج الصعود قيادة حذرة حين يتجمد، لكن لا حاجة إلى دفع رباعي؛ فالسيارة الاقتصادية
     تكفي.
 image_credit:
-  author: viralbus
-  license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: https://commons.wikimedia.org/wiki/File:Archil_Mishveladze_Street,_1997.jpg
+  author: Aleksandr Sigachov
+  license: CC0
+  license_url: https://creativecommons.org/publicdomain/zero/1.0
+  source: https://commons.wikimedia.org/wiki/File:Turtle_Lake,_Tbilisi_-_2024-01-17.jpg
 rating: 4.0

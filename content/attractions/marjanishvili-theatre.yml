@@ -6,7 +6,7 @@ elevation: 410
 unesco: false
 featured: false
 order: 68
-image: ''
+image: /assets/photos/marjanishvili-theatre.webp
 gallery: []
 visit_hours: '2.5'
 best_season: all
@@ -24,3 +24,8 @@ ru: {name: Театр имени Коте Марджанишвили, short: О�
 fa: {name: تئاتر کوته مارجانیشویلی, short: تئاتر برجسته گرجستان با صحنه اصلی و کوچک., body: اجرای مشخص را بر اساس تاریخ سفر از برنامه انتخاب کنید., tip: فصل و برنامه روزانه را در سایت رسمی بررسی کنید., route: خیابان مارجانیشویلی ۸، نزدیک مترو.}
 he: {name: תיאטרון קוטה מרג'נישווילי, short: תיאטרון דרמה גאורגי מוביל עם במה ראשית ובמה קטנה., body: בחרו את המופע לפי התוכנייה בתאריך הנסיעה., tip: בדקו את העונה והתוכנית באתר הרשמי., route: רחוב מרג'נישווילי 8, ליד המטרו.}
 ar: {name: مسرح كوتي مارجانيشفيلي, short: مسرح درامي جورجي رائد بمسرحين رئيسي وصغير., body: اختر العرض الفعلي وفق برنامج تاريخ السفر., tip: تحقق من الموسم والبرنامج اليومي على الموقع الرسمي., route: شارع مارجانيشفيلي 8 قرب المترو.}
+image_credit:
+  author: Alsandro
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Mardjanishvili_Theatre_Tbilisi.jpg

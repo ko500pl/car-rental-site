@@ -7,25 +7,6 @@ unesco: false
 featured: false
 order: 72
 image: /assets/photos/gardabani-managed-reserve.webp
-gallery:
-- image: /assets/photos/gardabani-managed-reserve-1.webp
-  author: regionmedia
-  license: CC BY 3.0
-  license_url: https://creativecommons.org/licenses/by/3.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:Bor%C3%A7al%C4%B1,_Qardabani,_Gardabani,_Qardaban,_Gardaban,_Qarat%C9%99p%C9%99,_Qaratepe,_Garatepe,_Kosal%C4%B1,_Nazarl%C4%B1,_Qara_-_panoramio_-_regionmedia_(1).jpg
-- image: /assets/photos/gardabani-managed-reserve-2.webp
-  author: regionmedia
-  license: CC BY 3.0
-  license_url: https://creativecommons.org/licenses/by/3.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:Bor%C3%A7al%C4%B1,_Qardabani,_Gardabani,_Qardaban,_Gardaban,_Qarat%C9%99p%C9%99,_Qaratepe,_Garatepe,_Kosal%C4%B1,_Nazarl%C4%B1,_Qara_-_panoramio_-_regionmedia_(2).jpg
-- image: /assets/photos/gardabani-managed-reserve-3.webp
-  author: regionmedia
-  license: CC BY 3.0
-  license_url: https://creativecommons.org/licenses/by/3.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:Bor%C3%A7al%C4%B1,_Qardabani,_Gardabani,_Qardaban,_Gardaban,_Qarat%C9%99p%C9%99,_Qaratepe,_Garatepe,_Kosal%C4%B1,_Nazarl%C4%B1,_Qara_-_panoramio_-_regionmedia_(3).jpg
 visit_hours: '3'
 best_season: all
 open_year_round: true

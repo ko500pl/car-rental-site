@@ -8,21 +8,11 @@ featured: false
 order: 20
 image: /assets/photos/bodbe-monastery.webp
 gallery:
-- image: /assets/photos/bodbe-monastery-1.webp
-  author: Darwwin
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Nasomkhari_(Nasamkhari)_Monastery_in_Georgia.jpg
-- image: /assets/photos/bodbe-monastery-2.webp
-  author: Darwwin
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Gravestones_used_as_foundation_for_a_wagon..jpg
-- image: /assets/photos/bodbe-monastery-3.webp
-  author: Alexey Komarov
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Mountains_of_Kakheti_2023-08-11.jpg
+- image: /assets/photos/bodbe-monastery-4.webp
+  author: Kober
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:Bodbe_Monastery.JPG
 visit_hours: '2'
 best_season: all
 open_year_round: true
@@ -230,8 +220,8 @@ ar:
     طريق ضيق لكنه معبّد جيداً. وسيارة اقتصادية مناسبة طوال الطريق. املأ الخزان في تسنوري أو غورجاني حيث
     المحطات كثيرة. وسيغناغي على بعد خمس دقائق أبعد، فيجمع الجميع تقريباً بين الموقعين في رحلة واحدة.
 image_credit:
-  author: Daibo Taku
-  license: CC BY 3.0
-  license_url: https://creativecommons.org/licenses/by/3.0
-  source: https://commons.wikimedia.org/wiki/File:Sighnaghi,_Georgia_-_panoramio_(26).jpg
+  author: Bernard Gagnon
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0
+  source: https://commons.wikimedia.org/wiki/File:Bodbe_Monastery_01.jpg
 rating: 4.0

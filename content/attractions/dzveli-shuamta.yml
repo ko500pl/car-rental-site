@@ -8,16 +8,16 @@ featured: false
 order: 25
 image: /assets/photos/dzveli-shuamta-1.webp
 image_credit:
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:View_to_shuamta_-_panoramio.jpg
+  author: Vladimir Pankratov
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Old_Shuamta_general_view.jpg
 gallery:
-- image: /assets/photos/dzveli-shuamta-1.webp
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:View_to_shuamta_-_panoramio.jpg
+- image: /assets/photos/dzveli-shuamta-2.webp
+  author: Kakhi Kuloshvili
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Dzveli-Shuamta_monastery_(Old-Shuamta)._Telavi_region.jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true

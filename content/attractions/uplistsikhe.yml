@@ -8,17 +8,7 @@ featured: true
 order: 10
 image: /assets/photos/uplistsikhe.webp
 gallery:
-- image: /assets/photos/uplistsikhe-1.webp
-  author: Hans-Jürgen Neubert
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Djvari_church.jpg
-- image: /assets/photos/uplistsikhe-2.webp
-  author: Hans-Jürgen Neubert
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:DJVARI.jpg
-- image: /assets/photos/uplistsikhe-3.webp
+- image: /assets/photos/uplistsikhe-4.webp
   author: Marcin Konsek
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
@@ -255,5 +245,5 @@ image_credit:
   author: Marcin Konsek
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:2016_Uplisciche,_Rezerwat_historyczno-architektoniczny_(066).jpg
+  source: https://commons.wikimedia.org/wiki/File:2016_Uplisciche,_Rezerwat_historyczno-architektoniczny_(060).jpg
 rating: 5.0

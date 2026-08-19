@@ -8,11 +8,6 @@ featured: false
 order: 88
 image: /assets/photos/zugdidi-botanical-garden.webp
 gallery:
-- image: /assets/photos/zugdidi-botanical-garden-1.webp
-  author: Jaba1977
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Zugdidi_Church.jpg
 - image: /assets/photos/zugdidi-botanical-garden-2.webp
   author: VASOG
   license: CC BY-SA 4.0
@@ -394,8 +389,8 @@ ar:
     داديياني مباشرة، فمنعطف واحد يخدم الموضعين. الوقوف في الشارع أمام القصر مجاني، وإن ضاقت الأماكن بعد
     ظهر الصيف. تزوّد بالوقود في سيناكي أو زوغديدي. والسيارة الاقتصادية كافية تماماً على مدار السنة.
 image_credit:
-  author: VASOG
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Svaneti_1504.jpg
+  author: Lika (ლიკა)
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:Botanical_garden_(Zugdidi).jpg
 rating: 4.0

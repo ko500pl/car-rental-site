@@ -8,11 +8,6 @@ featured: true
 order: 20
 image: /assets/photos/svetitskhoveli-cathedral.webp
 gallery:
-- image: /assets/photos/svetitskhoveli-cathedral-1.webp
-  author: Joonas Plaan from Tallinn, Estonia
-  license: CC BY 2.0
-  license_url: https://creativecommons.org/licenses/by/2.0
-  source: https://commons.wikimedia.org/wiki/File:Samtvro_chappel_(1).jpg
 - image: /assets/photos/svetitskhoveli-cathedral-2.webp
   author: Gusjer
   license: CC BY 2.0
@@ -260,8 +255,8 @@ ar:
     أو في موقف ضفة النهر وامشِ خمس دقائق. الطريق كله إسفلت وأي فئة سيارة تفي بالغرض. محطات الوقود والمتاجر
     تصطف على طريق الوصول.
 image_credit:
-  author: Joonas Plaan from Tallinn, Estonia
-  license: CC BY 2.0
-  license_url: https://creativecommons.org/licenses/by/2.0
-  source: https://commons.wikimedia.org/wiki/File:Samtvro_chappel.jpg
+  author: Moahim
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:2017_-_Svetitskhoveli_Cathedral_-_01.jpg
 rating: 5.0

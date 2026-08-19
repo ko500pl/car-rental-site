@@ -13,16 +13,6 @@ gallery:
   license: CC BY-SA 2.0
   license_url: https://creativecommons.org/licenses/by-sa/2.0
   source: https://commons.wikimedia.org/wiki/File:Sapara_Monastery_(14723025125).jpg
-- image: /assets/photos/sapara-monastery-2.webp
-  author: Sarah Murray from South Bend, IN, USA
-  license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: https://commons.wikimedia.org/wiki/File:Sapara_Monastery_(14719850361).jpg
-- image: /assets/photos/sapara-monastery-3.webp
-  author: Sarah Murray from South Bend, IN, USA
-  license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: https://commons.wikimedia.org/wiki/File:Sapara_Monastery_(14742900223).jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true
@@ -265,8 +255,8 @@ ar:
     هو الخيار الأفضل. وبعد المطر أو في الشتاء يصبح هذا المقطع أصعب بوضوح. املأ الخزان في أخالتسيخي، فلا
     شيء إطلاقاً فوق البلدة.
 image_credit:
-  author: Sarah Murray from South Bend, IN, USA
-  license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: https://commons.wikimedia.org/wiki/File:St._George,_Georgia.jpg
+  author: Kober
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Sapara_Monastery,_Akhtaltsikhe,_Georgia_(1).JPG
 rating: 4.0

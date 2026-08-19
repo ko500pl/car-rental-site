@@ -9,21 +9,10 @@ order: 28
 image: /assets/photos/chateau-mukhrani.webp
 gallery:
 - image: /assets/photos/chateau-mukhrani-1.webp
-  author: Jelger Groeneveld
-  license: CC BY 4.0
-  license_url: https://creativecommons.org/licenses/by/4.0
-  source: https://commons.wikimedia.org/wiki/File:Dzveli_Kanda.jpg
-- image: /assets/photos/chateau-mukhrani-2.webp
-  author: Tsov
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:E60_Sakartvelo.jpg
-- image: /assets/photos/chateau-mukhrani-3.webp
-  author: Press Service of the President of the Republic of Azerbaijan
-  license: CC BY 4.0
-  license_url: https://creativecommons.org/licenses/by/4.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:Cultural_program_was_presented_at_Ch%C3%A2teau_Mukhrani_in_Mtskheta_Municipality_of_Georgia_02.jpg
+  author: Archil sutiashvili
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Mukhranbatoni_Palace_(3c).jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true
@@ -342,8 +331,8 @@ ar:
     عليها لافتة عند طرف القرية، وفي الداخل موقف كبير مجاني. تزود بالوقود في ناتاختاري أو متسخيتا، فمحطات
     القرية قليلة. وتتابع الطريق نفسها نحو سامتافيسي إن أردت الجمع بين الموقعين في أصيل واحد.
 image_credit:
-  author: Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center
-  license: Public domain
-  license_url: ''
-  source: https://commons.wikimedia.org/wiki/File:ISS053-E-214901_-_View_of_Earth.jpg
+  author: Archil sutiashvili
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Mukhranbatoni_Palace_(1).jpg
 rating: 4.0

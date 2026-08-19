@@ -8,11 +8,6 @@ featured: false
 order: 62
 image: /assets/photos/oni.webp
 gallery:
-- image: /assets/photos/oni-1.webp
-  author: Yasuhiro Kojima
-  license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: https://commons.wikimedia.org/wiki/File:2015-08-29_(70)_Oni.jpg
 - image: /assets/photos/oni-2.webp
   author: Alexkom000
   license: CC BY 4.0
@@ -267,8 +262,8 @@ ar:
     ومليئة بالحفر في مواضع، وبعد المطر تتساقط الحجارة من المنحدرات. الوادي ضيق والمنعطفات عمياء، فانتبه
     بعد حلول الظلام. الوقود في أمبرولاوري. وسيارة اقتصادية تكفي حتى أوني، لا أبعد منها.
 image_credit:
-  author: Cimbalom
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Ialoni_Ensemble.jpg
+  author: Yasuhiro Kojima
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:2015-08-29_(70)_Oni.jpg
 rating: 4.0

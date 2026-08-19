@@ -8,23 +8,17 @@ featured: false
 order: 110
 image: /assets/photos/lagodekhi-protected-areas.webp
 gallery:
-- image: /assets/photos/lagodekhi-protected-areas-1.webp
-  author: w0zny
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:Lagodekhi,_Georgia_old_barracks_Bebop_Drone_2015-08-28T192833%2B0000_180817.jpg
-- image: /assets/photos/lagodekhi-protected-areas-2.webp
-  author: w0zny
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:Lagodekhi,_Georgia_old_barracks_Bebop_Drone_2015-08-28T192942%2B0000_180817.jpg
 - image: /assets/photos/lagodekhi-protected-areas-3.webp
   author: w0zny
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Lagodekhi,_Georgia_Bebop_Drone_2015-08-28T193016%2B0000_180817.jpg
+- image: /assets/photos/lagodekhi-protected-areas-4.webp
+  author: Giorgimailo
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: >-
+    https://commons.wikimedia.org/wiki/File:%E1%B2%A1%E1%83%A3%E1%83%91%E1%83%90%E1%83%9A%E1%83%9E%E1%83%A3%E1%83%A0%E1%83%98_%E1%83%9E%E1%83%90%E1%83%A0%E1%83%99%E1%83%A3%E1%83%9A%E1%83%98_%E1%83%A2%E1%83%A7%E1%83%94.jpg
 visit_hours: '6'
 best_season: may-october
 open_year_round: true
@@ -232,8 +226,8 @@ ar:
     فسيارة اقتصادية كافية تماماً. ومركز الزوار مُشار إليه باللافتات عند الطرف الشمالي للبلدة. الوقود والمتاجر
     متوفرة في لاغوديخي نفسها. وانتبه إلى أن العبور إلى أذربيجان غير مسموح به بسيارة مستأجرة جورجية.
 image_credit:
-  author: Peretz Partensky from San Francisco, USA
-  license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: https://commons.wikimedia.org/wiki/File:This_looks_like_a_fairy_tale_to_me._(3847022916).jpg
+  author: Paata vardanashvili
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Lagodekhi_28.jpg
 rating: 4.0

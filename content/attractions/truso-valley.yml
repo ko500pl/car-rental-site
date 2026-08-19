@@ -8,16 +8,11 @@ featured: false
 order: 80
 image: /assets/photos/truso-valley.webp
 gallery:
-- image: /assets/photos/truso-valley-1.webp
-  author: Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center
-  license: Public domain
-  license_url: ''
-  source: https://commons.wikimedia.org/wiki/File:ISS045-E-160749_-_View_of_Earth.jpg
-- image: /assets/photos/truso-valley-2.webp
-  author: Earth Science and Remote Sensing Unit, NASA Johnson Space Center
-  license: Public domain
-  license_url: ''
-  source: https://commons.wikimedia.org/wiki/File:ISS061-E-70567_-_View_of_Earth.jpg
+- image: /assets/photos/truso-valley-4.webp
+  author: David Osipov
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0
+  source: https://commons.wikimedia.org/wiki/File:Abano_Mineral_Lake.jpg
 - image: /assets/photos/truso-valley-3.webp
   author: Tadeáš Gregor
   license: CC BY-SA 4.0
@@ -253,8 +248,8 @@ ar:
     وقد يصير المسلك غير سالك تماماً. تزود بالوقود في باسانوري أو غوداوري، فلا وقود في الوادي. اختر السيارة
     مسبقاً من [أسطولنا](/fleet/).
 image_credit:
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Jvari_pass_(G.N._2011).jpg
+  author: Alexkom000
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0
+  source: https://commons.wikimedia.org/wiki/File:2024-08-03_Truso_Valley_1.jpg
 rating: 4.5

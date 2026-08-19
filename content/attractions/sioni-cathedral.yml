@@ -13,11 +13,6 @@ gallery:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Sioni_cathedral_en_Tbilisi.jpg
-- image: /assets/photos/sioni-cathedral-2.webp
-  author: Jaba1977
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Tbilisi%27s_Sioni_(4).jpg
 - image: /assets/photos/sioni-cathedral-3.webp
   author: Jaba1977
   license: CC BY-SA 4.0
@@ -300,8 +295,8 @@ ar:
     وترك السيارة في الأزقة قرب الكنيسة ينتهي عادة بسيارة السحب. وسيارة اقتصادية صغيرة ميزة حقيقية في هذا
     الحي.
 image_credit:
-  author: Kakhi Kuloshvili
+  author: Jaba1977
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Sioni_Cathedral_2.jpg
+  source: https://commons.wikimedia.org/wiki/File:Tbilisi%27s_Sioni_(4).jpg
 rating: 3.0

@@ -8,21 +8,11 @@ featured: false
 order: 85
 image: /assets/photos/tsaishi-cathedral.webp
 gallery:
-- image: /assets/photos/tsaishi-cathedral-1.webp
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:December_2010_-_panoramio_(2).jpg
-- image: /assets/photos/tsaishi-cathedral-2.webp
-  author: Dalibor Z. Chvatal
-  license: CC BY 3.0
-  license_url: https://creativecommons.org/licenses/by/3.0
-  source: https://commons.wikimedia.org/wiki/File:Tsaishi,_Georgia_-_panoramio.jpg
-- image: /assets/photos/tsaishi-cathedral-3.webp
-  author: Dalibor Z. Chvatal
-  license: CC BY 3.0
-  license_url: https://creativecommons.org/licenses/by/3.0
-  source: https://commons.wikimedia.org/wiki/File:Tsaishi,_Georgia_-_panoramio_(1).jpg
+- image: /assets/photos/tsaishi-cathedral-4.webp
+  author: Abkhazian1
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Tsaishi_Cathedral,_Zugdidi,_Megrelia,_Georgia.jpg
 visit_hours: '0.5'
 best_season: all
 open_year_round: true
@@ -370,8 +360,8 @@ ar:
     الحقول من مسافة بعيدة. تزوّد بالوقود في سيناكي أو زوغديدي. والسيارة الاقتصادية كافية في كل فصل، والوقوف
     عند البوابة مباشرة.
 image_credit:
-  author: G.N.
+  author: Lika2672 at Georgian Wikipedia
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:View_from_Urta_mt._-_panoramio.jpg
+  source: https://commons.wikimedia.org/wiki/File:Caishis_sakatedro_tadzari.jpg
 rating: 3.0

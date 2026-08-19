@@ -8,17 +8,6 @@ featured: false
 order: 78
 image: /assets/photos/bolnisi-town.webp
 gallery:
-- image: /assets/photos/bolnisi-town-1.webp
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Bolnisi,_Georgia_-_panoramio_(2).jpg
-- image: /assets/photos/bolnisi-town-2.webp
-  author: Adam Jones from Kelowna, BC, Canada
-  license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:Detail_of_Georgian_Cross_on_Stone_Bench_-_Botanical_Gardens_-_Old_Town_-_Tbilisi_-_Georgia_(18492373728)_(2).jpg
 - image: /assets/photos/bolnisi-town-3.webp
   author: G.N.
   license: CC BY-SA 3.0
@@ -240,8 +229,8 @@ ar:
     معبّد بكامله، بمسربين وبحالة جيدة، وإن كانت الحركة تشتد قرب مارنئولي في النهار. تزوّد بالوقود في مارنئولي
     أو عند مدخل بولنيسي. والوقوف على الرصيف في المركز مجاني. وسيارة اقتصادية تكفي على مدار السنة.
 image_credit:
-  author: Yasuhiro Kojima
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Mashavera_River_in_Bolnisi.jpg
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Bolnisi,_Georgia_-_panoramio_(2).jpg
 rating: 4.0

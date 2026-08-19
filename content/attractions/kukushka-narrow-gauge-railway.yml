@@ -8,16 +8,16 @@ featured: false
 order: 45
 image: /assets/photos/kukushka-narrow-gauge-railway.webp
 gallery:
-- image: /assets/photos/kukushka-narrow-gauge-railway-1.webp
-  author: Henri Bergius from Finland
-  license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: https://commons.wikimedia.org/wiki/File:Aerial_tramway._Borjomi.jpg
-- image: /assets/photos/kukushka-narrow-gauge-railway-2.webp
-  author: Henri Bergius from Finland
-  license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: https://commons.wikimedia.org/wiki/File:Borjomi_from_the_wheel.jpg
+- image: /assets/photos/kukushka-narrow-gauge-railway-3.webp
+  author: Jelger Groeneveld
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Tsagveri_station_-_Kukushka_train.jpg
+- image: /assets/photos/kukushka-narrow-gauge-railway-4.webp
+  author: Karel61
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Narrow_Gauge_Rail_GE_Tsageri.jpg
 visit_hours: '4'
 best_season: all
 open_year_round: true
@@ -274,8 +274,8 @@ ar:
     المركزية، والوقوف على الشارع مجاني. وإن لم تركب القطار وأردت رؤية جسر إيفل فقط، فسر على طريق باكورياني
     حتى تساغفيري؛ فالجسر فوق القرية ويُرى من الطريق. الوقود في خاشوري وبورجومي.
 image_credit:
-  author: Henri Bergius from Finland
-  license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: https://commons.wikimedia.org/wiki/File:Borjomi_water.jpg
+  author: Alexjtb
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Kukushka-borjomi-bakuriani-railway.jpg
 rating: 4.0

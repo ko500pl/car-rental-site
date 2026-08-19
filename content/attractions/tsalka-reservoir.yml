@@ -14,11 +14,6 @@ gallery:
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: >-
     https://commons.wikimedia.org/wiki/File:%E1%83%A1%E1%83%9D%E1%83%A4._%E1%83%A1%E1%83%90%E1%83%9B%E1%83%94%E1%83%91%E1%83%90_(G.N._2011).jpg
-- image: /assets/photos/tsalka-reservoir-2.webp
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Tsalka,_Georgia_-_panoramio.jpg
 - image: /assets/photos/tsalka-reservoir-3.webp
   author: G.N.
   license: CC BY-SA 3.0
@@ -246,8 +241,8 @@ ar:
     الجبلي متعرجاً ويتجمد شتاءً. تزوّد بالوقود في كودا أو تسالكا. وسيارة اقتصادية مناسبة صيفاً؛ أما شتاءً
     فإطارات الشتاء ضرورية.
 image_credit:
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Tbeti,_Georgia_-_panoramio.jpg
+  author: Yasuhiro Kojima
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Tsalka_Reservoir_and_Mt_Arjevani.jpg
 rating: 4.0

@@ -6,8 +6,7 @@ elevation: 570
 unesco: false
 featured: false
 order: 80
-image: >-
-  https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Georgiaren_Kronikak_%28Tbilisi%29_-_The_Chronicle_of_Georgia_-_Tagzania_-_1775459623095.jpg/960px-Georgiaren_Kronikak_%28Tbilisi%29_-_The_Chronicle_of_Georgia_-_Tagzania_-_1775459623095.jpg
+image: /assets/photos/chronicle-of-georgia.webp
 gallery:
 - image: /assets/photos/chronicle-of-georgia-1.webp
   author: Eka Samkharadze

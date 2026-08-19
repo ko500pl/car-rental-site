@@ -7,12 +7,6 @@ unesco: false
 featured: false
 order: 40
 image: /assets/photos/tobavarchkhili-lakes.webp
-gallery:
-- image: /assets/photos/tobavarchkhili-lakes-1.webp
-  author: Superhickish
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Tobavarchkhili.jpg
 visit_hours: '6'
 best_season: june-september
 open_year_round: false
@@ -381,8 +375,8 @@ ar:
     واحد، وفوق موخوري لا تصلح دروب الغابة إلا للدفع الرباعي. اترك السيارة في القرية، فالمرشدون عادةً يرتبون
     فناءً للوقوف. تزوّد بالوقود في سيناكي أو تشخوروتسكو، فلا شيء في الأعلى.
 image_credit:
-  author: Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center
-  license: Public domain
-  license_url: ''
-  source: https://commons.wikimedia.org/wiki/File:ISS015-E-16591_-_View_of_Earth.jpg
+  author: Superhickish
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Tobavarchkhili.jpg
 rating: 4.5

@@ -8,21 +8,11 @@ featured: false
 order: 70
 image: /assets/photos/paravani-tabatskuri-lakes.webp
 gallery:
-- image: /assets/photos/paravani-tabatskuri-lakes-1.webp
-  author: Sarah Murray from South Bend, IN, USA
-  license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: https://commons.wikimedia.org/wiki/File:Paravani_(14545306410).jpg
 - image: /assets/photos/paravani-tabatskuri-lakes-2.webp
   author: Sarah Murray from South Bend, IN, USA
   license: CC BY-SA 2.0
   license_url: https://creativecommons.org/licenses/by-sa/2.0
   source: https://commons.wikimedia.org/wiki/File:Paravani_(14728799651).jpg
-- image: /assets/photos/paravani-tabatskuri-lakes-3.webp
-  author: Sarah Murray from South Bend, IN, USA
-  license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: https://commons.wikimedia.org/wiki/File:Paravani_(14545307080).jpg
 visit_hours: '3'
 best_season: june-september
 open_year_round: false
@@ -271,5 +261,5 @@ image_credit:
   author: Sarah Murray from South Bend, IN, USA
   license: CC BY-SA 2.0
   license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: https://commons.wikimedia.org/wiki/File:Paravani_(14728798991).jpg
+  source: https://commons.wikimedia.org/wiki/File:Paravani_(14545306410).jpg
 rating: 4.0

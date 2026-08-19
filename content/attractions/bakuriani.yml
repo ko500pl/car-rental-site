@@ -8,21 +8,12 @@ featured: false
 order: 25
 image: /assets/photos/bakuriani.webp
 gallery:
-- image: /assets/photos/bakuriani-1.webp
-  author: Franz Xaver
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Clinopodium_grandiflorum_1.jpg
-- image: /assets/photos/bakuriani-2.webp
-  author: Franz Xaver
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Dipsacus_strigosus_1.jpg
-- image: /assets/photos/bakuriani-3.webp
-  author: Franz Xaver
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Dipsacus_strigosus_2.jpg
+- image: /assets/photos/bakuriani-4.webp
+  author: Kober
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: >-
+    https://commons.wikimedia.org/wiki/File:Bakuriani_winter_resort,_Georgia._January_2022_01.jpg
 visit_hours: '6'
 best_season: all
 open_year_round: true
@@ -320,8 +311,8 @@ ar:
     تستحق الحمل. تزوّد بالوقود في خاشوري أو بورجومي فالمحطات قليلة في الأعلى. وفي الصيف تكفي سيارة اقتصادية
     تماماً.
 image_credit:
-  author: Franz Xaver
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Geranium_gracile_4.jpg
+  author: ZeevoX
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Bakuriani_Ski_Resort_(GEO)_2019.jpg
 rating: 4.0

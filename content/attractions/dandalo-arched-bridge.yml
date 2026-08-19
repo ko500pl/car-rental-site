@@ -9,21 +9,10 @@ order: 52
 image: /assets/photos/dandalo-arched-bridge.webp
 gallery:
 - image: /assets/photos/dandalo-arched-bridge-1.webp
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%E1%83%90%E1%83%AD%E1%83%90%E1%83%A0%E1%83%98%E1%83%A1%E1%83%AC%E1%83%A7%E1%83%90%E1%83%9A%E1%83%98_(G.N._2011)-2.jpg
-- image: /assets/photos/dandalo-arched-bridge-2.webp
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Zvare_Saint_George_Chaple_(G.N._2006).jpg
-- image: /assets/photos/dandalo-arched-bridge-3.webp
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Zvare_Saint_George_Chaple_(G.N._2006)-2.jpg
+  author: Wagon 87
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Dandalo_bridge_03.jpg
 visit_hours: '0.5'
 best_season: all
 open_year_round: true
@@ -243,8 +232,8 @@ ar:
     واللافتة صغيرة يسهل تفويتها، فاعتمد على الملاحة. أوقف السيارة على الكتف ولا تنزل إلى الدرب المسدود.
     الوقود في كيدا. وسيارة اقتصادية تكفي.
 image_credit:
-  author: Yasuhiro Kojima
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Confluence_of_Merisi_and_Acharistskali.jpg
+  author: Max Benidze
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:%E1%83%93%E1%83%90%E1%83%9C%E1%83%93%E1%83%90%E1%83%9A%E1%83%9D%E1%83%A1_%E1%83%AE%E1%83%98%E1%83%93%E1%83%98_(29027719244).jpg
 rating: 3.0

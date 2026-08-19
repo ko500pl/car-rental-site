@@ -6,7 +6,7 @@ elevation: 425
 unesco: false
 featured: false
 order: 67
-image: ''
+image: /assets/photos/tbilisi-opera-ballet-theatre.webp
 gallery: []
 visit_hours: '3'
 best_season: all
@@ -24,3 +24,8 @@ ru: {name: Тбилисский театр оперы и балета, short: Г
 fa: {name: تئاتر اپرا و باله تفلیس, short: تئاتر دولتی زکریا پالیاشویلی در خیابان روستاولی., body: ساختمان را ببینید و در صورت اجرا اپرا یا باله تماشا کنید., tip: تاریخ اجراها تغییر می‌کند؛ بلیت را زودتر بخرید., route: چند دقیقه پیاده از مترو روستاولی.}
 he: {name: בית האופרה והבלט של טביליסי, short: התיאטרון הממלכתי על שם זכריה פליאשווילי בשדרת רוסתוולי., body: בקרו בבניין ובמידת האפשר צפו באופרה או בבלט., tip: לוחות המופעים משתנים; הזמינו מראש., route: הליכה קצרה מתחנת המטרו רוסתוולי.}
 ar: {name: مسرح أوبرا وباليه تبليسي, short: مسرح زكريا بالياشفيلي الحكومي على شارع روستافيلي., body: شاهد المبنى واحضر عرض أوبرا أو باليه إذا كان متاحاً., tip: تتغير المواعيد؛ احجز مسبقاً., route: مسافة قصيرة سيراً من مترو روستافيلي.}
+image_credit:
+  author: Francisco Anzola
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:National_Opera_House._Tbilisi,_Georgia.jpg

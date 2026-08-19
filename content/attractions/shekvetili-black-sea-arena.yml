@@ -8,21 +8,11 @@ featured: false
 order: 35
 image: /assets/photos/shekvetili-black-sea-arena.webp
 gallery:
-- image: /assets/photos/shekvetili-black-sea-arena-1.webp
+- image: /assets/photos/shekvetili-black-sea-arena-4.webp
   author: M.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Kaprovani.jpg
-- image: /assets/photos/shekvetili-black-sea-arena-2.webp
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Kvemo_Natanebi,_Georgia_-_panoramio.jpg
-- image: /assets/photos/shekvetili-black-sea-arena-3.webp
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Kvemo_Natanebi,_Georgia_-_panoramio_(1).jpg
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Kaprovani_Shekvetili.jpg
 visit_hours: '3'
 best_season: june-september
 open_year_round: true
@@ -250,8 +240,8 @@ ar:
     — 325 كم، نحو أربع ساعات وخمس وأربعين دقيقة. الطريق معبّد كله. وفي عطلات الصيف تبطئ الحركة بعد سامتريديا.
     الوقود في لانتشخوتي وأوريكي. الوقوف في المنتجع عند الفنادق وبأجر في الموسم. وسيارة اقتصادية تكفي تماماً.
 image_credit:
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Guria,_Georgia_-_panoramio.jpg
+  author: Kober
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Black_Sea_Arena._Aug_2017.jpg
 rating: 4.0

@@ -8,16 +8,6 @@ featured: false
 order: 72
 image: /assets/photos/shorapani-fortress.webp
 gallery:
-- image: /assets/photos/shorapani-fortress-1.webp
-  author: Surprizi
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Shorapani_fortress_99.jpg
-- image: /assets/photos/shorapani-fortress-2.webp
-  author: Jacques Dupakiers
-  license: CC BY 2.0
-  license_url: https://creativecommons.org/licenses/by/2.0
-  source: https://commons.wikimedia.org/wiki/File:33_-_In_the_vicinity_of_Zestafoni.jpg
 - image: /assets/photos/shorapani-fortress-3.webp
   author: Jelger Groeneveld
   license: CC BY 2.0
@@ -288,9 +278,8 @@ ar:
     المؤدي إلى القلعة ضيق وآخر بضع مئات من الأمتار حصى. اترك السيارة في شارع القرية واصعد سيراً. الوقود
     متوفر في خاشوري وزستافوني. وتكفي سيارة اقتصادية.
 image_credit:
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%E1%83%A8%E1%83%9D%E1%83%A0%E1%83%90%E1%83%9E%E1%83%9C%E1%83%98%E1%83%A1_%E1%83%AA%E1%83%98%E1%83%AE%E1%83%94,_Shorapani_fortress_-_panoramio.jpg
+  author: Surprizi
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Shorapani_fortress_99.jpg
 rating: 3.5

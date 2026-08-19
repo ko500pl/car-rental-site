@@ -13,16 +13,6 @@ gallery:
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Lake_Lisi_shore.jpg
-- image: /assets/photos/lisi-lake-2.webp
-  author: Max Benidze
-  license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: https://commons.wikimedia.org/wiki/File:Lisi_Lake_in_Tbilisi,_Georgia.jpg
-- image: /assets/photos/lisi-lake-3.webp
-  author: Yuri Samoylov
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:2024-12-25_Bird_of_prey_at_Lisi_Lake.jpg
 visit_hours: '2'
 best_season: may-october
 open_year_round: true
@@ -370,8 +360,8 @@ ar:
     الجنوبي موقف كبير مجاني، فارغ صباحاً وممتلئ ظهر العطلة، وثمة موقف أصغر في الجهة الشرقية. وتزوّد بالوقود
     في فاجا بشافيلا، فلا محطة على الهضبة. وسيارة اقتصادية تكفي تماماً.
 image_credit:
-  author: Tiia Monto
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Frog_in_Georgia.jpg
+  author: Max Benidze
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Lisi_Lake_in_Tbilisi,_Georgia.jpg
 rating: 4.0

@@ -7,22 +7,7 @@ unesco: false
 featured: false
 order: 76
 image: /assets/photos/baghdati-mayakovsky-house.webp
-gallery:
-- image: /assets/photos/baghdati-mayakovsky-house-1.webp
-  author: Yasuhiro Kojima
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Mayakovsky_House_Museum_2.jpg
-- image: /assets/photos/baghdati-mayakovsky-house-2.webp
-  author: Yasuhiro Kojima
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Sakraula_in_Zeda_Dimi.jpg
-- image: /assets/photos/baghdati-mayakovsky-house-3.webp
-  author: Yasuhiro Kojima
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Bridge_over_Sakraula_in_Zeda_Dimi_2.jpg
+gallery: []
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -290,5 +275,5 @@ image_credit:
   author: Yasuhiro Kojima
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Khanistskali_in_Baghdati_1.jpg
+  source: https://commons.wikimedia.org/wiki/File:Mayakovsky_House_Museum_2.jpg
 rating: 3.0
