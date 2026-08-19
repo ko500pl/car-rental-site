@@ -62,12 +62,26 @@
     q: '', cat: '', reg: '', minRating: 0, visitedFilter: '', fitsOnly: false,
     tourId: '', detail: null,
     traffic: false, weather: true,
+    ret: 'back', stay: null, carOverride: '',
     tab: 'map'
   };
   try { var v0 = JSON.parse(localStorage.getItem('do-visited') || '{}'); if (v0 && typeof v0 === 'object') st.visited = v0; } catch (e) {}
   var mh = location.hash.match(/#trip=([^&]+)/);
   if (mh) {
-    try { st.selected = decodeURIComponent(mh[1]).split(',').filter(function (s) { return BY[s]; }); } catch (e) {}
+    try {
+      var parts = decodeURIComponent(mh[1]).split(';');
+      st.selected = parts[0].split(',').filter(function (s) { return BY[s]; });
+      parts.slice(1).forEach(function (kv) {
+        var i = kv.indexOf('=');
+        if (i < 0) return;
+        var k = kv.slice(0, i), v = kv.slice(i + 1);
+        if (k === 's' && /^\d{4}-\d{2}-\d{2}$/.test(v)) st.start = v;
+        if (k === 'd') st.days = Math.max(1, Math.min(30, parseInt(v, 10) || st.days));
+        if (k === 'o') st._originName = v;
+      });
+      var d0 = new Date(st.start);
+      if (!isNaN(d0)) st.end = iso(new Date(d0.getTime() + (st.days - 1) * 864e5));
+    } catch (e) {}
   }
 
   /* ── engine ───────────────────────────────────────────────────────── */
@@ -76,10 +90,16 @@
     return BY[st.selected[st.selected.length - 1]] || st.origin;
   }
   function travel(a, b) { return leg(a, b).min; }
+  function endPoint() {
+    if (st.ret === 'back') return st.origin;
+    if (st.ret === 'other' && st.stay) return st.stay;
+    return null; /* ვრჩები ბოლო გაჩერებაზე */
+  }
   function usedMin() {
     var t = 0, prev = st.origin;
     st.selected.forEach(function (s) { var p = BY[s]; if (!p) return; t += travel(prev, p) + p.hh * 60; prev = p; });
-    if (st.selected.length) t += travel(prev, st.origin);
+    var ep = endPoint();
+    if (st.selected.length && ep) t += travel(prev, ep);
     return t;
   }
   function budgetMin() {
@@ -113,9 +133,14 @@
   function suggestCar() {
     if (!st.selected.length || !D.fleet || !D.fleet.length) return null;
     if (st.transport === 'own') return null;
+    if (st.carOverride) {
+      var o = D.fleet.filter(function (c) { return c.s === st.carOverride; })[0];
+      if (o) return o;
+    }
     var need4 = mountainRoute();
+    var seats = Math.min(8, st.people + (st.transport === 'driver' ? 1 : 0));
     var cand = D.fleet.filter(function (c) {
-      if (c.seats < Math.min(8, st.people)) return false;
+      if (c.seats < seats) return false;
       if (need4) return c.cat === 'offroad' || c.cat === 'suv' || c.cl >= 190;
       return true;
     });
@@ -200,7 +225,9 @@
   function drawWeather() {
     wxLayer.clearLayers();
     if (!st.weather || !window.WX) return;
-    var day = WX.inRange(st.start) ? st.start : iso(new Date());
+    /* ამინდი მხოლოდ არჩეული თარიღით — თუ პროგნოზის ფარგლებს გარეთაა, არ ვაჩვენებთ */
+    if (!WX.inRange(st.start)) return;
+    var day = st.start;
     var cents = regionCentroids();
     if (wxCache && wxFor === day) return paintWx(cents, wxCache);
     WX.get(cents.map(function (c) { return { la: c.la, lo: c.lo }; }), day).then(function (w) {
@@ -225,7 +252,8 @@
     routeLayer.clearLayers();
     var sel = st.selected.map(function (s) { return BY[s]; }).filter(Boolean);
     if (!sel.length) { setStatus(false, false); return; }
-    var pts = [st.origin].concat(sel).concat([st.origin]);
+    var ep = endPoint();
+    var pts = [st.origin].concat(sel).concat(ep ? [ep] : []);
     var straight = pts.map(function (p) { return [p.la, p.lo]; });
     routeLayer.addLayer(L.polyline(straight, { color: '#0b2f4d', weight: 3, opacity: 0.35, dashArray: '6 6' }));
     setStatus(true, false);
@@ -257,7 +285,9 @@
   }
   var routeKey = '';
   function syncRoute() {
-    var key = st.selected.join('>') + '|' + st.origin.n + '|' + (st.traffic ? 't' : '');
+    var ep = endPoint();
+    var key = st.selected.join('>') + '|' + st.origin.n + '|' + (st.traffic ? 't' : '') +
+      '|' + st.ret + '|' + (ep ? ep.n : '');
     if (key !== routeKey) { routeKey = key; drawRoute(); }
   }
   function setStatus(loading, error) {
@@ -272,6 +302,10 @@
     else {
       var p = BY[slug];
       if (p && fits(p)) st.selected.push(slug);
+      else if (p) {
+        var short = cost(p) - (budgetMin() - usedMin());
+        flash(T.noFitNeed + ' ~' + hm(short), true);
+      }
     }
     render();
   }
@@ -293,23 +327,39 @@
     while (st.dayHours.length < st.days) st.dayHours.push(8);
     render();
   }
-  function flash(msg) {
+  function flash(msg, warn, undoFn) {
     var el = $('dowmsg');
-    el.textContent = msg;
+    el.innerHTML = '';
+    el.appendChild(document.createTextNode(msg));
+    el.classList.toggle('warn', !!warn);
+    if (undoFn) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'dow-undo';
+      b.textContent = T.undo;
+      b.onclick = function () { undoFn(); el.innerHTML = ''; };
+      el.appendChild(b);
+    }
+    $('dowactions').hidden = false;
     clearTimeout(flash._t);
-    flash._t = setTimeout(function () { el.textContent = ''; }, 3200);
+    flash._t = setTimeout(function () { el.innerHTML = ''; el.classList.remove('warn'); }, warn || undoFn ? 6000 : 3200);
   }
 
   /* ── render ───────────────────────────────────────────────────────── */
   var typeName = {}; (E.pts || []).forEach(function (p) { typeName[p.ty] = p.t; });
 
+  /* კომპაქტური ფილტრები: 3 ჩიპი — შეფასების ციკლი, ნამყოფის ციკლი, „ეტევა დროში" */
   function chipsSpec() {
+    var rLabel = st.minRating ? '★ ' + st.minRating + (st.minRating < 5 ? '+' : '') : T.ratingAll;
+    var vLabel = st.visitedFilter === 'no' ? T.notVisited :
+      st.visitedFilter === 'yes' ? T.visited : T.visited + ' ✓✗';
     return [
-      { label: '3+ ★', on: st.minRating === 3, act: function () { st.minRating = st.minRating === 3 ? 0 : 3; } },
-      { label: '4+ ★', on: st.minRating === 4, act: function () { st.minRating = st.minRating === 4 ? 0 : 4; } },
-      { label: '5 ★', on: st.minRating === 5, act: function () { st.minRating = st.minRating === 5 ? 0 : 5; } },
-      { label: T.visited, on: st.visitedFilter === 'yes', act: function () { st.visitedFilter = st.visitedFilter === 'yes' ? '' : 'yes'; } },
-      { label: T.notVisited, on: st.visitedFilter === 'no', act: function () { st.visitedFilter = st.visitedFilter === 'no' ? '' : 'no'; } },
+      { label: rLabel, on: !!st.minRating, act: function () {
+        st.minRating = st.minRating === 0 ? 3 : st.minRating === 3 ? 4 : st.minRating === 4 ? 5 : 0;
+      } },
+      { label: vLabel, on: !!st.visitedFilter, act: function () {
+        st.visitedFilter = st.visitedFilter === '' ? 'no' : st.visitedFilter === 'no' ? 'yes' : '';
+      } },
       { label: T.fitsTime, on: st.fitsOnly, act: function () { st.fitsOnly = !st.fitsOnly; } }
     ];
   }
@@ -325,7 +375,14 @@
     $('dowchosen').textContent = hm(budget);
     $('dowused').textContent = hm(used);
     $('dowleft').textContent = hm(Math.max(0, budget - used));
-    $('dowmeter').style.width = Math.min(100, Math.round(used / Math.max(1, budget) * 100)) + '%';
+    var mpc = Math.min(100, Math.round(used / Math.max(1, budget) * 100));
+    var meterEl = $('dowmeter');
+    meterEl.style.width = mpc + '%';
+    meterEl.className = mpc >= 100 ? 'full' : (mpc > 85 ? 'high' : '');
+    $('dowmeterhint').textContent = st.selected.length ? '' : T.meterHint;
+    $('dowstart').min = iso(new Date());
+    $('dowend').min = st.start || '';
+    $('dowstay').hidden = st.ret !== 'other';
 
     /* by-day grid */
     var dg = $('dowdaygrid');
@@ -355,7 +412,7 @@
       $('dowtourname').textContent = tour.n;
       $('dowtourmeta').textContent = tour.days + ' ' + T.day + ' · ' + tour.km + ' ' + T.km + (tour.drive ? ' · ' + tour.drive : '') + ' · ' + tour.carLabel;
     }
-    $('dowactions').hidden = !st.selected.length;
+    $('dowactions').hidden = !(st.selected.length || $('dowmsg').textContent);
 
     /* list */
     var list = visible();
@@ -369,10 +426,14 @@
       var row = document.createElement('div');
       row.className = 'dow-place' + (on ? ' on' : '') + (!ok && !on ? ' dim' : '');
       var d0 = leg(st.origin, p);
+      var ava = on
+        ? '<span class="dow-ava sel">' + esc(String(selIdx[p.s])) + '</span>'
+        : (p.img
+          ? '<span class="dow-ava img"><img src="' + esc(p.img) + '" alt="" loading="lazy"></span>'
+          : '<span class="dow-ava">' + esc(p.n.slice(0, 1)) + '</span>');
       row.innerHTML =
         '<input type="checkbox" aria-label="' + esc(p.n) + '"' + (on ? ' checked' : '') + '>' +
-        '<button type="button" class="dow-place-main">' +
-        '<span class="dow-ava"' + (on ? ' style="background:#cdeef4"' : '') + '>' + esc(on ? String(selIdx[p.s]) : p.n.slice(0, 1)) + '</span>' +
+        '<button type="button" class="dow-place-main">' + ava +
         '<span class="dow-place-t"><span class="dow-place-n">' + esc(p.n) + '</span>' +
         '<span>' + esc(p.gn) + ' · ' + esc(p.t) + (p.r ? ' · ' + Number(p.r).toFixed(1) + ' ★' : '') + '</span>' +
         '<span>' + hm(p.hh * 60) + ' ' + esc(T.visit) + ' · ' + Math.round(d0.km) + ' ' + esc(T.km) +
@@ -410,7 +471,9 @@
         el.className = compact ? 'dow-stop sm' : 'dow-stop';
         el.innerHTML = '<span class="dow-stop-i">' + (i + 1) + '</span><b>' + esc(p.n) + '</b>' +
           '<small>' + hm(lg) + ' ' + esc(T.road) + '</small>' +
-          '<button type="button" aria-label="↑">↑</button><button type="button" aria-label="↓">↓</button><button type="button" aria-label="×">×</button>';
+          '<button type="button" aria-label="' + esc(T.moveUp) + '">↑</button>' +
+          '<button type="button" aria-label="' + esc(T.moveDown) + '">↓</button>' +
+          '<button type="button" class="x" aria-label="' + esc(T.removeL) + '">×</button>';
         var bs = el.querySelectorAll('button');
         bs[0].onclick = function () { moveSel(i, -1); };
         bs[1].onclick = function () { moveSel(i, 1); };
@@ -424,17 +487,52 @@
     $('dowrpused').textContent = hm(used);
     $('dowrpleft').textContent = hm(Math.max(0, budget - used));
 
-    /* car suggestion */
+    /* car suggestion — შეცვლადი ჩამონათვალით, teaser ცარიელ მდგომარეობაში */
     var car = suggestCar();
+    var minPrice = D.fleet && D.fleet.length
+      ? D.fleet.reduce(function (m, c) { return Math.min(m, c.price); }, Infinity) : 0;
+    var tSel = $('dowtransport');
+    var tName = tSel.options[tSel.selectedIndex] ? tSel.options[tSel.selectedIndex].text : '';
     ['dowcar', 'dowcar2'].forEach(function (id) {
       var box = $(id);
       if (!box) return;
-      box.hidden = !car;
+      var teaser = !car && st.transport !== 'own' && minPrice && id === 'dowcar';
+      box.hidden = !car && !teaser;
+      box.classList.toggle('teaser', !!teaser);
+      var selEl = box.querySelector('.dow-car-sel');
+      var bkBtn = box.querySelector('[data-dow-book]');
+      if (teaser) {
+        box.querySelector('.dow-car-n').textContent = '';
+        box.querySelector('.dow-car-p').textContent = '';
+        box.querySelector('.dow-car-s').textContent = T.teaserA + ' ' + minPrice + ' ' + T.teaserB;
+        box.querySelector('.dow-car-r').textContent = '';
+        if (selEl) selEl.hidden = true;
+        if (bkBtn) bkBtn.hidden = true;
+        return;
+      }
       if (!car) return;
+      if (bkBtn) bkBtn.hidden = false;
+      var total = car.price * Math.max(1, st.days);
+      var usd = car.priceUsd ? ' · ≈ $' + (car.priceUsd * Math.max(1, st.days)) : '';
       box.querySelector('.dow-car-n').textContent = car.n;
-      box.querySelector('.dow-car-p').textContent = car.price + ' ₾ / ' + T.day1 + ' · ' + T.sum + ' ' + (car.price * Math.max(1, st.days)) + ' ₾';
+      box.querySelector('.dow-car-p').textContent = car.price + ' ₾ / ' + T.day1 + ' · ' + T.sum + ' ' + total + ' ₾' + usd;
       box.querySelector('.dow-car-s').textContent = car.seats + ' ' + T.seat + ' · ' + car.cat_n + (car.fuel ? ' · ' + car.fuel + ' ' + T.per100 : '');
-      box.querySelector('.dow-car-r').textContent = mountainRoute() ? T.need4 : T.noNeed4;
+      box.querySelector('.dow-car-r').textContent = (mountainRoute() ? T.need4 : T.noNeed4) +
+        (st.transport === 'driver' ? ' · ' + tName : '');
+      if (selEl) {
+        selEl.hidden = false;
+        if (!selEl.dataset.filled) {
+          selEl.dataset.filled = '1';
+          D.fleet.forEach(function (c) {
+            var o = document.createElement('option');
+            o.value = c.s;
+            o.textContent = c.n + ' — ' + c.price + ' ₾';
+            selEl.appendChild(o);
+          });
+          selEl.onchange = function () { st.carOverride = this.value; render(); };
+        }
+        selEl.value = car.s;
+      }
     });
 
     /* toggles */
@@ -455,12 +553,13 @@
         var on = st.selected.indexOf(p.s) >= 0, ok = fits(p);
         var el = document.createElement('div');
         el.className = 'dow-ditem';
-        el.innerHTML = '<b>' + esc(p.n) + '</b>' +
+        el.innerHTML = (p.img ? '<img class="dow-ditem-img" src="' + esc(p.img) + '" alt="" loading="lazy">' : '') +
+          '<b>' + esc(p.n) + '</b>' +
           '<span>' + esc(p.gn) + ' · ' + esc(p.t) + (p.r ? ' · ' + Number(p.r).toFixed(1) + ' ★' : '') + '</span>' +
           '<span>' + esc(T.visit) + ' ' + hm(p.hh * 60) + ' · ' + Math.round(leg(st.origin, p).km) + ' ' + esc(T.km) + '</span>' +
           '<div class="dow-ditem-b"><button type="button" class="a">' + esc(on ? T.removeStop : (ok ? T.addStop : T.noFit)) + '</button>' +
           '<button type="button" class="v">' + esc(st.visited[p.s] ? T.visitedYes : T.markVisited) + '</button>' +
-          (p.u ? '<a class="dow-ditem-link" href="' + esc(p.u) + '">' + esc(T.fullPage) + '</a>' : '') + '</div>';
+          (p.u ? '<a class="dow-ditem-link" href="' + esc(p.u) + '" target="_blank" rel="noopener">' + esc(T.fullPage) + '</a>' : '') + '</div>';
         el.querySelector('.a').onclick = function () { if (on || ok) toggle(p.s); };
         el.querySelector('.v').onclick = function () { setVisited(p.s); };
         body.appendChild(el);
@@ -475,6 +574,17 @@
     ['places', 'map', 'route'].forEach(function (t) {
       $('dowtab-' + t).classList.toggle('on', st.tab === t);
     });
+    var badge = $('dowtabroutec');
+    if (badge) {
+      badge.hidden = !st.selected.length;
+      badge.textContent = st.selected.length;
+    }
+    var mcta = $('dowmcta');
+    if (mcta) {
+      var showM = mob && st.selected.length > 0 && car;
+      mcta.hidden = !showM;
+      if (showM) $('dowmctatxt').textContent = car.n + ' · ' + (car.price * Math.max(1, st.days)) + ' ₾';
+    }
 
     drawMarkers();
     drawWeather();
@@ -515,6 +625,37 @@
     });
     sug.hidden = false;
   }
+  function findPlaceByName(n) {
+    n = String(n || '').trim().toLowerCase();
+    for (var i = 0; i < pool.length; i++) if (pool[i].n.toLowerCase() === n) return pool[i];
+    return null;
+  }
+  if (st._originName) {
+    var op0 = findPlaceByName(st._originName);
+    if (op0) st.origin = { n: op0.n, la: op0.la, lo: op0.lo, f: op0.f || 1.4, v: op0.v || 55 };
+    oi.value = st.origin.n;
+    delete st._originName;
+  }
+  var stayList = $('dowstaylist');
+  if (stayList) {
+    TOWNS.forEach(function (t) {
+      var o = document.createElement('option');
+      o.value = t.n;
+      stayList.appendChild(o);
+    });
+  }
+  $('dowret').onchange = function () {
+    st.ret = this.value;
+    routeKey = '';
+    render();
+    if (st.ret === 'other') { var si = $('dowstay'); si.hidden = false; si.focus(); }
+  };
+  $('dowstay').onchange = function () {
+    var x = findPlaceByName(this.value);
+    st.stay = x ? { n: x.n, la: x.la, lo: x.lo, f: x.f || 1.4, v: x.v || 55 } : null;
+    routeKey = '';
+    render();
+  };
   oi.addEventListener('input', showSuggest);
   oi.addEventListener('focus', showSuggest);
   oi.addEventListener('keydown', function (e) { if (e.key === 'Escape') sug.hidden = true; });
@@ -569,7 +710,21 @@
   $('dowtraffic').onclick = function () { st.traffic = !st.traffic; routeKey = ''; render(); };
   $('dowweather').onclick = function () { st.weather = !st.weather; render(); };
   $('dowdclose').onclick = function () { st.detail = null; render(); };
-  $('dowtourclear').onclick = function () { st.tourId = ''; st.selected = []; render(); };
+  function snapshot() {
+    return { selected: st.selected.slice(), days: st.days, dayHours: st.dayHours.slice(), tourId: st.tourId };
+  }
+  function restore(s) {
+    st.selected = s.selected; st.days = s.days; st.dayHours = s.dayHours; st.tourId = s.tourId;
+    routeKey = '';
+    render();
+  }
+  $('dowtourclear').onclick = function () {
+    var prev = snapshot();
+    st.tourId = ''; st.selected = [];
+    routeKey = '';
+    render();
+    flash('✓', false, function () { restore(prev); });
+  };
   ['places', 'map', 'route'].forEach(function (t) {
     $('dowtab-' + t).onclick = function () {
       st.tab = t; render();
@@ -598,7 +753,10 @@
     }
     flash(T.saved);
   };
-  function shareUrl() { return location.href.split('#')[0] + '#trip=' + encodeURIComponent(st.selected.join(',')); }
+  function shareUrl() {
+    return location.href.split('#')[0] + '#trip=' + encodeURIComponent(
+      st.selected.join(',') + ';o=' + st.origin.n + ';s=' + st.start + ';d=' + st.days);
+  }
   $('dowshare').onclick = function () {
     var trip = tripObj();
     var text = trip.name + ' · ' + st.start + ' – ' + st.end + ' · ' + st.selected.length + ' ' + T.stop;
@@ -629,6 +787,16 @@
     var box = $('dowtlist');
     box.innerHTML = '';
     list.forEach(function (r) {
+      /* გაჩერებები სურათებით — თითო ახალ ტაბში იხსნება, მთავარი გვერდი არ იკარგება */
+      var stops = (r.wp || []).filter(function (s) { return BY[s]; }).slice(0, 6)
+        .map(function (s) {
+          var p = BY[s];
+          var inner = p.img
+            ? '<img src="' + esc(p.img) + '" alt="" loading="lazy">'
+            : '<i>' + esc(p.n.slice(0, 1)) + '</i>';
+          return '<a class="dow-tstop" href="' + esc(p.u) + '" target="_blank" rel="noopener" title="' + esc(p.n) + '">' +
+            inner + '<span>' + esc(p.n) + '</span></a>';
+        }).join('');
       var el = document.createElement('div');
       el.className = 'dow-tour';
       el.innerHTML =
@@ -637,26 +805,42 @@
         '<span>' + r.days + ' ' + esc(T.day) + ' · ' + r.km + ' ' + esc(T.km) + (r.drive ? ' · ' + esc(T.onRoad) + ' ' + esc(r.drive) : '') + '</span>' +
         '<span>' + esc(r.carLabel) + ' · ' + r.minPeople + '–' + r.maxPeople + ' ' + esc(T.person) + (r.region ? ' · ' + esc(r.region) : '') + '</span>' +
         '<span class="dow-tour-d">' + esc(r.sh || '') + '</span>' +
+        (stops ? '<div class="dow-tstops">' + stops + '</div>' : '') +
         '<button type="button">' + esc(T.chooseTour) + '</button></div>';
-      el.querySelector('button').onclick = function () {
-        st.tourId = r.s;
-        st.selected = (r.wp || []).filter(function (s) { return BY[s]; });
-        st.days = r.days;
-        st.dayHours = [];
-        for (var i = 0; i < Math.max(r.days, 6); i++) st.dayHours.push(8);
-        var d = new Date(st.start);
-        if (!isNaN(d)) st.end = iso(new Date(d.getTime() + (st.days - 1) * 864e5));
-        closeTours();
-        fitNext = true;
-        routeKey = '';
-        render();
-      };
+      el.querySelector('button').onclick = function () { applyTour(r); };
       box.appendChild(el);
     });
     $('dowtempty').hidden = list.length > 0;
   }
   function openTours() { $('dowdrawer').hidden = false; renderTours(); }
   function closeTours() { $('dowdrawer').hidden = true; }
+  function applyTour(r) {
+    var prev = snapshot();
+    st.tourId = r.s;
+    st.selected = (r.wp || []).filter(function (s) { return BY[s]; });
+    st.days = r.days;
+    st.dayHours = [];
+    for (var i = 0; i < Math.max(r.days, 6); i++) st.dayHours.push(8);
+    var d = new Date(st.start);
+    if (!isNaN(d)) st.end = iso(new Date(d.getTime() + (st.days - 1) * 864e5));
+    closeTours();
+    fitNext = true;
+    routeKey = '';
+    render();
+    flash(T.tourApplied, false, function () { restore(prev); });
+    root.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  /* „დაგეგმვა" ღილაკები გვერდის ნებისმიერ ადგილას (მთავარი გვერდის ტურის
+     ბარათები, hero) — data-tour შლის კონკრეტულ ტურს რუკაზე, უამისოდ drawer იხსნება */
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest('[data-open-standard-tour]');
+    if (!t) return;
+    e.preventDefault();
+    var slug = t.getAttribute('data-tour');
+    var r = slug ? (D.standardTours || []).filter(function (x) { return x.s === slug; })[0] : null;
+    if (r) applyTour(r);
+    else { root.scrollIntoView({ behavior: 'smooth', block: 'start' }); openTours(); }
+  });
   $('dowtours').onclick = openTours;
   $('dowtclose').onclick = closeTours;
   $('dowtback').onclick = closeTours;
@@ -672,14 +856,37 @@
   };
 
   /* ── booking modal ────────────────────────────────────────────────── */
+  function tripSummary() {
+    return st.start + ' – ' + st.end + ' · ' + st.days + ' ' + T.day + ' · ' + st.people + ' ' + T.person + ' · ' + st.selected.length + ' ' + T.stop;
+  }
+  function waHref(car) {
+    var num = String((window.FH_CFG || {}).whatsapp || '').replace(/\D/g, '');
+    if (!num) return '';
+    var text = 'Drive On: ' + (car ? car.n : '') + ' · ' + tripSummary() + ' · ' +
+      st.selected.map(function (s) { return (BY[s] || {}).n || s; }).join(', ') + ' · ' + shareUrl();
+    return 'https://wa.me/' + num + '?text=' + encodeURIComponent(text);
+  }
   function openBooking() {
     $('dowbooking').hidden = false;
     $('dowbdone').hidden = true;
     $('dowbform').hidden = false;
     $('dowbinvalid').hidden = true;
+    $('dowberr').hidden = true;
     var car = suggestCar();
     $('dowbcar').textContent = car ? car.n : '';
-    $('dowbsum').textContent = st.start + ' – ' + st.end + ' · ' + st.days + ' ' + T.day + ' · ' + st.people + ' ' + T.person + ' · ' + st.selected.length + ' ' + T.stop;
+    $('dowbsum').textContent = tripSummary();
+    var total = car ? car.price * Math.max(1, st.days) : 0;
+    var usd = car && car.priceUsd ? ' · ≈ $' + (car.priceUsd * Math.max(1, st.days)) : '';
+    $('dowbprice').textContent = car ? car.price + ' ₾ × ' + st.days + ' ' + T.day + ' = ' + total + ' ₾' + usd : '';
+    try {
+      $('dowbname').value = $('dowbname').value || localStorage.getItem('do-bk-name') || '';
+      $('dowbphone').value = $('dowbphone').value || localStorage.getItem('do-bk-phone') || '';
+    } catch (e) {}
+    var wa = waHref(car);
+    ['dowbwa', 'dowbwa2'].forEach(function (id) {
+      var a = $(id);
+      if (a) { a.hidden = !wa; if (wa) a.href = wa; }
+    });
   }
   root.addEventListener('click', function (e) {
     var b = e.target.closest('[data-dow-book]');
@@ -688,20 +895,39 @@
   $('dowbclose').onclick = function () { $('dowbooking').hidden = true; };
   $('dowbback').onclick = function () { $('dowbooking').hidden = true; };
   $('dowbsend').onclick = function () {
+    var btn = $('dowbsend');
     var name = $('dowbname').value.trim(), phone = $('dowbphone').value.trim();
+    $('dowbname').classList.toggle('bad', !name);
+    $('dowbphone').classList.toggle('bad', !phone);
     if (!name || !phone) { $('dowbinvalid').hidden = false; return; }
+    $('dowbinvalid').hidden = true;
+    $('dowberr').hidden = true;
+    try {
+      localStorage.setItem('do-bk-name', name);
+      localStorage.setItem('do-bk-phone', phone);
+    } catch (e) {}
     var car = suggestCar();
+    var tSel = $('dowtransport');
+    var tName = tSel.options[tSel.selectedIndex] ? tSel.options[tSel.selectedIndex].text : '';
     var body = new URLSearchParams({
       'form-name': 'contact', name: name, email: '',
       dates: st.start + ' – ' + st.end,
-      message: 'Trip Workspace: ' + (car ? car.n : '') + ' · ' + phone + ' · ' + st.people + ' ppl · ' +
-        st.selected.map(function (s) { return (BY[s] || {}).n || s; }).join(', ')
+      message: 'Trip Workspace: ' + (car ? car.n : '') + ' · ' + phone + ' · ' + st.people + ' ppl · ' + tName + ' · ' +
+        st.selected.map(function (s) { return (BY[s] || {}).n || s; }).join(', ') + ' · ' + shareUrl()
     }).toString();
     var origin = /netlify\.app$/.test(location.hostname) ? '' : 'https://subtle-naiad-c2db5d.netlify.app';
+    btn.disabled = true;
+    var old = btn.textContent;
+    btn.textContent = T.sending;
     fetch(origin + '/', { method: 'POST', mode: origin ? 'no-cors' : 'same-origin',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body }).catch(function () {});
-    $('dowbform').hidden = true;
-    $('dowbdone').hidden = false;
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body })
+      .then(function () {
+        $('dowbform').hidden = true;
+        $('dowbdone').hidden = false;
+        $('dowbsum2').textContent = (car ? car.n + ' · ' : '') + tripSummary();
+      })
+      .catch(function () { $('dowberr').hidden = false; })
+      .then(function () { btn.disabled = false; btn.textContent = old; });
   };
 
   render();

@@ -1885,6 +1885,44 @@ main .lead,p.lead{{font-size:15px;color:var(--ink-2)}}
 .dow-brow2 input{{height:42px;padding:0 10px;border:1px solid var(--line);border-radius:10px;
   font-size:14px;color:var(--ink)}}
 .dow-alert{{font-size:12px;color:#8c2d20}}
+.dow-btn.tealsolid{{background:var(--accent);color:#fff;text-decoration:none}}
+.dow-btn.tealsolid:hover{{background:#0b7f96;color:#fff}}
+.dow-ret{{display:flex;gap:6px;align-items:center}}
+.dow-ret select,.dow-ret input{{height:36px;padding:0 8px;border:1px solid var(--line);border-radius:10px;
+  background:#fff;font-size:12.5px;color:var(--ink);max-width:230px}}
+.dow-meterhint{{color:var(--brand-2);font-weight:600}}
+.dow-meter>div.high{{background:#d98324}}
+.dow-meter>div.full{{background:#c0392b}}
+.dow-msg.warn{{color:#8c5a00}}
+.dow-undo{{margin-inline-start:8px;height:26px;padding:0 10px;border:1px solid var(--line);
+  border-radius:8px;background:#fff;font-size:12px;font-weight:600;cursor:pointer;color:var(--brand)}}
+.dow-ava.img{{padding:0;overflow:hidden;background:#e8eff4}}
+.dow-ava.img img{{width:100%;height:100%;object-fit:cover;display:block}}
+.dow-ava.sel{{background:#cdeef4}}
+.dow-place.dim{{opacity:.45}}
+.dow-place.dim .dow-ava.img img{{filter:grayscale(.8)}}
+.dow-tabbadge{{display:inline-grid;place-items:center;min-width:18px;height:18px;padding:0 5px;
+  margin-inline-start:4px;background:var(--accent);color:#fff;border-radius:999px;font-size:11px}}
+.dow-tabs button.on .dow-tabbadge{{background:#fff;color:var(--brand)}}
+.dow-mcta{{position:sticky;bottom:0;z-index:80;display:flex;align-items:center;gap:10px;
+  padding:10px 12px;background:#fff;border-top:1px solid var(--line);
+  box-shadow:0 -6px 18px rgba(14,35,51,.08)}}
+.dow-mcta span{{flex:1;font-size:13px;font-weight:700;min-width:0}}
+@media(min-width:961px){{.dow-mcta{{display:none}}}}
+.dow-car-sel{{height:34px;padding:0 8px;border:1px solid var(--line);border-radius:8px;background:#fff;
+  font-size:12.5px;color:var(--ink);width:100%}}
+.dow-car.teaser{{background:#eefafc;border-color:#cbe8ee}}
+.dow-ditem-img{{width:100%;height:120px;object-fit:cover;border-radius:8px;display:block}}
+.dow-tstops{{display:flex;gap:6px;flex-wrap:wrap;margin-top:2px}}
+.dow-tstop{{display:flex;flex-direction:column;align-items:center;gap:2px;width:56px;text-decoration:none}}
+.dow-tstop img,.dow-tstop i{{width:52px;height:40px;border-radius:6px;object-fit:cover;display:grid;
+  place-items:center;background:#e8eff4;color:var(--brand);font-style:normal;font-weight:700;font-size:13px}}
+.dow-tstop span{{font-size:10px;color:var(--ink-2);max-width:56px;white-space:nowrap;overflow:hidden;
+  text-overflow:ellipsis}}
+.dow-tstop:hover span{{color:var(--brand-2)}}
+.dow-bprice{{font-size:14px;font-weight:700;color:var(--ok)}}
+.dow-reassure{{font-size:12px;color:var(--ink-2)}}
+.dow-brow2 input.bad{{border-color:#c0392b}}
 .maphero .wrap{{padding-block:0}}
 @media(max-width:1180px){{.dow-prow{{grid-template-columns:repeat(3,minmax(0,1fr))}}}}
 @media(max-width:960px){{
@@ -1894,9 +1932,12 @@ main .lead,p.lead{{font-size:15px;color:var(--ink-2)}}
   .dow-intro{{flex-direction:column;align-items:flex-start}}
   .dow-h1{{font-size:26px}}
   .dow-prow{{grid-template-columns:repeat(2,minmax(0,1fr))}}
-  .dow-tabs{{display:flex}}
+  .dow-tabs{{display:flex;position:sticky;top:0;z-index:75}}
   .dow-drawer{{width:100%}}
   .dow-car.float{{width:calc(100% - 20px)}}
+  .dow-stop button{{width:34px;height:34px;font-size:13px}}
+  .dow-stop button.x{{margin-inline-start:6px}}
+  .dow-ret select{{max-width:100%}}
 }}
 /* ── მაკეტის სექციები: სათაური + მარჯვენა ღილაკები, ბარათების ბადეები ── */
 .sec-head{{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:14px}}
