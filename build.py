@@ -479,7 +479,8 @@ LEAFLET_JS = "/assets/leaflet/leaflet.js"
 
 
 ASSET = {"css": "/assets/style.css", "explorer": "/assets/explorer.js",
-         "planner": "/assets/planner.js", "workspace": "/assets/workspace.js"}
+         "planner": "/assets/planner.js", "workspace": "/assets/workspace.js",
+         "app_mobile": "/assets/app-mobile.js"}
 TRAVEL_ASSET = {}
 
 
@@ -2569,6 +2570,347 @@ def render_404():
 
 
 # ══════════════════════════════════════════════════════════════ main
+# ══════════════════════════════════════════════════════════ Mobile App (/app/)
+# "Drive On - Mobile App" მაკეტის ზუსტი პორტი — ცალკე დგას საიტის ქრომისგან.
+DOA_UI = {
+    "ka": {"appSub": "მოგზაურობის დამგეგმავი", "h1": "დაგეგმე მოგზაურობა საქართველოში", "lead": "აირჩიე ადგილები, დაითვალე დრო და გააზიარე მარშრუტი.", "origin": "საწყისი ადგილი", "originPh": "ქალაქი ან ადგილი", "myLoc": "ჩემი მდებარეობა", "start": "დაწყება", "end": "დასრულება", "days": "რამდენი დღე", "people": "რამდენი ხართ", "transport": "ტრანსპორტი", "tr1": "შემომთავაზეთ მანქანა", "tr2": "ჩემი მანქანით ვარ", "tr3": "მანქანის ქირაობა მინდა", "tr4": "მძღოლი მჭირდება", "dayTime": "დღიური დრო", "plan": "დაგეგმე მოგზაურობა", "tours": "სტანდარტული ტურები", "searchTour": "ტურის ძებნა", "chooseTour": "ამ ტურის არჩევა", "chosen": "არჩეული", "used": "გამოყენებული", "left": "დარჩენილი", "searchPlace": "ადგილის ძებნა", "details": "დეტალები", "tabHome": "მთავარი", "tabMap": "რუკა", "tabRoute": "მარშრუტი", "tabComm": "საზოგადოება", "tabAcc": "ჩემი", "save": "მარშრუტის შენახვა", "share": "გაზიარება", "book": "მანქანის დაჯავშნა", "close": "დახურვა", "notifications": "შეტყობინებები", "emptyTitle": "შედეგი არ არის", "resetFilters": "ფილტრების მოხსნა", "routeEmptyTitle": "მარშრუტი ცარიელია", "routeEmptyText": "აირჩიე ადგილები რუკაზე ან სტანდარტული ტური.", "routeLoading": "მარშრუტი იგება…", "routeError": "გზის სერვისი მიუწვდომელია", "name": "სახელი", "phone": "ტელეფონი", "sendRequest": "მოთხოვნის გაგზავნა", "bookingDone": "მოთხოვნა გაიგზავნა", "bookingInvalid": "შეავსეთ სახელი და ტელეფონი", "commH1": "მოგზაურთა საზოგადოება", "commLead": "იპოვეთ თანამგზავრები, გააზიარეთ მარშრუტი და გამოცდილება, ან შეუერთდით თქვენთვის საინტერესო ტურს.", "accH1": "ჩემი გვერდი", "accLead": "აქ ინახება მარშრუტები, რომლებიც დამგეგმავში ააგეთ — თარიღით და სტატუსით.", "install": "მთავარ ეკრანზე დამატება", "join": "შეერთება", "joined": "შეერთებული ✓", "pub": "საჯარო", "priv": "პირადი", "day": "დღე", "visitedMark": "ნამყოფად მონიშვნა", "visited": "ნამყოფი ✓", "add": "მარშრუტში დამატება", "remove": "მარშრუტიდან მოშორება", "noTime": "დროში არ ეტევა", "saved": "შენახულია ✓", "copied": "ბმული დაკოპირდა ✓", "placeDetails": "ადგილის დეტალები", "inGroup": "ადგილი ამ ჯგუფში", "fitsL": "ეტევა დროში", "notVisited": "არ ვარ ნამყოფი", "placesWord": "ადგილი", "tripsWord": "მოგზაურობა", "freeSeats": "თავისუფალი ადგილი", "noSeats": "ადგილები შევსებულია", "all": "ყველა", "installHint": "მენიუდან აირჩიეთ „მთავარ ეკრანზე დამატება“", "minU": "წთ", "hU": "სთ", "kmU": "კმ", "seats": "ადგილი", "people2": "ადამიანი", "stdCar": "სტანდარტული", "sending": "იგზავნება…", "sendErr": "ვერ გაიგზავნა — სცადეთ ხელახლა ან დაგვირეკეთ", "carWhy4": "მაღალმთიანი გზა — 4WD რეკომენდებულია", "carWhyStd": "ასფალტის მარშრუტი — სტანდარტული კლასი საკმარისია", "accPlanned": "დაგეგმილი ტურები", "accSaved": "შენახული მარშრუტები", "accVisited": "მონახულებული ადგილები", "accGroups": "ჯგუფები", "accCars": "ნაქირავები ავტომობილები", "notif1": "გიორგიმ მოგიწვია ჯგუფში „სვანეთი, სექტემბერი“", "when1": "2 საათის წინ", "notif2": "თქვენი მარშრუტი გაზიარებულია", "when2": "გუშინ"},
+    "en": {"appSub": "Trip planner", "h1": "Plan a trip in Georgia", "lead": "Pick places, count the time and share the route.", "origin": "Starting point", "originPh": "City or place", "myLoc": "My location", "start": "From", "end": "To", "days": "How many days", "people": "How many of you", "transport": "Transport", "tr1": "Suggest a car", "tr2": "I have my own car", "tr3": "I want to rent a car", "tr4": "I need a driver", "dayTime": "Hours per day", "plan": "Plan a trip", "tours": "Standard tours", "searchTour": "Search a tour", "chooseTour": "Choose this tour", "chosen": "Budget", "used": "Used", "left": "Left", "searchPlace": "Search a place", "details": "Details", "tabHome": "Home", "tabMap": "Map", "tabRoute": "Route", "tabComm": "Community", "tabAcc": "Me", "save": "Save route", "share": "Share", "book": "Book the car", "close": "Close", "notifications": "Notifications", "emptyTitle": "No results", "resetFilters": "Clear filters", "routeEmptyTitle": "The route is empty", "routeEmptyText": "Pick places on the map or choose a standard tour.", "routeLoading": "Building the route…", "routeError": "Routing service unavailable", "name": "Name", "phone": "Phone", "sendRequest": "Send request", "bookingDone": "Request sent", "bookingInvalid": "Fill in name and phone", "commH1": "Traveller community", "commLead": "Find travel companions, share a route and experience, or join a trip that interests you.", "accH1": "My page", "accLead": "This is where the routes you build in the planner are kept — with the date and the status.", "install": "Add to home screen", "join": "Join", "joined": "Joined ✓", "pub": "Public", "priv": "Private", "day": "day", "visitedMark": "Mark as visited", "visited": "Visited ✓", "add": "Add to route", "remove": "Remove from route", "noTime": "does not fit in time", "saved": "Saved ✓", "copied": "Link copied ✓", "placeDetails": "Place details", "inGroup": "places in this cluster", "fitsL": "Fits in time", "notVisited": "Not visited", "placesWord": "places", "tripsWord": "trips", "freeSeats": "seats free", "noSeats": "full", "all": "All", "installHint": "Use the browser menu → “Add to home screen”", "minU": "min", "hU": "h", "kmU": "km", "seats": "seats", "people2": "people", "stdCar": "Standard", "sending": "Sending…", "sendErr": "Could not send — try again or call us", "carWhy4": "High mountain road — 4WD recommended", "carWhyStd": "Paved route — a standard class is enough", "accPlanned": "Planned trips", "accSaved": "Saved routes", "accVisited": "Visited places", "accGroups": "Groups", "accCars": "Rented cars", "notif1": "Giorgi invited you to “Svaneti, September”", "when1": "2 h ago", "notif2": "Your route has been shared", "when2": "yesterday"},
+    "ru": {"appSub": "Планировщик поездок", "h1": "Спланируйте поездку по Грузии", "lead": "Выберите места, посчитайте время и поделитесь маршрутом.", "origin": "Начальная точка", "originPh": "Город или место", "myLoc": "Моё местоположение", "start": "С", "end": "По", "days": "Сколько дней", "people": "Сколько вас", "transport": "Транспорт", "tr1": "Предложите машину", "tr2": "Я на своей машине", "tr3": "Хочу арендовать машину", "tr4": "Нужен водитель", "dayTime": "Часов в день", "plan": "Спланировать поездку", "tours": "Готовые туры", "searchTour": "Поиск тура", "chooseTour": "Выбрать этот тур", "chosen": "Бюджет", "used": "Использовано", "left": "Осталось", "searchPlace": "Поиск места", "details": "Детали", "tabHome": "Главная", "tabMap": "Карта", "tabRoute": "Маршрут", "tabComm": "Сообщество", "tabAcc": "Я", "save": "Сохранить маршрут", "share": "Поделиться", "book": "Забронировать машину", "close": "Закрыть", "notifications": "Уведомления", "emptyTitle": "Нет результатов", "resetFilters": "Сбросить фильтры", "routeEmptyTitle": "Маршрут пуст", "routeEmptyText": "Выберите места на карте или готовый тур.", "routeLoading": "Строим маршрут…", "routeError": "Сервис маршрутов недоступен", "name": "Имя", "phone": "Телефон", "sendRequest": "Отправить запрос", "bookingDone": "Запрос отправлен", "bookingInvalid": "Заполните имя и телефон", "commH1": "Сообщество путешественников", "commLead": "Найдите попутчиков, поделитесь маршрутом и впечатлениями или присоединитесь к интересной поездке.", "accH1": "Моя страница", "accLead": "Здесь хранятся маршруты, построенные в планировщике, — с датой и статусом.", "install": "Добавить на главный экран", "join": "Присоединиться", "joined": "Вы в поездке ✓", "pub": "Открытая", "priv": "Личная", "day": "дн.", "visitedMark": "Отметить посещённым", "visited": "Посещено ✓", "add": "Добавить в маршрут", "remove": "Убрать из маршрута", "noTime": "не влезает по времени", "saved": "Сохранено ✓", "copied": "Ссылка скопирована ✓", "placeDetails": "О месте", "inGroup": "мест в кластере", "fitsL": "Влезает по времени", "notVisited": "Не был", "placesWord": "мест", "tripsWord": "поездок", "freeSeats": "свободных мест", "noSeats": "мест нет", "all": "Все", "installHint": "В меню браузера → «На главный экран»", "minU": "мин", "hU": "ч", "kmU": "км", "seats": "мест", "people2": "чел.", "stdCar": "Стандарт", "sending": "Отправка…", "sendErr": "Не отправилось — попробуйте ещё раз или позвоните", "carWhy4": "Горная дорога — рекомендуется 4WD", "carWhyStd": "Асфальтовый маршрут — достаточно стандартного класса", "accPlanned": "Запланированные поездки", "accSaved": "Сохранённые маршруты", "accVisited": "Посещённые места", "accGroups": "Группы", "accCars": "Арендованные машины", "notif1": "Гиорги пригласил вас в «Сванети, сентябрь»", "when1": "2 ч назад", "notif2": "Ваш маршрут опубликован", "when2": "вчера"},
+    "fa": {"appSub": "برنامه‌ریز سفر", "h1": "سفر خود در گرجستان را برنامه‌ریزی کنید", "lead": "مکان‌ها را انتخاب کنید، زمان را بشمارید و مسیر را به اشتراک بگذارید.", "origin": "نقطهٔ شروع", "originPh": "شهر یا مکان", "myLoc": "موقعیت من", "start": "از", "end": "تا", "days": "چند روز", "people": "چند نفرید", "transport": "حمل‌ونقل", "tr1": "خودرو پیشنهاد دهید", "tr2": "خودروی خودم را دارم", "tr3": "می‌خواهم خودرو اجاره کنم", "tr4": "راننده لازم دارم", "dayTime": "ساعت در روز", "plan": "برنامه‌ریزی سفر", "tours": "تورهای آماده", "searchTour": "جست‌وجوی تور", "chooseTour": "انتخاب این تور", "chosen": "زمان انتخابی", "used": "مصرف‌شده", "left": "باقی‌مانده", "searchPlace": "جست‌وجوی مکان", "details": "جزئیات", "tabHome": "خانه", "tabMap": "نقشه", "tabRoute": "مسیر", "tabComm": "جامعه", "tabAcc": "من", "save": "ذخیرهٔ مسیر", "share": "اشتراک‌گذاری", "book": "رزرو خودرو", "close": "بستن", "notifications": "اعلان‌ها", "emptyTitle": "نتیجه‌ای نیست", "resetFilters": "حذف فیلترها", "routeEmptyTitle": "مسیر خالی است", "routeEmptyText": "روی نقشه مکان انتخاب کنید یا یک تور آماده بگیرید.", "routeLoading": "در حال ساخت مسیر…", "routeError": "سرویس مسیریابی در دسترس نیست", "name": "نام", "phone": "تلفن", "sendRequest": "ارسال درخواست", "bookingDone": "درخواست ارسال شد", "bookingInvalid": "نام و تلفن را وارد کنید", "commH1": "جامعه مسافران", "commLead": "همسفر پیدا کنید، مسیر و تجربه خود را به اشتراک بگذارید یا به یک سفر بپیوندید.", "accH1": "صفحهٔ من", "accLead": "مسیرهایی که در برنامه‌ریز می‌سازید اینجا نگه داشته می‌شوند — با تاریخ و وضعیت.", "install": "افزودن به صفحهٔ اصلی", "join": "پیوستن", "joined": "پیوستید ✓", "pub": "عمومی", "priv": "خصوصی", "day": "روز", "visitedMark": "علامت بازدیدشده", "visited": "بازدیدشده ✓", "add": "افزودن به مسیر", "remove": "حذف از مسیر", "noTime": "در زمان جا نمی‌شود", "saved": "ذخیره شد ✓", "copied": "پیوند کپی شد ✓", "placeDetails": "جزئیات مکان", "inGroup": "مکان در این خوشه", "fitsL": "در زمان جا می‌شود", "notVisited": "بازدید نکرده‌ام", "placesWord": "مکان", "tripsWord": "سفر", "freeSeats": "جای خالی", "noSeats": "تکمیل", "all": "همه", "installHint": "از منوی مرورگر «افزودن به صفحهٔ اصلی»", "minU": "دقیقه", "hU": "ساعت", "kmU": "کیلومتر", "seats": "صندلی", "people2": "نفر", "stdCar": "استاندارد", "sending": "در حال ارسال…", "sendErr": "ارسال نشد — دوباره تلاش کنید یا تماس بگیرید", "carWhy4": "جاده کوهستانی — 4WD توصیه می‌شود", "carWhyStd": "مسیر آسفالت — کلاس استاندارد کافی است", "accPlanned": "سفرهای برنامه‌ریزی‌شده", "accSaved": "مسیرهای ذخیره‌شده", "accVisited": "مکان‌های بازدیدشده", "accGroups": "گروه‌ها", "accCars": "خودروهای اجاره‌شده", "notif1": "گیورگی شما را به «سوانتی، سپتامبر» دعوت کرد", "when1": "۲ ساعت پیش", "notif2": "مسیر شما به اشتراک گذاشته شد", "when2": "دیروز"},
+    "he": {"appSub": "מתכנן טיולים", "h1": "תכננו טיול בגאורגיה", "lead": "בחרו מקומות, חשבו את הזמן ושתפו את המסלול.", "origin": "נקודת מוצא", "originPh": "עיר או מקום", "myLoc": "המקום שלי", "start": "מתאריך", "end": "עד", "days": "כמה ימים", "people": "כמה אתם", "transport": "תחבורה", "tr1": "הציעו לי רכב", "tr2": "יש לי רכב", "tr3": "רוצה לשכור רכב", "tr4": "צריך נהג", "dayTime": "שעות ביום", "plan": "לתכנן טיול", "tours": "טיולים מוכנים", "searchTour": "חיפוש טיול", "chooseTour": "בחירת הטיול", "chosen": "תקציב זמן", "used": "בשימוש", "left": "נותר", "searchPlace": "חיפוש מקום", "details": "פרטים", "tabHome": "בית", "tabMap": "מפה", "tabRoute": "מסלול", "tabComm": "קהילה", "tabAcc": "אני", "save": "שמירת מסלול", "share": "שיתוף", "book": "הזמנת רכב", "close": "סגירה", "notifications": "התראות", "emptyTitle": "אין תוצאות", "resetFilters": "ניקוי מסננים", "routeEmptyTitle": "המסלול ריק", "routeEmptyText": "בחרו מקומות במפה או טיול מוכן.", "routeLoading": "בונים מסלול…", "routeError": "שירות הניווט אינו זמין", "name": "שם", "phone": "טלפון", "sendRequest": "שליחת בקשה", "bookingDone": "הבקשה נשלחה", "bookingInvalid": "מלאו שם וטלפון", "commH1": "קהילת מטיילים", "commLead": "מצאו שותפים לדרך, שתפו מסלול וחוויה או הצטרפו לטיול שמעניין אתכם.", "accH1": "העמוד שלי", "accLead": "כאן נשמרים המסלולים שבניתם במתכנן — עם התאריך והסטטוס.", "install": "הוספה למסך הבית", "join": "הצטרפות", "joined": "הצטרפת ✓", "pub": "ציבורי", "priv": "פרטי", "day": "יום", "visitedMark": "סימון כביקרתי", "visited": "ביקרתי ✓", "add": "הוספה למסלול", "remove": "הסרה מהמסלול", "noTime": "לא נכנס בזמן", "saved": "נשמר ✓", "copied": "הקישור הועתק ✓", "placeDetails": "פרטי המקום", "inGroup": "מקומות באשכול", "fitsL": "נכנס בזמן", "notVisited": "לא ביקרתי", "placesWord": "מקומות", "tripsWord": "טיולים", "freeSeats": "מקומות פנויים", "noSeats": "מלא", "all": "הכול", "installHint": "בתפריט הדפדפן → «הוספה למסך הבית»", "minU": "דק׳", "hU": "שע׳", "kmU": 'ק"מ', "seats": "מושבים", "people2": "אנשים", "stdCar": "רגיל", "sending": "שולח…", "sendErr": "השליחה נכשלה — נסו שוב או התקשרו", "carWhy4": "דרך הרים — מומלץ 4WD", "carWhyStd": "מסלול סלול — מחלקה רגילה מספיקה", "accPlanned": "טיולים מתוכננים", "accSaved": "מסלולים שמורים", "accVisited": "מקומות שביקרתי", "accGroups": "קבוצות", "accCars": "רכבים שנשכרו", "notif1": "גיורגי הזמין אתכם ל״סוואנתי, ספטמבר״", "when1": "לפני שעתיים", "notif2": "המסלול שלכם שותף", "when2": "אתמול"},
+    "ar": {"appSub": "مخطط الرحلات", "h1": "خطط رحلتك في جورجيا", "lead": "اختر الأماكن، واحسب الوقت، وشارك المسار.", "origin": "نقطة البداية", "originPh": "مدينة أو مكان", "myLoc": "موقعي", "start": "من", "end": "إلى", "days": "كم يوماً", "people": "كم عددكم", "transport": "التنقل", "tr1": "اقترحوا سيارة", "tr2": "لدي سيارتي", "tr3": "أريد استئجار سيارة", "tr4": "أحتاج سائقاً", "dayTime": "ساعات في اليوم", "plan": "خطط رحلة", "tours": "جولات جاهزة", "searchTour": "ابحث عن جولة", "chooseTour": "اختر هذه الجولة", "chosen": "الوقت المختار", "used": "المستخدم", "left": "المتبقي", "searchPlace": "ابحث عن مكان", "details": "التفاصيل", "tabHome": "الرئيسية", "tabMap": "الخريطة", "tabRoute": "المسار", "tabComm": "المجتمع", "tabAcc": "حسابي", "save": "حفظ المسار", "share": "مشاركة", "book": "احجز السيارة", "close": "إغلاق", "notifications": "الإشعارات", "emptyTitle": "لا نتائج", "resetFilters": "إزالة المرشحات", "routeEmptyTitle": "المسار فارغ", "routeEmptyText": "اختر أماكن على الخريطة أو جولة جاهزة.", "routeLoading": "جارٍ بناء المسار…", "routeError": "خدمة المسارات غير متاحة", "name": "الاسم", "phone": "الهاتف", "sendRequest": "إرسال الطلب", "bookingDone": "تم إرسال الطلب", "bookingInvalid": "أدخل الاسم والهاتف", "commH1": "مجتمع المسافرين", "commLead": "اعثر على رفقاء سفر وشارك مسارك وتجربتك أو انضم إلى رحلة تهمك.", "accH1": "صفحتي", "accLead": "هنا تُحفظ المسارات التي تبنيها في المخطط — مع التاريخ والحالة.", "install": "أضف إلى الشاشة الرئيسية", "join": "انضم", "joined": "انضممت ✓", "pub": "عامة", "priv": "خاصة", "day": "يوم", "visitedMark": "تحديد كمُزار", "visited": "مُزار ✓", "add": "أضف إلى المسار", "remove": "أزل من المسار", "noTime": "لا يتسع في الوقت", "saved": "تم الحفظ ✓", "copied": "تم نسخ الرابط ✓", "placeDetails": "تفاصيل المكان", "inGroup": "أماكن في هذه المجموعة", "fitsL": "يتسع في الوقت", "notVisited": "لم أزره", "placesWord": "أماكن", "tripsWord": "رحلات", "freeSeats": "مقاعد متاحة", "noSeats": "مكتمل", "all": "الكل", "installHint": "من قائمة المتصفح ← «أضف إلى الشاشة الرئيسية»", "minU": "د", "hU": "س", "kmU": "كم", "seats": "مقاعد", "people2": "أشخاص", "stdCar": "قياسية", "sending": "جارٍ الإرسال…", "sendErr": "تعذر الإرسال — حاول مجدداً أو اتصل بنا", "carWhy4": "طريق جبلي — يُنصح بدفع رباعي", "carWhyStd": "طريق معبد — الفئة القياسية كافية", "accPlanned": "رحلات مخططة", "accSaved": "مسارات محفوظة", "accVisited": "أماكن مُزارة", "accGroups": "مجموعات", "accCars": "سيارات مستأجرة", "notif1": "دعاك جيورجي إلى «سفانيتي، سبتمبر»", "when1": "قبل ساعتين", "notif2": "تمت مشاركة مسارك", "when2": "أمس"},
+}
+
+DOA_STYLE = """
+  html,body{margin:0;padding:0;height:100%;overscroll-behavior:none}
+  body{background:#f4f7f9;color:#0e2333;font-family:"Noto Sans Georgian","Noto Sans",system-ui,sans-serif;font-size:15px;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+  *{box-sizing:border-box}
+  a{color:#0b5f73;text-decoration:none}
+  a:hover{color:#0d94ae}
+  button,input,select{font-family:inherit;font-size:15px;color:#0e2333}
+  button{cursor:pointer}
+  :focus-visible{outline:2px solid #0d94ae;outline-offset:2px}
+  [hidden]{display:none!important}
+  .do-scroll{scrollbar-width:none}
+  .do-scroll::-webkit-scrollbar{display:none}
+  .leaflet-container{font-family:inherit;background:#eaf0f4}
+  .do-pin{border-radius:999px;border:2px solid #fff;display:grid;place-items:center;font-size:11px;font-weight:700;color:#fff;box-shadow:0 1px 3px rgba(14,35,51,.35)}
+  .do-cluster{background:#0b2f4d;color:#fff;border:2px solid #fff;border-radius:999px;display:grid;place-items:center;font-weight:700;font-size:13px;box-shadow:0 0 0 3px rgba(11,47,77,.16)}
+  .app-install-card{position:fixed;left:12px;right:12px;bottom:76px;z-index:900;display:flex;gap:10px;align-items:center;background:#fff;border:1px solid #dde5ec;border-radius:14px;box-shadow:0 14px 30px rgba(14,35,51,.16);padding:10px;max-width:496px;margin:0 auto}
+  .app-install-card img{width:40px;height:40px;border-radius:10px}
+  .app-install-card div{flex:1;display:flex;flex-direction:column;gap:2px;min-width:0}
+  .app-install-card strong{font-size:14px}
+  .app-install-card span{font-size:12px;color:#5a6b7b}
+  .app-install-action{height:40px;padding:0 14px;border:0;border-radius:10px;background:#0b2f4d;color:#fff;font-size:13px;font-weight:600}
+  .app-install-close{width:32px;height:32px;border:0;background:transparent;font-size:16px;color:#5a6b7b}
+"""
+
+
+def render_app_page(lang):
+    t = DOA_UI[lang]
+    dr = "rtl" if lang in ("fa", "he", "ar") else "ltr"
+    gf = DESIGN.get("google_fonts", "")
+    fonts = (f'<link rel="preconnect" href="https://fonts.googleapis.com">\n'
+             f'<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
+             f'<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={gf}&display=swap">') if gf else ""
+    lang_urls = {l: lang_root(l) + "app/" for l in LANGS}
+    doat = dict(t)
+    doat["langUrls"] = lang_urls
+    lang_opts = "".join(
+        f'<option value="{l}"{" selected" if l == lang else ""}>{l.upper()}</option>' for l in LANGS)
+    tr_opts = "".join(
+        f'<option value="{v}">{E(t[k])}</option>'
+        for v, k in (("suggest", "tr1"), ("own", "tr2"), ("rent", "tr3"), ("driver", "tr4")))
+    tabs_html = "".join(
+        f'<button type="button" id="doatab-{key}" aria-current="{"page" if key == "home" else "false"}" '
+        f'style="min-height:52px;border:0;background:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;'
+        f'color:{"#0b2f4d" if key == "home" else "#8494a2"};font-size:11px;font-weight:600;border-radius:10px">'
+        f'<span style="width:22px;height:22px;display:grid;place-items:center;font-size:18px" aria-hidden="true">{icon}</span>'
+        f'<span>{E(label)}</span></button>'
+        for key, label, icon in (("home", t["tabHome"], "⌂"), ("map", t["tabMap"], "◎"),
+                                 ("route", t["tabRoute"], "⇄"), ("community", t["tabComm"], "☰"),
+                                 ("account", t["tabAcc"], "☺")))
+    return f"""<!doctype html>
+<html lang="{lang}" dir="{dr}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b2f4d">
+<meta name="robots" content="noindex">
+<title>Drive On — {E(t["appSub"])}</title>
+<link rel="manifest" href="/assets/manifest.webmanifest">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/app-icon-180.png">
+{fonts}
+<link rel="stylesheet" href="{LEAFLET_CSS}">
+<style>{DOA_STYLE}</style>
+</head>
+<body>
+<div id="doa" style="height:100dvh;max-width:520px;margin:0 auto;display:flex;flex-direction:column;background:#f4f7f9;overflow:hidden;position:relative">
+
+  <div style="flex:0 0 auto;display:flex;align-items:center;gap:8px;height:54px;padding:0 12px;padding-top:env(safe-area-inset-top);background:#fff;border-bottom:1px solid #dde5ec">
+    <img src="/assets/do-logo-transparent.png" alt="Drive On" width="92" height="28" style="height:28px;width:auto;display:block">
+    <span style="font-size:13px;font-weight:600;color:#5a6b7b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{E(t["appSub"])}</span>
+    <div style="flex:1"></div>
+    <select id="doalang" aria-label="Language" style="height:44px;padding:0 6px;border:1px solid #dde5ec;border-radius:10px;background:#fff;font-size:13px">{lang_opts}</select>
+    <button type="button" id="doabellbtn" aria-label="{E(t["notifications"])}" style="position:relative;width:44px;height:44px;border:1px solid #dde5ec;border-radius:10px;background:#fff;display:grid;place-items:center">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0b2f4d" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 8 3 8H3s3-1 3-8"></path><path d="M10.3 21a2 2 0 0 0 3.4 0"></path></svg>
+      <span style="position:absolute;top:-3px;right:-3px;min-width:16px;height:16px;padding:0 4px;background:#c0392b;color:#fff;border-radius:999px;font-size:10px;font-weight:700;display:grid;place-items:center">2</span>
+    </button>
+  </div>
+
+  <div id="doabell" role="dialog" aria-label="{E(t["notifications"])}" hidden style="position:absolute;top:56px;left:12px;right:12px;z-index:600;background:#fff;border:1px solid #dde5ec;border-radius:14px;box-shadow:0 14px 30px rgba(14,35,51,.16);padding:10px;display:flex;flex-direction:column;gap:8px">
+    <div style="display:flex;flex-direction:column;gap:2px;padding:9px;border:1px solid #eef3f6;border-radius:10px">
+      <span style="font-size:14px;font-weight:600">{E(t["notif1"])}</span>
+      <span style="font-size:12px;color:#5a6b7b">{E(t["when1"])}</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:2px;padding:9px;border:1px solid #eef3f6;border-radius:10px">
+      <span style="font-size:14px;font-weight:600">{E(t["notif2"])}</span>
+      <span style="font-size:12px;color:#5a6b7b">{E(t["when2"])}</span>
+    </div>
+    <button type="button" id="doabellclose" style="height:44px;border:1px solid #dde5ec;border-radius:10px;background:#fff;font-size:14px">{E(t["close"])}</button>
+  </div>
+
+  <div class="do-scroll" style="flex:1;min-height:0;overflow:auto;position:relative">
+
+    <div id="doav-home" style="padding:12px;display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <h1 style="margin:0;font-size:26px;line-height:1.2;font-weight:700">{E(t["h1"])}</h1>
+        <p style="margin:0;font-size:14px;color:#5a6b7b">{E(t["lead"])}</p>
+      </div>
+
+      <div style="background:#fff;border:1px solid #dde5ec;border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:10px">
+        <label style="display:flex;flex-direction:column;gap:5px;font-size:12px;font-weight:600;color:#5a6b7b">{E(t["origin"])}
+          <span style="display:flex;gap:6px">
+            <input id="doaorigin" type="text" autocomplete="off" placeholder="{E(t["originPh"])}" style="flex:1;height:46px;padding:0 10px;border:1px solid #dde5ec;border-radius:10px;min-width:0">
+            <button type="button" id="doamyloc" aria-label="{E(t["myLoc"])}" style="width:46px;height:46px;border:1px solid #dde5ec;border-radius:10px;background:#fff;display:grid;place-items:center;flex:0 0 auto">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0d94ae" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v3M12 19v3M2 12h3M19 12h3"></path></svg>
+            </button>
+          </span>
+        </label>
+        <div id="doasuggest" role="listbox" class="do-scroll" hidden style="max-height:210px;overflow:auto;border:1px solid #dde5ec;border-radius:10px"></div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <label style="display:flex;flex-direction:column;gap:5px;font-size:12px;font-weight:600;color:#5a6b7b">{E(t["start"])}
+            <input id="doastart" type="date" style="height:46px;padding:0 8px;border:1px solid #dde5ec;border-radius:10px">
+          </label>
+          <label style="display:flex;flex-direction:column;gap:5px;font-size:12px;font-weight:600;color:#5a6b7b">{E(t["end"])}
+            <input id="doaend" type="date" style="height:46px;padding:0 8px;border:1px solid #dde5ec;border-radius:10px">
+          </label>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div style="display:flex;flex-direction:column;gap:5px">
+            <span style="font-size:12px;font-weight:600;color:#5a6b7b">{E(t["days"])}</span>
+            <div style="height:46px;display:grid;grid-template-columns:46px 1fr 46px;border:1px solid #dde5ec;border-radius:10px;overflow:hidden;background:#fff">
+              <button type="button" id="doadaysdown" aria-label="−" style="border:0;border-inline-end:1px solid #dde5ec;background:#fff;font-size:18px">−</button>
+              <span id="doadays" style="display:grid;place-items:center;font-size:14px;font-weight:600"></span>
+              <button type="button" id="doadaysup" aria-label="+" style="border:0;border-inline-start:1px solid #dde5ec;background:#fff;font-size:18px">+</button>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:5px">
+            <span style="font-size:12px;font-weight:600;color:#5a6b7b">{E(t["people"])}</span>
+            <div style="height:46px;display:grid;grid-template-columns:46px 1fr 46px;border:1px solid #dde5ec;border-radius:10px;overflow:hidden;background:#fff">
+              <button type="button" id="doapeopledown" aria-label="−" style="border:0;border-inline-end:1px solid #dde5ec;background:#fff;font-size:18px">−</button>
+              <span id="doapeople" style="display:grid;place-items:center;font-size:14px;font-weight:600"></span>
+              <button type="button" id="doapeopleup" aria-label="+" style="border:0;border-inline-start:1px solid #dde5ec;background:#fff;font-size:18px">+</button>
+            </div>
+          </div>
+        </div>
+
+        <label style="display:flex;flex-direction:column;gap:5px;font-size:12px;font-weight:600;color:#5a6b7b">{E(t["transport"])}
+          <select id="doatransport" style="height:46px;padding:0 8px;border:1px solid #dde5ec;border-radius:10px;background:#fff">{tr_opts}</select>
+        </label>
+
+        <div style="display:flex;align-items:center;gap:8px;padding:8px;border:1px solid #dde5ec;border-radius:10px;background:#fbfdfe">
+          <span style="font-size:12px;font-weight:600;color:#5a6b7b;flex:1">{E(t["dayTime"])}</span>
+          <div style="display:grid;grid-template-columns:40px 62px 40px;height:44px;border:1px solid #dde5ec;border-radius:10px;overflow:hidden;background:#fff">
+            <button type="button" id="doahoursdown" aria-label="−0.5" style="border:0;border-inline-end:1px solid #dde5ec;background:#fff;font-size:18px">−</button>
+            <span id="doahours" style="display:grid;place-items:center;font-size:13px;font-weight:600"></span>
+            <button type="button" id="doahoursup" aria-label="+0.5" style="border:0;border-inline-start:1px solid #dde5ec;background:#fff;font-size:18px">+</button>
+          </div>
+        </div>
+
+        <button type="button" id="doaplan" style="height:50px;border:0;border-radius:12px;background:#0b2f4d;color:#fff;font-size:15px;font-weight:600">{E(t["plan"])}</button>
+        <button type="button" id="doatoursbtn" style="height:48px;border:1px solid #0b2f4d;border-radius:12px;background:#fff;color:#0b2f4d;font-size:15px;font-weight:600">{E(t["tours"])}</button>
+      </div>
+
+      <div style="display:flex;justify-content:space-between;gap:8px;padding:10px 12px;background:#fff;border:1px solid #dde5ec;border-radius:14px">
+        <span style="font-size:12px;color:#5a6b7b">{E(t["chosen"])} <strong id="doabudget" style="color:#0e2333"></strong></span>
+        <span style="font-size:12px;color:#5a6b7b">{E(t["used"])} <strong id="doaused" style="color:#0e2333"></strong></span>
+        <span style="font-size:12px;color:#5a6b7b">{E(t["left"])} <strong id="doaleft" style="color:#0b7a55"></strong></span>
+      </div>
+    </div>
+
+    <div id="doav-map" hidden style="position:absolute;inset:0">
+      <div id="doamap" role="application" aria-label="{E(t["tabMap"])}" style="position:absolute;inset:0"></div>
+
+      <div style="position:absolute;top:10px;left:10px;right:10px;display:flex;gap:6px;z-index:500">
+        <input id="doasearch" type="search" aria-label="{E(t["searchPlace"])}" placeholder="{E(t["searchPlace"])}" style="flex:1;height:46px;padding:0 12px;border:1px solid #dde5ec;border-radius:12px;background:#fff;box-shadow:0 2px 8px rgba(14,35,51,.12);min-width:0">
+        <button type="button" id="doawx" aria-pressed="true" style="width:46px;height:46px;border:1px solid #dde5ec;border-radius:12px;background:#e6f6f9;box-shadow:0 2px 8px rgba(14,35,51,.12);font-size:16px">☀</button>
+      </div>
+
+      <div id="doahits" class="do-scroll" hidden style="position:absolute;top:62px;left:10px;right:10px;max-height:44%;overflow:auto;background:#fff;border:1px solid #dde5ec;border-radius:12px;box-shadow:0 8px 22px rgba(14,35,51,.16);z-index:520"></div>
+
+      <div id="doaloading" role="status" hidden style="position:absolute;top:66px;left:50%;transform:translateX(-50%);padding:7px 14px;background:#0b2f4d;color:#fff;border-radius:999px;font-size:12px;z-index:540">{E(t["routeLoading"])}</div>
+      <div id="doarouteerr" role="status" hidden style="position:absolute;top:66px;left:50%;transform:translateX(-50%);padding:7px 14px;background:#fff;border:1px solid #e6c9c4;color:#8c2d20;border-radius:999px;font-size:12px;z-index:540">{E(t["routeError"])}</div>
+
+      <div class="do-scroll" style="position:absolute;left:0;right:0;bottom:0;max-height:52%;overflow:auto;background:#fff;border-top:1px solid #dde5ec;border-radius:16px 16px 0 0;box-shadow:0 -6px 20px rgba(14,35,51,.12);z-index:510">
+        <div style="position:sticky;top:0;background:#fff;padding:8px 12px 6px;border-bottom:1px solid #eef3f6;z-index:2">
+          <div style="width:38px;height:4px;border-radius:999px;background:#cfdae3;margin:0 auto 8px"></div>
+          <div id="doachips" class="do-scroll" style="display:flex;gap:6px;overflow-x:auto;min-height:36px"></div>
+          <div style="display:flex;justify-content:space-between;padding-top:6px;font-size:12px;color:#5a6b7b">
+            <span id="doacount"></span>
+            <span id="doaselcount"></span>
+          </div>
+        </div>
+        <div id="doalist"></div>
+        <div id="doaempty" hidden style="padding:20px 12px;display:flex;flex-direction:column;gap:8px;align-items:flex-start">
+          <span style="font-size:14px;font-weight:600">{E(t["emptyTitle"])}</span>
+          <button type="button" id="doaresetf" style="min-height:44px;padding:0 14px;border:1px solid #dde5ec;border-radius:10px;background:#fff;font-size:14px">{E(t["resetFilters"])}</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="doav-route" hidden style="padding:12px;display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;justify-content:space-between;gap:8px;padding:10px 12px;background:#fff;border:1px solid #dde5ec;border-radius:14px">
+        <span style="font-size:12px;color:#5a6b7b">{E(t["used"])} <strong id="doaused2" style="color:#0e2333"></strong></span>
+        <span style="font-size:12px;color:#5a6b7b">{E(t["left"])} <strong id="doaleft2" style="color:#0b7a55"></strong></span>
+      </div>
+
+      <div id="doatourchip" hidden style="display:flex;align-items:center;gap:8px;padding:10px 12px;border:1px solid #cbe8ee;border-radius:14px;background:#eefafc">
+        <span id="doatourname" style="font-size:13px;font-weight:700;color:#0b5f73;flex:1"></span>
+        <button type="button" id="doacleartour" aria-label="{E(t["close"])}" style="width:36px;height:36px;border:1px solid #cbe8ee;border-radius:10px;background:#fff">×</button>
+      </div>
+
+      <div id="doastops" style="display:flex;flex-direction:column;gap:12px"></div>
+
+      <div id="doaroutempty" style="padding:20px 12px;background:#fff;border:1px solid #dde5ec;border-radius:14px;display:flex;flex-direction:column;gap:10px;align-items:flex-start">
+        <span style="font-size:14px;font-weight:600">{E(t["routeEmptyTitle"])}</span>
+        <span style="font-size:13px;color:#5a6b7b">{E(t["routeEmptyText"])}</span>
+        <button type="button" id="doaroutemap" style="min-height:46px;padding:0 14px;border:1px solid #0b2f4d;border-radius:10px;background:#fff;color:#0b2f4d;font-size:14px;font-weight:600">{E(t["tabMap"])}</button>
+      </div>
+
+      <div id="doacar" hidden style="padding:12px;background:#fff;border:1px solid #dde5ec;border-radius:14px;display:flex;flex-direction:column;gap:6px">
+        <div style="display:flex;justify-content:space-between;gap:8px;align-items:baseline">
+          <span id="doacarname" style="font-size:15px;font-weight:700"></span>
+          <span id="doacarprice" style="font-size:14px;font-weight:700;color:#0b7a55"></span>
+        </div>
+        <span id="doacarspecs" style="font-size:12px;color:#5a6b7b"></span>
+        <span id="doacartiers" style="font-size:12px;color:#5a6b7b"></span>
+        <span id="doacarwhy" style="font-size:12px;color:#5a6b7b"></span>
+        <button type="button" id="doabook" style="height:48px;border:0;border-radius:12px;background:#0d94ae;color:#fff;font-size:15px;font-weight:600">{E(t["book"])}</button>
+      </div>
+
+      <div id="doasavegrid" hidden style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <button type="button" id="doasave" style="height:48px;border:1px solid #0b2f4d;border-radius:12px;background:#fff;color:#0b2f4d;font-size:14px;font-weight:600">{E(t["save"])}</button>
+        <button type="button" id="doashare" style="height:48px;border:1px solid #dde5ec;border-radius:12px;background:#fff;font-size:14px;font-weight:600">{E(t["share"])}</button>
+      </div>
+      <span id="doatripmsg" role="status" style="font-size:13px;color:#0b7a55"></span>
+    </div>
+
+    <div id="doav-community" hidden style="padding:12px;display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;flex-direction:column;gap:5px">
+        <h1 style="margin:0;font-size:24px;line-height:1.2;font-weight:700">{E(t["commH1"])}</h1>
+        <p style="margin:0;font-size:14px;color:#5a6b7b">{E(t["commLead"])}</p>
+      </div>
+      <div id="doacomm" style="display:flex;flex-direction:column;gap:12px"></div>
+    </div>
+
+    <div id="doav-account" hidden style="padding:12px;display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;gap:12px;align-items:center">
+        <span style="width:56px;height:56px;border-radius:999px;background:#0d94ae;color:#fff;font-size:18px;font-weight:700;display:grid;place-items:center;flex:0 0 auto">DO</span>
+        <div style="display:flex;flex-direction:column;gap:3px;min-width:0">
+          <h1 style="margin:0;font-size:22px;line-height:1.2;font-weight:700">{E(t["accH1"])}</h1>
+          <span style="font-size:13px;color:#5a6b7b">{E(t["accLead"])}</span>
+        </div>
+      </div>
+      <button type="button" data-acc="route" style="display:flex;justify-content:space-between;align-items:center;gap:8px;min-height:56px;padding:12px;background:#fff;border:1px solid #dde5ec;border-radius:14px;text-align:start">
+        <span style="font-size:15px;font-weight:600">{E(t["accPlanned"])}</span>
+        <span id="doaacc-planned" style="font-size:14px;color:#5a6b7b">0</span>
+      </button>
+      <button type="button" data-acc="route" style="display:flex;justify-content:space-between;align-items:center;gap:8px;min-height:56px;padding:12px;background:#fff;border:1px solid #dde5ec;border-radius:14px;text-align:start">
+        <span style="font-size:15px;font-weight:600">{E(t["accSaved"])}</span>
+        <span id="doaacc-saved" style="font-size:14px;color:#5a6b7b">0</span>
+      </button>
+      <button type="button" data-acc="visited" style="display:flex;justify-content:space-between;align-items:center;gap:8px;min-height:56px;padding:12px;background:#fff;border:1px solid #dde5ec;border-radius:14px;text-align:start">
+        <span style="font-size:15px;font-weight:600">{E(t["accVisited"])}</span>
+        <span id="doaacc-visited" style="font-size:14px;color:#5a6b7b">0</span>
+      </button>
+      <button type="button" data-acc="community" style="display:flex;justify-content:space-between;align-items:center;gap:8px;min-height:56px;padding:12px;background:#fff;border:1px solid #dde5ec;border-radius:14px;text-align:start">
+        <span style="font-size:15px;font-weight:600">{E(t["accGroups"])}</span>
+        <span id="doaacc-groups" style="font-size:14px;color:#5a6b7b">0</span>
+      </button>
+      <button type="button" data-acc="route" style="display:flex;justify-content:space-between;align-items:center;gap:8px;min-height:56px;padding:12px;background:#fff;border:1px solid #dde5ec;border-radius:14px;text-align:start">
+        <span style="font-size:15px;font-weight:600">{E(t["accCars"])}</span>
+        <span id="doaacc-cars" style="font-size:14px;color:#5a6b7b">0</span>
+      </button>
+      <button type="button" id="doainstall" style="min-height:48px;padding:0 14px;border:1px solid #0b2f4d;border-radius:12px;background:#fff;color:#0b2f4d;font-size:14px;font-weight:600">{E(t["install"])}</button>
+    </div>
+  </div>
+
+  <div style="flex:0 0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:2px;background:#fff;border-top:1px solid #dde5ec;padding:6px 4px calc(6px + env(safe-area-inset-bottom))">{tabs_html}</div>
+
+  <div id="doadetailwrap" hidden style="position:absolute;inset:0;background:rgba(14,35,51,.42);z-index:700;display:flex;align-items:flex-end">
+    <button type="button" id="doadetailbg" aria-label="{E(t["close"])}" style="position:absolute;inset:0;border:0;background:transparent"></button>
+    <div role="dialog" aria-label="{E(t["placeDetails"])}" class="do-scroll" style="position:relative;width:100%;max-height:80%;overflow:auto;background:#fff;border-radius:16px 16px 0 0;padding:12px;display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px">
+        <span id="doadetailtitle" style="font-size:16px;font-weight:700"></span>
+        <button type="button" id="doadetailclose" aria-label="{E(t["close"])}" style="width:40px;height:40px;border:1px solid #dde5ec;border-radius:10px;background:#fff">×</button>
+      </div>
+      <div id="doadetailitems" style="display:flex;flex-direction:column;gap:10px"></div>
+    </div>
+  </div>
+
+  <div id="doatourswrap" hidden style="position:absolute;inset:0;background:#fff;z-index:720;display:flex;flex-direction:column">
+    <div style="display:flex;align-items:center;gap:8px;padding:10px 12px;border-bottom:1px solid #dde5ec">
+      <button type="button" id="doatoursclose" aria-label="{E(t["close"])}" style="width:44px;height:44px;border:1px solid #dde5ec;border-radius:10px;background:#fff">‹</button>
+      <span style="font-size:16px;font-weight:700;flex:1">{E(t["tours"])}</span>
+    </div>
+    <div class="do-scroll" style="flex:1;overflow:auto;padding:12px;display:flex;flex-direction:column;gap:10px">
+      <input id="doatoursearch" type="search" aria-label="{E(t["tours"])}" placeholder="{E(t["searchTour"])}" style="height:46px;padding:0 12px;border:1px solid #dde5ec;border-radius:12px">
+      <div id="doatourchips" class="do-scroll" style="display:flex;gap:6px;overflow-x:auto;flex:0 0 auto;min-height:38px"></div>
+      <div id="doatourlist" style="display:flex;flex-direction:column;gap:10px"></div>
+      <span id="doatoursempty" hidden style="font-size:14px;color:#5a6b7b">{E(t["emptyTitle"])}</span>
+    </div>
+  </div>
+
+  <div id="doabookingwrap" hidden style="position:absolute;inset:0;background:rgba(14,35,51,.42);z-index:740;display:flex;align-items:flex-end">
+    <div role="dialog" aria-label="{E(t["book"])}" style="width:100%;background:#fff;border-radius:16px 16px 0 0;padding:12px;display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <span style="font-size:16px;font-weight:700">{E(t["book"])}</span>
+        <button type="button" id="doabkclose" aria-label="{E(t["close"])}" style="width:40px;height:40px;border:1px solid #dde5ec;border-radius:10px;background:#fff">×</button>
+      </div>
+      <div id="doabkdone" hidden style="padding:12px;border:1px solid #cfe9dd;border-radius:12px;background:#f2fbf7;display:flex;flex-direction:column;gap:4px">
+        <span style="font-size:14px;font-weight:700;color:#0b7a55">{E(t["bookingDone"])}</span>
+        <span id="doabksum2" style="font-size:13px;color:#5a6b7b"></span>
+      </div>
+      <div id="doabkform" style="display:flex;flex-direction:column;gap:10px">
+        <span id="doabksum" style="font-size:13px;color:#5a6b7b"></span>
+        <input id="doabkname" aria-label="{E(t["name"])}" placeholder="{E(t["name"])}" style="height:48px;padding:0 12px;border:1px solid #dde5ec;border-radius:12px">
+        <input id="doabkphone" aria-label="{E(t["phone"])}" placeholder="{E(t["phone"])}" inputmode="tel" style="height:48px;padding:0 12px;border:1px solid #dde5ec;border-radius:12px">
+        <span id="doabkinvalid" role="alert" hidden style="font-size:13px;color:#8c2d20">{E(t["bookingInvalid"])}</span>
+        <span id="doabkerr" role="alert" hidden style="font-size:13px;color:#8c2d20">{E(t["sendErr"])}</span>
+        <button type="button" id="doabksend" style="height:50px;border:0;border-radius:12px;background:#0d94ae;color:#fff;font-size:15px;font-weight:600">{E(t["sendRequest"])}</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="doatoast" role="status" hidden style="position:absolute;left:12px;right:12px;bottom:80px;z-index:800;padding:12px 14px;background:#0b2f4d;color:#fff;border-radius:12px;font-size:14px;text-align:center"></div>
+</div>
+<script>window.DOAT={J(doat)};</script>
+<script>
+document.addEventListener('click',function(e){{var b=e.target.closest('[data-acc]');if(!b||!window.DOA_GO)return;window.DOA_GO(b.getAttribute('data-acc'));}});
+</script>
+<script src="{TRAVEL_ASSET[lang]}"></script>
+<script src="{LEAFLET_JS}"></script>
+<script defer src="/assets/weather.js"></script>
+<script defer src="{ASSET["app_mobile"]}"></script>
+<script defer src="{ASSET.get("app", "/assets/app.js")}"></script>
+</body>
+</html>"""
+
+
 def write(path, data):
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:
@@ -2620,7 +2962,7 @@ def main():
     # leaves an unversioned duplicate that no page requests but a browser can
     # still cache indefinitely.
     hashed_sources = {"explorer.js", "planner.js", "auth.js", "booking.js",
-                      "community.js", "admin-bookings.js", "app.js"}
+                      "community.js", "admin-bookings.js", "app.js", "app-mobile.js"}
     for sdir, dst in (("static", os.path.join(out, "assets")),
                       ("admin", os.path.join(out, "admin"))):
         if os.path.isdir(sdir):
@@ -2641,6 +2983,7 @@ def main():
 
     write_hashed(out, "style.css", build_css(DESIGN), "css", also_plain=True)
     for fn, key in (("explorer.js", "explorer"), ("planner.js", "planner"), ("workspace.js", "workspace"),
+                    ("app-mobile.js", "app_mobile"),
                     ("auth.js", "auth"), ("booking.js", "booking"),
                     ("community.js", "community"), ("admin-bookings.js", "admin_bookings"), ("app.js", "app")):
         p = os.path.join("static", fn)
@@ -2682,6 +3025,9 @@ def main():
             n += 1
         card_rel = page_url(lang, "card", False).lstrip("/")
         write(os.path.join(out, card_rel, "index.html"), render_business_card(lang))
+        n += 1
+        app_rel = (lang_root(lang) + "app/").lstrip("/")
+        write(os.path.join(out, app_rel, "index.html"), render_app_page(lang))
         n += 1
         # Preserve old bookmarked pricing URLs, but send visitors to the fleet where all rates live.
         pricing_rel = lang_root(lang).lstrip("/") + PAGE_SLUG["pricing"]
