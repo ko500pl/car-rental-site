@@ -4,10 +4,11 @@
 [build]
   # --strict არის publication gate: placeholder კონტაქტებზე ან მთავარი ფოტოს
   # გარეშე დარჩენილ მანქანებზე build ჩერდება exit code 2-ით და საიტი არ
-  # განახლდება. ეს განზრახ არის — ყალბი საკონტაქტო მონაცემი ცოცხალ დომენზე
-  # არ უნდა მოხვდეს. მოხსნა მხოლოდ მაშინ, თუ შეგნებულად გვინდა
-  # დაუსრულებელი მონაცემით გამოქვეყნება.
-  command = "pip install -r requirements.txt && python3 build.py dist --strict"
+  # განახლდება. 2026-08-19: --strict დროებით მოხსნილია მფლობელის
+  # გადაწყვეტილებით — ავტოპარკის 17 მანქანას ჯერ არ აქვს მთავარი ფოტო
+  # (გვერდებზე მოწესრიგებული placeholder ჩანს); ფოტოების დამატებისთანავე
+  # დააბრუნე „build.py dist --strict".
+  command = "pip install -r requirements.txt && python3 build.py dist"
   publish = "dist"
 
 [build.environment]
