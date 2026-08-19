@@ -1579,10 +1579,26 @@ body{{padding-inline-start:0!important}}
 .head-top .logo-name small{{font-size:11px;color:var(--ink-2);font-weight:400;letter-spacing:.01em}}
 .lang-nav select{{height:40px;padding:0 8px;border:1px solid var(--line);border-radius:10px;
   background:#fff;color:var(--ink);font:inherit;font-size:13px;cursor:pointer}}
-.head-app{{display:flex;align-items:center;gap:7px;height:40px;padding:0 12px;border:1px solid #0d94ae;
-  border-radius:10px;background:#eefafc;color:#0b5f73;font-size:13px;font-weight:700;white-space:nowrap}}
-.head-app:hover{{background:#0d94ae;border-color:#0d94ae;color:#fff;text-decoration:none}}
-@media(max-width:760px){{.head-app span{{display:none}}.head-app{{width:40px;padding:0;justify-content:center}}}}
+.head-app{{position:relative}}
+.head-app summary{{display:flex;align-items:center;gap:7px;height:40px;padding:0 12px;border:1px solid #0d94ae;
+  border-radius:10px;background:#eefafc;color:#0b5f73;font-size:13px;font-weight:700;white-space:nowrap;
+  cursor:pointer;list-style:none;user-select:none}}
+.head-app summary::-webkit-details-marker{{display:none}}
+.head-app summary:hover,.head-app[open] summary{{background:#0d94ae;border-color:#0d94ae;color:#fff}}
+.head-app-menu{{position:absolute;top:46px;inset-inline-end:0;z-index:720;min-width:240px;background:#fff;
+  border:1px solid #dde5ec;border-radius:14px;box-shadow:0 14px 30px rgba(14,35,51,.16);padding:6px;
+  display:flex;flex-direction:column;gap:2px}}
+.head-app-menu a,.head-app-soon{{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;
+  color:#0e2333;text-decoration:none}}
+.head-app-menu a:hover{{background:#eefafc;color:#0b5f73;text-decoration:none}}
+.head-app-menu a>span,.head-app-soon>span{{display:flex;flex-direction:column;gap:1px;min-width:0}}
+.head-app-menu b{{font-size:14px;font-weight:700}}
+.head-app-menu small{{font-size:12px;color:#5a6b7b}}
+.head-app-menu a svg{{color:#0d94ae;flex:0 0 auto}}
+.head-app-soon{{opacity:.55;cursor:default}}
+.head-app-soon svg{{color:#718091;flex:0 0 auto}}
+@media(max-width:760px){{.head-app summary>span{{display:none}}.head-app summary{{width:40px;padding:0;justify-content:center}}
+  .head-app summary svg:last-child{{display:none}}}}
 .head-top .authbox{{position:static!important;inset:auto!important;display:flex;align-items:center;
   gap:8px;width:auto!important}}
 .head-top .authlink{{display:flex;align-items:center;gap:8px;height:40px;padding:0 10px;

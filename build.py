@@ -571,6 +571,8 @@ def header_html(lang, current):
         "he": ("אפליקציה", "Android APK", "iPhone / iOS", "הורדה לאנדרואיד", "הוראות התקנה"),
         "ar": ("التطبيق", "Android APK", "iPhone / iOS", "تنزيل لأندرويد", "تعليمات التثبيت"),
     }[lang]
+    app_soon = {"ka": "მალე", "en": "Coming soon", "ru": "Скоро", "fa": "به‌زودی",
+                "he": "בקרוב", "ar": "قريباً"}[lang]
     CUR = ' aria-current="page"'
     # Drive On Pages მაკეტი: ტაბები — მთავარი გვერდები; დანარჩენი "..." მენიუში.
     more_pages = {"terms", "faq", "blog", "software"}
@@ -600,9 +602,21 @@ def header_html(lang, current):
     return f"""<header class="site-head"><div class="head-top">
 <a class="logo" href="{lang_root(lang)}">{logo}</a>
 <span class="head-sp"></span>
-<a class="head-app" href="{lang_root(lang)}app/">
+<details class="head-app">
+<summary>
 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5"></rect><path d="M10.5 18.5h3"></path></svg>
-<span>{E(app_copy[0])}</span></a>
+<span>{E(app_copy[0])}</span>
+<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+</summary>
+<div class="head-app-menu">
+<a href="/assets/downloads/fleet-house-android.apk" download>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5"></path><path d="M4 19h16"></path></svg>
+<span><b>{E(app_copy[1])}</b><small>{E(app_copy[3])}</small></span></a>
+<span class="head-app-soon">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5"></rect><path d="M10.5 18.5h3"></path></svg>
+<span><b>{E(app_copy[2])}</b><small>{E(app_soon)}</small></span></span>
+</div>
+</details>
 <label class="lang-nav"><span class="sr-only">{E(u['ui']['lang_label'])}</span>
 <select onchange="location.href=this.value">{lang_opts}</select></label>
 <noscript><span class="lang-links">{lang_links}</span></noscript>
