@@ -12,7 +12,7 @@
   publish = "dist"
 
 [build.environment]
-  PYTHON_VERSION = "3.11"
+  PYTHON_VERSION = "3.12.13"
 
 [[redirects]]
   from = "/planner/"

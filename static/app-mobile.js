@@ -129,6 +129,24 @@
     cand.sort(function (a, b) { return a.price - b.price; });
     return cand[0] || D.fleet[0];
   }
+  /* გადახვევა — რამდენად აგრძელებს ადგილი უკვე აგებულ გზას */
+  function detour(p) {
+    function dist(a, b) { return hav(a.la, a.lo, b.la, b.lo); }
+    var seq = [st.origin];
+    st.selected.forEach(function (s) { var x = BY[s]; if (x) seq.push(x); });
+    seq.push(st.origin);
+    if (seq.length < 2) return { km: dist(st.origin, p), min: leg(st.origin, p).min };
+    var best = null;
+    for (var i = 0; i < seq.length - 1; i++) {
+      var a = seq[i], b = seq[i + 1];
+      var extra = dist(a, p) + dist(p, b) - dist(a, b);
+      if (!best || extra < best.km) {
+        best = { km: Math.max(0, extra),
+                 min: Math.max(0, leg(a, p).min + leg(p, b).min - leg(a, b).min) };
+      }
+    }
+    return best;
+  }
   function toggle(slug) {
     var i = st.selected.indexOf(slug);
     if (i >= 0) st.selected.splice(i, 1);
@@ -351,14 +369,20 @@
     var list = visible(), box = $('doalist');
     var selMap = {};
     st.selected.forEach(function (s, i) { selMap[s] = i + 1; });
-    /* ჩამქრალი (დროში ვერჩამტევი) ადგილები სიის ბოლოში */
-    var fitCache = {};
-    list.forEach(function (p) { fitCache[p.s] = selMap[p.s] ? 0 : (fits(p) ? 1 : 2); });
+    /* არჩეულები ზემოთ, მერე ყველაზე მცირე გადახვევა, ბოლოში — ვერჩამტევი */
+    var fitCache = {}, detCache = {};
+    list.forEach(function (p) {
+      fitCache[p.s] = selMap[p.s] ? 0 : (fits(p) ? 1 : 2);
+      if (!selMap[p.s]) detCache[p.s] = detour(p);
+    });
     list = list.slice().sort(function (a, b) {
       var d = fitCache[a.s] - fitCache[b.s];
       if (d) return d;
       if (fitCache[a.s] === 0) return selMap[a.s] - selMap[b.s];
-      return 0;
+      var da = detCache[a.s] || { km: 0, min: 0 }, db = detCache[b.s] || { km: 0, min: 0 };
+      var dm = da.min - db.min;
+      if (Math.abs(dm) > 1) return dm;
+      return da.km - db.km;
     });
     $('doacount').textContent = list.length + ' ' + T.placesWord;
     $('doaselcount').textContent = st.selected.length + ' / ' + list.length;
@@ -375,7 +399,13 @@
           '<span style="display:flex;flex-direction:column;gap:2px;min-width:0">' +
             '<span style="font-size:14px;font-weight:600;color:' + (ok || on ? '#0e2333' : '#4d5b69') + '">' + esc(p.n) + '</span>' +
             '<span style="font-size:12px;color:' + (ok || on ? '#5a6b7b' : '#5f6d7a') + '">' +
-              esc(hm(p.hh * 60) + ' · ' + Math.round(hav(st.origin.la, st.origin.lo, p.la, p.lo)) + ' ' + T.kmU + ' · ' + (p.r || 0).toFixed(1) + ' ★' + (vis ? ' · ' + T.visited : ok ? '' : ' · ' + T.noTime)) + '</span>' +
+              esc(hm(p.hh * 60) + ' · ' +
+                (on || !detCache[p.s] || !st.selected.length
+                  ? Math.round(hav(st.origin.la, st.origin.lo, p.la, p.lo)) + ' ' + T.kmU
+                  : (detCache[p.s].km >= 1
+                     ? '+' + Math.round(detCache[p.s].km) + ' ' + T.kmU + ' ' + T.detour
+                     : (detCache[p.s].min >= 10 ? '+' + hm(detCache[p.s].min) + ' ' + T.detour : T.onWay))) +
+                ' · ' + (p.r || 0).toFixed(1) + ' ★' + (vis ? ' · ' + T.visited : ok ? '' : ' · ' + T.noTime)) + '</span>' +
           '</span>' +
         '</button>' +
         '<button type="button" aria-label="' + esc(T.details) + '" style="width:44px;height:44px;border:1px solid #dde5ec;border-radius:10px;background:#fff;flex:0 0 auto;display:grid;place-items:center;cursor:pointer">' +
@@ -761,11 +791,34 @@
     }
   };
 
-  /* booking */
+  /* ჩემი ინფორმაცია — სახელი/ტელეფონი ჯავშნისთვის (რედაქტირებადი) */
+  function fillProfileInputs(p) {
+    if (!p) return;
+    if ($('doaprofname') && !$('doaprofname').value) $('doaprofname').value = p.name || '';
+    if ($('doaprofphone') && !$('doaprofphone').value) $('doaprofphone').value = p.phone || '';
+    if ($('doabkname') && !$('doabkname').value) $('doabkname').value = p.name || '';
+    if ($('doabkphone') && !$('doabkphone').value) $('doabkphone').value = p.phone || '';
+  }
   try {
-    $('doabkname').value = localStorage.getItem('do-bk-name') || '';
-    $('doabkphone').value = localStorage.getItem('do-bk-phone') || '';
+    fillProfileInputs({ name: localStorage.getItem('do-bk-name') || '',
+                        phone: localStorage.getItem('do-bk-phone') || '' });
   } catch (e) {}
+  if (window.FH && window.FH.getProfile) window.FH.getProfile().then(fillProfileInputs).catch(function () {});
+  document.addEventListener('fh:profile', function (e) { fillProfileInputs(e.detail); });
+  if ($('doaprofsave')) {
+    $('doaprofsave').onclick = function () {
+      var p = { name: $('doaprofname').value.trim(), phone: $('doaprofphone').value.trim() };
+      try {
+        localStorage.setItem('do-bk-name', p.name);
+        localStorage.setItem('do-bk-phone', p.phone);
+      } catch (e) {}
+      if ($('doabkname')) $('doabkname').value = p.name;
+      if ($('doabkphone')) $('doabkphone').value = p.phone;
+      if (window.FH && window.FH.saveProfile) {
+        window.FH.saveProfile(p).then(function () { flash(T.saved); }).catch(function () { flash(T.saveErr); });
+      } else flash(T.saved);
+    };
+  }
   function bookingSummary() {
     var car = suggestCar();
     return (car ? car.n + ' · ' : '') + st.start + ' – ' + st.end + ' · ' + Math.max(1, st.days) + ' ' + T.day + ' · ' + st.people + ' · ' + st.selected.length;

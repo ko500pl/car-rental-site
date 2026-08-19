@@ -1579,6 +1579,13 @@ body{{padding-inline-start:0!important}}
 .head-top .logo-name small{{font-size:11px;color:var(--ink-2);font-weight:400;letter-spacing:.01em}}
 .lang-nav select{{height:40px;padding:0 8px;border:1px solid var(--line);border-radius:10px;
   background:#fff;color:var(--ink);font:inherit;font-size:13px;cursor:pointer}}
+.accprofile .accprofile-row{{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0 0}}
+.accprofile label{{display:flex;flex-direction:column;gap:5px;font-size:12px;font-weight:600;color:var(--ink-2)}}
+.accprofile input{{height:46px;padding:0 12px;border:1px solid var(--line);border-radius:10px;
+  background:#fff;color:var(--ink);font:inherit;font-size:15px}}
+.accprofile .accprofile-row2{{display:flex;align-items:center;gap:12px;margin-top:12px}}
+.accprofile #profmsg{{font-size:13px;color:var(--ok)}}
+@media(max-width:640px){{.accprofile .accprofile-row{{grid-template-columns:1fr}}}}
 .head-app{{position:relative}}
 .head-app summary{{display:flex;align-items:center;gap:7px;height:40px;padding:0 12px;border:1px solid #0d94ae;
   border-radius:10px;background:#eefafc;color:#0b5f73;font-size:13px;font-weight:700;white-space:nowrap;
@@ -1780,6 +1787,13 @@ main .lead,p.lead{{font-size:15px;color:var(--ink-2)}}
 .dow-place{{display:flex;gap:10px;padding:9px 12px;border-bottom:1px solid #f1f5f8;align-items:flex-start;
   background:#fff}}
 .dow-place.on{{background:#f4fcfd}}
+.dow-det{{color:#0b5f73;font-weight:600}}
+.dow-place.dim .dow-det{{color:#6b7a88;font-weight:500}}
+.dow-grab{{flex:0 0 auto;width:22px;align-self:center;margin-inline-start:-4px;color:#8ba0b2;
+  font-size:15px;line-height:1;text-align:center;cursor:grab;user-select:none;touch-action:none}}
+.dow-grab:active{{cursor:grabbing;color:#0d94ae}}
+.dow-place.dragging{{opacity:.9;background:#eefafc;box-shadow:0 8px 20px rgba(14,35,51,.14);
+  border-radius:10px;position:relative;z-index:3}}
 .dow-place.dim .dow-place-n{{color:#4d5b69}}
 .dow-place input[type=checkbox]{{width:18px;height:18px;margin-top:12px;accent-color:var(--accent);flex:0 0 auto}}
 .dow-place-main{{flex:1;min-width:0;display:flex;gap:10px;border:0;background:transparent;padding:0;

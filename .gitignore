@@ -15,3 +15,13 @@ dist-*/
 
 # Local Netlify folder
 .netlify
+
+# Local environments and credentials (only an empty .env.example may be tracked)
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+*service-account*.json
+*.pem
+*.key

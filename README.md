@@ -18,9 +18,20 @@
 ## 1. სწრაფი დაწყება
 
 ```bash
-pip install -r requirements.txt
+python3 -m pip install -r requirements.txt
+python3 scripts/check_environment.py
 python3 build.py dist
 python3 -m http.server 8000 --directory dist
+```
+
+`dist/` არის ერთადერთი ოფიციალური, გენერირებული build output და მასში ხელით
+ცვლილება არ უნდა გაკეთდეს. სრული წესი აღწერილია
+[`docs/visit-a-city-roadmap/11-SOURCE-BUILD-STRUCTURE.md`](docs/visit-a-city-roadmap/11-SOURCE-BUILD-STRUCTURE.md)-ში.
+Python-ისა და dependency-ების ოფიციალური ვერსიები და ახალი გარემოს მომზადება
+აღწერილია [`docs/visit-a-city-roadmap/12-REPEATABLE-ENVIRONMENT.md`](docs/visit-a-city-roadmap/12-REPEATABLE-ENVIRONMENT.md)-ში.
+
+```bash
+python3 scripts/check_project_layout.py
 ```
 
 მონაცემების ცალკე შემოწმება:

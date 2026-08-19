@@ -2180,6 +2180,24 @@ DOW_JS_T = {
     "he": dict(h="ש׳", m="דק׳", day="ימים", day1="יום", person="אנשים", km='ק"מ', place="מקומות", places="מקומות", total='סה"כ', chosenN="נבחרו", visit="ביקור", visited="ביקרתי", notVisited="טרם ביקרתי", fitsTime="נכנס בזמן", noFit="לא נכנס בזמן", details="פרטים", road="נסיעה", inGroup="מקומות בקבוצה", placeDetails="פרטי מקום", removeStop="הסרה מהמסלול", addStop="הוספה למסלול", markVisited="סימון כביקרתי", visitedYes="ביקרתי ✓", fullPage="עמוד מלא →", saved="נשמר ✓", linkCopied="הקישור הועתק ✓", shareOpened="השיתוף נפתח", stop="עצירות", myLocName="המיקום שלי", notFound="לא נמצא — נסו שם אחר", seat="מושבים", per100='ל/100 ק"מ', sum='סה"כ', need4="במסלול דרכים הרריות — מומלץ 4×4", noNeed4="המסלול על כבישים סלולים — מחלקה רגילה מספיקה", chooseTour="בחירת הטיול", onRoad="בדרך", ratingAll="★ הכל", noFitNeed="לא נכנס — צריך עוד בערך", undo="שחזור", tourApplied="הטיול הוחל על המפה", teaserA="רכבים מ-", teaserB="₾/יום — בחרו מקומות ותראו את המחיר למסלול", sending="שולח…", moveUp="הקדמה", moveDown="דחייה", removeL="הסרה", almostOut="הזמן כמעט נגמר"),
     "ar": dict(h="س", m="د", day="أيام", day1="يوم", person="أشخاص", km="كم", place="أماكن", places="أماكن", total="المجموع", chosenN="المختار", visit="زيارة", visited="تمت زيارته", notVisited="لم تتم زيارته", fitsTime="يتسع في الوقت", noFit="لا يتسع في الوقت", details="التفاصيل", road="طريق", inGroup="أماكن في هذه المجموعة", placeDetails="تفاصيل المكان", removeStop="إزالة من المسار", addStop="إضافة إلى المسار", markVisited="وضع علامة زيارة", visitedYes="تمت الزيارة ✓", fullPage="الصفحة الكاملة →", saved="تم الحفظ ✓", linkCopied="تم نسخ الرابط ✓", shareOpened="فُتحت المشاركة", stop="توقفات", myLocName="موقعي", notFound="لم يُعثر — جرّب اسماً آخر", seat="مقاعد", per100="ل/100كم", sum="الإجمالي", need4="المسار يتضمن طرقاً جبلية — يُنصح بـ 4×4", noNeed4="المسار على طرق معبدة — الفئة القياسية كافية", chooseTour="اختيار هذه الجولة", onRoad="في الطريق", ratingAll="★ الكل", noFitNeed="لا يتسع — تحتاج نحو", undo="تراجع", tourApplied="طُبّقت الجولة على الخريطة", teaserA="سيارات من", teaserB="لاري/يوم — اختر أماكن لترى سعر مسارك", sending="جارٍ الإرسال…", moveUp="تقديم", moveDown="تأخير", removeL="إزالة", almostOut="الوقت أوشك على النفاد")}
 
+_DOW_OPT_T = {
+    "ka": ("⚡ უმოკლეს დროზე გადალაგება", "მარშრუტი გადალაგდა — %s დაზოგილი", "მარშრუტი უკვე ოპტიმალურია", "გადათრიეთ რიგის შესაცვლელად"),
+    "en": ("⚡ Sort for the shortest time", "Route reordered — %s saved", "The route is already optimal", "Drag to reorder"),
+    "ru": ("⚡ Кратчайший маршрут", "Маршрут перестроен — экономия %s", "Маршрут уже оптимален", "Перетащите, чтобы изменить порядок"),
+    "fa": ("⚡ چیدمان کوتاه‌ترین زمان", "مسیر بازچیده شد — %s صرفه‌جویی", "مسیر از قبل بهینه است", "برای تغییر ترتیب بکشید"),
+    "he": ("⚡ סידור לזמן הקצר ביותר", "המסלול סודר מחדש — נחסכו %s", "המסלול כבר אופטימלי", "גררו לשינוי הסדר"),
+    "ar": ("⚡ ترتيب لأقصر وقت", "أُعيد ترتيب المسار — تم توفير %s", "المسار مثالي بالفعل", "اسحب لإعادة الترتيب"),
+}
+for _l, _v in _DOW_OPT_T.items():
+    DOW_UI[_l]["optimize"] = _v[0]
+    DOW_JS_T[_l]["optDone"], DOW_JS_T[_l]["optNone"], DOW_JS_T[_l]["dragHint"] = _v[1], _v[2], _v[3]
+
+_DOW_DETOUR_T = {"ka": ("გადახვევა", "გზაზეა"), "en": ("detour", "on the way"),
+                 "ru": ("крюк", "по пути"), "fa": ("انحراف", "در مسیر"),
+                 "he": ("סטייה", "על הדרך"), "ar": ("انحراف", "على الطريق")}
+for _l, _v in _DOW_DETOUR_T.items():
+    DOW_JS_T[_l]["detour"], DOW_JS_T[_l]["onWay"] = _v
+
 _DOW_SAVE_T = {
     "ka": ("შედით ანგარიშში, რომ მარშრუტი შეინახოთ", "შენახვა ვერ მოხერხდა — სცადეთ ხელახლა"),
     "en": ("Sign in to save your route", "Could not save — try again"),
@@ -2261,6 +2279,7 @@ def travel_workspace_block(lang, depth, height="72vh", hero=False, initial="expl
 <span id="dowmeterhint" class="dow-meterhint"></span></div>
 <div class="dow-meter"><div id="dowmeter"></div></div></div>
 <div id="dowactions" class="dow-tripbtns" hidden>
+<button type="button" id="dowopt" class="dow-btn outline sm" hidden>{E(U["optimize"])}</button>
 <button type="button" id="dowsave" class="dow-btn outline sm">{E(U["save"])}</button>
 <button type="button" id="dowshare" class="dow-btn ghost sm">{E(U["share"])}</button>
 <span id="dowmsg" role="status" class="dow-msg"></span></div>
@@ -2611,6 +2630,23 @@ DOA_UI = {
     "ar": {"appSub": "مخطط الرحلات", "h1": "خطط رحلتك في جورجيا", "lead": "اختر الأماكن، واحسب الوقت، وشارك المسار.", "origin": "نقطة البداية", "originPh": "مدينة أو مكان", "myLoc": "موقعي", "start": "من", "end": "إلى", "days": "كم يوماً", "people": "كم عددكم", "transport": "التنقل", "tr1": "اقترحوا سيارة", "tr2": "لدي سيارتي", "tr3": "أريد استئجار سيارة", "tr4": "أحتاج سائقاً", "dayTime": "ساعات في اليوم", "plan": "خطط رحلة", "tours": "جولات جاهزة", "searchTour": "ابحث عن جولة", "chooseTour": "اختر هذه الجولة", "chosen": "الوقت المختار", "used": "المستخدم", "left": "المتبقي", "searchPlace": "ابحث عن مكان", "details": "التفاصيل", "tabHome": "الرئيسية", "tabMap": "الخريطة", "tabRoute": "المسار", "tabComm": "المجتمع", "tabAcc": "حسابي", "save": "حفظ المسار", "share": "مشاركة", "book": "احجز السيارة", "close": "إغلاق", "notifications": "الإشعارات", "emptyTitle": "لا نتائج", "resetFilters": "إزالة المرشحات", "routeEmptyTitle": "المسار فارغ", "routeEmptyText": "اختر أماكن على الخريطة أو جولة جاهزة.", "routeLoading": "جارٍ بناء المسار…", "routeError": "خدمة المسارات غير متاحة", "name": "الاسم", "phone": "الهاتف", "sendRequest": "إرسال الطلب", "bookingDone": "تم إرسال الطلب", "bookingInvalid": "أدخل الاسم والهاتف", "commH1": "مجتمع المسافرين", "commLead": "اعثر على رفقاء سفر وشارك مسارك وتجربتك أو انضم إلى رحلة تهمك.", "accH1": "صفحتي", "accLead": "هنا تُحفظ المسارات التي تبنيها في المخطط — مع التاريخ والحالة.", "install": "أضف إلى الشاشة الرئيسية", "join": "انضم", "joined": "انضممت ✓", "pub": "عامة", "priv": "خاصة", "day": "يوم", "visitedMark": "تحديد كمُزار", "visited": "مُزار ✓", "add": "أضف إلى المسار", "remove": "أزل من المسار", "noTime": "لا يتسع في الوقت", "saved": "تم الحفظ ✓", "copied": "تم نسخ الرابط ✓", "placeDetails": "تفاصيل المكان", "inGroup": "أماكن في هذه المجموعة", "fitsL": "يتسع في الوقت", "notVisited": "لم أزره", "placesWord": "أماكن", "tripsWord": "رحلات", "freeSeats": "مقاعد متاحة", "noSeats": "مكتمل", "all": "الكل", "installHint": "من قائمة المتصفح ← «أضف إلى الشاشة الرئيسية»", "minU": "د", "hU": "س", "kmU": "كم", "seats": "مقاعد", "people2": "أشخاص", "stdCar": "قياسية", "sending": "جارٍ الإرسال…", "sendErr": "تعذر الإرسال — حاول مجدداً أو اتصل بنا", "carWhy4": "طريق جبلي — يُنصح بدفع رباعي", "carWhyStd": "طريق معبد — الفئة القياسية كافية", "accPlanned": "رحلات مخططة", "accSaved": "مسارات محفوظة", "accVisited": "أماكن مُزارة", "accGroups": "مجموعات", "accCars": "سيارات مستأجرة", "notif1": "دعاك جيورجي إلى «سفانيتي، سبتمبر»", "when1": "قبل ساعتين", "notif2": "تمت مشاركة مسارك", "when2": "أمس"},
 }
 
+_DOA_PROF_T = {
+    "ka": ("ჩემი ინფორმაცია", "ავტომატურად ჩაისმება მანქანის მოთხოვნაში — იქვე შეგიძლიათ შეცვლა.", "შენახვა"),
+    "en": ("My details", "Filled into the car request automatically — you can change it there.", "Save"),
+    "ru": ("Мои данные", "Подставляются в заявку на автомобиль — там можно изменить.", "Сохранить"),
+    "fa": ("اطلاعات من", "به‌طور خودکار در درخواست خودرو وارد می‌شود — همان‌جا قابل تغییر است.", "ذخیره"),
+    "he": ("הפרטים שלי", "ממולאים אוטומטית בבקשת הרכב — אפשר לשנות שם.", "שמירה"),
+    "ar": ("بياناتي", "تُدرج تلقائياً في طلب السيارة — يمكن تعديلها هناك.", "حفظ"),
+}
+for _l, _v in _DOA_PROF_T.items():
+    DOA_UI[_l]["myDetails"], DOA_UI[_l]["myDetailsLead"], DOA_UI[_l]["save2"] = _v
+
+_DOA_DETOUR_T = {"ka": ("გადახვევა", "გზაზეა"), "en": ("detour", "on the way"),
+                 "ru": ("крюк", "по пути"), "fa": ("انحراف", "در مسیر"),
+                 "he": ("סטייה", "על הדרך"), "ar": ("انحراف", "على الطريق")}
+for _l, _v in _DOA_DETOUR_T.items():
+    DOA_UI[_l]["detour"], DOA_UI[_l]["onWay"] = _v
+
 DOA_STYLE = """
   html,body{margin:0;padding:0;height:100%;overscroll-behavior:none}
   body{background:#f4f7f9;color:#0e2333;font-family:"Noto Sans Georgian","Noto Sans",system-ui,sans-serif;font-size:15px;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
@@ -2892,6 +2928,17 @@ def render_app_page(lang):
           <h1 style="margin:0;font-size:22px;line-height:1.2;font-weight:700">{E(t["accH1"])}</h1>
           <span style="font-size:13px;color:#5a6b7b">{E(t["accLead"])}</span>
         </div>
+      </div>
+      <div style="padding:12px;background:#fff;border:1px solid #dde5ec;border-radius:14px;display:flex;flex-direction:column;gap:8px">
+        <span style="font-size:15px;font-weight:700">{E(t["myDetails"])}</span>
+        <span style="font-size:12px;color:#5a6b7b">{E(t["myDetailsLead"])}</span>
+        <label style="display:flex;flex-direction:column;gap:5px;font-size:12px;font-weight:600;color:#5a6b7b">{E(t["name"])}
+          <input id="doaprofname" type="text" autocomplete="name" style="height:46px;padding:0 12px;border:1px solid #dde5ec;border-radius:10px">
+        </label>
+        <label style="display:flex;flex-direction:column;gap:5px;font-size:12px;font-weight:600;color:#5a6b7b">{E(t["phone"])}
+          <input id="doaprofphone" type="tel" inputmode="tel" autocomplete="tel" style="height:46px;padding:0 12px;border:1px solid #dde5ec;border-radius:10px">
+        </label>
+        <button type="button" id="doaprofsave" style="height:46px;border:1px solid #0b2f4d;border-radius:10px;background:#fff;color:#0b2f4d;font-size:14px;font-weight:600">{E(t["save2"])}</button>
       </div>
       <button type="button" data-acc="route" style="display:flex;justify-content:space-between;align-items:center;gap:8px;min-height:56px;padding:12px;background:#fff;border:1px solid #dde5ec;border-radius:14px;text-align:start">
         <span style="font-size:15px;font-weight:600">{E(t["accPlanned"])}</span>

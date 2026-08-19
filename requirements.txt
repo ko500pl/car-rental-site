@@ -1,2 +1,4 @@
-PyYAML>=6.0
-Markdown>=3.5
+# Canonical site build/runtime dependencies. Keep exact versions so local,
+# Codex, Claude Code and CI builds resolve the same packages.
+PyYAML==6.0.3
+Markdown==3.10.3

@@ -320,6 +320,77 @@
     var x = st.selected[j]; st.selected[j] = st.selected[i]; st.selected[i] = x;
     render();
   }
+
+  /* ── მარშრუტის ხანგრძლივობა და უმოკლეს დროზე გადალაგება ───────────
+     ვითვლით იმავე კალიბრებული leg()-ით, რითიც მრიცხველი მუშაობს:
+     საწყისი → გაჩერებები (დათვალიერების დროებით) → დაბრუნება.       */
+  function orderMin(order) {
+    var t = 0, prev = st.origin;
+    order.forEach(function (s) {
+      var p = BY[s]; if (!p) return;
+      t += travel(prev, p) + p.hh * 60; prev = p;
+    });
+    var ep = endPoint();
+    if (order.length && ep) t += travel(prev, ep);
+    return t;
+  }
+  /* ── გადახვევა: რამდენად აგრძელებს ადგილი უკვე აგებულ გზას ──────────
+     ვიანგარიშებთ ყველაზე იაფ ჩასმას მარშრუტის ნებისმიერ მონაკვეთში:
+     (a→p) + (p→b) − (a→b). სიაში ჯერ ყველაზე მცირე გადახვევიანები.  */
+  function detour(p) {
+    /* გეომეტრიული მანძილი (გზის კოეფიციენტის გარეშე) — სამკუთხედის
+       წესით ყოველთვის ≥ 0, ამიტომ სიაში რიცხვები ერთმანეთს ეწყობა. */
+    function dist(a, b) { return hav(a.la, a.lo, b.la, b.lo); }
+    var seq = [st.origin];
+    st.selected.forEach(function (s) { var x = BY[s]; if (x) seq.push(x); });
+    var ep = endPoint();
+    if (ep) seq.push(ep);
+    if (seq.length < 2) return { km: dist(st.origin, p), min: leg(st.origin, p).min };
+    var best = null;
+    for (var i = 0; i < seq.length - 1; i++) {
+      var a = seq[i], b = seq[i + 1];
+      var extra = dist(a, p) + dist(p, b) - dist(a, b);
+      if (!best || extra < best.km) {
+        best = { km: Math.max(0, extra),
+                 min: Math.max(0, leg(a, p).min + leg(p, b).min - leg(a, b).min) };
+      }
+    }
+    if (!ep) { /* ბოლო გაჩერებაზე რჩება — ბოლოში მიბმაც შესაძლებელია */
+      var last = seq[seq.length - 1], e2 = dist(last, p);
+      if (!best || e2 < best.km) best = { km: e2, min: leg(last, p).min };
+    }
+    return best;
+  }
+
+  function optimizeOrder(order) {
+    if (order.length < 3) return order.slice();
+    /* 1) უახლოესი მეზობელი საწყისიდან */
+    var left = order.slice(), out = [], cur = st.origin;
+    while (left.length) {
+      var bi = 0, bv = Infinity;
+      for (var i = 0; i < left.length; i++) {
+        var p = BY[left[i]]; if (!p) continue;
+        var v = travel(cur, p);
+        if (v < bv) { bv = v; bi = i; }
+      }
+      out.push(left[bi]);
+      cur = BY[left[bi]] || cur;
+      left.splice(bi, 1);
+    }
+    /* 2) 2-opt — გადაკვეთილი მონაკვეთების გასწორება */
+    var best = orderMin(out), improved = true, guard = 0;
+    while (improved && guard++ < 60) {
+      improved = false;
+      for (var a = 0; a < out.length - 1; a++) {
+        for (var b = a + 1; b < out.length; b++) {
+          var cand = out.slice(0, a).concat(out.slice(a, b + 1).reverse(), out.slice(b + 1));
+          var v2 = orderMin(cand);
+          if (v2 < best - 0.5) { out = cand; best = v2; improved = true; }
+        }
+      }
+    }
+    return out;
+  }
   function setDays(n) {
     st.days = Math.max(1, Math.min(30, n));
     var d = new Date(st.start);
@@ -343,6 +414,64 @@
     $('dowactions').hidden = false;
     clearTimeout(flash._t);
     flash._t = setTimeout(function () { el.innerHTML = ''; el.classList.remove('warn'); }, warn || undoFn ? 6000 : 3200);
+  }
+
+  /* ── არჩეული გაჩერებების გადათრევა სიაში ──────────────────────────
+     მუშაობს მაუსითაც და თითითაც. გადათრევისას მხოლოდ DOM მოძრაობს —
+     ხელის აშვებისას ერთხელ ვამატებთ ახალ რიგს და ვხატავთ ხელახლა.  */
+  function attachDrag(row) {
+    var handle = row.querySelector('.dow-grab');
+    if (!handle) return;
+    handle.style.touchAction = 'none';
+    handle.addEventListener('pointerdown', function (ev) {
+      if (ev.button != null && ev.button !== 0) return;
+      ev.preventDefault();
+      var lb = row.parentNode;
+      if (!lb) return;
+      var startY = ev.clientY;
+      var moved = false;
+      row.classList.add('dragging');
+      try { handle.setPointerCapture(ev.pointerId); } catch (e) {}
+
+      function rows() {
+        return Array.prototype.filter.call(lb.children, function (el) {
+          return el.classList.contains('drag');
+        });
+      }
+      function move(e) {
+        if (!moved && Math.abs(e.clientY - startY) < 4) return;
+        moved = true;
+        var y = e.clientY;
+        var list = rows();
+        for (var i = 0; i < list.length; i++) {
+          var el = list[i];
+          if (el === row) continue;
+          var r = el.getBoundingClientRect();
+          var mid = r.top + r.height / 2;
+          if (y < mid && el.compareDocumentPosition(row) & Node.DOCUMENT_POSITION_FOLLOWING) {
+            lb.insertBefore(row, el); return;
+          }
+          if (y > mid && el.compareDocumentPosition(row) & Node.DOCUMENT_POSITION_PRECEDING) {
+            lb.insertBefore(row, el.nextSibling); return;
+          }
+        }
+      }
+      function up() {
+        handle.removeEventListener('pointermove', move);
+        handle.removeEventListener('pointerup', up);
+        handle.removeEventListener('pointercancel', up);
+        row.classList.remove('dragging');
+        if (!moved) return;
+        var order = rows().map(function (el) { return el.dataset.slug; })
+          .filter(function (s) { return s && st.selected.indexOf(s) >= 0; });
+        if (order.length === st.selected.length) st.selected = order;
+        routeKey = '';
+        render();
+      }
+      handle.addEventListener('pointermove', move);
+      handle.addEventListener('pointerup', up);
+      handle.addEventListener('pointercancel', up);
+    });
   }
 
   /* ── render ───────────────────────────────────────────────────────── */
@@ -413,19 +542,28 @@
       $('dowtourmeta').textContent = tour.days + ' ' + T.day + ' · ' + tour.km + ' ' + T.km + (tour.drive ? ' · ' + tour.drive : '') + ' · ' + tour.carLabel;
     }
     $('dowactions').hidden = !(st.selected.length || $('dowmsg').textContent);
+    $('dowopt').hidden = st.selected.length < 3;
 
     /* list — ჯერ არჩეულები, მერე ხელმისაწვდომები, ჩამქრალები ბოლოში */
     var list = visible();
     $('dowcount').textContent = T.total + ' ' + list.length + ' ' + T.place;
     $('dowselcount').textContent = T.chosenN + ' ' + st.selected.length;
     var selIdx = {}; st.selected.forEach(function (s, i) { selIdx[s] = i + 1; });
-    var fitCache = {};
-    list.forEach(function (p) { fitCache[p.s] = selIdx[p.s] ? 0 : (fits(p) ? 1 : 2); });
+    var fitCache = {}, detCache = {};
+    list.forEach(function (p) {
+      fitCache[p.s] = selIdx[p.s] ? 0 : (fits(p) ? 1 : 2);
+      if (!selIdx[p.s]) detCache[p.s] = detour(p);
+    });
+    /* არჩეულები ზემოთ (მარშრუტის რიგით), მერე ყველაზე მცირე გადახვევა,
+       ბოლოში — დროში ვერჩამტევი. */
     list = list.slice().sort(function (a, b) {
       var d = fitCache[a.s] - fitCache[b.s];
       if (d) return d;
       if (fitCache[a.s] === 0) return selIdx[a.s] - selIdx[b.s];
-      return 0;
+      var da = detCache[a.s] || { km: 0, min: 0 }, db = detCache[b.s] || { km: 0, min: 0 };
+      var dm = da.min - db.min;
+      if (Math.abs(dm) > 1) return dm;
+      return da.km - db.km;
     });
     var lb = $('dowlist');
     lb.innerHTML = '';
@@ -439,17 +577,27 @@
         : (p.img
           ? '<span class="dow-ava img"><img src="' + esc(p.img) + '" alt="" loading="lazy"></span>'
           : '<span class="dow-ava">' + esc(p.n.slice(0, 1)) + '</span>');
+      if (on) { row.dataset.slug = p.s; row.classList.add('drag'); }
       row.innerHTML =
+        (on ? '<span class="dow-grab" title="' + esc(T.dragHint) + '" aria-hidden="true">⠿</span>' : '') +
         '<input type="checkbox" aria-label="' + esc(p.n) + '"' + (on ? ' checked' : '') + '>' +
         '<button type="button" class="dow-place-main">' + ava +
         '<span class="dow-place-t"><span class="dow-place-n">' + esc(p.n) + '</span>' +
         '<span>' + esc(p.gn) + ' · ' + esc(p.t) + (p.r ? ' · ' + Number(p.r).toFixed(1) + ' ★' : '') + '</span>' +
-        '<span>' + hm(p.hh * 60) + ' ' + esc(T.visit) + ' · ' + Math.round(d0.km) + ' ' + esc(T.km) +
+        '<span>' + hm(p.hh * 60) + ' ' + esc(T.visit) + ' · ' +
+        (on || !detCache[p.s] || !st.selected.length
+          ? Math.round(d0.km) + ' ' + esc(T.km)
+          : '<b class="dow-det">' + (detCache[p.s].km >= 1
+              ? '+' + Math.round(detCache[p.s].km) + ' ' + esc(T.km) + ' ' + esc(T.detour)
+              : (detCache[p.s].min >= 10
+                ? '+' + hm(detCache[p.s].min) + ' ' + esc(T.detour)
+                : esc(T.onWay))) + '</b>') +
         (vis ? ' · ' + esc(T.visited) : (ok ? '' : ' · ' + esc(T.noFit))) + '</span></span></button>' +
         '<button type="button" class="dow-info" aria-label="' + esc(T.details) + '"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0b2f4d" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5M12 8h.01"></path></svg></button>';
       row.querySelector('input').onchange = function () { toggle(p.s); };
       row.querySelector('.dow-place-main').onclick = function () { toggle(p.s); };
       row.querySelector('.dow-info').onclick = function () { st.detail = [p.s]; render(); };
+      if (on) attachDrag(row);
       lb.appendChild(row);
     });
     $('dowempty').hidden = list.length > 0;
@@ -767,6 +915,18 @@
       else flash(T.saveErr || T.sendErr);
     });
   }
+  $('dowopt').onclick = function () {
+    if (st.selected.length < 3) return;
+    var prev = snapshot();
+    var before = orderMin(st.selected);
+    var next = optimizeOrder(st.selected);
+    var after = orderMin(next);
+    if (after >= before - 1) { flash(T.optNone); return; }
+    st.selected = next;
+    routeKey = '';
+    render();
+    flash(T.optDone.replace('%s', hm(before - after)), false, function () { restore(prev); routeKey = ''; render(); });
+  };
   $('dowsave').onclick = function () {
     var trip = tripObj();
     var payload = { title: trip.name, date: trip.start, days: st.days,

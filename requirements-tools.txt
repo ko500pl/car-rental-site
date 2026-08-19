@@ -1,0 +1,4 @@
+# Optional media/OG tooling. The canonical site build does not require these.
+-r requirements.txt
+Pillow==12.3.0
+playwright==1.55.0

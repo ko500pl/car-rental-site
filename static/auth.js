@@ -26,6 +26,19 @@
         return Promise.resolve(t);
       },
       listTrips: function () { return Promise.resolve(lread().slice().reverse()); },
+      getProfile: function () {
+        try {
+          return Promise.resolve({ name: localStorage.getItem("do-bk-name") || "",
+                                   phone: localStorage.getItem("do-bk-phone") || "" });
+        } catch (e) { return Promise.resolve({ name: "", phone: "" }); }
+      },
+      saveProfile: function (p) {
+        try {
+          localStorage.setItem("do-bk-name", String(p.name || "").trim());
+          localStorage.setItem("do-bk-phone", String(p.phone || "").trim());
+        } catch (e) {}
+        return Promise.resolve(p);
+      },
       setStatus: function (id, st) {
         var a = lread(); a.forEach(function (t) { if (t.id === id) t.status = st; }); lwrite(a);
         return Promise.resolve();
@@ -116,10 +129,80 @@
     });
     auth = M.auth.getAuth(app);
     db = M.db.getFirestore(app);
-    return new Promise(function (res) {
-      M.auth.onAuthStateChanged(auth, function (u) { user = u; ready = true; fire(); res(u); });
+    /* მობილურ ბრაუზერებში sessionStorage სექციონირებულია — ავტორიზაცია
+       IndexedDB-ში უნდა შენახოს, თორემ დაბრუნებისას სესია იკარგება. */
+    var persist = M.auth.setPersistence(auth, M.auth.indexedDBLocalPersistence)
+      .catch(function () { return M.auth.setPersistence(auth, M.auth.browserLocalPersistence); })
+      .catch(function () {});
+    return persist.then(function () {
+      /* redirect-ით შესვლის შედეგი. "missing initial state" მაშინ ხდება,
+         როცა sessionStorage მიუწვდომელია — მომხმარებელი ხშირად მაინც
+         შესულია, ამიტომ შეცდომას ვწყვეტთ და currentUser-ს ვენდობით. */
+      return M.auth.getRedirectResult(auth).catch(function (e) {
+        console.warn("[auth] redirect:", e && e.code);
+        return null;
+      });
+    }).then(function () {
+      return new Promise(function (res) {
+        M.auth.onAuthStateChanged(auth, function (u) {
+          user = u; ready = true;
+          if (u) loadProfile(u).catch(function () {});
+          fire(); res(u);
+        });
+      });
     });
   }).catch(function (e) { console.warn("[auth] disabled:", e && e.message); });
+
+  /* ── პროფილი: სახელი და ტელეფონი ───────────────────────────────────
+     Firestore-ში users/{uid}, ასლი ბრაუზერშიც — ჯავშნის ფორმები აქედან
+     ივსება ავტომატურად და მომხმარებელს იქვე შეუძლია შეცვლა.          */
+  var profile = { name: "", phone: "" };
+  function localProfile() {
+    try {
+      return { name: localStorage.getItem("do-bk-name") || "",
+               phone: localStorage.getItem("do-bk-phone") || "" };
+    } catch (e) { return { name: "", phone: "" }; }
+  }
+  function mirror(p) {
+    try {
+      if (p.name) localStorage.setItem("do-bk-name", p.name);
+      if (p.phone) localStorage.setItem("do-bk-phone", p.phone);
+    } catch (e) {}
+    document.dispatchEvent(new CustomEvent("fh:profile", { detail: p }));
+  }
+  function loadProfile(u) {
+    return M.db.getDoc(M.db.doc(db, "users", u.uid)).then(function (d) {
+      var data = d.exists() ? d.data() : {};
+      profile = {
+        name: data.name || u.displayName || localProfile().name || "",
+        phone: data.phone || u.phoneNumber || localProfile().phone || ""
+      };
+      mirror(profile);
+      return profile;
+    });
+  }
+  function getProfile() {
+    if (profile.name || profile.phone) return Promise.resolve(profile);
+    var l = localProfile();
+    if (!user) return Promise.resolve(l);
+    return boot.then(function () { return user ? loadProfile(user) : l; }).catch(function () { return l; });
+  }
+  function saveProfile(p) {
+    profile = { name: String(p.name || "").trim(), phone: String(p.phone || "").trim() };
+    mirror(profile);
+    if (!user) return Promise.resolve(profile);
+    return boot.then(function () {
+      return M.db.setDoc(M.db.doc(db, "users", user.uid), {
+        name: profile.name, phone: profile.phone,
+        email: user.email || "", updated: M.db.serverTimestamp()
+      }, { merge: true });
+    }).then(function () {
+      if (profile.name && profile.name !== user.displayName) {
+        return M.auth.updateProfile(auth.currentUser, { displayName: profile.name })
+          .then(function () { user = auth.currentUser; fire(); }).catch(function () {});
+      }
+    }).then(function () { return profile; });
+  }
 
   /* ── UI: ჰედერის ღილაკი ────────────────────────────────────────────── */
   function headerBox() {
@@ -234,16 +317,29 @@
     d.onkeydown = function (e) { if (e.key === "Escape") close(); };
     setTimeout(function () { var em = d.querySelector("#authem"); if (em) em.focus(); }, 80);
     boot.then(function () {
+      /* ტელეფონზე pop-up ხშირად იბლოკება ან სესიას კარგავს — მაშინ იმავე
+         ფანჯარაში redirect-ს ვუშვებთ და დაბრუნებისას სესია აღდგება. */
+      function social(btn, provider) {
+        btn.disabled = true; btn.classList.add("loading");
+        err.textContent = ""; err.classList.remove("show");
+        function release() { btn.disabled = false; btn.classList.remove("loading"); }
+        M.auth.signInWithPopup(auth, provider).then(close).catch(function (e) {
+          var code = String((e && e.code) || "");
+          var soft = /popup-blocked|popup-closed|cancelled-popup|operation-not-supported|web-storage-unsupported|internal-error|missing initial state/i;
+          if (soft.test(code) || soft.test(String((e && e.message) || ""))) {
+            M.auth.signInWithRedirect(auth, provider).catch(function (e2) { fail(e2); release(); });
+            return;
+          }
+          fail(e); release();
+        });
+      }
       d.querySelector("#authgoogle").onclick = function () {
-        var btn = this; btn.disabled = true; btn.classList.add("loading"); err.textContent = ""; err.classList.remove("show");
-        var p = new M.auth.GoogleAuthProvider();
-        M.auth.signInWithPopup(auth, p).then(close).catch(function(e){ fail(e); btn.disabled = false; btn.classList.remove("loading"); });
+        social(this, new M.auth.GoogleAuthProvider());
       };
       d.querySelector("#authfacebook").onclick = function () {
-        var btn = this; btn.disabled = true; btn.classList.add("loading"); err.textContent = ""; err.classList.remove("show");
         var p = new M.auth.FacebookAuthProvider();
         p.addScope("email");
-        M.auth.signInWithPopup(auth, p).then(close).catch(function(e){ fail(e); btn.disabled = false; btn.classList.remove("loading"); });
+        social(this, p);
       };
       d.querySelector("#authin").onclick = function () {
         M.auth.signInWithEmailAndPassword(auth, val("authem"), val("authpw"))
@@ -349,12 +445,74 @@
         var ref=M.storage.ref(storage,'avatars/'+u.uid+'/profile.'+ext);
         M.storage.uploadBytes(ref,file).then(function(){return M.storage.getDownloadURL(ref);}).then(function(url){return M.auth.updateProfile(auth.currentUser,{photoURL:url});}).then(function(){user=auth.currentUser;fire();}).catch(function(err){console.warn('[avatar]',err);alert(document.documentElement.lang==='ka'?'ფოტო ვერ აიტვირთა. სცადეთ ხელახლა.':'Photo upload failed. Please try again.');}).finally(function(){wrap.classList.remove('loading');avatarFile.value='';});
       };
+      renderProfileCard();
       renderTrips();
       renderBookings();
       renderMessages();
       renderJournal();
     });
   }
+
+  /* „ჩემი ინფორმაცია“ — სახელი და ტელეფონი. ჯავშნის ფორმები აქედან
+     ივსება, მაგრამ იქ შეცვლაც შეიძლება — ეს მხოლოდ ნაგულისხმევია. */
+  function renderProfileCard() {
+    var root = document.getElementById("account");
+    if (!root || !user || root.querySelector(".accprofile")) return;
+    var lang = document.documentElement.lang || "en";
+    var C2 = {
+      ka: { title: "ჩემი ინფორმაცია", lead: "ეს მონაცემები ავტომატურად ჩაისმება ავტომობილის მოთხოვნაში — იქვე შეგიძლიათ შეცვლა.", name: "სახელი და გვარი", phone: "ტელეფონი", save: "შენახვა", saved: "შენახულია ✓", err: "ვერ შეინახა — სცადეთ ხელახლა" },
+      en: { title: "My details", lead: "These are filled into the car request automatically — you can still change them there.", name: "Full name", phone: "Phone", save: "Save", saved: "Saved ✓", err: "Could not save — try again" },
+      ru: { title: "Мои данные", lead: "Эти данные подставляются в заявку на автомобиль — там их можно изменить.", name: "Имя и фамилия", phone: "Телефон", save: "Сохранить", saved: "Сохранено ✓", err: "Не удалось сохранить — попробуйте ещё раз" },
+      fa: { title: "اطلاعات من", lead: "این اطلاعات به‌طور خودکار در درخواست خودرو وارد می‌شود — همان‌جا قابل تغییر است.", name: "نام و نام خانوادگی", phone: "تلفن", save: "ذخیره", saved: "ذخیره شد ✓", err: "ذخیره نشد — دوباره تلاش کنید" },
+      he: { title: "הפרטים שלי", lead: "פרטים אלה ממולאים אוטומטית בבקשת הרכב — אפשר לשנות אותם שם.", name: "שם מלא", phone: "טלפון", save: "שמירה", saved: "נשמר ✓", err: "השמירה נכשלה — נסו שוב" },
+      ar: { title: "بياناتي", lead: "تُدرج هذه البيانات تلقائياً في طلب السيارة — ويمكن تعديلها هناك.", name: "الاسم الكامل", phone: "الهاتف", save: "حفظ", saved: "تم الحفظ ✓", err: "تعذر الحفظ — حاول مجدداً" }
+    }[lang] || null;
+    var t = C2 || { title: "My details", lead: "", name: "Full name", phone: "Phone", save: "Save", saved: "Saved ✓", err: "Could not save" };
+    var box = document.createElement("section");
+    box.className = "journal-section accprofile";
+    box.innerHTML = "<h2>" + esc(t.title) + "</h2><p class=\"muted\">" + esc(t.lead) + "</p>" +
+      '<div class="accprofile-row">' +
+      '<label>' + esc(t.name) + '<input id="profname" type="text" autocomplete="name"></label>' +
+      '<label>' + esc(t.phone) + '<input id="profphone" type="tel" inputmode="tel" autocomplete="tel"></label>' +
+      '</div><div class="accprofile-row2"><button class="btn sm" type="button" id="profsave">' +
+      esc(t.save) + '</button><span id="profmsg" role="status"></span></div>';
+    var journal = document.getElementById("accjournal");
+    root.insertBefore(box, journal);
+    var nameEl = box.querySelector("#profname"), phoneEl = box.querySelector("#profphone");
+    var msg = box.querySelector("#profmsg");
+    getProfile().then(function (p) {
+      if (!nameEl.value) nameEl.value = p.name || "";
+      if (!phoneEl.value) phoneEl.value = p.phone || "";
+    });
+    box.querySelector("#profsave").onclick = function () {
+      var b = this; b.disabled = true;
+      saveProfile({ name: nameEl.value, phone: phoneEl.value })
+        .then(function () { msg.textContent = t.saved; })
+        .catch(function () { msg.textContent = t.err; })
+        .then(function () { b.disabled = false; setTimeout(function () { msg.textContent = ""; }, 2500); });
+    };
+  }
+
+  /* ჯავშნის ფორმების ავტომატური შევსება — ველები რჩება რედაქტირებადი. */
+  function prefillForms() {
+    getProfile().then(function (p) {
+      if (!p.name && !p.phone) return;
+      document.querySelectorAll("form[data-inquiry], form[data-booking], [data-booking-dialog] form").forEach(function (f) {
+        var n = f.querySelector('[name="name"]'), ph = f.querySelector('[name="phone"]');
+        if (n && !n.value) n.value = p.name;
+        if (ph && !ph.value) ph.value = p.phone;
+      });
+    });
+  }
+  document.addEventListener("submit", function (e) {
+    var f = e.target;
+    if (!f || !f.querySelector) return;
+    var n = f.querySelector('[name="name"]'), ph = f.querySelector('[name="phone"]');
+    if (!n && !ph) return;
+    var v = { name: n ? n.value : "", phone: ph ? ph.value : "" };
+    if (!v.name && !v.phone) return;
+    mirror({ name: v.name.trim(), phone: v.phone.trim() });
+  }, true);
   function renderBookings() {
     var root = document.getElementById("account"); if (!root || !user || root.querySelector(".accbookings")) return;
     var box=document.createElement("section");box.className="journal-section accbookings";var journal=document.getElementById("accjournal");root.insertBefore(box,journal);
@@ -566,10 +724,19 @@
 
   window.FH = { on: on, saveTrip: saveTrip, listTrips: listTrips, shareTrip: shareTrip,
                 loadShared: loadShared, openDialog: openDialog,
+                getProfile: getProfile, saveProfile: saveProfile,
                 firebase: function () { return boot.then(function () { return { db: db, auth: auth, M: M, app: app }; }); },
                 user: function () { return user; } };
 
-  function init() { headerBox(); accountPage(); }
+  function init() {
+    headerBox(); accountPage(); prefillForms();
+    /* დიალოგი გვიან იხსნება — გახსნისას ხელახლა შევავსოთ */
+    document.addEventListener("click", function (e) {
+      if (e.target.closest && e.target.closest("[data-booking-open], [data-book], [data-dow-book]")) {
+        setTimeout(prefillForms, 60);
+      }
+    });
+  }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
 })();
