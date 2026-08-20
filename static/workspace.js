@@ -543,6 +543,13 @@
     }
     $('dowactions').hidden = !(st.selected.length || $('dowmsg').textContent);
     $('dowopt').hidden = st.selected.length < 3;
+    var tripBtn = $('dowtrip');
+    if (tripBtn) {
+      tripBtn.hidden = !st.selected.length;
+      tripBtn.href = (T.tripUrl || '/trip/') + '#trip=' + encodeURIComponent(
+        st.selected.join(',') + ';o=' + st.origin.n + ';s=' + st.start + ';d=' + st.days +
+        ';h=' + (st.dayHours[0] || 8) + ';p=' + st.people);
+    }
 
     /* list — ჯერ არჩეულები, მერე ხელმისაწვდომები, ჩამქრალები ბოლოში */
     var list = visible();

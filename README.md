@@ -34,6 +34,26 @@ Python-ისა და dependency-ების ოფიციალური �
 python3 scripts/check_project_layout.py
 ```
 
+სრული ხარისხის შემოწმება (გარემო, კონტენტი, ტესტები, JavaScript, build და
+შიდა ბმულები) ერთი ბრძანებით:
+
+```bash
+python3 scripts/run_quality_gate.py --output dist --report artifacts/quality-gate-summary.md
+```
+
+ეს ბრძანება არაფერს აქვეყნებს. CI-ისა და ხელით დასადასტურებელი deploy-ის წესი
+აღწერილია [`docs/visit-a-city-roadmap/13-CI-RELEASE-GATE.md`](docs/visit-a-city-roadmap/13-CI-RELEASE-GATE.md)-ში.
+
+სიჩქარის განმეორებადი ადგილობრივი baseline (build-ის შემდეგ):
+
+```bash
+python3 scripts/audit_performance.py --dist dist-perf01-baseline --report reports/performance-baseline-2026-08-20.md --runs 3
+```
+
+ბიუჯეტი ინახება `performance-budget.json`-ში, ხოლო მეთოდი და შედეგების ახსნა —
+[`docs/visit-a-city-roadmap/14-PERFORMANCE-BASELINE.md`](docs/visit-a-city-roadmap/14-PERFORMANCE-BASELINE.md)-ში.
+ეს კონტროლირებადი baseline გარე რუკის ფილებსა და provider API-ებს არ ზომავს.
+
 მონაცემების ცალკე შემოწმება:
 
 ```bash

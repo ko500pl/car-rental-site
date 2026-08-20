@@ -5,4 +5,5 @@ services:
     plan: free
     buildCommand: pip install -r requirements.txt && python3 build.py dist
     staticPublishPath: ./dist
+    autoDeploy: false
     pullRequestPreviewsEnabled: false

@@ -1,0 +1,28 @@
+{
+  "targets": {
+    "shell_usable_ms_p75": 3000,
+    "map_ready_after_shell_ms_p75": 2000,
+    "horizontal_overflow_px": 0
+  },
+  "initial_page": {
+    "html_bytes": 256000,
+    "local_css_bytes": 160000,
+    "local_js_bytes": 820000,
+    "local_initial_total_bytes": 1100000,
+    "blocking_script_count": 0
+  },
+  "individual_assets": {
+    ".js": 204800,
+    ".css": 153600,
+    ".webp": 307200,
+    ".jpg": 307200,
+    ".png": 307200,
+    ".apk": 52428800
+  },
+  "mobile_fast_4g": {
+    "latency_ms": 150,
+    "download_bps": 1638400,
+    "upload_bps": 768000,
+    "cpu_slowdown": 4
+  }
+}

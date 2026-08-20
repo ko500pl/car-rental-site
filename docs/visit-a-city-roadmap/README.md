@@ -1,6 +1,6 @@
 # Drive On — Visit A City-ის დონისკენ განვითარების სამუშაო გეგმა
 
-განახლებულია: 2026-08-19  
+განახლებულია: 2026-08-20
 გეგმის ვერსია: 1.0  
 საერთო სტატუსი: **მიმდინარე**
 
@@ -18,6 +18,10 @@ Visit A City გამოიყენება პროდუქტის ხ�
 | [02-STATUS-BOARD.md](02-STATUS-BOARD.md) | ყველა დავალების მიმდინარე სტატუსი |
 | [03-ROADMAP.md](03-ROADMAP.md) | Now / Next / Later თანმიმდევრობა |
 | [10-FOUNDATION.md](10-FOUNDATION.md) | build, ტესტები, რელიზი და სიჩქარე |
+| [11-SOURCE-BUILD-STRUCTURE.md](11-SOURCE-BUILD-STRUCTURE.md) | ოფიციალური source/build სტრუქტურა |
+| [12-REPEATABLE-ENVIRONMENT.md](12-REPEATABLE-ENVIRONMENT.md) | განმეორებადი გარემო და dependency lock |
+| [13-CI-RELEASE-GATE.md](13-CI-RELEASE-GATE.md) | CI quality gate და ხელით deploy |
+| [14-PERFORMANCE-BASELINE.md](14-PERFORMANCE-BASELINE.md) | სიჩქარის baseline, ბიუჯეტი და შედეგები |
 | [20-PLANNER.md](20-PLANNER.md) | დამგეგმავი და დღიური timeline |
 | [30-CONTENT.md](30-CONTENT.md) | ადგილების სანდოობა, ფოტოები და ტურები |
 | [40-ACCOUNT-OFFLINE.md](40-ACCOUNT-OFFLINE.md) | შენახვა, სინქრონიზაცია და ოფლაინ რეჟიმი |
@@ -49,4 +53,3 @@ Visit A City გამოიყენება პროდუქტის ხ�
 ## განახლების წესი
 
 ნებისმიერი აგენტი სამუშაოს დაწყებისას ჯერ კითხულობს `01-WORKING-RULES.md`, შემდეგ შესაბამის თემატურ ფაილს. სტატუსი იცვლება სამუშაოს დაწყებისას და დასრულებისას. პარალელურად ახლდება `02-STATUS-BOARD.md`. დასრულებულ დავალებას უნდა ჰქონდეს commit/build/test ან ხელით შემოწმების მტკიცებულება.
-

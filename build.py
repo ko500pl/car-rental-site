@@ -480,7 +480,7 @@ LEAFLET_JS = "/assets/leaflet/leaflet.js"
 
 ASSET = {"css": "/assets/style.css", "explorer": "/assets/explorer.js",
          "planner": "/assets/planner.js", "workspace": "/assets/workspace.js",
-         "app_mobile": "/assets/app-mobile.js"}
+         "app_mobile": "/assets/app-mobile.js", "trip": "/assets/trip.js"}
 TRAVEL_ASSET = {}
 
 
@@ -534,7 +534,7 @@ def head_html(lang, current, title, desc, keywords, url, alternates, depth, ld,
 <meta name="keywords" content="{E(keywords)}">
 <link rel="canonical" href="{url}">
 {alts}
-<meta name="robots" content="{"noindex, nofollow" if current == "account" else "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"}">
+<meta name="robots" content="{"noindex, nofollow" if current in ("account", "trip") else "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"}">
 <meta name="author" content="{E(BRAND)}">
 <meta name="geo.region" content="GE">
 <meta name="geo.placename" content="{E(SITE['address'][lang]['city'])}">
@@ -602,7 +602,7 @@ def header_html(lang, current):
     return f"""<header class="site-head"><div class="head-top">
 <a class="logo" href="{lang_root(lang)}">{logo}</a>
 <span class="head-sp"></span>
-<details class="head-app">
+<details class="head-app app-download">
 <summary>
 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5"></rect><path d="M10.5 18.5h3"></path></svg>
 <span>{E(app_copy[0])}</span>
@@ -612,9 +612,9 @@ def header_html(lang, current):
 <a href="/assets/downloads/rentup-android.apk" download>
 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5"></path><path d="M4 19h16"></path></svg>
 <span><b>{E(app_copy[1])}</b><small>{E(app_copy[3])}</small></span></a>
-<span class="head-app-soon">
+<button class="head-app-soon" type="button" data-ios-install>
 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5"></rect><path d="M10.5 18.5h3"></path></svg>
-<span><b>{E(app_copy[2])}</b><small>{E(app_soon)}</small></span></span>
+<span><b>{E(app_copy[2])}</b><small>{E(app_copy[4])}</small></span></button>
 </div>
 </details>
 <label class="lang-nav"><span class="sr-only">{E(u['ui']['lang_label'])}</span>
@@ -2188,6 +2188,11 @@ _DOW_OPT_T = {
     "he": ("⚡ סידור לזמן הקצר ביותר", "המסלול סודר מחדש — נחסכו %s", "המסלול כבר אופטימלי", "גררו לשינוי הסדר"),
     "ar": ("⚡ ترتيب لأقصر وقت", "أُعيد ترتيب المسار — تم توفير %s", "المسار مثالي بالفعل", "اسحب لإعادة الترتيب"),
 }
+_DOW_VIEWTRIP_T = {"ka": "ჩემი ტურის ნახვა", "en": "View my tour", "ru": "Посмотреть мой тур",
+                   "fa": "مشاهده تور من", "he": "צפייה בטיול שלי", "ar": "عرض جولتي"}
+for _l, _v in _DOW_VIEWTRIP_T.items():
+    DOW_UI[_l]["viewTrip"] = _v
+
 for _l, _v in _DOW_OPT_T.items():
     DOW_UI[_l]["optimize"] = _v[0]
     DOW_JS_T[_l]["optDone"], DOW_JS_T[_l]["optNone"], DOW_JS_T[_l]["dragHint"] = _v[1], _v[2], _v[3]
@@ -2280,6 +2285,7 @@ def travel_workspace_block(lang, depth, height="72vh", hero=False, initial="expl
 <div class="dow-meter"><div id="dowmeter"></div></div></div>
 <div id="dowactions" class="dow-tripbtns" hidden>
 <button type="button" id="dowopt" class="dow-btn outline sm" hidden>{E(U["optimize"])}</button>
+<a id="dowtrip" class="dow-btn tealsolid sm" target="_blank" rel="noopener" hidden>{E(U["viewTrip"])}</a>
 <button type="button" id="dowsave" class="dow-btn outline sm">{E(U["save"])}</button>
 <button type="button" id="dowshare" class="dow-btn ghost sm">{E(U["share"])}</button>
 <span id="dowmsg" role="status" class="dow-msg"></span></div>
@@ -2379,7 +2385,7 @@ def travel_workspace_block(lang, depth, height="72vh", hero=False, initial="expl
 </section>'''
     js = (EXPLORER_JS % {"js": LEAFLET_JS, "base": J(base),
                          "data": TRAVEL_ASSET[lang], "exp": ASSET["workspace"]}
-          + f'\n<script>window.DOWT={J(DOW_JS_T[lang])};</script>')
+          + f'\n<script>window.DOWT={J(dict(DOW_JS_T[lang], tripUrl=lang_root(lang) + "trip/"))};</script>')
     return html, js
 
 
@@ -2619,6 +2625,97 @@ def render_404():
 
 
 # ══════════════════════════════════════════════════════════════ main
+# ══════════════════════════════════════════════════ ჩემი ტური (/trip/)
+# მომხმარებლის აგებული მარშრუტი — სტანდარტული ტურის გვერდის სახით.
+# გვერდი სტატიკურია: მარშრუტი #trip=... ჰეშიდან იკითხება და ბრაუზერშივე
+# ეხატება იმავე მონაცემებით, რითიც დამგეგმავი მუშაობს.
+TRIP_UI = {
+    "ka": {"h1": "ჩემი მარშრუტი", "lead": "დამგეგმავში აგებული ტური — გაჩერებები, დრო და რეკომენდებული ავტომობილი.",
+           "empty": "მარშრუტი ცარიელია", "emptyText": "დაგეგმეთ ტური და დააჭირეთ „ჩემი ტურის ნახვა“.",
+           "toPlanner": "დამგეგმავში გახსნა", "stopsW": "გაჩერება", "dayW": "დღე",
+           "share": "ბმულის კოპირება", "copied": "ბმული დაკოპირდა ✓", "fromW": "საიდან", "period": "პერიოდი",
+           "driveW": "გზაში", "visitW": "დათვალიერება", "backW": "დაბრუნება", "print": "დაბეჭდვა / PDF",
+           "routeErr": "გზის სერვისი მიუწვდომელია — ნაჩვენებია პირდაპირი ხაზი", "people": "ადამიანი", "minsW": "წთ"},
+    "en": {"h1": "My route", "lead": "A tour built in the planner — stops, timing and the recommended car.",
+           "empty": "The route is empty", "emptyText": "Plan a trip and press “View my tour”.",
+           "toPlanner": "Open in the planner", "stopsW": "stops", "dayW": "Day",
+           "share": "Copy link", "copied": "Link copied ✓", "fromW": "From", "period": "Dates",
+           "driveW": "drive", "visitW": "visit", "backW": "Return", "print": "Print / PDF",
+           "routeErr": "Routing service unavailable — showing a straight line", "people": "people", "minsW": "min"},
+    "ru": {"h1": "Мой маршрут", "lead": "Тур, собранный в планировщике — остановки, время и рекомендуемый автомобиль.",
+           "empty": "Маршрут пуст", "emptyText": "Спланируйте поездку и нажмите «Посмотреть мой тур».",
+           "toPlanner": "Открыть в планировщике", "stopsW": "остановок", "dayW": "День",
+           "share": "Скопировать ссылку", "copied": "Ссылка скопирована ✓", "fromW": "Откуда", "period": "Даты",
+           "driveW": "в пути", "visitW": "осмотр", "backW": "Возвращение", "print": "Печать / PDF",
+           "routeErr": "Сервис маршрутов недоступен — показана прямая линия", "people": "чел.", "minsW": "мин"},
+    "fa": {"h1": "مسیر من", "lead": "توری که در برنامه‌ریز ساخته‌اید — توقف‌ها، زمان و خودروی پیشنهادی.",
+           "empty": "مسیر خالی است", "emptyText": "سفری برنامه‌ریزی کنید و «مشاهده تور من» را بزنید.",
+           "toPlanner": "باز کردن در برنامه‌ریز", "stopsW": "توقف", "dayW": "روز",
+           "share": "کپی پیوند", "copied": "پیوند کپی شد ✓", "fromW": "از", "period": "تاریخ",
+           "driveW": "در راه", "visitW": "بازدید", "backW": "بازگشت", "print": "چاپ / PDF",
+           "routeErr": "سرویس مسیریابی در دسترس نیست — خط مستقیم نمایش داده می‌شود", "people": "نفر", "minsW": "دقیقه"},
+    "he": {"h1": "המסלול שלי", "lead": "טיול שבניתם במתכנן — עצירות, זמנים והרכב המומלץ.",
+           "empty": "המסלול ריק", "emptyText": "תכננו טיול ולחצו «צפייה בטיול שלי».",
+           "toPlanner": "פתיחה במתכנן", "stopsW": "עצירות", "dayW": "יום",
+           "share": "העתקת קישור", "copied": "הקישור הועתק ✓", "fromW": "מ", "period": "תאריכים",
+           "driveW": "נסיעה", "visitW": "ביקור", "backW": "חזרה", "print": "הדפסה / PDF",
+           "routeErr": "שירות הניווט אינו זמין — מוצג קו ישר", "people": "אנשים", "minsW": "דק׳"},
+    "ar": {"h1": "مساري", "lead": "جولة أنشأتها في المخطط — المحطات والوقت والسيارة المقترحة.",
+           "empty": "المسار فارغ", "emptyText": "خطط رحلة ثم اضغط «عرض جولتي».",
+           "toPlanner": "افتح في المخطط", "stopsW": "محطات", "dayW": "اليوم",
+           "share": "نسخ الرابط", "copied": "تم نسخ الرابط ✓", "fromW": "من", "period": "التواريخ",
+           "driveW": "قيادة", "visitW": "زيارة", "backW": "العودة", "print": "طباعة / PDF",
+           "routeErr": "خدمة المسارات غير متاحة — يظهر خط مستقيم", "people": "أشخاص", "minsW": "د"},
+}
+
+
+def render_trip_page(lang):
+    u = UI[lang]
+    t = TRIP_UI[lang]
+    depth = 1 if lang == "ka" else 2
+    labels = dict(t)
+    labels.update({k: tu(lang, k) for k in ("days", "total_km", "total_drive", "car_needed",
+                                            "season", "difficulty", "km", "hrs",
+                                            "waypoints_title", "plan_title")})
+    labels["plannerUrl"] = page_url(lang, "map", False) + "#planner"
+    labels["fleetUrl"] = page_url(lang, "fleet", False)
+    body = (
+        f'<section class="page-head"><div class="wrap">'
+        f'<h1 id="triph1">{E(t["h1"])}</h1>'
+        f'<p class="lead" id="triplead">{E(t["lead"])}</p></div></section>'
+        f'<section class="sec"><div class="wrap">'
+        f'<div id="tripempty" class="trip-empty" hidden><h2>{E(t["empty"])}</h2>'
+        f'<p class="pshort">{E(t["emptyText"])}</p>'
+        f'<a class="btn" href="{labels["plannerUrl"]}">{E(t["toPlanner"])}</a></div>'
+        f'<div id="tripbody" hidden>'
+        f'<dl class="facts" id="tripfacts"></dl>'
+        f'<div id="tripmap" class="trip-map"></div>'
+        f'<div id="tripstatus" class="trip-status" role="status" hidden></div>'
+        f'<h2>{E(labels["plan_title"])}</h2><div id="tripdays" class="trip-days"></div>'
+        f'<h2>{E(labels["waypoints_title"])}</h2><div class="cards" id="tripstops"></div>'
+        f'<div class="cta"><h2>{E(u["ui"]["book_title"])}</h2>'
+        f'<p>{inline(u["ui"]["book_text"], lang)}</p><div class="row">'
+        f'<a class="btn" id="tripbook" href="{page_url(lang, "contact", False)}">{E(u["nav"]["contact"])}</a>'
+        f'<a class="btn ghost" id="tripplanner" href="{labels["plannerUrl"]}">{E(t["toPlanner"])}</a>'
+        f'<button type="button" class="btn ghost" id="tripshare">{E(t["share"])}</button>'
+        f'<button type="button" class="btn ghost" id="tripprint">{E(t["print"])}</button>'
+        f'</div><p id="tripmsg" role="status" class="trip-msg"></p></div>'
+        f'</div></div></section>')
+    title = f'{t["h1"]} | {BRAND}'
+    url = SITE_URL + lang_root(lang) + "trip/"
+    head = head_html(lang, "trip", title, t["lead"], "", url,
+                     {l: SITE_URL + lang_root(l) + "trip/" for l in LANGS}, depth,
+                     {"@context": "https://schema.org", "@graph": [org_node(lang), website_node(lang)]},
+                     leaflet=True)
+    crumbs = crumbs_html(lang, [(u["nav"]["index"], page_url(lang, "index", False)),
+                                (u["nav"]["map"], page_url(lang, "map", False)),
+                                (t["h1"], None)])
+    tail = (f'\n<script>window.TRIPT={J(labels)};</script>'
+            f'\n<script src="{TRAVEL_ASSET[lang]}"></script>'
+            f'\n<script defer src="{ASSET.get("trip", "/assets/trip.js")}"></script>')
+    return shell(lang, "trip", head, crumbs + f'<main id="main">{body}</main>', depth, tail)
+
+
 # ══════════════════════════════════════════════════════════ Mobile App (/app/)
 # "Drive On - Mobile App" მაკეტის ზუსტი პორტი — ცალკე დგას საიტის ქრომისგან.
 DOA_UI = {
@@ -2640,6 +2737,12 @@ _DOA_PROF_T = {
 }
 for _l, _v in _DOA_PROF_T.items():
     DOA_UI[_l]["myDetails"], DOA_UI[_l]["myDetailsLead"], DOA_UI[_l]["save2"] = _v
+
+_DOA_VIEWTRIP_T = {"ka": ("ჩემი ტურის ნახვა", "/trip/"), "en": ("View my tour", "/en/trip/"),
+                   "ru": ("Посмотреть мой тур", "/ru/trip/"), "fa": ("مشاهده تور من", "/fa/trip/"),
+                   "he": ("צפייה בטיול שלי", "/he/trip/"), "ar": ("عرض جولتي", "/ar/trip/")}
+for _l, _v in _DOA_VIEWTRIP_T.items():
+    DOA_UI[_l]["viewTrip"], DOA_UI[_l]["tripUrl"] = _v
 
 _DOA_DETOUR_T = {"ka": ("გადახვევა", "გზაზეა"), "en": ("detour", "on the way"),
                  "ru": ("крюк", "по пути"), "fa": ("انحراف", "در مسیر"),
@@ -2906,6 +3009,7 @@ def render_app_page(lang):
         <button type="button" id="doabook" style="height:48px;border:0;border-radius:12px;background:#0d94ae;color:#fff;font-size:15px;font-weight:600">{E(t["book"])}</button>
       </div>
 
+      <a id="doatrip" href="#" target="_blank" rel="noopener" hidden style="display:flex;align-items:center;justify-content:center;height:48px;border:1px solid #0d94ae;border-radius:12px;background:#eefafc;color:#0b5f73;font-size:14px;font-weight:600;text-decoration:none">{E(t["viewTrip"])}</a>
       <div id="doasavegrid" hidden style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
         <button type="button" id="doasave" style="height:48px;border:1px solid #0b2f4d;border-radius:12px;background:#fff;color:#0b2f4d;font-size:14px;font-weight:600">{E(t["save"])}</button>
         <button type="button" id="doashare" style="height:48px;border:1px solid #dde5ec;border-radius:12px;background:#fff;font-size:14px;font-weight:600">{E(t["share"])}</button>
@@ -3078,7 +3182,7 @@ def main():
     # leaves an unversioned duplicate that no page requests but a browser can
     # still cache indefinitely.
     hashed_sources = {"explorer.js", "planner.js", "auth.js", "booking.js",
-                      "community.js", "admin-bookings.js", "app.js", "app-mobile.js"}
+                      "community.js", "admin-bookings.js", "app.js", "app-mobile.js", "trip.js"}
     for sdir, dst in (("static", os.path.join(out, "assets")),
                       ("admin", os.path.join(out, "admin"))):
         if os.path.isdir(sdir):
@@ -3099,7 +3203,7 @@ def main():
 
     write_hashed(out, "style.css", build_css(DESIGN), "css", also_plain=True)
     for fn, key in (("explorer.js", "explorer"), ("planner.js", "planner"), ("workspace.js", "workspace"),
-                    ("app-mobile.js", "app_mobile"),
+                    ("app-mobile.js", "app_mobile"), ("trip.js", "trip"),
                     ("auth.js", "auth"), ("booking.js", "booking"),
                     ("community.js", "community"), ("admin-bookings.js", "admin_bookings"), ("app.js", "app")):
         p = os.path.join("static", fn)
@@ -3144,6 +3248,9 @@ def main():
         n += 1
         app_rel = (lang_root(lang) + "app/").lstrip("/")
         write(os.path.join(out, app_rel, "index.html"), render_app_page(lang))
+        n += 1
+        trip_rel = (lang_root(lang) + "trip/").lstrip("/")
+        write(os.path.join(out, trip_rel, "index.html"), render_trip_page(lang))
         n += 1
         # Preserve old bookmarked pricing URLs, but send visitors to the fleet where all rates live.
         pricing_rel = lang_root(lang).lstrip("/") + PAGE_SLUG["pricing"]

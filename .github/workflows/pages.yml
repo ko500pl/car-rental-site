@@ -1,23 +1,27 @@
-# Drive On — build the static site and publish to GitHub Pages.
-# Free replacement for the paused Netlify build pipeline; rentup.ge points here.
-name: Deploy to GitHub Pages
+# Drive On — verify every change; deploy only after an explicit manual request.
+name: Quality Gate and Manual Deploy
 
 on:
+  pull_request:
   push:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      deploy:
+        description: "Deploy the verified artifact to GitHub Pages"
+        required: true
+        default: false
+        type: boolean
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: pages
+  group: quality-gate-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  build:
+  verify:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -25,15 +29,33 @@ jobs:
         with:
           python-version-file: ".python-version"
           cache: "pip"
-      - run: python -m pip install -r requirements.txt
-      - run: python scripts/check_environment.py
-      - run: python build.py dist
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install locked dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Run content, test, JavaScript, build and link gate
+        run: python scripts/run_quality_gate.py --output dist --report artifacts/quality-gate-summary.md
+      - name: Upload verified site and short report
+        uses: actions/upload-artifact@v4
+        with:
+          name: verified-site-${{ github.sha }}
+          path: |
+            dist
+            artifacts/quality-gate-summary.md
+          retention-days: 14
+      - name: Prepare Pages artifact only for an approved manual deploy
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.deploy }}
+        uses: actions/upload-pages-artifact@v3
         with:
           path: dist
   deploy:
-    needs: build
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.deploy }}
+    needs: verify
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

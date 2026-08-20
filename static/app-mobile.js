@@ -473,6 +473,13 @@
     var selPlaces = st.selected.map(function (s) { return BY[s]; }).filter(Boolean);
     show('doaroutempty', selPlaces.length === 0);
     show('doasavegrid', selPlaces.length > 0);
+    var tripLink = $('doatrip');
+    if (tripLink) {
+      tripLink.hidden = selPlaces.length === 0;
+      tripLink.href = (T.tripUrl || '/trip/') + '#trip=' + encodeURIComponent(
+        st.selected.join(',') + ';o=' + st.origin.n + ';s=' + st.start + ';d=' + Math.max(1, st.days) +
+        ';h=' + st.hours + ';p=' + st.people);
+    }
     var tour = (D.standardTours || []).filter(function (r) { return r.s === st.tourId; })[0];
     show('doatourchip', !!tour);
     if (tour) $('doatourname').textContent = tour.n + ' · ' + tour.days + ' ' + T.day;

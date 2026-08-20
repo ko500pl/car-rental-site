@@ -2,8 +2,8 @@
 
 ## FND-01 — ოფიციალური source/build სტრუქტურა
 
-სტატუსი: **დასრულდა**  
-პრიორიტეტი: P0  
+სტატუსი: **დასრულდა**
+პრიორიტეტი: P0
 დამოკიდებულება: —
 
 **მიზანი:** აღარ არსებობდეს გაურკვევლობა, რომელი დირექტორიაა წყარო და რომელი output ქვეყნდება.
@@ -37,7 +37,7 @@ repository ასლები არ წაშლილა და deploy-ში 
 
 ## FND-02 — განმეორებადი გარემო და dependency lock
 
-სტატუსი: **დასრულდა**  
+სტატუსი: **დასრულდა**
 პრიორიტეტი: P0  
 დამოკიდებულება: FND-01
 
@@ -71,8 +71,8 @@ repository ასლები არ წაშლილა და deploy-ში 
 
 ## FND-03 — CI test/build/release gate
 
-სტატუსი: **არ დაწყებულა**  
-პრიორიტეტი: P0  
+სტატუსი: **დასრულდა**
+პრიორიტეტი: P0
 დამოკიდებულება: FND-02
 
 **მიზანი:** გატეხილი კონტენტი ან UI production-ში ვერ მოხვდეს.
@@ -81,9 +81,26 @@ repository ასლები არ წაშლილა და deploy-ში 
 
 **Acceptance criteria:** შეგნებულად გატეხილი reference, YAML და JS smoke test აჩერებს pipeline-ს; წარმატებულ pipeline-ს აქვს build artifact და მოკლე ანგარიში; deploy ავტომატურად არ ხდება approval-ის გარეშე.
 
+**დასრულების თარიღი:** 2026-08-19
+**შემსრულებელი:** Codex
+**მტკიცებულება:** `artifacts/fnd03-quality-gate.md` — 7/7 ეტაპი წარმატებულია;
+2,080 HTML ფაილში გატეხილი შიდა ბმული არ აღმოჩნდა; 29 unit test და 12
+JavaScript ფაილის სინტაქსური შემოწმება წარმატებულია; 4,631-ფაილიანი build artifact
+შეიქმნა. შეგნებულად დაზიანებულმა reference-მა, YAML-მა და JavaScript-მა შესაბამისი
+შემოწმებები გააჩერა. GitHub workflow-ში deploy მხოლოდ ხელით, `deploy: true` არჩევით
+მუშაობს; Render Blueprint-ში `autoDeploy: false` არის მითითებული.
+
+**ძირითადი ფაილები:** `.github/workflows/pages.yml`, `scripts/run_quality_gate.py`,
+`scripts/check_javascript_syntax.py`, `tests/test_release_gate.py`, `render.yaml`,
+`docs/visit-a-city-roadmap/13-CI-RELEASE-GATE.md`.
+
+**დარჩენილი შეზღუდვა:** კონტენტის შემოწმება აფრთხილებს, რომ 17 გამოქვეყნებულ
+ავტომობილს მთავარი ფოტო არ აქვს. ეს non-blocking გაფრთხილებაა; strict რეჟიმში
+რელიზს გააჩერებს და უნდა მოგვარდეს მედიის სამუშაო ეტაპზე.
+
 ## PERF-01 — performance baseline და ბიუჯეტი
 
-სტატუსი: **არ დაწყებულა**  
+სტატუსი: **დასრულდა**  
 პრიორიტეტი: P0  
 დამოკიდებულება: FND-01
 
@@ -92,6 +109,27 @@ repository ასლები არ წაშლილა და deploy-ში 
 **სამუშაო:** homepage/map/planner/account გვერდების cold/warm load; mobile throttling; JS/CSS/image/data waterfall; first content, interactive, map-ready საზომები; asset budget.
 
 **Acceptance criteria:** baseline ანგარიში ინახება `reports/`; განსაზღვრულია p75 სამიზნეები: shell usable ≤3 წმ, map-ready დამატებით ≤2 წმ, horizontal blocking request-ის გარეშე; ყოველი მთავარი bundle/asset budget დოკუმენტირებულია.
+
+**დასრულების თარიღი:** 2026-08-20
+**მტკიცებულება:**
+[`14-PERFORMANCE-BASELINE.md`](14-PERFORMANCE-BASELINE.md),
+[`performance-baseline-2026-08-20.md`](../../reports/performance-baseline-2026-08-20.md)
+და იმავე სახელის JSON ანგარიში.
+
+**საბოლოო შემოწმება:** მთავარი, რუკა, დამგეგმავი და პირადი გვერდი გაიარა
+desktop cold, mobile cold და mobile warm სცენარებმა. 12/12 სცენარში shell usable,
+ადგილობრივი map shell და horizontal overflow სამიზნეები შესრულდა. blocking
+JavaScript request არ აღმოჩნდა. mobile cold shell p75 იყო 380–995 ms, ხოლო map
+shell-ის დამატებითი დრო — 0–153 ms.
+
+**აღმოჩენილი ვალი:** მთავარი გვერდის საწყისი local payload დაახლოებით 1.5 MB-ია
+და 1.1 MB ბიუჯეტს აჭარბებს; 111 ინდივიდუალური asset ზედმეტად მძიმეა. mobile FCP
+2.4–3.4 წამია. ეს რიცხვები დამალული არაა: ისინი გადადის `PERF-02`-სა და
+`PERF-03`-ში, როგორც გაზომვადი ოპტიმიზაციის მიზნები.
+
+**შეზღუდვა:** baseline შეგნებულად ბლოკავს გარე fonts/Firebase/map tile/traffic/
+weather მოთხოვნებს. ამიტომ `map-ready` აქ ნიშნავს ადგილობრივი რუკის shell-ის
+მზადყოფნას; რეალური provider-ების p75 მონიტორინგი `DATA-01`-ის ნაწილია.
 
 ## PERF-02 — რუკის მონაცემების ნაწილობრივი ჩატვირთვა
 

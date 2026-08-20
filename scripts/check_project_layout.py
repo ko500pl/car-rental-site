@@ -9,12 +9,13 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 REQUIRED_SOURCE = (
     "build.py", "theme.py", "yaml_io.py", "content", "sitegen",
-    "static", "admin", "mobile", "tests",
+    "static", "admin", "mobile", "tests", "performance-budget.json",
+    "scripts/audit_performance.py",
 )
 DEPLOY_RULES = {
     "render.yaml": ("python3 build.py dist", "staticPublishPath: ./dist"),
     "netlify.toml": ("python3 build.py dist", 'publish = "dist"'),
-    ".github/workflows/pages.yml": ("python build.py dist", "path: dist"),
+    ".github/workflows/pages.yml": ("run_quality_gate.py --output dist", "path: dist"),
 }
 
 

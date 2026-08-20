@@ -1595,14 +1595,14 @@ body{{padding-inline-start:0!important}}
 .head-app-menu{{position:absolute;top:46px;inset-inline-end:0;z-index:720;min-width:240px;background:#fff;
   border:1px solid #dde5ec;border-radius:14px;box-shadow:0 14px 30px rgba(14,35,51,.16);padding:6px;
   display:flex;flex-direction:column;gap:2px}}
-.head-app-menu a,.head-app-soon{{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;
+.head-app-menu a,.head-app-soon{{display:flex;width:100%;align-items:center;gap:10px;padding:10px 12px;border:0;border-radius:10px;
   color:#0e2333;text-decoration:none}}
-.head-app-menu a:hover{{background:#eefafc;color:#0b5f73;text-decoration:none}}
+.head-app-menu a:hover,.head-app-soon:hover{{background:#eefafc;color:#0b5f73;text-decoration:none}}
 .head-app-menu a>span,.head-app-soon>span{{display:flex;flex-direction:column;gap:1px;min-width:0}}
 .head-app-menu b{{font-size:14px;font-weight:700}}
 .head-app-menu small{{font-size:12px;color:#5a6b7b}}
 .head-app-menu a svg{{color:#0d94ae;flex:0 0 auto}}
-.head-app-soon{{opacity:.55;cursor:default}}
+.head-app-soon{{background:transparent;color:inherit;text-align:start;font:inherit;cursor:pointer}}
 .head-app-soon svg{{color:#718091;flex:0 0 auto}}
 @media(max-width:760px){{.head-app summary>span{{display:none}}.head-app summary{{width:40px;padding:0;justify-content:center}}
   .head-app summary svg:last-child{{display:none}}}}
@@ -1787,6 +1787,26 @@ main .lead,p.lead{{font-size:15px;color:var(--ink-2)}}
 .dow-place{{display:flex;gap:10px;padding:9px 12px;border-bottom:1px solid #f1f5f8;align-items:flex-start;
   background:#fff}}
 .dow-place.on{{background:#f4fcfd}}
+/* ჩემი ტური — მომხმარებლის მარშრუტის ცალკე გვერდი */
+.trip-map{{height:460px;border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:0 0 8px}}
+.trip-status{{font-size:13px;color:#8c5a00;margin:0 0 14px}}
+.trip-empty{{background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px;text-align:center}}
+.trip-empty h2{{margin:0 0 6px}}
+.trip-days{{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin:0 0 26px}}
+.trip-day{{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px}}
+.trip-day h3{{margin:0 0 8px;font-size:16px;display:flex;justify-content:space-between;gap:8px;align-items:baseline}}
+.trip-day h3 small{{font-weight:600;color:var(--brand-2)}}
+.trip-day ol{{margin:0;padding-inline-start:18px;display:flex;flex-direction:column;gap:7px}}
+.trip-day li{{font-size:14px}}
+.trip-day li small{{display:block;color:var(--ink-2);font-size:12px}}
+.trip-day.back{{background:#f7f9fb}}
+.trip-day.back p{{margin:0;font-size:13px;color:var(--ink-2)}}
+.trip-card img{{width:100%;height:150px;object-fit:cover;border-radius:10px;margin:0 0 10px}}
+.trip-msg{{margin:10px 0 0;font-size:13px;color:var(--ok)}}
+@media print{{
+  .site-head,.site-foot,.crumbs,.cta,.trip-status,.booking-dialog{{display:none!important}}
+  .trip-map{{height:320px}}
+}}
 .dow-det{{color:#0b5f73;font-weight:600}}
 .dow-place.dim .dow-det{{color:#6b7a88;font-weight:500}}
 .dow-grab{{flex:0 0 auto;width:22px;align-self:center;margin-inline-start:-4px;color:#8ba0b2;
