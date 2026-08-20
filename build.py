@@ -78,6 +78,27 @@ CARS = {os.path.splitext(os.path.basename(p))[0]: load(p)
 CARS_ALL = CARS
 CARS = {k: v for k, v in CARS.items() if is_public(v)}
 CARS = dict(sorted(CARS.items(), key=lambda kv: kv[1].get("order", 999)))
+
+
+def _price(value, fallback=0.0):
+    """A YAML price cell as a number. Empty, missing or unparsable -> fallback."""
+    try:
+        return float(str(value).replace(",", ".").strip())
+    except (TypeError, ValueError):
+        return fallback
+
+
+# Price map handed to the browser so the booking dialog can quote a car without
+# a round trip. The bands are the same three the rental program uses --
+# 1+ / 7+ / 30+ nights -- so the site and the program never disagree on a price.
+CAR_PRICES = {}
+for _slug, _car in CARS.items():
+    _p1 = _price(_car.get("price_1_6"))
+    _p7 = _price(_car.get("price_7_29"), _p1) or _p1
+    _p30 = _price(_car.get("price_30"), _p7) or _p7
+    CAR_PRICES[_slug] = {"p1": _p1, "p7": _p7, "p30": _p30,
+                         "dep": _price(_car.get("deposit"))}
+
 POSTS = {os.path.splitext(os.path.basename(p))[0]: load(p)
          for p in sorted(glob.glob("content/posts/*.yml"))}
 POSTS_ALL = POSTS
@@ -675,6 +696,7 @@ def shell(lang, current, head, body, depth, tail=""):
         cfg["accountUrl"] = page_url(lang, "account", False)
         cfg["plannerUrl"] = page_url(lang, "map", False) + "#planner"
         cfg["booking"] = BOOKING
+        cfg["cars"] = CAR_PRICES
         cfg["whatsapp"] = str(SITE.get("whatsapp") or SITE.get("mobile_e164")
                               or SITE.get("phone_e164", "")).replace("+", "").replace(" ", "")
         cfg["siteUrl"] = SITE_URL
@@ -697,19 +719,20 @@ def shell(lang, current, head, body, depth, tail=""):
 
 def inquiry_widget(lang, context=""):
     tx = {
-        "ka": ("დაჯავშნეთ ავტომობილი", "არჩეული ავტომობილი", "დაწყება", "დაბრუნება", "სახელი", "ტელეფონი / WhatsApp", "შენიშვნა (არასავალდებულო)", "WhatsApp", "მოთხოვნის გაგზავნა", "ხელმისაწვდომობას სწრაფად გადავამოწმებთ და დაგიკავშირდებით.", "დახურვა"),
-        "en": ("Book a car", "Selected car", "Start date", "Return date", "Name", "Phone / WhatsApp", "Notes (optional)", "WhatsApp", "Send request", "We’ll quickly confirm availability and contact you.", "Close"),
-        "ru": ("Забронировать автомобиль", "Выбранный автомобиль", "Дата начала", "Дата возврата", "Имя", "Телефон / WhatsApp", "Комментарий (необязательно)", "WhatsApp", "Отправить запрос", "Мы быстро проверим наличие и свяжемся с вами.", "Закрыть"),
-        "fa": ("رزرو خودرو", "خودروی انتخابی", "تاریخ شروع", "تاریخ بازگشت", "نام", "تلفن / واتس‌اپ", "یادداشت (اختیاری)", "واتس‌اپ", "ارسال درخواست", "موجودی را سریع بررسی کرده و با شما تماس می‌گیریم.", "بستن"),
-        "he": ("הזמנת רכב", "הרכב שנבחר", "תאריך התחלה", "תאריך החזרה", "שם", "טלפון / WhatsApp", "הערות (לא חובה)", "WhatsApp", "שליחת בקשה", "נבדוק זמינות במהירות וניצור קשר.", "סגירה"),
-        "ar": ("حجز سيارة", "السيارة المختارة", "تاريخ البدء", "تاريخ الإرجاع", "الاسم", "الهاتف / واتساب", "ملاحظات (اختياري)", "واتساب", "إرسال الطلب", "سنتحقق من التوفر سريعًا ونتواصل معك.", "إغلاق")
+        "ka": ("დაჯავშნეთ ავტომობილი", "არჩეული ავტომობილი", "დაწყება", "დაბრუნება", "სახელი", "ტელეფონი / WhatsApp", "შენიშვნა (არასავალდებულო)", "WhatsApp", "მოთხოვნის გაგზავნა", "ხელმისაწვდომობას სწრაფად გადავამოწმებთ და დაგიკავშირდებით.", "დახურვა", "ელფოსტა (არასავალდებულო)", "აღების ადგილი (არასავალდებულო)"),
+        "en": ("Book a car", "Selected car", "Start date", "Return date", "Name", "Phone / WhatsApp", "Notes (optional)", "WhatsApp", "Send request", "We’ll quickly confirm availability and contact you.", "Close", "Email (optional)", "Pickup location (optional)"),
+        "ru": ("Забронировать автомобиль", "Выбранный автомобиль", "Дата начала", "Дата возврата", "Имя", "Телефон / WhatsApp", "Комментарий (необязательно)", "WhatsApp", "Отправить запрос", "Мы быстро проверим наличие и свяжемся с вами.", "Закрыть", "Эл. почта (необязательно)", "Место получения (необязательно)"),
+        "fa": ("رزرو خودرو", "خودروی انتخابی", "تاریخ شروع", "تاریخ بازگشت", "نام", "تلفن / واتس‌اپ", "یادداشت (اختیاری)", "واتس‌اپ", "ارسال درخواست", "موجودی را سریع بررسی کرده و با شما تماس می‌گیریم.", "بستن", "ایمیل (اختیاری)", "محل تحویل (اختیاری)"),
+        "he": ("הזמנת רכב", "הרכב שנבחר", "תאריך התחלה", "תאריך החזרה", "שם", "טלפון / WhatsApp", "הערות (לא חובה)", "WhatsApp", "שליחת בקשה", "נבדוק זמינות במהירות וניצור קשר.", "סגירה", "אימייל (לא חובה)", "מקום איסוף (לא חובה)"),
+        "ar": ("حجز سيارة", "السيارة المختارة", "تاريخ البدء", "تاريخ الإرجاع", "الاسم", "الهاتف / واتساب", "ملاحظات (اختياري)", "واتساب", "إرسال الطلب", "سنتحقق من التوفر سريعًا ونتواصل معك.", "إغلاق", "البريد الإلكتروني (اختياري)", "مكان الاستلام (اختياري)")
     }[lang]
     return f'''<div class="booking-dialog" data-booking-dialog hidden role="dialog" aria-modal="true" aria-labelledby="booking-title-{lang}"><div class="booking-modal-card">
 <button class="booking-close" type="button" data-booking-close aria-label="{E(tx[10])}">×</button><div class="booking-brand" aria-hidden="true">DO</div>
 <form class="inquiry-mini" data-inquiry name="rental-inquiry" method="POST" data-netlify="true" netlify-honeypot="company" data-lang="{lang}">
-<input type="hidden" name="form-name" value="rental-inquiry"><input type="hidden" name="context" value="{E(context)}"><input type="hidden" name="requested_car" value=""><input type="hidden" name="page_url" value=""><p class="hp" hidden><label>Company<input name="company" tabindex="-1" autocomplete="off"></label></p>
+<input type="hidden" name="form-name" value="rental-inquiry"><input type="hidden" name="context" value="{E(context)}"><input type="hidden" name="requested_car" value=""><input type="hidden" name="car_slug" value=""><input type="hidden" name="page_url" value=""><p class="hp" hidden><label>Company<input name="company" tabindex="-1" autocomplete="off"></label></p>
 <h2 id="booking-title-{lang}">{E(tx[0])}</h2><p class="booking-lead">{E(tx[9])}</p><div class="booking-choice" data-booking-choice hidden><small>{E(tx[1])}</small><strong></strong></div>
-<div class="inquiry-grid"><label>{E(tx[2])}<input name="start" type="date" required></label><label>{E(tx[3])}<input name="end" type="date" required></label><label>{E(tx[4])}<input name="name" required autocomplete="name"></label><label>{E(tx[5])}<input name="phone" required autocomplete="tel"></label><label class="inquiry-notes">{E(tx[6])}<textarea name="notes" rows="2"></textarea></label></div>
+<div class="inquiry-grid"><label>{E(tx[2])}<input name="start" type="date" required></label><label>{E(tx[3])}<input name="end" type="date" required></label><label>{E(tx[4])}<input name="name" required autocomplete="name"></label><label>{E(tx[5])}<input name="phone" required autocomplete="tel"></label><label>{E(tx[11])}<input name="email" type="email" autocomplete="email"></label><label>{E(tx[12])}<input name="pickup" autocomplete="off"></label><label class="inquiry-notes">{E(tx[6])}<textarea name="notes" rows="2"></textarea></label></div>
+<p class="inquiry-quote" data-quote aria-live="polite"></p>
 <div class="inquiry-actions"><button class="btn" type="submit">{E(tx[8])}</button><button class="btn ghost wa" type="button" data-inquiry-wa>{E(tx[7])}</button></div><p class="inquiry-status" role="status" aria-live="polite"></p></form></div></div>'''
 
 

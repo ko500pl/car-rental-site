@@ -48,14 +48,122 @@
   function boot() { document.querySelectorAll("[data-booking]").forEach(init); }
   function initInquiry(root) {
     var status=root.querySelector('.inquiry-status'), today=new Date().toISOString().slice(0,10);
+    var lang=root.dataset.lang||'en', t=TEXT[lang]||TEXT.en;
     var start=root.querySelector('[name="start"]'),end=root.querySelector('[name="end"]');
     start.min=today;end.min=today;start.addEventListener('input',function(){end.min=start.value||today;});
     function message(){var fd=new FormData(root),lang=root.dataset.lang||'en';return (lang==='ka'?'გამარჯობა, მსურს ავტომობილის დაჯავშნა. ':'Hello, I would like to book a car. ')+
       (fd.get('requested_car')?'Car: '+fd.get('requested_car')+'. ':'')+(fd.get('start')||'-')+' — '+(fd.get('end')||'-')+'. '+
       'Name: '+(fd.get('name')||'-')+'. Phone: '+(fd.get('phone')||'-')+'. Page: '+location.href+(fd.get('notes')?'. Notes: '+fd.get('notes'):'');}
     root.querySelector('[data-inquiry-wa]').addEventListener('click',function(){if(!root.reportValidity())return;var num=String((window.FH_CFG||{}).whatsapp||'').replace(/\D/g,'');if(!num){status.textContent='WhatsApp is not configured.';return;}window.open('https://wa.me/'+num+'?text='+encodeURIComponent(message()),'_blank','noopener');});
-    root.addEventListener('submit',function(){root.querySelector('[name="page_url"]').value=location.href;});
+
+    /* ── ფასის შეფასება დიალოგში ────────────────────────────────────────
+       ბენდები ზუსტად ისეთია, როგორიც გამქირავებლის პროგრამაშია:
+       1+ / 7+ / 30+ ღამე. დღეები exclusive-ია (წაყვანის დღე არ ითვლება). */
+    var quoteBox = root.querySelector('[data-quote]');
+    function drawQuote() {
+      if (!quoteBox) return null;
+      var q = quoteFor(root);
+      if (!q) { quoteBox.textContent = ''; return null; }
+      quoteBox.textContent = q.days + ' ' + t.days +
+        (q.rate ? ' · ' + t.rate + ': ' + money(q.rate) + ' · ' + t.total + ': ' + money(q.rental) +
+          (q.deposit ? ' · ' + t.deposit + ': ' + money(q.deposit) : '') : '');
+      return q;
+    }
+    ['start', 'end'].forEach(function (n) {
+      var el = root.querySelector('[name="' + n + '"]');
+      if (el) el.addEventListener('input', drawQuote);
+    });
+    document.addEventListener('fh:booking-car', drawQuote);
+    drawQuote();
+
+    /* ── გაგზავნა ───────────────────────────────────────────────────────
+       ორი მისამართით ერთდროულად:
+         1. Firestore `bookings` — აქედან კითხულობს გამქირავებლის პროგრამა
+         2. Netlify Forms — ლიდი არ იკარგება მაშინაც, თუ Firebase ვერ მუშაობს
+       თუ Firebase საერთოდ არ არის ჩართული, ფორმა ისე იქცევა, როგორც აქამდე. */
+    if (window.FH && typeof window.FH.firebase === 'function') {
+      root.dataset.fhCloud = '1';   /* ajaxifyForms-მა ხელი აღარ ახლოს */
+      root.addEventListener('submit', function (ev) {
+        ev.preventDefault();
+        root.querySelector('[name="page_url"]').value = location.href;
+        if (!root.reportValidity()) return;
+        var button = root.querySelector('[type="submit"]');
+        if (button) button.disabled = true;
+        status.textContent = t.sending;
+        var cloud = false;
+        sendToCloud(root, drawQuote())
+          .then(function () { cloud = true; })
+          .catch(function (err) { console.warn('[booking] cloud:', err && (err.code || err.message)); })
+          .then(function () { return postForm(root).catch(function () { return null; }); })
+          .then(function () {
+            status.textContent = t.success;
+            root.reset();
+            if (quoteBox) quoteBox.textContent = '';
+          })
+          .catch(function () { status.textContent = cloud ? t.success : t.failed; })
+          .then(function () { if (button) button.disabled = false; });
+      });
+    } else {
+      root.addEventListener('submit', function () { root.querySelector('[name="page_url"]').value = location.href; });
+    }
   }
+
+  /* დღეების დათვლა და ტარიფის ბენდი — იგივე წესი, რაც პროგრამაშია. */
+  function quoteFor(root) {
+    var fd = new FormData(root);
+    var start = String(fd.get('start') || ''), end = String(fd.get('end') || '');
+    if (!validDate(start) || !validDate(end)) return null;
+    var days = Math.ceil((new Date(end + 'T12:00:00') - new Date(start + 'T12:00:00')) / 86400000);
+    if (!(days >= 1)) return null;
+    var slug = String(fd.get('car_slug') || '');
+    var c = ((window.FH_CFG || {}).cars || {})[slug];
+    if (!c) return { days: days, slug: slug, rate: 0, rental: 0, deposit: 0, due: 0 };
+    var rate = days >= 30 ? c.p30 : (days >= 7 ? c.p7 : c.p1);
+    var rental = Math.round(rate * days), deposit = c.dep || 0;
+    return { days: days, slug: slug, rate: rate, rental: rental, deposit: deposit, due: rental + deposit };
+  }
+
+  function sendToCloud(root, q) {
+    var fd = new FormData(root);
+    /* მანქანის გარეშე გახსნილი დიალოგიც იწერება — მოდელს გამქირავებელი
+       ირჩევს პროგრამაში. დაკარგული მოთხოვნა უარესია, ვიდრე არასრული. */
+    var slug = String(fd.get('car_slug') || '') || 'any';
+    return window.FH.firebase().then(function (fb) {
+      var M = fb.M, db = fb.db, auth = fb.auth;
+      var signed = auth.currentUser
+        ? Promise.resolve(auth.currentUser)
+        : M.auth.signInAnonymously(auth).then(function (c) { return c.user; });
+      return signed.then(function (user) {
+        var doc = {
+          uid: user.uid,
+          carSlug: slug,
+          carName: String(fd.get('requested_car') || ''),
+          start: String(fd.get('start') || ''),
+          end: String(fd.get('end') || ''),
+          days: q ? q.days : 1,
+          drivers: 1,
+          dailyRateGel: q ? q.rate : 0,
+          rentalGel: q ? q.rental : 0,
+          depositGel: q ? q.deposit : 0,
+          paymentDueGel: q ? q.due : 0,
+          currency: 'GEL',
+          status: 'pending',
+          paymentStatus: 'required',
+          created: M.db.serverTimestamp(),
+          name: String(fd.get('name') || '').slice(0, 120),
+          phone: String(fd.get('phone') || '').slice(0, 32),
+          email: String(fd.get('email') || '').slice(0, 160),
+          pickup: String(fd.get('pickup') || '').slice(0, 160),
+          notes: String(fd.get('notes') || '').slice(0, 2000),
+          lang: root.dataset.lang || 'en',
+          source: 'site',
+          pageUrl: location.href.slice(0, 400)
+        };
+        return M.db.addDoc(M.db.collection(db, 'bookings'), doc);
+      });
+    });
+  }
+
   function validDate(v){return /^\d{4}-\d{2}-\d{2}$/.test(v||'');}
   function sourceDates(){
     var from=document.querySelector('#datefrom'),to=document.querySelector('#dateto'),day=document.querySelector('#expday');
@@ -73,6 +181,8 @@
     function open(trigger){last=trigger;var dates=sourceDates(),s=form.querySelector('[name="start"]'),e=form.querySelector('[name="end"]');
       if(dates.start)s.value=dates.start;if(dates.end)e.value=dates.end;e.min=s.value||e.min;
       var car=trigger.dataset.carName||'',slug=trigger.dataset.car||'';form.querySelector('[name="requested_car"]').value=car;form.querySelector('[name="context"]').value=slug||form.querySelector('[name="context"]').value;
+      var slugField=form.querySelector('[name="car_slug"]');if(slugField)slugField.value=slug;
+      document.dispatchEvent(new CustomEvent('fh:booking-car',{detail:{slug:slug,name:car}}));
       choice.hidden=!car;choice.querySelector('strong').textContent=car;dialog.hidden=false;document.body.classList.add('booking-open');setTimeout(function(){s.focus();},30);
     }
     document.addEventListener('click',function(ev){var trigger=ev.target.closest('[data-booking-open]');if(trigger){ev.preventDefault();open(trigger);return;}if(ev.target===dialog||ev.target.closest('[data-booking-close]'))close();});
@@ -83,9 +193,18 @@
   /* GitHub Pages-ზე ფორმის POST-ს მიმღები არ აქვს — Netlify Forms-ს AJAX-ით
      ვაწვდით ძველი Netlify მისამართიდან, რომ ლიდები ისევ შეგროვდეს. */
   var NETLIFY_ORIGIN='https://subtle-naiad-c2db5d.netlify.app';
+  /* ლიდის ასლი Netlify Forms-ში. Firestore-ის ჩაწერის შემდეგაც იგზავნება —
+     ორივე ერთდროულად რომ არ ჩავარდეს. */
+  function postForm(f){
+    var origin=(location.hostname.indexOf('netlify.app')>=0)?location.origin:NETLIFY_ORIGIN;
+    return fetch(origin+'/',{method:'POST',mode:'no-cors',
+      headers:{'Content-Type':'application/x-www-form-urlencoded'},
+      body:new URLSearchParams(new FormData(f)).toString()});
+  }
   function ajaxifyForms(){
     if(location.hostname.indexOf('netlify.app')>=0)return; /* Netlify-ზე ჩვეულებრივ მუშაობს */
     document.querySelectorAll('form[data-netlify]').forEach(function(f){
+      if(f.dataset.fhCloud==='1')return; /* ღრუბლის გზა თავად აგზავნის — დუბლიკატი არ გვინდა */
       f.addEventListener('submit',function(e){
         e.preventDefault();
         if(!f.reportValidity())return;

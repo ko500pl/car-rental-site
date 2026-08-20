@@ -37,7 +37,14 @@
           function draw(rows) {
             var box = root.querySelector("#admin-list");
             box.innerHTML = rows.map(function (x) {
-              return '<article class="admin-booking" data-id="' + esc(x.id) + '"><div><b>' + esc(x.carName || x.carSlug) + '</b><span>' + esc(x.start) + " → " + esc(x.end) + " · " + x.days + " დღე · " + x.drivers + ' მძღოლი</span><span>' + Math.round(x.paymentDueGel || 0) + " GEL · გადახდა: " + esc(x.paymentStatus) + '</span></div><label>სტატუსი<select data-status><option>pending</option><option>confirmed</option><option>cancelled</option><option>completed</option></select></label><label>გადახდა<select data-payment><option>required</option><option>pending</option><option>paid</option><option>refunded</option></select></label><button class="btn sm" data-save>შენახვა</button></article>';
+              var who = x.name ? esc(x.name) : "—";
+              if (x.phone) who += ' · <a href="tel:' + esc(x.phone) + '" dir="ltr">' + esc(x.phone) + "</a>";
+              if (x.email) who += ' · <a href="mailto:' + esc(x.email) + '">' + esc(x.email) + "</a>";
+              var extra = [];
+              if (x.pickup) extra.push("აღება: " + esc(x.pickup));
+              if (x.assignedPlate) extra.push("ნომერი: " + esc(x.assignedPlate));
+              if (x.notes) extra.push(esc(x.notes));
+              return '<article class="admin-booking" data-id="' + esc(x.id) + '"><div><b>' + esc(x.carName || x.carSlug) + '</b><span class="admin-who">' + who + '</span><span>' + esc(x.start) + " → " + esc(x.end) + " · " + x.days + " დღე · " + (x.drivers || 1) + ' მძღოლი</span><span>' + Math.round(x.paymentDueGel || 0) + " GEL · გადახდა: " + esc(x.paymentStatus) + '</span>' + (extra.length ? '<span class="admin-extra">' + extra.join(" · ") + "</span>" : "") + '</div><label>სტატუსი<select data-status><option>pending</option><option>confirmed</option><option>cancelled</option><option>completed</option></select></label><label>გადახდა<select data-payment><option>required</option><option>pending</option><option>paid</option><option>refunded</option></select></label><button class="btn sm" data-save>შენახვა</button></article>';
             }).join("") || '<p class="admin-note">ჩანაწერი არ არის.</p>';
             box.querySelectorAll(".admin-booking").forEach(function (card) {
               var x = rows.find(function (row) { return row.id === card.dataset.id; });

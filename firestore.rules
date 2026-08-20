@@ -2,7 +2,27 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     function signedIn() { return request.auth != null; }
-    function admin() { return signedIn() && request.auth.token.admin == true; }
+
+    // ── ვინ არის ადმინისტრატორი ──────────────────────────────────────────
+    // ორი გზა, ერთდროულად:
+    //   1. custom claim `admin` — თუ ოდესმე დაყენდება Admin SDK-ით
+    //   2. UID-ების სია ქვემოთ — ამას არც გასაღები სჭირდება და არც სკრიპტი
+    // მეორე გზა ზუსტად ისეთივე უსაფრთხოა: ამ ფაილის შეცვლა მხოლოდ პროექტის
+    // მფლობელს შეუძლია, ანუ სიაში თავის დამატება გარედან შეუძლებელია.
+    //
+    // როგორ შეავსო:
+    //   ტელეფონის UID — აპლიკაცია აჩვენებს „შენახვა და შემოწმება"-ს შემდეგ
+    //   შენი UID     — Firebase Console → Authentication → Users → User UID
+    function adminUids() {
+      return [
+        'PHONE-UID-AQ-CHASVI',
+        'CHEMI-UID-AQ-CHASVI'
+      ];
+    }
+    function admin() {
+      return signedIn() && (request.auth.token.admin == true
+        || request.auth.uid in adminUids());
+    }
     function owner(data) { return signedIn() && data.uid == request.auth.uid; }
     function member(data) { return signedIn() && request.auth.uid in data.memberIds; }
 
@@ -15,14 +35,38 @@ service cloud.firestore {
       allow delete: if owner(resource.data);
     }
     match /bookings/{id} {
+      // A request carries who to call back. Without name and phone the rental
+      // program cannot open a booking at all (customer_name is NOT NULL), so
+      // both are required here rather than validated only in the browser.
       allow create: if owner(request.resource.data)
-        && request.resource.data.keys().hasOnly(['uid','carSlug','carName','start','end','days','drivers','dailyRateGel','rentalGel','depositGel','paymentDueGel','currency','status','paymentStatus','created'])
+        && request.resource.data.keys().hasOnly(['uid','carSlug','carName','start','end','days','drivers','dailyRateGel','rentalGel','depositGel','paymentDueGel','currency','status','paymentStatus','created','name','phone','email','pickup','dropoff','flight','notes','lang','source','pageUrl'])
+        && request.resource.data.keys().hasAll(['uid','carSlug','start','end','days','name','phone','status','paymentStatus'])
         && request.resource.data.carSlug is string
+        && request.resource.data.carSlug.size() <= 80
         && request.resource.data.start is string
         && request.resource.data.end is string
-        && request.resource.data.days is int && request.resource.data.days >= 1
-        && request.resource.data.drivers is int && request.resource.data.drivers >= 1
-        && request.resource.data.paymentDueGel is number && request.resource.data.paymentDueGel >= 0
+        && request.resource.data.days is int
+        && request.resource.data.days >= 1 && request.resource.data.days <= 365
+        && request.resource.data.name is string
+        && request.resource.data.name.size() >= 2 && request.resource.data.name.size() <= 120
+        && request.resource.data.phone is string
+        && request.resource.data.phone.size() >= 5 && request.resource.data.phone.size() <= 32
+        && (!request.resource.data.keys().hasAny(['email'])
+          || (request.resource.data.email is string && request.resource.data.email.size() <= 160))
+        && (!request.resource.data.keys().hasAny(['pickup'])
+          || (request.resource.data.pickup is string && request.resource.data.pickup.size() <= 160))
+        && (!request.resource.data.keys().hasAny(['dropoff'])
+          || (request.resource.data.dropoff is string && request.resource.data.dropoff.size() <= 160))
+        && (!request.resource.data.keys().hasAny(['flight'])
+          || (request.resource.data.flight is string && request.resource.data.flight.size() <= 40))
+        && (!request.resource.data.keys().hasAny(['notes'])
+          || (request.resource.data.notes is string && request.resource.data.notes.size() <= 2000))
+        && (!request.resource.data.keys().hasAny(['drivers'])
+          || (request.resource.data.drivers is int && request.resource.data.drivers >= 1
+            && request.resource.data.drivers <= 9))
+        && (!request.resource.data.keys().hasAny(['paymentDueGel'])
+          || (request.resource.data.paymentDueGel is number
+            && request.resource.data.paymentDueGel >= 0))
         && request.resource.data.status == 'pending'
         && request.resource.data.paymentStatus == 'required';
       allow read: if owner(resource.data) || admin();
@@ -106,6 +150,14 @@ service cloud.firestore {
         && request.resource.data.text.size() > 0
         && request.resource.data.text.size() <= 2000;
     }
+    // ── Written by the rental program (Fleet Freak), read by everyone ──────
+    // fleet/{slug}        — price bands, deposit, photo, how many units exist
+    // availability/{slug} — free units per day for the next ~180 days
+    // Both are public facts that already appear on the site; only the phone
+    // signed in as the admin account may write them.
+    match /fleet/{slug}        { allow read: if true; allow write: if admin(); }
+    match /availability/{slug} { allow read: if true; allow write: if admin(); }
+
     match /{document=**} { allow read, write: if false; }
   }
 }
