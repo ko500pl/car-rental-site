@@ -1,5 +1,102 @@
 {
-  "generated_at": "2026-08-21T06:29:39.851687+00:00",
-  "nodes": {},
+  "generated_at": "2026-08-21T07:19:41.111953+00:00",
+  "nodes": {
+    "build": {
+      "code_fingerprint": "42fb0c195abb6b008736ee1a79a9dea81ddf8456b4c9afb36d42c3fa1eac088a",
+      "label": "build.py",
+      "last": "2026-08-21T06:30:54.745177+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-21T06:30:54.745177+00:00",
+          "outcome": "useful",
+          "q": "მინდა რომ შეისწავლო პროგრამა და გავაგრძელოთ მუშაობა"
+        }
+      ],
+      "score": 0.999217743,
+      "source_file": "build.py",
+      "status": "tentative",
+      "uses": 1
+    },
+    "firebase": {
+      "code_fingerprint": "bffccfb5f7caca5e83192e639ce73c22a39835a81658e61abefa3fdc8ece531f",
+      "label": "FIREBASE.md",
+      "last": "2026-08-21T06:30:54.745177+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-21T06:30:54.745177+00:00",
+          "outcome": "useful",
+          "q": "მინდა რომ შეისწავლო პროგრამა და გავაგრძელოთ მუშაობა"
+        }
+      ],
+      "score": 0.999217743,
+      "source_file": "FIREBASE.md",
+      "status": "tentative",
+      "uses": 1
+    },
+    "implementation_report_tests": {
+      "code_fingerprint": "a270c97792dc862416826dd0d9dc5d394b64e0775d7d4869a1a455004a7caa7c",
+      "label": "Tests",
+      "last": "2026-08-21T06:30:54.745177+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-21T06:30:54.745177+00:00",
+          "outcome": "useful",
+          "q": "მინდა რომ შეისწავლო პროგრამა და გავაგრძელოთ მუშაობა"
+        }
+      ],
+      "score": 0.999217743,
+      "source_file": "IMPLEMENTATION_REPORT.md",
+      "status": "tentative",
+      "uses": 1
+    },
+    "static_admin_bookings": {
+      "code_fingerprint": "a4ecff9882aa74582ebc71ec1a16a5bc7a07014f30e36ea44864a4f7f1fbc0bf",
+      "label": "admin-bookings.js",
+      "last": "2026-08-21T06:30:54.745177+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-21T06:30:54.745177+00:00",
+          "outcome": "useful",
+          "q": "მინდა რომ შეისწავლო პროგრამა და გავაგრძელოთ მუშაობა"
+        }
+      ],
+      "score": 0.999217743,
+      "source_file": "static/admin-bookings.js",
+      "status": "tentative",
+      "uses": 1
+    },
+    "static_booking": {
+      "code_fingerprint": "70e2fab06fc88ba196c17f11efccd1a7e2b4fa72eadf5fb72481b71128aece00",
+      "label": "booking.js",
+      "last": "2026-08-21T06:30:54.745177+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-21T06:30:54.745177+00:00",
+          "outcome": "useful",
+          "q": "მინდა რომ შეისწავლო პროგრამა და გავაგრძელოთ მუშაობა"
+        }
+      ],
+      "score": 0.999217743,
+      "source_file": "static/booking.js",
+      "status": "tentative",
+      "uses": 1
+    },
+    "theme": {
+      "code_fingerprint": "3aa09256799d6697b0c7de6691adabb58cd969a89894dba77ed0324d74937be5",
+      "label": "theme.py",
+      "last": "2026-08-21T06:30:54.745177+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-21T06:30:54.745177+00:00",
+          "outcome": "useful",
+          "q": "მინდა რომ შეისწავლო პროგრამა და გავაგრძელოთ მუშაობა"
+        }
+      ],
+      "score": 0.999217743,
+      "source_file": "theme.py",
+      "status": "tentative",
+      "uses": 1
+    }
+  },
   "version": 1
 }
