@@ -1,0 +1,159 @@
+{
+  "static": [
+    {
+      "page": "index.html",
+      "html_bytes": 100283,
+      "local_css_bytes": 160864,
+      "local_js_bytes": 496452,
+      "local_image_bytes": 530712,
+      "local_initial_total_bytes": 1288311,
+      "blocking_script_count": 0,
+      "resources": [
+        {
+          "kind": "css",
+          "url": "/assets/style.f3b7cbff15.css",
+          "blocking": true,
+          "bytes": 146073,
+          "path": "assets\\style.f3b7cbff15.css"
+        },
+        {
+          "kind": "css",
+          "url": "/assets/leaflet/leaflet.css",
+          "blocking": true,
+          "bytes": 14791,
+          "path": "assets\\leaflet\\leaflet.css"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/do-logo-tight.png",
+          "blocking": false,
+          "bytes": 530712,
+          "path": "assets\\do-logo-tight.png"
+        },
+        {
+          "kind": "js",
+          "url": "/assets/leaflet/leaflet.js",
+          "blocking": false,
+          "bytes": 147552,
+          "path": "assets\\leaflet\\leaflet.js"
+        },
+        {
+          "kind": "js",
+          "url": "/assets/weather.js",
+          "blocking": false,
+          "bytes": 3194,
+          "path": "assets\\weather.js"
+        },
+        {
+          "kind": "js",
+          "url": "/assets/travel-en.89a2900195.js",
+          "blocking": false,
+          "bytes": 195254,
+          "path": "assets\\travel-en.89a2900195.js"
+        },
+        {
+          "kind": "js",
+          "url": "/assets/workspace.64b4613630.js",
+          "blocking": false,
+          "bytes": 61946,
+          "path": "assets\\workspace.64b4613630.js"
+        },
+        {
+          "kind": "js",
+          "url": "/assets/auth.a5e387e019.js",
+          "blocking": false,
+          "bytes": 55004,
+          "path": "assets\\auth.a5e387e019.js"
+        },
+        {
+          "kind": "js",
+          "url": "/assets/booking.950dfc8d8b.js",
+          "blocking": false,
+          "bytes": 19213,
+          "path": "assets\\booking.950dfc8d8b.js"
+        },
+        {
+          "kind": "js",
+          "url": "/assets/community.bf6b45a485.js",
+          "blocking": false,
+          "bytes": 10267,
+          "path": "assets\\community.bf6b45a485.js"
+        },
+        {
+          "kind": "js",
+          "url": "/assets/app.82bc716258.js",
+          "blocking": false,
+          "bytes": 4022,
+          "path": "assets\\app.82bc716258.js"
+        }
+      ],
+      "missing": []
+    },
+    {
+      "page": "map/index.html",
+      "html_bytes": 941,
+      "local_css_bytes": 0,
+      "local_js_bytes": 0,
+      "local_image_bytes": 0,
+      "local_initial_total_bytes": 941,
+      "blocking_script_count": 0,
+      "resources": [],
+      "missing": []
+    },
+    {
+      "page": "account/index.html",
+      "html_bytes": 12077,
+      "local_css_bytes": 146073,
+      "local_js_bytes": 88506,
+      "local_image_bytes": 530712,
+      "local_initial_total_bytes": 777368,
+      "blocking_script_count": 0,
+      "resources": [
+        {
+          "kind": "css",
+          "url": "/assets/style.f3b7cbff15.css",
+          "blocking": true,
+          "bytes": 146073,
+          "path": "assets\\style.f3b7cbff15.css"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/do-logo-tight.png",
+          "blocking": false,
+          "bytes": 530712,
+          "path": "assets\\do-logo-tight.png"
+        },
+        {
+          "kind": "js",
+          "url": "/assets/auth.a5e387e019.js",
+          "blocking": false,
+          "bytes": 55004,
+          "path": "assets\\auth.a5e387e019.js"
+        },
+        {
+          "kind": "js",
+          "url": "/assets/booking.950dfc8d8b.js",
+          "blocking": false,
+          "bytes": 19213,
+          "path": "assets\\booking.950dfc8d8b.js"
+        },
+        {
+          "kind": "js",
+          "url": "/assets/community.bf6b45a485.js",
+          "blocking": false,
+          "bytes": 10267,
+          "path": "assets\\community.bf6b45a485.js"
+        },
+        {
+          "kind": "js",
+          "url": "/assets/app.82bc716258.js",
+          "blocking": false,
+          "bytes": 4022,
+          "path": "assets\\app.82bc716258.js"
+        }
+      ],
+      "missing": []
+    }
+  ],
+  "browser": []
+}

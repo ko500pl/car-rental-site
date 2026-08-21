@@ -612,12 +612,12 @@ def header_html(lang, current):
 <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
 </summary>
 <div class="head-app-menu">
-<a href="/assets/downloads/rentup-android.apk" download>
+<a class="app-download" href="/assets/downloads/rentup-android.apk" download>
 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5"></path><path d="M4 19h16"></path></svg>
 <span><b>{E(app_copy[1])}</b><small>{E(app_copy[3])}</small></span></a>
-<span class="head-app-soon">
+<button type="button" class="head-app-soon" data-ios-install>
 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5"></rect><path d="M10.5 18.5h3"></path></svg>
-<span><b>{E(app_copy[2])}</b><small>{E(app_soon)}</small></span></span>
+<span><b>{E(app_copy[2])}</b><small>{E(app_soon)}</small></span></button>
 </div>
 </details>
 <label class="lang-nav"><span class="sr-only">{E(u['ui']['lang_label'])}</span>

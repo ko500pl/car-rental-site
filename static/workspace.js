@@ -26,9 +26,10 @@
   }
   function fetchChunk(region, signal) {
     if (!region || !chunkManifest[region] || chunkLoaded[region]) return Promise.resolve();
-    if (chunkPending[region]) return chunkPending[region];
+    var pending = chunkPending[region];
+    if (pending && (!pending.signal || !pending.signal.aborted)) return pending.promise;
     var spec = chunkManifest[region], cacheKey = spec.url;
-    chunkPending[region] = fetch(spec.url, { signal: signal, credentials: 'same-origin' })
+    var promise = fetch(spec.url, { signal: signal, credentials: 'same-origin' })
       .then(function (res) { if (!res.ok) throw new Error('chunk ' + res.status); return res.json(); })
       .then(function (data) {
         if (signal && signal.aborted) return;
@@ -40,8 +41,11 @@
         var offline = cachedChunk(cacheKey);
         if (offline) { mergeChunk(offline); chunkLoaded[region] = true; }
       })
-      .finally(function () { delete chunkPending[region]; });
-    return chunkPending[region];
+      .finally(function () {
+        if (chunkPending[region] && chunkPending[region].promise === promise) delete chunkPending[region];
+      });
+    chunkPending[region] = { promise: promise, signal: signal };
+    return promise;
   }
   function ensurePointRegions(points) {
     var regions = {};
@@ -233,6 +237,10 @@
 
   function drawMarkers() {
     var z = map.getZoom(), list = visible();
+    if (z >= 8) {
+      var viewport = map.getBounds().pad(0.18);
+      list = list.filter(function (p) { return viewport.contains([p.la, p.lo]); });
+    }
     markers.clearLayers();
     var pts = list.map(function (p) { return { p: p, xy: map.latLngToLayerPoint([p.la, p.lo]) }; });
     var groups = [], rad = z >= 11 ? 0 : 44;
