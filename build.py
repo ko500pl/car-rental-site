@@ -617,8 +617,12 @@ def header_html(lang, current):
         f'{LANG_SHORT[l]}</a> ' for l in LANGS)
     plan_label = {"ka": "დაგეგმე მოგზაურობა", "en": "Plan a trip", "ru": "Спланируйте поездку",
                   "fa": "سفر را برنامه‌ریزی کنید", "he": "תכננו נסיעה", "ar": "خطّط رحلتك"}[lang]
-    # RentUp რებრენდი — მაკეტის ჰედერი: მხოლოდ ლოგო-ვორდმარკი, ტექსტის გარეშე
-    logo = '<img src="/assets/rentup-wordmark.png" alt="RentUp" class="logo-rentup" width="169" height="36">'
+    logo_img = DESIGN.get("logo_image")
+    mark = DESIGN.get("logo_mark") or "".join(w[0] for w in BRAND.split()[:2]).upper()
+    logo = (f'<img src="{E(logo_img)}" alt="" aria-hidden="true">'
+            f'<span class="logo-name">{E(BRAND)} <small>{E(u["ui"]["logo_sub"])}</small></span>' if logo_img
+            else f'<span class="mark" aria-hidden="true">{E(mark)}</span>'
+                 f'<span class="logo-name">{E(BRAND)} <small>{E(u["ui"]["logo_sub"])}</small></span>')
     return f"""<header class="site-head"><div class="head-top">
 <a class="logo" href="{lang_root(lang)}">{logo}</a>
 <span class="head-sp"></span>
@@ -796,10 +800,8 @@ def render_static_page(lang, page):
         x = TRAVEL[lang]["exp"]
         facts = "".join(f"<div><b>{E(x2['v'])}</b><span>{E(x2['k'])}</span></div>"
                         for x2 in h["facts"])
-        mp, tail_js = travel_workspace_block(lang, depth, "64vh", hero=True, initial="planner")
         body.append(landing_block(lang))
-        map_section = (f'<section class="sec wide maphero" id="planner"><div class="wrap wide">'
-                       f'{mp}</div></section>')
+        map_section = ""
         flow = {
             "ka": ("დაგეგმე. მოარგე. გააზიარე.", "მოგზაურობის სრული გზა ერთ სივრცეში.",
                    "1", "დაგეგმე", "მიუთითე დრო, ინტერესები და თანამგზავრები.",
@@ -839,7 +841,6 @@ def render_static_page(lang, page):
                     f'<div><h2>{E(flow[0])}</h2><p>{E(flow[1])}</p></div>'
                     f'<a class="text-link" href="{page_url(lang, "community", False)}">{E(flow[11])} →</a>'
                     f'</div><div class="journey-steps">{steps}</div></div></section>')
-        body.append(map_section)
         # ── Drive On Pages მაკეტის სექციები: სტანდარტული ტურები + ავტოპარკი ──
         tt = {
             "ka": ("სტანდარტული ტურები", "მზა მარშრუტები ღამისთევებით, რეალური სავალი დროებით და რეკომენდებული ავტომობილით.",
@@ -1680,11 +1681,28 @@ def counts_sub(s):
 
 
 def render_map_page(lang):
-    """Legacy URL: the unified map and planner now live on Home."""
+    """დამგეგმავის ცალკე გვერდი — მთავარი გვერდი მხოლოდ landing-ია."""
+    p = {k: counts_sub(v) for k, v in PAGES["map"][lang].items()}
+    u = UI[lang]
+    depth = 1 if lang == ROOT_LANG else 2
+    mp, js = travel_workspace_block(lang, depth, "72vh", initial="planner")
+    body = (f'<section class="sec wide maphero" id="planner"><div class="wrap wide">{mp}</div></section>')
+    graph = [org_node(lang), website_node(lang),
+             {"@type": "CollectionPage", "@id": page_url(lang, "map") + "#webpage",
+              "url": page_url(lang, "map"), "name": p["title"], "description": p["desc"]}]
+    head = head_html(lang, "map", p["title"], p["desc"], p.get("keywords", ""),
+                     page_url(lang, "map"), {l: page_url(l, "map") for l in LANGS},
+                     depth, {"@context": "https://schema.org", "@graph": graph}, leaflet=True)
+    crumbs = crumbs_html(lang, [(u["nav"]["index"], page_url(lang, "index", False)),
+                                (u["nav"]["map"], None)])
+    return shell(lang, "map", head, crumbs + f'<main id="main">{body}</main>', depth, js)
+
+
+def _render_map_page_legacy_redirect(lang):
     target = page_url(lang, "index", False)
     canonical = page_url(lang, "index")
     direction = "rtl" if lang in ("fa", "he", "ar") else "ltr"
-    loading = {"ka":"რუკა იტვირთება…","en":"Loading the map…","ru":"Карта загружается…","fa":"در حال بارگذاری نقشه…","he":"המפה נטענת…","ar":"جارٍ تحميل الخريطة…"}[lang]
+    loading = {"ka":"რუკა იტვირთება…","en":"Loading the map…","ru":"Карта загружается…","fa":"در حال بارگذاری نقشه…","he":"המפה نطעה…","ar":"جارٍ تحميل الخريطة…"}[lang]
     return f'''<!doctype html><html lang="{lang}" dir="{direction}"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,follow"><link rel="canonical" href="{E(canonical)}">
@@ -2775,8 +2793,8 @@ def landing_block(lang):
     t = LAND_UI[lang]
     places, cars_n, avg = landing_stats()
     cards = [
-        ("#planner", "", t["c1t"], t["c1d"], "rentup-card-plan.jpg", "#e9f7ef", "#cbe8d8", "#0b7a55"),
-        ("#planner", " data-open-standard-tour", t["c2t"], t["c2d"], "rentup-card-tours.jpg", "#fdf6e3", "#f0e2bd", "#a5760a"),
+        (page_url(lang, "map", False) + "#planner", "", t["c1t"], t["c1d"], "rentup-card-plan.jpg", "#e9f7ef", "#cbe8d8", "#0b7a55"),
+        (lang_root(lang) + "tours/", "", t["c2t"], t["c2d"], "rentup-card-tours.jpg", "#fdf6e3", "#f0e2bd", "#a5760a"),
         (page_url(lang, "fleet", False), "", t["c3t"], t["c3d"], "rentup-card-cars.jpg", "#eaf3fc", "#cfe1f2", "#0b5f9e"),
         (page_url(lang, "community", False), "", t["c4t"], t["c4d"], "rentup-card-community.jpg", "#f4eefc", "#e0d3f4", "#6b3fa0"),
     ]
@@ -2799,10 +2817,54 @@ def landing_block(lang):
     return (f'<section class="land"><div class="land-hero">'
             f'<img class="land-hero-img" src="/assets/rentup-hero.jpg" alt="" loading="eager" decoding="async">'
             f'<div class="land-hero-fade"></div>'
-            f'<div class="land-hero-copy"><h1>{E(t["h1"])}</h1><p>{E(t["lead"])}</p></div>'
-            f'<div class="land-cards">{cards_html}</div></div>'
-            f'<div class="wrap wide"><div class="land-stats">{stats_html}</div></div>'
+            f'<div class="land-hero-copy"><h1>{E(t["h1"])}</h1><p>{E(t["lead"])}</p></div></div>'
+            f'<div class="land-below"><div class="wrap wide">'
+            f'<div class="land-cards">{cards_html}</div>'
+            f'<div class="land-stats">{stats_html}</div></div></div>'
             f'</section>')
+
+
+
+# ══════════════════════════════════════════════════ სტანდარტული ტურები (/tours/)
+TOURS_UI = {
+    "ka": ("სტანდარტული ტურები", "მზა მარშრუტები საქართველოს რეგიონებში — რეალური სავალი დროებით და რეკომენდებული ავტომობილით.", "დღე", "ღამე", "კმ", "მართვაში", "ტურის ნახვა", "დამგეგმავში დაგეგმვა"),
+    "en": ("Standard tours", "Ready-made routes through the regions of Georgia — with real driving times and a recommended car.", "days", "nights", "km", "driving", "View the tour", "Plan it in the planner"),
+    "ru": ("Готовые туры", "Готовые маршруты по регионам Грузии — с реальным временем в пути и рекомендованной машиной.", "дн.", "ноч.", "км", "в пути", "Смотреть тур", "Открыть в планировщике"),
+    "fa": ("تورهای آماده", "مسیرهای آماده در مناطق گرجستان — با زمان واقعی رانندگی و خودروی پیشنهادی.", "روز", "شب", "کیلومتر", "رانندگی", "مشاهده تور", "در برنامه‌ریز باز کنید"),
+    "he": ("טיולים מוכנים", "מסלולים מוכנים באזורי גאורגיה — עם זמני נסיעה אמיתיים ורכב מומלץ.", "ימים", "לילות", 'ק"מ', "נהיגה", "צפייה בטיול", "פתיחה במתכנן"),
+    "ar": ("جولات جاهزة", "مسارات جاهزة في مناطق جورجيا — بأوقات قيادة حقيقية وسيارة مقترحة.", "أيام", "ليالٍ", "كم", "قيادة", "عرض الجولة", "افتح في المخطط"),
+}
+
+
+def render_tours_page(lang):
+    u = UI[lang]
+    t = TOURS_UI[lang]
+    depth = 1 if lang == ROOT_LANG else 2
+    tours = planner_data(lang)["standardTours"]
+    cards = "".join(
+        f'<div class="card tour-card">'
+        + (f'<img src="{E(r["img"])}" alt="" loading="lazy">' if r.get("img") else "")
+        + f'<span class="tag">{E(r["carLabel"])}</span>'
+        f'<h3><a href="{E(r["u"])}">{E(r["n"])}</a></h3>'
+        f'<p class="tour-meta">{r["days"]} {E(t[2])} / {r["nights"]} {E(t[3])} · {r["km"]} {E(t[4])}'
+        + (f' · {E(r["drive"])} {E(t[5])}' if r.get("drive") else "")
+        + f' · {r["minPeople"]}–{r["maxPeople"]}</p>'
+        f'<p>{E(r.get("sh") or "")}</p>'
+        f'<div class="row"><a class="btn sm" href="{E(r["u"])}">{E(t[6])}</a>'
+        f'<a class="btn ghost sm" href="{page_url(lang, "map", False)}#planner">{E(t[7])}</a></div>'
+        f'</div>'
+        for r in tours)
+    body = (f'<section class="page-head"><div class="wrap"><h1>{E(t[0])}</h1>'
+            f'<p class="lead">{E(t[1])}</p></div></section>'
+            f'<section class="sec"><div class="wrap"><div class="cards tours-grid">{cards}</div></div></section>')
+    title = f'{t[0]} | {BRAND}'
+    url = SITE_URL + lang_root(lang) + "tours/"
+    head = head_html(lang, "map", title, t[1], "", url,
+                     {l: SITE_URL + lang_root(l) + "tours/" for l in LANGS}, depth,
+                     {"@context": "https://schema.org", "@graph": [org_node(lang), website_node(lang)]})
+    crumbs = crumbs_html(lang, [(u["nav"]["index"], page_url(lang, "index", False)),
+                                (t[0], None)])
+    return shell(lang, "map", head, crumbs + f'<main id="main">{body}</main>', depth)
 
 
 # ══════════════════════════════════════════════════ ჩემი ტური (/trip/)
@@ -3054,7 +3116,7 @@ def render_app_page(lang):
 <div id="doa" style="height:100dvh;max-width:520px;margin:0 auto;display:flex;flex-direction:column;background:#f4f7f9;overflow:hidden;position:relative">
 
   <div style="flex:0 0 auto;display:flex;align-items:center;gap:8px;height:54px;padding:0 12px;padding-top:env(safe-area-inset-top);background:#fff;border-bottom:1px solid #dde5ec">
-    <img src="/assets/rentup-wordmark.png" alt="RentUp" width="133" height="28" style="height:28px;width:auto;display:block">
+    <img src="/assets/do-logo-transparent.png" alt="Drive On" width="92" height="28" style="height:28px;width:auto;display:block">
     <span style="font-size:13px;font-weight:600;color:#5a6b7b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{E(t["appSub"])}</span>
     <div style="flex:1"></div>
     <select id="doalang" aria-label="Language" style="height:44px;padding:0 6px;border:1px solid #dde5ec;border-radius:10px;background:#fff;font-size:13px">{lang_opts}</select>
@@ -3477,6 +3539,9 @@ def main():
         n += 1
         trip_rel = (lang_root(lang) + "trip/").lstrip("/")
         write(os.path.join(out, trip_rel, "index.html"), render_trip_page(lang))
+        n += 1
+        tours_rel = (lang_root(lang) + "tours/").lstrip("/")
+        write(os.path.join(out, tours_rel, "index.html"), render_tours_page(lang))
         n += 1
         # Preserve old bookmarked pricing URLs, but send visitors to the fleet where all rates live.
         pricing_rel = lang_root(lang).lstrip("/") + PAGE_SLUG["pricing"]

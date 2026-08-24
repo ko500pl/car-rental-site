@@ -1793,14 +1793,15 @@ main .lead,p.lead{{font-size:15px;color:var(--ink-2)}}
 
 /* Landing — ჰერო ფოტო + 4 ბარათი + სტატისტიკა (მაკეტის პორტი) */
 .land{{background:#eef2f5;border-bottom:1px solid var(--line)}}
-.land-hero{{position:relative;background:#eaf1f6;display:flex;flex-direction:column;min-height:min(74vh,640px)}}
+.land-hero{{position:relative;background:#eaf1f6;display:flex;flex-direction:column;min-height:min(46vh,420px)}}
 .land-hero-img{{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}}
 .land-hero-fade{{position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(90deg,rgba(255,255,255,.97) 0%,rgba(255,255,255,.92) 30%,rgba(255,255,255,.42) 56%,rgba(255,255,255,.06) 78%,rgba(255,255,255,0) 100%)}}
-.land-hero-copy{{position:relative;flex:1;pointer-events:none;padding:56px 40px 0;display:flex;flex-direction:column;gap:14px;max-width:640px}}
+.land-hero-copy{{position:relative;flex:1;pointer-events:none;padding:48px 40px 40px;display:flex;flex-direction:column;gap:14px;max-width:640px}}
 .land-hero-copy h1{{margin:0;font-size:40px;line-height:1.16;font-weight:800;letter-spacing:-.4px;color:#0e2333}}
 .land-hero-copy p{{margin:0;font-size:16px;line-height:1.5;color:#41525f;max-width:420px}}
-.land-cards{{position:relative;flex:0 0 auto;padding:18px 24px 22px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}}
+.land-below{{background:#fff;border-top:1px solid var(--line);padding:22px 0 26px}}
+.land-cards{{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}}
 .land-card{{border:1px solid;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;
   box-shadow:0 3px 12px rgba(14,35,51,.08);color:#0e2333;text-decoration:none;
   transition:transform .16s ease,box-shadow .16s ease}}
@@ -1813,7 +1814,7 @@ main .lead,p.lead{{font-size:15px;color:var(--ink-2)}}
 .land-arrow{{width:38px;height:38px;border-radius:999px;background:#fff;border:1px solid;display:grid;place-items:center;margin-top:4px}}
 .land-arrow svg{{transition:transform .16s ease}}
 .land-card:hover .land-arrow svg{{transform:translateX(3px)}}
-.land-stats{{display:grid;grid-template-columns:repeat(4,1fr);margin:16px 0 24px;border:1px solid #e6edf2;border-radius:16px;background:#fff;overflow:hidden}}
+.land-stats{{display:grid;grid-template-columns:repeat(4,1fr);margin:18px 0 0;border:1px solid #e6edf2;border-radius:16px;background:#fff;overflow:hidden}}
 .land-stat{{display:flex;align-items:center;gap:12px;padding:18px 20px;border-inline-end:1px solid #eef3f6}}
 .land-stat:last-child{{border-inline-end:0}}
 .land-stat-ico{{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;flex:0 0 auto}}
@@ -1850,6 +1851,11 @@ main .lead,p.lead{{font-size:15px;color:var(--ink-2)}}
 .dow-ava.thumb img{{width:100%;height:100%;object-fit:cover;display:block}}
 .dow-ava.thumb .dow-selbadge{{position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:999px;
   background:#0d94ae;color:#fff;font-size:11px;font-weight:700;display:grid;place-items:center}}
+
+/* სტანდარტული ტურების გვერდი */
+.tours-grid .tour-card img{{width:100%;height:170px;object-fit:cover;border-radius:10px;margin:0 0 10px}}
+.tour-card .tour-meta{{color:var(--ink-2);font-size:13px;margin:2px 0 8px}}
+.tour-card .row{{display:flex;gap:8px;margin-top:auto;padding-top:8px}}
 
 /* ჩემი ტური — მომხმარებლის მარშრუტის ცალკე გვერდი */
 .trip-map{{height:460px;border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:0 0 8px}}
