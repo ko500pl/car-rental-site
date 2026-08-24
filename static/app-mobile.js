@@ -884,6 +884,26 @@
     } else flash(T.installHint);
   };
 
+  /* მთავარი ეკრანის landing-ბარათები */
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('[data-doaland]');
+    if (!b) return;
+    var act = b.getAttribute('data-doaland');
+    if (act === 'plan') {
+      var form = $('doaform');
+      var scroller = form && form.closest('.do-scroll');
+      if (form && scroller) scroller.scrollTop = form.offsetTop - 8;
+      var o = $('doaorigin');
+      if (o) o.focus({ preventScroll: true });
+    } else if (act === 'tours') {
+      st.toursOpen = true; renderTours();
+    } else if (act === 'cars') {
+      goTab('route');
+    } else if (act === 'community') {
+      goTab('community');
+    }
+  });
+
   window.DOA_GO = function (k) {
     if (k === 'visited') { st.visitedFilter = 'yes'; goTab('map'); }
     else if (k === 'saved' && cloudMode() && T.accountUrl) location.href = T.accountUrl;

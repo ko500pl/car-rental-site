@@ -1,11 +1,11 @@
 # Graph Report - car-rental-site  (2026-08-23)
 
 ## Corpus Check
-- 113 files · ~6,142,716 words
+- 113 files · ~6,142,388 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1158 nodes · 2063 edges · 98 communities (90 shown, 8 thin omitted)
+- 1150 nodes · 2046 edges · 99 communities (91 shown, 8 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 38 edges (avg confidence: 0.51)
 - Token cost: 0 input · 0 output
 
@@ -42,7 +42,7 @@
 - ღირსშესანიშნაობების აუდიტი — 2026-08-16
 - ანგარიშების ჩართვა — Firebase (15 წუთი)
 - Implementation report
-- Jt
+- Ae
 - m
 - გაქირავების წესები
 - ლოკალური იმპლემენტაციის სტატუსი
@@ -76,6 +76,7 @@
 - დამგეგმავი და itinerary engine
 - References
 - apply_verified_attraction_images.py
+- ke
 - trip.js
 - სამუშაო წესები აგენტებისთვის
 - საფუძველი, რელიზი და სიჩქარე
@@ -107,15 +108,15 @@
 
 ## God Nodes (most connected - your core abstractions)
 1. `main()` - 35 edges
-2. `page_url()` - 31 edges
+2. `page_url()` - 30 edges
 3. `render()` - 28 edges
-4. `render_static_page()` - 24 edges
+4. `render_static_page()` - 22 edges
 5. `render()` - 22 edges
 6. `render_attraction()` - 21 edges
 7. `render_map_page()` - 20 edges
-8. `lang_root()` - 19 edges
-9. `suggestNear()` - 19 edges
-10. `render_car()` - 18 edges
+8. `suggestNear()` - 19 edges
+9. `render_car()` - 18 edges
+10. `render_region()` - 18 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `main()` --calls--> `validate()`  [EXTRACTED]
@@ -132,11 +133,11 @@
 ## Import Cycles
 - None detected.
 
-## Communities (98 total, 8 thin omitted)
+## Communities (99 total, 8 thin omitted)
 
 ### Community 0 - "build.py"
 Cohesion: 0.05
-Nodes (130): attr_detail(), attr_facts(), attr_url(), bidi(), car_cat_label(), car_node(), car_url(), cars_grid() (+122 more)
+Nodes (123): attr_detail(), attr_facts(), attr_url(), bidi(), car_cat_label(), car_node(), car_url(), cars_grid() (+115 more)
 
 ### Community 1 - "planner.js"
 Cohesion: 0.06
@@ -148,7 +149,7 @@ Nodes (60): addWp(), alongTheWay(), budgetMode(), budgetVal(), chainTime(), clos
 
 ### Community 3 - "workspace.js"
 Cohesion: 0.08
-Nodes (57): applyTour(), attachDrag(), move(), rows(), up(), boundsOverlap(), budgetMin(), cachedChunk() (+49 more)
+Nodes (56): applyTour(), attachDrag(), move(), rows(), up(), boundsOverlap(), budgetMin(), cachedChunk() (+48 more)
 
 ### Community 4 - "auth.js"
 Cohesion: 0.10
@@ -187,8 +188,8 @@ Cohesion: 0.12
 Nodes (17): 1. განხილული საიტები, 2. რაში ვართ უკვე თანაბრად ან წინ, 3. 17 ყველაზე ღირებული ნაკლი, 3.1 კონვერსია, 3.2 ტრაფიკი / SEO, 3.3 პროდუქტი და დაბრუნების მიზეზი, 3.4 მონაცემი და კონტენტი, 4. რა გავაკეთოთ შემდეგ — 6 პრიორიტეტი (+9 more)
 
 ### Community 13 - "F"
-Cohesion: 0.18
-Nodes (15): F(), G(), h(), j(), k(), ke(), me(), ne() (+7 more)
+Cohesion: 0.27
+Nodes (10): F(), G(), k(), me(), e(), Oe(), p(), q() (+2 more)
 
 ### Community 14 - "დეტალური აუდიტი — 2026-08-14"
 Cohesion: 0.14
@@ -242,9 +243,9 @@ Nodes (8): 1. პროექტის შექმნა, 2. ვებ-აპ�
 Cohesion: 0.22
 Nodes (9): Admin capabilities, Bugs fixed, Completed, Deployment steps, Future availability integration point, Implementation report, Remaining limitations, Remaining manual owner inputs (+1 more)
 
-### Community 27 - "Jt"
-Cohesion: 0.22
-Nodes (9): Ae(), Ie(), Jt(), Le(), O(), Qt(), Re(), $t() (+1 more)
+### Community 27 - "Ae"
+Cohesion: 0.33
+Nodes (6): Ae(), Ie(), Le(), O(), Re(), te()
 
 ### Community 28 - "m"
 Cohesion: 0.31
@@ -362,6 +363,10 @@ Nodes (6): main(), HTMLParser, Path, Check generated HTML references without mak
 Cohesion: 0.46
 Nodes (7): clean(), credit_block(), download_webp(), license_url(), main(), Path, replace_sections()
 
+### Community 69 - "ke"
+Cohesion: 0.25
+Nodes (8): h(), j(), Jt(), ke(), ne(), Qt(), s(), $t()
+
 ### Community 70 - "trip.js"
 Cohesion: 0.32
 Nodes (4): hav(), leg(), mountain(), suggestCar()
@@ -466,17 +471,17 @@ Nodes (3): main(), Run the complete local/CI quality gate and write a short arti
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `კონკურენტების კვლევა და განვითარების გეგმა` connect `5. SEO / GEO სტრუქტურა — რითი რანჟირდებიან ისინი და რა არ გვაქვს` to `00-DOCUMENTATION-INDEX.md`?**
-  _High betweenness centrality (0.012) - this node is a cross-community bridge._
 - **Why does `ადმინისტრაციის გამართვა` connect `ადმინისტრაციის გამართვა` to `ადმინისტრაცია და წვდომა`?**
-  _High betweenness centrality (0.008) - this node is a cross-community bridge._
+  _High betweenness centrality (0.014) - this node is a cross-community bridge._
+- **Why does `კონკურენტების კვლევა და განვითარების გეგმა` connect `5. SEO / GEO სტრუქტურა — რითი რანჟირდებიან ისინი და რა არ გვაქვს` to `00-DOCUMENTATION-INDEX.md`?**
+  _High betweenness centrality (0.009) - this node is a cross-community bridge._
 - **What connects `title`, `_counter`, `main` to the rest of the system?**
   _275 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `build.py` be split into smaller, more focused modules?**
-  _Cohesion score 0.05035315561631351 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.05422222222222222 - nodes in this community are weakly interconnected._
 - **Should `planner.js` be split into smaller, more focused modules?**
   _Cohesion score 0.06260406260406261 - nodes in this community are weakly interconnected._
 - **Should `explorer.js` be split into smaller, more focused modules?**
   _Cohesion score 0.07341269841269842 - nodes in this community are weakly interconnected._
 - **Should `workspace.js` be split into smaller, more focused modules?**
-  _Cohesion score 0.08305084745762711 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.0847457627118644 - nodes in this community are weakly interconnected._

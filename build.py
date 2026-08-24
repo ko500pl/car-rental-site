@@ -4,7 +4,7 @@
 სტატიკური საიტის გენერატორი — კონტენტი იკითხება content/*.yml-იდან (ადმინიდან იმართება).
 გამოყენება:  python3 build.py [outdir]
 """
-import glob, hashlib, html, json, os, re, shutil, sys
+import glob, html, json, os, re, shutil, sys
 from datetime import date, datetime
 from decimal import Decimal, ROUND_HALF_UP
 from pathlib import Path
@@ -81,27 +81,6 @@ CARS = {os.path.splitext(os.path.basename(p))[0]: load(p)
 CARS_ALL = CARS
 CARS = {k: v for k, v in CARS.items() if is_public(v)}
 CARS = dict(sorted(CARS.items(), key=lambda kv: kv[1].get("order", 999)))
-
-
-def _price(value, fallback=0.0):
-    """A YAML price cell as a number. Empty, missing or unparsable -> fallback."""
-    try:
-        return float(str(value).replace(",", ".").strip())
-    except (TypeError, ValueError):
-        return fallback
-
-
-# Price map handed to the browser so the booking dialog can quote a car without
-# a round trip. The bands are the same three the rental program uses --
-# 1+ / 7+ / 30+ nights -- so the site and the program never disagree on a price.
-CAR_PRICES = {}
-for _slug, _car in CARS.items():
-    _p1 = _price(_car.get("price_1_6"))
-    _p7 = _price(_car.get("price_7_29"), _p1) or _p1
-    _p30 = _price(_car.get("price_30"), _p7) or _p7
-    CAR_PRICES[_slug] = {"p1": _p1, "p7": _p7, "p30": _p30,
-                         "dep": _price(_car.get("deposit"))}
-
 POSTS = {os.path.splitext(os.path.basename(p))[0]: load(p)
          for p in sorted(glob.glob("content/posts/*.yml"))}
 POSTS_ALL = POSTS
@@ -617,12 +596,8 @@ def header_html(lang, current):
         f'{LANG_SHORT[l]}</a> ' for l in LANGS)
     plan_label = {"ka": "დაგეგმე მოგზაურობა", "en": "Plan a trip", "ru": "Спланируйте поездку",
                   "fa": "سفر را برنامه‌ریزی کنید", "he": "תכננו נסיעה", "ar": "خطّط رحلتك"}[lang]
-    logo_img = DESIGN.get("logo_image")
-    mark = DESIGN.get("logo_mark") or "".join(w[0] for w in BRAND.split()[:2]).upper()
-    logo = (f'<img src="{E(logo_img)}" alt="" aria-hidden="true">'
-            f'<span class="logo-name">{E(BRAND)} <small>{E(u["ui"]["logo_sub"])}</small></span>' if logo_img
-            else f'<span class="mark" aria-hidden="true">{E(mark)}</span>'
-                 f'<span class="logo-name">{E(BRAND)} <small>{E(u["ui"]["logo_sub"])}</small></span>')
+    # RentUp რებრენდი — მაკეტის ჰედერი: მხოლოდ ლოგო-ვორდმარკი, ტექსტის გარეშე
+    logo = '<img src="/assets/rentup-wordmark.png" alt="RentUp" class="logo-rentup" width="169" height="36">'
     return f"""<header class="site-head"><div class="head-top">
 <a class="logo" href="{lang_root(lang)}">{logo}</a>
 <span class="head-sp"></span>
@@ -633,12 +608,12 @@ def header_html(lang, current):
 <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
 </summary>
 <div class="head-app-menu">
-<a class="app-download" href="/assets/downloads/rentup-android.apk" download>
+<a href="/assets/downloads/rentup-android.apk" download>
 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5"></path><path d="M4 19h16"></path></svg>
 <span><b>{E(app_copy[1])}</b><small>{E(app_copy[3])}</small></span></a>
-<button type="button" class="head-app-soon" data-ios-install>
+<span class="head-app-soon">
 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5"></rect><path d="M10.5 18.5h3"></path></svg>
-<span><b>{E(app_copy[2])}</b><small>{E(app_soon)}</small></span></button>
+<span><b>{E(app_copy[2])}</b><small>{E(app_soon)}</small></span></span>
 </div>
 </details>
 <label class="lang-nav"><span class="sr-only">{E(u['ui']['lang_label'])}</span>
@@ -699,7 +674,6 @@ def shell(lang, current, head, body, depth, tail=""):
         cfg["accountUrl"] = page_url(lang, "account", False)
         cfg["plannerUrl"] = page_url(lang, "map", False) + "#planner"
         cfg["booking"] = BOOKING
-        cfg["cars"] = CAR_PRICES
         cfg["whatsapp"] = str(SITE.get("whatsapp") or SITE.get("mobile_e164")
                               or SITE.get("phone_e164", "")).replace("+", "").replace(" ", "")
         cfg["siteUrl"] = SITE_URL
@@ -722,20 +696,19 @@ def shell(lang, current, head, body, depth, tail=""):
 
 def inquiry_widget(lang, context=""):
     tx = {
-        "ka": ("დაჯავშნეთ ავტომობილი", "არჩეული ავტომობილი", "დაწყება", "დაბრუნება", "სახელი", "ტელეფონი / WhatsApp", "შენიშვნა (არასავალდებულო)", "WhatsApp", "მოთხოვნის გაგზავნა", "ხელმისაწვდომობას სწრაფად გადავამოწმებთ და დაგიკავშირდებით.", "დახურვა", "ელფოსტა (არასავალდებულო)", "აღების ადგილი (არასავალდებულო)"),
-        "en": ("Book a car", "Selected car", "Start date", "Return date", "Name", "Phone / WhatsApp", "Notes (optional)", "WhatsApp", "Send request", "We’ll quickly confirm availability and contact you.", "Close", "Email (optional)", "Pickup location (optional)"),
-        "ru": ("Забронировать автомобиль", "Выбранный автомобиль", "Дата начала", "Дата возврата", "Имя", "Телефон / WhatsApp", "Комментарий (необязательно)", "WhatsApp", "Отправить запрос", "Мы быстро проверим наличие и свяжемся с вами.", "Закрыть", "Эл. почта (необязательно)", "Место получения (необязательно)"),
-        "fa": ("رزرو خودرو", "خودروی انتخابی", "تاریخ شروع", "تاریخ بازگشت", "نام", "تلفن / واتس‌اپ", "یادداشت (اختیاری)", "واتس‌اپ", "ارسال درخواست", "موجودی را سریع بررسی کرده و با شما تماس می‌گیریم.", "بستن", "ایمیل (اختیاری)", "محل تحویل (اختیاری)"),
-        "he": ("הזמנת רכב", "הרכב שנבחר", "תאריך התחלה", "תאריך החזרה", "שם", "טלפון / WhatsApp", "הערות (לא חובה)", "WhatsApp", "שליחת בקשה", "נבדוק זמינות במהירות וניצור קשר.", "סגירה", "אימייל (לא חובה)", "מקום איסוף (לא חובה)"),
-        "ar": ("حجز سيارة", "السيارة المختارة", "تاريخ البدء", "تاريخ الإرجاع", "الاسم", "الهاتف / واتساب", "ملاحظات (اختياري)", "واتساب", "إرسال الطلب", "سنتحقق من التوفر سريعًا ونتواصل معك.", "إغلاق", "البريد الإلكتروني (اختياري)", "مكان الاستلام (اختياري)")
+        "ka": ("დაჯავშნეთ ავტომობილი", "არჩეული ავტომობილი", "დაწყება", "დაბრუნება", "სახელი", "ტელეფონი / WhatsApp", "შენიშვნა (არასავალდებულო)", "WhatsApp", "მოთხოვნის გაგზავნა", "ხელმისაწვდომობას სწრაფად გადავამოწმებთ და დაგიკავშირდებით.", "დახურვა"),
+        "en": ("Book a car", "Selected car", "Start date", "Return date", "Name", "Phone / WhatsApp", "Notes (optional)", "WhatsApp", "Send request", "We’ll quickly confirm availability and contact you.", "Close"),
+        "ru": ("Забронировать автомобиль", "Выбранный автомобиль", "Дата начала", "Дата возврата", "Имя", "Телефон / WhatsApp", "Комментарий (необязательно)", "WhatsApp", "Отправить запрос", "Мы быстро проверим наличие и свяжемся с вами.", "Закрыть"),
+        "fa": ("رزرو خودرو", "خودروی انتخابی", "تاریخ شروع", "تاریخ بازگشت", "نام", "تلفن / واتس‌اپ", "یادداشت (اختیاری)", "واتس‌اپ", "ارسال درخواست", "موجودی را سریع بررسی کرده و با شما تماس می‌گیریم.", "بستن"),
+        "he": ("הזמנת רכב", "הרכב שנבחר", "תאריך התחלה", "תאריך החזרה", "שם", "טלפון / WhatsApp", "הערות (לא חובה)", "WhatsApp", "שליחת בקשה", "נבדוק זמינות במהירות וניצור קשר.", "סגירה"),
+        "ar": ("حجز سيارة", "السيارة المختارة", "تاريخ البدء", "تاريخ الإرجاع", "الاسم", "الهاتف / واتساب", "ملاحظات (اختياري)", "واتساب", "إرسال الطلب", "سنتحقق من التوفر سريعًا ونتواصل معك.", "إغلاق")
     }[lang]
     return f'''<div class="booking-dialog" data-booking-dialog hidden role="dialog" aria-modal="true" aria-labelledby="booking-title-{lang}"><div class="booking-modal-card">
 <button class="booking-close" type="button" data-booking-close aria-label="{E(tx[10])}">×</button><div class="booking-brand" aria-hidden="true">DO</div>
 <form class="inquiry-mini" data-inquiry name="rental-inquiry" method="POST" data-netlify="true" netlify-honeypot="company" data-lang="{lang}">
-<input type="hidden" name="form-name" value="rental-inquiry"><input type="hidden" name="context" value="{E(context)}"><input type="hidden" name="requested_car" value=""><input type="hidden" name="car_slug" value=""><input type="hidden" name="page_url" value=""><p class="hp" hidden><label>Company<input name="company" tabindex="-1" autocomplete="off"></label></p>
+<input type="hidden" name="form-name" value="rental-inquiry"><input type="hidden" name="context" value="{E(context)}"><input type="hidden" name="requested_car" value=""><input type="hidden" name="page_url" value=""><p class="hp" hidden><label>Company<input name="company" tabindex="-1" autocomplete="off"></label></p>
 <h2 id="booking-title-{lang}">{E(tx[0])}</h2><p class="booking-lead">{E(tx[9])}</p><div class="booking-choice" data-booking-choice hidden><small>{E(tx[1])}</small><strong></strong></div>
-<div class="inquiry-grid"><label>{E(tx[2])}<input name="start" type="date" required></label><label>{E(tx[3])}<input name="end" type="date" required></label><label>{E(tx[4])}<input name="name" required autocomplete="name"></label><label>{E(tx[5])}<input name="phone" required autocomplete="tel"></label><label>{E(tx[11])}<input name="email" type="email" autocomplete="email"></label><label>{E(tx[12])}<input name="pickup" autocomplete="off"></label><label class="inquiry-notes">{E(tx[6])}<textarea name="notes" rows="2"></textarea></label></div>
-<p class="inquiry-quote" data-quote aria-live="polite"></p>
+<div class="inquiry-grid"><label>{E(tx[2])}<input name="start" type="date" required></label><label>{E(tx[3])}<input name="end" type="date" required></label><label>{E(tx[4])}<input name="name" required autocomplete="name"></label><label>{E(tx[5])}<input name="phone" required autocomplete="tel"></label><label class="inquiry-notes">{E(tx[6])}<textarea name="notes" rows="2"></textarea></label></div>
 <div class="inquiry-actions"><button class="btn" type="submit">{E(tx[8])}</button><button class="btn ghost wa" type="button" data-inquiry-wa>{E(tx[7])}</button></div><p class="inquiry-status" role="status" aria-live="polite"></p></form></div></div>'''
 
 
@@ -801,15 +774,7 @@ def render_static_page(lang, page):
         facts = "".join(f"<div><b>{E(x2['v'])}</b><span>{E(x2['k'])}</span></div>"
                         for x2 in h["facts"])
         mp, tail_js = travel_workspace_block(lang, depth, "64vh", hero=True, initial="planner")
-        body.append(f'<section class="hero home-hero"><div class="wrap wide home-hero-grid">'
-                    f'<div class="home-hero-copy"><span class="kicker">{E(h["kicker"])}</span><h1>{E(p["h1"])}</h1>'
-                    f'<p class="lead">{inline(h["lead"], lang)}</p>'
-                    f'<div class="home-hero-actions"><a class="btn" href="#planner">{E(hero_cta[0])}</a>'
-                    f'<a class="btn ghost" href="{page_url(lang, "community", False)}">{E(hero_cta[1])}</a>'
-                    f'<a class="btn ghost" href="#planner" data-open-standard-tour>{E(hero_cta[3])}</a>'
-                    f'<a class="btn ghost" href="{page_url(lang, "community", False)}">{E(hero_cta[4])}</a></div>'
-                    f'<p class="home-hero-note">✓ {E(hero_cta[2])}</p></div>'
-                    f'</div></section>')
+        body.append(landing_block(lang))
         map_section = (f'<section class="sec wide maphero" id="planner"><div class="wrap wide">'
                        f'{mp}</div></section>')
         flow = {
@@ -1439,48 +1404,6 @@ def explorer_points(lang):
     return pts
 
 
-EXPLORER_INDEX_KEYS = (
-    "s", "n", "la", "lo", "names", "t", "ty", "c", "g", "gn",
-    "hh", "f", "v", "r", "rd", "el", "bike",
-)
-
-
-def explorer_point_index(lang):
-    """Country-wide map index: enough for search, clustering and routing.
-
-    Images, URLs and descriptive display fields live in regional chunks and are
-    merged into these objects by workspace.js only when the relevant area is
-    opened.  Keeping every slug here preserves instant multilingual search and
-    lets a shared/standard tour be selected before any chunk has arrived.
-    """
-    return [{key: point[key] for key in EXPLORER_INDEX_KEYS}
-            for point in explorer_points(lang)]
-
-
-def explorer_chunks(lang):
-    """Manifest and rich point payloads grouped by content region."""
-    grouped = {}
-    for point in explorer_points(lang):
-        grouped.setdefault(point["g"], []).append(point)
-    chunks, manifest = {}, {}
-    for region, points in sorted(grouped.items()):
-        bounds = [
-            min(point["la"] for point in points),
-            min(point["lo"] for point in points),
-            max(point["la"] for point in points),
-            max(point["lo"] for point in points),
-        ]
-        body = {"region": region, "pts": points}
-        version = hashlib.sha256(JC(body).encode("utf-8")).hexdigest()[:12]
-        manifest[region] = {
-            "url": f"/data/points/{lang}/{region}.json?v={version}",
-            "bounds": bounds,
-            "count": len(points),
-        }
-        chunks[region] = body
-    return manifest, chunks
-
-
 def explorer_towns(lang):
     """ქალაქები და აეროპორტები — ათვლის/დანიშნულების წერტილებად."""
     out = []
@@ -1553,10 +1476,8 @@ def explorer_config(lang, base="/"):
     x = TRAVEL[lang]["exp"]
     u = TRAVEL[lang]["ui"]
     visited = get_visit_labels(lang)
-    chunk_manifest, _ = explorer_chunks(lang)
     return {
-        "pts": explorer_point_index(lang),
-        "chunks": chunk_manifest,
+        "pts": explorer_points(lang),
         "towns": explorer_towns(lang),
         "lang": lang, "base": base, "center": [42.15, 43.6], "zoom": 7,
         "planner": page_url(lang, "map", False) + "#planner",
@@ -2143,18 +2064,6 @@ def planner_data(lang):
     }
 
 
-def workspace_planner_data(lang):
-    """Planner metadata used by the unified map workspace.
-
-    Attraction geometry already arrives through EXP's lightweight point index,
-    so sending planner_data.a here duplicated the complete catalogue in every
-    language asset without a single workspace.js consumer.
-    """
-    data = planner_data(lang)
-    data.pop("a", None)
-    return data
-
-
 def planner_form_html(lang):
     P = PLANNER[lang]
     u, t = UI[lang], P["ui"]
@@ -2270,6 +2179,19 @@ _DOW_OPT_T = {
     "he": ("⚡ סידור לזמן הקצר ביותר", "המסלול סודר מחדש — נחסכו %s", "המסלול כבר אופטימלי", "גררו לשינוי הסדר"),
     "ar": ("⚡ ترتيب لأقصر وقت", "أُعيد ترتيب المسار — تم توفير %s", "المسار مثالي بالفعل", "اسحب لإعادة الترتيب"),
 }
+
+_DOW_CAT_T = {
+    "ka": ("ყველა", "ბუნება", "კულტურა", "ქალაქი", "ზღვა", "სხვა"),
+    "en": ("All", "Nature", "Culture", "Cities", "Sea", "More"),
+    "ru": ("Все", "Природа", "Культура", "Города", "Море", "Ещё"),
+    "fa": ("همه", "طبیعت", "فرهنگ", "شهرها", "دریا", "دیگر"),
+    "he": ("הכול", "טבע", "תרבות", "ערים", "ים", "עוד"),
+    "ar": ("الكل", "طبيعة", "ثقافة", "مدن", "بحر", "أخرى"),
+}
+for _l, _v in _DOW_CAT_T.items():
+    (DOW_JS_T[_l]["catAll"], DOW_JS_T[_l]["catNature"], DOW_JS_T[_l]["catCulture"],
+     DOW_JS_T[_l]["catCity"], DOW_JS_T[_l]["catSea"], DOW_JS_T[_l]["catOther"]) = _v
+
 _DOW_VIEWTRIP_T = {"ka": "ჩემი ტურის ნახვა", "en": "View my tour", "ru": "Посмотреть мой тур",
                    "fa": "مشاهده تور من", "he": "צפייה בטיול שלי", "ar": "عرض جولتي"}
 for _l, _v in _DOW_VIEWTRIP_T.items():
@@ -2394,6 +2316,7 @@ def travel_workspace_block(lang, depth, height="72vh", hero=False, initial="expl
 </div>
 <div class="dow-filters">
 <input id="dowq" type="search" placeholder="{E(U["searchPlace"])}" aria-label="{E(U["searchPlace"])}">
+<div id="dowcattiles" class="dow-cattiles"></div>
 <div id="dowchips" class="dow-chiprow"></div>
 <div class="dow-selrow">
 <select id="dowcat" aria-label="{E(U["allCats"])}"><option value="">{E(U["allCats"])}</option>{topts}</select>
@@ -2707,6 +2630,102 @@ def render_404():
 
 
 # ══════════════════════════════════════════════════════════════ main
+# ══════════════════════════════════════════════════ Landing (მთავარი ჰერო)
+# "Drive On - Landing" მაკეტის პორტი: ჰერო ფოტო + 4 სამოქმედო ბარათი + სტატისტიკა.
+LAND_UI = {
+    "ka": {"h1": "რა გეგმა გაქვს დღეს?", "lead": "აირჩიე სასურველი და დაიწყე შენი მოგზაურობა საქართველოში",
+           "c1t": "დაგეგმე ტური დამოუკიდებლად", "c1d": "შეადგინე შენი მარშრუტი, აირჩიე ადგილები და დაგეგმე დღეები",
+           "c2t": "სტანდარტული ტურები", "c2d": "აირჩიე უკვე დაგეგმილი ტური საქართველოს რეგიონებში",
+           "c3t": "მანქანის დაჯავშნა", "c3d": "იპოვე და დაჯავშნე მარშრუტისთვის შესაბამისი ავტომობილი",
+           "c4t": "განვერიანდი Community-ში", "c4d": "გაუზიარე გამოცდილება, იპოვე თანამგზავრები და ახალი ადგილები",
+           "s1": "სანახავი ადგილი", "s2": "ავტომობილი", "s3": "მოგზაური", "s4": "საშუალო რეიტინგი"},
+    "en": {"h1": "What is your plan for today?", "lead": "Pick what you feel like and start your journey across Georgia",
+           "c1t": "Plan your own trip", "c1d": "Build your route, pick the places and lay out the days",
+           "c2t": "Standard tours", "c2d": "Take a ready-made route through the regions of Georgia",
+           "c3t": "Book a car", "c3d": "Find and book the car that matches your route",
+           "c4t": "Join the community", "c4d": "Share what you know, find companions and new places",
+           "s1": "places to see", "s2": "cars", "s3": "travellers", "s4": "average rating"},
+    "ru": {"h1": "Какие планы на сегодня?", "lead": "Выберите, что вам ближе, и начните путешествие по Грузии",
+           "c1t": "Спланировать поездку самому", "c1d": "Составьте маршрут, выберите места и распределите дни",
+           "c2t": "Готовые туры", "c2d": "Возьмите готовый маршрут по регионам Грузии",
+           "c3t": "Забронировать машину", "c3d": "Найдите и забронируйте машину под ваш маршрут",
+           "c4t": "Присоединиться к сообществу", "c4d": "Делитесь опытом, находите попутчиков и новые места",
+           "s1": "мест", "s2": "машин", "s3": "путешественников", "s4": "средний рейтинг"},
+    "fa": {"h1": "برنامهٔ امروز شما چیست؟", "lead": "آنچه دوست دارید انتخاب کنید و سفر خود در گرجستان را آغاز کنید",
+           "c1t": "سفر خود را بسازید", "c1d": "مسیر خود را بچینید، مکان‌ها را انتخاب و روزها را تقسیم کنید",
+           "c2t": "تورهای آماده", "c2d": "یک مسیر آماده در مناطق گرجستان را انتخاب کنید",
+           "c3t": "رزرو خودرو", "c3d": "خودروی مناسب مسیر خود را پیدا و رزرو کنید",
+           "c4t": "به جامعه بپیوندید", "c4d": "تجربه‌تان را بگویید، همسفر و مکان‌های نو پیدا کنید",
+           "s1": "مکان دیدنی", "s2": "خودرو", "s3": "مسافر", "s4": "میانگین امتیاز"},
+    "he": {"h1": "מה התוכנית שלך להיום?", "lead": "בחרו את מה שמתאים לכם והתחילו את המסע בגאורגיה",
+           "c1t": "לתכנן טיול בעצמכם", "c1d": "בנו מסלול, בחרו מקומות וחלקו את הימים",
+           "c2t": "טיולים מוכנים", "c2d": "קחו מסלול מוכן באזורי גאורגיה",
+           "c3t": "להזמין רכב", "c3d": "מצאו והזמינו את הרכב שמתאים למסלול",
+           "c4t": "להצטרף לקהילה", "c4d": "שתפו ידע, מצאו שותפים ומקומות חדשים",
+           "s1": "מקומות", "s2": "רכבים", "s3": "מטיילים", "s4": "דירוג ממוצע"},
+    "ar": {"h1": "ما خطتك اليوم؟", "lead": "اختر ما يناسبك وابدأ رحلتك في جورجيا",
+           "c1t": "خطط رحلتك بنفسك", "c1d": "ارسم مسارك، اختر الأماكن ووزّع الأيام",
+           "c2t": "جولات جاهزة", "c2d": "اختر مساراً جاهزاً في مناطق جورجيا",
+           "c3t": "احجز سيارة", "c3d": "اعثر على السيارة المناسبة لمسارك واحجزها",
+           "c4t": "انضم إلى المجتمع", "c4d": "شارك خبرتك، واعثر على رفقاء وأماكن جديدة",
+           "s1": "أماكن للزيارة", "s2": "سيارات", "s3": "مسافرين", "s4": "متوسط التقييم"},
+}
+
+_LAND_ICONS = {
+    "pin": '<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0b5f9e" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><path d="M12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/></svg>',
+    "car": '<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0b7a55" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 17h14M3 17v-4.2L5.4 7A2 2 0 0 1 7.3 5.7h9.4A2 2 0 0 1 18.6 7L21 12.8V17"/><path d="M6.5 17v1.5M17.5 17v1.5M3 12.8h18"/><path d="M7 14.4h.01M17 14.4h.01"/></svg>',
+    "users": '<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#6b3fa0" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 19v-1.2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4V19"/><path d="M9 9.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M22 19v-1.2a4 4 0 0 0-3-3.9M16.5 3.7a3 3 0 0 1 0 5.8"/></svg>',
+    "star": '<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#a5760a" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3.6 2.6 5.4 5.9.8-4.3 4.1 1 5.9-5.2-2.8-5.2 2.8 1-5.9L3.5 9.8l5.9-.8L12 3.6Z"/></svg>',
+}
+_LAND_ARROW = ('<span class="land-arrow" style="border-color:{b}">'
+               '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="{i}" stroke-width="2.2" '
+               'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+               '<path d="M5 12h13"/><path d="m12 5 7 7-7 7"/></svg></span>')
+
+
+def landing_stats():
+    """რეალური რიცხვები კონტენტიდან — ადგილები, მანქანები, საშ. რეიტინგი."""
+    places = len(ATTRACTIONS)
+    cars = len([c for c in CARS.values() if c.get("available", True)])
+    ratings = [a["rating"] for a in ATTRACTIONS.values() if a.get("rating")]
+    avg = round(sum(ratings) / len(ratings), 1) if ratings else 0
+    return places, cars, avg
+
+
+def landing_block(lang):
+    t = LAND_UI[lang]
+    places, cars_n, avg = landing_stats()
+    cards = [
+        ("#planner", "", t["c1t"], t["c1d"], "rentup-card-plan.jpg", "#e9f7ef", "#cbe8d8", "#0b7a55"),
+        ("#planner", " data-open-standard-tour", t["c2t"], t["c2d"], "rentup-card-tours.jpg", "#fdf6e3", "#f0e2bd", "#a5760a"),
+        (page_url(lang, "fleet", False), "", t["c3t"], t["c3d"], "rentup-card-cars.jpg", "#eaf3fc", "#cfe1f2", "#0b5f9e"),
+        (page_url(lang, "community", False), "", t["c4t"], t["c4d"], "rentup-card-community.jpg", "#f4eefc", "#e0d3f4", "#6b3fa0"),
+    ]
+    cards_html = "".join(
+        f'<a class="land-card" href="{href}"{attr} style="background:{bg};border-color:{border}">'
+        f'<span class="land-card-img"><img src="/assets/{img}" alt="" loading="lazy"></span>'
+        f'<span class="land-card-body"><b>{E(title)}</b><span>{E(desc)}</span>'
+        f'{_LAND_ARROW.format(b=border, i=ink)}</span></a>'
+        for href, attr, title, desc, img, bg, border, ink in cards)
+    stats = [
+        (f"{places}", t["s1"], _LAND_ICONS["pin"], "#e9f2fa"),
+        (f"{cars_n}", t["s2"], _LAND_ICONS["car"], "#e9f7ef"),
+        ("5000+", t["s3"], _LAND_ICONS["users"], "#f4eefc"),
+        (f"{avg}", t["s4"], _LAND_ICONS["star"], "#fdf6e3"),
+    ]
+    stats_html = "".join(
+        f'<div class="land-stat"><span class="land-stat-ico" style="background:{bg}">{ico}</span>'
+        f'<span class="land-stat-t"><b>{E(v)}</b><span>{E(lbl)}</span></span></div>'
+        for v, lbl, ico, bg in stats)
+    return (f'<section class="land"><div class="land-hero">'
+            f'<img class="land-hero-img" src="/assets/rentup-hero.jpg" alt="" loading="eager" decoding="async">'
+            f'<div class="land-hero-fade"></div>'
+            f'<div class="land-hero-copy"><h1>{E(t["h1"])}</h1><p>{E(t["lead"])}</p></div>'
+            f'<div class="land-cards">{cards_html}</div></div>'
+            f'<div class="wrap wide"><div class="land-stats">{stats_html}</div></div>'
+            f'</section>')
+
+
 # ══════════════════════════════════════════════════ ჩემი ტური (/trip/)
 # მომხმარებლის აგებული მარშრუტი — სტანდარტული ტურის გვერდის სახით.
 # გვერდი სტატიკურია: მარშრუტი #trip=... ჰეშიდან იკითხება და ბრაუზერშივე
@@ -2819,6 +2838,24 @@ _DOA_PROF_T = {
 }
 for _l, _v in _DOA_PROF_T.items():
     DOA_UI[_l]["myDetails"], DOA_UI[_l]["myDetailsLead"], DOA_UI[_l]["save2"] = _v
+
+_DOA_LAND_T = {
+    "ka": ("რა გეგმა გაქვს დღეს?", "აირჩიე სასურველი და დაიწყე შენი მოგზაურობა საქართველოში",
+           "დაგეგმე ტური დამოუკიდებლად", "სტანდარტული ტურები", "მანქანის დაჯავშნა", "განვერიანდი Community-ში"),
+    "en": ("What is your plan for today?", "Pick what you feel like and start your journey across Georgia",
+           "Plan your own trip", "Standard tours", "Book a car", "Join the community"),
+    "ru": ("Какие планы на сегодня?", "Выберите, что вам ближе, и начните путешествие по Грузии",
+           "Спланировать поездку самому", "Готовые туры", "Забронировать машину", "Присоединиться к сообществу"),
+    "fa": ("برنامهٔ امروز شما چیست؟", "آنچه دوست دارید انتخاب کنید و سفر خود در گرجستان را آغاز کنید",
+           "سفر خود را بسازید", "تورهای آماده", "رزرو خودرو", "به جامعه بپیوندید"),
+    "he": ("מה התוכנית שלך להיום?", "בחרו את מה שמתאים לכם והתחילו את המסע בגאורגיה",
+           "לתכנן טיול בעצמכם", "טיולים מוכנים", "להזמין רכב", "להצטרף לקהילה"),
+    "ar": ("ما خطتك اليوم؟", "اختر ما يناسبك وابدأ رحلتك في جورجيا",
+           "خطط رحلتك بنفسك", "جولات جاهزة", "احجز سيارة", "انضم إلى المجتمع"),
+}
+for _l, _v in _DOA_LAND_T.items():
+    (DOA_UI[_l]["landH1"], DOA_UI[_l]["landLead"], DOA_UI[_l]["lc1"],
+     DOA_UI[_l]["lc2"], DOA_UI[_l]["lc3"], DOA_UI[_l]["lc4"]) = _v
 
 _DOA_VIEWTRIP_T = {"ka": "ჩემი ტურის ნახვა", "en": "View my tour", "ru": "Посмотреть мой тур",
                    "fa": "مشاهده تور من", "he": "צפייה בטיול שלי", "ar": "عرض جولتي"}
@@ -2938,7 +2975,7 @@ def render_app_page(lang):
 <div id="doa" style="height:100dvh;max-width:520px;margin:0 auto;display:flex;flex-direction:column;background:#f4f7f9;overflow:hidden;position:relative">
 
   <div style="flex:0 0 auto;display:flex;align-items:center;gap:8px;height:54px;padding:0 12px;padding-top:env(safe-area-inset-top);background:#fff;border-bottom:1px solid #dde5ec">
-    <img src="/assets/do-logo-transparent.png" alt="Drive On" width="92" height="28" style="height:28px;width:auto;display:block">
+    <img src="/assets/rentup-wordmark.png" alt="RentUp" width="133" height="28" style="height:28px;width:auto;display:block">
     <span style="font-size:13px;font-weight:600;color:#5a6b7b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{E(t["appSub"])}</span>
     <div style="flex:1"></div>
     <select id="doalang" aria-label="Language" style="height:44px;padding:0 6px;border:1px solid #dde5ec;border-radius:10px;background:#fff;font-size:13px">{lang_opts}</select>
@@ -2962,9 +2999,36 @@ def render_app_page(lang):
 
   <div class="do-scroll" style="flex:1;min-height:0;overflow:auto;position:relative">
 
-    <div id="doav-home" style="padding:12px;display:flex;flex-direction:column;gap:12px">
+    <div id="doav-home">
+      <div style="position:relative;background:#dfeaf1;padding:0 0 12px">
+        <div style="position:relative;min-height:190px;overflow:hidden">
+          <img src="/assets/rentup-hero.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" loading="eager" decoding="async">
+          <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.93) 0%,rgba(255,255,255,.86) 46%,rgba(255,255,255,.72) 100%)"></div>
+          <div style="position:relative;pointer-events:none;padding:20px 14px 16px;display:flex;flex-direction:column;gap:8px">
+            <h1 style="margin:0;font-size:27px;line-height:1.18;font-weight:800;letter-spacing:-.3px">{E(t["landH1"])}</h1>
+            <p style="margin:0;font-size:14px;line-height:1.5;color:#41525f">{E(t["landLead"])}</p>
+          </div>
+        </div>
+        <div style="position:relative;margin-top:14px;padding:0 12px;display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          {"".join(
+            f'<div style="border:1px solid {border};border-radius:14px;background:{bg};overflow:hidden;display:flex;flex-direction:column">'
+            f'<span style="display:block;height:92px"><img src="/assets/{img}" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></span>'
+            f'<button type="button" data-doaland="{act}" style="display:flex;flex-direction:column;gap:6px;padding:10px;flex:1;border:0;background:transparent;text-align:start;font-family:inherit;cursor:pointer">'
+            f'<span style="font-size:14px;font-weight:700;line-height:1.25;flex:1">{E(title)}</span>'
+            f'<span style="width:30px;height:30px;border-radius:999px;background:#fff;border:1px solid {border};display:grid;place-items:center">'
+            f'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="{ink}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"></path><path d="m12 5 7 7-7 7"></path></svg>'
+            f'</span></button></div>'
+            for act, title, img, bg, border, ink in (
+                ("plan", t["lc1"], "rentup-card-plan.jpg", "#e9f7ef", "#cbe8d8", "#0b7a55"),
+                ("tours", t["lc2"], "rentup-card-tours.jpg", "#fdf6e3", "#f0e2bd", "#a5760a"),
+                ("cars", t["lc3"], "rentup-card-cars.jpg", "#eaf3fc", "#cfe1f2", "#0b5f9e"),
+                ("community", t["lc4"], "rentup-card-community.jpg", "#f4eefc", "#e0d3f4", "#6b3fa0"),
+            ))}
+        </div>
+      </div>
+      <div id="doaform" style="padding:12px;display:flex;flex-direction:column;gap:12px">
       <div style="display:flex;flex-direction:column;gap:6px">
-        <h1 style="margin:0;font-size:26px;line-height:1.2;font-weight:700">{E(t["h1"])}</h1>
+        <h1 style="margin:0;font-size:22px;line-height:1.2;font-weight:700">{E(t["h1"])}</h1>
         <p style="margin:0;font-size:14px;color:#5a6b7b">{E(t["lead"])}</p>
       </div>
 
@@ -3028,6 +3092,7 @@ def render_app_page(lang):
         <span style="font-size:12px;color:#5a6b7b">{E(t["chosen"])} <strong id="doabudget" style="color:#0e2333"></strong></span>
         <span style="font-size:12px;color:#5a6b7b">{E(t["used"])} <strong id="doaused" style="color:#0e2333"></strong></span>
         <span style="font-size:12px;color:#5a6b7b">{E(t["left"])} <strong id="doaleft" style="color:#0b7a55"></strong></span>
+      </div>
       </div>
     </div>
 
@@ -3293,7 +3358,7 @@ def main():
             write_hashed(out, fn, open(p, encoding="utf-8").read(), key)
     for lang in LANGS:
         payload = ("window.EXP=" + JC(explorer_config(lang, "/")) + ";\n" +
-                   "window.PLANNER_DATA=" + JC(workspace_planner_data(lang)) + ";\n")
+                   "window.PLANNER_DATA=" + JC(planner_data(lang)) + ";\n")
         TRAVEL_ASSET[lang] = write_hashed(out, f"travel-{lang}.js", payload,
                                           f"travel_{lang}")
     write(os.path.join(out, "admin", "bookings.html"), render_booking_admin())
@@ -3366,10 +3431,6 @@ def main():
     for lang in LANGS:
         write(os.path.join(out, "data", f"points-{lang}.json"),
               J({"pts": explorer_points(lang)}))
-        _, chunks = explorer_chunks(lang)
-        for region, body in chunks.items():
-            write(os.path.join(out, "data", "points", lang, f"{region}.json"),
-                  J(body))
         for slug, a in ATTRACTIONS.items():
             write(os.path.join(out, "data", "attr", lang, f"{slug}.json"),
                   J(attr_detail(lang, slug, a)))

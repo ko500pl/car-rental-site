@@ -1595,14 +1595,14 @@ body{{padding-inline-start:0!important}}
 .head-app-menu{{position:absolute;top:46px;inset-inline-end:0;z-index:720;min-width:240px;background:#fff;
   border:1px solid #dde5ec;border-radius:14px;box-shadow:0 14px 30px rgba(14,35,51,.16);padding:6px;
   display:flex;flex-direction:column;gap:2px}}
-.head-app-menu a,.head-app-soon{{display:flex;width:100%;align-items:center;gap:10px;padding:10px 12px;border:0;border-radius:10px;
+.head-app-menu a,.head-app-soon{{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;
   color:#0e2333;text-decoration:none}}
-.head-app-menu a:hover,.head-app-soon:hover{{background:#eefafc;color:#0b5f73;text-decoration:none}}
+.head-app-menu a:hover{{background:#eefafc;color:#0b5f73;text-decoration:none}}
 .head-app-menu a>span,.head-app-soon>span{{display:flex;flex-direction:column;gap:1px;min-width:0}}
 .head-app-menu b{{font-size:14px;font-weight:700}}
 .head-app-menu small{{font-size:12px;color:#5a6b7b}}
 .head-app-menu a svg{{color:#0d94ae;flex:0 0 auto}}
-.head-app-soon{{background:transparent;color:inherit;text-align:start;font:inherit;cursor:pointer}}
+.head-app-soon{{opacity:.55;cursor:default}}
 .head-app-soon svg{{color:#718091;flex:0 0 auto}}
 @media(max-width:760px){{.head-app summary>span{{display:none}}.head-app summary{{width:40px;padding:0;justify-content:center}}
   .head-app summary svg:last-child{{display:none}}}}
@@ -1787,6 +1787,70 @@ main .lead,p.lead{{font-size:15px;color:var(--ink-2)}}
 .dow-place{{display:flex;gap:10px;padding:9px 12px;border-bottom:1px solid #f1f5f8;align-items:flex-start;
   background:#fff}}
 .dow-place.on{{background:#f4fcfd}}
+/* RentUp ჰედერის ვორდმარკი */
+.head-top .logo .logo-rentup{{height:36px;width:auto;display:block}}
+@media(max-width:760px){{.head-top .logo .logo-rentup{{height:30px}}}}
+
+/* Landing — ჰერო ფოტო + 4 ბარათი + სტატისტიკა (მაკეტის პორტი) */
+.land{{background:#eef2f5;border-bottom:1px solid var(--line)}}
+.land-hero{{position:relative;background:#eaf1f6;display:flex;flex-direction:column;min-height:min(74vh,640px)}}
+.land-hero-img{{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}}
+.land-hero-fade{{position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(90deg,rgba(255,255,255,.97) 0%,rgba(255,255,255,.92) 30%,rgba(255,255,255,.42) 56%,rgba(255,255,255,.06) 78%,rgba(255,255,255,0) 100%)}}
+.land-hero-copy{{position:relative;flex:1;pointer-events:none;padding:56px 40px 0;display:flex;flex-direction:column;gap:14px;max-width:640px}}
+.land-hero-copy h1{{margin:0;font-size:40px;line-height:1.16;font-weight:800;letter-spacing:-.4px;color:#0e2333}}
+.land-hero-copy p{{margin:0;font-size:16px;line-height:1.5;color:#41525f;max-width:420px}}
+.land-cards{{position:relative;flex:0 0 auto;padding:18px 24px 22px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}}
+.land-card{{border:1px solid;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;
+  box-shadow:0 3px 12px rgba(14,35,51,.08);color:#0e2333;text-decoration:none;
+  transition:transform .16s ease,box-shadow .16s ease}}
+.land-card:hover{{transform:translateY(-3px);box-shadow:0 10px 26px rgba(14,35,51,.13);color:#0e2333;text-decoration:none}}
+.land-card-img{{display:block;height:150px}}
+.land-card-img img{{width:100%;height:100%;object-fit:cover;display:block}}
+.land-card-body{{flex:1;display:flex;flex-direction:column;gap:8px;padding:14px 14px 16px;text-align:start}}
+.land-card-body b{{font-size:17px;font-weight:700;line-height:1.25}}
+.land-card-body>span:not(.land-arrow){{font-size:13px;line-height:1.5;color:#41525f;flex:1}}
+.land-arrow{{width:38px;height:38px;border-radius:999px;background:#fff;border:1px solid;display:grid;place-items:center;margin-top:4px}}
+.land-arrow svg{{transition:transform .16s ease}}
+.land-card:hover .land-arrow svg{{transform:translateX(3px)}}
+.land-stats{{display:grid;grid-template-columns:repeat(4,1fr);margin:16px 0 24px;border:1px solid #e6edf2;border-radius:16px;background:#fff;overflow:hidden}}
+.land-stat{{display:flex;align-items:center;gap:12px;padding:18px 20px;border-inline-end:1px solid #eef3f6}}
+.land-stat:last-child{{border-inline-end:0}}
+.land-stat-ico{{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;flex:0 0 auto}}
+.land-stat-t{{display:flex;flex-direction:column;line-height:1.25;min-width:0}}
+.land-stat-t b{{font-size:20px;font-weight:700}}
+.land-stat-t span{{font-size:12px;color:#5a6b7b;white-space:nowrap}}
+@media(max-width:900px){{.land-cards{{grid-template-columns:repeat(2,1fr)}}.land-stats{{grid-template-columns:repeat(2,1fr)}}
+  .land-stat:nth-child(2){{border-inline-end:0}}.land-stat{{border-bottom:1px solid #eef3f6}}
+  .land-stat:nth-child(3),.land-stat:nth-child(4){{border-bottom:0}}}}
+@media(max-width:640px){{.land-cards{{grid-template-columns:1fr}}
+  .land-hero-copy{{padding:22px 16px 0}}.land-hero-copy h1{{font-size:27px}}}}
+
+/* Workspace intro — ჰერო ზოლი ფოტოთი და მოტივტივე დამგეგმავი ბარათი */
+.dow-intro{{position:relative;min-height:200px;padding:28px 16px 52px!important;background:#e7eef4!important;overflow:hidden}}
+.dow-intro::before{{content:"";position:absolute;inset:0;background:url("/assets/rentup-planner-hero.jpg") center/cover no-repeat}}
+.dow-intro::after{{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(90deg,rgba(255,255,255,.96) 0%,rgba(255,255,255,.9) 34%,rgba(255,255,255,.3) 62%,rgba(255,255,255,0) 100%)}}
+.dow-intro>*{{position:relative;z-index:2}}
+.dow-intro h1{{font-size:30px!important}}
+.dow-prow{{background:#fff;border:1px solid var(--line)!important;border-radius:14px;
+  box-shadow:0 6px 20px rgba(14,35,51,.10);margin:-32px 16px 10px!important;position:relative;z-index:60}}
+.dow-cattiles{{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}}
+.dow-cattiles::-webkit-scrollbar{{display:none}}
+.dow-cattile{{flex:0 0 auto;width:56px;height:56px;border:1px solid #dde5ec;border-radius:12px;background:#fff;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:#5a6b7b;cursor:pointer}}
+.dow-cattile span:last-child{{font-size:10px;font-weight:600;line-height:1}}
+.dow-cattile.on{{border-color:#0d94ae;background:#e6f2f6;color:#0b2f4d}}
+.dow-selpill{{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:6px;
+  padding:7px 12px;background:rgba(255,255,255,.97);border:1px solid var(--line);border-radius:12px;
+  box-shadow:0 6px 18px rgba(14,35,51,.16);z-index:405;font-size:12px;font-weight:600;color:#41525f;white-space:nowrap}}
+.dow-selpill b{{min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:#0b2f4d;color:#fff;
+  font-size:11px;font-weight:700;display:grid;place-items:center}}
+.dow-ava.thumb{{width:64px;height:52px;border-radius:8px;overflow:hidden;position:relative;flex:0 0 auto}}
+.dow-ava.thumb img{{width:100%;height:100%;object-fit:cover;display:block}}
+.dow-ava.thumb .dow-selbadge{{position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:999px;
+  background:#0d94ae;color:#fff;font-size:11px;font-weight:700;display:grid;place-items:center}}
+
 /* ჩემი ტური — მომხმარებლის მარშრუტის ცალკე გვერდი */
 .trip-map{{height:460px;border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:0 0 8px}}
 .trip-status{{font-size:13px;color:#8c5a00;margin:0 0 14px}}
