@@ -1073,8 +1073,10 @@
     flash(T.saved);
   };
   function shareUrl() {
-    return location.href.split('#')[0] + '#trip=' + encodeURIComponent(
-      st.selected.join(',') + ';o=' + st.origin.n + ';s=' + st.start + ';d=' + st.days);
+    /* შენახული/გაზიარებული ბმული ყოველთვის ენის შესაბამის „ჩემი ტურის" გვერდზე მიდის */
+    return location.origin + (T.tripUrl || '/trip/') + '#trip=' + encodeURIComponent(
+      st.selected.join(',') + ';o=' + st.origin.n + ';s=' + st.start + ';d=' + st.days +
+      ';h=' + (st.dayHours[0] || 8) + ';p=' + st.people);
   }
   $('dowshare').onclick = function () {
     var trip = tripObj();
@@ -1251,5 +1253,11 @@
   };
 
   render();
+  /* #tour=slug — სტანდარტული ტურის ჩატვირთვა რუკაზე (route/tours გვერდებიდან) */
+  var mtour = location.hash.match(/#tour=([^&]+)/);
+  if (mtour) {
+    var tourPre = (D.standardTours || []).filter(function (x) { return x.s === decodeURIComponent(mtour[1]); })[0];
+    if (tourPre) applyTour(tourPre);
+  }
   setTimeout(function () { map.invalidateSize(); }, 120);
 })();

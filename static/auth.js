@@ -656,6 +656,13 @@
       });
     });
   }
+  function tripHref(u) {
+    /* ძველი შენახული ბმულები მთავარ გვერდზე მიდიოდა — ჰეშს ვიღებთ და
+       მიმდინარე ენის „ჩემი ტურის" გვერდზე გადაგვყავს, ენა არ იცვლება */
+    var s = String(u || ""), i = s.indexOf("#trip=");
+    if (i < 0) return s;
+    return (C.tripUrl || "/trip/") + s.slice(i);
+  }
   function tripCard(t, g) {
     var stops = (t.stops || []).slice(0, 8).map(function (s) { return esc(s.n || s); }).join(" · ");
     var more = (t.stops || []).length > 8 ? " +" + ((t.stops || []).length - 8) : "";
@@ -669,7 +676,7 @@
       (g === "planned"
         ? '<button class="btn sm" type="button" data-done="' + esc(t.id) + '">' + esc(T.mark_done || "Mark done") + "</button>"
         : '<button class="btn sm ghost" type="button" data-undo="' + esc(t.id) + '">' + esc(T.mark_planned || "Move back") + "</button>") +
-      (t.url ? '<a class="btn sm ghost" href="' + esc(t.url) + '">' + esc(T.open || "Open") + "</a>" : "") +
+      (t.url ? '<a class="btn sm ghost" href="' + esc(tripHref(t.url)) + '">' + esc(T.open || "Open") + "</a>" : "") +
       '<button class="btn sm ghost" type="button" data-public="' + esc(t.id) + '">' +
       (t.visibility === "public" ? "Public: on" : "Public: off") + "</button>" +
       '<button class="btn sm ghost" type="button" data-share="' + esc(t.id) + '">Share</button>' +

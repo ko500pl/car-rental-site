@@ -698,6 +698,7 @@ def shell(lang, current, head, body, depth, tail=""):
                                             "storageBucket", "messagingSenderId", "appId")}
         cfg["accountUrl"] = page_url(lang, "account", False)
         cfg["plannerUrl"] = page_url(lang, "map", False) + "#planner"
+        cfg["tripUrl"] = lang_root(lang) + "trip/"
         cfg["booking"] = BOOKING
         cfg["cars"] = CAR_PRICES
         cfg["whatsapp"] = str(SITE.get("whatsapp") or SITE.get("mobile_e164")
@@ -1951,7 +1952,10 @@ def render_route(lang, slug, r):
         f'<div><dt class="k">{E(x["k"])}</dt><dd class="v">{E(x["v"])}</dd></div>'
         for x in facts) + "</dl>")
     stops = "".join(
-        f'<div class="card"><span class="tag">{E(tl(lang,"type",a["type"]))}</span>'
+        f'<div class="card stop-card">'
+        + (f'<a class="stop-img" href="{attr_url(lang, s, False)}" tabindex="-1" aria-hidden="true">'
+           f'<img src="{E(a["image"])}" alt="" loading="lazy"></a>' if a.get("image") else "")
+        + f'<span class="tag">{E(tl(lang,"type",a["type"]))}</span>'
         f'<h3><a href="{attr_url(lang, s, False)}">{E(a[lang]["name"])}</a></h3>'
         f'<p>{E(a[lang]["short"])}</p>'
         f'<span class="price">{E(a["visit_hours"])} {E(tu(lang,"hrs"))}</span></div>'
@@ -1962,7 +1966,9 @@ def render_route(lang, slug, r):
     body = (
         f'<section class="page-head"><div class="wrap"><h1>{E(L["name"])}</h1>'
         f'<p class="lead">{E(L["short"])}</p></div></section>'
-        f'<section class="sec"><div class="wrap">{fh}{mp}'
+        f'<section class="sec"><div class="wrap">{fh}'
+        f'<div class="row" style="margin:4px 0 14px">'
+        f'<a class="btn" href="{page_url(lang, "map", False)}#tour={slug}">{E(TOURS_UI[lang][7])}</a></div>{mp}'
         f'<div class="article">{render_md(L["body"], lang)}</div></div></section>'
         f'<section class="sec alt"><div class="wrap"><h2>{E(tu(lang,"plan_title"))}</h2>'
         f'<div class="article">{render_md(L["plan"], lang)}</div></div></section>'
@@ -2851,7 +2857,7 @@ def render_tours_page(lang):
         + f' · {r["minPeople"]}–{r["maxPeople"]}</p>'
         f'<p>{E(r.get("sh") or "")}</p>'
         f'<div class="row"><a class="btn sm" href="{E(r["u"])}">{E(t[6])}</a>'
-        f'<a class="btn ghost sm" href="{page_url(lang, "map", False)}#planner">{E(t[7])}</a></div>'
+        f'<a class="btn ghost sm" href="{page_url(lang, "map", False)}#tour={E(r["s"])}">{E(t[7])}</a></div>'
         f'</div>'
         for r in tours)
     body = (f'<section class="page-head"><div class="wrap"><h1>{E(t[0])}</h1>'

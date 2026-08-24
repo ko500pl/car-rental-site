@@ -1856,6 +1856,8 @@ main .lead,p.lead{{font-size:15px;color:var(--ink-2)}}
 
 /* სტანდარტული ტურების გვერდი */
 .tours-grid .tour-card img{{width:100%;height:170px;object-fit:cover;border-radius:10px;margin:0 0 10px}}
+.card.stop-card .stop-img{{display:block;margin:0 0 10px}}
+.card.stop-card .stop-img img{{width:100%;height:150px;object-fit:cover;border-radius:10px;display:block}}
 .tour-card .tour-meta{{color:var(--ink-2);font-size:13px;margin:2px 0 8px}}
 .tour-card .row{{display:flex;gap:8px;margin-top:auto;padding-top:8px}}
 
