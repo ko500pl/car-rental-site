@@ -2814,14 +2814,14 @@ def landing_block(lang):
         f'<div class="land-stat"><span class="land-stat-ico" style="background:{bg}">{ico}</span>'
         f'<span class="land-stat-t"><b>{E(v)}</b><span>{E(lbl)}</span></span></div>'
         for v, lbl, ico, bg in stats)
-    return (f'<section class="land"><div class="land-hero">'
+    return (f'<section class="land"><div class="land-shell">'
+            f'<div class="land-hero"><div class="land-hero-photo">'
             f'<img class="land-hero-img" src="/assets/rentup-hero.jpg" alt="" loading="eager" decoding="async">'
             f'<div class="land-hero-fade"></div>'
             f'<div class="land-hero-copy"><h1>{E(t["h1"])}</h1><p>{E(t["lead"])}</p></div></div>'
-            f'<div class="land-below"><div class="wrap wide">'
-            f'<div class="land-cards">{cards_html}</div>'
-            f'<div class="land-stats">{stats_html}</div></div></div>'
-            f'</section>')
+            f'<div class="land-cards">{cards_html}</div></div>'
+            f'<div class="land-stats">{stats_html}</div>'
+            f'</div></section>')
 
 
 
