@@ -629,12 +629,21 @@ def header_html(lang, current):
 <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
 </summary>
 <div class="head-app-menu">
+<<<<<<< _merge/mine_build.py
+<a href="/assets/downloads/rentup-android.apk" download>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5"></path><path d="M4 19h16"></path></svg>
+<span><b>{E(app_copy[1])}</b><small>{E(app_copy[3])}</small></span></a>
+<span class="head-app-soon">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5"></rect><path d="M10.5 18.5h3"></path></svg>
+<span><b>{E(app_copy[2])}</b><small>{E(app_soon)}</small></span></span>
+=======
 <a class="app-download" href="/assets/downloads/rentup-android.apk" download>
 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5"></path><path d="M4 19h16"></path></svg>
 <span><b>{E(app_copy[1])}</b><small>{E(app_copy[3])}</small></span></a>
 <button type="button" class="head-app-soon" data-ios-install>
 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5"></rect><path d="M10.5 18.5h3"></path></svg>
 <span><b>{E(app_copy[2])}</b><small>{E(app_soon)}</small></span></button>
+>>>>>>> _merge/theirs_build.py
 </div>
 </details>
 <label class="lang-nav"><span class="sr-only">{E(u['ui']['lang_label'])}</span>
@@ -2258,6 +2267,7 @@ _DOW_OPT_T = {
     "he": ("⚡ סידור לזמן הקצר ביותר", "המסלול סודר מחדש — נחסכו %s", "המסלול כבר אופטימלי", "גררו לשינוי הסדר"),
     "ar": ("⚡ ترتيب لأقصر وقت", "أُعيد ترتيب المسار — تم توفير %s", "المسار مثالي بالفعل", "اسحب لإعادة الترتيب"),
 }
+<<<<<<< _merge/mine_build.py
 
 _DOW_CAT_T = {
     "ka": ("ყველა", "ბუნება", "კულტურა", "ქალაქი", "ზღვა", "სხვა"),
@@ -2271,6 +2281,8 @@ for _l, _v in _DOW_CAT_T.items():
     (DOW_JS_T[_l]["catAll"], DOW_JS_T[_l]["catNature"], DOW_JS_T[_l]["catCulture"],
      DOW_JS_T[_l]["catCity"], DOW_JS_T[_l]["catSea"], DOW_JS_T[_l]["catOther"]) = _v
 
+=======
+>>>>>>> _merge/theirs_build.py
 _DOW_VIEWTRIP_T = {"ka": "ჩემი ტურის ნახვა", "en": "View my tour", "ru": "Посмотреть мой тур",
                    "fa": "مشاهده تور من", "he": "צפייה בטיול שלי", "ar": "عرض جولتي"}
 for _l, _v in _DOW_VIEWTRIP_T.items():
@@ -2709,6 +2721,7 @@ def render_404():
 
 
 # ══════════════════════════════════════════════════════════════ main
+<<<<<<< _merge/mine_build.py
 # ══════════════════════════════════════════════════ Landing (მთავარი ჰერო)
 # "Drive On - Landing" მაკეტის პორტი: ჰერო ფოტო + 4 სამოქმედო ბარათი + სტატისტიკა.
 LAND_UI = {
@@ -2805,6 +2818,8 @@ def landing_block(lang):
             f'</section>')
 
 
+=======
+>>>>>>> _merge/theirs_build.py
 # ══════════════════════════════════════════════════ ჩემი ტური (/trip/)
 # მომხმარებლის აგებული მარშრუტი — სტანდარტული ტურის გვერდის სახით.
 # გვერდი სტატიკურია: მარშრუტი #trip=... ჰეშიდან იკითხება და ბრაუზერშივე
@@ -2918,6 +2933,7 @@ _DOA_PROF_T = {
 for _l, _v in _DOA_PROF_T.items():
     DOA_UI[_l]["myDetails"], DOA_UI[_l]["myDetailsLead"], DOA_UI[_l]["save2"] = _v
 
+<<<<<<< _merge/mine_build.py
 _DOA_LAND_T = {
     "ka": ("რა გეგმა გაქვს დღეს?", "აირჩიე სასურველი და დაიწყე შენი მოგზაურობა საქართველოში",
            "დაგეგმე ტური დამოუკიდებლად", "სტანდარტული ტურები", "მანქანის დაჯავშნა", "განვერიანდი Community-ში"),
@@ -2936,6 +2952,8 @@ for _l, _v in _DOA_LAND_T.items():
     (DOA_UI[_l]["landH1"], DOA_UI[_l]["landLead"], DOA_UI[_l]["lc1"],
      DOA_UI[_l]["lc2"], DOA_UI[_l]["lc3"], DOA_UI[_l]["lc4"]) = _v
 
+=======
+>>>>>>> _merge/theirs_build.py
 _DOA_VIEWTRIP_T = {"ka": "ჩემი ტურის ნახვა", "en": "View my tour", "ru": "Посмотреть мой тур",
                    "fa": "مشاهده تور من", "he": "צפייה בטיול שלי", "ar": "عرض جولتي"}
 for _l, _v in _DOA_VIEWTRIP_T.items():

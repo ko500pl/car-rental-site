@@ -4,7 +4,7 @@
 სტატიკური საიტის გენერატორი — კონტენტი იკითხება content/*.yml-იდან (ადმინიდან იმართება).
 გამოყენება:  python3 build.py [outdir]
 """
-import glob, hashlib, html, json, os, re, shutil, sys
+import glob, html, json, os, re, shutil, sys
 from datetime import date, datetime
 from decimal import Decimal, ROUND_HALF_UP
 from pathlib import Path
@@ -81,27 +81,6 @@ CARS = {os.path.splitext(os.path.basename(p))[0]: load(p)
 CARS_ALL = CARS
 CARS = {k: v for k, v in CARS.items() if is_public(v)}
 CARS = dict(sorted(CARS.items(), key=lambda kv: kv[1].get("order", 999)))
-
-
-def _price(value, fallback=0.0):
-    """A YAML price cell as a number. Empty, missing or unparsable -> fallback."""
-    try:
-        return float(str(value).replace(",", ".").strip())
-    except (TypeError, ValueError):
-        return fallback
-
-
-# Price map handed to the browser so the booking dialog can quote a car without
-# a round trip. The bands are the same three the rental program uses --
-# 1+ / 7+ / 30+ nights -- so the site and the program never disagree on a price.
-CAR_PRICES = {}
-for _slug, _car in CARS.items():
-    _p1 = _price(_car.get("price_1_6"))
-    _p7 = _price(_car.get("price_7_29"), _p1) or _p1
-    _p30 = _price(_car.get("price_30"), _p7) or _p7
-    CAR_PRICES[_slug] = {"p1": _p1, "p7": _p7, "p30": _p30,
-                         "dep": _price(_car.get("deposit"))}
-
 POSTS = {os.path.splitext(os.path.basename(p))[0]: load(p)
          for p in sorted(glob.glob("content/posts/*.yml"))}
 POSTS_ALL = POSTS
@@ -629,12 +608,12 @@ def header_html(lang, current):
 <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
 </summary>
 <div class="head-app-menu">
-<a class="app-download" href="/assets/downloads/rentup-android.apk" download>
+<a href="/assets/downloads/rentup-android.apk" download>
 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5"></path><path d="M4 19h16"></path></svg>
 <span><b>{E(app_copy[1])}</b><small>{E(app_copy[3])}</small></span></a>
-<button type="button" class="head-app-soon" data-ios-install>
+<span class="head-app-soon">
 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5"></rect><path d="M10.5 18.5h3"></path></svg>
-<span><b>{E(app_copy[2])}</b><small>{E(app_soon)}</small></span></button>
+<span><b>{E(app_copy[2])}</b><small>{E(app_soon)}</small></span></span>
 </div>
 </details>
 <label class="lang-nav"><span class="sr-only">{E(u['ui']['lang_label'])}</span>
@@ -695,7 +674,6 @@ def shell(lang, current, head, body, depth, tail=""):
         cfg["accountUrl"] = page_url(lang, "account", False)
         cfg["plannerUrl"] = page_url(lang, "map", False) + "#planner"
         cfg["booking"] = BOOKING
-        cfg["cars"] = CAR_PRICES
         cfg["whatsapp"] = str(SITE.get("whatsapp") or SITE.get("mobile_e164")
                               or SITE.get("phone_e164", "")).replace("+", "").replace(" ", "")
         cfg["siteUrl"] = SITE_URL
@@ -718,20 +696,19 @@ def shell(lang, current, head, body, depth, tail=""):
 
 def inquiry_widget(lang, context=""):
     tx = {
-        "ka": ("დაჯავშნეთ ავტომობილი", "არჩეული ავტომობილი", "დაწყება", "დაბრუნება", "სახელი", "ტელეფონი / WhatsApp", "შენიშვნა (არასავალდებულო)", "WhatsApp", "მოთხოვნის გაგზავნა", "ხელმისაწვდომობას სწრაფად გადავამოწმებთ და დაგიკავშირდებით.", "დახურვა", "ელფოსტა (არასავალდებულო)", "აღების ადგილი (არასავალდებულო)"),
-        "en": ("Book a car", "Selected car", "Start date", "Return date", "Name", "Phone / WhatsApp", "Notes (optional)", "WhatsApp", "Send request", "We’ll quickly confirm availability and contact you.", "Close", "Email (optional)", "Pickup location (optional)"),
-        "ru": ("Забронировать автомобиль", "Выбранный автомобиль", "Дата начала", "Дата возврата", "Имя", "Телефон / WhatsApp", "Комментарий (необязательно)", "WhatsApp", "Отправить запрос", "Мы быстро проверим наличие и свяжемся с вами.", "Закрыть", "Эл. почта (необязательно)", "Место получения (необязательно)"),
-        "fa": ("رزرو خودرو", "خودروی انتخابی", "تاریخ شروع", "تاریخ بازگشت", "نام", "تلفن / واتس‌اپ", "یادداشت (اختیاری)", "واتس‌اپ", "ارسال درخواست", "موجودی را سریع بررسی کرده و با شما تماس می‌گیریم.", "بستن", "ایمیل (اختیاری)", "محل تحویل (اختیاری)"),
-        "he": ("הזמנת רכב", "הרכב שנבחר", "תאריך התחלה", "תאריך החזרה", "שם", "טלפון / WhatsApp", "הערות (לא חובה)", "WhatsApp", "שליחת בקשה", "נבדוק זמינות במהירות וניצור קשר.", "סגירה", "אימייל (לא חובה)", "מקום איסוף (לא חובה)"),
-        "ar": ("حجز سيارة", "السيارة المختارة", "تاريخ البدء", "تاريخ الإرجاع", "الاسم", "الهاتف / واتساب", "ملاحظات (اختياري)", "واتساب", "إرسال الطلب", "سنتحقق من التوفر سريعًا ونتواصل معك.", "إغلاق", "البريد الإلكتروني (اختياري)", "مكان الاستلام (اختياري)")
+        "ka": ("დაჯავშნეთ ავტომობილი", "არჩეული ავტომობილი", "დაწყება", "დაბრუნება", "სახელი", "ტელეფონი / WhatsApp", "შენიშვნა (არასავალდებულო)", "WhatsApp", "მოთხოვნის გაგზავნა", "ხელმისაწვდომობას სწრაფად გადავამოწმებთ და დაგიკავშირდებით.", "დახურვა"),
+        "en": ("Book a car", "Selected car", "Start date", "Return date", "Name", "Phone / WhatsApp", "Notes (optional)", "WhatsApp", "Send request", "We’ll quickly confirm availability and contact you.", "Close"),
+        "ru": ("Забронировать автомобиль", "Выбранный автомобиль", "Дата начала", "Дата возврата", "Имя", "Телефон / WhatsApp", "Комментарий (необязательно)", "WhatsApp", "Отправить запрос", "Мы быстро проверим наличие и свяжемся с вами.", "Закрыть"),
+        "fa": ("رزرو خودرو", "خودروی انتخابی", "تاریخ شروع", "تاریخ بازگشت", "نام", "تلفن / واتس‌اپ", "یادداشت (اختیاری)", "واتس‌اپ", "ارسال درخواست", "موجودی را سریع بررسی کرده و با شما تماس می‌گیریم.", "بستن"),
+        "he": ("הזמנת רכב", "הרכב שנבחר", "תאריך התחלה", "תאריך החזרה", "שם", "טלפון / WhatsApp", "הערות (לא חובה)", "WhatsApp", "שליחת בקשה", "נבדוק זמינות במהירות וניצור קשר.", "סגירה"),
+        "ar": ("حجز سيارة", "السيارة المختارة", "تاريخ البدء", "تاريخ الإرجاع", "الاسم", "الهاتف / واتساب", "ملاحظات (اختياري)", "واتساب", "إرسال الطلب", "سنتحقق من التوفر سريعًا ونتواصل معك.", "إغلاق")
     }[lang]
     return f'''<div class="booking-dialog" data-booking-dialog hidden role="dialog" aria-modal="true" aria-labelledby="booking-title-{lang}"><div class="booking-modal-card">
 <button class="booking-close" type="button" data-booking-close aria-label="{E(tx[10])}">×</button><div class="booking-brand" aria-hidden="true">DO</div>
 <form class="inquiry-mini" data-inquiry name="rental-inquiry" method="POST" data-netlify="true" netlify-honeypot="company" data-lang="{lang}">
-<input type="hidden" name="form-name" value="rental-inquiry"><input type="hidden" name="context" value="{E(context)}"><input type="hidden" name="requested_car" value=""><input type="hidden" name="car_slug" value=""><input type="hidden" name="page_url" value=""><p class="hp" hidden><label>Company<input name="company" tabindex="-1" autocomplete="off"></label></p>
+<input type="hidden" name="form-name" value="rental-inquiry"><input type="hidden" name="context" value="{E(context)}"><input type="hidden" name="requested_car" value=""><input type="hidden" name="page_url" value=""><p class="hp" hidden><label>Company<input name="company" tabindex="-1" autocomplete="off"></label></p>
 <h2 id="booking-title-{lang}">{E(tx[0])}</h2><p class="booking-lead">{E(tx[9])}</p><div class="booking-choice" data-booking-choice hidden><small>{E(tx[1])}</small><strong></strong></div>
-<div class="inquiry-grid"><label>{E(tx[2])}<input name="start" type="date" required></label><label>{E(tx[3])}<input name="end" type="date" required></label><label>{E(tx[4])}<input name="name" required autocomplete="name"></label><label>{E(tx[5])}<input name="phone" required autocomplete="tel"></label><label>{E(tx[11])}<input name="email" type="email" autocomplete="email"></label><label>{E(tx[12])}<input name="pickup" autocomplete="off"></label><label class="inquiry-notes">{E(tx[6])}<textarea name="notes" rows="2"></textarea></label></div>
-<p class="inquiry-quote" data-quote aria-live="polite"></p>
+<div class="inquiry-grid"><label>{E(tx[2])}<input name="start" type="date" required></label><label>{E(tx[3])}<input name="end" type="date" required></label><label>{E(tx[4])}<input name="name" required autocomplete="name"></label><label>{E(tx[5])}<input name="phone" required autocomplete="tel"></label><label class="inquiry-notes">{E(tx[6])}<textarea name="notes" rows="2"></textarea></label></div>
 <div class="inquiry-actions"><button class="btn" type="submit">{E(tx[8])}</button><button class="btn ghost wa" type="button" data-inquiry-wa>{E(tx[7])}</button></div><p class="inquiry-status" role="status" aria-live="polite"></p></form></div></div>'''
 
 
@@ -1427,48 +1404,6 @@ def explorer_points(lang):
     return pts
 
 
-EXPLORER_INDEX_KEYS = (
-    "s", "n", "la", "lo", "names", "t", "ty", "c", "g", "gn",
-    "hh", "f", "v", "r", "rd", "el", "bike",
-)
-
-
-def explorer_point_index(lang):
-    """Country-wide map index: enough for search, clustering and routing.
-
-    Images, URLs and descriptive display fields live in regional chunks and are
-    merged into these objects by workspace.js only when the relevant area is
-    opened.  Keeping every slug here preserves instant multilingual search and
-    lets a shared/standard tour be selected before any chunk has arrived.
-    """
-    return [{key: point[key] for key in EXPLORER_INDEX_KEYS}
-            for point in explorer_points(lang)]
-
-
-def explorer_chunks(lang):
-    """Manifest and rich point payloads grouped by content region."""
-    grouped = {}
-    for point in explorer_points(lang):
-        grouped.setdefault(point["g"], []).append(point)
-    chunks, manifest = {}, {}
-    for region, points in sorted(grouped.items()):
-        bounds = [
-            min(point["la"] for point in points),
-            min(point["lo"] for point in points),
-            max(point["la"] for point in points),
-            max(point["lo"] for point in points),
-        ]
-        body = {"region": region, "pts": points}
-        version = hashlib.sha256(JC(body).encode("utf-8")).hexdigest()[:12]
-        manifest[region] = {
-            "url": f"/data/points/{lang}/{region}.json?v={version}",
-            "bounds": bounds,
-            "count": len(points),
-        }
-        chunks[region] = body
-    return manifest, chunks
-
-
 def explorer_towns(lang):
     """ქალაქები და აეროპორტები — ათვლის/დანიშნულების წერტილებად."""
     out = []
@@ -1541,10 +1476,8 @@ def explorer_config(lang, base="/"):
     x = TRAVEL[lang]["exp"]
     u = TRAVEL[lang]["ui"]
     visited = get_visit_labels(lang)
-    chunk_manifest, _ = explorer_chunks(lang)
     return {
-        "pts": explorer_point_index(lang),
-        "chunks": chunk_manifest,
+        "pts": explorer_points(lang),
         "towns": explorer_towns(lang),
         "lang": lang, "base": base, "center": [42.15, 43.6], "zoom": 7,
         "planner": page_url(lang, "map", False) + "#planner",
@@ -2129,18 +2062,6 @@ def planner_data(lang):
         "nav": {"contact": UI[lang]["nav"]["contact"], "fleet": UI[lang]["nav"]["fleet"]},
         "url": {"contact": page_url(lang, "contact", False), "fleet": page_url(lang, "fleet", False)},
     }
-
-
-def workspace_planner_data(lang):
-    """Planner metadata used by the unified map workspace.
-
-    Attraction geometry already arrives through EXP's lightweight point index,
-    so sending planner_data.a here duplicated the complete catalogue in every
-    language asset without a single workspace.js consumer.
-    """
-    data = planner_data(lang)
-    data.pop("a", None)
-    return data
 
 
 def planner_form_html(lang):
@@ -3437,7 +3358,7 @@ def main():
             write_hashed(out, fn, open(p, encoding="utf-8").read(), key)
     for lang in LANGS:
         payload = ("window.EXP=" + JC(explorer_config(lang, "/")) + ";\n" +
-                   "window.PLANNER_DATA=" + JC(workspace_planner_data(lang)) + ";\n")
+                   "window.PLANNER_DATA=" + JC(planner_data(lang)) + ";\n")
         TRAVEL_ASSET[lang] = write_hashed(out, f"travel-{lang}.js", payload,
                                           f"travel_{lang}")
     write(os.path.join(out, "admin", "bookings.html"), render_booking_admin())
@@ -3510,10 +3431,6 @@ def main():
     for lang in LANGS:
         write(os.path.join(out, "data", f"points-{lang}.json"),
               J({"pts": explorer_points(lang)}))
-        _, chunks = explorer_chunks(lang)
-        for region, body in chunks.items():
-            write(os.path.join(out, "data", "points", lang, f"{region}.json"),
-                  J(body))
         for slug, a in ATTRACTIONS.items():
             write(os.path.join(out, "data", "attr", lang, f"{slug}.json"),
                   J(attr_detail(lang, slug, a)))

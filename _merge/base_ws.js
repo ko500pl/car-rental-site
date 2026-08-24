@@ -10,50 +10,6 @@
   var PTS = E.pts, TOWNS = E.towns;
   var BY = {}; PTS.forEach(function (p) { BY[p.s] = p; });
 
-  /* Regional enrichment. The initial asset contains only the country-wide
-     routing/search index; richer card data is merged in-place on demand. */
-  var chunkManifest = E.chunks || {}, chunkLoaded = {}, chunkPending = {};
-  var chunkAbort = null, chunkRequest = 0, chunkTimer = 0;
-  function mergeChunk(data) {
-    (data && data.pts || []).forEach(function (rich) {
-      if (BY[rich.s]) Object.assign(BY[rich.s], rich);
-      else { BY[rich.s] = rich; PTS.push(rich); }
-    });
-  }
-  function cachedChunk(key) {
-    try { return JSON.parse(localStorage.getItem('do-map-chunk:' + key) || 'null'); }
-    catch (e) { return null; }
-  }
-  function fetchChunk(region, signal) {
-    if (!region || !chunkManifest[region] || chunkLoaded[region]) return Promise.resolve();
-    var pending = chunkPending[region];
-    if (pending && (!pending.signal || !pending.signal.aborted)) return pending.promise;
-    var spec = chunkManifest[region], cacheKey = spec.url;
-    var promise = fetch(spec.url, { signal: signal, credentials: 'same-origin' })
-      .then(function (res) { if (!res.ok) throw new Error('chunk ' + res.status); return res.json(); })
-      .then(function (data) {
-        if (signal && signal.aborted) return;
-        mergeChunk(data); chunkLoaded[region] = true;
-        try { localStorage.setItem('do-map-chunk:' + cacheKey, JSON.stringify(data)); } catch (e) {}
-      })
-      .catch(function (err) {
-        if (err && err.name === 'AbortError') throw err;
-        var offline = cachedChunk(cacheKey);
-        if (offline) { mergeChunk(offline); chunkLoaded[region] = true; }
-      })
-      .finally(function () {
-        if (chunkPending[region] && chunkPending[region].promise === promise) delete chunkPending[region];
-      });
-    chunkPending[region] = { promise: promise, signal: signal };
-    return promise;
-  }
-  function ensurePointRegions(points) {
-    var regions = {};
-    (points || []).forEach(function (p) { if (p && p.g) regions[p.g] = 1; });
-    return Promise.all(Object.keys(regions).map(function (region) { return fetchChunk(region); }))
-      .then(function () { render(); });
-  }
-
   function esc(s) {
     return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
@@ -103,7 +59,7 @@
     days: 3, people: 2, transport: 'suggest',
     dayHours: [8, 8, 8], dayGridOpen: false,
     selected: [], visited: {},
-    q: '', cat: [], reg: '', minRating: 0, visitedFilter: '', fitsOnly: false,
+    q: '', cat: '', reg: '', minRating: 0, visitedFilter: '', fitsOnly: false,
     tourId: '', detail: null,
     traffic: false, weather: true,
     ret: 'back', stay: null, carOverride: '',
@@ -162,7 +118,7 @@
     return PTS.filter(function (p) {
       if (routeTab && st.selected.indexOf(p.s) < 0) return false;
       if (st.reg && p.g !== st.reg) return false;
-      if (st.cat && st.cat.length && st.cat.indexOf(p.ty) < 0) return false;
+      if (st.cat && p.ty !== st.cat) return false;
       if (st.minRating && (p.r || 0) < st.minRating) return false;
       if (st.visitedFilter === 'yes' && !st.visited[p.s]) return false;
       if (st.visitedFilter === 'no' && st.visited[p.s]) return false;
@@ -195,58 +151,21 @@
   /* ── map ──────────────────────────────────────────────────────────── */
   var GEO = [[41.107,43.44],[41.127,43.44],[41.156,43.433],[41.177,43.404],[41.191,43.361],[41.186,43.278],[41.199,43.206],[41.236,43.152],[41.265,43.141],[41.288,43.17],[41.307,43.148],[41.352,43.058],[41.467,42.907],[41.493,42.821],[41.564,42.788],[41.58,42.756],[41.587,42.684],[41.58,42.608],[41.571,42.59],[41.559,42.569],[41.47,42.507],[41.439,42.468],[41.455,42.363],[41.475,42.281],[41.486,42.212],[41.495,42.079],[41.496,41.924],[41.432,41.823],[41.441,41.78],[41.472,41.701],[41.498,41.575],[41.517,41.51],[41.705,41.701],[41.817,41.759],[41.885,41.762],[41.97,41.762],[42.147,41.665],[42.397,41.579],[42.659,41.489],[42.738,41.42],[42.828,41.129],[42.93,41.06],[43.064,40.837],[43.121,40.524],[43.146,40.463],[43.312,40.189],[43.42,39.977],[43.484,40.023],[43.553,40.085],[43.569,40.149],[43.543,40.344],[43.512,40.52],[43.534,40.65],[43.481,40.801],[43.418,40.941],[43.375,41.082],[43.333,41.359],[43.276,41.46],[43.218,41.582],[43.191,42.05],[43.199,42.086],[43.208,42.122],[43.229,42.281],[43.224,42.417],[43.156,42.565],[43.159,42.659],[43.17,42.759],[43.133,42.889],[43.092,42.99],[43.05,43.001],[42.989,43.091],[42.897,43.346],[42.845,43.559],[42.807,43.623],[42.746,43.782],[42.727,43.8],[42.703,43.796],[42.658,43.749],[42.618,43.739],[42.593,43.76],[42.571,43.825],[42.566,43.958],[42.595,44.005],[42.616,44.102],[42.654,44.199],[42.703,44.329],[42.748,44.505],[42.748,44.577],[42.734,44.646],[42.71,44.693],[42.616,44.772],[42.746,44.851],[42.757,44.873],[42.731,44.945],[42.694,45.071],[42.675,45.161],[42.649,45.207],[42.529,45.344],[42.536,45.564],[42.517,45.654],[42.498,45.704],[42.475,45.726],[42.357,45.69],[42.234,45.636],[42.205,45.639],[42.159,45.726],[42.109,45.845],[42.071,45.909],[42.036,45.953],[42.008,46.05],[41.993,46.161],[41.989,46.212],[41.96,46.269],[41.904,46.41],[41.89,46.431],[41.856,46.406],[41.79,46.349],[41.757,46.302],[41.752,46.251],[41.738,46.201],[41.703,46.183],[41.658,46.183],[41.625,46.19],[41.613,46.205],[41.602,46.255],[41.508,46.305],[41.46,46.385],[41.406,46.507],[41.344,46.619],[41.286,46.673],[41.246,46.662],[41.16,46.626],[41.088,46.536],[41.071,46.457],[41.076,46.431],[41.099,46.381],[41.154,46.28],[41.198,46.172],[41.184,46.086],[41.166,46.032],[41.187,45.92],[41.224,45.794],[41.262,45.726],[41.29,45.697],[41.338,45.715],[41.425,45.423],[41.449,45.279],[41.423,45.218],[41.291,45.002],[41.278,44.977],[41.26,44.811],[41.248,44.811],[41.22,44.847],[41.212,44.84],[41.208,44.563],[41.191,44.473],[41.213,44.228],[41.203,44.145],[41.182,44.077],[41.16,43.908],[41.132,43.793],[41.116,43.645],[41.116,43.49],[41.107,43.44]];
   var map = L.map($('dowmap'), { zoomControl: true, minZoom: 6 }).setView([42.05, 43.6], 7);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}{r}.png', {
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
     attribution: '&copy; OpenStreetMap, &copy; CARTO', maxZoom: 18, crossOrigin: true
   }).addTo(map);
   L.polygon([[[85, -180], [85, 180], [-85, 180], [-85, -180]], GEO], {
     stroke: false, fillColor: '#8a97a3', fillOpacity: 0.45, interactive: false
   }).addTo(map);
   L.polyline(GEO, { color: '#0b2f4d', weight: 1.2, opacity: 0.5, interactive: false }).addTo(map);
-  /* მოტივტივე „არჩეული ★ N" ინდიკატორი რუკის ქვედა ცენტრში */
-  var selPill = document.createElement('div');
-  selPill.className = 'dow-selpill';
-  selPill.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e0a020" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="m12 3.6 2.6 5.4 5.9.8-4.3 4.1 1 5.9-5.2-2.8-5.2 2.8 1-5.9L3.5 9.8l5.9-.8L12 3.6Z"/></svg>' +
-    '<span></span><b>0</b>';
-  $('dowmap').appendChild(selPill);
   var markers = L.layerGroup().addTo(map);
   var wxLayer = L.layerGroup().addTo(map);
   var routeLayer = L.layerGroup().addTo(map);
   window.FH_TRAVEL_MAP = map;
-  map.on('zoomend moveend', function () { drawMarkers(); scheduleViewportChunks(); });
-
-  function boundsOverlap(a, b) {
-    return a[2] >= b.getSouth() && a[0] <= b.getNorth() &&
-      a[3] >= b.getWest() && a[1] <= b.getEast();
-  }
-  function scheduleViewportChunks() {
-    clearTimeout(chunkTimer);
-    if (map.getZoom() < 8) return;
-    chunkTimer = setTimeout(function () {
-      var bounds = map.getBounds();
-      var regions = Object.keys(chunkManifest).filter(function (region) {
-        return !chunkLoaded[region] && boundsOverlap(chunkManifest[region].bounds, bounds);
-      });
-      if (!regions.length) return;
-      if (chunkAbort) chunkAbort.abort();
-      chunkAbort = window.AbortController ? new AbortController() : null;
-      var signal = chunkAbort ? chunkAbort.signal : undefined;
-      var request = ++chunkRequest;
-      Promise.all(regions.map(function (region) { return fetchChunk(region, signal); }))
-        .then(function () {
-          if (request !== chunkRequest || (signal && signal.aborted)) return;
-          render();
-        }).catch(function (err) {
-          if (!err || err.name !== 'AbortError') return;
-        });
-    }, 180);
-  }
+  map.on('zoomend moveend', drawMarkers);
 
   function drawMarkers() {
     var z = map.getZoom(), list = visible();
-    if (z >= 8) {
-      var viewport = map.getBounds().pad(0.18);
-      list = list.filter(function (p) { return viewport.contains([p.la, p.lo]); });
-    }
     markers.clearLayers();
     var pts = list.map(function (p) { return { p: p, xy: map.latLngToLayerPoint([p.la, p.lo]) }; });
     var groups = [], rad = z >= 11 ? 0 : 44;
@@ -269,10 +188,7 @@
         mk.on('click', function () {
           clicks++;
           setTimeout(function () {
-            if (clicks === 1) {
-              st.detail = g.items.map(function (x) { return x.s; });
-              render(); ensurePointRegions(g.items);
-            }
+            if (clicks === 1) { st.detail = g.items.map(function (x) { return x.s; }); render(); }
             else map.setView([first.la, first.lo], Math.min(13, map.getZoom() + 2));
             clicks = 0;
           }, 220);
@@ -287,7 +203,7 @@
           icon: L.divIcon({ className: '', html: '<div class="do-pin" style="width:' + size + 'px;height:' + size + 'px;background:' + bg + ';opacity:' + (vis && sel < 0 ? '.6' : '1') + '">' + label + '</div>', iconSize: [size, size], iconAnchor: [size / 2, size / 2] }),
           title: p.n, keyboard: true
         });
-        mk1.on('click', function () { st.detail = [p.s]; render(); ensurePointRegions([p]); });
+        mk1.on('click', function () { st.detail = [p.s]; render(); });
         markers.addLayer(mk1);
       }
     });
@@ -351,7 +267,7 @@
         if (!g) throw new Error('no geometry');
         routeLayer.clearLayers();
         var line = g.coordinates.map(function (c) { return [c[1], c[0]]; });
-        L.polyline(line, { color: '#4aa3ff', weight: 5, opacity: 0.92 }).addTo(routeLayer);
+        L.polyline(line, { color: '#0b2f4d', weight: 5, opacity: 0.9 }).addTo(routeLayer);
         if (st.traffic) {
           var n = line.length, seg = Math.max(2, Math.floor(n / 9));
           for (var i = 0; i + seg < n; i += seg * 3) {
@@ -404,77 +320,6 @@
     var x = st.selected[j]; st.selected[j] = st.selected[i]; st.selected[i] = x;
     render();
   }
-
-  /* ── მარშრუტის ხანგრძლივობა და უმოკლეს დროზე გადალაგება ───────────
-     ვითვლით იმავე კალიბრებული leg()-ით, რითიც მრიცხველი მუშაობს:
-     საწყისი → გაჩერებები (დათვალიერების დროებით) → დაბრუნება.       */
-  function orderMin(order) {
-    var t = 0, prev = st.origin;
-    order.forEach(function (s) {
-      var p = BY[s]; if (!p) return;
-      t += travel(prev, p) + p.hh * 60; prev = p;
-    });
-    var ep = endPoint();
-    if (order.length && ep) t += travel(prev, ep);
-    return t;
-  }
-  /* ── გადახვევა: რამდენად აგრძელებს ადგილი უკვე აგებულ გზას ──────────
-     ვიანგარიშებთ ყველაზე იაფ ჩასმას მარშრუტის ნებისმიერ მონაკვეთში:
-     (a→p) + (p→b) − (a→b). სიაში ჯერ ყველაზე მცირე გადახვევიანები.  */
-  function detour(p) {
-    /* გეომეტრიული მანძილი (გზის კოეფიციენტის გარეშე) — სამკუთხედის
-       წესით ყოველთვის ≥ 0, ამიტომ სიაში რიცხვები ერთმანეთს ეწყობა. */
-    function dist(a, b) { return hav(a.la, a.lo, b.la, b.lo); }
-    var seq = [st.origin];
-    st.selected.forEach(function (s) { var x = BY[s]; if (x) seq.push(x); });
-    var ep = endPoint();
-    if (ep) seq.push(ep);
-    if (seq.length < 2) return { km: dist(st.origin, p), min: leg(st.origin, p).min };
-    var best = null;
-    for (var i = 0; i < seq.length - 1; i++) {
-      var a = seq[i], b = seq[i + 1];
-      var extra = dist(a, p) + dist(p, b) - dist(a, b);
-      if (!best || extra < best.km) {
-        best = { km: Math.max(0, extra),
-                 min: Math.max(0, leg(a, p).min + leg(p, b).min - leg(a, b).min) };
-      }
-    }
-    if (!ep) { /* ბოლო გაჩერებაზე რჩება — ბოლოში მიბმაც შესაძლებელია */
-      var last = seq[seq.length - 1], e2 = dist(last, p);
-      if (!best || e2 < best.km) best = { km: e2, min: leg(last, p).min };
-    }
-    return best;
-  }
-
-  function optimizeOrder(order) {
-    if (order.length < 3) return order.slice();
-    /* 1) უახლოესი მეზობელი საწყისიდან */
-    var left = order.slice(), out = [], cur = st.origin;
-    while (left.length) {
-      var bi = 0, bv = Infinity;
-      for (var i = 0; i < left.length; i++) {
-        var p = BY[left[i]]; if (!p) continue;
-        var v = travel(cur, p);
-        if (v < bv) { bv = v; bi = i; }
-      }
-      out.push(left[bi]);
-      cur = BY[left[bi]] || cur;
-      left.splice(bi, 1);
-    }
-    /* 2) 2-opt — გადაკვეთილი მონაკვეთების გასწორება */
-    var best = orderMin(out), improved = true, guard = 0;
-    while (improved && guard++ < 60) {
-      improved = false;
-      for (var a = 0; a < out.length - 1; a++) {
-        for (var b = a + 1; b < out.length; b++) {
-          var cand = out.slice(0, a).concat(out.slice(a, b + 1).reverse(), out.slice(b + 1));
-          var v2 = orderMin(cand);
-          if (v2 < best - 0.5) { out = cand; best = v2; improved = true; }
-        }
-      }
-    }
-    return out;
-  }
   function setDays(n) {
     st.days = Math.max(1, Math.min(30, n));
     var d = new Date(st.start);
@@ -498,64 +343,6 @@
     $('dowactions').hidden = false;
     clearTimeout(flash._t);
     flash._t = setTimeout(function () { el.innerHTML = ''; el.classList.remove('warn'); }, warn || undoFn ? 6000 : 3200);
-  }
-
-  /* ── არჩეული გაჩერებების გადათრევა სიაში ──────────────────────────
-     მუშაობს მაუსითაც და თითითაც. გადათრევისას მხოლოდ DOM მოძრაობს —
-     ხელის აშვებისას ერთხელ ვამატებთ ახალ რიგს და ვხატავთ ხელახლა.  */
-  function attachDrag(row) {
-    var handle = row.querySelector('.dow-grab');
-    if (!handle) return;
-    handle.style.touchAction = 'none';
-    handle.addEventListener('pointerdown', function (ev) {
-      if (ev.button != null && ev.button !== 0) return;
-      ev.preventDefault();
-      var lb = row.parentNode;
-      if (!lb) return;
-      var startY = ev.clientY;
-      var moved = false;
-      row.classList.add('dragging');
-      try { handle.setPointerCapture(ev.pointerId); } catch (e) {}
-
-      function rows() {
-        return Array.prototype.filter.call(lb.children, function (el) {
-          return el.classList.contains('drag');
-        });
-      }
-      function move(e) {
-        if (!moved && Math.abs(e.clientY - startY) < 4) return;
-        moved = true;
-        var y = e.clientY;
-        var list = rows();
-        for (var i = 0; i < list.length; i++) {
-          var el = list[i];
-          if (el === row) continue;
-          var r = el.getBoundingClientRect();
-          var mid = r.top + r.height / 2;
-          if (y < mid && el.compareDocumentPosition(row) & Node.DOCUMENT_POSITION_FOLLOWING) {
-            lb.insertBefore(row, el); return;
-          }
-          if (y > mid && el.compareDocumentPosition(row) & Node.DOCUMENT_POSITION_PRECEDING) {
-            lb.insertBefore(row, el.nextSibling); return;
-          }
-        }
-      }
-      function up() {
-        handle.removeEventListener('pointermove', move);
-        handle.removeEventListener('pointerup', up);
-        handle.removeEventListener('pointercancel', up);
-        row.classList.remove('dragging');
-        if (!moved) return;
-        var order = rows().map(function (el) { return el.dataset.slug; })
-          .filter(function (s) { return s && st.selected.indexOf(s) >= 0; });
-        if (order.length === st.selected.length) st.selected = order;
-        routeKey = '';
-        render();
-      }
-      handle.addEventListener('pointermove', move);
-      handle.addEventListener('pointerup', up);
-      handle.addEventListener('pointercancel', up);
-    });
   }
 
   /* ── render ───────────────────────────────────────────────────────── */
@@ -626,39 +413,19 @@
       $('dowtourmeta').textContent = tour.days + ' ' + T.day + ' · ' + tour.km + ' ' + T.km + (tour.drive ? ' · ' + tour.drive : '') + ' · ' + tour.carLabel;
     }
     $('dowactions').hidden = !(st.selected.length || $('dowmsg').textContent);
-    $('dowopt').hidden = st.selected.length < 3;
-    var tripBtn = $('dowtrip');
-    if (tripBtn) {
-      tripBtn.hidden = !st.selected.length;
-      tripBtn.href = (T.tripUrl || '/trip/') + '#trip=' + encodeURIComponent(
-        st.selected.join(',') + ';o=' + st.origin.n + ';s=' + st.start + ';d=' + st.days +
-        ';h=' + (st.dayHours[0] || 8) + ';p=' + st.people);
-    }
 
     /* list — ჯერ არჩეულები, მერე ხელმისაწვდომები, ჩამქრალები ბოლოში */
     var list = visible();
     $('dowcount').textContent = T.total + ' ' + list.length + ' ' + T.place;
     $('dowselcount').textContent = T.chosenN + ' ' + st.selected.length;
-    if (typeof selPill !== 'undefined') {
-      selPill.querySelector('span').textContent = T.chosenN;
-      selPill.querySelector('b').textContent = String(st.selected.length);
-    }
     var selIdx = {}; st.selected.forEach(function (s, i) { selIdx[s] = i + 1; });
-    var fitCache = {}, detCache = {};
-    list.forEach(function (p) {
-      fitCache[p.s] = selIdx[p.s] ? 0 : (fits(p) ? 1 : 2);
-      if (!selIdx[p.s]) detCache[p.s] = detour(p);
-    });
-    /* არჩეულები ზემოთ (მარშრუტის რიგით), მერე ყველაზე მცირე გადახვევა,
-       ბოლოში — დროში ვერჩამტევი. */
+    var fitCache = {};
+    list.forEach(function (p) { fitCache[p.s] = selIdx[p.s] ? 0 : (fits(p) ? 1 : 2); });
     list = list.slice().sort(function (a, b) {
       var d = fitCache[a.s] - fitCache[b.s];
       if (d) return d;
       if (fitCache[a.s] === 0) return selIdx[a.s] - selIdx[b.s];
-      var da = detCache[a.s] || { km: 0, min: 0 }, db = detCache[b.s] || { km: 0, min: 0 };
-      var dm = da.min - db.min;
-      if (Math.abs(dm) > 1) return dm;
-      return da.km - db.km;
+      return 0;
     });
     var lb = $('dowlist');
     lb.innerHTML = '';
@@ -667,37 +434,25 @@
       var row = document.createElement('div');
       row.className = 'dow-place' + (on ? ' on' : '') + (!ok && !on ? ' dim' : '');
       var d0 = leg(st.origin, p);
-      var ava = p.img
-        ? '<span class="dow-ava thumb"><img src="' + esc(p.img) + '" alt="" loading="lazy">' +
-          (on ? '<span class="dow-selbadge">' + esc(String(selIdx[p.s])) + '</span>' : '') + '</span>'
-        : (on
-          ? '<span class="dow-ava sel">' + esc(String(selIdx[p.s])) + '</span>'
+      var ava = on
+        ? '<span class="dow-ava sel">' + esc(String(selIdx[p.s])) + '</span>'
+        : (p.img
+          ? '<span class="dow-ava img"><img src="' + esc(p.img) + '" alt="" loading="lazy"></span>'
           : '<span class="dow-ava">' + esc(p.n.slice(0, 1)) + '</span>');
-      if (on) { row.dataset.slug = p.s; row.classList.add('drag'); }
       row.innerHTML =
-        (on ? '<span class="dow-grab" title="' + esc(T.dragHint) + '" aria-hidden="true">⠿</span>' : '') +
         '<input type="checkbox" aria-label="' + esc(p.n) + '"' + (on ? ' checked' : '') + '>' +
         '<button type="button" class="dow-place-main">' + ava +
         '<span class="dow-place-t"><span class="dow-place-n">' + esc(p.n) + '</span>' +
         '<span>' + esc(p.gn) + ' · ' + esc(p.t) + (p.r ? ' · ' + Number(p.r).toFixed(1) + ' ★' : '') + '</span>' +
-        '<span>' + hm(p.hh * 60) + ' ' + esc(T.visit) + ' · ' +
-        (on || !detCache[p.s] || !st.selected.length
-          ? Math.round(d0.km) + ' ' + esc(T.km)
-          : '<b class="dow-det">' + (detCache[p.s].km >= 1
-              ? '+' + Math.round(detCache[p.s].km) + ' ' + esc(T.km) + ' ' + esc(T.detour)
-              : (detCache[p.s].min >= 10
-                ? '+' + hm(detCache[p.s].min) + ' ' + esc(T.detour)
-                : esc(T.onWay))) + '</b>') +
+        '<span>' + hm(p.hh * 60) + ' ' + esc(T.visit) + ' · ' + Math.round(d0.km) + ' ' + esc(T.km) +
         (vis ? ' · ' + esc(T.visited) : (ok ? '' : ' · ' + esc(T.noFit))) + '</span></span></button>' +
         '<button type="button" class="dow-info" aria-label="' + esc(T.details) + '"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0b2f4d" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5M12 8h.01"></path></svg></button>';
       row.querySelector('input').onchange = function () { toggle(p.s); };
       row.querySelector('.dow-place-main').onclick = function () { toggle(p.s); };
       row.querySelector('.dow-info').onclick = function () { st.detail = [p.s]; render(); };
-      if (on) attachDrag(row);
       lb.appendChild(row);
     });
     $('dowempty').hidden = list.length > 0;
-    renderCatTiles();
 
     /* chips */
     var cb = $('dowchips');
@@ -953,47 +708,10 @@
   };
   $('dowbyday').onclick = function () { st.dayGridOpen = !st.dayGridOpen; render(); };
   $('dowq').oninput = function () { st.q = this.value; render(); };
-  $('dowcat').onchange = function () { st.cat = this.value ? [this.value] : []; st.catTile = ''; render(); };
-
-  /* კატეგორიის აიქონ-ფილები (მაკეტი): ჯგუფური ფილტრები */
-  var CAT_TILES = [
-    { k: '', label: T.catAll, tys: [], icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>' },
-    { k: 'nature', label: T.catNature, tys: ['nature', 'lake', 'waterfall', 'canyon', 'cave', 'mountain', 'ski'], icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-4"/><path d="M12 18a6 6 0 0 0 6-6 6 6 0 0 0-2.2-4.6A5 5 0 0 0 12 3a5 5 0 0 0-3.8 4.4A6 6 0 0 0 6 12a6 6 0 0 0 6 6Z"/></svg>' },
-    { k: 'culture', label: T.catCulture, tys: ['monastery', 'fortress', 'museum', 'archaeology', 'theatre', 'winery'], icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16M6 20V10M10 20V10M14 20V10M18 20V10"/><path d="M3 10 12 4l9 6"/></svg>' },
-    { k: 'city', label: T.catCity, tys: ['town'], icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V8l6-4v17M14 21V11l6-3v13"/><path d="M7 11h.01M7 15h.01M17 14h.01M17 17h.01"/></svg>' },
-    { k: 'sea', label: T.catSea, tys: ['beach', 'spa'], icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 15c2.2 0 2.2-2 4.5-2s2.3 2 4.5 2 2.2-2 4.5-2 2.3 2 4.5 2"/><path d="M2 19c2.2 0 2.2-2 4.5-2s2.3 2 4.5 2 2.2-2 4.5-2 2.3 2 4.5 2"/></svg>' },
-    { k: 'other', label: T.catOther, tys: [], icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h.01M12 12h.01M19 12h.01"/></svg>' }
-  ];
-  (function () {
-    var known = [];
-    CAT_TILES.forEach(function (c) { known = known.concat(c.tys); });
-    var rest = {};
-    PTS.forEach(function (p) { if (known.indexOf(p.ty) < 0) rest[p.ty] = 1; });
-    CAT_TILES[5].tys = Object.keys(rest);
-  })();
-  function renderCatTiles() {
-    var box = $('dowcattiles');
-    if (!box) return;
-    box.innerHTML = '';
-    CAT_TILES.forEach(function (c) {
-      var b = document.createElement('button');
-      b.type = 'button';
-      var onT = c.k === '' ? !st.cat.length : (st.catTile === c.k && st.cat.length > 0);
-      b.className = 'dow-cattile' + (onT ? ' on' : '');
-      b.setAttribute('aria-pressed', onT ? 'true' : 'false');
-      b.innerHTML = '<span>' + c.icon + '</span><span>' + esc(c.label) + '</span>';
-      b.onclick = function () {
-        st.catTile = c.k;
-        st.cat = c.tys.slice();
-        $('dowcat').value = '';
-        render();
-      };
-      box.appendChild(b);
-    });
-  }
+  $('dowcat').onchange = function () { st.cat = this.value; render(); };
   $('dowreg').onchange = function () { st.reg = this.value; render(); };
   $('dowreset').onclick = function () {
-    st.cat = []; st.catTile = ''; st.reg = ''; st.minRating = 0; st.visitedFilter = ''; st.fitsOnly = false; st.q = '';
+    st.cat = ''; st.reg = ''; st.minRating = 0; st.visitedFilter = ''; st.fitsOnly = false; st.q = '';
     $('dowq').value = ''; $('dowcat').value = ''; $('dowreg').value = '';
     render();
   };
@@ -1031,45 +749,16 @@
       start: st.start, end: st.end, people: st.people, stops: st.selected.slice()
     };
   }
-  /* შენახვა — ანგარიშზე (Firebase). შეუსვლელ მომხმარებელს ლოგინის
-     ფანჯარა უხტება; შესვლისთანავე დაწყებული შენახვა თავად სრულდება. */
-  var pendingSave = null, retryReg = false;
-  function regSaveRetry() {
-    if (retryReg || !window.FH || !window.FH.on) return;
-    retryReg = true;
-    window.FH.on(function (u) {
-      if (u && pendingSave) { var p = pendingSave; pendingSave = null; cloudSave(p); }
-    });
-  }
-  function cloudSave(payload) {
-    window.FH.saveTrip(payload).then(function () {
-      flash(T.saved);
-    }).catch(function (e) {
-      if (e === 'no-user') { pendingSave = payload; regSaveRetry(); flash(T.signinToSave); }
-      else flash(T.saveErr || T.sendErr);
-    });
-  }
-  $('dowopt').onclick = function () {
-    if (st.selected.length < 3) return;
-    var prev = snapshot();
-    var before = orderMin(st.selected);
-    var next = optimizeOrder(st.selected);
-    var after = orderMin(next);
-    if (after >= before - 1) { flash(T.optNone); return; }
-    st.selected = next;
-    routeKey = '';
-    render();
-    flash(T.optDone.replace('%s', hm(before - after)), false, function () { restore(prev); routeKey = ''; render(); });
-  };
   $('dowsave').onclick = function () {
-    var trip = tripObj();
-    var payload = { title: trip.name, date: trip.start, days: st.days,
-      stops: st.selected.map(function (s) { return { n: (BY[s] || {}).n || s }; }), url: shareUrl() };
-    if (window.FH && !window.FH.local && window.FH.saveTrip) { cloudSave(payload); return; }
-    var saved = [];
+    var trip = tripObj(), saved = [];
     try { saved = JSON.parse(localStorage.getItem('do-trips') || '[]'); } catch (e) { saved = []; }
     saved.push(trip);
     try { localStorage.setItem('do-trips', JSON.stringify(saved)); } catch (e) {}
+    if (window.FH && window.FH.addTrip) {
+      try {
+        window.FH.addTrip({ title: trip.name, date: trip.start, days: st.days, stops: st.selected.map(function (s) { return { n: (BY[s] || {}).n || s }; }), url: shareUrl() });
+      } catch (e) {}
+    }
     flash(T.saved);
   };
   function shareUrl() {
@@ -1146,7 +835,6 @@
     fitNext = true;
     routeKey = '';
     render();
-    ensurePointRegions(st.selected.map(function (slug) { return BY[slug]; }).filter(Boolean));
     flash(T.tourApplied, false, function () { restore(prev); });
     root.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }

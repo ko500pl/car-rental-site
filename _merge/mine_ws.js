@@ -10,50 +10,6 @@
   var PTS = E.pts, TOWNS = E.towns;
   var BY = {}; PTS.forEach(function (p) { BY[p.s] = p; });
 
-  /* Regional enrichment. The initial asset contains only the country-wide
-     routing/search index; richer card data is merged in-place on demand. */
-  var chunkManifest = E.chunks || {}, chunkLoaded = {}, chunkPending = {};
-  var chunkAbort = null, chunkRequest = 0, chunkTimer = 0;
-  function mergeChunk(data) {
-    (data && data.pts || []).forEach(function (rich) {
-      if (BY[rich.s]) Object.assign(BY[rich.s], rich);
-      else { BY[rich.s] = rich; PTS.push(rich); }
-    });
-  }
-  function cachedChunk(key) {
-    try { return JSON.parse(localStorage.getItem('do-map-chunk:' + key) || 'null'); }
-    catch (e) { return null; }
-  }
-  function fetchChunk(region, signal) {
-    if (!region || !chunkManifest[region] || chunkLoaded[region]) return Promise.resolve();
-    var pending = chunkPending[region];
-    if (pending && (!pending.signal || !pending.signal.aborted)) return pending.promise;
-    var spec = chunkManifest[region], cacheKey = spec.url;
-    var promise = fetch(spec.url, { signal: signal, credentials: 'same-origin' })
-      .then(function (res) { if (!res.ok) throw new Error('chunk ' + res.status); return res.json(); })
-      .then(function (data) {
-        if (signal && signal.aborted) return;
-        mergeChunk(data); chunkLoaded[region] = true;
-        try { localStorage.setItem('do-map-chunk:' + cacheKey, JSON.stringify(data)); } catch (e) {}
-      })
-      .catch(function (err) {
-        if (err && err.name === 'AbortError') throw err;
-        var offline = cachedChunk(cacheKey);
-        if (offline) { mergeChunk(offline); chunkLoaded[region] = true; }
-      })
-      .finally(function () {
-        if (chunkPending[region] && chunkPending[region].promise === promise) delete chunkPending[region];
-      });
-    chunkPending[region] = { promise: promise, signal: signal };
-    return promise;
-  }
-  function ensurePointRegions(points) {
-    var regions = {};
-    (points || []).forEach(function (p) { if (p && p.g) regions[p.g] = 1; });
-    return Promise.all(Object.keys(regions).map(function (region) { return fetchChunk(region); }))
-      .then(function () { render(); });
-  }
-
   function esc(s) {
     return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
@@ -212,41 +168,10 @@
   var wxLayer = L.layerGroup().addTo(map);
   var routeLayer = L.layerGroup().addTo(map);
   window.FH_TRAVEL_MAP = map;
-  map.on('zoomend moveend', function () { drawMarkers(); scheduleViewportChunks(); });
-
-  function boundsOverlap(a, b) {
-    return a[2] >= b.getSouth() && a[0] <= b.getNorth() &&
-      a[3] >= b.getWest() && a[1] <= b.getEast();
-  }
-  function scheduleViewportChunks() {
-    clearTimeout(chunkTimer);
-    if (map.getZoom() < 8) return;
-    chunkTimer = setTimeout(function () {
-      var bounds = map.getBounds();
-      var regions = Object.keys(chunkManifest).filter(function (region) {
-        return !chunkLoaded[region] && boundsOverlap(chunkManifest[region].bounds, bounds);
-      });
-      if (!regions.length) return;
-      if (chunkAbort) chunkAbort.abort();
-      chunkAbort = window.AbortController ? new AbortController() : null;
-      var signal = chunkAbort ? chunkAbort.signal : undefined;
-      var request = ++chunkRequest;
-      Promise.all(regions.map(function (region) { return fetchChunk(region, signal); }))
-        .then(function () {
-          if (request !== chunkRequest || (signal && signal.aborted)) return;
-          render();
-        }).catch(function (err) {
-          if (!err || err.name !== 'AbortError') return;
-        });
-    }, 180);
-  }
+  map.on('zoomend moveend', drawMarkers);
 
   function drawMarkers() {
     var z = map.getZoom(), list = visible();
-    if (z >= 8) {
-      var viewport = map.getBounds().pad(0.18);
-      list = list.filter(function (p) { return viewport.contains([p.la, p.lo]); });
-    }
     markers.clearLayers();
     var pts = list.map(function (p) { return { p: p, xy: map.latLngToLayerPoint([p.la, p.lo]) }; });
     var groups = [], rad = z >= 11 ? 0 : 44;
@@ -269,10 +194,7 @@
         mk.on('click', function () {
           clicks++;
           setTimeout(function () {
-            if (clicks === 1) {
-              st.detail = g.items.map(function (x) { return x.s; });
-              render(); ensurePointRegions(g.items);
-            }
+            if (clicks === 1) { st.detail = g.items.map(function (x) { return x.s; }); render(); }
             else map.setView([first.la, first.lo], Math.min(13, map.getZoom() + 2));
             clicks = 0;
           }, 220);
@@ -287,7 +209,7 @@
           icon: L.divIcon({ className: '', html: '<div class="do-pin" style="width:' + size + 'px;height:' + size + 'px;background:' + bg + ';opacity:' + (vis && sel < 0 ? '.6' : '1') + '">' + label + '</div>', iconSize: [size, size], iconAnchor: [size / 2, size / 2] }),
           title: p.n, keyboard: true
         });
-        mk1.on('click', function () { st.detail = [p.s]; render(); ensurePointRegions([p]); });
+        mk1.on('click', function () { st.detail = [p.s]; render(); });
         markers.addLayer(mk1);
       }
     });
@@ -1146,7 +1068,6 @@
     fitNext = true;
     routeKey = '';
     render();
-    ensurePointRegions(st.selected.map(function (slug) { return BY[slug]; }).filter(Boolean));
     flash(T.tourApplied, false, function () { restore(prev); });
     root.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
