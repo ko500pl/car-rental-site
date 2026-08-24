@@ -2822,7 +2822,7 @@ def landing_block(lang):
         for v, lbl, ico, bg in stats)
     return (f'<section class="land"><div class="land-shell">'
             f'<div class="land-hero"><div class="land-hero-photo">'
-            f'<img class="land-hero-img" src="/assets/rentup-hero.jpg" alt="" loading="eager" decoding="async">'
+            f'<img class="land-hero-img" src="/assets/rentup-hero2.jpg" alt="" loading="eager" decoding="async">'
             f'<div class="land-hero-fade"></div>'
             f'<div class="land-hero-copy"><h1>{E(t["h1"])}</h1><p>{E(t["lead"])}</p></div></div>'
             f'<div class="land-cards">{cards_html}</div></div>'
@@ -3149,7 +3149,7 @@ def render_app_page(lang):
     <div id="doav-home">
       <div style="position:relative;background:#dfeaf1;padding:0 0 12px">
         <div style="position:relative;min-height:190px;overflow:hidden">
-          <img src="/assets/rentup-hero.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" loading="eager" decoding="async">
+          <img src="/assets/rentup-hero2.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" loading="eager" decoding="async">
           <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.93) 0%,rgba(255,255,255,.86) 46%,rgba(255,255,255,.72) 100%)"></div>
           <div style="position:relative;pointer-events:none;padding:20px 14px 16px;display:flex;flex-direction:column;gap:8px">
             <h1 style="margin:0;font-size:27px;line-height:1.18;font-weight:800;letter-spacing:-.3px">{E(t["landH1"])}</h1>

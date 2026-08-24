@@ -1794,7 +1794,7 @@ main .lead,p.lead{{font-size:15px;color:var(--ink-2)}}
 /* Landing — ჰერო ფოტო + 4 ბარათი + სტატისტიკა (მაკეტის პორტი) */
 .land{{background:#eef2f5;border-bottom:1px solid var(--line);padding:18px;display:flex;justify-content:center}}
 .land-shell{{width:100%;max-width:1180px;background:#fff;border:1px solid #e2e9ee;border-radius:22px;overflow:hidden;display:flex;flex-direction:column}}
-.land-hero{{position:relative;background:#eaf1f6;min-height:min(74vh,640px);display:flex;flex-direction:column}}
+.land-hero{{position:relative;background:#eaf1f6;min-height:min(88vh,760px);display:flex;flex-direction:column}}
 .land-hero-photo{{position:relative;flex:1;min-height:220px}}
 .land-hero-img{{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}}
 .land-hero-fade{{position:absolute;inset:0;pointer-events:none;
@@ -1807,7 +1807,7 @@ main .lead,p.lead{{font-size:15px;color:var(--ink-2)}}
   box-shadow:0 3px 12px rgba(14,35,51,.08);color:#0e2333;text-decoration:none;
   transition:transform .16s ease,box-shadow .16s ease}}
 .land-card:hover{{transform:translateY(-3px);box-shadow:0 10px 26px rgba(14,35,51,.13);color:#0e2333;text-decoration:none}}
-.land-card-img{{display:block;height:150px}}
+.land-card-img{{display:block;aspect-ratio:6/5}}
 .land-card-img img{{width:100%;height:100%;object-fit:cover;display:block}}
 .land-card-body{{flex:1;display:flex;flex-direction:column;gap:8px;padding:14px 14px 16px;text-align:start}}
 .land-card-body b{{font-size:17px;font-weight:700;line-height:1.25}}
