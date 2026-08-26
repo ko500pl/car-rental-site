@@ -24,6 +24,18 @@ service cloud.firestore {
         || request.auth.uid in adminUids());
     }
     function owner(data) { return signedIn() && data.uid == request.auth.uid; }
+
+    // ── პარტნიორი გამქირავებელი კომპანია ─────────────────────────────────
+    // partners/{uid} დოკუმენტს მხოლოდ admin ქმნის. ანუ რეგისტრაცია თავისით
+    // არაფერს აძლევს — სანამ შენ არ დაამატებ, ახალი ანგარიში საერთო დაფას
+    // ვერ ხედავს.
+    function partner() {
+      return signedIn()
+        && exists(/databases/$(database)/documents/partners/$(request.auth.uid));
+    }
+    function claimedBy(id, uid) {
+      return get(/databases/$(database)/documents/bookingClaims/$(id)).data.uid == uid;
+    }
     function member(data) { return signedIn() && request.auth.uid in data.memberIds; }
 
     match /trips/{id} {
@@ -69,7 +81,21 @@ service cloud.firestore {
             && request.resource.data.paymentDueGel >= 0))
         && request.resource.data.status == 'pending'
         && request.resource.data.paymentStatus == 'required';
-      allow read: if owner(resource.data) || admin();
+      // A partner sees a request ONLY after the primary company released it.
+      // Nothing here exposes a request that is still `primary`, and nothing
+      // exposes one that has been taken.
+      allow read: if owner(resource.data) || admin()
+        || (partner() && resource.data.offerStage == 'open');
+      // Closing the board after winning the race. The claim document is the
+      // proof: without it this update is refused, so a partner cannot mark a
+      // request as theirs by writing to the booking directly.
+      allow update: if partner()
+        && resource.data.offerStage == 'open'
+        && request.resource.data.diff(resource.data).affectedKeys()
+             .hasOnly(['offerStage','claimedBy','claimedByName','claimedAt'])
+        && request.resource.data.offerStage == 'taken'
+        && request.resource.data.claimedBy == request.auth.uid
+        && claimedBy(id, request.auth.uid);
       // A customer may only cancel a pending request. Prices, payment and
       // confirmation are server/admin-owned and cannot be forged by the client.
       allow update: if owner(resource.data) && resource.data.status == 'pending'
@@ -157,6 +183,42 @@ service cloud.firestore {
     // signed in as the admin account may write them.
     match /fleet/{slug}        { allow read: if true; allow write: if admin(); }
     match /availability/{slug} { allow read: if true; allow write: if admin(); }
+
+    // ── საერთო დაფა: „ვინც პირველი, იმისია" ──────────────────────────────
+    // დოკუმენტის *შექმნა* არის აღება. Firestore თვითონ უარყოფს იმ
+    // დოკუმენტის შექმნას, რომელიც უკვე არსებობს — ანუ N კომპანიიდან ზუსტად
+    // ერთი მიიღებს 200-ს, დანარჩენები 409-ს. ეს გადაწყვეტილება ტელეფონში კი
+    // არა, საცავშია მიღებული.
+    //
+    // update და delete სამუდამოდ აკრძალულია: აღებული ჯავშანი ვერავინ
+    // წაიღებს, ვერც გამარჯვებული და ვერც სხვა.
+    match /bookingClaims/{id} {
+      allow read: if partner() || admin();
+      allow create: if (partner() || admin())
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.keys().hasOnly(['uid','companyName','claimedAt'])
+        && request.resource.data.companyName is string
+        && request.resource.data.companyName.size() <= 120
+        && get(/databases/$(database)/documents/bookings/$(id)).data.offerStage == 'open';
+      allow update, delete: if false;
+    }
+
+    // ვინ არის დაშვებული დაფაზე. მხოლოდ admin წერს.
+    match /partners/{uid} {
+      allow read: if signedIn() && request.auth.uid == uid;
+      allow write: if admin();
+    }
+
+    // კომპანიის სახელი, რომ „აიღო ალფამ" დაიწეროს და არა uid.
+    match /companies/{uid} {
+      allow read: if partner() || admin();
+      allow create, update: if signedIn() && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(['name','phone','active','updatedAt'])
+        && request.resource.data.name is string
+        && request.resource.data.name.size() >= 2
+        && request.resource.data.name.size() <= 120;
+      allow delete: if admin();
+    }
 
     match /{document=**} { allow read, write: if false; }
   }
