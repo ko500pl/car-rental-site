@@ -78,6 +78,29 @@ PAGES = {os.path.splitext(os.path.basename(p))[0]: load(p)
          for p in glob.glob("content/pages/*.yml")}
 CARS = {os.path.splitext(os.path.basename(p))[0]: load(p)
         for p in sorted(glob.glob("content/cars/*.yml"))}
+
+# Photos come from the rental program, not from this repository's YAML.
+#
+# `content/settings/car_photos.yml` is written by Fleet Freak's photo export
+# and unzipped here together with the image files. Overlaying it -- rather than
+# editing every car file -- keeps one owner for the mapping: the phone knows
+# which photos belong to which model, and this build just reads the answer.
+#
+# Missing file, missing model or an empty list all mean "leave the car alone",
+# so a site checked out without an export still builds exactly as before.
+CAR_PHOTOS = (load("content/settings/car_photos.yml")
+              if os.path.exists("content/settings/car_photos.yml") else {}) or {}
+for _slug, _photos in CAR_PHOTOS.items():
+    _car = CARS.get(_slug)
+    if not _car or not isinstance(_photos, dict):
+        continue
+    _main = (_photos.get("image") or "").strip()
+    if _main:
+        _car["image"] = _main
+    _gal = [g for g in (_photos.get("gallery") or []) if g]
+    if _gal:
+        _car["gallery"] = _gal
+
 CARS_ALL = CARS
 CARS = {k: v for k, v in CARS.items() if is_public(v)}
 CARS = dict(sorted(CARS.items(), key=lambda kv: kv[1].get("order", 999)))
