@@ -1,12 +1,12 @@
 /* Static-first rental inquiry: contextual WhatsApp plus Netlify Forms fallback. */
 (function () {
   var TEXT = {
-    ka: { choose: "მიუთითეთ დაწყებისა და დასრულების თარიღები.", invalid: "დასრულება დაწყების შემდეგ უნდა იყოს.", days: "დღე", rate: "დღიური ფასი", total: "ქირა", deposit: "დეპოზიტი", due: "გადასახდელი", login: "მოთხოვნის გასაგზავნად შედით ანგარიშში.", sending: "იგზავნება…", success: "მოთხოვნა მიღებულია. ჯავშანი დადასტურებული არ არის, სანამ გადახდა არ შესრულდება.", failed: "მოთხოვნა ვერ გაიგზავნა. სცადეთ ხელახლა." },
-    en: { choose: "Choose start and end dates.", invalid: "End must be after start.", days: "days", rate: "Daily rate", total: "Rental", deposit: "Deposit", due: "Payment due", login: "Sign in to send the request.", sending: "Sending…", success: "Request received. The booking is not confirmed until payment is completed.", failed: "The request could not be sent. Please try again." },
-    ru: { choose: "Укажите даты начала и окончания.", invalid: "Дата окончания должна быть позже начала.", days: "дн.", rate: "Цена в день", total: "Аренда", deposit: "Депозит", due: "К оплате", login: "Войдите, чтобы отправить запрос.", sending: "Отправка…", success: "Запрос получен. Бронирование не подтверждено до оплаты.", failed: "Не удалось отправить запрос." },
-    fa: { choose: "تاریخ شروع و پایان را انتخاب کنید.", invalid: "پایان باید بعد از شروع باشد.", days: "روز", rate: "نرخ روزانه", total: "اجاره", deposit: "ودیعه", due: "مبلغ پرداخت", login: "برای ارسال درخواست وارد شوید.", sending: "در حال ارسال…", success: "درخواست دریافت شد. رزرو تا زمان پرداخت تأیید نمی‌شود.", failed: "ارسال درخواست ناموفق بود." },
-    he: { choose: "בחרו תאריכי התחלה וסיום.", invalid: "הסיום חייב להיות אחרי ההתחלה.", days: "ימים", rate: "מחיר יומי", total: "השכרה", deposit: "פיקדון", due: "לתשלום", login: "יש להתחבר כדי לשלוח בקשה.", sending: "שולח…", success: "הבקשה התקבלה. ההזמנה אינה מאושרת עד להשלמת התשלום.", failed: "לא ניתן לשלוח את הבקשה." },
-    ar: { choose: "اختر تاريخي البداية والنهاية.", invalid: "يجب أن تكون النهاية بعد البداية.", days: "أيام", rate: "السعر اليومي", total: "الإيجار", deposit: "التأمين", due: "المبلغ المستحق", login: "سجّل الدخول لإرسال الطلب.", sending: "جارٍ الإرسال…", success: "تم استلام الطلب. لا يتأكد الحجز حتى يكتمل الدفع.", failed: "تعذر إرسال الطلب." }
+    ka: { busy: "ამ თარიღებზე ეს მოდელი დაკავებული ჩანს — მოთხოვნას მაინც განვიხილავთ.", choose: "მიუთითეთ დაწყებისა და დასრულების თარიღები.", invalid: "დასრულება დაწყების შემდეგ უნდა იყოს.", days: "დღე", rate: "დღიური ფასი", total: "ქირა", deposit: "დეპოზიტი", due: "გადასახდელი", login: "მოთხოვნის გასაგზავნად შედით ანგარიშში.", sending: "იგზავნება…", success: "მოთხოვნა მიღებულია. ჯავშანი დადასტურებული არ არის, სანამ გადახდა არ შესრულდება.", failed: "მოთხოვნა ვერ გაიგზავნა. სცადეთ ხელახლა." },
+    en: { busy: "This model looks fully booked for these dates — we will still review your request.", choose: "Choose start and end dates.", invalid: "End must be after start.", days: "days", rate: "Daily rate", total: "Rental", deposit: "Deposit", due: "Payment due", login: "Sign in to send the request.", sending: "Sending…", success: "Request received. The booking is not confirmed until payment is completed.", failed: "The request could not be sent. Please try again." },
+    ru: { busy: "На эти даты эта модель занята — мы всё равно рассмотрим ваш запрос.", choose: "Укажите даты начала и окончания.", invalid: "Дата окончания должна быть позже начала.", days: "дн.", rate: "Цена в день", total: "Аренда", deposit: "Депозит", due: "К оплате", login: "Войдите, чтобы отправить запрос.", sending: "Отправка…", success: "Запрос получен. Бронирование не подтверждено до оплаты.", failed: "Не удалось отправить запрос." },
+    fa: { busy: "در این تاریخ‌ها این خودرو رزرو به نظر می‌رسد — درخواست شما را بررسی می‌کنیم.", choose: "تاریخ شروع و پایان را انتخاب کنید.", invalid: "پایان باید بعد از شروع باشد.", days: "روز", rate: "نرخ روزانه", total: "اجاره", deposit: "ودیعه", due: "مبلغ پرداخت", login: "برای ارسال درخواست وارد شوید.", sending: "در حال ارسال…", success: "درخواست دریافت شد. رزرو تا زمان پرداخت تأیید نمی‌شود.", failed: "ارسال درخواست ناموفق بود." },
+    he: { busy: "בתאריכים אלה הרכב נראה תפוס — נבדוק את הבקשה בכל מקרה.", choose: "בחרו תאריכי התחלה וסיום.", invalid: "הסיום חייב להיות אחרי ההתחלה.", days: "ימים", rate: "מחיר יומי", total: "השכרה", deposit: "פיקדון", due: "לתשלום", login: "יש להתחבר כדי לשלוח בקשה.", sending: "שולח…", success: "הבקשה התקבלה. ההזמנה אינה מאושרת עד להשלמת התשלום.", failed: "לא ניתן לשלוח את הבקשה." },
+    ar: { busy: "في هذه التواريخ يبدو الطراز محجوزاً — سنراجع طلبك على أي حال.", choose: "اختر تاريخي البداية والنهاية.", invalid: "يجب أن تكون النهاية بعد البداية.", days: "أيام", rate: "السعر اليومي", total: "الإيجار", deposit: "التأمين", due: "المبلغ المستحق", login: "سجّل الدخول لإرسال الطلب.", sending: "جارٍ الإرسال…", success: "تم استلام الطلب. لا يتأكد الحجز حتى يكتمل الدفع.", failed: "تعذر إرسال الطلب." }
   };
   function n(v) { v = Number(v); return Number.isFinite(v) ? v : 0; }
   function calc(root) {
@@ -64,9 +64,13 @@
       if (!quoteBox) return null;
       var q = quoteFor(root);
       if (!q) { quoteBox.textContent = ''; return null; }
+      if (q.slug) fetchLive(q.slug); /* cached; redraws via fh:live-availability */
       quoteBox.textContent = q.days + ' ' + t.days +
         (q.rate ? ' · ' + t.rate + ': ' + money(q.rate) + ' · ' + t.total + ': ' + money(q.rental) +
           (q.deposit ? ' · ' + t.deposit + ': ' + money(q.deposit) : '') : '');
+      if (q.slug && t.busy && busyFor(q.slug, q.start, q.end)) {
+        quoteBox.textContent += ' · ⚠ ' + t.busy;
+      }
       return q;
     }
     ['start', 'end'].forEach(function (n) {
@@ -74,6 +78,7 @@
       if (el) el.addEventListener('input', drawQuote);
     });
     document.addEventListener('fh:booking-car', drawQuote);
+    document.addEventListener('fh:live-availability', drawQuote);
     drawQuote();
 
     /* ── გაგზავნა ───────────────────────────────────────────────────────
@@ -90,13 +95,14 @@
         var button = root.querySelector('[type="submit"]');
         if (button) button.disabled = true;
         status.textContent = t.sending;
-        var cloud = false;
+        var cloud = false, fallback = false;
         sendToCloud(root, drawQuote())
           .then(function () { cloud = true; })
           .catch(function (err) { console.warn('[booking] cloud:', err && (err.code || err.message)); })
-          .then(function () { return postForm(root).catch(function () { return null; }); })
+          .then(function () { return postForm(root).then(function () { fallback = true; }).catch(function () { return null; }); })
           .then(function () {
             status.textContent = t.success;
+            if ((cloud || fallback) && window.RentUpAnalytics) window.RentUpAnalytics.track('booking_submitted', window.RentUpAnalytics.bookingParams(root));
             root.reset();
             if (quoteBox) quoteBox.textContent = '';
           })
@@ -104,7 +110,10 @@
           .then(function () { if (button) button.disabled = false; });
       });
     } else {
-      root.addEventListener('submit', function () { root.querySelector('[name="page_url"]').value = location.href; });
+      root.addEventListener('submit', function () {
+        root.querySelector('[name="page_url"]').value = location.href;
+        if (window.RentUpAnalytics) try { sessionStorage.setItem('rentup_pending_booking', JSON.stringify(window.RentUpAnalytics.bookingParams(root))); } catch (e) {}
+      });
     }
   }
 
@@ -117,10 +126,10 @@
     if (!(days >= 1)) return null;
     var slug = String(fd.get('car_slug') || '');
     var c = ((window.FH_CFG || {}).cars || {})[slug];
-    if (!c) return { days: days, slug: slug, rate: 0, rental: 0, deposit: 0, due: 0 };
+    if (!c) return { days: days, slug: slug, start: start, end: end, rate: 0, rental: 0, deposit: 0, due: 0 };
     var rate = days >= 30 ? c.p30 : (days >= 7 ? c.p7 : c.p1);
     var rental = Math.round(rate * days), deposit = c.dep || 0;
-    return { days: days, slug: slug, rate: rate, rental: rental, deposit: deposit, due: rental + deposit };
+    return { days: days, slug: slug, start: start, end: end, rate: rate, rental: rental, deposit: deposit, due: rental + deposit };
   }
 
   function sendToCloud(root, q) {
@@ -162,6 +171,86 @@
         return M.db.addDoc(M.db.collection(db, 'bookings'), doc);
       });
     });
+  }
+
+  /* ── ცოცხალი ფასები და კალენდარი ─────────────────────────────────────
+     გამქირავებლის პროგრამა Firestore-ში აქვეყნებს fleet/{slug}-ს (ფასები) და
+     availability/{slug}-ს (თავისუფალი ერთეულები დღეების მიხედვით). ორივე
+     საჯაროდ იკითხება, ამიტომ არც SDK სჭირდება და არც შესვლა — ერთი fetch.
+
+     ნდობის ფანჯარა 48 საათია: ტელეფონი შეიძლება უსიგნალოდ იყოს დღეები, და
+     კვირისწინანდელი კალენდარი, რომელიც თავისუფალ მანქანას მალავს, უარესია,
+     ვიდრე არავითარი. ძველი მონაცემი უბრალოდ უგულებელყოფილია და გვერდი ისე
+     იქცევა, როგორც აქამდე — ჩაშენებული ფასებით, გაფრთხილების გარეშე. */
+  var LIVE = {}, LIVE_RES = {}, TRUST_MS = 48 * 3600 * 1000;
+  function fsValue(v){
+    if (!v || typeof v !== 'object') return v;
+    if ('integerValue' in v) return Number(v.integerValue);
+    if ('doubleValue' in v) return Number(v.doubleValue);
+    if ('stringValue' in v) return v.stringValue;
+    if ('timestampValue' in v) return v.timestampValue;
+    if ('booleanValue' in v) return v.booleanValue;
+    if ('arrayValue' in v) return ((v.arrayValue||{}).values || []).map(fsValue);
+    return null;
+  }
+  function fsDoc(json){
+    if (!json || !json.fields) return null;
+    var out = {};
+    Object.keys(json.fields).forEach(function(k){ out[k] = fsValue(json.fields[k]); });
+    return out;
+  }
+  function freshDoc(doc){
+    if (!doc || !doc.updatedAt) return false;
+    var t = Date.parse(doc.updatedAt);
+    return isFinite(t) && (Date.now() - t) < TRUST_MS;
+  }
+  function fetchLive(slug){
+    if (!slug) return Promise.resolve(null);
+    if (LIVE[slug]) return LIVE[slug];
+    var pid = (window.FH_CFG || {}).projectId;
+    if (!pid || typeof fetch !== 'function') return Promise.resolve(null);
+    var base = 'https://firestore.googleapis.com/v1/projects/' + pid +
+      '/databases/(default)/documents/';
+    function grab(col){
+      return fetch(base + col + '/' + encodeURIComponent(slug))
+        .then(function(r){ return r.ok ? r.json() : null; })
+        .then(fsDoc)
+        .catch(function(){ return null; });
+    }
+    LIVE[slug] = Promise.all([grab('fleet'), grab('availability')]).then(function(a){
+      var d = { fleet: a[0], avail: a[1] };
+      LIVE_RES[slug] = d;
+      /* ცოცხალი ფასი ჩაშენებულს ფარავს — quoteFor ავტომატურად აიღებს. */
+      if (freshDoc(d.fleet)) {
+        var cfg = window.FH_CFG = window.FH_CFG || {};
+        cfg.cars = cfg.cars || {};
+        cfg.cars[slug] = {
+          p1: Number(d.fleet.p1) || 0,
+          p7: Number(d.fleet.p7) || Number(d.fleet.p1) || 0,
+          p30: Number(d.fleet.p30) || Number(d.fleet.p7) || 0,
+          dep: Number(d.fleet.dep) || 0
+        };
+      }
+      document.dispatchEvent(new CustomEvent('fh:live-availability', { detail: { slug: slug } }));
+      return d;
+    });
+    return LIVE[slug];
+  }
+  /* true = მოთხოვნილ შუალედში არის ღამე, რომელზეც არც ერთი ერთეული არ არის
+     თავისუფალი. მხოლოდ ახალ (48სთ) მონაცემზე — ძველი პასუხს არ იძლევა. */
+  function busyFor(slug, start, end){
+    var d = LIVE_RES[slug];
+    if (!d || !freshDoc(d.avail)) return false;
+    var a = d.avail;
+    if (!Array.isArray(a.free)) return false;
+    var from = Date.parse(String(a.from) + 'T12:00:00');
+    var s = Date.parse(start + 'T12:00:00'), e = Date.parse(end + 'T12:00:00');
+    if (!isFinite(from) || !isFinite(s) || !isFinite(e)) return false;
+    for (var t = s; t < e; t += 86400000) {
+      var i = Math.round((t - from) / 86400000);
+      if (i >= 0 && i < a.free.length && Number(a.free[i]) <= 0) return true;
+    }
+    return false;
   }
 
   function validDate(v){return /^\d{4}-\d{2}-\d{2}$/.test(v||'');}
@@ -216,6 +305,7 @@
         fetch(NETLIFY_ORIGIN+'/',{method:'POST',mode:'no-cors',
           headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body})
           .then(function(){var l=f.dataset.lang||document.documentElement.lang||'en';
+            if(f.matches('[data-inquiry]')&&window.RentUpAnalytics)window.RentUpAnalytics.track('booking_submitted',window.RentUpAnalytics.bookingParams(f));
             st.textContent=(l==='ka')?'✓ მოთხოვნა გაგზავნილია — მალე დაგიკავშირდებით':'✓ Sent — we will contact you shortly';f.reset();})
           .catch(function(){st.textContent='✗';});
       });
