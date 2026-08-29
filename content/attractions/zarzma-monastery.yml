@@ -8,21 +8,11 @@ featured: false
 order: 68
 image: /assets/photos/zarzma-monastery.webp
 gallery:
-- image: /assets/photos/zarzma-monastery-1.webp
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Zarzma,_Georgia_-_panoramio.jpg
 - image: /assets/photos/zarzma-monastery-2.webp
   author: G.N.
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Zarzma,_Georgia_-_panoramio_(1).jpg
-- image: /assets/photos/zarzma-monastery-3.webp
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Zarzma,_Georgia_-_panoramio_(2).jpg
 visit_hours: '1.5'
 best_season: all
 open_year_round: true

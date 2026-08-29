@@ -7,23 +7,7 @@ unesco: false
 featured: false
 order: 82
 image: /assets/photos/nunisi-resort.webp
-gallery:
-- image: /assets/photos/nunisi-resort-1.webp
-  author: Dmitri Yermakov
-  license: Public domain
-  license_url: ''
-  source: >-
-    https://commons.wikimedia.org/wiki/File:Constr._of_Caucasus_RR;_view_of_Senski_Viaduct_from_Beschutaban_station._ca._1890s.jpg
-- image: /assets/photos/nunisi-resort-2.webp
-  author: Earth Science and Remote Sensing Unit, NASA Johnson Space Center
-  license: Public domain
-  license_url: ''
-  source: https://commons.wikimedia.org/wiki/File:ISS057-E-36726_-_View_of_Earth.jpg
-- image: /assets/photos/nunisi-resort-3.webp
-  author: Earth Science and Remote Sensing Unit, NASA Johnson Space Center
-  license: Public domain
-  license_url: ''
-  source: https://commons.wikimedia.org/wiki/File:ISS057-E-36725_-_View_of_Earth.jpg
+gallery: []
 visit_hours: '4'
 best_season: may-october
 open_year_round: true
@@ -291,8 +275,8 @@ ar:
     التالية طريق ضيق سطحه متضرر جزئياً ومنعطفاته حادة. وتكفي سيارة عادية في الجو الجاف. الوقود متوفر في
     خاشوري وخاراغاولي.
 image_credit:
-  author: Alexey Komarov
+  author: Eka Samkharadze
   license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Kura_River_in_Kvibisi_2023-06-28-3.jpg
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Nunisi.jpg
 rating: 4.0

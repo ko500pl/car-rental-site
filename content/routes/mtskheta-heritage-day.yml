@@ -1,0 +1,34 @@
+status: published
+order: 320
+days: 1
+nights: 0
+purpose: history
+min_people: 1
+max_people: 12
+distance_km: 85
+drive_time_total: '02:20'
+daily_hours: 9
+origin:
+  lat: 41.7151
+  lon: 44.8271
+  road_factor: 1.25
+  speed_kmh: 55
+  name_ka: თბილისი
+  name_en: Tbilisi
+  name_ru: Тбилиси
+  name_fa: تفلیس
+  name_he: טביליסי
+  name_ar: تبليسي
+car_category: economy
+best_season: all
+difficulty: easy
+image: ''
+waypoints: [jvari-monastery, svetitskhoveli-cathedral, samtavro-monastery, armaztsikhe-bagineti]
+polyline: []
+sources: [https://georgia.travel/regions/mtskheta-mtianeti, https://georgia.travel/cities-towns/mtskheta]
+ka: {name: მცხეთის მემკვიდრეობის დღე, short: ჯვარი სვეტიცხოველი სამთავრო და არმაზციხე ერთ დღეში., body: ერთდღიანი მარშრუტი აერთიანებს მცხეთის მთავარ სიწმინდეებსა და ანტიკურ არქეოლოგიურ სივრცეს., plan: 'თბილისი → ჯვარი → სვეტიცხოველი → სამთავრო → არმაზციხე-ბაგინეთი → თბილისი.', tips: [ტაძრებში მოკრძალებული ჩაცმულობა დაიცავით., არმაზციხეზე კომფორტული ფეხსაცმელი ჩაიცვით.]}
+en: {name: Mtskheta Heritage Day, short: Jvari Svetitskhoveli Samtavro and Armaztsikhe in one day., body: A focused day combining Mtskheta's principal sacred sites with an ancient archaeological landscape., plan: 'Tbilisi → Jvari → Svetitskhoveli → Samtavro → Armaztsikhe-Bagineti → Tbilisi.', tips: [Dress respectfully at churches., Wear comfortable shoes at Armaztsikhe.]}
+ru: {name: День наследия Мцхеты, short: Джвари Светицховели Самтавро и Армазцихе за один день., body: Главные святыни Мцхеты и античный археологический памятник., plan: 'Тбилиси → Джвари → Светицховели → Самтавро → Армазцихе → Тбилиси.', tips: [Соблюдайте дресс-код в храмах., Нужна удобная обувь.]}
+fa: {name: روز میراث متسختا, short: جواری سوتیتسخولی سامتاورو و آرمازتسیخه در یک روز., body: زیارتگاه‌های اصلی متسختا همراه با محوطه باستانی., plan: 'تفلیس ← جواری ← سوتیتسخولی ← سامتاورو ← آرمازتسیخه ← تفلیس.', tips: [پوشش مناسب کلیسا داشته باشید., کفش راحت بپوشید.]}
+he: {name: יום מורשת מצחתה, short: ג'ווארי סווטיצחובלי סמטאברו וארמזציחה ביום אחד., body: האתרים הקדושים המרכזיים של מצחתה לצד אתר ארכאולוגי עתיק., plan: 'טביליסי ← ג׳ווארי ← סווטיצחובלי ← סמטאברו ← ארמזציחה ← טביליסי.', tips: [התלבשו בכבוד בכנסיות., נעלו נעליים נוחות.]}
+ar: {name: يوم تراث متسخيتا, short: جفاري وسفيتيتسخوفيلي وسامتافرو وأرمازتسيخي في يوم واحد., body: أهم المواقع الدينية في متسخيتا مع موقع أثري قديم., plan: 'تبليسي ← جفاري ← سفيتيتسخوفيلي ← سامتافرو ← أرمازتسيخي ← تبليسي.', tips: [التزموا بلباس مناسب في الكنائس., ارتدوا حذاء مريحا.]}

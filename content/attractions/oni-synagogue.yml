@@ -6,24 +6,13 @@ elevation: 830
 unesco: false
 featured: false
 order: 64
-image: /assets/photos/oni-synagogue.webp
+image: /assets/photos/oni-synagogue-2.webp
 gallery:
-- image: /assets/photos/oni-synagogue-1.webp
-  author: kjmyshr
-  license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: https://commons.wikimedia.org/wiki/File:Oni_sign.jpg
 - image: /assets/photos/oni-synagogue-2.webp
   author: Davit 83
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%E1%83%9D%E1%83%9C%E1%83%98%E1%83%A1_%E1%83%A1%E1%83%98%E1%83%9C%E1%83%90%E1%83%92%E1%83%9D%E1%83%92%E1%83%90.jpg
-- image: /assets/photos/oni-synagogue-3.webp
-  author: Yasuhiro Kojima
-  license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: https://commons.wikimedia.org/wiki/File:2015-08-29_(70)_Oni.jpg
+  source: https://commons.wikimedia.org/wiki/File:%E1%83%9D%E1%83%9C%E1%83%98%E1%83%A1_%E1%83%A1%E1%83%98%E1%83%9C%E1%83%90%E1%83%92%E1%83%9D%E1%83%92%E1%83%90.jpg
 visit_hours: '1'
 best_season: may-october
 open_year_round: true
@@ -263,8 +252,8 @@ ar:
     في معظمه، ومقطعه الأخير متهالك. اترك السيارة قرب الساحة المركزية، فأزقة الحي القديم ضيقة وبعضها غير
     معبّد. الوقود في أمبرولاوري. وسيارة اقتصادية تكفي.
 image_credit:
-  author: Cimbalom
+  author: Davit 83
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Ialoni_Ensemble.jpg
+  source: https://commons.wikimedia.org/wiki/File:%E1%83%9D%E1%83%9C%E1%83%98%E1%83%A1_%E1%83%A1%E1%83%98%E1%83%9C%E1%83%90%E1%83%92%E1%83%9D%E1%83%92%E1%83%90.jpg
 rating: 3.0

@@ -8,18 +8,6 @@ featured: false
 order: 30
 image: /assets/photos/borjomi-central-park.webp
 gallery:
-- image: /assets/photos/borjomi-central-park-1.webp
-  author: J. Stoffels
-  license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%E1%83%9A%E1%83%A3%E1%83%93%E1%83%98_%E1%83%97%E1%83%91%E1%83%98%E1%83%9A%E1%83%98%E1%83%A1%E1%83%98.jpg
-- image: /assets/photos/borjomi-central-park-2.webp
-  author: J. Stoffels
-  license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%E1%83%9A%E1%83%A3%E1%83%93%E1%83%98_%E1%83%A7%E1%83%90%E1%83%96%E1%83%91%E1%83%94%E1%83%92%E1%83%98_(3).jpg
 - image: /assets/photos/borjomi-central-park-3.webp
   author: Kober
   license: CC BY-SA 4.0
@@ -311,8 +299,8 @@ ar:
     إلى باكورياني في اليوم نفسه، فالطريق الجبلي الملتوي أكثر راحة بسيارة ذات خلوص أرضي، خاصة بين ديسمبر
     ومارس.
 image_credit:
-  author: Henri Bergius from Finland
-  license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: https://commons.wikimedia.org/wiki/File:Borjomi_water.jpg
+  author: საიტის მფლობელის მიერ მოწოდებული ფოტო
+  license: გამოყენების უფლება მოწოდებულია საიტის მფლობელის მიერ
+  license_url: ''
+  source: ''
 rating: 4.0

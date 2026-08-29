@@ -7,13 +7,25 @@ min_people: 1
 max_people: 12
 distance_km: 310
 drive_time_total: '06:30'
+daily_hours: 9
+origin:
+  lat: 41.7151
+  lon: 44.8271
+  road_factor: 1.25
+  speed_kmh: 55
+  name_ka: თბილისი
+  name_en: Tbilisi
+  name_ru: Тбилиси
+  name_fa: تفلیس
+  name_he: טביליסי
+  name_ar: تبليسي
 car_category: suv
 best_season: march-november
 difficulty: moderate
 image: ''
 waypoints: [samtavisi-cathedral, kintsvisi-monastery, rkoni-monastery, ateni-sioni-church, uplistsikhe]
 polyline: []
-sources: [https://georgia.travel/regions/shida-kartli]
+sources: [https://georgia.travel/regions/shida-kartli, https://georgia.travel/ateni-valley]
 ka: {name: შიდა ქართლის მონასტრების ბილიკი, short: სამთავისი ყინწვისი რკონი ატენი და უფლისციხე ორ დაბალანსებულ დღეში., body: კულტურული მარშრუტი შუა საუკუნეების ფრესკებს ხეობებსა და კლდოვან ქალაქს აკავშირებს., plan: '**დღე 1:** სამთავისი → ყინწვისი → რკონი. **დღე 2:** ატენი → უფლისციხე.', tips: [რკონის გზაზე SUV სჯობს., ტაძრებში მოკრძალებულად ჩაიცვით.]}
 en: {name: Shida Kartli Monastery Trail, short: Samtavisi Kintsvisi Rkoni Ateni and Uplistsikhe in two days., body: A cultural route linking frescoes valleys and a rock-cut city., plan: '**Day 1:** Samtavisi → Kintsvisi → Rkoni. **Day 2:** Ateni → Uplistsikhe.', tips: [An SUV suits Rkoni road., Dress respectfully.]}
 ru: {name: Монастырский путь Шида-Картли, short: Самтависи Кинцвиси Ркони Атени и Уплисцихе., body: Фрески долины и пещерный город за два дня., plan: '**День 1:** Самтависи → Кинцвиси → Ркони. **День 2:** Атени → Уплисцихе.', tips: [Для Ркони лучше SUV., Одевайтесь уважительно.]}

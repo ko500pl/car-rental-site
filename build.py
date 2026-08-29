@@ -2277,7 +2277,7 @@ def planner_data(lang):
         except (KeyError, TypeError, ValueError):
             return None
         return {
-            "n": origin.get(lang) or origin.get("en") or origin.get("ka") or "",
+            "n": origin.get(f"name_{lang}") or origin.get("name_en") or origin.get("name_ka") or origin.get(lang) or origin.get("en") or origin.get("ka") or "",
             "la": lat, "lo": lon,
             "f": float(origin.get("road_factor", 1.4)),
             "v": float(origin.get("speed_kmh", 55)),

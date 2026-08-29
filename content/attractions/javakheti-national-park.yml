@@ -7,22 +7,7 @@ unesco: false
 featured: false
 order: 52
 image: /assets/photos/javakheti-national-park.webp
-gallery:
-- image: /assets/photos/javakheti-national-park-1.webp
-  author: patri_arch
-  license: CC BY 3.0
-  license_url: https://creativecommons.org/licenses/by/3.0
-  source: https://commons.wikimedia.org/wiki/File:Surb_Khalaja,_Ninotsminda,_Georgia_-_panoramio.jpg
-- image: /assets/photos/javakheti-national-park-2.webp
-  author: patri_arch
-  license: CC BY 3.0
-  license_url: https://creativecommons.org/licenses/by/3.0
-  source: https://commons.wikimedia.org/wiki/File:Surb_Khalaja,_Ninotsminda,_Georgia_-_panoramio_(1).jpg
-- image: /assets/photos/javakheti-national-park-3.webp
-  author: patri_arch
-  license: CC BY 3.0
-  license_url: https://creativecommons.org/licenses/by/3.0
-  source: https://commons.wikimedia.org/wiki/File:Unnamed_Road,_Ninotsminda,_Georgia_-_panoramio.jpg
+gallery: []
 visit_hours: '4'
 best_season: may-october
 open_year_round: false
@@ -306,8 +291,8 @@ ar:
     شمال غرب نينوتسميندا؛ أما بوغداشيني ومداتابا فيُوصل إليهما بمنعطفات حصوية منفصلة. تزوّد بالوقود في
     تسالكا ونينوتسميندا. ومركبة بارتفاع هيكل حقيقي مفيدة فعلاً هنا.
 image_credit:
-  author: patri_arch
-  license: CC BY 3.0
-  license_url: https://creativecommons.org/licenses/by/3.0
-  source: https://commons.wikimedia.org/wiki/File:Rolling_stones_-_panoramio.jpg
+  author: Stratovara
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Javakheti_National_Park.jpg
 rating: 4.0

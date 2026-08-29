@@ -6,23 +6,23 @@ elevation: 700
 unesco: false
 featured: false
 order: 68
-image: /assets/photos/skhalta-monastery.webp
+image: /assets/photos/skhalta-monastery-1.webp
 gallery:
-- image: /assets/photos/skhalta-monastery-1.webp
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Nenia_(G.N._2012).jpg
+- image: /assets/photos/skhalta-monastery.webp
+  author: Giorgi Kazbegi  ( page 195 )
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:Skhalta_(Bakradze,_1878).JPG
 - image: /assets/photos/skhalta-monastery-2.webp
   author: Jaba1977
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Purtio_Bridge2.jpg
+  source: https://commons.wikimedia.org/wiki/File:Western_door_of_Skhalta_2.jpg
 - image: /assets/photos/skhalta-monastery-3.webp
   author: Jaba1977
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Purtio_Bridge3.jpg
+  source: https://commons.wikimedia.org/wiki/File:Southern_door_of_Skhalta_(2).jpg
 visit_hours: '1'
 best_season: may-october
 open_year_round: true
@@ -261,5 +261,5 @@ image_credit:
   author: Jaba1977
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Purtio_Bridge.jpg
+  source: https://commons.wikimedia.org/wiki/File:Skhalta_monastery2.jpg
 rating: 3.5

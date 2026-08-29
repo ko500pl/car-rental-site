@@ -8,21 +8,16 @@ featured: false
 order: 30
 image: /assets/photos/holy-trinity-cathedral-sameba.webp
 gallery:
-- image: /assets/photos/holy-trinity-cathedral-sameba-1.webp
-  author: Yakovlev Sergey
-  license: Public domain
-  license_url: ''
-  source: https://commons.wikimedia.org/wiki/File:Raffi_Gravestone.jpg
 - image: /assets/photos/holy-trinity-cathedral-sameba-2.webp
-  author: Steelmate
-  license: Public domain
-  license_url: ''
-  source: https://commons.wikimedia.org/wiki/File:Tombstone_of_Armenian_poet_Hovhannes_Tumanyan_in_Tbilisi.jpg
+  author: Alexxx1979
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Tbilisi_Holy_Trinity_Cathedral_(Sameba)_IMG_8956_1920.jpg
 - image: /assets/photos/holy-trinity-cathedral-sameba-3.webp
-  author: Serouj
-  license: CC BY 3.0
-  license_url: https://creativecommons.org/licenses/by/3.0
-  source: https://commons.wikimedia.org/wiki/File:Exposed_tombs,_Armenian_Pantheon_of_Tbilisi.JPG
+  author: Andrzej Wójtowicz from Poznań, Poland
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Tbilisi_-_Holy_Trinity_Cathedral_(Sameba)_(9458120939).jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -291,8 +286,8 @@ ar:
     حول ساحة أفلاباري. وطريق الوصول معبّد بالكامل بصعود لطيف، فأي فئة سيارة تفي بالغرض. وأقرب محطات الوقود
     المريحة تقع في شارع كيتيفان ديدوبالي.
 image_credit:
-  author: Serouj
-  license: CC BY 3.0
-  license_url: https://creativecommons.org/licenses/by/3.0
-  source: https://commons.wikimedia.org/wiki/File:Armenian_Pantheon_of_Tbilisi.JPG
+  author: Andrzej Wójtowicz  from Poznań, Poland
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Tbilisi_-_Holy_Trinity_Cathedral_(Sameba)_(9458120939).jpg
 rating: 3.5

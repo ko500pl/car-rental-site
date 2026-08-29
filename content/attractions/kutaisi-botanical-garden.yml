@@ -12,14 +12,12 @@ gallery:
   author: Mikelada
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%E1%83%A5%E1%83%A3%E1%83%97%E1%83%90%E1%83%98%E1%83%A1%E1%83%98%E1%83%A1_%E1%83%91%E1%83%9D%E1%83%A2%E1%83%90%E1%83%9C%E1%83%98%E1%83%99%E1%83%A3%E1%83%A0%E1%83%98_%E1%83%91%E1%83%90%E1%83%A6%E1%83%98_08.jpg
+  source: https://commons.wikimedia.org/wiki/File:%E1%83%A5%E1%83%A3%E1%83%97%E1%83%90%E1%83%98%E1%83%A1%E1%83%98%E1%83%A1_%E1%83%91%E1%83%9D%E1%83%A2%E1%83%90%E1%83%9C%E1%83%98%E1%83%99%E1%83%A3%E1%83%A0%E1%83%98_%E1%83%91%E1%83%90%E1%83%A6%E1%83%98_08.jpg
 - image: /assets/photos/kutaisi-botanical-garden-5.webp
   author: Mikelada
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%E1%83%A5%E1%83%A3%E1%83%97%E1%83%90%E1%83%98%E1%83%A1%E1%83%98%E1%83%A1_%E1%83%91%E1%83%9D%E1%83%A2%E1%83%90%E1%83%9C%E1%83%98%E1%83%99%E1%83%A3%E1%83%A0%E1%83%98_%E1%83%91%E1%83%90%E1%83%A6%E1%83%98_04.jpg
+  source: https://commons.wikimedia.org/wiki/File:%E1%83%A5%E1%83%A3%E1%83%97%E1%83%90%E1%83%98%E1%83%A1%E1%83%98%E1%83%A1_%E1%83%91%E1%83%9D%E1%83%A2%E1%83%90%E1%83%9C%E1%83%98%E1%83%99%E1%83%A3%E1%83%A0%E1%83%98_%E1%83%91%E1%83%90%E1%83%A6%E1%83%98_04.jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -296,6 +294,6 @@ image_credit:
   author: Mikelada
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: >-
+  source: https://commons.wikimedia.org/wiki/File:%E1%83%A5%E1%83%A3%E1%83%97%E1%83%90%E1%83%98%E1%83%A1%E1%83%98%E1%83%A1_%E1%83%91%E1%83%9D%E1%83%A2%E1%83%90%E1%83%9C%E1%83%98%E1%83%99%E1%83%A3%E1%83%A0%E1%83%98_%E1%83%91%E1%83%90%E1%83%A6%E1%83%98_10.jpg
     https://commons.wikimedia.org/wiki/File:%E1%83%A5%E1%83%A3%E1%83%97%E1%83%90%E1%83%98%E1%83%A1%E1%83%98%E1%83%A1_%E1%83%91%E1%83%9D%E1%83%A2%E1%83%90%E1%83%9C%E1%83%98%E1%83%99%E1%83%A3%E1%83%A0%E1%83%98_%E1%83%91%E1%83%90%E1%83%A6%E1%83%98_10.jpg
 rating: 4.0

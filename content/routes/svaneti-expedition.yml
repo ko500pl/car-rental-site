@@ -2,10 +2,24 @@ order: 50
 days: 5
 nights: 4
 purpose: mountains
+routing_mode: offroad
 min_people: 1
 max_people: 8
 distance_km: 1050
 drive_time_total: '21:00'
+daily_hours: 9
+return_to_origin: true
+origin:
+  lat: 41.7151
+  lon: 44.8271
+  road_factor: 1.25
+  speed_kmh: 55
+  name_ka: თბილისი
+  name_en: Tbilisi
+  name_ru: Тбилиси
+  name_fa: تفلیس
+  name_he: טביליסי
+  name_ar: تبليسي
 car_category: offroad
 best_season: june-september
 difficulty: hard
@@ -88,6 +102,9 @@ polyline:
   - 44.35
 - - 41.7151
   - 44.8271
+sources:
+  - https://georgia.travel/popular-trips/two-day-tour-svaneti
+  - https://georgia.travel/ushguli-shkhara-glacier-namkvami-lake
 ka:
   name: სვანეთის ექსპედიცია
   short: 'ხუთი დღე ზემო სვანეთში: ქუთაისი, ზუგდიდი, ენგურის კაშხალი, მესტია და უშგული.'

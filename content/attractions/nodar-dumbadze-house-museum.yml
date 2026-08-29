@@ -7,11 +7,6 @@ unesco: false
 featured: false
 order: 58
 image: /assets/photos/nodar-dumbadze-house-museum.jpg
-image_credit:
-  author: M.
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Nodar_Dumbadze_Museum.jpg
 gallery:
 - image: /assets/photos/nodar-dumbadze-house-museum.jpg
   author: M.
@@ -27,7 +22,6 @@ drive_time_tbilisi: '4:35'
 road: paved
 car_category: economy
 nearby: [chokhatauri, sameba-jikheti-monastery, bakhmaro]
-rating: 4.7
 ka:
   name: ნოდარ დუმბაძის სახლ-მუზეუმი
   short: ქართველი მწერლის სახლ-მუზეუმი სოფელ ხიდისთავში, პირადი ნივთებითა და მისი ცხოვრების მასალებით.
@@ -49,3 +43,9 @@ ru:
 fa: {name: خانه‌موزه نودار دومبادزه, short: خانه‌موزه نویسنده گرجی در روستای خیدیستاوی., body: '**خانه‌موزه نودار دومبادزه** وسایل شخصی، عکس‌ها و اسناد زندگی نویسنده را نمایش می‌دهد.', tip: ساعات بازدید را پیش از سفر بررسی کنید., route: از چوخاتائوری در جاده باخمارو به خیدیستاوی بروید.}
 he: {name: בית־מוזיאון נודר דומבדזה, short: ביתו של הסופר הגאורגי בכפר חידיסתאווי., body: '**בית־מוזיאון נודר דומבדזה** מציג חפצים אישיים, תצלומים ומסמכים.', tip: מומלץ לוודא שעות פתיחה לפני הנסיעה., route: מצ׳וחטאורי סעו בדרך בחמרו לחידיסתאווי.}
 ar: {name: متحف منزل نودار دومبادزه, short: منزل الكاتب الجورجي في قرية خيديستافي ويضم مقتنياته الشخصية., body: '**متحف منزل نودار دومبادزه** يعرض مقتنيات وصوراً ووثائق من حياة الكاتب.', tip: تحقق من ساعات العمل محلياً قبل الزيارة., route: من تشوخاتوري اتبع طريق باخمارو إلى خيديستافي.}
+image_credit:
+  author: M.
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Nodar_Dumbadze_Museum.jpg
+rating: 4.5

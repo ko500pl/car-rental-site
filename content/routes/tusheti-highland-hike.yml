@@ -3,17 +3,31 @@ order: 180
 days: 5
 nights: 4
 purpose: hiking
+routing_mode: offroad
 min_people: 2
 max_people: 8
 distance_km: 430
 drive_time_total: '13:30'
+daily_hours: 9
+return_to_origin: true
+origin:
+  lat: 41.7151
+  lon: 44.8271
+  road_factor: 1.25
+  speed_kmh: 55
+  name_ka: თბილისი
+  name_en: Tbilisi
+  name_ru: Тбилиси
+  name_fa: تفلیس
+  name_he: טביליסי
+  name_ar: تبليسي
 car_category: offroad
 best_season: june-september
 difficulty: hard
 image: ''
 waypoints: [alaverdi-cathedral, abano-pass, omalo-tusheti, dartlo, shenako-diklo]
 polyline: []
-sources: [https://georgia.travel/trekking-in-georgia]
+sources: [https://georgia.travel/trekking-in-georgia, https://georgia.travel/tusheti]
 ka:
   name: თუშეთის მაღალმთიანი ჰაიქინგი
   short: ხუთი დღე აბანოს უღელტეხილზე, ომალოში, დართლოსა და შენაქო-დიკლოში.

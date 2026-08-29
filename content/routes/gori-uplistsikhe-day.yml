@@ -1,0 +1,34 @@
+status: published
+order: 370
+days: 1
+nights: 0
+purpose: history
+min_people: 1
+max_people: 12
+distance_km: 205
+drive_time_total: '03:30'
+daily_hours: 12
+origin:
+  lat: 41.7151
+  lon: 44.8271
+  road_factor: 1.23
+  speed_kmh: 58
+  name_ka: თბილისი
+  name_en: Tbilisi
+  name_ru: Тбилиси
+  name_fa: تفلیس
+  name_he: טביליסי
+  name_ar: تبليسي
+car_category: economy
+best_season: march-november
+difficulty: easy
+image: ''
+waypoints: [gori-fortress-stalin-museum, gori-war-museum, uplistsikhe, ateni-sioni-church]
+polyline: []
+sources: [https://georgia.travel/regions/shida-kartli, https://georgia.travel/cities-towns/gori]
+ka: {name: გორი და უფლისციხე ერთ დღეში, short: გორის ციხე მუზეუმები უფლისციხე და ატენის სიონი., body: ქართლის ისტორიის ერთდღიანი მარშრუტი ქალაქური მუზეუმებიდან კლდეში ნაკვეთ ქალაქამდე და ატენის ხეობამდე., plan: 'თბილისი → გორი → უფლისციხე → ატენის სიონი → თბილისი.', tips: [მუზეუმების საათები გადაამოწმეთ., უფლისციხეზე ქარისთვის მზად იყავით.]}
+en: {name: Gori and Uplistsikhe in One Day, short: Gori Fortress museums Uplistsikhe and Ateni Sioni., body: A Shida Kartli history day from city museums to the rock-cut town and Ateni Valley., plan: 'Tbilisi → Gori → Uplistsikhe → Ateni Sioni → Tbilisi.', tips: [Check museum hours., Be prepared for wind at Uplistsikhe.]}
+ru: {name: Гори и Уплисцихе за один день, short: Крепость и музеи Гори Уплисцихе и Атени Сиони., body: История Шида-Картли от городских музеев до пещерного города., plan: 'Тбилиси → Гори → Уплисцихе → Атени Сиони → Тбилиси.', tips: [Проверьте часы музеев., В Уплисцихе бывает ветрено.]}
+fa: {name: گوری و اوپلیستسیخه در یک روز, short: قلعه و موزه‌های گوری اوپلیستسیخه و آتنی سیونی., body: روز تاریخ شیدا کارتلی از موزه‌ها تا شهر صخره‌ای., plan: 'تفلیس ← گوری ← اوپلیستسیخه ← آتنی سیونی ← تفلیس.', tips: [ساعت موزه‌ها را بررسی کنید., برای باد آماده باشید.]}
+he: {name: גורי ואופליסציחה ביום אחד, short: מבצר ומוזיאוני גורי אופליסציחה ואתני סיוני., body: יום היסטוריה משידה כארתלי מהמוזיאונים לעיר החצובה., plan: 'טביליסי ← גורי ← אופליסציחה ← אתני סיוני ← טביליסי.', tips: [בדקו שעות פתיחה., היו מוכנים לרוח.]}
+ar: {name: غوري وأوبليستسيخي في يوم واحد, short: قلعة ومتاحف غوري وأوبليستسيخي وأتيني سيوني., body: يوم تاريخي من متاحف المدينة إلى المدينة الصخرية., plan: 'تبليسي ← غوري ← أوبليستسيخي ← أتيني سيوني ← تبليسي.', tips: [تحققوا من ساعات المتاحف., استعدوا للرياح.]}

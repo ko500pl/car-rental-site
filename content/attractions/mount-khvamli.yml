@@ -6,13 +6,8 @@ elevation: 2001
 unesco: false
 featured: false
 order: 74
-image: /assets/photos/mount-khvamli.webp
+image: /assets/photos/mount-khvamli-2.webp
 gallery:
-- image: /assets/photos/mount-khvamli-1.webp
-  author: Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center
-  license: Public domain
-  license_url: ''
-  source: https://commons.wikimedia.org/wiki/File:ISS028-E-43480_-_View_of_Earth.jpg
 - image: /assets/photos/mount-khvamli-2.webp
   author: Jaba1977
   license: Attribution
@@ -22,8 +17,7 @@ gallery:
   author: Roberto Strauss from Frankfurt am Main, Deutschland
   license: CC BY-SA 2.0
   license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:Khvamli-Khomli_Mountain_cliff-massive_from_Gelaty_monastery_Kutaisi_(14547065945).jpg
+  source: https://commons.wikimedia.org/wiki/File:Khvamli-Khomli_Mountain_cliff-massive_from_Gelaty_monastery_Kutaisi_(14547065945).jpg
 visit_hours: '3'
 best_season: may-october
 open_year_round: false
@@ -286,8 +280,8 @@ ar:
     عشرين بالمئة؛ وفي الجو الجاف تصعده سيارة عادية، وفي المبلل يُستحسن خلوص أعلى وإطارات سليمة. اترك السيارة
     في الموقف الأعلى. الوقود في كوتايسي وتساغيري.
 image_credit:
-  author: Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center
-  license: Public domain
+  author: Jaba1977
+  license: Attribution
   license_url: ''
-  source: https://commons.wikimedia.org/wiki/File:ISS048-E-7056_-_View_of_Russia.jpg
+  source: https://commons.wikimedia.org/wiki/File:Khvamli.jpg
 rating: 4.5

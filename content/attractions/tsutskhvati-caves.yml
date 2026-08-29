@@ -6,7 +6,7 @@ elevation: 330
 unesco: false
 featured: false
 order: 80
-image: /assets/photos/tsutskhvati-caves.webp
+image: ''
 gallery: []
 visit_hours: '2'
 best_season: may-october
@@ -262,9 +262,5 @@ ar:
     وثلاث ساعات وربع. يصل الإسفلت إلى القرية، والكيلومتران أو الثلاثة الأخيرة نحو الوادي حصى وتراب. تكفي
     سيارة مرتفعة قليلاً في الجو الجاف، أما بعد المطر فتحتاج فعلاً إلى خلوص أرضي. تزوّد بالوقود في زستافوني
     أو ترجولا. واترك السيارة في آخر القرية حيث يبدأ الممر.
-image_credit:
-  author: Philipp Weigell
-  license: CC BY 3.0
-  license_url: https://creativecommons.org/licenses/by/3.0
-  source: https://commons.wikimedia.org/wiki/File:Platycnemis_pennipes_(male)_(1).JPG
+image_credit: {}
 rating: 4.0

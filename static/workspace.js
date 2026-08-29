@@ -122,6 +122,8 @@
         if (k === 's' && /^\d{4}-\d{2}-\d{2}$/.test(v)) st.start = v;
         if (k === 'd') st.days = Math.max(1, Math.min(30, parseInt(v, 10) || st.days));
         if (k === 'o') st._originName = v;
+        if (k === 'la' && isFinite(Number(v))) st._originLat = Number(v);
+        if (k === 'lo' && isFinite(Number(v))) st._originLon = Number(v);
       });
       var d0 = new Date(st.start);
       if (!isNaN(d0)) st.end = iso(new Date(d0.getTime() + (st.days - 1) * 864e5));
@@ -160,7 +162,10 @@
     var q = st.q.trim().toLowerCase();
     var routeTab = st.tab === 'route' && window.innerWidth <= 960;
     return PTS.filter(function (p) {
-      if (routeTab && st.selected.indexOf(p.s) < 0) return false;
+      var selected = st.selected.indexOf(p.s) >= 0;
+      if (routeTab && !selected) return false;
+      /* Never let discovery filters hide stops already in the route. */
+      if (selected) return true;
       if (st.reg && p.g !== st.reg) return false;
       if (st.cat && st.cat.length && st.cat.indexOf(p.ty) < 0) return false;
       if (st.minRating && (p.r || 0) < st.minRating) return false;
@@ -340,6 +345,8 @@
     var pts = [st.origin].concat(sel).concat(ep ? [ep] : []);
     var straight = pts.map(function (p) { return [p.la, p.lo]; });
     routeLayer.addLayer(L.polyline(straight, { color: '#0b2f4d', weight: 3, opacity: 0.35, dashArray: '6 6' }));
+    /* Fit immediately: remote routing may be slow or unavailable. */
+    if (fitNext) { fitNext = false; map.fitBounds(L.latLngBounds(straight).pad(0.15)); }
     setStatus(true, false);
     var coords = pts.map(function (p) { return p.lo + ',' + p.la; }).join(';');
     var token = ++reqToken;
@@ -359,19 +366,21 @@
           }
         }
         setStatus(false, false);
-        if (fitNext) { fitNext = false; map.fitBounds(L.latLngBounds(line).pad(0.12)); }
+
       })
       .catch(function () {
         if (token !== reqToken) return;
         setStatus(false, true);
-        if (fitNext) { fitNext = false; map.fitBounds(L.latLngBounds(straight).pad(0.15)); }
+
       });
   }
   var routeKey = '';
   function syncRoute() {
     var ep = endPoint();
-    var key = st.selected.join('>') + '|' + st.origin.n + '|' + (st.traffic ? 't' : '') +
-      '|' + st.ret + '|' + (ep ? ep.n : '');
+    var key = st.selected.join('>') + '|' + st.origin.n + '|' +
+      Number(st.origin.la).toFixed(5) + ',' + Number(st.origin.lo).toFixed(5) + '|' +
+      (st.traffic ? 't' : '') + '|' + st.ret + '|' +
+      (ep ? ep.n + ':' + Number(ep.la).toFixed(5) + ',' + Number(ep.lo).toFixed(5) : '');
     if (key !== routeKey) { routeKey = key; drawRoute(); }
   }
   function setStatus(loading, error) {
@@ -631,7 +640,8 @@
     if (tripBtn) {
       tripBtn.hidden = !st.selected.length;
       tripBtn.href = (T.tripUrl || '/trip/') + '#trip=' + encodeURIComponent(
-        st.selected.join(',') + ';o=' + st.origin.n + ';s=' + st.start + ';d=' + st.days +
+        st.selected.join(',') + ';o=' + st.origin.n + ';la=' + st.origin.la + ';lo=' + st.origin.lo +
+        ';s=' + st.start + ';d=' + st.days +
         ';h=' + (st.dayHours[0] || 8) + ';p=' + st.people);
     }
 
@@ -663,9 +673,10 @@
     var lb = $('dowlist');
     lb.innerHTML = '';
     list.forEach(function (p) {
-      var on = !!selIdx[p.s], ok = fits(p), vis = !!st.visited[p.s];
+      var on = !!selIdx[p.s], ok = fits(p), blocked = !on && !ok, vis = !!st.visited[p.s];
+      var missing = blocked ? Math.max(1, Math.ceil(cost(p) - Math.max(0, budgetMin() - usedMin()))) : 0;
       var row = document.createElement('div');
-      row.className = 'dow-place' + (on ? ' on' : '') + (!ok && !on ? ' dim' : '');
+      row.className = 'dow-place' + (on ? ' on' : '') + (blocked ? ' dim' : '');
       var d0 = leg(st.origin, p);
       var ava = p.img
         ? '<span class="dow-ava thumb"><img src="' + esc(p.img) + '" alt="" loading="lazy">' +
@@ -676,8 +687,8 @@
       if (on) { row.dataset.slug = p.s; row.classList.add('drag'); }
       row.innerHTML =
         (on ? '<span class="dow-grab" title="' + esc(T.dragHint) + '" aria-hidden="true">⠿</span>' : '') +
-        '<input type="checkbox" aria-label="' + esc(p.n) + '"' + (on ? ' checked' : '') + '>' +
-        '<button type="button" class="dow-place-main">' + ava +
+        '<input type="checkbox" aria-label="' + esc(p.n) + '"' + (on ? ' checked' : '') + (blocked ? ' disabled' : '') + '>' +
+        '<button type="button" class="dow-place-main"' + (blocked ? ' disabled' : '') + '>' + ava +
         '<span class="dow-place-t"><span class="dow-place-n">' + esc(p.n) + '</span>' +
         '<span>' + esc(p.gn) + ' · ' + esc(p.t) + (p.r ? ' · ' + Number(p.r).toFixed(1) + ' ★' : '') + '</span>' +
         '<span>' + hm(p.hh * 60) + ' ' + esc(T.visit) + ' · ' +
@@ -688,10 +699,10 @@
               : (detCache[p.s].min >= 10
                 ? '+' + hm(detCache[p.s].min) + ' ' + esc(T.detour)
                 : esc(T.onWay))) + '</b>') +
-        (vis ? ' · ' + esc(T.visited) : (ok ? '' : ' · ' + esc(T.noFit))) + '</span></span></button>' +
+        (vis ? ' · ' + esc(T.visited) : (ok ? '' : ' · ' + esc(T.noFit) + ' · ' + esc(T.noFitNeed) + ' ' + hm(missing))) + '</span></span></button>' +
         '<button type="button" class="dow-info" aria-label="' + esc(T.details) + '"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0b2f4d" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5M12 8h.01"></path></svg></button>';
-      row.querySelector('input').onchange = function () { toggle(p.s); };
-      row.querySelector('.dow-place-main').onclick = function () { toggle(p.s); };
+      row.querySelector('input').onchange = function () { if (!blocked) toggle(p.s); };
+      row.querySelector('.dow-place-main').onclick = function () { if (!blocked) toggle(p.s); };
       row.querySelector('.dow-info').onclick = function () { st.detail = [p.s]; render(); };
       if (on) attachDrag(row);
       lb.appendChild(row);
@@ -810,7 +821,7 @@
           '<b>' + esc(p.n) + '</b>' +
           '<span>' + esc(p.gn) + ' · ' + esc(p.t) + (p.r ? ' · ' + Number(p.r).toFixed(1) + ' ★' : '') + '</span>' +
           '<span>' + esc(T.visit) + ' ' + hm(p.hh * 60) + ' · ' + Math.round(leg(st.origin, p).km) + ' ' + esc(T.km) + '</span>' +
-          '<div class="dow-ditem-b"><button type="button" class="a">' + esc(on ? T.removeStop : (ok ? T.addStop : T.noFit)) + '</button>' +
+          '<div class="dow-ditem-b"><button type="button" class="a"' + (!on && !ok ? ' disabled' : '') + '>' + esc(on ? T.removeStop : (ok ? T.addStop : T.noFit)) + '</button>' +
           '<button type="button" class="v">' + esc(st.visited[p.s] ? T.visitedYes : T.markVisited) + '</button>' +
           (p.u ? '<a class="dow-ditem-link" href="' + esc(p.u) + '" target="_blank" rel="noopener">' + esc(T.fullPage) + '</a>' : '') + '</div>';
         el.querySelector('.a').onclick = function () { if (on || ok) toggle(p.s); };
@@ -885,9 +896,15 @@
   }
   if (st._originName) {
     var op0 = findPlaceByName(st._originName);
-    if (op0) st.origin = { n: op0.n, la: op0.la, lo: op0.lo, f: op0.f || 1.4, v: op0.v || 55 };
+    if (isFinite(st._originLat) && isFinite(st._originLon)) {
+      st.origin = { n: st._originName, la: st._originLat, lo: st._originLon, f: 1.4, v: 55 };
+    } else if (op0) {
+      st.origin = { n: op0.n, la: op0.la, lo: op0.lo, f: op0.f || 1.4, v: op0.v || 55 };
+    }
     oi.value = st.origin.n;
     delete st._originName;
+    delete st._originLat;
+    delete st._originLon;
   }
   var stayList = $('dowstaylist');
   if (stayList) {
@@ -920,6 +937,7 @@
     navigator.geolocation.getCurrentPosition(function (pos) {
       st.origin = { n: T.myLocName, la: pos.coords.latitude, lo: pos.coords.longitude, f: 1.4, v: 55 };
       oi.value = T.myLocName;
+      fitNext = true;
       map.setView([pos.coords.latitude, pos.coords.longitude], 9);
       routeKey = '';
       render();
@@ -1073,9 +1091,10 @@
     flash(T.saved);
   };
   function shareUrl() {
-    /* შენახული/გაზიარებული ბმული ყოველთვის ენის შესაბამის „ჩემი ტურის" გვერდზე მიდის */
+    /* Keep shared tours on the localized trip page and preserve the exact origin. */
     return location.origin + (T.tripUrl || '/trip/') + '#trip=' + encodeURIComponent(
-      st.selected.join(',') + ';o=' + st.origin.n + ';s=' + st.start + ';d=' + st.days +
+      st.selected.join(',') + ';o=' + st.origin.n + ';la=' + st.origin.la + ';lo=' + st.origin.lo +
+      ';s=' + st.start + ';d=' + st.days +
       ';h=' + (st.dayHours[0] || 8) + ';p=' + st.people);
   }
   $('dowshare').onclick = function () {
@@ -1139,9 +1158,23 @@
     var prev = snapshot();
     st.tourId = r.s;
     st.selected = (r.wp || []).filter(function (s) { return BY[s]; });
+    /* Applying a tour starts a fresh discovery context. */
+    st.q = ''; st.reg = ''; st.cat = []; st.minRating = 0; st.visitedFilter = '';
+    if ($('dowq')) $('dowq').value = '';
+    if ($('dowreg')) $('dowreg').value = '';
+    if ($('dowrate')) $('dowrate').value = '';
+    if (r.origin && isFinite(Number(r.origin.la)) && isFinite(Number(r.origin.lo))) {
+      st.origin = {
+        n: r.origin.n || st.origin.n,
+        la: Number(r.origin.la), lo: Number(r.origin.lo),
+        f: Number(r.origin.f) || 1.4, v: Number(r.origin.v) || 55
+      };
+      if ($('doworigin')) $('doworigin').value = st.origin.n;
+    }
     st.days = r.days;
     st.dayHours = [];
-    for (var i = 0; i < Math.max(r.days, 6); i++) st.dayHours.push(8);
+    var dailyHours = Math.max(1, Math.min(14, Number(r.dailyHours) || 8));
+    for (var i = 0; i < Math.max(r.days, 6); i++) st.dayHours.push(dailyHours);
     var d = new Date(st.start);
     if (!isNaN(d)) st.end = iso(new Date(d.getTime() + (st.days - 1) * 864e5));
     closeTours();
@@ -1150,7 +1183,7 @@
     render();
     ensurePointRegions(st.selected.map(function (slug) { return BY[slug]; }).filter(Boolean));
     flash(T.tourApplied, false, function () { restore(prev); });
-    root.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
   }
   /* „დაგეგმვა" ღილაკები გვერდის ნებისმიერ ადგილას (მთავარი გვერდის ტურის
      ბარათები, hero) — data-tour შლის კონკრეტულ ტურს რუკაზე, უამისოდ drawer იხსნება */
@@ -1161,7 +1194,7 @@
     var slug = t.getAttribute('data-tour');
     var r = slug ? (D.standardTours || []).filter(function (x) { return x.s === slug; })[0] : null;
     if (r) applyTour(r);
-    else { root.scrollIntoView({ behavior: 'smooth', block: 'start' }); openTours(); }
+    else openTours();
   });
   $('dowtours').onclick = openTours;
   $('dowtclose').onclick = closeTours;
@@ -1253,7 +1286,7 @@
   };
 
   render();
-  /* #tour=slug — სტანდარტული ტურის ჩატვირთვა რუკაზე (route/tours გვერდებიდან) */
+  /* #tour=slug — load a standard tour directly into this workspace. */
   var mtour = location.hash.match(/#tour=([^&]+)/);
   if (mtour) {
     var tourPre = (D.standardTours || []).filter(function (x) { return x.s === decodeURIComponent(mtour[1]); })[0];

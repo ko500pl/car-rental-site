@@ -1725,7 +1725,7 @@ main .lead,p.lead{{font-size:15px;color:var(--ink-2)}}
 .dow-step button:last-child{{border-inline-start:1px solid var(--line)}}
 .dow-step button:hover{{background:#f1f6f8}}
 .dow-step div{{display:grid;place-items:center;font-size:14px;font-weight:600;white-space:nowrap}}
-.dow-suggest{{position:absolute;top:70px;inset-inline:0;max-height:236px;overflow:auto;background:#fff;
+.dow-suggest{{position:absolute;top:calc(100% + 6px);inset-inline:0;max-height:236px;overflow:auto;background:#fff;
   border:1px solid var(--line);border-radius:10px;box-shadow:0 12px 24px rgba(14,35,51,.14);z-index:80}}
 .dow-suggest button{{display:flex;width:100%;align-items:center;gap:8px;padding:9px 10px;border:0;
   border-bottom:1px solid #f0f4f7;background:#fff;text-align:start;cursor:pointer}}
@@ -1832,14 +1832,14 @@ main .lead,p.lead{{font-size:15px;color:var(--ink-2)}}
   .land-hero-copy{{padding:20px 16px 0}}.land-hero-copy h1{{font-size:27px}}}}
 
 /* Workspace intro — ჰერო ზოლი ფოტოთი და მოტივტივე დამგეგმავი ბარათი */
-.dow-intro{{position:relative;min-height:200px;padding:28px 16px 52px!important;background:#e7eef4!important;overflow:hidden}}
+.dow-intro{{position:relative;min-height:146px;padding:18px 16px 22px!important;background:#e7eef4!important;overflow:hidden}}
 .dow-intro::before{{content:"";position:absolute;inset:0;background:url("/assets/rentup-planner-hero.jpg") center/cover no-repeat}}
 .dow-intro::after{{content:"";position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(90deg,rgba(255,255,255,.96) 0%,rgba(255,255,255,.9) 34%,rgba(255,255,255,.3) 62%,rgba(255,255,255,0) 100%)}}
 .dow-intro>*{{position:relative;z-index:2}}
 .dow-intro h1{{font-size:30px!important}}
 .dow-prow{{background:#fff;border:1px solid var(--line)!important;border-radius:14px;
-  box-shadow:0 6px 20px rgba(14,35,51,.10);margin:-32px 16px 10px!important;position:relative;z-index:60}}
+  box-shadow:0 3px 12px rgba(14,35,51,.08);margin:0!important;position:relative;z-index:60}}
 .dow-cattiles{{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}}
 .dow-cattiles::-webkit-scrollbar{{display:none}}
 .dow-cattile{{flex:0 0 auto;width:56px;height:56px;border:1px solid #dde5ec;border-radius:12px;background:#fff;
@@ -1894,6 +1894,7 @@ main .lead,p.lead{{font-size:15px;color:var(--ink-2)}}
 .dow-place input[type=checkbox]{{width:18px;height:18px;margin-top:12px;accent-color:var(--accent);flex:0 0 auto}}
 .dow-place-main{{flex:1;min-width:0;display:flex;gap:10px;border:0;background:transparent;padding:0;
   text-align:start;cursor:pointer}}
+.dow-place-main:disabled,.dow-place input[type=checkbox]:disabled{{cursor:not-allowed}}
 .dow-ava{{width:44px;height:44px;border-radius:8px;background:#e8eff4;color:var(--brand);display:grid;
   place-items:center;font-size:13px;font-weight:700;flex:0 0 auto}}
 .dow-place-t{{display:flex;flex-direction:column;gap:2px;min-width:0}}

@@ -8,17 +8,6 @@ featured: false
 order: 50
 image: /assets/photos/gremi.webp
 gallery:
-- image: /assets/photos/gremi-1.webp
-  author: Adam Jones from Kelowna, BC, Canada
-  license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:Panorama_of_Vineyards_outside_Winery_-_Near_Telavi_-_Georgia_(18426493011).jpg
-- image: /assets/photos/gremi-2.webp
-  author: Kojima Yasuhiro
-  license: CC BY 4.0
-  license_url: https://creativecommons.org/licenses/by/4.0
-  source: https://commons.wikimedia.org/wiki/File:River_Chelti.jpg
 - image: /assets/photos/gremi-3.webp
   author: Sarah Murray from South Bend, IN, USA
   license: CC BY-SA 2.0
@@ -229,5 +218,5 @@ image_credit:
   author: Sarah Murray from South Bend, IN, USA
   license: CC BY-SA 2.0
   license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: https://commons.wikimedia.org/wiki/File:Kakheti_15466_(9121868947).jpg
+  source: https://commons.wikimedia.org/wiki/File:Kakheti_15465_(9124094644).jpg
 rating: 3.5

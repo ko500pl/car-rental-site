@@ -1,0 +1,34 @@
+status: published
+order: 330
+days: 1
+nights: 0
+purpose: culture
+min_people: 1
+max_people: 12
+distance_km: 85
+drive_time_total: '02:30'
+daily_hours: 12
+origin:
+  lat: 42.2679
+  lon: 42.6946
+  road_factor: 1.22
+  speed_kmh: 52
+  name_ka: ქუთაისი
+  name_en: Kutaisi
+  name_ru: Кутаиси
+  name_fa: کوتایسی
+  name_he: כותאיסי
+  name_ar: كوتايسي
+car_category: economy
+best_season: all
+difficulty: easy
+image: ''
+waypoints: [bagrati-cathedral, gelati-monastery, motsameta-monastery, prometheus-cave]
+polyline: []
+sources: [https://georgia.travel/regions/imereti, https://gulf.georgia.travel/brochure/en/UAG_Imereti_en.pdf]
+ka: {name: ქუთაისის მონასტრები და მღვიმე, short: ბაგრატი გელათი მოწამეთა და პრომეთეს მღვიმე ერთ დღეში., body: ქუთაისიდან დაწყებული კულტურულ-ბუნებრივი დღე ოთხ კარგად დაჯგუფებულ გაჩერებას აერთიანებს., plan: 'ქუთაისი → ბაგრატი → გელათი → მოწამეთა → პრომეთეს მღვიმე → ქუთაისი.', tips: [მღვიმის სეანსის დრო წინასწარ გადაამოწმეთ., გელათისა და მოწამეთასთვის მშვიდი ტემპი დაგეგმეთ.]}
+en: {name: Kutaisi Monasteries and Cave Day, short: Bagrati Gelati Motsameta and Prometheus Cave in one day., body: A compact cultural and nature day from Kutaisi with four logically grouped stops., plan: 'Kutaisi → Bagrati → Gelati → Motsameta → Prometheus Cave → Kutaisi.', tips: [Check cave admission times., Allow an unhurried visit at Gelati and Motsameta.]}
+ru: {name: Монастыри и пещера Кутаиси, short: Баграти Гелати Моцамета и пещера Прометея за один день., body: Компактный культурно-природный маршрут из Кутаиси., plan: 'Кутаиси → Баграти → Гелати → Моцамета → пещера Прометея → Кутаиси.', tips: [Проверьте время сеансов в пещере., Не спешите в монастырях.]}
+fa: {name: صومعه‌ها و غار کوتایسی, short: باگراتی گلاتی موتسامتا و غار پرومتئوس در یک روز., body: برنامه فشرده فرهنگی و طبیعی از کوتایسی., plan: 'کوتایسی ← باگراتی ← گلاتی ← موتسامتا ← غار پرومتئوس ← کوتایسی.', tips: [زمان ورود غار را بررسی کنید., برای صومعه‌ها وقت کافی بگذارید.]}
+he: {name: מנזרים ומערה מכותאיסי, short: בגרטי גלאתי מוצמתה ומערת פרומתאוס ביום אחד., body: יום תרבות וטבע קומפקטי היוצא מכותאיסי., plan: 'כותאיסי ← בגרטי ← גלאתי ← מוצמתה ← מערת פרומתאוס ← כותאיסי.', tips: [בדקו את זמני הכניסה למערה., השאירו זמן רגוע למנזרים.]}
+ar: {name: أديرة وكهف كوتايسي, short: باغراتي وغيلاتي وموتساميتا وكهف بروميثيوس في يوم واحد., body: يوم ثقافي وطبيعي مدمج من كوتايسي., plan: 'كوتايسي ← باغراتي ← غيلاتي ← موتساميتا ← كهف بروميثيوس ← كوتايسي.', tips: [تحققوا من مواعيد دخول الكهف., خصصوا وقتا هادئا للأديرة.]}

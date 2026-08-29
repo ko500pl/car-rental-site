@@ -8,24 +8,11 @@ featured: false
 order: 20
 image: /assets/photos/dmanisi.webp
 gallery:
-- image: /assets/photos/dmanisi-1.webp
-  author: Lgabelia
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%E1%83%93%E1%83%9B%E1%83%90%E1%83%9C%E1%83%98%E1%83%A1%E1%83%98%E1%83%A1_%E1%83%9C%E1%83%90%E1%83%A5%E1%83%90%E1%83%9A%E1%83%90%E1%83%A5%E1%83%90%E1%83%A0%E1%83%98.jpg
-- image: /assets/photos/dmanisi-2.webp
-  author: Lgabelia
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%E1%83%93%E1%83%9B%E1%83%90%E1%83%9C%E1%83%98%E1%83%A1%E1%83%98%E1%83%A1_%E1%83%A1%E1%83%98%E1%83%9D%E1%83%9C%E1%83%98_01.jpg
 - image: /assets/photos/dmanisi-3.webp
   author: Lgabelia
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%E1%83%93%E1%83%9B%E1%83%90%E1%83%9C%E1%83%98%E1%83%A1%E1%83%98%E1%83%A1_%E1%83%A1%E1%83%98%E1%83%9D%E1%83%9C%E1%83%98_02.jpg
+  source: https://commons.wikimedia.org/wiki/File:%E1%83%93%E1%83%9B%E1%83%90%E1%83%9C%E1%83%98%E1%83%A1%E1%83%98%E1%83%A1_%E1%83%A1%E1%83%98%E1%83%9D%E1%83%9C%E1%83%98_02.jpg
 visit_hours: '2'
 best_season: may-october
 open_year_round: true
@@ -240,9 +227,9 @@ ar:
     الأخيران إلى الموقع وعران، وإن كانت سيارة عادية تمر في الطقس الجاف. والوقود متوفر في مارنيولي وبولنيسي.
     وإن كنت تنوي زيارة بيرتفيسي أيضاً، فكلاهما يتسع ليوم واحد.
 image_credit:
-  author: ბაკურ გელაშვილი
+  author: Lgabelia
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: >-
+  source: https://commons.wikimedia.org/wiki/File:%E1%83%93%E1%83%9B%E1%83%90%E1%83%9C%E1%83%98%E1%83%A1%E1%83%98%E1%83%A1_%E1%83%A1%E1%83%98%E1%83%9D%E1%83%9C%E1%83%98_02.jpg
     https://commons.wikimedia.org/wiki/File:%E1%83%93%E1%83%9B%E1%83%90%E1%83%9C%E1%83%98%E1%83%A1%E1%83%98%E1%83%A1_%E1%83%9C%E1%83%90%E1%83%A5%E1%83%90%E1%83%9A%E1%83%90%E1%83%A5%E1%83%90%E1%83%A0%E1%83%98,.jpg
 rating: 4.0

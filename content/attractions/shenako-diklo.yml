@@ -9,20 +9,20 @@ order: 86
 image: /assets/photos/shenako-diklo.webp
 gallery:
 - image: /assets/photos/shenako-diklo-1.webp
-  author: Abramia Giorgi
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Shenako.Tusheti.JPG
+  author: "Abramia Giorgi"
+  license: "CC BY-SA 4.0"
+  license_url: "https://creativecommons.org/licenses/by-sa/4.0"
+  source: "https://commons.wikimedia.org/wiki/File:Shenako.Tusheti.JPG"
 - image: /assets/photos/shenako-diklo-2.webp
-  author: Karel61
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Khiso_%26_Khisos_Alazani_2016.jpg
+  author: "Daviti Zhorzholiani"
+  license: "CC BY-SA 4.0"
+  license_url: "https://creativecommons.org/licenses/by-sa/4.0"
+  source: "https://commons.wikimedia.org/wiki/File:From_Diklo_to_Shenako.jpg"
 - image: /assets/photos/shenako-diklo-3.webp
-  author: Karel61
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:P1100619b_Makratela_Range_2016.jpg
+  author: "Levan Gokadze (uploader Giorgi Balakhadze )"
+  license: "CC BY-SA 2.0"
+  license_url: "https://creativecommons.org/licenses/by-sa/2.0"
+  source: "https://commons.wikimedia.org/wiki/File:Tusheti,_Georgia_%E2%80%94_Shenako.jpg"
 visit_hours: '4'
 best_season: june-september
 open_year_round: false
@@ -262,8 +262,8 @@ ar:
     أخرى إلى ديكلو. المجموع 235 كم ونحو سبع ساعات ونصف. ولا يُسلك إلا بدفع رباعي ومن حزيران إلى أوائل
     تشرين الأول فقط. وآخر وقود في بشاولي، فاحسب رحلة العودة قبل الانطلاق.
 image_credit:
-  author: Abramia Giorgi
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:View_on_Lower_Omalo.JPG
+  author: "Pavelmarek100"
+  license: "CC BY-SA 4.0"
+  license_url: "https://creativecommons.org/licenses/by-sa/4.0"
+  source: "https://commons.wikimedia.org/wiki/File:Shenako_panorama.jpg"
 rating: 4.5

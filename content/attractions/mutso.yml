@@ -6,23 +6,23 @@ elevation: 1880
 unesco: false
 featured: false
 order: 88
-image: /assets/photos/mutso.webp
+image: /assets/photos/mutso-3.webp
 gallery:
 - image: /assets/photos/mutso-1.webp
-  author: Rike Fotos
+  author: Gorod - SKY
   license: CC BY 2.0
   license_url: https://creativecommons.org/licenses/by/2.0
-  source: https://commons.wikimedia.org/wiki/File:Shatili_(7).jpg
+  source: https://commons.wikimedia.org/wiki/File:MUTSO_(KHEVSURETI).jpg
 - image: /assets/photos/mutso-2.webp
-  author: Rike Fotos
+  author: Andrzej Wójtowicz from Poznań, Poland
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Mutso_(9460921390).jpg
+- image: /assets/photos/mutso.webp
+  author: Paata Vardanashvili  from Tbilisi, Georgia
   license: CC BY 2.0
   license_url: https://creativecommons.org/licenses/by/2.0
-  source: https://commons.wikimedia.org/wiki/File:Shatili_(10).jpg
-- image: /assets/photos/mutso-3.webp
-  author: Rike Fotos
-  license: CC BY 2.0
-  license_url: https://creativecommons.org/licenses/by/2.0
-  source: https://commons.wikimedia.org/wiki/File:Shatili_(11).jpg
+  source: https://commons.wikimedia.org/wiki/File:Mutso,_Georgia_(1).jpg
 visit_hours: '2.5'
 best_season: june-september
 open_year_round: false
@@ -340,8 +340,8 @@ ar:
     تشرين الأول إلى أواخر أيار حين يكون الطريق مغلقاً رسمياً. وسيارة دفع رباعي بخلوص عالٍ ليست خياراً
     بل شرطاً. آخر وقود في جينفالي.
 image_credit:
-  author: Earth Science and Remote Sensing Unit, NASA Johnson Space Center
-  license: Public domain
-  license_url: ''
-  source: https://commons.wikimedia.org/wiki/File:ISS054-E-36347_-_View_of_Earth.jpg
+  author: Mutichou
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Mutso_2016.jpg
 rating: 4.0

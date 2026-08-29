@@ -8,21 +8,16 @@ featured: true
 order: 20
 image: /assets/photos/batumi-botanical-garden.webp
 gallery:
-- image: /assets/photos/batumi-botanical-garden-1.webp
-  author: Андрей Бобровский
-  license: CC BY 3.0
-  license_url: https://creativecommons.org/licenses/by/3.0
-  source: https://commons.wikimedia.org/wiki/File:%D0%93%D1%80%D1%83%D0%B7%D0%B8%D1%8F_-_panoramio_(57).jpg
 - image: /assets/photos/batumi-botanical-garden-2.webp
-  author: Андрей Бобровский
-  license: CC BY 3.0
-  license_url: https://creativecommons.org/licenses/by/3.0
-  source: https://commons.wikimedia.org/wiki/File:%D0%93%D1%80%D1%83%D0%B7%D0%B8%D1%8F_-_panoramio_(58).jpg
+  author: FingerWiki
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:View_of_the_Black_Sea_coast_from_Batumi_Botanical_Garden.jpg
 - image: /assets/photos/batumi-botanical-garden-3.webp
-  author: Levon Avagyan
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Batumi_Botanical_Garden_-_panoramio.jpg
+  author: Ephraim Stillberg
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:Batumi_Botanical_Garden.jpg
 visit_hours: '3'
 best_season: all
 open_year_round: true
@@ -273,8 +268,8 @@ ar:
     الطريق معبّد على امتداده، وإن كان المقطع الأخير ضيقاً وكثير المنعطفات مع فرص تجاوز محدودة. وسيارة
     اقتصادية تكفي تماماً. املأ الخزان في باتومي. وفي أيام الصيف يمتلئ الموقف، فالوصول مبكراً يستحق العناء.
 image_credit:
-  author: Mikhail Kryshen from Petrozavodsk, Russia
-  license: CC BY 2.0
-  license_url: https://creativecommons.org/licenses/by/2.0
-  source: https://commons.wikimedia.org/wiki/File:Makhinjauri,_Adjara,_Georgia.jpg
+  author: FingerWiki
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:View_of_the_Black_Sea_coast_from_Batumi_Botanical_Garden.jpg
 rating: 5.0

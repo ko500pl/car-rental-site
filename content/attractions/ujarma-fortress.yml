@@ -9,20 +9,20 @@ order: 30
 image: /assets/photos/ujarma-fortress.webp
 gallery:
 - image: /assets/photos/ujarma-fortress-1.webp
-  author: Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center
-  license: Public domain
-  license_url: ''
-  source: https://commons.wikimedia.org/wiki/File:ISS045-E-174965_-_View_of_Earth.jpg
+  author: Jonathan Cardy
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Ujarma_fortress_in_Georgia_03.jpg
 - image: /assets/photos/ujarma-fortress-2.webp
-  author: Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center
-  license: Public domain
-  license_url: ''
-  source: https://commons.wikimedia.org/wiki/File:ISS045-E-174964_-_View_of_Earth.jpg
+  author: Jonathan Cardy
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Ujarma_fortress_in_Georgia_07.jpg
 - image: /assets/photos/ujarma-fortress-3.webp
-  author: GuramGraphy
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Khashmi,_Trinity_of_Katsareti.jpg
+  author: Jonathan Cardy
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Ujarma_fortress_in_Georgia_14.jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -309,8 +309,8 @@ ar:
     نهايته موقف صغير مجاني. والوقود متوفر في سارتيتشالا. سيارة اقتصادية تكفي طوال السنة، ويسهل ضم الموقع
     إلى ممر غومبوري في الطريق إلى تيلافي.
 image_credit:
-  author: Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center
-  license: Public domain
-  license_url: ''
-  source: https://commons.wikimedia.org/wiki/File:ISS045-E-174966_-_View_of_Earth.jpg
+  author: Jonathan Cardy
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Ujarma_fortress_in_Georgia_02.jpg
 rating: 3.5

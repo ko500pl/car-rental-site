@@ -8,17 +8,6 @@ featured: false
 order: 70
 image: /assets/photos/modinakhe-fortress.webp
 gallery:
-- image: /assets/photos/modinakhe-fortress-1.webp
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Sachkhere_(G.N.,_October_2012).jpg
-- image: /assets/photos/modinakhe-fortress-2.webp
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%E1%83%A1%E1%83%90%E1%83%9A%E1%83%9D%E1%83%AA%E1%83%90%E1%83%95%E1%83%98_-_panoramio_(1).jpg
 - image: /assets/photos/modinakhe-fortress-3.webp
   author: Aleksey Muhranoff
   license: CC BY-SA 3.0
@@ -293,6 +282,6 @@ image_credit:
   author: G.N.
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: >-
+  source: https://commons.wikimedia.org/wiki/File:%E1%83%9B%E1%83%9D%E1%83%93%E1%83%98_%E1%83%9C%E1%83%90%E1%83%AE%E1%83%94_(G.N._2010).jpg
     https://commons.wikimedia.org/wiki/File:%E1%83%9B%E1%83%9D%E1%83%93%E1%83%98_%E1%83%9C%E1%83%90%E1%83%AE%E1%83%94_(G.N._2010).jpg
 rating: 3.5

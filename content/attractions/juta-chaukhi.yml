@@ -8,21 +8,11 @@ featured: false
 order: 65
 image: /assets/photos/juta-chaukhi.webp
 gallery:
-- image: /assets/photos/juta-chaukhi-1.webp
-  author: franek2
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Waterfall_in_June_-_panoramio.jpg
-- image: /assets/photos/juta-chaukhi-2.webp
-  author: franek2
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Sno-Akhaltsikhe-Juta,_Georgia_-_panoramio_(1).jpg
 - image: /assets/photos/juta-chaukhi-3.webp
-  author: Paata vardanashvili
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:DJI_0012_kazbegi.jpg
+  author: Levan Gokadze
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Khevi,_Georgia_%E2%80%94_Mountainous_Village_Juta.jpg
 visit_hours: '6'
 best_season: june-september
 open_year_round: false
@@ -282,8 +272,8 @@ ar:
     الجيب المحلية من ستيبانتسميندا. وآخر وقود في ستيبانتسميندا. ومن أواخر الخريف إلى الربيع يغلق الثلج
     المسلك.
 image_credit:
-  author: Tadeáš Gregor
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Dzhuta_Valley_-_panoramio.jpg
+  author: Levan Gokadze
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Khevi,_Georgia_%E2%80%94_Mountainous_Village_Juta.jpg
 rating: 5.0

@@ -9,20 +9,20 @@ order: 40
 image: /assets/photos/mtatsminda-park.webp
 gallery:
 - image: /assets/photos/mtatsminda-park-1.webp
-  author: Alexxx1979
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Tbilisi_IMG_8941_1920.jpg
+  author: Andrew Milligan sumo
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0/
+  source: https://commons.wikimedia.org/wiki/File:Mtatsminda_Park,_Tbilisi_(50497293347).jpg
 - image: /assets/photos/mtatsminda-park-2.webp
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Panorama_of_Tbilisi_-_2012_(71867331).jpg
+  author: Andrew Milligan sumo
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0/
+  source: https://commons.wikimedia.org/wiki/File:Mtatsminda_Park,_Tbilisi_(50497139346).jpg
 - image: /assets/photos/mtatsminda-park-3.webp
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:-_panoramio_(5394).jpg
+  author: Andrew Milligan sumo
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0/
+  source: https://commons.wikimedia.org/wiki/File:Mtatsminda_Park,_Tbilisi_(50496431818).jpg
 visit_hours: '3'
 best_season: all
 open_year_round: true
@@ -263,8 +263,8 @@ ar:
     حين يتجمد سطح الطريق، لذا يبقى القطار المائل الخيار الموثوق بعد تساقط الثلج. وفي الظروف العادية تتدبر
     سيارة اقتصادية هذا الطريق بلا أي عناء.
 image_credit:
-  author: Alexxx1979
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Tbilisi_IMG_8943_1920.jpg
+  author: Andrzej Wójtowicz  from Poznań, Poland
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0/
+  source: https://commons.wikimedia.org/wiki/File:Tbilisi_-_Mtatsminda_Park_(9460953464).jpg
 rating: 4.0

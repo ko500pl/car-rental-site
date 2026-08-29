@@ -1,0 +1,34 @@
+status: published
+order: 400
+days: 1
+nights: 0
+purpose: culture
+min_people: 1
+max_people: 10
+distance_km: 215
+drive_time_total: '05:00'
+daily_hours: 11.5
+origin:
+  lat: 41.7151
+  lon: 44.8271
+  road_factor: 1.28
+  speed_kmh: 50
+  name_ka: თბილისი
+  name_en: Tbilisi
+  name_ru: Тбилиси
+  name_fa: تفلیس
+  name_he: טביליסי
+  name_ar: تبليسي
+car_category: suv
+best_season: april-october
+difficulty: moderate
+image: ''
+waypoints: [manglisi-cathedral, gudarekhi-monastery, pitareti-monastery]
+polyline: []
+sources: [https://georgia.travel/regions/kvemo-kartli, https://georgia.travel/destinations-in-georgia]
+ka: {name: ქვემო ქართლის მონასტრები ერთ დღეში, short: მანგლისი გუდარეხი და ფიტარეთი ბუნებრივ ლანდშაფტში., body: თბილისიდან კულტურული მარშრუტი ნაკლებად ცნობილ ტაძრებთან ნაწილობრივ გრუნტის გზებით., plan: 'თბილისი → მანგლისი → გუდარეხი → ფიტარეთი → თბილისი.', tips: [SUV რეკომენდებულია ბოლო მონაკვეთებისთვის., წვიმის შემდეგ გზის მდგომარეობა გადაამოწმეთ.]}
+en: {name: Kvemo Kartli Monasteries in One Day, short: Manglisi Gudarekhi and Pitareti across a quiet landscape., body: A cultural day from Tbilisi to lesser-known churches with partly unpaved access., plan: 'Tbilisi → Manglisi → Gudarekhi → Pitareti → Tbilisi.', tips: [An SUV is recommended for the final sections., Check road conditions after rain.]}
+ru: {name: Монастыри Квемо-Картли за день, short: Манглиси Гударехи и Питарети среди спокойных пейзажей., body: Культурный маршрут из Тбилиси с частично грунтовым подъездом., plan: 'Тбилиси → Манглиси → Гударехи → Питарети → Тбилиси.', tips: [Рекомендуется SUV., После дождя проверьте дорогу.]}
+fa: {name: صومعه‌های کومو کارتلی در یک روز, short: مانگلیسی گودارخی و پیتارتی در چشم‌انداز آرام., body: روزی فرهنگی از تفلیس با بخشی از راه خاکی., plan: 'تفلیس ← مانگلیسی ← گودارخی ← پیتارتی ← تفلیس.', tips: [خودروی شاسی‌بلند توصیه می‌شود., پس از باران وضعیت راه را بررسی کنید.]}
+he: {name: מנזרי כוומו כארתלי ביום אחד, short: מנגליסי גודרכי ופיטרתי בנוף שקט., body: יום תרבות מטביליסי עם גישה חלקית בדרך לא סלולה., plan: 'טביליסי ← מנגליסי ← גודרכי ← פיטרתי ← טביליסי.', tips: [מומלץ רכב SUV., בדקו את הדרך לאחר גשם.]}
+ar: {name: أديرة كفيمو كارتلي في يوم واحد, short: مانغليسي وغوداريخي وبيتاريتي في مشهد هادئ., body: يوم ثقافي من تبليسي مع أجزاء طريق غير معبدة., plan: 'تبليسي ← مانغليسي ← غوداريخي ← بيتاريتي ← تبليسي.', tips: [ينصح بسيارة SUV., تحققوا من الطريق بعد المطر.]}

@@ -1,0 +1,39 @@
+status: published
+order: 450
+days: 2
+nights: 1
+purpose: nature
+min_people: 2
+max_people: 8
+distance_km: 310
+drive_time_total: '06:30'
+daily_hours: 12.5
+origin:
+  lat: 41.9198
+  lon: 45.4732
+  road_factor: 1.25
+  speed_kmh: 48
+  name_ka: თელავი
+  name_en: Telavi
+  name_ru: Телави
+  name_fa: تلاوی
+  name_he: תלבי
+  name_ar: تيلافي
+car_category: suv
+best_season: april-october
+difficulty: moderate
+image: ''
+waypoints: [ilia-lake, kvareli-kindzmarauli, lagodekhi-protected-areas, artsivi-eagle-gorge, khornabuji-fortress]
+polyline: []
+sources: [https://georgia.travel/lagodekhi-managed-reserve, https://georgia.travel/cities-towns/lagodekhi, https://georgia.travel/regions/kakheti]
+ka:
+  name: ლაგოდეხის ბუნების უქმეები
+  short: ტყის ბილიკები ალაზნის ველი არწივის ხეობა და ხორნაბუჯი ორ დღეში.
+  body: პირველი დღე მშვიდ კახურ გაჩერებებს ეთმობა ხოლო მეორე დღე ლაგოდეხის დაცულ ტერიტორიასა და აღმოსავლეთ კახეთის ბუნებრივ ლანდშაფტებს.
+  plan: 'დღე 1: თელავი → ილიას ტბა → ყვარელი. დღე 2: ლაგოდეხის დაცული ტერიტორიები → არწივის ხეობა → ხორნაბუჯი → თელავი.'
+  tips: [ლაგოდეხის ბილიკი ამინდისა და ფიზიკური მომზადების მიხედვით აირჩიეთ., წვიმის შემდეგ ტყის ბილიკები სრიალაა და სალაშქრო ფეხსაცმელი აუცილებელია.]
+en: {name: Lagodekhi Nature Weekend, short: Forest trails Alazani Valley Eagle Gorge and Khornabuji in two days., body: Day one uses gentle Kakheti stops while day two focuses on Lagodekhi Protected Areas and eastern Kakheti landscapes., plan: 'Day 1: Telavi → Ilia Lake → Kvareli. Day 2: Lagodekhi Protected Areas → Eagle Gorge → Khornabuji → Telavi.', tips: [Choose the Lagodekhi trail for the weather and your fitness., Forest trails are slippery after rain; hiking footwear is essential.]}
+ru: {name: Природные выходные в Лагодехи, short: Лесные тропы Алазанская долина Орлиное ущелье и Хорнабуджи за два дня., body: Первый день посвящён спокойным остановкам Кахетии а второй — заповеднику Лагодехи и пейзажам восточной Кахетии., plan: 'День 1: Телави → озеро Илии → Кварели. День 2: Лагодехи → Орлиное ущелье → Хорнабуджи → Телави.', tips: [Выбирайте тропу по погоде и подготовке., После дождя нужны треккинговые ботинки.]}
+fa: {name: آخر هفته طبیعت لاگودخی, short: مسیرهای جنگلی دره آلازانی دره عقاب و خورنابوجی در دو روز., body: روز اول توقف‌های آرام کاختی و روز دوم مناطق حفاظت‌شده لاگودخی و مناظر شرق کاختی است., plan: 'روز ۱: تلاوی ← دریاچه ایلیا ← کوارلی. روز ۲: لاگودخی ← دره عقاب ← خورنابوجی ← تلاوی.', tips: [مسیر لاگودخی را متناسب با هوا و توان انتخاب کنید., پس از باران کفش پیاده‌روی ضروری است.]}
+he: {name: סוף שבוע טבע בלגודחי, short: שבילי יער עמק אלאזני קניון הנשרים וחורנבוג'י ביומיים., body: היום הראשון רגוע בקאחתי והיום השני מוקדש לשמורת לגודחי ולנופי מזרח קאחתי., plan: 'יום 1: תלבי ← אגם איליה ← קווארלי. יום 2: לגודחי ← קניון הנשרים ← חורנבוג׳י ← תלבי.', tips: [בחרו שביל לפי מזג האוויר והכושר., אחרי גשם חובה נעלי הליכה.]}
+ar: {name: عطلة طبيعية في لاغوديخي, short: مسارات الغابة ووادي ألازاني ووادي النسور وخورنابوجي في يومين., body: اليوم الأول لمحطات كاخيتي الهادئة والثاني لمحمية لاغوديخي ومناظر شرق كاخيتي., plan: 'اليوم 1: تيلافي ← بحيرة إيليا ← كفاريلي. اليوم 2: لاغوديخي ← وادي النسور ← خورنابوجي ← تيلافي.', tips: [اختاروا المسار حسب الطقس واللياقة., أحذية المشي ضرورية بعد المطر.]}

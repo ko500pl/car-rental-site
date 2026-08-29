@@ -6,14 +6,14 @@ elevation: 1300
 unesco: false
 featured: true
 order: 10
-image: /assets/photos/vardzia.webp
+image: /assets/photos/vardzia-1.webp
 gallery:
-- image: /assets/photos/vardzia-1.webp
-  author: DAVID HOLT from London, England
-  license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: https://commons.wikimedia.org/wiki/File:Vardezia_(1).jpg
-- image: /assets/photos/vardzia-3.webp
+- image: /assets/photos/vardzia.webp
+  author: Kotasik
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0
+  source: https://commons.wikimedia.org/wiki/File:Panorama_Wardzia.jpg
+- image: /assets/photos/vardzia-2.webp
   author: DAVID HOLT from London, England
   license: CC BY-SA 2.0
   license_url: https://creativecommons.org/licenses/by-sa/2.0
@@ -267,5 +267,5 @@ image_credit:
   author: DAVID HOLT from London, England
   license: CC BY-SA 2.0
   license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: https://commons.wikimedia.org/wiki/File:Vardzia_(4).jpg
+  source: https://commons.wikimedia.org/wiki/File:Vardezia_(1).jpg
 rating: 5.0

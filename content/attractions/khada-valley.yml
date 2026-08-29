@@ -9,12 +9,10 @@ order: 48
 image: /assets/photos/khada-valley.webp
 gallery:
 - image: /assets/photos/khada-valley-1.webp
-  author: >-
-    David Osipov 0000 0005 1802 960X 0009-0005-2713-9242 📱 This photograph was taken with a Xiaomi Redmi
-    Note 9 Pro.
-  license: CC BY 4.0
-  license_url: https://creativecommons.org/licenses/by/4.0
-  source: https://commons.wikimedia.org/wiki/File:Khada_Gorge_Valley_Filled_with_Morning_Fog_in_Georgia.jpg
+  author: "David Osipov 0000 0005 1802 960X 0009-0005-2713-9242 📱 This photograph was taken with a Xiaomi Redmi Note 9 Pro ."
+  license: "CC BY 4.0"
+  license_url: "https://creativecommons.org/licenses/by/4.0"
+  source: "https://commons.wikimedia.org/wiki/File:Khada_Gorge_Valley_Filled_with_Morning_Fog_in_Georgia.jpg"
 visit_hours: '3'
 best_season: may-october
 open_year_round: false
@@ -283,8 +281,8 @@ ar:
     ينتهي الإسفلت سريعاً؛ والسطح حجر وأخاديد مع مخاضات. السيارة الصحيحة دفع رباعي بخلوص أرضي معقول، وعلى
     السيارات المنخفضة أن تقف عند مدخل الوادي. وآخر وقود في باسانائوري.
 image_credit:
-  author: Aleksey Muhranoff
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Khada_gorge_as_seen_from_Mt_Lomisi_(Photo_A._Muhranoff,_2011).jpg
+  author: "Aleksey Muhranoff"
+  license: "CC BY-SA 3.0"
+  license_url: "https://creativecommons.org/licenses/by-sa/3.0"
+  source: "https://commons.wikimedia.org/wiki/File:Khada_gorge_as_seen_from_Mt_Lomisi_(Photo_A._Muhranoff,_2011).jpg"
 rating: 4.5

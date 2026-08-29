@@ -6,7 +6,7 @@ elevation: 950
 unesco: false
 featured: false
 order: 90
-image: /assets/photos/sairme-resort.webp
+image: /assets/photos/sairme-resort-1.webp
 gallery:
 - image: /assets/photos/sairme-resort-1.webp
   author: Kober
@@ -251,9 +251,8 @@ ar:
     ضيق ومتعرج، وفي الشتاء يتجمع الجليد والثلج في الوادي. وسيارة اقتصادية تكفي؛ والكروس أوفر أريح في الأشهر
     الباردة. املأ الخزان في كوتايسي أو باغداتي قبل الصعود.
 image_credit:
-  author: G.N
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%E1%83%9B%E1%83%93._%E1%83%AC%E1%83%90%E1%83%91%E1%83%9A%E1%83%98%E1%83%A0%E1%83%98%E1%83%A1%E1%83%AC%E1%83%A7%E1%83%90%E1%83%9A%E1%83%98.jpg
+  author: Kober
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Sairme_resort,_Georgia_01.jpg
 rating: 4.0

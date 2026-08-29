@@ -7,11 +7,6 @@ unesco: false
 featured: false
 order: 257
 image: /assets/photos/zando-st-george-monastery.jpg
-image_credit:
-  author: Samtredia Municipality
-  license: Official tourism source
-  license_url: https://www.samtredia.gov.ge/en/tourism/truismobjects.html
-  source: https://www.samtredia.gov.ge/images/istoriuliekskursi/zandosmonasteri.jpg
 gallery:
 - image: /assets/photos/zando-st-george-monastery.jpg
   author: Samtredia Municipality
@@ -28,6 +23,8 @@ road: mostly_paved
 car_category: suv
 nearby:
 - telefisi-fortress
+- vani-archaeological-museum
+- niko-nikoladze-house-museum
 ka:
   name: ზანდოს წმინდა გიორგის მონასტერი
   short: XVI საუკუნის სამნავიანი ბაზილიკა სოფელ გამოჩინებულში, კოლხეთის დაბლობის ფართო ხედით.
@@ -64,3 +61,9 @@ ar:
   body: يقع دير القديس جورج في زاندو فوق قرية غاموتشينيبولي. تصفه بلدية سامتريديا بأنه بازيليكا بثلاث بلاطات من القرن السادس عشر. كان الجبل يسمى زاندو سابقاً ويعرف اليوم باسم غاموتشينيبولي.
   tip: ارتدوا ملابس محتشمة وحافظوا على الهدوء، وتحققوا من حالة الجزء الأخير من الطريق بعد المطر.
   route: انطلقوا من سامتريديا نحو غاموتشينيبولي واتبعوا اللافتات المحلية إلى الدير.
+image_credit:
+  author: Samtredia Municipality
+  license: Official tourism source
+  license_url: https://www.samtredia.gov.ge/en/tourism/truismobjects.html
+  source: https://www.samtredia.gov.ge/images/istoriuliekskursi/zandosmonasteri.jpg
+rating: 4.0

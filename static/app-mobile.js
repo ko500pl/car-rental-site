@@ -831,6 +831,10 @@
     return (car ? car.n + ' · ' : '') + st.start + ' – ' + st.end + ' · ' + Math.max(1, st.days) + ' ' + T.day + ' · ' + st.people + ' · ' + st.selected.length;
   }
   $('doabook').onclick = function () {
+    if (window.RentUpAnalytics) {
+      var startCar = suggestCar();
+      window.RentUpAnalytics.track('booking_started', startCar ? { car_id: startCar.s, car_name: startCar.n, price: startCar.p, rental_days: Math.max(1, st.days) } : { rental_days: Math.max(1, st.days) });
+    }
     st.bookingOpen = true; st.bookingDone = false; st.bkInvalid = false;
     show('doabookingwrap', true);
     show('doabkdone', false);
@@ -866,6 +870,7 @@
     fetch(origin + '/', { method: 'POST', mode: origin ? 'no-cors' : 'same-origin',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body })
       .then(function () {
+        if (window.RentUpAnalytics) window.RentUpAnalytics.track('booking_submitted', car ? { car_id: car.s, car_name: car.n, price: car.p, rental_days: Math.max(1, st.days) } : { rental_days: Math.max(1, st.days) });
         show('doabkform', false);
         show('doabkdone', true);
         $('doabksum2').textContent = bookingSummary();
@@ -898,6 +903,7 @@
     } else if (act === 'tours') {
       st.toursOpen = true; renderTours();
     } else if (act === 'cars') {
+      if (window.RentUpAnalytics) window.RentUpAnalytics.track('car_search', { rental_days: Math.max(1, st.days) });
       goTab('route');
     } else if (act === 'community') {
       goTab('community');

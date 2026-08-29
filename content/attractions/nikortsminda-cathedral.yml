@@ -7,22 +7,7 @@ unesco: false
 featured: true
 order: 10
 image: /assets/photos/nikortsminda-cathedral.webp
-gallery:
-- image: /assets/photos/nikortsminda-cathedral-1.webp
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Near_Shaori_reservoir_-_panoramio.jpg
-- image: /assets/photos/nikortsminda-cathedral-2.webp
-  author: Yasuhiro Kojima
-  license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: https://commons.wikimedia.org/wiki/File:2015-08-30_(37)_Shaori_reservoir.jpg
-- image: /assets/photos/nikortsminda-cathedral-3.webp
-  author: Yasuhiro Kojima
-  license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: https://commons.wikimedia.org/wiki/File:2015-08-30_(38)_Shaori_reservoir.jpg
+gallery: []
 visit_hours: '1'
 best_season: all
 open_year_round: true

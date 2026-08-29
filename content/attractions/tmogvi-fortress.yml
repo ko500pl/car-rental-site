@@ -7,22 +7,12 @@ unesco: false
 featured: false
 order: 78
 image: /assets/photos/tmogvi-fortress.jpg
-image_credit:
-  author: ჯაბა ლაბაძე (Jaba1977)
-  license: Attribution required
-  license_url: ''
-  source: https://commons.wikimedia.org/wiki/File:Fortress_of_Tmogvi.jpg
 gallery:
 - image: /assets/photos/tmogvi-fortress.jpg
   author: ჯაბა ლაბაძე (Jaba1977)
   license: Attribution required
   license_url: ''
   source: https://commons.wikimedia.org/wiki/File:Fortress_of_Tmogvi.jpg
-- image: /assets/photos/tmogvi-fortress-1.webp
-  author: toomas.liivamagi
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Mtkvari_j%C3%B5gi_Khertvisi_ja_Vardzia_vahel_-_panoramio.jpg
 visit_hours: '2'
 best_season: may-october
 open_year_round: false
@@ -308,4 +298,9 @@ ar:
     تموغفي بعد نحو عشرة كيلومترات من خيرتفيسي على الجانب الأيمن من الوادي؛ والمنعطف نزولاً إلى قرية ناكالاكيفي
     قصير وحصوي. المجموع 256 كم ونحو أربع ساعات وعشرين دقيقة. اترك السيارة عند جسر المشاة. ويفضل مركبة
     بارتفاع هيكل معقول، خصوصاً بعد المطر. الوقود في أخالتسيخه وأسبيندزا.
+image_credit:
+  author: jaba1977
+  license: Attribution
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:Fortress_of_Tmogvi.jpg
 rating: 4.0

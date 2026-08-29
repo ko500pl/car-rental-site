@@ -7,22 +7,7 @@ unesco: false
 featured: false
 order: 70
 image: /assets/photos/katskhi-pillar.webp
-gallery:
-- image: /assets/photos/katskhi-pillar-1.webp
-  author: Alexkom000
-  license: CC BY 4.0
-  license_url: https://creativecommons.org/licenses/by/4.0
-  source: https://commons.wikimedia.org/wiki/File:2025-06-17_View_from_the_trail_between_Katskhi_and_Rgani_2.jpg
-- image: /assets/photos/katskhi-pillar-2.webp
-  author: Alexkom000
-  license: CC BY 4.0
-  license_url: https://creativecommons.org/licenses/by/4.0
-  source: https://commons.wikimedia.org/wiki/File:2025-06-17_View_from_the_trail_between_Katskhi_and_Rgani_3.jpg
-- image: /assets/photos/katskhi-pillar-3.webp
-  author: Alexkom000
-  license: CC BY 4.0
-  license_url: https://creativecommons.org/licenses/by/4.0
-  source: https://commons.wikimedia.org/wiki/File:2025-06-17_Georgian_dog.jpg
+gallery: []
 visit_hours: '1'
 best_season: all
 open_year_round: true

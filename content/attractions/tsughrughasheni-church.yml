@@ -6,23 +6,13 @@ elevation: 630
 unesco: false
 featured: false
 order: 55
-image: /assets/photos/tsughrughasheni-church.webp
+image: /assets/photos/tsughrughasheni-church-3.webp
 gallery:
-- image: /assets/photos/tsughrughasheni-church-1.webp
+- image: /assets/photos/tsughrughasheni-church.webp
   author: ILIA
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Tsughrughasheni_Church,_detail7.jpg
-- image: /assets/photos/tsughrughasheni-church-2.webp
-  author: Jaba1977
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Door_of_Tsughrughasheni.jpg
-- image: /assets/photos/tsughrughasheni-church-3.webp
-  author: Jaba1977
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Tsughrughasheni_church_(13).jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -236,8 +226,8 @@ ar:
     إجمالاً، نحو ساعة وخمس وعشرين دقيقة. والكيلومتران الأخيران إسفلت ضيق وحصى، لكنهما لا يشكلان مشكلة
     لسيارة اقتصادية. تزوّد بالوقود في مارنئولي أو بولنيسي.
 image_credit:
-  author: Daniel-tbs
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Tsughrughasheni.JPG
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Tsughrughasheni_church_(13).jpg
 rating: 3.5

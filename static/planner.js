@@ -1243,9 +1243,7 @@
     document.querySelectorAll('[data-open-standard-tour]').forEach(function (link) {
       link.onclick = function (event) {
         event.preventDefault();
-        var planner = document.getElementById('planner');
-        if (planner) planner.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        setTimeout(openStandardTours, 180);
+        openStandardTours();
       };
     });
     if (standardClose) standardClose.onclick = closeStandardTours;

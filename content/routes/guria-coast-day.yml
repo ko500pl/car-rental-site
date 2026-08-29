@@ -1,0 +1,34 @@
+status: published
+order: 390
+days: 1
+nights: 0
+purpose: beach
+min_people: 1
+max_people: 10
+distance_km: 135
+drive_time_total: '03:00'
+daily_hours: 11.5
+origin:
+  lat: 41.6461
+  lon: 41.6405
+  road_factor: 1.2
+  speed_kmh: 50
+  name_ka: ბათუმი
+  name_en: Batumi
+  name_ru: Батуми
+  name_fa: باتومی
+  name_he: באטומי
+  name_ar: باتومي
+car_category: economy
+best_season: may-october
+difficulty: easy
+image: ''
+waypoints: [ureki, shekvetili-dendrological-park, nodar-dumbadze-house-museum]
+polyline: []
+sources: [https://georgia.travel/regions/guria, https://georgia.travel/destinations-in-georgia]
+ka: {name: გურიის სანაპირო და კულტურა, short: ურეკი შეკვეთილის პარკი და დუმბაძის მუზეუმი., body: ბათუმიდან ერთდღიანი გეგმა მაგნიტური ქვიშის ბუნებისა და გურული კულტურის შესათავსებლად., plan: 'ბათუმი → ურეკი → შეკვეთილის დენდროლოგიური პარკი → ნოდარ დუმბაძის სახლ-მუზეუმი → ბათუმი.', tips: [მუზეუმში ვიზიტი წინასწარ გადაამოწმეთ., სანაპიროსთვის სეზონური ამინდი გაითვალისწინეთ.]}
+en: {name: Guria Coast and Culture Day, short: Ureki Shekvetili Park and the Dumbadze Museum., body: A one-day plan from Batumi combining magnetic-sand coast nature and Gurian culture., plan: 'Batumi → Ureki → Shekvetili Dendrological Park → Nodar Dumbadze House Museum → Batumi.', tips: [Confirm the museum visit beforehand., Check seasonal coast weather.]}
+ru: {name: Побережье и культура Гурии, short: Уреки парк Шекветили и музей Думбадзе., body: Однодневный маршрут из Батуми о природе побережья и культуре Гурии., plan: 'Батуми → Уреки → дендропарк Шекветили → музей Думбадзе → Батуми.', tips: [Уточните посещение музея., Учитывайте погоду на побережье.]}
+fa: {name: ساحل و فرهنگ گوریا, short: اورکی پارک شکوتیلی و موزه دومبادزه., body: یک روز از باتومی برای ساحل ماسه مغناطیسی طبیعت و فرهنگ گوریا., plan: 'باتومی ← اورکی ← پارک شکوتیلی ← موزه دومبادزه ← باتومی.', tips: [بازدید موزه را تایید کنید., هوای ساحل را بررسی کنید.]}
+he: {name: חוף ותרבות גוריה, short: אורקי פארק שקווטילי ומוזיאון דומבדזה., body: יום מבאטומי המשלב חוף חול מגנטי טבע ותרבות גורית., plan: 'באטומי ← אורקי ← פארק שקווטילי ← מוזיאון דומבדזה ← באטומי.', tips: [אשרו מראש ביקור במוזיאון., בדקו את מזג האוויר בחוף.]}
+ar: {name: ساحل وثقافة غوريا, short: أوريكي وحديقة شيكفيتيلي ومتحف دومبادزي., body: يوم من باتومي يجمع ساحل الرمال المغناطيسية والطبيعة والثقافة., plan: 'باتومي ← أوريكي ← حديقة شيكفيتيلي ← متحف دومبادزي ← باتومي.', tips: [أكدوا زيارة المتحف مسبقا., تحققوا من طقس الساحل.]}

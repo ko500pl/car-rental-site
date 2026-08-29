@@ -9,20 +9,20 @@ order: 55
 image: /assets/photos/jvari-pass-friendship-monument.webp
 gallery:
 - image: /assets/photos/jvari-pass-friendship-monument-1.webp
-  author: Alexxx1979
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Georgian_Military_Road_IMG_8698_1920.jpg
+  author: "This Photo was taken by Supanut Arunoprayote . Feel free to use any of my images, but please mention me as the author and may send me a message. (สามารถใช้ภาพได้อิสระ แต่กรุณาใส่เครดิตผู้ถ่ายและอาจส่ง ข้อความบอกกล่าวด้วย ) Please do not upload an updated image here without consultation with the Author. The author would like to make corrections only at his own source. This ensures that the changes are preserved. Please if you think that any changes should be required, please inform the author. Otherwise you can upload a new image with a new name. Please use one of the templates derivative or extract ."
+  license: "CC BY 4.0"
+  license_url: "https://creativecommons.org/licenses/by/4.0"
+  source: "https://commons.wikimedia.org/wiki/File:Russia%E2%80%93Georgia_Friendship_Monument_09.23.jpg"
 - image: /assets/photos/jvari-pass-friendship-monument-2.webp
-  author: Alexxx1979
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Georgian_Military_Road_IMG_8706_1920.jpg
+  author: "Karelj"
+  license: "CC BY-SA 3.0"
+  license_url: "https://creativecommons.org/licenses/by-sa/3.0"
+  source: "https://commons.wikimedia.org/wiki/File:Russia%E2%80%93Georgia_Friendship_Monument_Gruzia_2019_5.jpg"
 - image: /assets/photos/jvari-pass-friendship-monument-3.webp
-  author: Alexxx1979
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Georgia_Georgian_Military_Road_Ghudi_gorge_IMG_8722_1920.jpg
+  author: "Karelj"
+  license: "CC BY-SA 3.0"
+  license_url: "https://creativecommons.org/licenses/by-sa/3.0"
+  source: "https://commons.wikimedia.org/wiki/File:Russia%E2%80%93Georgia_Friendship_Monument_Gruzia_2019_2.jpg"
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -270,8 +270,8 @@ ar:
     وغودااوري. ومن أيار إلى تشرين الأول تكفي سيارة اقتصادية؛ أما في الشتاء فتلزم إطارات شتوية وسلاسل في
     الصندوق واستعداد للعودة أدراجك.
 image_credit:
-  author: Lingliang Zhang
-  license: CC BY 2.0
-  license_url: https://creativecommons.org/licenses/by/2.0
-  source: https://commons.wikimedia.org/wiki/File:Scenery_in_Khevi,_Georgia.jpg
+  author: "Tadeáš Gregor"
+  license: "CC BY-SA 4.0"
+  license_url: "https://creativecommons.org/licenses/by-sa/4.0"
+  source: "https://commons.wikimedia.org/wiki/File:Russia-Georgia_friendship_monument,_Dzhvaris_pass.jpg"
 rating: 4.0

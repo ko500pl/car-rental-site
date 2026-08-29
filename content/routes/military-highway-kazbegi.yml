@@ -6,8 +6,21 @@ min_people: 1
 max_people: 12
 distance_km: 340
 drive_time_total: '6:40'
+daily_hours: 12
+return_to_origin: true
+origin:
+  lat: 41.7151
+  lon: 44.8271
+  road_factor: 1.25
+  speed_kmh: 55
+  name_ka: თბილისი
+  name_en: Tbilisi
+  name_ru: Тбилиси
+  name_fa: تفلیس
+  name_he: טביליסי
+  name_ar: تبليسي
 car_category: suv
-best_season: all
+best_season: may-october
 difficulty: moderate
 image: ''
 waypoints:
@@ -84,6 +97,9 @@ polyline:
   - 44.7211
 - - 41.7151
   - 44.8271
+sources:
+  - https://georgia.travel/cities-towns/stepantsminda
+  - https://georgia.travel/kazbegi-national-park
 ka:
   name: სამხედრო გზა და ყაზბეგი
   short: ორი დღე საქართველოს მთავარ სამთო გზაზე — ჟინვალი, ანანური, გუდაური და გერგეტის სამება.

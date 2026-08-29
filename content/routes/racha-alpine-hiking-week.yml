@@ -7,13 +7,25 @@ min_people: 2
 max_people: 8
 distance_km: 610
 drive_time_total: '13:00'
+daily_hours: 9
+origin:
+  lat: 42.2679
+  lon: 42.718
+  road_factor: 1.3
+  speed_kmh: 50
+  name_ka: ქუთაისი
+  name_en: Kutaisi
+  name_ru: Кутаиси
+  name_fa: کوتایسی
+  name_he: כותאיסי
+  name_ar: كوتايسي
 car_category: suv
 best_season: june-september
 difficulty: hard
 image: ''
 waypoints: [shaori-reservoir, nikortsminda-cathedral, oni, shovi-resort, udziro-lake-buba-glacier, glola]
 polyline: []
-sources: [https://georgia.travel/trekking-in-georgia]
+sources: [https://georgia.travel/trekking-in-georgia, https://georgia.travel/regions/racha-lechkhumi]
 ka: {name: რაჭის ალპური ჰაიქინგის კვირეული, short: შაორი ნიკორწმინდა შოვი და უძირო ტბის რთული ალპური დღე., body: ხუთდღიანი აქტიური ტური აერთიანებს აკლიმატიზაციას კულტურას და ერთ სრულ ალპურ ლაშქრობას., plan: '**დღე 1:** შაორი → ნიკორწმინდა. **დღე 2:** ონი → შოვი. **დღე 3:** აკლიმატიზაცია. **დღე 4:** უძირო ტბის ჰაიქი. **დღე 5:** გლოლა.', tips: [გამყოლი რეკომენდებულია., ამინდის ფანჯარა წინასწარ შეამოწმეთ.]}
 en: {name: Racha Alpine Hiking Week, short: Shaori Nikortsminda Shovi and a demanding Udziro Lake day., body: Five active days combining acclimatisation culture and one full alpine hike., plan: '**Day 1:** Shaori → Nikortsminda. **Day 2:** Oni → Shovi. **Day 3:** Acclimatise. **Day 4:** Udziro hike. **Day 5:** Glola.', tips: [A guide is recommended., Check the weather window.]}
 ru: {name: Альпийская неделя в Раче, short: Шаори Никорцминда Шови и сложный поход к Удзиро., body: Пять дней акклиматизации культуры и горного похода., plan: '**День 1:** Шаори → Никорцминда. **День 2:** Они → Шови. **День 3:** отдых. **День 4:** Удзиро. **День 5:** Глола.', tips: [Рекомендуется гид., Проверьте погоду.]}

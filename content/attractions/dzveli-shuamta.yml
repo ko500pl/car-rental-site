@@ -7,11 +7,6 @@ unesco: false
 featured: false
 order: 25
 image: /assets/photos/dzveli-shuamta-1.webp
-image_credit:
-  author: Vladimir Pankratov
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Old_Shuamta_general_view.jpg
 gallery:
 - image: /assets/photos/dzveli-shuamta-2.webp
   author: Kakhi Kuloshvili
@@ -310,4 +305,9 @@ ar:
     كم ونحو ساعة ونصف. السطح معبّد على امتداده وينحدر بمنعطفات ضيقة بعد الممر، حيث يتراكم الثلج شتاءً.
     منعطف شواماتا القديمة على اليسار، قبل تيلافي بنحو عشرة كيلومترات. الوقود متوفر في ساغاريجو وتيلافي.
     وسيارة اقتصادية تكفي في أي موسم يكون فيه الممر مفتوحاً.
+image_credit:
+  author: Kakhi Kuloshvili
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Dzveli-Shuamta_monastery_(Old-Shuamta)._Telavi_region.jpg
 rating: 3.5

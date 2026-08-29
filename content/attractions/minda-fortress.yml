@@ -17,8 +17,12 @@ drive_time_tbilisi: '5:40'
 road: mostly_paved
 car_category: suv
 nearby: [barakoni-church, ambrolauri, oni]
-sources: [https://georgia.travel/minda-fortress]
-ka: {name: მინდა ციხე, short: სოფელ წესთან მაღალ კლდოვან კონცხზე აღმართული შუა საუკუნეების ციხის ნანგრევები., body: მინდა ციხიდან შემორჩენილია ქვის გალავანი, სამი კოშკი, სამრეკლო და დაზიანებული ეკლესია. მისასვლელი ვიწრო და რთული ბილიკია., tip: მხოლოდ მშრალ ამინდში და მყარ ფეხსაცმელში ახვიდეთ; ბავშვებისთვის და სიმაღლის შიშის მქონეთათვის არ არის მარტივი., route: სოფელ წესიდან საფეხმავლო ასვლა; მანქანა უსაფრთხო ადგილას დატოვეთ და ადგილობრივს გზა ჰკითხეთ.}
+ka:
+  name: მინდა ციხე
+  short: სოფელ წესთან მაღალ კლდოვან კონცხზე აღმართული შუა საუკუნეების ციხის ნანგრევები.
+  body: მინდა ციხიდან შემორჩენილია ქვის გალავანი, სამი კოშკი, სამრეკლო და დაზიანებული ეკლესია. მისასვლელი ვიწრო და რთული ბილიკია.
+  tip: მხოლოდ მშრალ ამინდში და მყარ ფეხსაცმელში ახვიდეთ; ბავშვებისთვის და სიმაღლის შიშის მქონეთათვის არ არის მარტივი.
+  route: სოფელ წესიდან საფეხმავლო ასვლა; მანქანა უსაფრთხო ადგილას დატოვეთ და ადგილობრივს გზა ჰკითხეთ.
 en: {name: Minda Fortress, short: Medieval fortress ruins on a high rocky promontory near the village of Tsesi., body: Surviving walls, three towers, a bell tower and a damaged church stand above the valley. The access path is narrow and demanding., tip: Attempt only in dry weather with proper footwear; it is not an easy family walk., route: Hike from Tsesi village; park safely and confirm the path locally.}
 ru: {name: Крепость Минда, short: Руины средневековой крепости на скалистом мысе у села Цеси., body: Сохранились стены, три башни, колокольня и повреждённая церковь. Подъём узкий и сложный., tip: Поднимайтесь только в сухую погоду и в подходящей обуви., route: Пеший подъём из села Цеси; уточните тропу у местных.}
 fa: {name: قلعه میندا, short: ویرانه قلعه قرون وسطایی بر فراز صخره نزدیک تسسی., body: دیوارها و سه برج باقی مانده و مسیر باریک و دشوار است., tip: فقط در هوای خشک و با کفش مناسب بروید., route: پیاده از روستای تسسی و با راهنمایی محلی.}
@@ -29,3 +33,5 @@ image_credit:
   license: CC BY-SA 2.0
   license_url: https://creativecommons.org/licenses/by-sa/2.0
   source: https://commons.wikimedia.org/wiki/File:2015-08-29_(40)_Mindatsikhe.jpg
+rating: 4.0
+sources: [https://georgia.travel/minda-fortress]

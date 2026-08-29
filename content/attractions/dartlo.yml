@@ -6,7 +6,7 @@ elevation: 1980
 unesco: false
 featured: false
 order: 82
-image: /assets/photos/dartlo.webp
+image: /assets/photos/dartlo-1.webp
 gallery:
 - image: /assets/photos/dartlo-1.webp
   author: Moahim
@@ -262,8 +262,8 @@ ar:
     بمحاذاة المضيق حتى دارتلو، نحو ساعة، مع مخاضات في النهر. المجموع 228 كم وقرابة سبع ساعات. ولا يُسلك
     إلا بدفع رباعي. وآخر وقود في بشاولي.
 image_credit:
-  author: Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center
-  license: Public domain
-  license_url: ''
-  source: https://commons.wikimedia.org/wiki/File:ISS053-E-214913_-_View_of_Earth.jpg
+  author: Moahim
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:WLM_-_2020_-_The_Dartlo_Village_at_night.jpg
 rating: 4.5

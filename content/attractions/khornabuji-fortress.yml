@@ -9,23 +9,20 @@ order: 65
 image: /assets/photos/khornabuji-fortress.webp
 gallery:
 - image: /assets/photos/khornabuji-fortress-1.webp
-  author: Tamar_Mekhrishvili
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%E1%83%AC%E1%83%9B%E1%83%98%E1%83%9C%E1%83%93%E1%83%90_%E1%83%A1%E1%83%94%E1%83%A0%E1%83%90%E1%83%A4%E1%83%98%E1%83%9B%E1%83%90.jpg
+  author: Aleksey Muhranoff
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Khornabuji_Fortress,_Georgia.jpg
 - image: /assets/photos/khornabuji-fortress-2.webp
-  author: Tamar_Mekhrishvili
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%E1%83%AC%E1%83%9B%E1%83%98%E1%83%9C%E1%83%93%E1%83%90_%E1%83%A1%E1%83%94%E1%83%A0%E1%83%90%E1%83%A4%E1%83%98%E1%83%9B_%E1%83%A1%E1%83%90%E1%83%A0%E1%83%9D%E1%83%95%E1%83%94%E1%83%9A%E1%83%98%E1%83%A1_%E1%83%94%E1%83%99%E1%83%9A%E1%83%94%E1%83%A1%E1%83%98%E1%83%90.jpg
+  author: Aleksey Muhranoff
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Khornabuji_Fortress._Ruins.jpg
 - image: /assets/photos/khornabuji-fortress-3.webp
-  author: Tamar_Mekhrishvili
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%E1%83%AC%E1%83%9B%E1%83%98%E1%83%9C%E1%83%93%E1%83%90_%E1%83%A1%E1%83%94%E1%83%A0%E1%83%90%E1%83%A4%E1%83%98%E1%83%9B%E1%83%90,_%E1%83%A1%E1%83%9D%E1%83%A4%E1%83%94%E1%83%9A%E1%83%98_%E1%83%AF%E1%83%90%E1%83%A4%E1%83%90%E1%83%A0%E1%83%98%E1%83%AB%E1%83%94.jpg
+  author: AlexandreAssatiani
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0
+  source: https://commons.wikimedia.org/wiki/File:Ruins_of_Khornabuji.jpg
 visit_hours: '1.5'
 best_season: all
 open_year_round: true
@@ -275,9 +272,8 @@ ar:
     حصوي حتى سفح الصخرة؛ تتدبره سيارة عادية في الجو الجاف، أما بعد المطر فالارتفاع عن الأرض مهم وسيارة
     الدفع الرباعي أضمن. زوّد الوقود في ددوبليستسقارو. المجموع 142 كم ونحو ساعتين ونصف.
 image_credit:
-  author: Tamar_Mekhrishvili
+  author: Paata vardanashvili
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%E1%83%AC%E1%83%9B._%E1%83%A1%E1%83%94%E1%83%A0%E1%83%90%E1%83%A4%E1%83%98%E1%83%9B%E1%83%90.jpg
+  source: https://commons.wikimedia.org/wiki/File:Khornabuji_fortress_01.jpg
 rating: 3.5

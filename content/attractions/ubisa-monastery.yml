@@ -7,24 +7,7 @@ unesco: false
 featured: false
 order: 35
 image: /assets/photos/ubisa-monastery.webp
-gallery:
-- image: /assets/photos/ubisa-monastery-1.webp
-  author: Jelger Groeneveld
-  license: CC BY 2.0
-  license_url: https://creativecommons.org/licenses/by/2.0
-  source: https://commons.wikimedia.org/wiki/File:Rikoti_Pass_Highway_(S1)_at_Ubisa.jpg
-- image: /assets/photos/ubisa-monastery-2.webp
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%E1%83%92%E1%83%90%E1%83%96%E1%83%90%E1%83%A4%E1%83%AE%E1%83%A3%E1%83%9A%E1%83%98_-_panoramio.jpg
-- image: /assets/photos/ubisa-monastery-3.webp
-  author: G.N
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%E1%83%9B%E1%83%93._%E1%83%AB%E1%83%98%E1%83%A0%E1%83%A3%E1%83%9A%E1%83%90.jpg
+gallery: []
 visit_hours: '1'
 best_season: all
 open_year_round: true

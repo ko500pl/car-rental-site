@@ -7,12 +7,7 @@ unesco: false
 featured: false
 order: 72
 image: /assets/photos/shorapani-fortress.webp
-gallery:
-- image: /assets/photos/shorapani-fortress-3.webp
-  author: Jelger Groeneveld
-  license: CC BY 2.0
-  license_url: https://creativecommons.org/licenses/by/2.0
-  source: https://commons.wikimedia.org/wiki/File:Shorapani_station.jpg
+gallery: []
 visit_hours: '1'
 best_season: all
 open_year_round: true

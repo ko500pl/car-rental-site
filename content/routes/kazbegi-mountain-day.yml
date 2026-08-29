@@ -1,0 +1,39 @@
+status: published
+order: 460
+days: 2
+nights: 1
+purpose: mountains
+min_people: 2
+max_people: 8
+distance_km: 350
+drive_time_total: '07:10'
+daily_hours: 8
+origin:
+  lat: 41.7151
+  lon: 44.8271
+  road_factor: 1.25
+  speed_kmh: 52
+  name_ka: თბილისი
+  name_en: Tbilisi
+  name_ru: Тбилиси
+  name_fa: تفلیس
+  name_he: טביליסי
+  name_ar: تبليسي
+car_category: suv
+best_season: may-october
+difficulty: moderate
+image: ''
+waypoints: [zhinvali-reservoir, ananuri-fortress, jvari-pass-friendship-monument, gergeti-trinity-church]
+polyline: []
+sources: [https://georgia.travel/trekking-in-georgia, https://georgia.travel/regions/mtskheta-mtianeti]
+ka:
+  name: ყაზბეგის მთის ორი დღე
+  short: სამხედრო გზა, ჟინვალი, ანანური, ჯვრის უღელტეხილი და გერგეტი უსაფრთხო ორდღიან გეგმაში.
+  body: ორდღიანი მარშრუტი კავკასიონის მთავარი ხედების მშვიდ ტემპში სანახავად, ღამისთევით ყაზბეგის მხარეში.
+  plan: 'დღე 1: თბილისი → ჟინვალი → ანანური → ჯვრის უღელტეხილი → სტეფანწმინდა. დღე 2: გერგეტის სამება → თბილისი.'
+  tips: [ყოველ გამგზავრებამდე შეამოწმეთ გზისა და ამინდის მდგომარეობა., ზამთარში გამოიყენეთ მხოლოდ შესაბამისი ავტომობილი და მიმდინარე გზის შეზღუდვები გადაამოწმეთ.]
+en: {name: Two Days in Kazbegi Mountains, short: Georgian Military Highway Zhinvali Ananuri Jvari Pass and Gergeti in a safer two-day plan., body: A two-day route for seeing the main Caucasus views at a comfortable pace with an overnight stay in the Kazbegi area., plan: 'Day 1: Tbilisi → Zhinvali → Ananuri → Jvari Pass → Stepantsminda. Day 2: Gergeti Trinity → Tbilisi.', tips: [Check road and weather conditions before departure., In winter use a suitable vehicle and verify current road restrictions.]}
+ru: {name: Два дня в горах Казбеги, short: Военно-Грузинская дорога Жинвали Ананури Крестовый перевал и Гергети в безопасном двухдневном плане., body: Двухдневный маршрут для главных видов Кавказа в спокойном темпе с ночёвкой в районе Казбеги., plan: 'День 1: Тбилиси → Жинвали → Ананури → Крестовый перевал → Степанцминда. День 2: Гергети → Тбилиси.', tips: [Перед выездом проверьте дорогу и погоду., Зимой используйте подходящий автомобиль и проверяйте ограничения движения.]}
+fa: {name: دو روز در کوهستان کازبگی, short: جاده نظامی ژینوالی آنانوری گذرگاه جواری و گرگتی در برنامه‌ای ایمن‌تر و دو روزه., body: مسیر دو روزه برای دیدن مناظر اصلی قفقاز با ریتم آرام و یک شب اقامت در منطقه کازبگی., plan: 'روز ۱: تفلیس ← ژینوالی ← آنانوری ← گذرگاه جواری ← استپانتسمیندا. روز ۲: گرگتی ← تفلیس.', tips: [پیش از حرکت وضع جاده و هوا را بررسی کنید., زمستان از خودروی مناسب استفاده و محدودیت‌های جاده را بررسی کنید.]}
+he: {name: יומיים בהרי קזבגי, short: הדרך הצבאית ז׳ינוואלי אנאנורי מעבר ג׳ווארי וגרגטי בתוכנית בטוחה יותר של יומיים., body: מסלול של יומיים לנופי הקווקז המרכזיים בקצב נוח ועם לינה באזור קזבגי., plan: 'יום 1: טביליסי ← ז׳ינוואלי ← אנאנורי ← מעבר ג׳ווארי ← סטפנצמינדה. יום 2: גרגטי ← טביליסי.', tips: [בדקו דרך ומזג אוויר לפני היציאה., בחורף השתמשו ברכב מתאים ובדקו מגבלות דרך עדכניות.]}
+ar: {name: يومان في جبال كازبيغي, short: الطريق العسكري وجينفالي وأنانوري وممر جفاري وغيرغيتي ضمن خطة أكثر أماناً ليومين., body: مسار ليومين لرؤية أهم مناظر القوقاز بوتيرة مريحة مع مبيت في منطقة كازبيغي., plan: 'اليوم 1: تبليسي ← جينفالي ← أنانوري ← ممر جفاري ← ستيبانتسميندا. اليوم 2: غيرغيتي ← تبليسي.', tips: [افحصوا الطريق والطقس قبل الانطلاق., شتاء استخدموا سيارة مناسبة وتحققوا من قيود الطريق الحالية.]}

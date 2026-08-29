@@ -7,22 +7,7 @@ unesco: false
 featured: false
 order: 25
 image: /assets/photos/shkhara-glacier.webp
-gallery:
-- image: /assets/photos/shkhara-glacier-1.webp
-  author: hr.icio
-  license: CC BY 2.0
-  license_url: https://creativecommons.org/licenses/by/2.0
-  source: https://commons.wikimedia.org/wiki/File:Svaneti,_Georgia._2018_106.jpg
-- image: /assets/photos/shkhara-glacier-2.webp
-  author: hr.icio
-  license: CC BY 2.0
-  license_url: https://creativecommons.org/licenses/by/2.0
-  source: https://commons.wikimedia.org/wiki/File:Svaneti,_Georgia._2018_108.jpg
-- image: /assets/photos/shkhara-glacier-3.webp
-  author: Boris Kuznetsov
-  license: CC BY 2.0
-  license_url: https://creativecommons.org/licenses/by/2.0
-  source: https://commons.wikimedia.org/wiki/File:Shkhara_Mountain,_view_from_Chubedishi_Mountain.jpg
+gallery: []
 visit_hours: '6'
 best_season: june-september
 open_year_round: false
@@ -390,8 +375,8 @@ ar:
     لجداول، والدفع الرباعي ضروري فعلاً. اترك السيارة في أوشغولي؛ فالدرب يبدأ من الطرف الشرقي للقرية. تزوّد
     بالوقود في مستيا، فلا محطة في الأعلى ولا وجود لها في أوشغولي.
 image_credit:
-  author: hr.icio
-  license: CC BY 2.0
-  license_url: https://creativecommons.org/licenses/by/2.0
-  source: https://commons.wikimedia.org/wiki/File:Svaneti,_Georgia._2018_107.jpg
+  author: Jordan Sanchez
+  license: CC0
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:Shkhara_Glacier.jpg
 rating: 5.0

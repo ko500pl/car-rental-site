@@ -9,20 +9,20 @@ order: 50
 image: /assets/photos/georgian-national-museum.webp
 gallery:
 - image: /assets/photos/georgian-national-museum-1.webp
-  author: James Emery from Douglasville, United States
-  license: CC BY 2.0
-  license_url: https://creativecommons.org/licenses/by/2.0
-  source: https://commons.wikimedia.org/wiki/File:Tbilisi_Police_Car.jpg
+  author: Mostafameraji
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Georgian_National_Museum_%D9%85%D9%88%D8%B2%D9%87_%D9%85%D9%84%DB%8C_%D8%AA%D9%81%D9%84%DB%8C%D8%B3-_%DA%AF%D8%B1%D8%AC%D8%B3%D8%AA%D8%A7%D9%86_02.jpg
 - image: /assets/photos/georgian-national-museum-2.webp
-  author: Daibo Taku
-  license: CC BY 3.0
-  license_url: https://creativecommons.org/licenses/by/3.0
-  source: https://commons.wikimedia.org/wiki/File:Dzveli_Tbilisi,_Tbilisi,_Georgia_-_panoramio_(266).jpg
+  author: Interfase
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Simon_Janashia_Museum_of_Georgia_47.jpg
 - image: /assets/photos/georgian-national-museum-3.webp
-  author: Daibo Taku
-  license: CC BY 3.0
-  license_url: https://creativecommons.org/licenses/by/3.0
-  source: https://commons.wikimedia.org/wiki/File:Dzveli_Tbilisi,_Tbilisi,_Georgia_-_panoramio_(274).jpg
+  author: Interfase
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Simon_Janashia_Museum_of_Georgia_52.jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true
@@ -263,9 +263,8 @@ ar:
     السيارة في فندقك وتأخذ المترو إلى محطة روستافيلي، وهو في ساعة الذروة أسرع فعلاً. وكل شيء إسفلت، فأي
     فئة سيارة تفي بالغرض.
 image_credit:
-  author: David Bailey from Laktasi, Bosnia and Herzegovina
-  license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%E1%83%9B%E1%83%94%E1%83%A2%E1%83%A0%E1%83%9D_%E1%83%97%E1%83%90%E1%83%95%E1%83%98%E1%83%A1%E1%83%A3%E1%83%A4%E1%83%9A%E1%83%94%E1%83%91%E1%83%98%E1%83%A1_%E1%83%9B%E1%83%9D%E1%83%94%E1%83%93%E1%83%90%E1%83%9C%E1%83%98.jpg
+  author: Mostafameraji
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Georgian_National_Museum_%D9%85%D9%88%D8%B2%D9%87_%D9%85%D9%84%DB%8C_%D8%AA%D9%81%D9%84%DB%8C%D8%B3-_%DA%AF%D8%B1%D8%AC%D8%B3%D8%AA%D8%A7%D9%86_10.jpg
 rating: 3.5

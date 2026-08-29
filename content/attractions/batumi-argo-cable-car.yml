@@ -9,21 +9,25 @@ order: 35
 image: /assets/photos/batumi-argo-cable-car.webp
 gallery:
 - image: /assets/photos/batumi-argo-cable-car-1.webp
-  author: Sergei Prokudin-Gorskii
-  license: Public domain
-  license_url: ''
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%D0%A1%D0%BE%D0%B1%D0%BE%D1%80_%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D0%B0_%D0%9D%D0%B5%D0%B2%D1%81%D0%BA%D0%BE%D0%B3%D0%BE._1904_%D0%B3%D0%BE%D0%B4_(%D1%80%D0%B0%D0%B7%D1%80%D1%83%D1%88%D0%B5%D0%BD_%D0%B2_1936_%D0%B3%D0%BE%D0%B4%D1%83)._%D0%A4%D0%BE%D1%82%D0%BE%D0%B3%D1%80%D0%B0%D1%84-%D0%9F%D1%80%D0%BE%D0%BA%D1%83%D0%B4%D0%B8%D0%BD-%D0%93%D0%BE%D1%80%D1%81%D0%BA%D0%B8%D0%B9._-_panoramio.jpg
-- image: /assets/photos/batumi-argo-cable-car-2.webp
-  author: Lovro Rumiha from Zagreb
+  author: Andrew Milligan sumo
   license: CC BY 2.0
   license_url: https://creativecommons.org/licenses/by/2.0
-  source: https://commons.wikimedia.org/wiki/File:Batumi_-_Old_BMW.jpg
+  source: https://commons.wikimedia.org/wiki/File:Argo_Cable_Car,_Batumi_(51155086395).jpg
+- image: /assets/photos/batumi-argo-cable-car-2.webp
+  author: Andrew Milligan sumo
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Argo_Cable_Car,_Batumi_(51153304742).jpg
 - image: /assets/photos/batumi-argo-cable-car-3.webp
-  author: Julia Kado
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Seafood_Market_in_Batumi,_Georgia.jpg
+  author: Andrew Milligan sumo
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Argo_Cable_Car,_Batumi_(51155124105).jpg
+- image: /assets/photos/batumi-argo-cable-car-4.webp
+  author: Andrew Milligan sumo
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Argo_Cable_Car,_Batumi_(51154243623).jpg
 visit_hours: '1.5'
 best_season: all
 open_year_round: true
@@ -219,8 +223,8 @@ ar:
     شارع غوغباشفيلي، واللافتات من الوسط واضحة. عند المحطة موقف صغير، وعند امتلائه يُركن في الشوارع المجاورة.
     الوقود في كوبوليتي وعند مدخل باتومي. وسيارة اقتصادية تكفي تماماً.
 image_credit:
-  author: Korzana from Moscow, Russia
-  license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: https://commons.wikimedia.org/wiki/File:Oil_train,_batumi.jpg
+  author: Andrew Milligan sumo
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Argo_Cable_Car,_Batumi_(51154202808).jpg
 rating: 4.0

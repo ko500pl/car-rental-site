@@ -9,20 +9,25 @@ order: 30
 image: /assets/photos/shovi-resort.webp
 gallery:
 - image: /assets/photos/shovi-resort-1.webp
-  author: Jelger Groeneveld
-  license: CC BY 2.0
-  license_url: https://creativecommons.org/licenses/by/2.0
-  source: https://commons.wikimedia.org/wiki/File:Road_to_Mamison_Pass_at_Shovi.jpg
+  author: "Boris Kuznetsov"
+  license: "CC BY 2.0"
+  license_url: "https://creativecommons.org/licenses/by/2.0"
+  source: "https://commons.wikimedia.org/wiki/File:Pine_Forest,_Shovi,_Racha,_Georgia.jpg"
 - image: /assets/photos/shovi-resort-2.webp
-  author: Yasuhiro Kojima
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:River_Chanchakhi_in_Glola.jpg
+  author: "Jelger Groeneveld"
+  license: "CC BY 2.0"
+  license_url: "https://creativecommons.org/licenses/by/2.0"
+  source: "https://commons.wikimedia.org/wiki/File:Road_to_Mamison_Pass_at_Shovi.jpg"
 - image: /assets/photos/shovi-resort-3.webp
-  author: Boris Kuznetsov
-  license: CC BY 2.0
-  license_url: https://creativecommons.org/licenses/by/2.0
-  source: https://commons.wikimedia.org/wiki/File:At_the_top_of_Dolomisistsveri_Mountain_(3250m),_Racha,_Georgia.jpg
+  author: "Damianenika"
+  license: "CC BY-SA 4.0"
+  license_url: "https://creativecommons.org/licenses/by-sa/4.0"
+  source: "https://commons.wikimedia.org/wiki/File:Shovi_-_Old_Holiday_House_%E2%80%9CStalin%E2%80%99s_House%E2%80%9D.jpg"
+- image: /assets/photos/shovi-resort-4.webp
+  author: "Jelger Groeneveld"
+  license: "CC BY 2.0"
+  license_url: "https://creativecommons.org/licenses/by/2.0"
+  source: "https://commons.wikimedia.org/wiki/File:Shovi_old_hotel.jpg"
 visit_hours: '4'
 best_season: june-september
 open_year_round: false
@@ -257,8 +262,8 @@ ar:
     أُصلحت منذ الكارثة. ويُنصح بخلوص أرضي حقيقي. وخطط لمبيت في أمبرولاوري أو أوني بدل محاولة الذهاب والعودة
     في يوم واحد.
 image_credit:
-  author: Boris Kuznetsov
-  license: CC BY 2.0
-  license_url: https://creativecommons.org/licenses/by/2.0
-  source: https://commons.wikimedia.org/wiki/File:Stormy_Sky_over_Shovi,_Racha,_Georgia.jpg
+  author: "Boris Kuznetsov"
+  license: "CC BY 2.0"
+  license_url: "https://creativecommons.org/licenses/by/2.0"
+  source: "https://commons.wikimedia.org/wiki/File:A_Trail_in_The_Pine_Forest,_Shovi,_Racha,_Georgia.jpg"
 rating: 4.5

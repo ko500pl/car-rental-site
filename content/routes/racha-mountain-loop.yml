@@ -7,6 +7,19 @@ min_people: 1
 max_people: 8
 distance_km: 330
 drive_time_total: '7:30'
+daily_hours: 12.5
+return_to_origin: true
+origin:
+  lat: 42.2679
+  lon: 42.7180
+  road_factor: 1.4
+  speed_kmh: 55
+  ka: ქუთაისი
+  en: Kutaisi
+  ru: Кутаиси
+  fa: کوتایسی
+  he: כותאיסי
+  ar: كوتايسي
 car_category: suv
 best_season: may-october
 difficulty: moderate

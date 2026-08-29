@@ -6,20 +6,8 @@ elevation: 500
 unesco: false
 featured: false
 order: 40
-image: /assets/photos/sataplia-nature-reserve.webp
+image: /assets/photos/sataplia-nature-reserve-3.webp
 gallery:
-- image: /assets/photos/sataplia-nature-reserve-1.webp
-  author: Marcin Konsek
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:2014_Imeretia,_Banoja,_Du%C5%BCe_piwo_gruzi%C5%84skie_w_plastikowej_butelce.jpg
-- image: /assets/photos/sataplia-nature-reserve-2.webp
-  author: Marcin Konsek
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:2014_Imeretia,_Banoja,_Znaki_informacyjne_na_skrzy%C5%BCowaniu_dr%C3%B3g.jpg
 - image: /assets/photos/sataplia-nature-reserve-3.webp
   author: Marcin Konsek
   license: CC BY-SA 4.0
@@ -264,8 +252,8 @@ ar:
     لسيارة اقتصادية. والوقود والصرافات وفيرة في كوتايسي. ويقع كهف بروميثيوس في الاتجاه نفسه على بعد نحو
     خمسة عشر كيلومتراً أبعد، فالجمع بينهما في جولة واحدة هو الخطة البديهية.
 image_credit:
-  author: Rainer Burkard
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Buxus_colchica_1.jpg
+  author: Marcin Konsek
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:2014_Imeretia,_Rezerwat_przyrody_Sataplia_(01).jpg
 rating: 4.0

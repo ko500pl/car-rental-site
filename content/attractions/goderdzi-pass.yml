@@ -9,21 +9,20 @@ order: 48
 image: /assets/photos/goderdzi-pass.webp
 gallery:
 - image: /assets/photos/goderdzi-pass-1.webp
-  author: Svjatosha
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Batumi-Akhaltsikhe,_Georgia_-_panoramio_(7).jpg
+  author: Krzysztof Ziarnek, Kenraiz
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Goderdzi_Pass_kz01.jpg
 - image: /assets/photos/goderdzi-pass-2.webp
-  author: Sarah Murray from South Bend, IN, USA
-  license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%E1%83%91%E1%83%94%E1%83%A8%E1%83%A3%E1%83%9B%E1%83%98_%E1%83%AE%E1%83%A3%E1%83%9A%E1%83%9D.jpg
+  author: Krzysztof Ziarnek, Kenraiz
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Goderdzi_Pass_kz02.jpg
 - image: /assets/photos/goderdzi-pass-3.webp
-  author: Sarah Murray from South Bend, IN, USA
-  license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: https://commons.wikimedia.org/wiki/File:Rural_Adjaria_(14530459810).jpg
+  author: Krzysztof Ziarnek, Kenraiz
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Goderdzi_Pass_kz03.jpg
 visit_hours: '3'
 best_season: june-september
 open_year_round: false
@@ -248,8 +247,8 @@ ar:
     وتلزم سيارة مرتفعة أو دفع رباعي. والطريق البديل من جهة باتومي صعوداً في الوادي عبر خولو، نحو 480 كم.
     تزود بالوقود في أخالتسيخه وأديغيني.
 image_credit:
-  author: Sarah Murray from South Bend, IN, USA
-  license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: https://commons.wikimedia.org/wiki/File:%E1%83%9B%E1%83%90%E1%83%A6%E1%83%90%E1%83%96%E1%83%98%E1%83%90.jpg
+  author: Jelger Groeneveld
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Goderdzi_Pass_(2025m).jpg
 rating: 4.5

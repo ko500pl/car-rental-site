@@ -9,10 +9,15 @@ order: 90
 image: /assets/photos/didgori-battle-memorial.webp
 gallery:
 - image: /assets/photos/didgori-battle-memorial-1.webp
-  author: Alexander Bantyev
-  license: CC0
-  license_url: https://creativecommons.org/publicdomain/zero/1.0
-  source: https://commons.wikimedia.org/wiki/File:Didgori_Monument_04.jpg
+  author: "Alexander Bantyev"
+  license: "CC0"
+  license_url: "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+  source: "https://commons.wikimedia.org/wiki/File:Didgori_Monument_04.jpg"
+- image: /assets/photos/didgori-battle-memorial-2.webp
+  author: "Paata Vardanashvili from Tbilisi, Georgia"
+  license: "CC BY 2.0"
+  license_url: "https://creativecommons.org/licenses/by/2.0"
+  source: "https://commons.wikimedia.org/wiki/File:Didgori_Memorial.jpg"
 visit_hours: '1'
 best_season: may-october
 open_year_round: false
@@ -212,8 +217,8 @@ ar:
     ساعة وعشرين دقيقة إجمالاً. الطريق معبّد حتى النهاية، وفي الجو الجاف تجتازه سيارة سيدان عادية بسهولة.
     وفي الشتاء قد يغلق الثلج المقطع الجبلي — فمن أواخر الخريف إلى الربيع تحقق من حالة الطريق قبل الانطلاق.
 image_credit:
-  author: Paata Vardanashvili
-  license: CC BY 2.0
-  license_url: https://creativecommons.org/licenses/by/2.0
-  source: https://commons.wikimedia.org/wiki/File:Didgori_Memorial.jpg
-rating: 4.7
+  author: "Alexander Bantyev"
+  license: "CC0"
+  license_url: "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+  source: "https://commons.wikimedia.org/wiki/File:Didgori_Monument_01.jpg"
+rating: 4.5

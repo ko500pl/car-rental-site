@@ -7,11 +7,6 @@ unesco: false
 featured: false
 order: 85
 image: /assets/photos/takhti-tepha-mud-volcanoes-2.webp
-image_credit:
-  author: Paata vardanashvili
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Takhti_tefa_5.jpg
 gallery:
 - image: /assets/photos/takhti-tepha-mud-volcanoes-2.webp
   author: Paata vardanashvili
@@ -266,4 +261,9 @@ ar:
     الجنوبي للحديقة: 70 كم أخرى من أخاديد الطين والحصى، نحو ساعتين ونصف. هذا القسم لسيارة دفع رباعي حقيقية
     وفي الجو الجاف وحده؛ فالطين المبلل يلتصق بالإطارات ويجعل المسلك زلقاً. زوّد الخزان واشترِ الماء في
     ددوبليستسقارو. ولا يُنصح بالتوغل بسيارة واحدة دون مرافقة.
+image_credit:
+  author: Paata vardanashvili
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Takhti_tefa_5.jpg
 rating: 4.0

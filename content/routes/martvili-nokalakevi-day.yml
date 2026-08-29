@@ -1,0 +1,34 @@
+status: published
+order: 380
+days: 1
+nights: 0
+purpose: family
+min_people: 1
+max_people: 10
+distance_km: 165
+drive_time_total: '04:00'
+daily_hours: 10
+origin:
+  lat: 42.2679
+  lon: 42.6946
+  road_factor: 1.22
+  speed_kmh: 52
+  name_ka: ქუთაისი
+  name_en: Kutaisi
+  name_ru: Кутаиси
+  name_fa: کوتایسی
+  name_he: כותאיסי
+  name_ar: كوتايسي
+car_category: economy
+best_season: april-october
+difficulty: easy
+image: ''
+waypoints: [nokalakevi, martvili-canyon, salkhino-palace]
+polyline: []
+sources: [https://georgia.travel/regions/samegrelo-zemo-svaneti, https://georgia.travel/martvili-canyon]
+ka: {name: ნოქალაქევი და მარტვილის კანიონი, short: არქეოლოგია კანიონი და სალხინოს ისტორიული გარემო ერთ დღეში., body: ქუთაისიდან ოჯახური მარშრუტი ისტორიასა და ბუნებას შორის გონივრული გადაადგილებებით., plan: 'ქუთაისი → ნოქალაქევი → მარტვილის კანიონი → სალხინოს სასახლე → ქუთაისი.', tips: [კანიონის ნავების მუშაობა ამინდზეა დამოკიდებული., ბავშვებისთვის წყალი და მსუბუქი ქურთუკი იქონიეთ.]}
+en: {name: Nokalakevi and Martvili Canyon, short: Archaeology canyon scenery and historic Salkhino in one day., body: A family route from Kutaisi balancing history and nature with manageable transfers., plan: 'Kutaisi → Nokalakevi → Martvili Canyon → Salkhino Palace → Kutaisi.', tips: [Boat service depends on weather., Bring water and a light layer for children.]}
+ru: {name: Нокалакеви и каньон Мартвили, short: Археология каньон и исторический Салхино за один день., body: Семейный маршрут из Кутаиси между историей и природой., plan: 'Кутаиси → Нокалакеви → каньон Мартвили → Салхино → Кутаиси.', tips: [Лодки зависят от погоды., Возьмите воду и легкую куртку.]}
+fa: {name: نوکالاکوی و دره مارتویلی, short: باستان‌شناسی دره و سالخینوی تاریخی در یک روز., body: مسیر خانوادگی از کوتایسی میان تاریخ و طبیعت., plan: 'کوتایسی ← نوکالاکوی ← دره مارتویلی ← کاخ سالخینو ← کوتایسی.', tips: [قایق‌ها به هوا وابسته‌اند., آب و لباس سبک همراه داشته باشید.]}
+he: {name: נוקלאקווי וקניון מרטווילי, short: ארכאולוגיה קניון וסלחינו ההיסטורית ביום אחד., body: מסלול משפחתי מכותאיסי המאזן היסטוריה וטבע., plan: 'כותאיסי ← נוקלאקווי ← קניון מרטווילי ← ארמון סלחינו ← כותאיסי.', tips: [פעילות הסירות תלויה במזג האוויר., הביאו מים ושכבה קלה.]}
+ar: {name: نوكالاكيفي ووادي مارتفيلي, short: آثار ووادي وسالخينو التاريخية في يوم واحد., body: مسار عائلي من كوتايسي يجمع التاريخ والطبيعة., plan: 'كوتايسي ← نوكالاكيفي ← وادي مارتفيلي ← قصر سالخينو ← كوتايسي.', tips: [القوارب تعتمد على الطقس., احملوا الماء وطبقة خفيفة.]}

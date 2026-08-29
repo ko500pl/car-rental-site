@@ -8,21 +8,6 @@ featured: false
 order: 42
 image: /assets/photos/kvetera-fortress.webp
 gallery:
-- image: /assets/photos/kvetera-fortress-1.webp
-  author: MIKHEIL
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Allium_flower_2.jpg
-- image: /assets/photos/kvetera-fortress-2.webp
-  author: MIKHEIL
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Allium_flower.jpg
-- image: /assets/photos/kvetera-fortress-3.webp
-  author: MIKHEIL
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Cucumis_sativus_flower_2.jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -265,8 +250,8 @@ ar:
     والوقود متوفر في تيلافي وأخميتا. في الجو الجاف تصعد السيارة العادية؛ وبعد المطر تكون سيارة الدفع الرباعي
     الخيار الحكيم، وفي الشتاء يبقى الجليد على المسلك حتى بعد الظهر.
 image_credit:
-  author: Jaba1977
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Akhmeta_Ninotsminda_church.jpg
+  author: "Jaba1977"
+  license: "CC BY-SA 4.0"
+  license_url: "https://creativecommons.org/licenses/by-sa/4.0"
+  source: "https://commons.wikimedia.org/wiki/File:Akhmeta,_Kvetera_13.jpg"
 rating: 3.5

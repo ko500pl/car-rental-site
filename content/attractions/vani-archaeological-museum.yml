@@ -6,19 +6,8 @@ elevation: 90
 unesco: false
 featured: false
 order: 50
-image: /assets/photos/vani-archaeological-museum.webp
+image: /assets/photos/vani-archaeological-museum-3.webp
 gallery:
-- image: /assets/photos/vani-archaeological-museum-1.webp
-  author: Carole Raddato
-  license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: https://commons.wikimedia.org/wiki/File:Vani_Archaeological_Site_and_Museum,_Colchis,_Georgia.jpg
-- image: /assets/photos/vani-archaeological-museum-2.webp
-  author: Carole Raddato from FRANKFURT, Germany
-  license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:Bronze_lamp_featuring_Zeus_and_Ganymede_from_Vani,_Georgia_(Colchis).jpg
 - image: /assets/photos/vani-archaeological-museum-3.webp
   author: Aleksey Muhranoff
   license: CC BY-SA 3.0
@@ -358,8 +347,8 @@ ar:
     كيلومتراً الأخيرة طريق إقليمي ضيق يمر بقرى كثيراً ما تخرج فيها المواشي إلى الطريق. تزوّد بالوقود في
     زستافوني أو كوتايسي. وأمام المتحف موقف مجاني. وتكفي سيارة اقتصادية.
 image_credit:
-  author: Gaga.vaa
+  author: Aleksey Muhranoff
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Vani_Cathedral.jpg
+  source: https://commons.wikimedia.org/wiki/File:Vani,_Georgia._Archaeological_museum_(Photo_A._Muhranoff).jpg
 rating: 3.5

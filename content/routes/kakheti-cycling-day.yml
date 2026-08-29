@@ -1,0 +1,39 @@
+status: published
+order: 440
+days: 1
+nights: 0
+purpose: cycling
+min_people: 1
+max_people: 8
+distance_km: 58
+drive_time_total: '01:15'
+daily_hours: 9
+origin:
+  lat: 41.9198
+  lon: 45.4732
+  road_factor: 1.2
+  speed_kmh: 28
+  name_ka: თელავი
+  name_en: Telavi
+  name_ru: Телави
+  name_fa: تلاوی
+  name_he: תלבי
+  name_ar: تيلافي
+car_category: economy
+best_season: april-october
+difficulty: moderate
+image: ''
+waypoints: [telavi-batonis-tsikhe, tsinandali-estate, akhali-shuamta, dzveli-shuamta]
+polyline: []
+sources: [https://georgia.travel/biking-along-the-kakheti-wine-route, https://georgia.travel/regions/kakheti]
+ka:
+  name: კახეთის ერთდღიანი ველოწრე
+  short: თელავი წინანდალი და შუამთის ტყიანი გზა ერთ აქტიურ დღეში.
+  body: მარშრუტი აერთიანებს ველოსიპედით გასავლელ კახურ გზებს კულტურულ გაჩერებებთან; მანქანა საჭიროა მხოლოდ ველოსიპედებისა და მონაწილეების ტრანსფერისთვის.
+  plan: 'თელავი → წინანდალი → ახალი შუამთა → ძველი შუამთა → თელავი.'
+  tips: [გამგზავრებამდე შეამოწმეთ ველოსიპედის მუხრუჭები და იქონიეთ წყალი., რთულ აღმართებზე ველოსიპედის მანქანით გადატანა შეგიძლიათ.]
+en: {name: Kakheti One-Day Cycling Loop, short: Telavi Tsinandali and the forest road of Shuamta in one active day., body: A cycling-focused Kakheti circuit with cultural stops; the car is used only to transfer riders and bicycles., plan: 'Telavi → Tsinandali → New Shuamta → Old Shuamta → Telavi.', tips: [Check brakes and carry water before departure., Use the support car on the steepest climbs if needed.]}
+ru: {name: Однодневный веломаршрут по Кахетии, short: Телави Цинандали и лесная дорога Шуамта за один активный день., body: Веломаршрут с культурными остановками; автомобиль нужен только для трансфера людей и велосипедов., plan: 'Телави → Цинандали → Новая Шуамта → Старая Шуамта → Телави.', tips: [Проверьте тормоза и возьмите воду., На крутых подъёмах используйте машину сопровождения.]}
+fa: {name: مسیر یک‌روزه دوچرخه‌سواری کاختی, short: تلاوی تسیناندالی و جاده جنگلی شوامتا در یک روز فعال., body: مسیر دوچرخه‌سواری با توقف‌های فرهنگی؛ خودرو فقط برای انتقال افراد و دوچرخه‌هاست., plan: 'تلاوی ← تسیناندالی ← شوامتای نو ← شوامتای قدیم ← تلاوی.', tips: [ترمزها را بررسی و آب همراه داشته باشید., در سربالایی سخت از خودروی پشتیبانی استفاده کنید.]}
+he: {name: מסלול אופניים יומי בקאחתי, short: תלבי ציננדלי ודרך היער של שוואמתה ביום פעיל אחד., body: מסלול רכיבה עם עצירות תרבות; הרכב מיועד להעברת הרוכבים והאופניים בלבד., plan: 'תלבי ← ציננדלי ← שוואמתה החדשה ← שוואמתה העתיקה ← תלבי.', tips: [בדקו בלמים וקחו מים., בעליות הקשות אפשר להיעזר ברכב הליווי.]}
+ar: {name: جولة دراجات ليوم واحد في كاخيتي, short: تيلافي وتسنانديلي وطريق شوامتا الغابي في يوم نشط., body: مسار دراجات مع محطات ثقافية؛ تستخدم السيارة لنقل المشاركين والدراجات فقط., plan: 'تيلافي ← تسنانديلي ← شوامتا الجديدة ← شوامتا القديمة ← تيلافي.', tips: [افحصوا المكابح واحملوا الماء., استخدموا سيارة الدعم في الصعود الصعب.]}

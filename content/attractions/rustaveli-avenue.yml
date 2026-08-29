@@ -9,10 +9,20 @@ order: 15
 image: /assets/photos/rustaveli-avenue.webp
 gallery:
 - image: /assets/photos/rustaveli-avenue-1.webp
-  author: Ainars Brūvelis
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Architecture,_Tbilisi_-_panoramio.jpg
+  author: Kober
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:Rustaveli_Avenue,_Tbilisi_(B).jpg
+- image: /assets/photos/rustaveli-avenue-2.webp
+  author: shankar s.  from Poona (pune), India, India
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0/
+  source: https://commons.wikimedia.org/wiki/File:Rustaveli_Avenue,_Tbilisi_(29707019601).jpg
+- image: /assets/photos/rustaveli-avenue-3.webp
+  author: Vyacheslav Argenberg
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Tbilisi,_Rustaveli_Avenue,_Georgia.jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true
@@ -291,8 +301,8 @@ ar:
     تحمله سيارات الإيجار عادة. والأفضل ترك السيارة عند الفندق والقدوم بالمترو: محطتا ميدان الحرية وروستافيلي
     عند طرفي الجادة. وسيارة اقتصادية تكفي.
 image_credit:
-  author: Marcin Konsek
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:2014_Tbilisi,_Pierwsza_Szko%C5%82a_Klasyczna.jpg
+  author: Kober
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:Rustaveli_Avenue,_Tbilisi_(A).jpg
 rating: 4.0

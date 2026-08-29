@@ -11,13 +11,13 @@ gallery:
 - image: /assets/photos/kintrishi-protected-areas-1.webp
   author: Paata vardanashvili
   license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:View_from_Kintrishi_Protected_Area.jpg
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:View_from_Kintrishi_Protected_Area_2.jpg
 - image: /assets/photos/kintrishi-protected-areas-2.webp
   author: Paata vardanashvili
   license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:View_from_Kintrishi_Protected_Area_2.jpg
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:View_from_Kintrishi_Protected_Area.jpg
 visit_hours: '4'
 best_season: may-october
 open_year_round: false
@@ -243,9 +243,8 @@ ar:
     الداخل. النصف الأول معبّد، وبعده حصى بحفر عميقة وبضعة مخاضات. ارتفاع الهيكل ضروري، والدفع الرباعي
     مستحسن بعد المطر. الوقود في كوبوليتي ولا شيء في الوادي.
 image_credit:
-  author: Андрей Бобровский
-  license: CC BY 3.0
-  license_url: https://creativecommons.org/licenses/by/3.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%D0%91%D0%B0%D1%82%D1%83%D0%BC%D0%B8,_%D0%90%D0%B4%D0%B6%D0%B0%D1%80%D0%B8%D1%8F_-_panoramio_(78).jpg
+  author: გრიგოლ
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0/
+  source: https://commons.wikimedia.org/wiki/File:Tskhemovani_Bridge.JPG
 rating: 4.0

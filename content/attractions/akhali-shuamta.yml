@@ -12,8 +12,7 @@ gallery:
   author: shankar s.
   license: CC BY 2.0
   license_url: https://creativecommons.org/licenses/by/2.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:A_far_shot_of_Akhali_(New)_Shuamta_Monastery_Complex_(30348678164).jpg
+  source: https://commons.wikimedia.org/wiki/File:A_far_shot_of_Akhali_(New)_Shuamta_Monastery_Complex_(30348678164).jpg
 visit_hours: '0.5'
 best_season: all
 open_year_round: true
@@ -265,6 +264,6 @@ image_credit:
   author: Kakhi Kuloshvili
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: >-
+  source: https://commons.wikimedia.org/wiki/File:Akhali-Shuamta_monastery_(New-Shuamta)._Telavi_region.jpg
     https://commons.wikimedia.org/wiki/File:Akhali-Shuamta_monastery_(New-Shuamta)._Telavi_region.jpg
 rating: 3.0

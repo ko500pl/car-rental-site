@@ -7,6 +7,7 @@ unesco: false
 featured: false
 order: 42
 image: /assets/photos/keda-wine-cellars.webp
+gallery: []
 visit_hours: '3'
 best_season: all
 open_year_round: true

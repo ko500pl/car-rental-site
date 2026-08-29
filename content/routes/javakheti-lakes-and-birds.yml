@@ -7,13 +7,25 @@ min_people: 2
 max_people: 10
 distance_km: 590
 drive_time_total: '11:30'
+daily_hours: 8.5
+origin:
+  lat: 41.7151
+  lon: 44.8271
+  road_factor: 1.25
+  speed_kmh: 55
+  name_ka: თბილისი
+  name_en: Tbilisi
+  name_ru: Тбилиси
+  name_fa: تفلیس
+  name_he: טביליסי
+  name_ar: تبليسي
 car_category: suv
 best_season: may-october
 difficulty: moderate
 image: ''
 waypoints: [tsalka-reservoir, paravani-tabatskuri-lakes, poka-nunnery, javakheti-national-park, kumurdo-cathedral]
 polyline: []
-sources: [https://georgia.travel/javakheti-protected-areas]
+sources: [https://georgia.travel/javakheti-protected-areas, https://georgia.travel/javakheti-national-park]
 ka: {name: ჯავახეთის ტბები და ფრინველები, short: სამდღიანი პლატოს ტური წალკიდან ფარავნის ტბასა და ჯავახეთის პარკამდე., body: მშვიდი ბუნების ტური ტბებს ფრინველებზე დაკვირვებასა და ადგილობრივ კულტურას აერთიანებს., plan: '**დღე 1:** წალკა → ტაბაწყური. **დღე 2:** ფარავანი → ფოკა → ეროვნული პარკი. **დღე 3:** კუმურდო.', tips: [თან იქონიეთ ბინოკლი., პლატოზე საღამო ცივია.]}
 en: {name: Javakheti Lakes and Birds, short: Three plateau days from Tsalka to Paravani and Javakheti park., body: A quiet nature tour combining lakes birdwatching and local culture., plan: '**Day 1:** Tsalka → Tabatskuri. **Day 2:** Paravani → Poka → National Park. **Day 3:** Kumurdo.', tips: [Bring binoculars., Plateau evenings are cold.]}
 ru: {name: Озера и птицы Джавахети, short: Три дня от Цалки до Паравани и национального парка., body: Озера наблюдение за птицами и местная культура., plan: '**День 1:** Цалка → Табацкури. **День 2:** Паравани → Пока → парк. **День 3:** Кумурдо.', tips: [Возьмите бинокль., Вечером прохладно.]}

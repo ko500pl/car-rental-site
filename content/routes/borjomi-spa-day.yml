@@ -1,0 +1,34 @@
+status: published
+order: 360
+days: 1
+nights: 0
+purpose: spa
+min_people: 1
+max_people: 10
+distance_km: 45
+drive_time_total: '01:30'
+daily_hours: 7.5
+origin:
+  lat: 41.8413
+  lon: 43.3834
+  road_factor: 1.2
+  speed_kmh: 48
+  name_ka: ბორჯომი
+  name_en: Borjomi
+  name_ru: Боржоми
+  name_fa: برجومی
+  name_he: בורג'ומי
+  name_ar: بورجومي
+car_category: economy
+best_season: all
+difficulty: easy
+image: ''
+waypoints: [borjomi-central-park, likani-palace, green-monastery-chitakhevi]
+polyline: []
+sources: [https://georgia.travel/cities-towns/borjomi, https://georgia.travel/regions/samtskhe-javakheti]
+ka: {name: ბორჯომის წყლები და მწვანე ხეობა, short: ცენტრალური პარკი ლიკანი და მწვანე მონასტერი მშვიდ ერთ დღეში., body: მსუბუქი სპა და ბუნების დღე ბორჯომში მცირე გადასვლებითა და თავისუფალი სეირნობის დროით., plan: 'ბორჯომის ცენტრალური პარკი → ლიკანის სასახლე → მწვანე მონასტერი → ბორჯომი.', tips: [ლიკანის სასახლის ხელმისაწვდომობა წინასწარ გადაამოწმეთ., პარკში სასეირნოდ მსუბუქი ფეხსაცმელი იქონიეთ.]}
+en: {name: Borjomi Waters and Green Valley, short: Central Park Likani and the Green Monastery in an easy day., body: A light spa-and-nature day around Borjomi with short transfers and time to walk., plan: 'Borjomi Central Park → Likani Palace → Green Monastery → Borjomi.', tips: [Confirm access to Likani Palace beforehand., Bring comfortable walking shoes.]}
+ru: {name: Воды Боржоми и зеленая долина, short: Центральный парк Ликани и Зеленый монастырь за спокойный день., body: Легкий день курорта и природы с короткими переездами., plan: 'Центральный парк → дворец Ликани → Зеленый монастырь → Боржоми.', tips: [Уточните доступ во дворец Ликани., Возьмите удобную обувь.]}
+fa: {name: آب‌های برجومی و دره سبز, short: پارک مرکزی لیکانی و صومعه سبز در یک روز آرام., body: روزی سبک برای آب معدنی و طبیعت با جابه‌جایی کوتاه., plan: 'پارک مرکزی برجومی ← کاخ لیکانی ← صومعه سبز ← برجومی.', tips: [دسترسی کاخ لیکانی را بررسی کنید., کفش راحت همراه داشته باشید.]}
+he: {name: מי בורג'ומי והעמק הירוק, short: הפארק המרכזי ליקאני והמנזר הירוק ביום רגוע., body: יום ספא וטבע קל עם נסיעות קצרות., plan: 'הפארק המרכזי ← ארמון ליקאני ← המנזר הירוק ← בורג׳ומי.', tips: [אשרו מראש גישה לארמון., נעלו נעליים נוחות.]}
+ar: {name: مياه بورجومي والوادي الأخضر, short: الحديقة المركزية وليكاني والدير الأخضر في يوم هادئ., body: يوم خفيف للمياه المعدنية والطبيعة مع تنقلات قصيرة., plan: 'حديقة بورجومي ← قصر ليكاني ← الدير الأخضر ← بورجومي.', tips: [تأكدوا من إتاحة قصر ليكاني., ارتدوا حذاء مريحا.]}

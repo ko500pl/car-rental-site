@@ -9,22 +9,20 @@ order: 62
 image: /assets/photos/atskuri-fortress.webp
 gallery:
 - image: /assets/photos/atskuri-fortress-1.webp
-  author: Jaba1977
+  author: Kober
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Towers_of_Slesa_fortress.jpg
+  source: https://commons.wikimedia.org/wiki/File:Atsquri_fortress,_Georgia_03.jpg
 - image: /assets/photos/atskuri-fortress-2.webp
-  author: Jaba1977
+  author: Kober
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%E1%83%A1%E1%83%9A%E1%83%94%E1%83%A1%E1%83%98%E1%83%A1_(%E1%83%9B%E1%83%9D%E1%83%A5%E1%83%AA%E1%83%94%E1%83%95%E1%83%98%E1%83%A1)_%E1%83%AA%E1%83%98%E1%83%AE%E1%83%94_(3).jpg
+  source: https://commons.wikimedia.org/wiki/File:Atsquri_fortress,_Georgia_02.jpg
 - image: /assets/photos/atskuri-fortress-3.webp
-  author: Jaba1977
+  author: Kober
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%E1%83%A1%E1%83%9A%E1%83%94%E1%83%A1%E1%83%98%E1%83%A1_(%E1%83%9B%E1%83%9D%E1%83%A5%E1%83%AA%E1%83%94%E1%83%95%E1%83%98%E1%83%A1)_%E1%83%AA%E1%83%98%E1%83%AE%E1%83%94_(1).jpg
+  source: https://commons.wikimedia.org/wiki/File:Atsquri_fortress,_Georgia_06.jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -271,8 +269,8 @@ ar:
     بوضوح على الصخرة إلى اليمين؛ اترك السيارة في شارع القرية أو عند خراب الكنيسة وتابع سيراً. الوقود متوفر
     في بورجومي وأخالتسيخه. وسيارة اقتصادية تكفي.
 image_credit:
-  author: Jaba1977
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Slesa_fortress.jpg
+  author: Aleksey Muhranoff
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Atskuri_fortress,_Georgia-2.jpg
 rating: 3.5

@@ -9,23 +9,20 @@ order: 25
 image: /assets/photos/batumi-6-may-park-dolphinarium.webp
 gallery:
 - image: /assets/photos/batumi-6-may-park-dolphinarium-1.webp
-  author: Андрей Бобровский
-  license: CC BY 3.0
-  license_url: https://creativecommons.org/licenses/by/3.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%D0%91%D0%B0%D1%82%D1%83%D0%BC%D0%B8,_%D0%90%D0%B4%D0%B6%D0%B0%D1%80%D0%B8%D1%8F_-_panoramio_(42).jpg
+  author: "Jeremy Teigen from USA"
+  license: "CC BY 2.0"
+  license_url: "https://creativecommons.org/licenses/by/2.0"
+  source: "https://commons.wikimedia.org/wiki/File:Batumi_dolphinarium.jpg"
 - image: /assets/photos/batumi-6-may-park-dolphinarium-2.webp
-  author: Андрей Бобровский
-  license: CC BY 3.0
-  license_url: https://creativecommons.org/licenses/by/3.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%D0%91%D0%B0%D1%82%D1%83%D0%BC%D0%B8,_%D0%90%D0%B4%D0%B6%D0%B0%D1%80%D0%B8%D1%8F_-_panoramio_(43).jpg
+  author: "Otogi"
+  license: "CC BY-SA 4.0"
+  license_url: "https://creativecommons.org/licenses/by-sa/4.0"
+  source: "https://commons.wikimedia.org/wiki/File:Nuri_Lake.jpg"
 - image: /assets/photos/batumi-6-may-park-dolphinarium-3.webp
-  author: Андрей Бобровский
-  license: CC BY 3.0
-  license_url: https://creativecommons.org/licenses/by/3.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%D0%91%D0%B0%D1%82%D1%83%D0%BC%D0%B8,_%D0%90%D0%B4%D0%B6%D0%B0%D1%80%D0%B8%D1%8F_-_panoramio_(47).jpg
+  author: "Kharkil"
+  license: "CC BY-SA 4.0"
+  license_url: "https://creativecommons.org/licenses/by-sa/4.0"
+  source: "https://commons.wikimedia.org/wiki/File:Batumi_Dolphinarium_3.jpg"
 visit_hours: '2'
 best_season: all
 open_year_round: true
@@ -258,9 +255,8 @@ ar:
     من شارعي روستافيلي وغورغيلادزه. الوقوف في الشارع مدفوع وممتلئ صيفاً، فالأسهل ترك السيارة على بعد شارعين
     نحو الداخل. الوقود متوفر في كوتايسي وأوزورغيتي. وسيارة اقتصادية تكفي.
 image_credit:
-  author: Андрей Бобровский
-  license: CC BY 3.0
-  license_url: https://creativecommons.org/licenses/by/3.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%D0%91%D0%B0%D1%82%D1%83%D0%BC%D0%B8,_%D0%90%D0%B4%D0%B6%D0%B0%D1%80%D0%B8%D1%8F_-_panoramio_(38).jpg
+  author: "W0zny"
+  license: "CC BY-SA 3.0"
+  license_url: "https://creativecommons.org/licenses/by-sa/3.0"
+  source: "https://commons.wikimedia.org/wiki/File:Pokaz_delfinarium_batumi_1.jpg"
 rating: 4.0

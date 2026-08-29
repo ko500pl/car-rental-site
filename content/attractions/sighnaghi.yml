@@ -6,23 +6,18 @@ elevation: 790
 unesco: false
 featured: true
 order: 10
-image: /assets/photos/sighnaghi.webp
+image: /assets/photos/sighnaghi-2.webp
 gallery:
 - image: /assets/photos/sighnaghi-1.webp
-  author: Alexxx1979
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Sighnaghi_IMG_9071_1920.jpg
-- image: /assets/photos/sighnaghi-2.webp
-  author: Alexxx1979
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Sighnaghi_IMG_9076_1920.jpg
-- image: /assets/photos/sighnaghi-3.webp
-  author: Alexxx1979
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Sighnaghi_IMG_9086_1920.jpg
+  author: Adam Jones from Kelowna, BC, Canada
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Panorama_over_Sighnaghi_from_Guesthouse_Balcony_-_Sighnaghi_-_Georgia_(18308941142).jpg
+- image: /assets/photos/sighnaghi.webp
+  author: Adam Jones from Kelowna, BC, Canada
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Panorama_over_Sighnaghi_-_Georgia_(18157038140).jpg
 visit_hours: '3'
 best_season: all
 open_year_round: true
@@ -232,8 +227,8 @@ ar:
     وتسنوري. ويمكنك العودة عبر ممر غومبوري ومروراً بتيلافي لقيادة أجمل منظراً؛ وهو يكلفك نحو نصف ساعة
     إضافية ويُغلق عند تساقط الثلوج الكثيفة.
 image_credit:
-  author: Sarah Murray from South Bend, IN, USA
-  license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: https://commons.wikimedia.org/wiki/File:Kakheti_15409_(9106027013).jpg
+  author: Vladimir Pankratov
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:St._George%E2%80%99s_Church_in_Sighnaghi_Panorama.jpg
 rating: 5.0

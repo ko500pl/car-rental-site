@@ -6,7 +6,7 @@ elevation: 2850
 unesco: false
 featured: false
 order: 90
-image: /assets/photos/abano-pass.webp
+image: /assets/photos/abano-pass-1.webp
 gallery:
 - image: /assets/photos/abano-pass-1.webp
   author: Moahim
@@ -265,8 +265,8 @@ ar:
     ساعات. والمسلك بحارة واحدة مع جيوب للتلاقي، والعُرف أن الأولوية للنازل. املأ الخزان في بشاولي، فلا
     وقود بعده حتى أومالو، وحتى هناك لا يُضمن توفره.
 image_credit:
-  author: Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center
-  license: Public domain
-  license_url: ''
-  source: https://commons.wikimedia.org/wiki/File:ISS053-E-214911_-_View_of_Earth.jpg
+  author: Moahim
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:2019_-_Tusheti_National_Park_-_the_view_from_Abano_pass.jpg
 rating: 4.0

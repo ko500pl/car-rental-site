@@ -7,13 +7,25 @@ min_people: 1
 max_people: 14
 distance_km: 520
 drive_time_total: '11:20'
+daily_hours: 8
+origin:
+  lat: 41.6168
+  lon: 41.6367
+  road_factor: 1.3
+  speed_kmh: 45
+  name_ka: ბათუმი
+  name_en: Batumi
+  name_ru: Батуми
+  name_fa: باتومی
+  name_he: בטומי
+  name_ar: باتومي
 car_category: suv
 best_season: may-october
 difficulty: moderate
 image: ''
 waypoints: [batumi-botanical-garden, mtirala-national-park, makhuntseti-waterfall, keda-wine-cellars, khulo-cable-car-upper-adjara, shekvetili-dendrological-park, sameba-jikheti-monastery, nodar-dumbadze-house-museum]
 polyline: []
-sources: [https://georgia.travel/rural-tourism-in-georgia]
+sources: [https://georgia.travel/rural-tourism-in-georgia, https://georgia.travel/regions/guria, https://georgia.travel/regions/ajara]
 ka:
   name: აჭარა-გურიის მწვანე გზა
   short: ხუთი დღე ბოტანიკური ბაღიდან მთირალას, ქედის, ხულოსა და გურიის სოფლებისკენ.

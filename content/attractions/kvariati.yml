@@ -9,20 +9,15 @@ order: 65
 image: /assets/photos/kvariati.webp
 gallery:
 - image: /assets/photos/kvariati-1.webp
-  author: Agostino Fedeli from Milano, Italy
+  author: Alexey from Ekaterinburg, Russia
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Kvariati,_Ajaria,_Georgia._Black_Sea._(29422670295).jpg
+- image: /assets/photos/kvariati-2.webp
+  author: Levan Gokadze from Tbilisi, Georgia
   license: CC BY-SA 2.0
   license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: https://commons.wikimedia.org/wiki/File:Sunset_in_Batumi.jpg
-- image: /assets/photos/kvariati-2.webp
-  author: Dalibor Z. Chvatal
-  license: CC BY 3.0
-  license_url: https://creativecommons.org/licenses/by/3.0
-  source: https://commons.wikimedia.org/wiki/File:E70,_Georgia_-_panoramio_(1).jpg
-- image: /assets/photos/kvariati-3.webp
-  author: Dalibor Z. Chvatal
-  license: CC BY 3.0
-  license_url: https://creativecommons.org/licenses/by/3.0
-  source: https://commons.wikimedia.org/wiki/File:E70,_Georgia_-_panoramio_(2).jpg
+  source: https://commons.wikimedia.org/wiki/File:Kvariati_(5545848197).jpg
 visit_hours: '4'
 best_season: june-september
 open_year_round: true
@@ -254,8 +249,8 @@ ar:
     وإن كان التفتيش نادراً. الوقوف على جانب الطريق وعند بيوت الضيافة، وبأجر في الموسم. الوقود في باتومي
     وأدليا. وسيارة اقتصادية تكفي تماماً.
 image_credit:
-  author: Agostino Fedeli from Milano, Italy
+  author: Levan Gokadze  from Tbilisi, Georgia
   license: CC BY-SA 2.0
   license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: https://commons.wikimedia.org/wiki/File:Khachapuri_Adjariano.jpg
+  source: https://commons.wikimedia.org/wiki/File:Kvariati_(5545848197).jpg
 rating: 4.0

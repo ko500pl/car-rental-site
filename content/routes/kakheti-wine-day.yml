@@ -1,0 +1,34 @@
+status: published
+order: 350
+days: 1
+nights: 0
+purpose: wine
+min_people: 2
+max_people: 10
+distance_km: 285
+drive_time_total: '05:20'
+daily_hours: 14
+origin:
+  lat: 41.7151
+  lon: 44.8271
+  road_factor: 1.25
+  speed_kmh: 55
+  name_ka: თბილისი
+  name_en: Tbilisi
+  name_ru: Тбилиси
+  name_fa: تفلیس
+  name_he: טביליסי
+  name_ar: تبليسي
+car_category: economy
+best_season: april-october
+difficulty: easy
+image: /assets/photos/kakheti-wine-day.webp
+waypoints: [bodbe-monastery, sighnaghi, tsinandali-estate]
+polyline: []
+sources: [https://georgia.travel/regions/kakheti, https://georgia.travel/biking-along-the-kakheti-wine-route]
+ka: {name: კახეთის ღვინის დღე, short: ბოდბე სიღნაღი და წინანდალი ერთ სრულ დღეში., body: თბილისიდან გრძელი მაგრამ დაბალანსებული დღე კახეთის ისტორიის ლანდშაფტისა და ღვინის კულტურის გასაცნობად., plan: 'თბილისი → ბოდბე → სიღნაღი → წინანდალი → თბილისი.', tips: [დეგუსტაციის შემთხვევაში საჭესთან მჯდომმა ალკოჰოლი არ მიიღოს., წინანდლის სამუშაო საათები გადაამოწმეთ.]}
+en: {name: Kakheti Wine Day, short: Bodbe Sighnaghi and Tsinandali in one full day., body: A long but balanced day from Tbilisi focused on Kakheti's landscape history and wine culture., plan: 'Tbilisi → Bodbe → Sighnaghi → Tsinandali → Tbilisi.', tips: [The driver must not drink during tastings., Check Tsinandali opening hours.]}
+ru: {name: Винный день в Кахетии, short: Бодбе Сигнахи и Цинандали за полный день., body: Насыщенный день из Тбилиси о ландшафте истории и винной культуре Кахетии., plan: 'Тбилиси → Бодбе → Сигнахи → Цинандали → Тбилиси.', tips: [Водитель не должен пить на дегустации., Проверьте часы Цинандали.]}
+fa: {name: روز شراب کاختی, short: بودبه سیغناغی و تسیناندالی در یک روز کامل., body: روزی کامل از تفلیس برای منظره تاریخ و فرهنگ شراب کاختی., plan: 'تفلیس ← بودبه ← سیغناغی ← تسیناندالی ← تفلیس.', tips: [راننده نباید در مزه‌کردن الکل بنوشد., ساعت تسیناندالی را بررسی کنید.]}
+he: {name: יום היין של קאחתי, short: בודבה סיגנאגי וציננדלי ביום מלא., body: יום ארוך ומאוזן מטביליסי לנוף להיסטוריה ולתרבות היין של קאחתי., plan: 'טביליסי ← בודבה ← סיגנאגי ← ציננדלי ← טביליסי.', tips: [על הנהג להימנע מאלכוהול., בדקו שעות פתיחה בציננדלי.]}
+ar: {name: يوم النبيذ في كاخيتي, short: بودبي وسيغناغي وتسنانديلي في يوم كامل., body: يوم طويل ومتوازن من تبليسي للطبيعة والتاريخ وثقافة النبيذ., plan: 'تبليسي ← بودبي ← سيغناغي ← تسنانديلي ← تبليسي.', tips: [يجب ألا يشرب السائق أثناء التذوق., تحققوا من ساعات تسنانديلي.]}

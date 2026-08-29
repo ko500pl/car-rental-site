@@ -7,6 +7,18 @@ min_people: 2
 max_people: 10
 distance_km: 460
 drive_time_total: '10:20'
+daily_hours: 9
+origin:
+  lat: 43.0458
+  lon: 42.7297
+  road_factor: 1.45
+  speed_kmh: 35
+  name_ka: მესტია
+  name_en: Mestia
+  name_ru: Местиа
+  name_fa: مستیا
+  name_he: מסטיה
+  name_ar: ميستيا
 car_category: offroad
 best_season: june-september
 difficulty: hard

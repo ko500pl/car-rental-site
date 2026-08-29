@@ -7,22 +7,7 @@ unesco: false
 featured: true
 order: 120
 image: /assets/photos/omalo-tusheti.webp
-gallery:
-- image: /assets/photos/omalo-tusheti-1.webp
-  author: Abramia Giorgi
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Shenako.Tusheti.JPG
-- image: /assets/photos/omalo-tusheti-2.webp
-  author: Karel61
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:P1100619b_Makratela_Range_2016.jpg
-- image: /assets/photos/omalo-tusheti-3.webp
-  author: Karel61
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:P1100619c_Upper_Omalo_%26_Makratela_Range_2016.jpg
+gallery: []
 visit_hours: '8'
 best_season: june-september
 open_year_round: false

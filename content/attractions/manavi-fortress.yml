@@ -7,18 +7,7 @@ unesco: false
 featured: false
 order: 50
 image: /assets/photos/manavi-fortress-3.webp
-image_credit:
-  author: Shogiradze
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:%E1%83%9B%E1%83%90%E1%83%9C%E1%83%90%E1%83%95%E1%83%98%E1%83%A1_%E1%83%AA%E1%83%98%E1%83%AE%E1%83%94.jpg
-gallery:
-- image: /assets/photos/manavi-fortress-3.webp
-  author: Shogiradze
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%E1%83%9B%E1%83%90%E1%83%9C%E1%83%90%E1%83%95%E1%83%98%E1%83%A1_%E1%83%AA%E1%83%98%E1%83%AE%E1%83%94.jpg
+gallery: []
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -301,4 +290,9 @@ ar:
     70 كم ونحو ساعة وخمس وعشرين دقيقة. الطريق الرئيسي إسفلت جيد؛ أما العشرة كيلومترات الأخيرة فطريق قروي
     ضيق مرقّع ومكسور في مواضع، لكن السيارة العادية تجتازه دون عناء. ولا موقف رسمي عند سفح التل، فاترك
     السيارة في أعلى القرية وتابع سيراً. والوقود في ساغاريجو.
+image_credit:
+  author: Shogiradze
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:%E1%83%9B%E1%83%90%E1%83%9C%E1%83%90%E1%83%95%E1%83%98%E1%83%A1_%E1%83%AA%E1%83%98%E1%83%AE%E1%83%94.jpg
 rating: 3.5

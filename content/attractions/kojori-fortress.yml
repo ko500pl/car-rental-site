@@ -7,17 +7,7 @@ unesco: false
 featured: false
 order: 91
 image: /assets/photos/kojori-fortress.webp
-gallery:
-- image: /assets/photos/kojori-fortress-1.webp
-  author: Wikimedia Commons contributor
-  license: CC0
-  license_url: https://creativecommons.org/publicdomain/zero/1.0
-  source: https://commons.wikimedia.org/wiki/File:Agarani_fortress_Kojori.jpeg
-- image: /assets/photos/kojori-fortress-2.webp
-  author: Arkaitz1974
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Kojori_%E2%80%93_Agarani_Fortress_(6_October_2013)._003.jpg
+gallery: []
 visit_hours: '1.5'
 best_season: all
 open_year_round: true
@@ -207,4 +197,4 @@ image_credit:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Kojori_Fortress_1.jpg
-rating: 4.6
+rating: 4.5

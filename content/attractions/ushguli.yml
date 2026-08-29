@@ -9,20 +9,25 @@ order: 20
 image: /assets/photos/ushguli.webp
 gallery:
 - image: /assets/photos/ushguli-1.webp
-  author: Jaba1977
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Church_of_Lashk-Duir2.jpg
+  author: İhsan Deniz Kılıçoğlu
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Ushguli_village.JPG
 - image: /assets/photos/ushguli-2.webp
-  author: Jaba1977
+  author: D.Rovchak
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Church_of_Lashk-Duir.jpg
+  source: https://commons.wikimedia.org/wiki/File:Ushguli_Village,_Svaneti.jpg
 - image: /assets/photos/ushguli-3.webp
-  author: Jaba1977
+  author: D.Rovchak
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Church_of_Lashk-Duir3.jpg
+  source: https://commons.wikimedia.org/wiki/File:Ushguli_Village,_Svaneti,_view_of_Shkhara_mountain.jpg
+- image: /assets/photos/ushguli-4.webp
+  author: Dito1993
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Ushguli_towers_in_Svaneti,_Georgia.png
 visit_hours: '4'
 best_season: june-september
 open_year_round: false
@@ -261,9 +266,8 @@ ar:
     يغطيها تأمين الإيجار. آخر وقود في ميستيا، فاملأ الخزان قبل الانطلاق وتحقق من الطقس، إذ قد يبطئ المطر
     الغزير عبور المخاضات.
 image_credit:
-  author: კოლხი
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%E1%83%A9%E1%83%90%E1%83%9F%E1%83%90%E1%83%A8%E1%83%98_%E1%83%9B%E1%83%90%E1%83%AA%E1%83%AE%E1%83%9D%E1%83%95%E1%83%A0%E1%83%98%E1%83%A1_%E1%83%94%E1%83%99%E1%83%9A%E1%83%94%E1%83%A1%E1%83%98%E1%83%90_,,%E1%83%9B%E1%83%90%E1%83%AA%E1%83%AE%E1%83%95%E1%83%90%E1%83%A0%22.jpg
+  author: Florian Pinel
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Ushguli_Svaneti_Georgia.JPG
 rating: 5.0

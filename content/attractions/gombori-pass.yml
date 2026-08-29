@@ -6,23 +6,13 @@ elevation: 1620
 unesco: false
 featured: false
 order: 45
-image: /assets/photos/gombori-pass.webp
+image: /assets/photos/gombori-pass-2.webp
 gallery:
-- image: /assets/photos/gombori-pass-1.webp
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Phsitiani_fortress_(G.N._2008).jpg
 - image: /assets/photos/gombori-pass-2.webp
   author: G.N.
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:View_from_Gombori_pass_-_panoramio.jpg
-- image: /assets/photos/gombori-pass-3.webp
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Phsitiani_fortress_-_panoramio.jpg
 visit_hours: '0.5'
 best_season: all
 open_year_round: true
@@ -275,5 +265,5 @@ image_credit:
   author: G.N.
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:%E1%83%A838,_Georgia_-_panoramio.jpg
+  source: https://commons.wikimedia.org/wiki/File:View_from_Gombori_pass_-_panoramio.jpg
 rating: 3.5

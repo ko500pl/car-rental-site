@@ -6,18 +6,8 @@ elevation: 610
 unesco: false
 featured: false
 order: 50
-image: /assets/photos/samtavisi-cathedral.webp
+image: /assets/photos/samtavisi-cathedral-3.webp
 gallery:
-- image: /assets/photos/samtavisi-cathedral-1.webp
-  author: Jonhy Blaze from Kiev, Ukraine
-  license: CC BY 2.0
-  license_url: https://creativecommons.org/licenses/by/2.0
-  source: https://commons.wikimedia.org/wiki/File:Highway_-33_(25282955834).jpg
-- image: /assets/photos/samtavisi-cathedral-2.webp
-  author: Jonhy Blaze from Kiev, Ukraine
-  license: CC BY 2.0
-  license_url: https://creativecommons.org/licenses/by/2.0
-  source: https://commons.wikimedia.org/wiki/File:Highway_-34_(25286933483).jpg
 - image: /assets/photos/samtavisi-cathedral-3.webp
   author: Kober
   license: CC0
@@ -254,8 +244,8 @@ ar:
     تقف الكاتدرائية في وسط القرية وتُرى أسوارها من بعيد؛ والوقوف عند البوابة مجاني. المسار معبّد بالكامل
     وسيارة اقتصادية تكفي تماماً. والوقود متوفر على الطريق السريع أو في كاسبي.
 image_credit:
-  author: Yasuhiro Kojima
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:River_Lekhura_(in_Kaspi).jpg
+  author: Kober
+  license: CC0
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:Samtavisi_Cathedral,_panoramic_view_from_the_east._Georgia.jpg
 rating: 3.5

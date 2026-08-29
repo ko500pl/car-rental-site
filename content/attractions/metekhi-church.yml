@@ -7,13 +7,7 @@ unesco: false
 featured: false
 order: 33
 image: /assets/photos/metekhi-church.webp
-gallery:
-- image: /assets/photos/metekhi-church-1.webp
-  author: Davit butulashvili
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%E1%83%9B%E1%83%94%E1%83%A2%E1%83%94%E1%83%AE%E1%83%98_%E1%83%94%E1%83%99%E1%83%9A%E1%83%94%E1%83%A1%E1%83%98%E1%83%90_07.jpg
+gallery: []
 visit_hours: '0.5'
 best_season: all
 open_year_round: true

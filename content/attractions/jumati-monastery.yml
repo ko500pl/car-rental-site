@@ -9,15 +9,15 @@ order: 50
 image: /assets/photos/jumati-monastery.webp
 gallery:
 - image: /assets/photos/jumati-monastery-1.webp
-  author: M.
-  license: CC BY 4.0
-  license_url: https://creativecommons.org/licenses/by/4.0
-  source: https://commons.wikimedia.org/wiki/File:Khvarbeti_.jpg
+  author: Dmitri Yermakov
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:Djumati_mikael_icon.jpg
 - image: /assets/photos/jumati-monastery-2.webp
-  author: M.
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Jumati_view_from_Konchkati.jpg
+  author: Unknown author Unknown author
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:Icon_of_Archangels_from_Jumati_monastery_(Georgia).JPG
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -248,9 +248,8 @@ ar:
     وحادة. في الجو الجاف تصعد سيارة عادية، وبعد المطر يلزم الحذر. الوقود في لانتشخوتي وأوزورغيتي. وسيارة
     اقتصادية تكفي.
 image_credit:
-  author: M.
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%E1%83%AD%E1%83%90%E1%83%9C%E1%83%98%E1%83%94%E1%83%97%E1%83%A3%E1%83%A0%E1%83%98%E1%83%A1_%E1%83%9B%E1%83%9D%E1%83%9C%E1%83%90%E1%83%A1%E1%83%A2%E1%83%94%E1%83%A0%E1%83%98.jpg
+  author: Dmitri Yermakov
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:Yermakov._Jumati_monastery,_1877-1878.JPG
 rating: 3.5

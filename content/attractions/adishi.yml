@@ -6,23 +6,23 @@ elevation: 2040
 unesco: false
 featured: false
 order: 35
-image: /assets/photos/adishi.webp
+image: /assets/photos/adishi-1.webp
 gallery:
-- image: /assets/photos/adishi-1.webp
-  author: hr.icio
-  license: CC BY 2.0
-  license_url: https://creativecommons.org/licenses/by/2.0
-  source: https://commons.wikimedia.org/wiki/File:Svaneti,_Georgia._2018_32.jpg
+- image: /assets/photos/adishi.webp
+  author: Moriz von Déchy (1851-1917)
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:Adishi,_Georgia_(D%C3%A9chy,_1905).JPG
 - image: /assets/photos/adishi-2.webp
-  author: hr.icio
-  license: CC BY 2.0
-  license_url: https://creativecommons.org/licenses/by/2.0
-  source: https://commons.wikimedia.org/wiki/File:Svaneti,_Georgia._2018_34.jpg
+  author: Damianenika
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Adishi_Tower.jpg
 - image: /assets/photos/adishi-3.webp
-  author: hr.icio
-  license: CC BY 2.0
-  license_url: https://creativecommons.org/licenses/by/2.0
-  source: https://commons.wikimedia.org/wiki/File:Svaneti,_Georgia._2018_35.jpg
+  author: Maesi64
+  license: CC0
+  license_url: http://creativecommons.org/publicdomain/zero/1.0/deed.en
+  source: https://commons.wikimedia.org/wiki/File:Adishi_%E2%80%93_01.jpg
 visit_hours: '3'
 best_season: june-september
 open_year_round: false
@@ -400,8 +400,8 @@ ar:
     نحو 505 كم إجمالاً وعشر ساعات وخمس عشرة دقيقة. الإسفلت يمتد حتى مستيا؛ وبعدها يسوء السطح، ومقطع أديشي
     للدفع الرباعي وحده. تزوّد بالوقود في زوغديدي أو مستيا، فلا شيء في الأعلى.
 image_credit:
-  author: hr.icio
-  license: CC BY 2.0
-  license_url: https://creativecommons.org/licenses/by/2.0
-  source: https://commons.wikimedia.org/wiki/File:Svaneti,_Georgia._2018_33.jpg
+  author: Maesi64
+  license: CC0
+  license_url: http://creativecommons.org/publicdomain/zero/1.0/deed.en
+  source: https://commons.wikimedia.org/wiki/File:Adishi_%E2%80%93_03.jpg
 rating: 4.5

@@ -17,7 +17,6 @@ drive_time_tbilisi: '0:05'
 road: paved
 car_category: economy
 nearby: [tbilisi-opera-ballet-theatre, georgian-national-museum, freedom-square-old-parliament]
-sources: [https://rustavelitheatre.ge/]
 ka: {name: რუსთაველის ეროვნული თეატრი, short: საქართველოს ერთ-ერთი მთავარი დრამატული სცენა რუსთაველის გამზირზე., body: თეატრის მონახულება აერთიანებს ისტორიული შენობის ნახვასა და იმ დღის რეპერტუარიდან სპექტაკლს., tip: პროგრამა და ბილეთები წინასწარ გადაამოწმეთ; წარმოდგენაზე დაგვიანება არ შეიძლება., route: რუსთაველის გამზირზეა; მეტრო რუსთაველიდან ან თავისუფლების მოედნიდან ფეხით მისვლა ყველაზე მარტივია.}
 en: {name: Rustaveli National Theatre, short: One of Georgia's principal drama stages on Rustaveli Avenue., body: Visit the historic theatre and pair it with a performance available on your date., tip: Check the programme and tickets in advance; late admission may be restricted., route: On Rustaveli Avenue; walking from Rustaveli or Liberty Square metro is easiest.}
 ru: {name: Национальный театр Руставели, short: Одна из главных драматических сцен Грузии на проспекте Руставели., body: Осмотр исторического здания можно совместить со спектаклем по афише выбранного дня., tip: Заранее проверьте афишу и билеты., route: На проспекте Руставели; удобнее идти пешком от метро.}
@@ -29,3 +28,5 @@ image_credit:
   license: CC BY 2.0
   license_url: https://creativecommons.org/licenses/by/2.0
   source: https://commons.wikimedia.org/wiki/File:Rustaveli_National_Theater_in_Georgia_(Europe),_built_19th_century_in_Rococo_style.jpg
+rating: 4.5
+sources: [https://rustavelitheatre.ge/]

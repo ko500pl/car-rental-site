@@ -7,22 +7,7 @@ unesco: false
 featured: false
 order: 90
 image: /assets/photos/nakerala-pass.webp
-gallery:
-- image: /assets/photos/nakerala-pass-1.webp
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Tkibuli_and_Tkibuli_Reservoir_(G.N._2009).jpg
-- image: /assets/photos/nakerala-pass-2.webp
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:%22Shaori%22_from_nalerala_pass_-_panoramio.jpg
-- image: /assets/photos/nakerala-pass-3.webp
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:View_to_Shaori_-_panoramio.jpg
+gallery: []
 visit_hours: '1'
 best_season: may-october
 open_year_round: true
@@ -325,8 +310,8 @@ ar:
     جيدة عموماً. تزوّد بالوقود في زستافوني أو تكيبولي، فلا محطة بين الممر وأمبرولاوري. وفي الجو الجاف
     تكفي سيارة اقتصادية.
 image_credit:
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Tskhrajvari_mnt._(G.N._2009).jpg
+  author: Yasuhiro Kojima
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Nakerala_Pass.jpg
 rating: 4.0

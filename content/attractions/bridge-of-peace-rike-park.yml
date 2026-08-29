@@ -7,22 +7,7 @@ unesco: false
 featured: false
 order: 22
 image: /assets/photos/bridge-of-peace-rike-park.webp
-gallery:
-- image: /assets/photos/bridge-of-peace-rike-park-1.webp
-  author: Kober
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Rike_Park,_Tbilisi,_Georgia._2018_01.jpg
-- image: /assets/photos/bridge-of-peace-rike-park-2.webp
-  author: Amir Hossein Eslami
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Tbilisi_Peace_Bridge5.jpg
-- image: /assets/photos/bridge-of-peace-rike-park-3.webp
-  author: Kober
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Rike_Park,_Tbilisi,_Georgia._2018_03.jpg
+gallery: []
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -342,8 +327,8 @@ ar:
     إيريكلي الثاني وشافتيلي الضيقة على الضفة اليمنى. والوقود متوفر باتجاه أفلابري. وسيارة اقتصادية تكفي
     تماماً.
 image_credit:
-  author: Marcin Konsek
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:2014_Tbilisi,_Park_Rike_(02).jpg
+  author: falco
+  license: CC0
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:Tbilisi_Peace_Bridge_and_Rike_Park.jpg
 rating: 4.0

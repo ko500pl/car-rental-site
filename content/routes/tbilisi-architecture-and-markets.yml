@@ -7,13 +7,25 @@ min_people: 1
 max_people: 14
 distance_km: 32
 drive_time_total: '02:00'
+daily_hours: 8
+origin:
+  lat: 41.7151
+  lon: 44.8271
+  road_factor: 1.25
+  speed_kmh: 55
+  name_ka: თბილისი
+  name_en: Tbilisi
+  name_ru: Тбилиси
+  name_fa: تفلیس
+  name_he: טביליסי
+  name_ar: تبليسي
 car_category: economy
 best_season: year-round
 difficulty: easy
 image: ''
 waypoints: [sololaki-art-nouveau, georgian-national-museum, dry-bridge-market, abanotubani-sulphur-baths, chronicle-of-georgia]
 polyline: []
-sources: [https://georgia.travel/cities-towns/tbilisi]
+sources: [https://georgia.travel/cities-towns/tbilisi, https://georgia.travel/strolling-through-the-old-city-of-tbilisi, https://georgia.travel/travel-tips-for-exploring-tbilisi]
 ka: {name: თბილისი — არქიტექტურა და ბაზრები, short: ორდღიანი ქალაქის ტური სოლოლაკის სადარბაზოებიდან ძველ ბაზრებსა და აბანოთუბნამდე., body: მშვიდი ქალაქური მარშრუტი აერთიანებს არქიტექტურას, მუზეუმს, ბაზრებსა და თბილისის ცოცხალ უბნებს., plan: '**დღე 1:** სოლოლაკი → ეროვნული მუზეუმი → მშრალი ხიდი. **დღე 2:** აბანოთუბანი → საქართველოს მატიანე.', tips: [მშრალ ხიდზე დილით მიდით., აბანო წინასწარ დაჯავშნეთ.]}
 en: {name: Tbilisi Architecture and Markets, short: Two city days from Sololaki entrances to old markets and Abanotubani., body: A relaxed urban route combining architecture museums markets and living neighbourhoods., plan: '**Day 1:** Sololaki → National Museum → Dry Bridge. **Day 2:** Abanotubani → Chronicle of Georgia.', tips: [Visit Dry Bridge in the morning., Reserve the bath in advance.]}
 ru: {name: Архитектура и рынки Тбилиси, short: Два дня от парадных Сололаки до рынков и Абанотубани., body: Спокойный городской маршрут по архитектуре музеям и живым кварталам., plan: '**День 1:** Сололаки → музей → Сухой мост. **День 2:** рынок → Абанотубани → Хроники.', tips: [Идите на рынок утром., Забронируйте баню заранее.]}

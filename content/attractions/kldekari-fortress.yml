@@ -7,22 +7,7 @@ unesco: false
 featured: false
 order: 88
 image: /assets/photos/kldekari-fortress.webp
-gallery:
-- image: /assets/photos/kldekari-fortress-1.webp
-  author: Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center
-  license: Public domain
-  license_url: ''
-  source: https://commons.wikimedia.org/wiki/File:ISS045-E-92010_-_View_of_Earth.jpg
-- image: /assets/photos/kldekari-fortress-2.webp
-  author: Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center
-  license: Public domain
-  license_url: ''
-  source: https://commons.wikimedia.org/wiki/File:ISS048-E-51884_-_View_of_Earth.jpg
-- image: /assets/photos/kldekari-fortress-3.webp
-  author: Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center
-  license: Public domain
-  license_url: ''
-  source: https://commons.wikimedia.org/wiki/File:ISS053-E-218199_-_View_of_Earth.jpg
+gallery: []
 visit_hours: '6'
 best_season: june-september
 open_year_round: false
@@ -240,9 +225,9 @@ ar:
     الجو الجاف وحده؛ ويترك معظم الناس السيارة في ركوني ويمشون. خمسة وثمانون كيلومتراً إجمالاً ونحو ساعتين
     ونصف قيادة في يوم جيد. تزوّد بالوقود في كاسبي.
 image_credit:
-  author: Svjatosha
+  author: Aleksey Muhranoff
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: >-
+  source: https://commons.wikimedia.org/wiki/File:Kldekari_(Photo_A._Muhranoff,_2011)-1.jpg
     https://commons.wikimedia.org/wiki/File:%E1%83%92%E1%83%96%E1%83%90_%E1%83%99%E1%83%9A%E1%83%93%E1%83%94%E1%83%99%E1%83%90%E1%83%A0%E1%83%98%E1%83%A1%E1%83%99%E1%83%94%E1%83%9C_-_panoramio.jpg
 rating: 4.0

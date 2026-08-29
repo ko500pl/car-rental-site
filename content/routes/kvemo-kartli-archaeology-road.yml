@@ -7,13 +7,25 @@ min_people: 2
 max_people: 12
 distance_km: 285
 drive_time_total: '06:00'
+daily_hours: 9.5
+origin:
+  lat: 41.7151
+  lon: 44.8271
+  road_factor: 1.25
+  speed_kmh: 55
+  name_ka: თბილისი
+  name_en: Tbilisi
+  name_ru: Тбилиси
+  name_fa: تفلیس
+  name_he: טביליסי
+  name_ar: تبليسي
 car_category: suv
 best_season: april-october
 difficulty: moderate
 image: ''
 waypoints: [asureti, bolnisi-sioni, dmanisi, samshvilde, dashbashi-canyon]
 polyline: []
-sources: [https://georgia.travel/regions/kvemo-kartli]
+sources: [https://georgia.travel/regions/kvemo-kartli, https://georgia.travel/popular-trips/one-day-kvemo-kartli-tour]
 ka: {name: ქვემო ქართლის არქეოლოგიური გზა, short: ასურეთი ბოლნისი დმანისი სამშვილდე და დაშბაშის ბუნებრივი ფინალი., body: ორი დღე აერთიანებს უძველეს ნაქალაქარებს მრავალკულტურულ დასახლებებსა და კანიონს., plan: '**დღე 1:** ასურეთი → ბოლნისი → დმანისი. **დღე 2:** სამშვილდე → დაშბაში.', tips: [დმანისის საათები გადაამოწმეთ., კანიონში მყარი ფეხსაცმელი ჩაიცვით.]}
 en: {name: Kvemo Kartli Archaeology Road, short: Asureti Bolnisi Dmanisi Samshvilde and a Dashbashi finale., body: Two days connecting ancient settlements multicultural towns and canyon scenery., plan: '**Day 1:** Asureti → Bolnisi → Dmanisi. **Day 2:** Samshvilde → Dashbashi.', tips: [Check Dmanisi opening hours., Wear firm shoes.]}
 ru: {name: Археологический путь Квемо-Картли, short: Асурети Болниси Дманиси Самшвилде и Дашбаши., body: Два дня древних поселений и каньона., plan: '**День 1:** Асурети → Болниси → Дманиси. **День 2:** Самшвилде → Дашбаши.', tips: [Проверьте часы Дманиси., Нужна удобная обувь.]}

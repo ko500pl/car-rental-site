@@ -9,21 +9,20 @@ order: 60
 image: /assets/photos/open-air-museum-of-ethnography.webp
 gallery:
 - image: /assets/photos/open-air-museum-of-ethnography-1.webp
-  author: Fabrice M from Paris, France
-  license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: https://commons.wikimedia.org/wiki/File:Galaktion_Tabidze_statue.jpg
-- image: /assets/photos/open-air-museum-of-ethnography-2.webp
-  author: იაპონიის საგარეო საქმეთა სამინისტრო
-  license: CC BY 4.0
-  license_url: https://creativecommons.org/licenses/by/4.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%E1%83%98%E1%83%90%E1%83%9E%E1%83%9D%E1%83%9C%E1%83%98%E1%83%98%E1%83%A1_%E1%83%93%E1%83%A0%E1%83%9D%E1%83%A8%E1%83%98%E1%83%A1_%E1%83%90%E1%83%A6%E1%83%9B%E1%83%90%E1%83%A0%E1%83%97%E1%83%95%E1%83%90_%E1%83%98%E1%83%90%E1%83%9E%E1%83%9D%E1%83%9C%E1%83%98%E1%83%98%E1%83%A1_%E1%83%A1%E1%83%90%E1%83%94%E1%83%9A%E1%83%A9%E1%83%9D%E1%83%A1_%E1%83%AC%E1%83%98%E1%83%9C_1.jpg
-- image: /assets/photos/open-air-museum-of-ethnography-3.webp
-  author: Yuri Samoylov
+  author: Kober
   license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:2023-08-11_Plaque_to_Vakhtang_Karseladze.jpg
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Tbilisi_Open_Air_Museum_of_Ethnography_19.jpg
+- image: /assets/photos/open-air-museum-of-ethnography-2.webp
+  author: Kober
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Tbilisi_Open_Air_Museum_of_Ethnography_05.jpg
+- image: /assets/photos/open-air-museum-of-ethnography-3.webp
+  author: Kober
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Tbilisi_Open_Air_Museum_of_Ethnography_22.jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true
@@ -256,8 +255,8 @@ ar:
     موقف مجاني قد يمتلئ في عطلات نهاية الأسبوع. الصعود معبّد ومفتوح طوال العام؛ ويتطلب بعض الحذر حين يتجمد
     في الشتاء، لكن سيارة اقتصادية تكفي تماماً. املأ الخزان في جادة تشافتشافادزي أو في أعلى فاكي.
 image_credit:
-  author: Alexey Komarov
+  author: Kober
   license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Tbilisi,_Vake_2023-09-04-2.jpg
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Tbilisi_Open_Air_Museum_of_Ethnography_13.jpg
 rating: 3.5

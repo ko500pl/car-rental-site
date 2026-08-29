@@ -17,7 +17,6 @@ drive_time_tbilisi: '0:10'
 road: paved
 car_category: economy
 nearby: [tbilisi-opera-ballet-theatre, dry-bridge-market, rustaveli-national-theatre]
-sources: [https://marjanishvili.com/]
 ka: {name: კოტე მარჯანიშვილის თეატრი, short: საქართველოს წამყვანი დრამატული თეატრი მარჯანიშვილის ქუჩაზე, დიდი და მცირე სცენებით., body: თეატრი აერთიანებს კლასიკურ და თანამედროვე რეპერტუარს; კონკრეტული სპექტაკლი აირჩიეთ მოგზაურობის თარიღის მიხედვით., tip: სეზონი და ყოველდღიური პროგრამა წინასწარ ნახეთ ოფიციალურ საიტზე., route: მარჯანიშვილის ქუჩა 8; მეტრო მარჯანიშვილიდან ფეხით რამდენიმე წუთია.}
 en: {name: Kote Marjanishvili Theatre, short: A leading Georgian drama theatre with main and small stages on Marjanishvili Street., body: Its repertoire combines classic and contemporary work; choose the actual performance for your travel date., tip: Check the current season and daily programme on the official site., route: 8 Marjanishvili Street, a short walk from Marjanishvili metro.}
 ru: {name: Театр имени Коте Марджанишвили, short: Один из ведущих драматических театров Грузии с большой и малой сценами., body: Выберите конкретный спектакль по афише на дату поездки., tip: Проверьте сезон и программу на официальном сайте., route: Ул. Марджанишвили 8, рядом с метро.}
@@ -29,3 +28,5 @@ image_credit:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Mardjanishvili_Theatre_Tbilisi.jpg
+rating: 4.5
+sources: [https://marjanishvili.com/]

@@ -7,11 +7,6 @@ unesco: false
 featured: false
 order: 55
 image: /assets/photos/sameba-jikheti-monastery-summer.jpg
-image_credit:
-  author: M.
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Jikheti_church_summer_2018.jpg
 gallery:
 - image: /assets/photos/sameba-jikheti-monastery-summer.jpg
   author: M.
@@ -40,7 +35,6 @@ nearby:
 - lanchkhuti
 - jumati-monastery
 - nodar-dumbadze-house-museum
-rating: 4.5
 ka:
   name: სამება–ჯიხეთის დედათა მონასტერი
   short: 1896 წელს დაარსებული მოქმედი დედათა მონასტერი გურიის ტყიან ბორცვებზე, ლანჩხუთის მუნიციპალიტეტში.
@@ -93,3 +87,9 @@ ar:
   body: '**ساميبا–جيخيتي** دير عامل ومركز روحي مهم في غوريا.'
   tip: يرجى ارتداء ملابس محتشمة والحفاظ على الهدوء أثناء الصلاة.
   route: اتبع طريق E60 نحو لانشخوتي؛ الجزء الأخير طريق محلي ضيق.
+image_credit:
+  author: M.
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Jikheti_church_summer_2018.jpg
+rating: 4.5

@@ -9,20 +9,15 @@ order: 60
 image: /assets/photos/khulo-cable-car-upper-adjara.webp
 gallery:
 - image: /assets/photos/khulo-cable-car-upper-adjara-1.webp
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Khulo,_Georgia_-_panoramio.jpg
+  author: "Gaga.vaa"
+  license: "CC BY-SA 4.0"
+  license_url: "https://creativecommons.org/licenses/by-sa/4.0"
+  source: "https://commons.wikimedia.org/wiki/File:Khulo,_wiev_from_Tago_Cableway_Station.jpg"
 - image: /assets/photos/khulo-cable-car-upper-adjara-2.webp
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Khulo,_Georgia_-_panoramio_(1).jpg
-- image: /assets/photos/khulo-cable-car-upper-adjara-3.webp
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Vil._chao_-_panoramio.jpg
+  author: "Jelger Groeneveld"
+  license: "CC BY 2.0"
+  license_url: "https://creativecommons.org/licenses/by/2.0"
+  source: "https://commons.wikimedia.org/wiki/File:Khulo_main_street_Sh1.jpg"
 visit_hours: '3'
 best_season: may-october
 open_year_round: true
@@ -279,9 +274,8 @@ ar:
     وإن تابعت فوق ممر غوديردزي فإن سيارة 4x4 تصبح ضرورية خارج أشهر الصيف، والسطح هناك غير معبّد في مقاطع
     منه.
 image_credit:
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%E1%83%A1%E1%83%90%E1%83%AE%E1%83%9A%E1%83%98_%E1%83%99%E1%83%9A%E1%83%93%E1%83%98%E1%83%A1_%E1%83%AB%E1%83%98%E1%83%A0%E1%83%90%E1%83%A1_-_panoramio.jpg
+  author: "Jelger Groeneveld"
+  license: "CC BY 2.0"
+  license_url: "https://creativecommons.org/licenses/by/2.0"
+  source: "https://commons.wikimedia.org/wiki/File:Starting_point_of_Khulo_-_Tago_ropeway_cable_car.jpg"
 rating: 4.5

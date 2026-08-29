@@ -1,0 +1,39 @@
+status: published
+order: 480
+days: 1
+nights: 0
+purpose: performance
+min_people: 1
+max_people: 8
+distance_km: 8
+drive_time_total: '00:30'
+daily_hours: 11
+origin:
+  lat: 41.6941
+  lon: 44.8015
+  road_factor: 1.2
+  speed_kmh: 25
+  name_ka: თავისუფლების მოედანი
+  name_en: Freedom Square
+  name_ru: Площадь Свободы
+  name_fa: میدان آزادی
+  name_he: כיכר החירות
+  name_ar: ساحة الحرية
+car_category: economy
+best_season: all
+difficulty: easy
+image: ''
+waypoints: [georgian-national-museum, tbilisi-opera-ballet-theatre, rustaveli-national-theatre, sololaki-art-nouveau]
+polyline: []
+sources: [https://opera.ge/geo/playbill, https://rustavelitheatre.ge/, https://museum.ge/]
+ka:
+  name: მუზეუმი თეატრი და საღამოს წარმოდგენა
+  short: ეროვნული მუზეუმი რუსთაველის გამზირი და წინასწარ არჩეული წარმოდგენა.
+  body: მოქნილი კულტურული დღე რომლის ბოლო ნაწილი კონკრეტულ თარიღზე ხელმისაწვდომ ოპერას ბალეტს ან დრამატულ სპექტაკლს ერგება.
+  plan: 'თავისუფლების მოედანი → ეროვნული მუზეუმი → ოპერის თეატრი → რუსთაველის თეატრი → სოლოლაკი → არჩეული საღამოს წარმოდგენა.'
+  tips: [ჯერ შეარჩიეთ სპექტაკლი და დღის სხვა გაჩერებები მის დაწყების დროს მოარგეთ., ცენტრში ავტომობილის ნაცვლად ფეხით და მეტროთი გადაადგილდით.]
+en: {name: Museum Theatre and Evening Performance, short: National Museum Rustaveli Avenue and a pre-selected performance., body: A flexible culture day ending with an opera ballet or drama available on the selected date., plan: 'Freedom Square → National Museum → Opera House → Rustaveli Theatre → Sololaki → selected evening performance.', tips: [Choose the performance first and fit daytime stops to its start time., Walk or use the metro instead of driving in the centre.]}
+ru: {name: Музей театр и вечерний спектакль, short: Национальный музей проспект Руставели и заранее выбранное представление., body: Гибкий культурный день с оперой балетом или драмой доступной на выбранную дату., plan: 'Площадь Свободы → Национальный музей → Опера → театр Руставели → Сололаки → выбранный спектакль.', tips: [Сначала выберите спектакль и подстройте дневные остановки., В центре ходите пешком или пользуйтесь метро.]}
+fa: {name: موزه تئاتر و اجرای شب, short: موزه ملی خیابان روستاولی و اجرای از پیش انتخاب‌شده., body: روز فرهنگی منعطف با اپرا باله یا نمایشی که در تاریخ انتخابی موجود است., plan: 'میدان آزادی ← موزه ملی ← اپرا ← تئاتر روستاولی ← سولولاکی ← اجرای شب.', tips: [ابتدا اجرا را انتخاب و برنامه روز را با زمان آن هماهنگ کنید., در مرکز پیاده یا با مترو بروید.]}
+he: {name: מוזיאון תיאטרון ומופע ערב, short: המוזיאון הלאומי שדרת רוסתוולי ומופע שנבחר מראש., body: יום תרבות גמיש המסתיים באופרה בלט או דרמה הזמינים בתאריך שנבחר., plan: 'כיכר החירות ← המוזיאון הלאומי ← האופרה ← תיאטרון רוסתוולי ← סולולקי ← מופע ערב.', tips: [בחרו קודם את המופע והתאימו אליו את היום., במרכז לכו ברגל או השתמשו במטרו.]}
+ar: {name: متحف ومسرح وعرض مسائي, short: المتحف الوطني وشارع روستافيلي وعرض مختار مسبقاً., body: يوم ثقافي مرن ينتهي بأوبرا أو باليه أو مسرحية متاحة في التاريخ المختار., plan: 'ساحة الحرية ← المتحف الوطني ← الأوبرا ← مسرح روستافيلي ← سولولاكي ← العرض المسائي.', tips: [اختاروا العرض أولاً واضبطوا محطات النهار على موعده., تنقلوا مشياً أو بالمترو في المركز.]}

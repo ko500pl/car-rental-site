@@ -7,17 +7,7 @@ unesco: false
 featured: false
 order: 75
 image: /assets/photos/sarpi-beach.webp
-gallery:
-- image: /assets/photos/sarpi-beach-1.webp
-  author: Frank Miller from Washington, DC, United States
-  license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: https://commons.wikimedia.org/wiki/File:Sarpi,_Georgia_(503).jpg
-- image: /assets/photos/sarpi-beach-2.webp
-  author: Андрей Бобровский
-  license: CC BY 3.0
-  license_url: https://creativecommons.org/licenses/by/3.0
-  source: https://commons.wikimedia.org/wiki/File:Sarpi,_Georgia_-_panoramio_(3).jpg
+gallery: []
 visit_hours: '3'
 best_season: june-september
 open_year_round: true

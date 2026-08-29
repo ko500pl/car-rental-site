@@ -8,21 +8,11 @@ featured: false
 order: 30
 image: /assets/photos/chalaadi-glacier.webp
 gallery:
-- image: /assets/photos/chalaadi-glacier-1.webp
-  author: Alex Mestiashvili
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:View_from_Mt.Banguriani_-_panoramio.jpg
 - image: /assets/photos/chalaadi-glacier-2.webp
-  author: Alex Mestiashvili
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:The_view_to_Mestia_from_Mt._Banguriani_-_panoramio.jpg
-- image: /assets/photos/chalaadi-glacier-3.webp
-  author: Alen Ištoković
-  license: CC BY 3.0
-  license_url: https://creativecommons.org/licenses/by/3.0
-  source: https://commons.wikimedia.org/wiki/File:Bridge_to_the_Chaladi_glacier_-_panoramio.jpg
+  author: Boris Kuznetsov
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:On_the_trail_to_Chalaadi_Glacier,_Samegrelo-Zemo_Svaneti,_Georgia.jpg
 visit_hours: '4'
 best_season: june-september
 open_year_round: false
@@ -254,8 +244,8 @@ ar:
     أوفر بسهولة، أما بسيارة منخفضة فالأفضل التوقف قبل كيلومتر ومواصلة المشي. املأ الخزان في ميستيا، فلا
     وقود في الوادي. ويشغّل سائقون محليون رحلات نقل من وسط البلدة إن كنت تفضل ألا تصعد بسيارتك.
 image_credit:
-  author: Martin Cígler
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Z%C3%A1v%C4%9Br_doliny_pod_ledovcem_Murkvami_-_panoramio.jpg
+  author: Jelger Groeneveld
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Chalaadi_Glacier_and_Mt_Chatintau.jpg
 rating: 4.5

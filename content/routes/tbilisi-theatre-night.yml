@@ -7,6 +7,18 @@ min_people: 1
 max_people: 8
 distance_km: 9
 drive_time_total: '0:35'
+daily_hours: 10.5
+origin:
+  lat: 41.7151
+  lon: 44.8271
+  road_factor: 1.25
+  speed_kmh: 55
+  name_ka: თბილისი
+  name_en: Tbilisi
+  name_ru: Тбилиси
+  name_fa: تفلیس
+  name_he: טביליסי
+  name_ar: تبليسي
 car_category: economy
 best_season: all
 difficulty: easy

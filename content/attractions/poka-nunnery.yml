@@ -7,11 +7,6 @@ unesco: false
 featured: false
 order: 60
 image: /assets/photos/poka-nunnery.jpg
-image_credit:
-  author: ჯაბა ლაბაძე (Jaba1977)
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Foka_St._Nino_Monastery_(19).jpg
 gallery:
 - image: /assets/photos/poka-nunnery.jpg
   author: ჯაბა ლაბაძე (Jaba1977)
@@ -326,4 +321,9 @@ ar:
     الشمالي الغربي للبحيرة. المجموع 170 كم ونحو ثلاث ساعات. الطريق معبّد في معظمه، وإن تفاوتت جودته فوق
     الهضبة وبقيت السرعة المتوسطة منخفضة؛ والمقطع الأخير إلى الدير حصوي. تزوّد بالوقود في تسالكا. ويفضل
     مركبة بارتفاع هيكل معقول، وفي الشتاء ليست خياراً.
+image_credit:
+  author: ჯაბა ლაბაძე (Jaba1977)
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Foka_St._Nino_Monastery_(19).jpg
 rating: 3.5

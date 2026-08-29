@@ -7,22 +7,7 @@ unesco: false
 featured: false
 order: 60
 image: /assets/photos/kinchkha-waterfall.webp
-gallery:
-- image: /assets/photos/kinchkha-waterfall-1.webp
-  author: Alexey Komarov
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:A_waterfall_seen_from_the_trail_to_Oniore_Waterfall.jpg
-- image: /assets/photos/kinchkha-waterfall-2.webp
-  author: Alexey Komarov
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:River_Abasha_close_to_Oniore_waterfall.jpg
-- image: /assets/photos/kinchkha-waterfall-3.webp
-  author: Alexey Komarov
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Oniore_Waterfall_2023-08-27-1.jpg
+gallery: []
 visit_hours: '2'
 best_season: may-october
 open_year_round: false
@@ -298,8 +283,8 @@ ar:
     وفي الشتاء يتعذر سلوك الطريق غالباً. املأ الخزان في كوتايسي أو خوني. ويمكنك مقارنة فئات السيارات في
     صفحة /fleet/.
 image_credit:
-  author: Alexey Komarov
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Trail_to_Oniore_Waterfall_2023-08-27-2.jpg
+  author: M.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Kinchkha_Waterfall.jpg
 rating: 4.0

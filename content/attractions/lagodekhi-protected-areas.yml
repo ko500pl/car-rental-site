@@ -7,18 +7,7 @@ unesco: false
 featured: false
 order: 110
 image: /assets/photos/lagodekhi-protected-areas.webp
-gallery:
-- image: /assets/photos/lagodekhi-protected-areas-3.webp
-  author: w0zny
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Lagodekhi,_Georgia_Bebop_Drone_2015-08-28T193016%2B0000_180817.jpg
-- image: /assets/photos/lagodekhi-protected-areas-4.webp
-  author: Giorgimailo
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%E1%B2%A1%E1%83%A3%E1%83%91%E1%83%90%E1%83%9A%E1%83%9E%E1%83%A3%E1%83%A0%E1%83%98_%E1%83%9E%E1%83%90%E1%83%A0%E1%83%99%E1%83%A3%E1%83%9A%E1%83%98_%E1%83%A2%E1%83%A7%E1%83%94.jpg
+gallery: []
 visit_hours: '6'
 best_season: may-october
 open_year_round: true

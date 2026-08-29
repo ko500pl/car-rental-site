@@ -1,0 +1,34 @@
+status: published
+order: 420
+days: 2
+nights: 1
+purpose: spa
+min_people: 2
+max_people: 8
+distance_km: 310
+drive_time_total: '08:00'
+daily_hours: 11.5
+origin:
+  lat: 41.9241
+  lon: 42.0068
+  road_factor: 1.38
+  speed_kmh: 42
+  name_ka: ოზურგეთი
+  name_en: Ozurgeti
+  name_ru: Озургети
+  name_fa: اوزورگتی
+  name_he: אוזורגתי
+  name_ar: أوزورغيتي
+car_category: offroad
+best_season: june-september
+difficulty: moderate
+image: ''
+waypoints: [nabeghlavi, bakhmaro, gomismta]
+polyline: []
+sources: [https://georgia.travel/regions/guria, https://georgia.travel/summer-adventures]
+ka: {name: გურიის მთის კურორტები, short: ნაბეღლავი ბახმარო ოზურგეთი და გომისმთა ორ დღეში., body: ორდღიანი 4x4 მარშრუტი გურიის მინერალური წყლებისა და მაღალმთიანი კურორტებისთვის., plan: '**დღე 1:** ოზურგეთი → ნაბეღლავი → ბახმარო. **დღე 2:** ოზურგეთი → გომისმთა → ოზურგეთი.', tips: [მარშრუტი მხოლოდ კარგ სეზონსა და ამინდში დაგეგმეთ., საწვავი და საგანგებო მარაგი წინასწარ მოამზადეთ.]}
+en: {name: Guria Mountain Resorts, short: Nabeghlavi Bakhmaro Ozurgeti and Gomismta in two days., body: A two-day 4x4 route for Guria's mineral-water stops and highland resorts., plan: '**Day 1:** Ozurgeti → Nabeghlavi → Bakhmaro. **Day 2:** Ozurgeti → Gomismta → Ozurgeti.', tips: [Travel only in suitable season and weather., Prepare fuel and emergency supplies.]}
+ru: {name: Горные курорты Гурии, short: Набеглави Бахмаро Озургети и Гомисмта за два дня., body: Двухдневный маршрут 4x4 к минеральным водам и высокогорным курортам., plan: '**День 1:** Озургети → Набеглави → Бахмаро. **День 2:** Озургети → Гомисмта → Озургети.', tips: [Езжайте только в подходящий сезон., Подготовьте топливо и запас.]}
+fa: {name: اقامتگاه‌های کوهستانی گوریا, short: نابغلاوی باخمارو اوزورگتی و گومیسمتا در دو روز., body: مسیر دو روزه چهارچرخ برای آب معدنی و ارتفاعات گوریا., plan: '**روز ۱:** اوزورگتی ← نابغلاوی ← باخمارو. **روز ۲:** اوزورگتی ← گومیسمتا ← اوزورگتی.', tips: [فقط در فصل و هوای مناسب بروید., سوخت و لوازم اضطراری آماده کنید.]}
+he: {name: אתרי הנופש ההרריים של גוריה, short: נבגלבי בחמרו אוזורגתי וגומיסמתה ביומיים., body: מסלול 4x4 בן יומיים למים מינרליים ולאתרי ההר של גוריה., plan: '**יום 1:** אוזורגתי ← נבגלבי ← בחמרו. **יום 2:** אוזורגתי ← גומיסמתה ← אוזורגתי.', tips: [סעו רק בעונה ובמזג אוויר מתאימים., הכינו דלק וציוד חירום.]}
+ar: {name: منتجعات جبال غوريا, short: نابيغلافي وباخمارو وأوزورغيتي وغوميسمتا في يومين., body: مسار 4x4 ليومين للمياه المعدنية والمرتفعات., plan: '**اليوم 1:** أوزورغيتي ← نابيغلافي ← باخمارو. **اليوم 2:** أوزورغيتي ← غوميسمتا ← أوزورغيتي.', tips: [سافروا فقط في الموسم والطقس المناسبين., جهزوا الوقود ومستلزمات الطوارئ.]}

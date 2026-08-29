@@ -8,16 +8,16 @@ featured: true
 order: 10
 image: /assets/photos/batumi-boulevard-old-town.webp
 gallery:
+- image: /assets/photos/batumi-boulevard-old-town-1.webp
+  author: "Sosotedrd"
+  license: "CC BY-SA 4.0"
+  license_url: "https://creativecommons.org/licenses/by-sa/4.0"
+  source: "https://commons.wikimedia.org/wiki/File:Batumi_Boulevard_Bycicle_Path.jpg"
 - image: /assets/photos/batumi-boulevard-old-town-2.webp
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Untitled1_-_panoramio_(112).jpg
-- image: /assets/photos/batumi-boulevard-old-town-3.webp
-  author: Soghomon Matevosyan
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Batumi_Panorama_(24).jpg
+  author: "Sosotedrd"
+  license: "CC BY-SA 4.0"
+  license_url: "https://creativecommons.org/licenses/by-sa/4.0"
+  source: "https://commons.wikimedia.org/wiki/File:Batumi_Boulevard_Colonnades.jpg"
 visit_hours: '6'
 best_season: all
 open_year_round: true
@@ -235,8 +235,8 @@ ar:
     الطريق كله معبّد وجزء كبير منه مزدوج، فسيارة اقتصادية تكفي تماماً. والوقود متوفر على طول الطريق. وفي
     عطلات نهاية الأسبوع الصيفية انطلق مبكراً، إذ تتراكم حركة الساحل من منتصف الصباح فصاعداً.
 image_credit:
-  author: Greg McMullen from Vancouver, BC, Canada
-  license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: https://commons.wikimedia.org/wiki/File:Batumi_(3001).jpg
+  author: "Sosotedrd"
+  license: "CC BY-SA 4.0"
+  license_url: "https://creativecommons.org/licenses/by-sa/4.0"
+  source: "https://commons.wikimedia.org/wiki/File:Batumi_Boulevard_Alley.jpg"
 rating: 5.0

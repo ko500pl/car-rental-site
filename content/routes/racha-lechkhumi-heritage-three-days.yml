@@ -1,0 +1,34 @@
+status: published
+order: 430
+days: 3
+nights: 2
+purpose: culture
+min_people: 2
+max_people: 10
+distance_km: 470
+drive_time_total: '10:00'
+daily_hours: 11
+origin:
+  lat: 42.2679
+  lon: 42.6946
+  road_factor: 1.3
+  speed_kmh: 48
+  name_ka: ქუთაისი
+  name_en: Kutaisi
+  name_ru: Кутаиси
+  name_fa: کوتایسی
+  name_he: כותאיסי
+  name_ar: كوتايسي
+car_category: suv
+best_season: may-october
+difficulty: moderate
+image: ''
+waypoints: [shaori-reservoir, nikortsminda-cathedral, barakoni-church, minda-fortress, ambrolauri, khvanchkara-wine-zone, oni-synagogue, mravaldzali, lentekhi, mount-khvamli]
+polyline: []
+sources: [https://georgia.travel/regions/racha-lechkhumi, https://georgia.travel/destinations-in-georgia]
+ka: {name: რაჭა-ლეჩხუმის მემკვიდრეობის სამი დღე, short: ტაძრები ციხეები ხვანჭკარა ონი ლენტეხი და ხვამლის მასივი., body: ქუთაისიდან სამდღიანი კულტურულ-ლანდშაფტური მარშრუტი რაჭისა და ლეჩხუმის ერთმანეთისგან განსხვავებულ ხეობებში., plan: '**დღე 1:** შაორი → ნიკორწმინდა → ბარაკონი → ამბროლაური. **დღე 2:** ხვანჭკარა → მინდა ციხე → ონის სინაგოგა → მრავალძალი. **დღე 3:** ლენტეხი → ხვამლის მასივი → ქუთაისი.', tips: [ხვამლის მონაკვეთი ამინდზე მოარგეთ., ღამისთევა წინასწარ დაჯავშნეთ.]}
+en: {name: Three Days of Racha-Lechkhumi Heritage, short: Churches fortresses Khvanchkara Oni Lentekhi and Mount Khvamli., body: A three-day cultural landscape route from Kutaisi through the contrasting valleys of Racha and Lechkhumi., plan: '**Day 1:** Shaori → Nikortsminda → Barakoni → Ambrolauri. **Day 2:** Khvanchkara → Minda Fortress → Oni Synagogue → Mravaldzali. **Day 3:** Lentekhi → Mount Khvamli → Kutaisi.', tips: [Adapt the Khvamli section to weather., Book overnight stays in advance.]}
+ru: {name: Три дня наследия Рача-Лечхуми, short: Храмы крепости Хванчкара Они Лентехи и гора Хвамли., body: Трехдневный культурный маршрут из Кутаиси по разным долинам Рачи и Лечхуми., plan: '**День 1:** Шаори → Никорцминда → Баракони → Амбролаури. **День 2:** Хванчкара → Минда → синагога Они → Мравалдзали. **День 3:** Лентехи → Хвамли → Кутаиси.', tips: [Учитывайте погоду на Хвамли., Бронируйте ночлег заранее.]}
+fa: {name: سه روز میراث راچا و لچخومی, short: کلیساها قلعه‌ها خوانچکارا اونی لنتخی و کوه خواملی., body: مسیر سه روزه فرهنگی از کوتایسی در دره‌های متفاوت راچا و لچخومی., plan: '**روز ۱:** شائوری ← نیکورتسمیندا ← باراکونی ← آمبرولائوری. **روز ۲:** خوانچکارا ← قلعه میندا ← کنیسه اونی ← مراوالدزالی. **روز ۳:** لنتخی ← کوه خواملی ← کوتایسی.', tips: [بخش خواملی را با هوا هماهنگ کنید., اقامت را از پیش رزرو کنید.]}
+he: {name: שלושה ימי מורשת רצ'ה-לצ'חומי, short: כנסיות מבצרים חוואנצ'קרה אוני לנתכי והר חוואמלי., body: מסלול תרבות ונוף בן שלושה ימים מכותאיסי בעמקי רצ'ה ולצ'חומי., plan: '**יום 1:** שאורי ← ניקורצמינדה ← ברקוני ← אמברולאורי. **יום 2:** חוואנצ׳קרה ← מבצר מינדה ← בית הכנסת באוני ← מראוולדזלי. **יום 3:** לנתכי ← הר חוואמלי ← כותאיסי.', tips: [התאימו את חוואמלי למזג האוויר., הזמינו לינה מראש.]}
+ar: {name: ثلاثة أيام من تراث راتشا وليتشخومي, short: كنائس وقلاع وخفانتشكارا وأوني ولينتيخي وجبل خفاملي., body: مسار ثقافي طبيعي لثلاثة أيام من كوتايسي عبر وديان راتشا وليتشخومي., plan: '**اليوم 1:** شاوري ← نيكورتسميندا ← باراكوني ← أمبرولاوري. **اليوم 2:** خفانتشكارا ← قلعة ميندا ← كنيس أوني ← مرافالدزالي. **اليوم 3:** لينتيخي ← جبل خفاملي ← كوتايسي.', tips: [كيفوا قسم خفاملي مع الطقس., احجزوا المبيت مسبقا.]}

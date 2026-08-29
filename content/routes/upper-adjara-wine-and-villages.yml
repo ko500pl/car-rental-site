@@ -7,13 +7,25 @@ min_people: 2
 max_people: 12
 distance_km: 360
 drive_time_total: '08:30'
+daily_hours: 8
+origin:
+  lat: 41.6168
+  lon: 41.6367
+  road_factor: 1.3
+  speed_kmh: 45
+  name_ka: ბათუმი
+  name_en: Batumi
+  name_ru: Батуми
+  name_fa: باتومی
+  name_he: בטומי
+  name_ar: باتومي
 car_category: suv
 best_season: may-october
 difficulty: moderate
 image: ''
 waypoints: [makhuntseti-waterfall, keda-wine-cellars, khulo-cable-car-upper-adjara, skhalta-monastery, green-lake-goderdzi, beshumi]
 polyline: []
-sources: [https://georgia.travel/food-wine]
+sources: [https://georgia.travel/food-wine, https://georgia.travel/regions/ajara]
 ka: {name: ზემო აჭარა — ღვინო და სოფლები, short: ქედის მარნები ხულო სხალთა მწვანე ტბა და ბეშუმი ოთხ დღეში., body: გასტრონომიული მთის ტური აჭარულ ღვინოს სოფლის მასპინძლობასა და მაღალმთიან ხედებს აერთიანებს., plan: '**დღე 1:** მახუნცეთი → ქედა. **დღე 2:** ხულო → სხალთა. **დღე 3:** მწვანე ტბა. **დღე 4:** ბეშუმი.', tips: [დეგუსტაციაზე მძღოლი არ სვამს., ტბამდე SUV გამოიყენეთ.]}
 en: {name: Upper Adjara Wine and Villages, short: Keda cellars Khulo Skhalta Green Lake and Beshumi in four days., body: A mountain food tour combining Adjara wine village hospitality and highland views., plan: '**Day 1:** Makhuntseti → Keda. **Day 2:** Khulo → Skhalta. **Day 3:** Green Lake. **Day 4:** Beshumi.', tips: [The driver must not taste wine., Use an SUV for the lake.]}
 ru: {name: Вино и села Верхней Аджарии, short: Кеда Хуло Схалта Зеленое озеро и Бешуми., body: Вино деревенское гостеприимство и горные виды., plan: '**День 1:** Махунцети → Кеда. **День 2:** Хуло → Схалта. **День 3:** озеро. **День 4:** Бешуми.', tips: [Водитель не дегустирует., До озера нужен SUV.]}

@@ -1,0 +1,39 @@
+status: published
+order: 470
+days: 6
+nights: 5
+purpose: classic
+min_people: 2
+max_people: 10
+distance_km: 900
+drive_time_total: '18:00'
+daily_hours: 9
+origin:
+  lat: 41.7151
+  lon: 44.8271
+  road_factor: 1.25
+  speed_kmh: 52
+  name_ka: თბილისი
+  name_en: Tbilisi
+  name_ru: Тбилиси
+  name_fa: تفلیس
+  name_he: טביליסי
+  name_ar: تبليسي
+car_category: suv
+best_season: april-october
+difficulty: moderate
+image: ''
+waypoints: [betlemi-quarter, jvari-monastery, svetitskhoveli-cathedral, ananuri-fortress, gergeti-trinity-church, bodbe-monastery, sighnaghi, uplistsikhe, gelati-monastery, bagrati-cathedral, prometheus-cave]
+polyline: []
+sources: [https://georgia.travel/destinations-in-georgia, https://georgia.travel/regions/kakheti, https://georgia.travel/regions/mtskheta-mtianeti, https://georgia.travel/uplistsikhe]
+ka:
+  name: საქართველოს მთავარი ადგილები — 6 დღე
+  short: თბილისი მცხეთა ყაზბეგი კახეთი უფლისციხე და ქუთაისი ექვს დაბალანსებულ დღეში.
+  body: პირველი ვიზიტისთვის განკუთვნილი კომპაქტური კლასიკური ტური რომელიც აერთიანებს ძველ ქალაქებს კავკასიონის ხედებს ღვინის მხარეს და იმერეთის მთავარ ძეგლებს.
+  plan: 'დღე 1: თბილისი. დღე 2: მცხეთა და ანანური. დღე 3: ყაზბეგი. დღე 4: ბოდბე და სიღნაღი. დღე 5: უფლისციხე და ქუთაისში გადასვლა. დღე 6: გელათი ბაგრატი და პრომეთეს მღვიმე.'
+  tips: [ღამისთევა დაგეგმეთ თბილისში ყაზბეგში და ქუთაისში გზის შესამცირებლად., მღვიმის ბილეთი და სამუშაო საათები წინასწარ გადაამოწმეთ.]
+en: {name: Georgia Essentials in Six Days, short: Tbilisi Mtskheta Kazbegi Kakheti Uplistsikhe and Kutaisi in six balanced days., body: A compact first-visit classic combining old towns Caucasus views wine country and the principal heritage of Imereti., plan: 'Day 1: Tbilisi. Day 2: Mtskheta and Ananuri. Day 3: Kazbegi. Day 4: Bodbe and Sighnaghi. Day 5: Uplistsikhe and transfer to Kutaisi. Day 6: Gelati Bagrati and Prometheus Cave.', tips: [Use overnights in Tbilisi Kazbegi and Kutaisi to reduce driving., Check cave tickets and opening hours in advance.]}
+ru: {name: Главное в Грузии за шесть дней, short: Тбилиси Мцхета Казбеги Кахетия Уплисцихе и Кутаиси за шесть сбалансированных дней., body: Компактный классический маршрут для первой поездки с городами Кавказом винным краем и памятниками Имеретии., plan: 'День 1: Тбилиси. День 2: Мцхета и Ананури. День 3: Казбеги. День 4: Бодбе и Сигнахи. День 5: Уплисцихе и переезд в Кутаиси. День 6: Гелати Баграти и пещера Прометея.', tips: [Ночуйте в Тбилиси Казбеги и Кутаиси чтобы сократить дорогу., Заранее проверьте билеты и часы пещеры.]}
+fa: {name: مهم‌ترین‌های گرجستان در شش روز, short: تفلیس متسختا کازبگی کاختی اوپلیستسیخه و کوتایسی در شش روز متعادل., body: برنامه کلاسیک فشرده برای سفر اول با شهرهای قدیمی مناظر قفقاز سرزمین شراب و آثار ایمرتی., plan: 'روز ۱: تفلیس. روز ۲: متسختا و آنانوری. روز ۳: کازبگی. روز ۴: بودبه و سیغناغی. روز ۵: اوپلیستسیخه و انتقال به کوتایسی. روز ۶: گلاتی باگراتی و غار پرومتئوس.', tips: [برای کاهش رانندگی در تفلیس کازبگی و کوتایسی اقامت کنید., بلیت و ساعت غار را پیشاپیش بررسی کنید.]}
+he: {name: עיקרי גאורגיה בשישה ימים, short: טביליסי מצחתה קזבגי קאחתי אופליסציחה וכותאיסי בשישה ימים מאוזנים., body: מסלול קלאסי קומפקטי לביקור ראשון עם ערים עתיקות נופי הקווקז אזור היין ואתרי אימרתי., plan: 'יום 1: טביליסי. יום 2: מצחתה ואנאנורי. יום 3: קזבגי. יום 4: בודבה וסיגנאגי. יום 5: אופליסציחה והעברה לכותאיסי. יום 6: גלאתי בגרתי ומערת פרומתאוס.', tips: [לונו בטביליסי קזבגי וכותאיסי כדי לצמצם נסיעות., בדקו כרטיסים ושעות למערה מראש.]}
+ar: {name: أساسيات جورجيا في ستة أيام, short: تبليسي ومتسخيتا وكازبيغي وكاخيتي وأوبليستسيخي وكوتايسي في ستة أيام متوازنة., body: مسار كلاسيكي مدمج للزيارة الأولى يجمع المدن القديمة والقوقاز وبلاد النبيذ وأهم معالم إيميريتي., plan: 'اليوم 1: تبليسي. اليوم 2: متسخيتا وأنانوري. اليوم 3: كازبيغي. اليوم 4: بودبي وسيغناغي. اليوم 5: أوبليستسيخي والانتقال إلى كوتايسي. اليوم 6: غيلاتي وباغراتي وكهف بروميثيوس.', tips: [بيتوا في تبليسي وكازبيغي وكوتايسي لتقليل القيادة., تحققوا من تذاكر الكهف وساعاته مسبقاً.]}

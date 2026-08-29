@@ -9,20 +9,20 @@ order: 75
 image: /assets/photos/khobi-monastery.webp
 gallery:
 - image: /assets/photos/khobi-monastery-1.webp
-  author: Jelger Groeneveld
-  license: CC BY 2.0
-  license_url: https://creativecommons.org/licenses/by/2.0
-  source: https://commons.wikimedia.org/wiki/File:Khobi_-_artwork_in_front_of_community_center.jpg
-- image: /assets/photos/khobi-monastery-2.webp
-  author: G.N.
+  author: A. Muhranoff
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Bulitsku,_Georgia_-_panoramio.jpg
+  source: https://commons.wikimedia.org/wiki/File:Khobi_Monastery_(A._Muhranoff,_2013)_07.jpg
+- image: /assets/photos/khobi-monastery-2.webp
+  author: A. Muhranoff
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Khobi_Monastery_(A._Muhranoff,_2013)_08.jpg
 - image: /assets/photos/khobi-monastery-3.webp
-  author: Earth Science and Remote Sensing Unit, NASA Johnson Space Center
-  license: Public domain
-  license_url: ''
-  source: https://commons.wikimedia.org/wiki/File:ISS062-E-101399_-_View_of_Earth.jpg
+  author: A. Muhranoff
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Khobi_Monastery_(A._Muhranoff,_2013)_10.jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -363,8 +363,8 @@ ar:
     ضيق فيه حفر، لكن السيارة المنخفضة تجتازه دون عناء. اللافتات متواضعة، فاهتدِ ببرج الأجراس. الوقوف عند
     البوابة مجاني. تزوّد بالوقود في سيناكي أو زوغديدي. والسيارة الاقتصادية كافية تماماً.
 image_credit:
-  author: Jelger Groeneveld
-  license: CC BY 2.0
-  license_url: https://creativecommons.org/licenses/by/2.0
-  source: https://commons.wikimedia.org/wiki/File:Main_street_through_Khobi.jpg
+  author: Unknown author Unknown author
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:Khobi_monastery,_Georgia_(Esadze,_1913).JPG
 rating: 3.5

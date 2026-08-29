@@ -106,9 +106,12 @@
     map: map,
     clearRoute: function () { routeLayer.clearLayers(); },
     setOrigin: function (p) {
-      if (!p || !isFinite(p.lat) || !isFinite(p.lon)) return;
+      if (!p) return;
+      var lat = p.lat != null ? p.lat : p.la;
+      var lon = p.lon != null ? p.lon : p.lo;
+      if (!isFinite(lat) || !isFinite(lon)) return;
       externalOrigin = {
-        s: p.s || 'planner-origin', n: p.n || '', la: Number(p.lat), lo: Number(p.lon),
+        s: p.s || 'planner-origin', n: p.n || '', la: Number(lat), lo: Number(lon),
         f: Number(p.f) || 1.4, v: Number(p.v) || 55, rd: 0, el: 0
       };
       state.from = null;

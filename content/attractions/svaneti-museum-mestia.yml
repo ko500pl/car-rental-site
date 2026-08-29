@@ -9,20 +9,20 @@ order: 35
 image: /assets/photos/svaneti-museum-mestia.webp
 gallery:
 - image: /assets/photos/svaneti-museum-mestia-1.webp
-  author: გრიგოლ
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:%E1%83%9B%E1%83%94%E1%83%A1%E1%83%A2%E1%83%98%E1%83%90,_2009.jpg
+  author: ceja_andina
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0/
+  source: https://commons.wikimedia.org/wiki/File:Georgia_2014_Svaneti_Ethnographic_Museum_Mestia.jpg
 - image: /assets/photos/svaneti-museum-mestia-2.webp
-  author: Alen Ištoković
-  license: CC BY 3.0
-  license_url: https://creativecommons.org/licenses/by/3.0
-  source: https://commons.wikimedia.org/wiki/File:Mestia,_Svaneti_-_panoramio.jpg
+  author: Peter Ashton  from Aylesbury, England
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0/
+  source: https://commons.wikimedia.org/wiki/File:Svaneti_Museum,_Mestia.jpg
 - image: /assets/photos/svaneti-museum-mestia-3.webp
-  author: U.S. Embassy Georgia
-  license: Public domain
-  license_url: ''
-  source: https://commons.wikimedia.org/wiki/File:Svaneti_Museum_(AFCP)_13.jpg
+  author: Peter Ashton  from Aylesbury, England
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0/
+  source: https://commons.wikimedia.org/wiki/File:Svaneti_Museum,_Mestia_(4).jpg
 visit_hours: '1.5'
 best_season: all
 open_year_round: true
@@ -394,8 +394,8 @@ ar:
     ويتجمد في الشتاء، وسقوط الصخور شائع فيه. المتحف في وسط مستيا وأمامه موقف. تزوّد بالوقود في زوغديدي؛
     فالمحطة التالية في خايشي وهي لا تعمل دائماً. ويُفضل مركبة مرتفعة أو دفع رباعي، وخاصة في الشتاء.
 image_credit:
-  author: Алла Лебедева
-  license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: https://commons.wikimedia.org/wiki/File:Georgia_(630).jpg
+  author: U.S. Embassy Georgia
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:Svaneti_Museum_(AFCP)_21.jpg
 rating: 3.0

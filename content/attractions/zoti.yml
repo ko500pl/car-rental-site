@@ -7,22 +7,7 @@ unesco: false
 featured: false
 order: 90
 image: /assets/photos/zoti.webp
-gallery:
-- image: /assets/photos/zoti-1.webp
-  author: M.
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Nabeghlavi_FA.jpg
-- image: /assets/photos/zoti-2.webp
-  author: Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center
-  license: Public domain
-  license_url: ''
-  source: https://commons.wikimedia.org/wiki/File:ISS066-E-179788_-_View_of_Earth.jpg
-- image: /assets/photos/zoti-3.webp
-  author: Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center
-  license: Public domain
-  license_url: ''
-  source: https://commons.wikimedia.org/wiki/File:ISS066-E-179789_-_View_of_Earth.jpg
+gallery: []
 visit_hours: '2'
 best_season: may-october
 open_year_round: false
@@ -251,8 +236,8 @@ ar:
     دقيقة. حتى تشوخاتاوري الطريق معبّد؛ وبعدها يتدهور باطراد: عشرة كيلومترات من إسفلت متكسر ثم حصى وحفر
     وعدة جسور. ارتفاع الهيكل ضروري. آخر وقود في تشوخاتاوري. وللمتابعة إلى باخمارو يلزم الدفع الرباعي.
 image_credit:
-  author: გრიგოლ
+  author: M.
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Gubazeuli_in_Nabeghlavi.jpg
+  source: https://commons.wikimedia.org/wiki/File:Riv._Gubazeuli_in_Zoti.jpg
 rating: 4.0

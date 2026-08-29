@@ -1,0 +1,34 @@
+status: published
+order: 410
+days: 2
+nights: 1
+purpose: family
+min_people: 2
+max_people: 8
+distance_km: 335
+drive_time_total: '07:10'
+daily_hours: 11
+origin:
+  lat: 42.2679
+  lon: 42.6946
+  road_factor: 1.25
+  speed_kmh: 52
+  name_ka: ქუთაისი
+  name_en: Kutaisi
+  name_ru: Кутаиси
+  name_fa: کوتایسی
+  name_he: כותאיסי
+  name_ar: كوتايسي
+car_category: suv
+best_season: may-october
+difficulty: easy
+image: ''
+waypoints: [shaori-reservoir, nikortsminda-cathedral, ambrolauri, khvanchkara-wine-zone, oni, utsera]
+polyline: []
+sources: [https://georgia.travel/regions/racha-lechkhumi, https://georgia.travel/destinations-in-georgia]
+ka: {name: რაჭის საოჯახო შაბათ-კვირა, short: შაორი ნიკორწმინდა ამბროლაური ხვანჭკარა ონი და უწერა., body: ორდღიანი მშვიდი მარშრუტი ქუთაისიდან ტბის ხედებით კულტურითა და მინერალური წყლებით., plan: '**დღე 1:** ქუთაისი → შაორი → ნიკორწმინდა → ამბროლაური → ხვანჭკარა. **დღე 2:** ონი → უწერა → ქუთაისი.', tips: [ღამე ამბროლაურში ან ონში დაგეგმეთ., ბავშვებისთვის თბილი ფენა იქონიეთ.]}
+en: {name: Racha Family Weekend, short: Shaori Nikortsminda Ambrolauri Khvanchkara Oni and Utsera., body: A relaxed two-day route from Kutaisi with lake views culture and mineral waters., plan: '**Day 1:** Kutaisi → Shaori → Nikortsminda → Ambrolauri → Khvanchkara. **Day 2:** Oni → Utsera → Kutaisi.', tips: [Stay overnight in Ambrolauri or Oni., Pack a warm layer for children.]}
+ru: {name: Семейные выходные в Раче, short: Шаори Никорцминда Амбролаури Хванчкара Они и Уцера., body: Спокойный двухдневный маршрут из Кутаиси с озером культурой и минеральными водами., plan: '**День 1:** Кутаиси → Шаори → Никорцминда → Амбролаури → Хванчкара. **День 2:** Они → Уцера → Кутаиси.', tips: [Ночуйте в Амбролаури или Они., Возьмите теплую одежду.]}
+fa: {name: آخر هفته خانوادگی راچا, short: شائوری نیکورتسمیندا آمبرولائوری خوانچکارا اونی و اوتسرا., body: مسیر آرام دو روزه از کوتایسی با دریاچه فرهنگ و آب معدنی., plan: '**روز ۱:** کوتایسی ← شائوری ← نیکورتسمیندا ← آمبرولائوری ← خوانچکارا. **روز ۲:** اونی ← اوتسرا ← کوتایسی.', tips: [شب را در آمبرولائوری یا اونی بمانید., لباس گرم همراه داشته باشید.]}
+he: {name: סוף שבוע משפחתי ברצ'ה, short: שאורי ניקורצמינדה אמברולאורי חוואנצ׳קרה אוני ואוצרה., body: מסלול רגוע בן יומיים מכותאיסי עם אגם תרבות ומים מינרליים., plan: '**יום 1:** כותאיסי ← שאורי ← ניקורצמינדה ← אמברולאורי ← חוואנצ׳קרה. **יום 2:** אוני ← אוצרה ← כותאיסי.', tips: [לונו באמברולאורי או באוני., ארזו שכבה חמה.]}
+ar: {name: عطلة عائلية في راتشا, short: شاوري ونيكورتسميندا وأمبرولاوري وخفانتشكارا وأوني وأوتسيرا., body: مسار هادئ ليومين من كوتايسي مع بحيرة وثقافة ومياه معدنية., plan: '**اليوم 1:** كوتايسي ← شاوري ← نيكورتسميندا ← أمبرولاوري ← خفانتشكارا. **اليوم 2:** أوني ← أوتسيرا ← كوتايسي.', tips: [بيتوا في أمبرولاوري أو أوني., احملوا طبقة دافئة.]}

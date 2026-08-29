@@ -13,16 +13,6 @@ gallery:
   license: CC BY 2.0
   license_url: https://creativecommons.org/licenses/by/2.0
   source: https://commons.wikimedia.org/wiki/File:Chanchakhi_River_near_Glola_(Mountain_Racha,_Georgia).jpg
-- image: /assets/photos/glola-2.webp
-  author: Yasuhiro Kojima
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:River_Notsarula.jpg
-- image: /assets/photos/glola-3.webp
-  author: Boris Kuznetsov
-  license: CC BY 2.0
-  license_url: https://creativecommons.org/licenses/by/2.0
-  source: https://commons.wikimedia.org/wiki/File:Sunset_in_Racha_Mountains,_Georgia.jpg
 visit_hours: '1.5'
 best_season: june-september
 open_year_round: false

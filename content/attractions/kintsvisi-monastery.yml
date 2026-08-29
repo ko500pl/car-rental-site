@@ -8,16 +8,6 @@ featured: false
 order: 40
 image: /assets/photos/kintsvisi-monastery.webp
 gallery:
-- image: /assets/photos/kintsvisi-monastery-1.webp
-  author: Jaba1977
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Kintsvisi_church.jpg
-- image: /assets/photos/kintsvisi-monastery-2.webp
-  author: Jaba1977
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Kintsvisi_church4.jpg
 - image: /assets/photos/kintsvisi-monastery-3.webp
   author: Jaba1977
   license: CC BY-SA 4.0
@@ -246,5 +236,5 @@ image_credit:
   author: Jaba1977
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Kintsvisi,_small_church.jpg
+  source: https://commons.wikimedia.org/wiki/File:Kintsvisi_church_(5).jpg
 rating: 4.0

@@ -9,20 +9,15 @@ order: 40
 image: /assets/photos/zhinvali-reservoir.webp
 gallery:
 - image: /assets/photos/zhinvali-reservoir-1.webp
-  author: Jonathan Cardy
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Ananuri_August_2013_02.jpg
+  author: This Photo was taken by Supanut Arunoprayote . Feel free to use any of my images, but please mention me as the author and may send me a message. (สามารถใช้ภาพได้อิสระ แต่กรุณาใส่เครดิตผู้ถ่ายและอาจส่ง ข้อความบอกกล่าวด้วย ) Please do not upload an updated image here without consultation with the Author. The author would like to make corrections only at his own source. This ensures that the changes are preserved. Please if you think that any changes should be required, please inform the author. Otherwise you can upload a new image with a new name. Please use one of the templates derivative or extract .
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0
+  source: https://commons.wikimedia.org/wiki/File:Panoraview_of_Zhinvali_Reservoir_09.23.jpg
 - image: /assets/photos/zhinvali-reservoir-2.webp
-  author: Jonathan Cardy
+  author: Karelj
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Ananuri_August_2013_13.jpg
-- image: /assets/photos/zhinvali-reservoir-3.webp
-  author: Jonathan Cardy
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Ananuri_August_2013_14.jpg
+  source: https://commons.wikimedia.org/wiki/File:Zhinvali_Dam_Gruzia_2019_4.jpg
 visit_hours: '1'
 best_season: may-october
 open_year_round: true
@@ -248,8 +243,8 @@ ar:
     المقطع صاحب الإطلالات. الإسفلت جيد لكنه ضيق منحوت في الصخر وكثير المنعطفات العمياء، فتجاوز الشاحنات
     بحذر. تزود بالوقود في ناتاختاري، فالمحطات تقل كلما ارتفعت. والسيارة الاقتصادية كافية تماماً.
 image_credit:
-  author: lumoplank
-  license: CC0
-  license_url: http://creativecommons.org/publicdomain/zero/1.0/deed.en
-  source: https://commons.wikimedia.org/wiki/File:Ananuri_Castle_Complex.jpg
+  author: Armineaghayan
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Zhinvali_reservoir,_Georgia_(4).jpg
 rating: 3.5

@@ -17,14 +17,12 @@ gallery:
   author: Alexkom000
   license: CC BY 4.0
   license_url: https://creativecommons.org/licenses/by/4.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:2023-12-26_Church_of_the_Annunciation_at_the_Chronicle_of_Georgia_monument.jpg
+  source: https://commons.wikimedia.org/wiki/File:2023-12-26_Church_of_the_Annunciation_at_the_Chronicle_of_Georgia_monument.jpg
 - image: /assets/photos/chronicle-of-georgia-3.webp
   author: Alexkom000
   license: CC BY 4.0
   license_url: https://creativecommons.org/licenses/by/4.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:2023-12-26_Church_of_the_Annunciation_at_the_Chronicle_of_Georgia_monument_(cropped).jpg
+  source: https://commons.wikimedia.org/wiki/File:2023-12-26_Church_of_the_Annunciation_at_the_Chronicle_of_Georgia_monument_(cropped).jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true
@@ -242,9 +240,9 @@ ar:
     مجاني عند الأعمدة مباشرة. وسيارة اقتصادية تفي بالغرض، وإن كانت الكروس أوفر تجعل المقطع الأخير أكثر
     راحة.
 image_credit:
-  author: MSO (Tagzania user ID 3984)
+  author: 'MSO (Tagzania user ID: 3984)'
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: >-
+  source: https://commons.wikimedia.org/wiki/File:Georgiaren_Kronikak_(Tbilisi)_-_The_Chronicle_of_Georgia_-_Tagzania_-_1775459623095.jpg
     https://commons.wikimedia.org/wiki/File:Georgiaren_Kronikak_(Tbilisi)_-_The_Chronicle_of_Georgia_-_Tagzania_-_1775459623095.jpg
 rating: 3.0

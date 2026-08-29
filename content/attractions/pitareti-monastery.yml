@@ -7,25 +7,7 @@ unesco: false
 featured: false
 order: 60
 image: /assets/photos/pitareti-monastery.webp
-gallery:
-- image: /assets/photos/pitareti-monastery-1.webp
-  author: ILIA
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%E1%83%A4%E1%83%98%E1%83%A2%E1%83%90%E1%83%A0%E1%83%94%E1%83%97%E1%83%98%E1%83%A1_%E1%83%9B%E1%83%9D%E1%83%9C%E1%83%90%E1%83%A1%E1%83%A2%E1%83%94%E1%83%A0%E1%83%98,_%E1%83%92%E1%83%A3%E1%83%9B%E1%83%91%E1%83%90%E1%83%97%E1%83%98%E1%83%90%E1%83%9C%E1%83%98_%E1%83%A2%E1%83%90%E1%83%AB%E1%83%90%E1%83%A0%E1%83%98,_%E1%83%A1%E1%83%90%E1%83%9B%E1%83%AE%E1%83%A0%E1%83%94%E1%83%97%E1%83%98_%E1%83%A4%E1%83%90%E1%83%A1%E1%83%90%E1%83%93%E1%83%98%E1%83%A1_%E1%83%93%E1%83%94%E1%83%A2%E1%83%90%E1%83%9A%E1%83%98.jpg
-- image: /assets/photos/pitareti-monastery-2.webp
-  author: ILIA
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%E1%83%A4%E1%83%98%E1%83%A2%E1%83%90%E1%83%A0%E1%83%94%E1%83%97%E1%83%98%E1%83%A1_%E1%83%9B%E1%83%9D%E1%83%9C%E1%83%90%E1%83%A1%E1%83%A2%E1%83%94%E1%83%A0%E1%83%98,_%E1%83%99%E1%83%90%E1%83%A0%E1%83%98%E1%83%91%E1%83%AD%E1%83%94-%E1%83%A1%E1%83%90%E1%83%9B%E1%83%A0%E1%83%94%E1%83%99%E1%83%9A%E1%83%9D.jpg
-- image: /assets/photos/pitareti-monastery-3.webp
-  author: ILIA
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%E1%83%A4%E1%83%98%E1%83%A2%E1%83%90%E1%83%A0%E1%83%94%E1%83%97%E1%83%98%E1%83%A1_%E1%83%9B%E1%83%9D%E1%83%9C%E1%83%90%E1%83%A1%E1%83%A2%E1%83%94%E1%83%A0%E1%83%98,_%E1%83%92%E1%83%A3%E1%83%9B%E1%83%91%E1%83%90%E1%83%97%E1%83%98%E1%83%90%E1%83%9C%E1%83%98_%E1%83%A2%E1%83%90%E1%83%AB%E1%83%90%E1%83%A0%E1%83%984.jpg
+gallery: []
 visit_hours: '2'
 best_season: may-october
 open_year_round: false
@@ -232,9 +214,9 @@ ar:
     حصوي ضيق كثير الأخاديد، فيلزم دفع رباعي أو ارتفاع عالٍ عن الأرض. تزوّد بالوقود في تيتريتسكارو. وتُترك
     السيارات أمام البوابة.
 image_credit:
-  author: Lgabelia
+  author: Jaba1977
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: >-
+  source: https://commons.wikimedia.org/wiki/File:Pitareti_church.jpg
     https://commons.wikimedia.org/wiki/File:%E1%83%A4%E1%83%98%E1%83%A2%E1%83%90%E1%83%A0%E1%83%94%E1%83%97%E1%83%98%E1%83%A1_%E1%83%9B%E1%83%9D%E1%83%9C%E1%83%90%E1%83%A1%E1%83%A2%E1%83%94%E1%83%A0%E1%83%98.jpg
 rating: 4.0

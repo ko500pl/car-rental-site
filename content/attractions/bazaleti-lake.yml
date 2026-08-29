@@ -6,18 +6,8 @@ elevation: 878
 unesco: false
 featured: false
 order: 35
-image: /assets/photos/bazaleti-lake.webp
+image: /assets/photos/bazaleti-lake-3.webp
 gallery:
-- image: /assets/photos/bazaleti-lake-1.webp
-  author: პაატა შ
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Dushetis_centri.JPG
-- image: /assets/photos/bazaleti-lake-2.webp
-  author: Yasuhiro Kojima
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:River_Abanoskhevi_(in_Abanoskhevi).jpg
 - image: /assets/photos/bazaleti-lake-3.webp
   author: Kober
   license: CC BY-SA 4.0
@@ -286,8 +276,8 @@ ar:
     الأخيرة أضيق ومرقّعة. وسيارة اقتصادية تكفي على مدار السنة. والوقوف على الضفة الشرقية مجاني وغير منظم.
     تزود بالوقود والمؤن في ناتاختاري أو دوشيتي، فخارج أشهر الصيف لا يكاد يفتح شيء عند البحيرة.
 image_credit:
-  author: პაატა შ
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Chanadirtkari.JPG
+  author: Kober
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Snow_around_Bazaleti_Lake,_Georgia.jpg
 rating: 4.0

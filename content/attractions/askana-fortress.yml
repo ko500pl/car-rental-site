@@ -9,20 +9,15 @@ order: 70
 image: /assets/photos/askana-fortress.webp
 gallery:
 - image: /assets/photos/askana-fortress-1.webp
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Gonebiskari,_Georgia_-_panoramio.jpg
+  author: Unknown author Unknown author
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:Askana_Fortress_old_photograph.jpg
 - image: /assets/photos/askana-fortress-2.webp
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Gonebiskari,_Georgia_-_panoramio_(1).jpg
-- image: /assets/photos/askana-fortress-3.webp
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Gonebiskari,_Georgia_-_panoramio_(2).jpg
+  author: Anton Gogiashvili
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:Askana_Fortress_by_A._Gogiashvili.jpg
 visit_hours: '1.5'
 best_season: may-october
 open_year_round: true
@@ -253,8 +248,8 @@ ar:
     — 340 كم، نحو خمس ساعات ونصف. الطريق الرئيسي معبّد؛ ومقطع الوادي ضيق كثير الحفر وحصوي في آخره. ويستحسن
     ارتفاع الهيكل، خاصة بعد المطر. الوقود في أوزورغيتي. اترك السيارة في نهاية طريق القرية وتابع سيراً.
 image_credit:
-  author: Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center
+  author: Anton Gogiashvili
   license: Public domain
   license_url: ''
-  source: https://commons.wikimedia.org/wiki/File:ISS031-E-5714_-_View_of_Earth.jpg
+  source: https://commons.wikimedia.org/wiki/File:Askana_Fortress_by_A._Gogiashvili.jpg
 rating: 3.5

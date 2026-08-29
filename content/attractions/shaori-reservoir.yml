@@ -9,20 +9,25 @@ order: 20
 image: /assets/photos/shaori-reservoir.webp
 gallery:
 - image: /assets/photos/shaori-reservoir-1.webp
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Nikortsminda_-_panoramio.jpg
+  author: Yasuhiro Kojima
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:2015-08-27_(28)_Shaori_reservoir.jpg
 - image: /assets/photos/shaori-reservoir-2.webp
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Nikortsminda_-_panoramio_(1).jpg
+  author: Yasuhiro Kojima
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:2015-08-27_(29)_Shaori_reservoir.jpg
 - image: /assets/photos/shaori-reservoir-3.webp
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Nikortsminda_-_panoramio_(2).jpg
+  author: Yasuhiro Kojima
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:2015-08-27_(30)_Shaori_reservoir.jpg
+- image: /assets/photos/shaori-reservoir-4.webp
+  author: Yasuhiro Kojima
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:2015-08-27_(32)_Shaori_reservoir.jpg
 visit_hours: '3'
 best_season: may-october
 open_year_round: false
@@ -265,8 +270,8 @@ ar:
     كم وخمس ساعات وخمس عشرة دقيقة إجمالاً. المقطع الأخير حصوي جزئياً ويصير طينياً بعد المطر، وهنا يفيد
     الخلوص الأرضي الإضافي فعلاً. وفي الشتاء يغلق الثلج الطريق، ولا بديل آخر تجري صيانته.
 image_credit:
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Vil._Nikortsminda_apple_orchard_-_panoramio.jpg
+  author: kjmyshr
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Shaori_reservoir_(43).jpg
 rating: 5.0

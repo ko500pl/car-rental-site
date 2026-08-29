@@ -9,15 +9,20 @@ order: 30
 image: /assets/photos/becho-mazeri.webp
 gallery:
 - image: /assets/photos/becho-mazeri-1.webp
-  author: FingerWiki
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Forest_on_the_trail_to_Mount_Ushba_along_the_Dolra_River,_Mestia.jpg
+  author: "Grumbler eburg"
+  license: "CC BY 4.0"
+  license_url: "https://creativecommons.org/licenses/by/4.0"
+  source: "https://commons.wikimedia.org/wiki/File:House_in_Becho_community.jpg"
 - image: /assets/photos/becho-mazeri-2.webp
-  author: Vittorio Sella
-  license: Public domain
-  license_url: ''
-  source: https://commons.wikimedia.org/wiki/File:Mazeri_in_Svaneti,_Georgia_(1890s).jpg
+  author: "Thijs van Exel from Amsterdam, Netherlands"
+  license: "CC BY 2.0"
+  license_url: "https://creativecommons.org/licenses/by/2.0"
+  source: "https://commons.wikimedia.org/wiki/File:Mazeri,_Svaneti,_Georgia_(36060612100).jpg"
+- image: /assets/photos/becho-mazeri-3.webp
+  author: "G.N."
+  license: "CC BY-SA 3.0"
+  license_url: "https://creativecommons.org/licenses/by-sa/3.0"
+  source: "https://commons.wikimedia.org/wiki/File:Ushba_from_Dolasvipi_(G.N._2008).jpg"
 visit_hours: '6'
 best_season: may-october
 open_year_round: false
@@ -381,8 +386,8 @@ ar:
     الجو الجاف تتدبر المركبة المرتفعة أمرها؛ وفي الربيع أو بعد المطر تحتاج دفعاً رباعياً. تزوّد بالوقود
     في زوغديدي، فلا محطة موثوقة بعده.
 image_credit:
-  author: Soshial
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Road_sign_in_Svan_language,_Tvebishi_village,_late_October_2020.jpg
+  author: "Grumbler eburg"
+  license: "CC BY 4.0"
+  license_url: "https://creativecommons.org/licenses/by/4.0"
+  source: "https://commons.wikimedia.org/wiki/File:Street_in_Mazeri_village_of_Becho_Community.jpg"
 rating: 4.5

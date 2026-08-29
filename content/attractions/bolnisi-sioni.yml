@@ -6,7 +6,7 @@ elevation: 530
 unesco: false
 featured: false
 order: 30
-image: /assets/photos/bolnisi-sioni.webp
+image: /assets/photos/bolnisi-sioni-1.webp
 gallery:
 - image: /assets/photos/bolnisi-sioni-1.webp
   author: Diaoha
@@ -227,9 +227,8 @@ ar:
     بلدة بولنيسي نفسها بل في قرية مجاورة على بعد بضعة كيلومترات، فاضبط الملاحة على «بولنيسي سيوني» لا
     على مركز البلدة. والوقود سهل المنال في مارنيولي وبولنيسي.
 image_credit:
-  author: Lgabelia
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%E1%83%95%E1%83%90%E1%83%9C%E1%83%90%E1%83%97%E1%83%98%E1%83%A1_%E1%83%94%E1%83%99%E1%83%9A%E1%83%94%E1%83%A1%E1%83%98%E1%83%98%E1%83%A1_%E1%83%9C%E1%83%90%E1%83%9C%E1%83%92%E1%83%A0%E1%83%94%E1%83%95%E1%83%98.jpg
+  author: Diaoha
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Bolnisi_Sioni_Cathedral.jpg
 rating: 3.5

@@ -1,0 +1,34 @@
+status: published
+order: 340
+days: 2
+nights: 1
+purpose: beach
+min_people: 1
+max_people: 10
+distance_km: 55
+drive_time_total: '01:50'
+daily_hours: 8.5
+origin:
+  lat: 41.6461
+  lon: 41.6405
+  road_factor: 1.2
+  speed_kmh: 48
+  name_ka: ბათუმი
+  name_en: Batumi
+  name_ru: Батуми
+  name_fa: باتومی
+  name_he: באטומי
+  name_ar: باتومي
+car_category: economy
+best_season: may-october
+difficulty: easy
+image: ''
+waypoints: [batumi-boulevard-old-town, batumi-6-may-park-dolphinarium, batumi-botanical-garden, gonio-fortress]
+polyline: []
+sources: [https://georgia.travel/regions/ajara, https://georgia.travel/9-amazing-sights-in-ajara]
+ka: {name: ბათუმის სანაპირო — საოჯახო ორი დღე, short: ბულვარი ქალაქის პარკი ბოტანიკური ბაღი და გონიოს ციხე ორ დღეში., body: მშვიდი ორდღიანი გეგმა ოჯახებისთვის სანაპირო გასეირნებით ბუნებითა და ისტორიით., plan: '**დღე 1:** ბათუმის ძველი ქალაქი და ბულვარი → 6 მაისის პარკი. **დღე 2:** ბოტანიკური ბაღი → გონიოს ციხე.', tips: [ბოტანიკურ ბაღში წყალი იქონიეთ., ზაფხულში შუადღის სიცხეს მოერიდეთ.]}
+en: {name: Batumi Coast — Two Family Days, short: Boulevard city park Botanical Garden and Gonio Fortress over two days., body: A relaxed two-day family plan mixing the coast nature and concise history stops., plan: '**Day 1:** Batumi Old Town and Boulevard → 6 May Park. **Day 2:** Botanical Garden → Gonio Fortress.', tips: [Carry water in the Botanical Garden., Avoid peak midday heat in summer.]}
+ru: {name: Два семейных дня на побережье Батуми, short: Бульвар городской парк ботанический сад и крепость Гонио за два дня., body: Спокойный двухдневный семейный маршрут у моря с природой и историей., plan: '**День 1:** Старый Батуми и бульвар → парк 6 мая. **День 2:** ботанический сад → Гонио.', tips: [Возьмите воду в сад., Летом избегайте полуденной жары.]}
+fa: {name: دو روز خانوادگی در ساحل باتومی, short: بلوار پارک شهر باغ گیاه‌شناسی و قلعه گونیو در دو روز., body: برنامه آرام دو روزه خانوادگی با ساحل طبیعت و تاریخ., plan: '**روز ۱:** شهر قدیم و بلوار باتومی ← پارک ۶ مه. **روز ۲:** باغ گیاه‌شناسی ← قلعه گونیو.', tips: [در باغ آب همراه داشته باشید., از گرمای ظهر تابستان دوری کنید.]}
+he: {name: יומיים משפחתיים בחוף באטומי, short: הטיילת פארק העיר הגן הבוטני ומבצר גוניו ביומיים., body: מסלול משפחתי רגוע בן יומיים המשלב ים טבע והיסטוריה., plan: '**יום 1:** העיר העתיקה והטיילת ← פארק 6 במאי. **יום 2:** הגן הבוטני ← מבצר גוניו.', tips: [קחו מים לגן., הימנעו מחום הצהריים בקיץ.]}
+ar: {name: يومان عائليان على ساحل باتومي, short: البوليفارد وحديقة المدينة والحديقة النباتية وقلعة غونيو خلال يومين., body: خطة عائلية هادئة ليومين تجمع الساحل والطبيعة والتاريخ., plan: '**اليوم 1:** باتومي القديمة والبوليفارد ← حديقة 6 مايو. **اليوم 2:** الحديقة النباتية ← قلعة غونيو.', tips: [احملوا الماء في الحديقة., تجنبوا حر الظهيرة صيفا.]}
