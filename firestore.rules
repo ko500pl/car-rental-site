@@ -15,7 +15,7 @@ service cloud.firestore {
     //   შენი UID     — Firebase Console → Authentication → Users → User UID
     function adminUids() {
       return [
-        'PHONE-UID-AQ-CHASVI',
+        'SZHCDCDUxXRLWrr5AxL0EeqiEbh2',  // app@rentup.ge — ტელეფონი
         'CHEMI-UID-AQ-CHASVI'
       ];
     }
@@ -38,12 +38,33 @@ service cloud.firestore {
     }
     function member(data) { return signedIn() && request.auth.uid in data.memberIds; }
 
+    // პროფილი: მხოლოდ საკუთარი, მკაცრი ველებით. ამ წესის უქონლობა
+    // ყველა პროფილის შენახვას აგდებდა — და displayName-ის გარეშე
+    // რეცენზიებში ელფოსტა იწერებოდა.
+    match /users/{uid} {
+      allow read: if signedIn() && request.auth.uid == uid;
+      allow write: if signedIn() && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(['name','phone','email','updated'])
+        && (!request.resource.data.keys().hasAny(['name'])
+          || (request.resource.data.name is string
+            && request.resource.data.name.size() <= 120))
+        && (!request.resource.data.keys().hasAny(['phone'])
+          || (request.resource.data.phone is string
+            && request.resource.data.phone.size() <= 32));
+    }
+
     match /trips/{id} {
       allow read: if owner(resource.data) || resource.data.visibility == 'public';
       allow create: if owner(request.resource.data) && request.resource.data.title is string
         && request.resource.data.title.size() <= 120 && request.resource.data.stops is list
         && request.resource.data.stops.size() <= 200;
-      allow update: if owner(resource.data) && request.resource.data.uid == resource.data.uid;
+      // create-ის ლიმიტები update-ზეც — თორემ ვალიდური დოკუმენტი შექმნის
+      // შემდეგ უსასრულოდ იბერებოდა.
+      allow update: if owner(resource.data) && request.resource.data.uid == resource.data.uid
+        && request.resource.data.title is string
+        && request.resource.data.title.size() <= 120
+        && request.resource.data.stops is list
+        && request.resource.data.stops.size() <= 200;
       allow delete: if owner(resource.data);
     }
     match /bookings/{id} {
@@ -79,6 +100,28 @@ service cloud.firestore {
         && (!request.resource.data.keys().hasAny(['paymentDueGel'])
           || (request.resource.data.paymentDueGel is number
             && request.resource.data.paymentDueGel >= 0))
+        // ფულის ველები კლიენტისგან მოდის — ტიპი და ჭერი აქ მოწმდება, თორემ
+        // ხელნაკეთი კლიენტი 30-დღიან ჯავშანს 1 ლარად შემოიტანდა.
+        && (!request.resource.data.keys().hasAny(['dailyRateGel'])
+          || (request.resource.data.dailyRateGel is number
+            && request.resource.data.dailyRateGel >= 0
+            && request.resource.data.dailyRateGel <= 100000))
+        && (!request.resource.data.keys().hasAny(['rentalGel'])
+          || (request.resource.data.rentalGel is number
+            && request.resource.data.rentalGel >= 0
+            && request.resource.data.rentalGel <= 1000000))
+        && (!request.resource.data.keys().hasAny(['depositGel'])
+          || (request.resource.data.depositGel is number
+            && request.resource.data.depositGel >= 0
+            && request.resource.data.depositGel <= 100000))
+        && (!request.resource.data.keys().hasAny(['carName'])
+          || (request.resource.data.carName is string
+            && request.resource.data.carName.size() <= 120))
+        && (!request.resource.data.keys().hasAny(['pageUrl'])
+          || (request.resource.data.pageUrl is string
+            && request.resource.data.pageUrl.size() <= 400))
+        && request.resource.data.start.size() == 10
+        && request.resource.data.end.size() == 10
         && request.resource.data.status == 'pending'
         && request.resource.data.paymentStatus == 'required';
       // A partner sees a request ONLY after the primary company released it.
@@ -143,7 +186,11 @@ service cloud.firestore {
         && (!request.resource.data.keys().hasAny(['bookingId'])
           || (request.resource.data.bookingId is string
             && get(/databases/$(database)/documents/bookings/$(request.resource.data.bookingId)).data.uid == request.auth.uid));
-      allow update: if owner(resource.data) && request.resource.data.uid == resource.data.uid;
+      allow update: if owner(resource.data) && request.resource.data.uid == resource.data.uid
+        && request.resource.data.rating is int
+        && request.resource.data.rating >= 1 && request.resource.data.rating <= 5
+        && request.resource.data.text is string
+        && request.resource.data.text.size() <= 3000;
       allow delete: if owner(resource.data);
     }
     match /userPlaces/{id} {
@@ -153,7 +200,9 @@ service cloud.firestore {
     }
     match /tripMemories/{id} {
       allow read, delete: if owner(resource.data);
-      allow update: if owner(resource.data) && request.resource.data.uid == resource.data.uid;
+      allow update: if owner(resource.data) && request.resource.data.uid == resource.data.uid
+        && request.resource.data.photoUrls is list
+        && request.resource.data.photoUrls.size() <= 80;
       allow create: if owner(request.resource.data)
         && request.resource.data.tripId is string
         && request.resource.data.photoUrls is list

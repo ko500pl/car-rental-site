@@ -74,6 +74,31 @@ BOOKING = load("content/settings/booking.yml") if os.path.exists("content/settin
 HOME_HERO = load("content/settings/home_hero.yml")
 CATS = load("content/settings/categories.yml")["categories"]
 
+
+# ══════════════════════════════════════════════ ფასის დანამატები (გამჭვირვალობა)
+# წყარო: content/settings/booking.yml → season: / young_driver:.
+# იგივე ციფრები მიდის FH_CFG-ში (JS) და ჩანს ავტომობილისა და ავტოპარკის გვერდზე.
+def _bk_int(section, key, default):
+    v = (BOOKING.get(section) or {}).get(key)
+    try:
+        return int(v)
+    except (TypeError, ValueError):
+        return default
+
+
+_PEAK_MONTHS = (BOOKING.get("season") or {}).get("peak_months")
+SEASON_CFG = {
+    "peakMonths": ([int(m) for m in _PEAK_MONTHS]
+                   if isinstance(_PEAK_MONTHS, (list, tuple)) and _PEAK_MONTHS else [7, 8]),
+    "peakPercent": _bk_int("season", "peak_percent", 15),
+    "holidayPercent": _bk_int("season", "holiday_percent", 10),
+}
+YOUNG_DRIVER_CFG = {
+    "underAge": _bk_int("young_driver", "under_age", 27),
+    "minGel": _bk_int("young_driver", "min_gel", 15),
+    "maxGel": _bk_int("young_driver", "max_gel", 25),
+}
+
 PAGES = {os.path.splitext(os.path.basename(p))[0]: load(p)
          for p in glob.glob("content/pages/*.yml")}
 CARS = {os.path.splitext(os.path.basename(p))[0]: load(p)
@@ -94,12 +119,17 @@ for _slug, _photos in CAR_PHOTOS.items():
     _car = CARS.get(_slug)
     if not _car or not isinstance(_photos, dict):
         continue
-    _main = (_photos.get("image") or "").strip()
-    if _main:
-        _car["image"] = _main
-    _gal = [g for g in (_photos.get("gallery") or []) if g]
-    if _gal:
-        _car["gallery"] = _gal
+    # ტიპები ფრთხილად: ამ ფაილს ტელეფონი წერს, და ერთი არასწორი ველი
+    # მთელ build-ს არ უნდა აჩერებდეს და არც სიმბოლო-სიმბოლო დაშლილი
+    # gallery უნდა უშვებდეს გვერდზე.
+    _main = _photos.get("image")
+    if isinstance(_main, str) and _main.strip():
+        _car["image"] = _main.strip()
+    _gal = _photos.get("gallery")
+    if isinstance(_gal, list):
+        _clean = [g for g in _gal if isinstance(g, str) and g.strip()]
+        if _clean:
+            _car["gallery"] = _clean
 
 CARS_ALL = CARS
 CARS = {k: v for k, v in CARS.items() if is_public(v)}
@@ -155,14 +185,12 @@ LANGS = [l for l in ALL_LANGS if l in UI and l in META and l in PLANNER_LANGS
 
 SITE_URL = SITE["site_url"].rstrip("/")
 BRAND = SITE["rental_brand"]
+# ხილული ბრენდი და დომენი ერთ ხაზზე — ქვედა კოლონტიტულისთვის.
+SITE_HOST = SITE_URL.split("//", 1)[-1].rstrip("/")
 
 
 def gel_to_usd(gel):
-    """Convert the GEL source price to an approximate USD price.
-
-    Business rule: divide by the admin-managed exchange rate and round half-up
-    to the configured USD step (10 dollars by default).
-    """
+    """Convert GEL to USD and round to the nearest configured step."""
     rate = Decimal(str(SITE.get("usd_rate", 2.6)))
     step = Decimal(str(SITE.get("usd_rounding", 10)))
     if rate <= 0 or step <= 0:
@@ -348,6 +376,99 @@ DETAILS_LABEL = {"ka": "დეტალები", "en": "Details", "ru": "По�
                  "fa": "جزئیات", "he": "פרטים", "ar": "التفاصيل"}
 
 
+# ─────────────────────────────── ფასის დანამატის გამჭვირვალე ტექსტი (6 ენა)
+_MONTH_NAMES = {
+    "ka": ["იანვარი", "თებერვალი", "მარტი", "აპრილი", "მაისი", "ივნისი", "ივლისი",
+           "აგვისტო", "სექტემბერი", "ოქტომბერი", "ნოემბერი", "დეკემბერი"],
+    "en": ["January", "February", "March", "April", "May", "June", "July",
+           "August", "September", "October", "November", "December"],
+    "ru": ["январь", "февраль", "март", "апрель", "май", "июнь", "июль",
+           "август", "сентябрь", "октябрь", "ноябрь", "декабрь"],
+    "fa": ["ژانویه", "فوریه", "مارس", "آوریل", "مه", "ژوئن", "ژوئیه",
+           "اوت", "سپتامبر", "اکتبر", "نوامبر", "دسامبر"],
+    "he": ["ינואר", "פברואר", "מרץ", "אפריל", "מאי", "יוני", "יולי",
+           "אוגוסט", "ספטמבר", "אוקטובר", "נובמבר", "דצמבר"],
+    "ar": ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو",
+           "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"],
+}
+
+SURCHARGE_LABEL = {
+    "ka": "სეზონური და ასაკობრივი დანამატი",
+    "en": "Seasonal & young-driver surcharge",
+    "ru": "Сезонная и возрастная доплата",
+    "fa": "افزایش فصلی و رانندهٔ جوان",
+    "he": "תוספת עונתית ותוספת נהג צעיר",
+    "ar": "الرسوم الموسمية ورسوم السائق الشاب",
+}
+
+SURCHARGE_SHORT = {
+    "ka": "{months}: +{p}% · {age} წლამდე: +{min}–{max} ₾/დღე",
+    "en": "{months}: +{p}% · under {age}: +{min}–{max} GEL/day",
+    "ru": "{months}: +{p}% · до {age} лет: +{min}–{max} ₾/сут",
+    "fa": "{months}: +{p}٪ · زیر {age} سال: +{min}–{max} لاری/روز",
+    "he": "{months}: {p}%+ · מתחת לגיל {age}: +{min}–{max} ₾/יום",
+    "ar": "{months}: +{p}٪ · دون {age}: +{min}–{max} لاري/يوم",
+}
+
+SURCHARGE_NOTE = {
+    "ka": "სეზონური კოეფიციენტი ({months}) — დღიურ ტარიფზე +{p}%. ახალგაზრდა მძღოლის "
+          "დანამატი ({age} წლამდე) — {min}–{max} ₾ დღეში. ორივე ჯავშნის დადასტურებამდე ჩანს.",
+    "en": "Seasonal rate ({months}): +{p}% on the daily price. Young-driver surcharge "
+          "(under {age}): {min}–{max} GEL per day. Both are shown before you confirm.",
+    "ru": "Сезонный коэффициент ({months}): +{p}% к дневному тарифу. Надбавка молодого "
+          "водителя (до {age} лет): {min}–{max} ₾ в сутки. И то и другое видно до подтверждения.",
+    "fa": "ضریب فصلی ({months}): +{p}٪ روی نرخ روزانه. هزینهٔ رانندهٔ جوان (زیر {age} سال): "
+          "{min}–{max} لاری در روز. هر دو پیش از تأیید رزرو نمایش داده می‌شود.",
+    "he": "תוספת עונתית ({months}): {p}%+ על המחיר היומי. תוספת נהג צעיר (מתחת לגיל {age}): "
+          "{min}–{max} ₾ ליום. שתיהן מוצגות לפני אישור ההזמנה.",
+    "ar": "معامل موسمي ({months}): +{p}٪ على السعر اليومي. رسوم السائق الشاب (دون {age} عامًا): "
+          "{min}–{max} لاري يوميًا. يُعرض كلاهما قبل تأكيد الحجز.",
+}
+
+
+def peak_months_label(lang):
+    """სეზონური თვეების სახელები მიმდინარე ენაზე (booking.yml-იდან)."""
+    names = _MONTH_NAMES.get(lang, _MONTH_NAMES["en"])
+    ms = [m for m in SEASON_CFG["peakMonths"] if 1 <= int(m) <= 12]
+    if not ms:
+        return ""
+    labels = [names[int(m) - 1] for m in ms]
+    if len(ms) > 1 and list(ms) == list(range(int(ms[0]), int(ms[-1]) + 1)):
+        return f"{labels[0]}–{labels[-1]}"
+    return " · ".join(labels)
+
+
+def surcharge_fmt(tpl, lang):
+    return tpl.format(months=peak_months_label(lang), p=SEASON_CFG["peakPercent"],
+                      age=YOUNG_DRIVER_CFG["underAge"], min=YOUNG_DRIVER_CFG["minGel"],
+                      max=YOUNG_DRIVER_CFG["maxGel"])
+
+
+def surcharge_note_html(lang, cls="pricenote"):
+    """ღია ტექსტი ფასის დანამატებზე — ფასის გვერდით, არა ქვედა კოლონტიტულში."""
+    return (f'<p class="{cls}" data-surcharge-note>'
+            f'<strong>{E(SURCHARGE_LABEL[lang])}:</strong> '
+            f'{E(surcharge_fmt(SURCHARGE_NOTE[lang], lang))}</p>')
+
+
+# ─────────────────────────────── ჯავშნის CTA რეგიონის/ღირსშესანიშნაობის გვერდზე
+TRIP_CTA_TEXT = {
+    "ka": "ამ ადგილებამდე ყველაზე მოხერხებულად საკუთარი ავტომობილით მიხვალთ — "
+          "მარშრუტსა და გაჩერებებს თავად ირჩევთ.",
+    "en": "The easiest way to reach these places is by car — you pick the route and the stops.",
+    "ru": "До этих мест удобнее всего добираться на машине — маршрут и остановки выбираете вы.",
+    "fa": "راحت‌ترین راه رسیدن به این نقاط، خودرو است — مسیر و توقف‌ها را خودتان انتخاب می‌کنید.",
+    "he": "הדרך הנוחה ביותר להגיע למקומות האלה היא ברכב — אתם בוחרים את המסלול והעצירות.",
+    "ar": "أسهل طريقة للوصول إلى هذه الأماكن هي بالسيارة — أنت تختار المسار والمحطات.",
+}
+
+
+def booking_open_btn(lang, cls="btn booking-hero-cta"):
+    """დიალოგის გამხსნელი ღილაკი კონკრეტული ავტომობილის გარეშე."""
+    return (f'<button class="{cls}" type="button" data-booking-open>'
+            f'{E(BOOKING_TEXT[lang]["book"])}</button>')
+
+
 def cars_grid(category, lang, limit=None):
     # Drive On Pages მაკეტის ბარათი: სახელი + ფირუზი ფასი ერთ ხაზზე, მეტა,
     # ვადიანი ფასები, ფირუზი „დაჯავშნა" + ghost „დეტალები".
@@ -370,8 +491,11 @@ def cars_grid(category, lang, limit=None):
         tiers = ""
         if p7 and p30:
             tiers = (f'<p class="tiers">7–29: {E(money(p7))} · 30+: {E(money(p30))}</p>')
+        brand, _, model = L["name"].partition(" ")
         out.append(
-            f'<article class="car">{ph}<div class="in">'
+            f'<article class="car" data-analytics-car data-car="{E(slug)}" '
+            f'data-car-name="{E(L["name"])}" data-brand="{E(brand)}" '
+            f'data-model="{E(model)}" data-price="{E(c["price_1_6"])}">{ph}<div class="in">'
             f'<div class="trow"><h3><a href="{car_url(lang, slug, False)}">{E(L["name"])}</a></h3>'
             f'<span class="p">{E(money(c["price_1_6"]))} <small>/ {E(unit)}</small></span></div>'
             f'<p class="sub">{E(L.get("summary", ""))}</p>'
@@ -527,8 +651,16 @@ LEAFLET_JS = "/assets/leaflet/leaflet.js"
 
 ASSET = {"css": "/assets/style.css", "explorer": "/assets/explorer.js",
          "planner": "/assets/planner.js", "workspace": "/assets/workspace.js",
-         "app_mobile": "/assets/app-mobile.js", "trip": "/assets/trip.js"}
+         "app_mobile": "/assets/app-mobile.js", "trip": "/assets/trip.js",
+         "analytics": "/assets/analytics.js"}
 TRAVEL_ASSET = {}
+
+
+def analytics_html():
+    """Build-time GA4 config. Empty IDs intentionally produce a client-side no-op."""
+    measurement_id = os.environ.get("GA_MEASUREMENT_ID", "").strip()
+    return (f'<script>window.FH_ANALYTICS_CONFIG={{"measurementId":{J(measurement_id)}}};</script>\n'
+            f'<script defer src="{ASSET.get("analytics", "/assets/analytics.js")}"></script>')
 
 
 def _hash(data):
@@ -707,6 +839,7 @@ def footer_html(lang):
 {f'''<a dir="ltr" href="mailto:{SITE['email']}">{E(SITE['email'])}</a>''' if SITE.get('email') else ''}
 <span>{E(a['street'])}, {E(a['city'])}</span></div>
 </div><div class="foot-bottom">
+<span class="foot-brandline" dir="ltr">{E(BRAND)} · {E(SITE_HOST)}</span>
 <span>© {date.today().year} {E(BRAND)}. {E(u['ui']['rights'])}</span>
 </div></div></footer>"""
 
@@ -724,6 +857,9 @@ def shell(lang, current, head, body, depth, tail=""):
         cfg["tripUrl"] = lang_root(lang) + "trip/"
         cfg["booking"] = BOOKING
         cfg["cars"] = CAR_PRICES
+        # ფასის დანამატები — booking.js აჩვენებს ფასის გამოთვლისას (booking.yml-იდან).
+        cfg["season"] = SEASON_CFG
+        cfg["youngDriver"] = YOUNG_DRIVER_CFG
         cfg["whatsapp"] = str(SITE.get("whatsapp") or SITE.get("mobile_e164")
                               or SITE.get("phone_e164", "")).replace("+", "").replace(" ", "")
         cfg["siteUrl"] = SITE_URL
@@ -738,7 +874,7 @@ def shell(lang, current, head, body, depth, tail=""):
               f'\n<script type="module" src="{ASSET.get("community", "/assets/community.js")}"></script>'
               f'\n<script defer src="{ASSET.get("app", "/assets/app.js")}"></script>')
     inquiry = inquiry_widget(lang, current) if current in ("index", "fleet", "map", "planner") else ""
-    return (f'<!DOCTYPE html>\n<html lang="{lang}" dir="{LANG_DIR[lang]}">\n<head>\n{head}\n'
+    return (f'<!DOCTYPE html>\n<html lang="{lang}" dir="{LANG_DIR[lang]}">\n<head>\n{head}\n{analytics_html()}\n'
             f'{style}</head>\n<body class="page-{E(current)}">\n'
             f'<a class="skip" href="#main">{E(u["ui"]["skip"])}</a>\n'
             f'{header_html(lang, current)}\n{body}\n{inquiry}{footer_html(lang)}\n{tail}{fb}\n</body>\n</html>\n')
@@ -755,7 +891,7 @@ def inquiry_widget(lang, context=""):
     }[lang]
     return f'''<div class="booking-dialog" data-booking-dialog hidden role="dialog" aria-modal="true" aria-labelledby="booking-title-{lang}"><div class="booking-modal-card">
 <button class="booking-close" type="button" data-booking-close aria-label="{E(tx[10])}">×</button><div class="booking-brand" aria-hidden="true">DO</div>
-<form class="inquiry-mini" data-inquiry name="rental-inquiry" method="POST" data-netlify="true" netlify-honeypot="company" data-lang="{lang}">
+<form class="inquiry-mini" data-inquiry name="rental-inquiry" method="POST" action="?booking_sent=1" data-netlify="true" netlify-honeypot="company" data-lang="{lang}">
 <input type="hidden" name="form-name" value="rental-inquiry"><input type="hidden" name="context" value="{E(context)}"><input type="hidden" name="requested_car" value=""><input type="hidden" name="car_slug" value=""><input type="hidden" name="page_url" value=""><p class="hp" hidden><label>Company<input name="company" tabindex="-1" autocomplete="off"></label></p>
 <h2 id="booking-title-{lang}">{E(tx[0])}</h2><p class="booking-lead">{E(tx[9])}</p><div class="booking-choice" data-booking-choice hidden><small>{E(tx[1])}</small><strong></strong></div>
 <div class="inquiry-grid"><label>{E(tx[2])}<input name="start" type="date" required></label><label>{E(tx[3])}<input name="end" type="date" required></label><label>{E(tx[4])}<input name="name" required autocomplete="name"></label><label>{E(tx[5])}<input name="phone" required autocomplete="tel"></label><label>{E(tx[11])}<input name="email" type="email" autocomplete="email"></label><label>{E(tx[12])}<input name="pickup" autocomplete="off"></label><label class="inquiry-notes">{E(tx[6])}<textarea name="notes" rows="2"></textarea></label></div>
@@ -922,11 +1058,15 @@ def render_static_page(lang, page):
                     f'<div class="tour-grid">{"".join(tcards)}</div></div></section>')
         body.append(f'<section class="sec alt home-fleet"><div class="wrap">'
                     f'<div class="sec-head"><div><h2>{E(tt[7])}</h2><p class="lead">{E(tt[8])}</p></div>'
-                    f'<a class="btn alt" href="{page_url(lang, "fleet", False)}">{E(tt[9])}</a></div>'
+                    f'<a class="btn alt" data-car-search href="{page_url(lang, "fleet", False)}">{E(tt[9])}</a></div>'
                     f'{cars_grid(None, lang, limit=3)}</div></section>')
     else:
         body.append(f'<section class="page-head"><div class="wrap"><h1>{E(p["h1"])}</h1>'
                     f'<p class="lead">{inline(p["lead"], lang)}</p></div></section>')
+    if page == "fleet":
+        # ღია ტექსტი დანამატებზე — ავტოპარკის სიის თავში, ფასების გვერდით.
+        body.append(f'<section class="sec fleet-pricenote"><div class="wrap">'
+                    f'{surcharge_note_html(lang, "pricenote fleet-note")}</div></section>')
     if page == "account":
         body.append('<section class="sec account-sec"><div class="wrap"><div id="account" class="account-shell"></div></div></section>')
     if page == "community":
@@ -1080,7 +1220,7 @@ def render_business_card(lang):
 </div><div class="road-pass-qr"><a href="/assets/shota-lomidze-drive-on.vcf" download aria-label="{E(save)}"><img src="/assets/shota-lomidze-vcard.svg" alt="QR — {E(save)}"></a><p>{E(scan)}</p></div></div>
 </article></div></main>'''
     depth = 1 if lang == ROOT_LANG else 2
-    page = (f'<!DOCTYPE html>\n<html lang="{lang}" dir="{LANG_DIR[lang]}"><head>\n{head}\n</head>'
+    page = (f'<!DOCTYPE html>\n<html lang="{lang}" dir="{LANG_DIR[lang]}"><head>\n{head}\n{analytics_html()}\n</head>'
             f'<body class="page-card card-standalone">{body}</body></html>')
     # Keep the generated card fully previewable as a local file as well as on the deployed site.
     # Root-relative assets resolve against the drive root under file://, so card assets use a
@@ -1130,17 +1270,21 @@ def render_car(lang, slug, c):
         for k in ("price_1_6", "price_7_29", "price_30") if c.get(k))
     prices += (f'<tr><th scope="row">{E(spec_label("deposit", lang))}</th>'
                f'<td>{E(money(c["deposit"]))}</td></tr>')
+    prices += (f'<tr><th scope="row">{E(SURCHARGE_LABEL[lang])}</th>'
+               f'<td>{E(surcharge_fmt(SURCHARGE_SHORT[lang], lang))}</td></tr>')
 
     feats = "".join(f"<li>{inline(x, lang)}</li>" for x in L.get("features", []))
     body_html = render_md(L.get("body", ""), lang)
 
-    body = f"""<section class="page-head"><div class="wrap">
+    brand, _, model = L["name"].partition(" ")
+    body = f"""<section class="page-head" data-analytics-car data-analytics-car-view data-car="{E(slug)}" data-car-name="{E(L['name'])}" data-brand="{E(brand)}" data-model="{E(model)}" data-price="{E(c['price_1_6'])}"><div class="wrap">
 <h1>{E(L['name'])}</h1><p class="lead">{E(L.get('summary',''))} · {E(cat_label(c['category'], lang))}</p>
 </div></section>
 <section class="sec"><div class="wrap"><div class="cardetail">
 <div class="gal">{main_img}{gal}</div>
 <div>
 <div class="pricebox"><span class="big">{E(money(c['price_1_6']))} <small>/ {E(SPECS['units']['day'][lang])}</small></span></div>
+{surcharge_note_html(lang)}
 <div class="tbl-wrap"><table class="spec"><tbody>{"".join(rows)}</tbody></table></div>
 <div class="tbl-wrap"><table class="spec"><caption>{E(u['ui']['price_table'])}</caption><tbody>{prices}</tbody></table></div>
 <ul>{feats}</ul>
@@ -1327,7 +1471,16 @@ def photo_html(a, lang, cls="photo", hero=False):
     """სურათი + ავტორის მითითება — ლიცენზიის მოთხოვნაა."""
     img = a.get("image")
     if not img:
-        return ""
+        pending = {
+            "ka": "ფოტო გადამოწმების პროცესშია",
+            "en": "Photo verification in progress",
+            "ru": "Фото проходит проверку",
+            "fa": "عکس در حال بررسی است",
+            "he": "התמונה בתהליך אימות",
+            "ar": "الصورة قيد التحقق",
+        }
+        return (f'<div class="note photo-pending" role="status">'
+                f'{E(pending.get(lang, pending["en"]))}</div>')
     c = a.get("image_credit") or {}
     who = c.get("author") or "Wikimedia Commons"
     lic = c.get("license") or ""
@@ -1814,7 +1967,13 @@ def render_region(lang, key, r):
         f'<section class="sec"><div class="wrap"><h2>{E(tu(lang,"driving_title"))}</h2>'
         f'<div class="article">{render_md(L["driving"], lang)}</div></div></section>'
         f'<section class="sec alt"><div class="wrap"><h2>{E(tu(lang,"in_region"))} — '
-        f'{len(sub)} {E(tu(lang,"obj"))}</h2><div class="cards">{cards}</div></div></section>')
+        f'{len(sub)} {E(tu(lang,"obj"))}</h2><div class="cards">{cards}</div></div></section>'
+        f'<section class="sec"><div class="wrap"><div class="cta">'
+        f'<h2>{E(u["ui"]["book_title"])}</h2><p>{E(TRIP_CTA_TEXT[lang])}</p>'
+        f'<div class="row">{booking_open_btn(lang)}'
+        f'<a class="btn ghost" href="{page_url(lang,"fleet",False)}">{E(u["nav"]["fleet"])}</a>'
+        f'<a class="btn ghost" href="{page_url(lang,"contact",False)}">{E(u["nav"]["contact"])}</a>'
+        f'</div></div></div></section>')
     graph = [org_node(lang), website_node(lang),
              {"@type": "TouristDestination", "@id": region_url(lang, key) + "#dest",
               "name": L["name"], "description": L["short"], "url": region_url(lang, key),
@@ -1923,8 +2082,9 @@ def render_attraction(lang, slug, a):
         + (f'<section class="sec"><div class="wrap"><h2>{E(tu(lang,"nearby_title"))}</h2>'
            f'<div class="cards">{near}</div></div></section>' if near else "")
         + f'<section class="sec alt"><div class="wrap"><div class="cta">'
-          f'<h2>{E(u["ui"]["book_title"])}</h2><p>{inline(u["ui"]["book_text"], lang)}</p>'
-          f'<div class="row"><a class="btn" href="{page_url(lang,"contact",False)}">{E(u["nav"]["contact"])}</a>'
+          f'<h2>{E(u["ui"]["book_title"])}</h2><p>{E(TRIP_CTA_TEXT[lang])}</p>'
+          f'<div class="row">{booking_open_btn(lang)}'
+          f'<a class="btn ghost" href="{page_url(lang,"contact",False)}">{E(u["nav"]["contact"])}</a>'
           f'<a class="btn ghost" href="{page_url(lang,"fleet",False)}">{E(u["nav"]["fleet"])}</a>'
           f'<a class="btn ghost" href="{region_url(lang, a["region"], False)}">{E(r[lang]["name"])}</a>'
           f"</div></div></div></section>")
@@ -1999,8 +2159,9 @@ def render_route(lang, slug, r):
         f'<div class="cards">{stops}</div>'
         f'<h2>{E(tu(lang,"tips_title"))}</h2><ul>{tips}</ul>'
         f'<div class="cta"><h2>{E(u["ui"]["book_title"])}</h2>'
-        f'<p>{inline(u["ui"]["book_text"], lang)}</p><div class="row">'
-        f'<a class="btn" href="{page_url(lang,"contact",False)}">{E(u["nav"]["contact"])}</a>'
+        f'<p>{E(TRIP_CTA_TEXT[lang])}</p><div class="row">'
+        f'{booking_open_btn(lang)}'
+        f'<a class="btn ghost" href="{page_url(lang,"contact",False)}">{E(u["nav"]["contact"])}</a>'
         f'<a class="btn ghost" href="{page_url(lang,"fleet",False)}">{E(u["nav"]["fleet"])}</a>'
         f'<a class="btn ghost" href="{page_url(lang,"map",False)}">{E(u["nav"]["map"])}</a>'
         f"</div></div></div></section>")
@@ -2106,11 +2267,29 @@ def planner_data(lang):
         "ru": {"standard": "Стандарт", "4x4": "4X4"}, "fa": {"standard": "استاندارد", "4x4": "4X4"},
         "he": {"standard": "רגיל", "4x4": "4X4"}, "ar": {"standard": "قياسية", "4x4": "4X4"},
     }[lang]
+    def route_origin(route):
+        origin = route.get("origin")
+        if not isinstance(origin, dict):
+            return None
+        try:
+            lat = float(origin["lat"])
+            lon = float(origin["lon"])
+        except (KeyError, TypeError, ValueError):
+            return None
+        return {
+            "n": origin.get(lang) or origin.get("en") or origin.get("ka") or "",
+            "la": lat, "lo": lon,
+            "f": float(origin.get("road_factor", 1.4)),
+            "v": float(origin.get("speed_kmh", 55)),
+        }
+
     standard_tours = [{
         "s": slug, "n": route[lang]["name"], "sh": route[lang]["short"],
         "days": int(route["days"]), "nights": int(route["nights"]), "km": int(route["distance_km"]),
         "season": route["best_season"], "purpose": route.get("purpose", purpose_by_route.get(slug, "classic")),
         "drive": route.get("drive_time_total", ""),
+        "dailyHours": float(route.get("daily_hours", 8)),
+        "origin": route_origin(route),
         "car": "4x4" if route.get("car_category") in ("suv", "offroad") else "standard",
         "carLabel": car_names["4x4" if route.get("car_category") in ("suv", "offroad") else "standard"],
         "region": ", ".join(dict.fromkeys(REGIONS[ATTRACTIONS[w]["region"]][lang]["name"] for w in route.get("waypoints", []) if w in ATTRACTIONS)),
@@ -2748,7 +2927,7 @@ def render_404():
     return (f'<!DOCTYPE html><html lang="ka"><head><meta charset="utf-8">'
             f'<meta name="viewport" content="width=device-width, initial-scale=1">'
             f"<title>404 — {E(BRAND)}</title><meta name=\"robots\" content=\"noindex, follow\">"
-            f'<link rel="stylesheet" href="{ASSET["css"]}"></head><body>'
+            f'<link rel="stylesheet" href="{ASSET["css"]}">{analytics_html()}</head><body>'
             f'{header_html(lang, "index")}<main id="main"><section class="page-head">'
             f'<div class="wrap"><h1>{E(u["ui"]["e404_title"])}</h1>'
             f'<p class="lead">{E(u["ui"]["e404_text"])}</p><ul>{links}</ul>'
@@ -3100,6 +3279,8 @@ def render_app_page(lang):
     fh_cfg["accountUrl"] = page_url(lang, "account", False)
     fh_cfg["plannerUrl"] = page_url(lang, "map", False) + "#planner"
     fh_cfg["siteUrl"] = SITE_URL
+    fh_cfg["season"] = SEASON_CFG
+    fh_cfg["youngDriver"] = YOUNG_DRIVER_CFG
     fh_cfg["whatsapp"] = str(SITE.get("whatsapp") or SITE.get("mobile_e164")
                              or SITE.get("phone_e164", "")).replace("+", "").replace(" ", "")
     fh_cfg["t"] = {k: u["ui"][k] for k in (
@@ -3140,6 +3321,7 @@ def render_app_page(lang):
 {fonts}
 <link rel="stylesheet" href="{LEAFLET_CSS}">
 <style>{DOA_STYLE}</style>
+{analytics_html()}
 </head>
 <body>
 <div id="doa" style="height:100dvh;max-width:520px;margin:0 auto;display:flex;flex-direction:column;background:#f4f7f9;overflow:hidden;position:relative">
@@ -3498,7 +3680,7 @@ def main():
     # the HTML only ever links the hashed one. Copying the plain source as well
     # leaves an unversioned duplicate that no page requests but a browser can
     # still cache indefinitely.
-    hashed_sources = {"explorer.js", "planner.js", "auth.js", "booking.js",
+    hashed_sources = {"explorer.js", "planner.js", "auth.js", "booking.js", "analytics.js",
                       "community.js", "admin-bookings.js", "app.js", "app-mobile.js", "trip.js"}
     for sdir, dst in (("static", os.path.join(out, "assets")),
                       ("admin", os.path.join(out, "admin"))):
@@ -3522,7 +3704,8 @@ def main():
     for fn, key in (("explorer.js", "explorer"), ("planner.js", "planner"), ("workspace.js", "workspace"),
                     ("app-mobile.js", "app_mobile"), ("trip.js", "trip"),
                     ("auth.js", "auth"), ("booking.js", "booking"),
-                    ("community.js", "community"), ("admin-bookings.js", "admin_bookings"), ("app.js", "app")):
+                    ("community.js", "community"), ("admin-bookings.js", "admin_bookings"),
+                    ("analytics.js", "analytics"), ("app.js", "app")):
         p = os.path.join("static", fn)
         if os.path.exists(p):
             write_hashed(out, fn, open(p, encoding="utf-8").read(), key)

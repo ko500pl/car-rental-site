@@ -10,3 +10,15 @@ extension_rules:
     discount_percent: 50
   - extra_days: 2
     discount_percent: 30
+
+# ფასის დანამატები — გამჭვირვალედ ჩანს ჯავშნის გზაზე და ავტომობილის გვერდზე.
+# season: სეზონური კოეფიციენტი (ივლის–აგვისტო) და სადღესასწაულო კვირები.
+season:
+  peak_months: [7, 8]
+  peak_percent: 15
+  holiday_percent: 10
+# young_driver: ახალგაზრდა მძღოლის დანამატი (ლარი / დღეში).
+young_driver:
+  under_age: 27
+  min_gel: 15
+  max_gel: 25

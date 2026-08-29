@@ -1,19 +1,35 @@
 /* Static-first rental inquiry: contextual WhatsApp plus Netlify Forms fallback. */
 (function () {
   var TEXT = {
-    ka: { busy: "ამ თარიღებზე ეს მოდელი დაკავებული ჩანს — მოთხოვნას მაინც განვიხილავთ.", choose: "მიუთითეთ დაწყებისა და დასრულების თარიღები.", invalid: "დასრულება დაწყების შემდეგ უნდა იყოს.", days: "დღე", rate: "დღიური ფასი", total: "ქირა", deposit: "დეპოზიტი", due: "გადასახდელი", login: "მოთხოვნის გასაგზავნად შედით ანგარიშში.", sending: "იგზავნება…", success: "მოთხოვნა მიღებულია. ჯავშანი დადასტურებული არ არის, სანამ გადახდა არ შესრულდება.", failed: "მოთხოვნა ვერ გაიგზავნა. სცადეთ ხელახლა." },
-    en: { busy: "This model looks fully booked for these dates — we will still review your request.", choose: "Choose start and end dates.", invalid: "End must be after start.", days: "days", rate: "Daily rate", total: "Rental", deposit: "Deposit", due: "Payment due", login: "Sign in to send the request.", sending: "Sending…", success: "Request received. The booking is not confirmed until payment is completed.", failed: "The request could not be sent. Please try again." },
-    ru: { busy: "На эти даты эта модель занята — мы всё равно рассмотрим ваш запрос.", choose: "Укажите даты начала и окончания.", invalid: "Дата окончания должна быть позже начала.", days: "дн.", rate: "Цена в день", total: "Аренда", deposit: "Депозит", due: "К оплате", login: "Войдите, чтобы отправить запрос.", sending: "Отправка…", success: "Запрос получен. Бронирование не подтверждено до оплаты.", failed: "Не удалось отправить запрос." },
-    fa: { busy: "در این تاریخ‌ها این خودرو رزرو به نظر می‌رسد — درخواست شما را بررسی می‌کنیم.", choose: "تاریخ شروع و پایان را انتخاب کنید.", invalid: "پایان باید بعد از شروع باشد.", days: "روز", rate: "نرخ روزانه", total: "اجاره", deposit: "ودیعه", due: "مبلغ پرداخت", login: "برای ارسال درخواست وارد شوید.", sending: "در حال ارسال…", success: "درخواست دریافت شد. رزرو تا زمان پرداخت تأیید نمی‌شود.", failed: "ارسال درخواست ناموفق بود." },
-    he: { busy: "בתאריכים אלה הרכב נראה תפוס — נבדוק את הבקשה בכל מקרה.", choose: "בחרו תאריכי התחלה וסיום.", invalid: "הסיום חייב להיות אחרי ההתחלה.", days: "ימים", rate: "מחיר יומי", total: "השכרה", deposit: "פיקדון", due: "לתשלום", login: "יש להתחבר כדי לשלוח בקשה.", sending: "שולח…", success: "הבקשה התקבלה. ההזמנה אינה מאושרת עד להשלמת התשלום.", failed: "לא ניתן לשלוח את הבקשה." },
-    ar: { busy: "في هذه التواريخ يبدو الطراز محجوزاً — سنراجع طلبك على أي حال.", choose: "اختر تاريخي البداية والنهاية.", invalid: "يجب أن تكون النهاية بعد البداية.", days: "أيام", rate: "السعر اليومي", total: "الإيجار", deposit: "التأمين", due: "المبلغ المستحق", login: "سجّل الدخول لإرسال الطلب.", sending: "جارٍ الإرسال…", success: "تم استلام الطلب. لا يتأكد الحجز حتى يكتمل الدفع.", failed: "تعذر إرسال الطلب." }
+    ka: { busy: "ამ თარიღებზე ეს მოდელი დაკავებული ჩანს — მოთხოვნას მაინც განვიხილავთ.", choose: "მიუთითეთ დაწყებისა და დასრულების თარიღები.", invalid: "დასრულება დაწყების შემდეგ უნდა იყოს.", days: "დღე", rate: "დღიური ფასი", total: "ქირა", deposit: "დეპოზიტი", due: "გადასახდელი", login: "მოთხოვნის გასაგზავნად შედით ანგარიშში.", sending: "იგზავნება…", success: "მოთხოვნა მიღებულია. ჯავშანი დადასტურებული არ არის, სანამ გადახდა არ შესრულდება.", failed: "მოთხოვნა ვერ გაიგზავნა. სცადეთ ხელახლა.", season: "ივლის–აგვისტოს სეზონური {p}% უკვე ჩათვლილია ქირაში: {s}", seasonPart: "ივლის–აგვისტოს სეზონური {p}% უკვე ჩათვლილია ქირაში: {d} ღამიდან {n} ღამეზე, {s}", young: "{age} წლამდე მძღოლს ემატება ახალგაზრდა მძღოლის დანამატი {min}–{max} ₾ დღეში." },
+    en: { busy: "This model looks fully booked for these dates — we will still review your request.", choose: "Choose start and end dates.", invalid: "End must be after start.", days: "days", rate: "Daily rate", total: "Rental", deposit: "Deposit", due: "Payment due", login: "Sign in to send the request.", sending: "Sending…", success: "Request received. The booking is not confirmed until payment is completed.", failed: "The request could not be sent. Please try again.", season: "The July–August seasonal {p}% is already included in the rental: {s}", seasonPart: "The July–August seasonal {p}% is already included in the rental: {n} of {d} nights, {s}", young: "Drivers under {age} pay a young driver surcharge of {min}–{max} GEL per day." },
+    ru: { busy: "На эти даты эта модель занята — мы всё равно рассмотрим ваш запрос.", choose: "Укажите даты начала и окончания.", invalid: "Дата окончания должна быть позже начала.", days: "дн.", rate: "Цена в день", total: "Аренда", deposit: "Депозит", due: "К оплате", login: "Войдите, чтобы отправить запрос.", sending: "Отправка…", success: "Запрос получен. Бронирование не подтверждено до оплаты.", failed: "Не удалось отправить запрос.", season: "Сезонная надбавка июля–августа {p}% уже включена в стоимость аренды: {s}", seasonPart: "Сезонная надбавка июля–августа {p}% уже включена в стоимость аренды: {n} из {d} ночей, {s}", young: "Водителям младше {age} лет начисляется надбавка молодого водителя {min}–{max} лари в сутки." },
+    fa: { busy: "در این تاریخ‌ها این خودرو رزرو به نظر می‌رسد — درخواست شما را بررسی می‌کنیم.", choose: "تاریخ شروع و پایان را انتخاب کنید.", invalid: "پایان باید بعد از شروع باشد.", days: "روز", rate: "نرخ روزانه", total: "اجاره", deposit: "ودیعه", due: "مبلغ پرداخت", login: "برای ارسال درخواست وارد شوید.", sending: "در حال ارسال…", success: "درخواست دریافت شد. رزرو تا زمان پرداخت تأیید نمی‌شود.", failed: "ارسال درخواست ناموفق بود.", season: "ضریب فصلی {p}% ژوئیه و اوت در مبلغ اجاره لحاظ شده است: {s}", seasonPart: "ضریب فصلی {p}% ژوئیه و اوت در مبلغ اجاره لحاظ شده است: {n} شب از {d} شب، {s}", young: "رانندگان زیر {age} سال روزانه {min} تا {max} لاری هزینهٔ رانندهٔ جوان می‌پردازند." },
+    he: { busy: "בתאריכים אלה הרכב נראה תפוס — נבדוק את הבקשה בכל מקרה.", choose: "בחרו תאריכי התחלה וסיום.", invalid: "הסיום חייב להיות אחרי ההתחלה.", days: "ימים", rate: "מחיר יומי", total: "השכרה", deposit: "פיקדון", due: "לתשלום", login: "יש להתחבר כדי לשלוח בקשה.", sending: "שולח…", success: "הבקשה התקבלה. ההזמנה אינה מאושרת עד להשלמת התשלום.", failed: "לא ניתן לשלוח את הבקשה.", season: "מקדם עונתי של {p}% ליולי–אוגוסט כבר כלול בהשכרה: {s}", seasonPart: "מקדם עונתי של {p}% ליולי–אוגוסט כבר כלול בהשכרה: {n} מתוך {d} לילות, {s}", young: "נהגים מתחת לגיל {age} משלמים תוספת נהג צעיר של {min} עד {max} לארי ליום." },
+    ar: { busy: "في هذه التواريخ يبدو الطراز محجوزاً — سنراجع طلبك على أي حال.", choose: "اختر تاريخي البداية والنهاية.", invalid: "يجب أن تكون النهاية بعد البداية.", days: "أيام", rate: "السعر اليومي", total: "الإيجار", deposit: "التأمين", due: "المبلغ المستحق", login: "سجّل الدخول لإرسال الطلب.", sending: "جارٍ الإرسال…", success: "تم استلام الطلب. لا يتأكد الحجز حتى يكتمل الدفع.", failed: "تعذر إرسال الطلب.", season: "المعامل الموسمي {p}% ليوليو وأغسطس محتسب في الإيجار: {s}", seasonPart: "المعامل الموسمي {p}% ليوليو وأغسطس محتسب في الإيجار: {n} من {d} ليلة، {s}", young: "يدفع السائقون دون {age} سنة رسوم سائق شاب من {min} إلى {max} لاري يومياً." }
   };
   function n(v) { v = Number(v); return Number.isFinite(v) ? v : 0; }
+  /* დღეები UTC-ში: ლოკალური დროით თვლა შემოდგომის საათის გადაწევისას
+     25-საათიან დღეს აჩენდა და ceil-ი ზედმეტ დღეს (და ზოგჯერ სხვა ტარიფის
+     ზოლს) აბრუნებდა. */
+  function utcDays(start, end) {
+    var a = String(start).split('-'), b = String(end).split('-');
+    if (a.length !== 3 || b.length !== 3) return 0;
+    return Math.round((Date.UTC(+b[0], +b[1] - 1, +b[2]) -
+      Date.UTC(+a[0], +a[1] - 1, +a[2])) / 86400000);
+  }
+  /* დღევანდელი თარიღი ლოკალურად: toISOString UTC-ს იძლევა და თბილისში
+     00:00–04:00 შუალედში გუშინდელ დღეს უშვებდა მინიმუმად. */
+  function todayLocal() {
+    var d = new Date();
+    return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') +
+      '-' + String(d.getDate()).padStart(2, '0');
+  }
   function calc(root) {
     var start = root.querySelector('[name="start"]').value;
     var end = root.querySelector('[name="end"]').value;
     if (!start || !end) return null;
-    var days = Math.ceil((new Date(end + "T12:00:00") - new Date(start + "T12:00:00")) / 86400000);
+    var days = utcDays(start, end);
     if (days < 1) return { invalid: true };
     var rate = n(days >= 30 ? root.getAttribute("data-price-30") :
       (days >= 7 ? root.getAttribute("data-price-7-29") : root.getAttribute("data-price-1-6")));
@@ -25,7 +41,7 @@
     var lang = root.dataset.lang || "en", t = TEXT[lang] || TEXT.en;
     var out = root.querySelector(".booking-summary"), button = root.querySelector('[type="submit"]'), wa=root.querySelector("[data-wa]");
     var inputs = root.querySelectorAll("input");
-    var today = new Date().toISOString().slice(0, 10);
+    var today = todayLocal();
     root.querySelector('[name="start"]').min = today;
     root.querySelector('[name="end"]').min = today;
     function draw(message) {
@@ -47,7 +63,7 @@
   }
   function boot() { document.querySelectorAll("[data-booking]").forEach(init); }
   function initInquiry(root) {
-    var status=root.querySelector('.inquiry-status'), today=new Date().toISOString().slice(0,10);
+    var status=root.querySelector('.inquiry-status'), today=todayLocal();
     var lang=root.dataset.lang||'en', t=TEXT[lang]||TEXT.en;
     var start=root.querySelector('[name="start"]'),end=root.querySelector('[name="end"]');
     start.min=today;end.min=today;start.addEventListener('input',function(){end.min=start.value||today;});
@@ -68,10 +84,33 @@
       quoteBox.textContent = q.days + ' ' + t.days +
         (q.rate ? ' · ' + t.rate + ': ' + money(q.rate) + ' · ' + t.total + ': ' + money(q.rental) +
           (q.deposit ? ' · ' + t.deposit + ': ' + money(q.deposit) : '') : '');
+      /* სეზონური დანამატი უკვე ქირაშია — იმავე ხაზზე ვწერთ, რამდენია და
+         რატომ, რომ ბაზისურ ტარიფსა და ჯამს შორის სხვაობა არ იკითხებოდეს
+         შეცდომად. */
+      if (q.seasonGel > 0 && t.season) {
+        /* სრულად პიკურ შუალედზე ღამეების თვლა ზედმეტია („5-დან 5“) და
+           ნაწილში ბრუნვაც ეშლება — ამიტომ ორი ცალკე ფრაზაა. */
+        var st = (q.peakNights < q.days && t.seasonPart) ? t.seasonPart : t.season;
+        quoteBox.textContent += ' · ' + fill(st, {
+          p: q.seasonPercent, n: q.peakNights, d: q.days, s: money(q.seasonGel)
+        });
+      }
       if (q.slug && t.busy && busyFor(q.slug, q.start, q.end)) {
         quoteBox.textContent += ' · ⚠ ' + t.busy;
       }
       return q;
+    }
+    /* ასაკის დანამატი თარიღებზე არ არის დამოკიდებული და მძღოლის ასაკი
+       ჩვენ არ ვიცით — ამიტომ ეს უბრალოდ ერთი საინფორმაციო ხაზია ფასის
+       ქვეშ და არაფერს კეტავს. */
+    var yc = youngCfg();
+    if (quoteBox && yc && t.young && !root.querySelector('[data-young-note]')) {
+      var note = document.createElement('p');
+      note.className = 'inquiry-note';
+      note.setAttribute('data-young-note', '');
+      note.style.cssText = 'margin:6px 0 0;font-size:12px;color:var(--muted)';
+      note.textContent = fill(t.young, { age: yc.age, min: yc.min, max: yc.max });
+      quoteBox.parentNode.insertBefore(note, quoteBox.nextSibling);
     }
     ['start', 'end'].forEach(function (n) {
       var el = root.querySelector('[name="' + n + '"]');
@@ -95,16 +134,24 @@
         var button = root.querySelector('[type="submit"]');
         if (button) button.disabled = true;
         status.textContent = t.sending;
-        var cloud = false, fallback = false;
+        var cloud = false;
         sendToCloud(root, drawQuote())
           .then(function () { cloud = true; })
           .catch(function (err) { console.warn('[booking] cloud:', err && (err.code || err.message)); })
-          .then(function () { return postForm(root).then(function () { fallback = true; }).catch(function () { return null; }); })
+          /* Netlify-ს ასლი მიდის, მაგრამ no-cors პასუხი 404-ზეც „წარმატებაა" —
+             ამიტომ ის აღარასოდეს ითვლება მიწოდების დასტურად. */
+          .then(function () { return postForm(root).catch(function () { return null; }); })
           .then(function () {
-            status.textContent = t.success;
-            if ((cloud || fallback) && window.RentUpAnalytics) window.RentUpAnalytics.track('booking_submitted', window.RentUpAnalytics.bookingParams(root));
-            root.reset();
-            if (quoteBox) quoteBox.textContent = '';
+            /* წარმატება მხოლოდ მაშინ ითქმის, როცა ჩანაწერი მართლა დაიწერა.
+               აქამდე ორივე გზის ჩავარდნისას მაინც „მიღებულია" ეწერებოდა და
+               ფორმა იშლებოდა — კლიენტი დაჯავშნილი ეგონა, მოთხოვნა კი არსად
+               იყო. */
+            status.textContent = cloud ? t.success : t.failed;
+            if (cloud && window.RentUpAnalytics) window.RentUpAnalytics.track('booking_submitted', window.RentUpAnalytics.bookingParams(root));
+            if (cloud) {
+              root.reset();
+              if (quoteBox) quoteBox.textContent = '';
+            }
           })
           .catch(function () { status.textContent = cloud ? t.success : t.failed; })
           .then(function () { if (button) button.disabled = false; });
@@ -117,19 +164,76 @@
     }
   }
 
+  /* ── სეზონური კოეფიციენტი და ახალგაზრდა მძღოლის დანამატი ────────────
+     ორივე FAQ-შია გამოცხადებული, ფასის ხაზში კი აქამდე არსად ჩანდა:
+     აგვისტოს ჯავშანს ~15%-ით ნაკლები ეწერა, ვიდრე ფილიალში იხდიდა.
+     კონფიგურაცია არასავალდებულოა — ძველ, ქეშირებულ გვერდზე window.FH_CFG
+     ამ ველების გარეშე მოვა და ყველაფერი ისე მუშაობს, როგორც აქამდე. */
+  function fill(str, vars) {
+    return String(str).replace(/\{(\w+)\}/g, function (m, k) {
+      return (vars[k] === undefined || vars[k] === null) ? m : String(vars[k]);
+    });
+  }
+  function seasonCfg() {
+    var s = (window.FH_CFG || {}).season;
+    if (!s || !s.peakMonths || !s.peakMonths.length) return null;
+    var pct = Number(s.peakPercent);
+    if (!(pct > 0)) return null;
+    return { months: s.peakMonths, percent: pct };
+  }
+  function youngCfg() {
+    var y = (window.FH_CFG || {}).youngDriver;
+    if (!y) return null;
+    var age = Number(y.underAge), lo = Number(y.minGel), hi = Number(y.maxGel);
+    if (!(age > 0) || !(lo > 0) || !(hi > 0)) return null;
+    return { age: age, min: lo, max: hi };
+  }
+  /* პიკურ თვეებში მოხვედრილი ღამეების რაოდენობა. ღამეს ითვლის დაწყების
+     თარიღი (დაბრუნების დღე exclusive-ია, ისევე როგორც utcDays-ში), ამიტომ
+     28 ივნისი → 3 ივლისი სწორად იძლევა ივლისში 2 ღამეს. UTC-ში ითვლება,
+     რომ საათის გადაწევამ დღე არ დაკარგოს. */
+  function peakNights(start, end, months) {
+    var a = String(start).split('-'), b = String(end).split('-');
+    if (a.length !== 3 || b.length !== 3) return 0;
+    var t = Date.UTC(+a[0], +a[1] - 1, +a[2]), e = Date.UTC(+b[0], +b[1] - 1, +b[2]);
+    if (!isFinite(t) || !isFinite(e) || !(e > t)) return 0;
+    /* აშკარად შეცდომით აკრეფილ თარიღზე (ათწლეულები) ციკლს არ ვუშვებთ. */
+    if ((e - t) / 86400000 > 3660) return 0;
+    var count = 0;
+    for (; t < e; t += 86400000) {
+      if (months.indexOf(new Date(t).getUTCMonth() + 1) >= 0) count++;
+    }
+    return count;
+  }
+
   /* დღეების დათვლა და ტარიფის ბენდი — იგივე წესი, რაც პროგრამაშია. */
   function quoteFor(root) {
     var fd = new FormData(root);
     var start = String(fd.get('start') || ''), end = String(fd.get('end') || '');
     if (!validDate(start) || !validDate(end)) return null;
-    var days = Math.ceil((new Date(end + 'T12:00:00') - new Date(start + 'T12:00:00')) / 86400000);
+    var days = utcDays(start, end);
     if (!(days >= 1)) return null;
     var slug = String(fd.get('car_slug') || '');
     var c = ((window.FH_CFG || {}).cars || {})[slug];
-    if (!c) return { days: days, slug: slug, start: start, end: end, rate: 0, rental: 0, deposit: 0, due: 0 };
-    var rate = days >= 30 ? c.p30 : (days >= 7 ? c.p7 : c.p1);
-    var rental = Math.round(rate * days), deposit = c.dep || 0;
-    return { days: days, slug: slug, start: start, end: end, rate: rate, rental: rental, deposit: deposit, due: rental + deposit };
+    if (!c) return { days: days, slug: slug, start: start, end: end, rate: 0, rental: 0, deposit: 0, due: 0, peakNights: 0, seasonPercent: 0, seasonGel: 0 };
+    /* ზოლების ჯაჭვი დაცვით: p1 -> p7 -> p30. თუ რომელიმე ზოლი აკლია
+       (ხელით შევსებული YAML, ან ღრუბლიდან მოსული ნაკლული დოკუმენტი),
+       ფასი წინა ზოლზე ბრუნდება. აქამდე c.p30-ის უქონლობა NaN-ს იძლეოდა
+       და ეს NaN ჯავშანშივე იწერებოდა. */
+    var b1 = Number(c.p1) || 0;
+    var b7 = Number(c.p7) || b1;
+    var b30 = Number(c.p30) || b7;
+    var rate = days >= 30 ? b30 : (days >= 7 ? b7 : b1);
+    var rental = Math.round(rate * days), deposit = Number(c.dep) || 0;
+    /* სეზონი მხოლოდ იმ ღამეებზე ერიცხება, რომლებიც პიკურ თვეშია —
+       ნაწილობრივ გადამკვეთ შუალედს მთლიან ჯავშანზე არ ვამძიმებთ. */
+    var sc = seasonCfg(), peak = 0, pct = 0, seasonGel = 0;
+    if (sc && rate > 0) {
+      peak = peakNights(start, end, sc.months);
+      if (peak > 0) { pct = sc.percent; seasonGel = Math.round(rate * peak * pct / 100); }
+    }
+    rental += seasonGel;
+    return { days: days, slug: slug, start: start, end: end, rate: rate, rental: rental, deposit: deposit, due: rental + deposit, peakNights: peak, seasonPercent: pct, seasonGel: seasonGel };
   }
 
   function sendToCloud(root, q) {
@@ -163,6 +267,7 @@
           phone: String(fd.get('phone') || '').slice(0, 32),
           email: String(fd.get('email') || '').slice(0, 160),
           pickup: String(fd.get('pickup') || '').slice(0, 160),
+          dropoff: String(fd.get('return_location') || fd.get('dropoff') || '').slice(0, 160),
           notes: String(fd.get('notes') || '').slice(0, 2000),
           lang: root.dataset.lang || 'en',
           source: 'site',
@@ -224,12 +329,20 @@
       if (freshDoc(d.fleet)) {
         var cfg = window.FH_CFG = window.FH_CFG || {};
         cfg.cars = cfg.cars || {};
-        cfg.cars[slug] = {
-          p1: Number(d.fleet.p1) || 0,
-          p7: Number(d.fleet.p7) || Number(d.fleet.p1) || 0,
-          p30: Number(d.fleet.p30) || Number(d.fleet.p7) || 0,
-          dep: Number(d.fleet.dep) || 0
-        };
+        var prev = cfg.cars[slug] || {};
+        /* ჯაჭვი გამოთვლილ მნიშვნელობებზე გადის და არა ნედლ დოკუმენტზე:
+           p30-ის გარეშე მოსული დოკუმენტი 30+ დღეს 0 ₾-ად აფასებდა და იმ
+           ნულს ჯავშანშიც წერდა. ნულოვანი p1 საერთოდ არ გადაფარავს
+           ჩაშენებულს — ცუდი დოკუმენტი ფასს ვერ შლის. */
+        var p1 = Number(d.fleet.p1) || Number(prev.p1) || 0;
+        var p7 = Number(d.fleet.p7) || p1;
+        var p30 = Number(d.fleet.p30) || p7;
+        if (p1 > 0) {
+          cfg.cars[slug] = {
+            p1: p1, p7: p7, p30: p30,
+            dep: Number(d.fleet.dep) || Number(prev.dep) || 0
+          };
+        }
       }
       document.dispatchEvent(new CustomEvent('fh:live-availability', { detail: { slug: slug } }));
       return d;
@@ -291,23 +404,28 @@
       body:new URLSearchParams(new FormData(f)).toString()});
   }
   function ajaxifyForms(){
-    if(location.hostname.indexOf('netlify.app')>=0)return; /* Netlify-ზე ჩვეულებრივ მუშაობს */
+    /* ძველი Netlify-მისამართი მკვდარია (404, ფორმები არ აქვს) და no-cors
+       პასუხით ამის გაგება შეუძლებელი იყო — ფორმა „გაგზავნილია"-ს წერდა და
+       წერილი არსად მიდიოდა. საკონტაქტო ფორმა ახლა WhatsApp-ზე გადის:
+       ერთადერთი არხი ამ სტატიკურ ჰოსტინგზე, რომლის მიწოდებაც მართლა ჩანს. */
     document.querySelectorAll('form[data-netlify]').forEach(function(f){
-      if(f.dataset.fhCloud==='1')return; /* ღრუბლის გზა თავად აგზავნის — დუბლიკატი არ გვინდა */
+      if(f.dataset.fhCloud==='1')return; /* ღრუბლის გზა თავად აგზავნის */
       f.addEventListener('submit',function(e){
         e.preventDefault();
         if(!f.reportValidity())return;
-        var pu=f.querySelector('[name="page_url"]');if(pu)pu.value=location.href;
-        var body=new URLSearchParams(new FormData(f)).toString();
         var st=f.querySelector('.inquiry-status')||f.querySelector('[role="status"]');
         if(!st){st=document.createElement('p');st.className='inquiry-status';st.setAttribute('role','status');f.appendChild(st);}
-        st.textContent='…';
-        fetch(NETLIFY_ORIGIN+'/',{method:'POST',mode:'no-cors',
-          headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body})
-          .then(function(){var l=f.dataset.lang||document.documentElement.lang||'en';
-            if(f.matches('[data-inquiry]')&&window.RentUpAnalytics)window.RentUpAnalytics.track('booking_submitted',window.RentUpAnalytics.bookingParams(f));
-            st.textContent=(l==='ka')?'✓ მოთხოვნა გაგზავნილია — მალე დაგიკავშირდებით':'✓ Sent — we will contact you shortly';f.reset();})
-          .catch(function(){st.textContent='✗';});
+        var num=String((window.FH_CFG||{}).whatsapp||'').replace(/\D/g,'');
+        if(!num){st.textContent='✗';return;}
+        var fd=new FormData(f),parts=[];
+        fd.forEach(function(v,k){
+          if(k==='company'||k==='form-name'||k==='page_url'||!String(v).trim())return;
+          parts.push(k+': '+String(v).trim());
+        });
+        var msg='Message from '+location.href+'\n'+parts.join('\n');
+        window.open('https://wa.me/'+num+'?text='+encodeURIComponent(msg),'_blank','noopener');
+        var l=f.dataset.lang||document.documentElement.lang||'en';
+        st.textContent=(l==='ka')?'გაგრძელება WhatsApp-შია — გაგზავნე იქ გახსნილი წერილი':'Continue in WhatsApp — send the message that just opened';
       });
     });
   }

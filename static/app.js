@@ -22,6 +22,10 @@
     return window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
   }
   function showInstall(forceIos) {
+    /* ერთხელ დახურული ბარათი აღარ ბრუნდება — ყოველ გვერდზე თავიდან
+       ამოხტომა iPhone-ის ვიზიტორს (ისრაელი, სპარსეთის ყურე) ყოველ
+       ნაბიჯზე აწყვეტინებდა. */
+    try { if (localStorage.getItem('fh-install-dismissed') === '1' && !forceIos) return; } catch (e) {}
     if (standalone() || document.getElementById("app-install-card")) return;
     var text = copy[language()];
     var ios = forceIos || /iphone|ipad|ipod/i.test(navigator.userAgent);
@@ -33,7 +37,7 @@
       '<div><strong>' + text[0] + '</strong><span>' + (ios ? text[3] : text[1]) + '</span></div>' +
       '<button type="button" class="app-install-action">' + text[2] + '</button>' +
       '<button type="button" class="app-install-close" aria-label="Close">×</button>';
-    card.querySelector(".app-install-close").addEventListener("click", function () { card.remove(); });
+    card.querySelector(".app-install-close").addEventListener("click", function () { try { localStorage.setItem('fh-install-dismissed', '1'); } catch (e) {} card.remove(); });
     card.querySelector(".app-install-action").addEventListener("click", function () {
       if (ios) return;
       window.FH_INSTALL_APP().then(function (accepted) { if (accepted) card.remove(); });
@@ -70,4 +74,33 @@
   window.addEventListener("load", function () {
     if (/iphone|ipad|ipod/i.test(navigator.userAgent)) showInstall();
   });
+
+  /* ── ენის გადამრთველი რჩება იმავე გვერდზე ─────────────────────────────
+     თავსართში ყველა ენის ბმული მთავარ გვერდზე მიდიოდა, თუმცა ზუსტი
+     მისამართები <head>-ის hreflang ალტერნატივებში ისედაც წერია — აქედან
+     ვიღებთ და 2040 თარგმნილი გვერდი აღარ იკარგება გადართვისას. */
+  function altFor(l) {
+    var link = document.querySelector('link[rel="alternate"][hreflang="' + l + '"]');
+    return link ? link.getAttribute('href') : null;
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('.langs a[hreflang]');
+    if (!a) return;
+    var better = altFor(a.getAttribute('hreflang'));
+    if (better) { e.preventDefault(); location.href = better; }
+  });
+  document.addEventListener('change', function (e) {
+    var sel = e.target.closest('select');
+    if (!sel || !sel.closest('.lang-select, .langs, [data-lang-select]')) {
+      if (!sel) return;
+      var opts = sel.querySelectorAll('option[value^="/"], option[value^="http"]');
+      if (opts.length < 2) return; /* არა ენის სელექტორი */
+    }
+    var opt = sel.options[sel.selectedIndex];
+    var m = (opt.getAttribute('value') || '').match(/^\/(ka|ru|fa|he|ar)?\/?$/);
+    if (!m && opt.getAttribute('value') !== '/') return;
+    var l = m && m[1] ? m[1] : 'en';
+    var better = altFor(l);
+    if (better) { e.preventDefault(); location.href = better; }
+  }, true);
 })();
