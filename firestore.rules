@@ -72,7 +72,7 @@ service cloud.firestore {
       // program cannot open a booking at all (customer_name is NOT NULL), so
       // both are required here rather than validated only in the browser.
       allow create: if owner(request.resource.data)
-        && request.resource.data.keys().hasOnly(['uid','carSlug','carName','start','end','days','drivers','dailyRateGel','rentalGel','depositGel','paymentDueGel','currency','status','paymentStatus','created','name','phone','email','pickup','dropoff','flight','notes','lang','source','pageUrl'])
+        && request.resource.data.keys().hasOnly(['uid','carSlug','carName','start','end','days','drivers','dailyRateGel','rentalGel','depositGel','paymentDueGel','currency','status','paymentStatus','created','name','phone','email','pickup','dropoff','withDriver','flight','notes','lang','source','pageUrl'])
         && request.resource.data.keys().hasAll(['uid','carSlug','start','end','days','name','phone','status','paymentStatus'])
         && request.resource.data.carSlug is string
         && request.resource.data.carSlug.size() <= 80
@@ -90,6 +90,8 @@ service cloud.firestore {
           || (request.resource.data.pickup is string && request.resource.data.pickup.size() <= 160))
         && (!request.resource.data.keys().hasAny(['dropoff'])
           || (request.resource.data.dropoff is string && request.resource.data.dropoff.size() <= 160))
+        && (!request.resource.data.keys().hasAny(['withDriver'])
+          || request.resource.data.withDriver is bool)
         && (!request.resource.data.keys().hasAny(['flight'])
           || (request.resource.data.flight is string && request.resource.data.flight.size() <= 40))
         && (!request.resource.data.keys().hasAny(['notes'])

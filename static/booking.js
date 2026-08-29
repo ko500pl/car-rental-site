@@ -268,6 +268,7 @@
           email: String(fd.get('email') || '').slice(0, 160),
           pickup: String(fd.get('pickup') || '').slice(0, 160),
           dropoff: String(fd.get('return_location') || fd.get('dropoff') || '').slice(0, 160),
+          withDriver: fd.get('with_driver') ? true : false,
           notes: String(fd.get('notes') || '').slice(0, 2000),
           lang: root.dataset.lang || 'en',
           source: 'site',

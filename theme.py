@@ -983,6 +983,8 @@ body.booking-open{{overflow:hidden}}
 .inquiry-grid input:focus-visible,.inquiry-grid textarea:focus-visible{{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}}
 .inquiry-grid input{{height:46px}}.inquiry-grid textarea{{resize:vertical;min-height:68px}}
 .inquiry-notes{{grid-column:1/-1}}
+.inquiry-driver{{display:flex;align-items:center;gap:9px;font-size:13px;color:var(--ink-2);min-height:40px}}
+.inquiry-grid .inquiry-driver input{{width:18px;height:18px;flex:none;padding:0;border-radius:5px;accent-color:var(--accent)}}
 .inquiry-actions{{display:grid;grid-template-columns:1.4fr 1fr;gap:10px;margin-top:15px}}
 .inquiry-actions .btn{{width:100%;min-height:46px}}
 .inquiry-status{{min-height:1.3em;margin:7px 0 0;color:var(--muted);font-size:12px}}
