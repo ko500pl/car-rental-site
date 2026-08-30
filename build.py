@@ -728,6 +728,11 @@ def org_node(lang):
         "telephone": SITE["phone_e164"],
         "foundingDate": SITE["founded"],
         "priceRange": f'{_fleet_price_low()}-{_fleet_price_high()} GEL',
+        # Google requires the organisation logo to be at least 112px on its
+        # smallest side; the 180x72 header mark does not qualify on its own.
+        "logo": {"@type": "ImageObject", "url": SITE_URL + "/assets/rentup-logo-square.png",
+                 "width": 540, "height": 540},
+        "image": SITE_URL + "/assets/rentup-logo-square.png",
         "currenciesAccepted": "GEL, USD, EUR",
         "paymentAccepted": META[lang]["payments"],
         "areaServed": {"@type": "Country", "name": META[lang]["country"]},
@@ -758,12 +763,32 @@ def org_node(lang):
     return node
 
 
+def _num(v, default=0):
+    try:
+        return int(str(v).strip())
+    except (ValueError, TypeError):
+        return default
+
+
+def _fleet_tiers():
+    """Prices are strings in the YAML, so compare them as numbers, not text —
+    otherwise "104" sorts below "88" and the published band comes out inverted."""
+    out = []
+    for c in CARS.values():
+        for k in ("price_1_6", "price_7_29", "price_30"):
+            try:
+                out.append(int(str(c[k]).strip()))
+            except (KeyError, ValueError, TypeError):
+                pass
+    return out
+
+
 def _fleet_price_low():
-    return min(c["price_30"] for c in CARS.values()) if CARS else 0
+    return min(_fleet_tiers()) if CARS else 0
 
 
 def _fleet_price_high():
-    return max(c["price_1_6"] for c in CARS.values()) if CARS else 0
+    return max(_fleet_tiers()) if CARS else 0
 
 
 def website_node(lang):
@@ -831,8 +856,8 @@ def car_node(slug, c, lang):
         # Three real tiers, from the car's own record. No `availability` — the
         # fleet YAML carries no stock field, so claiming InStock was invented.
         "offers": {"@type": "AggregateOffer", "priceCurrency": "GEL",
-                   "lowPrice": min(c["price_1_6"], c["price_7_29"], c["price_30"]),
-                   "highPrice": max(c["price_1_6"], c["price_7_29"], c["price_30"]),
+                   "lowPrice": min(_num(c["price_1_6"]), _num(c["price_7_29"]), _num(c["price_30"])),
+                   "highPrice": max(_num(c["price_1_6"]), _num(c["price_7_29"]), _num(c["price_30"])),
                    "offerCount": 3,
                    "offers": [
                        {"@type": "Offer", "priceCurrency": "GEL", "price": price,
@@ -964,7 +989,7 @@ def head_html(lang, current, title, desc, keywords, url, alternates, depth, ld,
 <link rel="manifest" href="/assets/manifest.webmanifest">
 <link rel="stylesheet" href="{css_href}">{lf}
 <script type="application/ld+json">
-{J(ld)}
+{JC(ld)}
 </script>"""
 
 
@@ -1391,10 +1416,11 @@ def render_static_page(lang, page):
     if page == "index":
         graph.append({"@type": "ItemList", "name": TRAVEL[lang]["exp"]["explore_h"],
                       "numberOfItems": len(ATTRACTIONS),
+                      "url": index_hub_url(lang, "attractions"),
                       "itemListElement": [
                           {"@type": "ListItem", "position": i + 1,
-                           "url": attr_url(lang, s), "name": a[lang]["name"]}
-                          for i, (s, a) in enumerate(ATTRACTIONS.items())]})
+                           "url": region_url(lang, k), "name": REGIONS[k][lang]["name"]}
+                          for i, k in enumerate(REGIONS)]})
     if page == "fleet":
         graph.append(offer_catalog(lang))
         graph.append({"@type": "ItemList", "itemListElement": [
