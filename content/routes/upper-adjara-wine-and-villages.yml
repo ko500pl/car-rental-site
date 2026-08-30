@@ -22,7 +22,7 @@ origin:
 car_category: suv
 best_season: may-october
 difficulty: moderate
-image: ''
+image: /assets/photos/routes/upper-adjara-wine-and-villages-premium-20260830.webp
 waypoints: [makhuntseti-waterfall, keda-wine-cellars, khulo-cable-car-upper-adjara, skhalta-monastery, green-lake-goderdzi, beshumi]
 polyline: []
 sources: [https://georgia.travel/food-wine, https://georgia.travel/regions/ajara]

@@ -22,7 +22,7 @@ origin:
 car_category: economy
 best_season: all
 difficulty: easy
-image: ''
+image: /assets/photos/routes/mtskheta-heritage-day-premium-20260830.webp
 waypoints: [jvari-monastery, svetitskhoveli-cathedral, samtavro-monastery, armaztsikhe-bagineti]
 polyline: []
 sources: [https://georgia.travel/regions/mtskheta-mtianeti, https://georgia.travel/cities-towns/mtskheta]

@@ -23,7 +23,7 @@ origin:
 car_category: offroad
 best_season: june-september
 difficulty: hard
-image: ''
+image: /assets/photos/routes/svaneti-expedition-premium-20260830.webp
 waypoints:
 - bagrati-cathedral
 - dadiani-palace-zugdidi

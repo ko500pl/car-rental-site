@@ -22,7 +22,7 @@ origin:
 car_category: suv
 best_season: may-october
 difficulty: moderate
-image: ''
+image: /assets/photos/routes/javakheti-lakes-and-birds-premium-20260830.webp
 waypoints: [tsalka-reservoir, paravani-tabatskuri-lakes, poka-nunnery, javakheti-national-park, kumurdo-cathedral]
 polyline: []
 sources: [https://georgia.travel/javakheti-protected-areas, https://georgia.travel/javakheti-national-park]

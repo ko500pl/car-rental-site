@@ -22,7 +22,7 @@ origin:
 car_category: suv
 best_season: april-october
 difficulty: moderate
-image: ''
+image: /assets/photos/routes/lagodekhi-nature-weekend-premium-20260830.webp
 waypoints: [ilia-lake, kvareli-kindzmarauli, lagodekhi-protected-areas, artsivi-eagle-gorge, khornabuji-fortress]
 polyline: []
 sources: [https://georgia.travel/lagodekhi-managed-reserve, https://georgia.travel/cities-towns/lagodekhi, https://georgia.travel/regions/kakheti]

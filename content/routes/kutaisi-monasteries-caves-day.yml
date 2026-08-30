@@ -22,7 +22,7 @@ origin:
 car_category: economy
 best_season: all
 difficulty: easy
-image: ''
+image: /assets/photos/routes/kutaisi-monasteries-caves-day-premium-20260830.webp
 waypoints: [bagrati-cathedral, gelati-monastery, motsameta-monastery, prometheus-cave]
 polyline: []
 sources: [https://georgia.travel/regions/imereti, https://gulf.georgia.travel/brochure/en/UAG_Imereti_en.pdf]

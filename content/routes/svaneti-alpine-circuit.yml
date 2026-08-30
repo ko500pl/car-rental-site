@@ -22,7 +22,7 @@ origin:
 car_category: offroad
 best_season: july-september
 difficulty: hard
-image: ''
+image: /assets/photos/routes/svaneti-alpine-circuit-premium-20260830.webp
 waypoints: [mestia, becho-mazeri, chalaadi-glacier, koruldi-lakes, adishi, ushguli, shkhara-glacier]
 polyline: []
 sources: [https://georgia.travel/trekking-in-georgia, https://georgia.travel/ushguli-shkhara-glacier-namkvami-lake]

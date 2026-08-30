@@ -22,7 +22,7 @@ origin:
 car_category: suv
 best_season: may-october
 difficulty: moderate
-image: ''
+image: /assets/photos/routes/kazbegi-mountain-day-premium-20260830.webp
 waypoints: [zhinvali-reservoir, ananuri-fortress, jvari-pass-friendship-monument, gergeti-trinity-church]
 polyline: []
 sources: [https://georgia.travel/trekking-in-georgia, https://georgia.travel/regions/mtskheta-mtianeti]

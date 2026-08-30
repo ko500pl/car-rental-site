@@ -22,7 +22,7 @@ origin:
 car_category: suv
 best_season: may-october
 difficulty: easy
-image: ''
+image: /assets/photos/routes/racha-family-weekend-premium-20260830.webp
 waypoints: [shaori-reservoir, nikortsminda-cathedral, ambrolauri, khvanchkara-wine-zone, oni, utsera]
 polyline: []
 sources: [https://georgia.travel/regions/racha-lechkhumi, https://georgia.travel/destinations-in-georgia]

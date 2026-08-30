@@ -22,7 +22,7 @@ origin:
 car_category: economy
 best_season: all
 difficulty: easy
-image: ''
+image: /assets/photos/routes/tbilisi-history-walk-premium-20260830.webp
 waypoints: [georgian-national-museum, freedom-square-old-parliament, sololaki-art-nouveau, betlemi-quarter, narikala-fortress, abanotubani-sulphur-baths, holy-trinity-cathedral-sameba, chronicle-of-georgia]
 polyline: []
 sources: [https://georgia.travel/cities-towns/tbilisi, https://georgia.travel/things-to-do-in-tbilisi]

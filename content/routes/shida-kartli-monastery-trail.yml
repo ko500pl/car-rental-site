@@ -22,7 +22,7 @@ origin:
 car_category: suv
 best_season: march-november
 difficulty: moderate
-image: ''
+image: /assets/photos/routes/shida-kartli-monastery-trail-premium-20260830.webp
 waypoints: [samtavisi-cathedral, kintsvisi-monastery, rkoni-monastery, ateni-sioni-church, uplistsikhe]
 polyline: []
 sources: [https://georgia.travel/regions/shida-kartli, https://georgia.travel/ateni-valley]

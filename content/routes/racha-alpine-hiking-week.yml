@@ -22,7 +22,7 @@ origin:
 car_category: suv
 best_season: june-september
 difficulty: hard
-image: ''
+image: /assets/photos/routes/racha-alpine-hiking-week-premium-20260830.webp
 waypoints: [shaori-reservoir, nikortsminda-cathedral, oni, shovi-resort, udziro-lake-buba-glacier, glola]
 polyline: []
 sources: [https://georgia.travel/trekking-in-georgia, https://georgia.travel/regions/racha-lechkhumi]

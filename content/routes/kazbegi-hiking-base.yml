@@ -22,7 +22,7 @@ origin:
 car_category: suv
 best_season: may-october
 difficulty: moderate
-image: ''
+image: /assets/photos/routes/kazbegi-hiking-base-premium-20260830.webp
 waypoints: [ananuri-fortress, zhinvali-reservoir, jvari-pass-friendship-monument, gergeti-trinity-church, dariali-gorge-gveleti-waterfalls, truso-valley, juta-chaukhi]
 polyline: []
 sources: [https://exploregeorgiatours.com/guide/complete-georgia-itinerary-guide, https://georgia.travel/trekking-in-georgia]

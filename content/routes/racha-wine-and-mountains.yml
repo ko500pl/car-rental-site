@@ -23,7 +23,7 @@ origin:
 car_category: suv
 best_season: may-october
 difficulty: moderate
-image: ''
+image: /assets/photos/routes/racha-wine-and-mountains-premium-20260830.webp
 waypoints: [nakerala-pass, shaori-reservoir, nikortsminda-cathedral, khvanchkara-wine-zone, ambrolauri, barakoni-church, oni-synagogue, utsera]
 polyline: []
 sources: [https://georgia.travel/georgia-the-cradle-of-wine, https://georgia.travel/regions/racha-lechkhumi]

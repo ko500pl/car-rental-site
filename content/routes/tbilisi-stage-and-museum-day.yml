@@ -22,7 +22,7 @@ origin:
 car_category: economy
 best_season: all
 difficulty: easy
-image: ''
+image: /assets/photos/routes/tbilisi-stage-and-museum-day-premium-20260830.webp
 waypoints: [georgian-national-museum, tbilisi-opera-ballet-theatre, rustaveli-national-theatre, sololaki-art-nouveau]
 polyline: []
 sources: [https://opera.ge/geo/playbill, https://rustavelitheatre.ge/, https://museum.ge/]

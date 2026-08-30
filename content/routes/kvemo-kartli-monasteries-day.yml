@@ -22,7 +22,7 @@ origin:
 car_category: suv
 best_season: april-october
 difficulty: moderate
-image: ''
+image: /assets/photos/routes/kvemo-kartli-monasteries-day-premium-20260830.webp
 waypoints: [manglisi-cathedral, gudarekhi-monastery, pitareti-monastery]
 polyline: []
 sources: [https://georgia.travel/regions/kvemo-kartli, https://georgia.travel/destinations-in-georgia]

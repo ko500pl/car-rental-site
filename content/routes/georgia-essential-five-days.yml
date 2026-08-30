@@ -22,7 +22,7 @@ origin:
 car_category: suv
 best_season: april-october
 difficulty: moderate
-image: ''
+image: /assets/photos/routes/georgia-essential-five-days-premium-20260830.webp
 waypoints: [betlemi-quarter, jvari-monastery, svetitskhoveli-cathedral, ananuri-fortress, gergeti-trinity-church, bodbe-monastery, sighnaghi, uplistsikhe, gelati-monastery, bagrati-cathedral, prometheus-cave]
 polyline: []
 sources: [https://georgia.travel/destinations-in-georgia, https://georgia.travel/regions/kakheti, https://georgia.travel/regions/mtskheta-mtianeti, https://georgia.travel/uplistsikhe]

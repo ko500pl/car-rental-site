@@ -22,7 +22,7 @@ origin:
 car_category: economy
 best_season: all
 difficulty: easy
-image: ''
+image: /assets/photos/routes/western-georgia-food-road-premium-20260830.webp
 waypoints: [bagrati-cathedral, kutaisi-jewish-quarter, gelati-monastery, martvili-canyon, salkhino-palace, dadiani-palace-zugdidi, kolkheti-national-park, poti]
 polyline: []
 sources: [https://georgia.travel/georgian-cuisine, https://georgia.travel/food-wine]
