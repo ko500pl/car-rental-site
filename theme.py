@@ -362,6 +362,20 @@ td:first-child{{font-weight:600;color:var(--ink)}}
   color:var(--ink-2);border-radius:20px;cursor:pointer;transition:none}}
 .chip:hover{{border-color:var(--brand-2);color:var(--brand-ink)}}
 .chip.on{{background:var(--brand);border-color:var(--brand);color:var(--on-brand);font-weight:600}}
+/* ── day-trip finder ─────────────────────────────────────────────────── */
+.dt{{display:grid;gap:16px}}
+.dt-row{{display:grid;gap:7px}}
+.dt-label{{font-size:13px;font-weight:600;color:var(--ink-2);letter-spacing:.02em}}
+.dt-result{{border:1px solid var(--line);border-radius:14px;padding:18px;background:var(--surface)}}
+.dt-hint{{margin:0;color:var(--ink-2)}}
+.dt-head h3{{margin:6px 0 4px;font-size:22px}}
+.dt-head .tag{{font-size:12px}}
+.dt-meta{{margin:0 0 4px;color:var(--ink-2);font-size:14px}}
+.dt-result h4{{margin:16px 0 6px;font-size:15px}}
+.dt-facts{{margin-top:14px}}
+.dt-note{{margin:12px 0 0;font-size:13px;color:var(--ink-2)}}
+.dt-warn{{color:var(--brand-ink);font-weight:600}}
+.dt-result .row{{margin-top:14px}}
 .pday{{border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);padding:20px 24px;margin:0 0 18px}}
 .pday h3{{margin:0 0 14px;font-size:19px;color:var(--brand-ink);display:flex;align-items:center;gap:9px;flex-wrap:wrap}}
 .pday h3 small{{font-weight:500;font-size:14px;color:var(--ink-3)}}

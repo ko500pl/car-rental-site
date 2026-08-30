@@ -48,6 +48,26 @@ placeholders:
 
 templates:
 
+  day_trip:
+    ka:
+      title: "დღეს რა ვქნა? — დღის მარშრუტი შენი ადგილიდან | RentUp"
+      description: "თქვი საიდან იწყებ, რა გაინტერესებს და რამდენი საათი გაქვს — {count} ადგილიდან შეგირჩევთ საუკეთესოს და ვეტყვით, რას მოასწრებ დამატებით."
+    en:
+      title: "What Can I Do Today? — Day Trip Finder | RentUp"
+      description: "Say where you are, what interests you and how many hours you have. We pick the best of {count} places within reach and show what else fits in the same day."
+    ru:
+      title: "Чем заняться сегодня? — маршрут на день | RentUp"
+      description: "Укажите, откуда начинаете, что вам интересно и сколько часов есть. Подберём лучшее из {count} мест и покажем, что ещё успеете за день."
+    fa:
+      title: "امروز چه کار کنم؟ — یافتن سفر یک‌روزه | RentUp"
+      description: "بگویید کجا هستید، به چه علاقه دارید و چند ساعت وقت دارید. بهترین گزینه را از میان {count} مکان در دسترس انتخاب می‌کنیم و می‌گوییم چه چیز دیگری در همان روز جا می‌شود."
+    he:
+      title: "מה אפשר לעשות היום? — מוצא טיולי יום | RentUp"
+      description: "אמרו איפה אתם, מה מעניין אתכם וכמה שעות יש. נבחר את הטוב ביותר מתוך {count} מקומות בהישג יד ונראה מה עוד נכנס באותו יום."
+    ar:
+      title: "ماذا أفعل اليوم؟ — مكتشف رحلات اليوم الواحد | RentUp"
+      description: "أخبرنا أين أنت، وما الذي يهمّك، وكم ساعة لديك. نختار الأفضل من بين {count} مكاناً في المتناول ونبيّن ما الذي يناسب اليوم نفسه."
+
   attractions_hub:
     ka:
       title: "საქართველოს სანახავი ადგილები — {count} ადგილი {regions} რეგიონში | RentUp"

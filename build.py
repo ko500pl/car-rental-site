@@ -1872,6 +1872,10 @@ def explorer_points(lang):
             "d": f'{a["distance_tbilisi_km"]} {u["km"]} · {a["drive_time_tbilisi"]}',
             "u": attr_url(lang, s, False), "f": f, "v": v,
             "un": bool(a["unesco"]), "fe": bool(a["featured"]),
+            # day-trip finder: which car the road needs, and when it is open
+            "cc": a.get("car_category") or "economy",
+            "bs": a.get("best_season") or "all",
+            "oy": bool(a.get("open_year_round", True)),
             "img": a.get("image") or "", "r": a.get("rating") or 0,
             "rd": ROAD_RANK_NUM.get(a["road"], 0), "el": a.get("elevation") or 0,
             "bike": a["type"] in {"nature", "lake", "town", "beach", "mountain", "canyon", "waterfall"}
@@ -1883,7 +1887,7 @@ def explorer_points(lang):
 
 EXPLORER_INDEX_KEYS = (
     "s", "n", "la", "lo", "names", "t", "ty", "c", "g", "gn",
-    "hh", "f", "v", "r", "rd", "el", "bike",
+    "hh", "f", "v", "r", "rd", "el", "bike", "cc", "bs", "oy",
 )
 
 
@@ -3177,6 +3181,7 @@ def sitemap_children():
             for k in good_guides]
     out["cars"] = [(lambda l, s=slug: car_url(l, s), "0.8",
                     Path("content/cars") / f"{slug}.yml") for slug in CARS]
+    out["core"].append((lambda l: day_trip_url(l), "0.9", None))
     out["core"].append((lambda l: index_hub_url(l, "attractions"), "0.8", None))
     out["core"].append((lambda l: index_hub_url(l, "routes"), "0.8", None))
     out["core"].append((lambda l: index_hub_url(l, "regions"), "0.8", None))
@@ -3492,6 +3497,7 @@ def home_semantic_block(lang):
     # A crawlable index of every cluster. Without it the hub pages are reachable
     # only through the header, which puts the content four to five clicks deep.
     hubs = [
+        (day_trip_url(lang, False), su("day_trip_h1", lang)),
         (rental_hub_url(lang, False), su("car_rental", lang) or UI[lang]["nav"]["fleet"]),
         (index_hub_url(lang, "attractions", False), tu(lang, "attractions")),
         (index_hub_url(lang, "routes", False), tu(lang, "routes")),
@@ -4464,6 +4470,122 @@ def render_regions_hub(lang):
     return shell(lang, "map", head, crumbs + f'<main id="main">{body}</main>', depth)
 
 
+# ── /day-trip/ — "I am free today, where do I go?" ─────────────────────────
+def day_trip_url(lang, absolute=True):
+    p = f"{lang_root(lang)}day-trip/"
+    return (SITE_URL + p) if absolute else p
+
+
+DT_HOURS = ((3, "3h"), (5, "half"), (9, "full"), (12, "long"))
+
+
+def _dt_reach_table(lang, key):
+    """What a visitor can actually reach from one pickup point in a day.
+    Static, crawlable, and computed from the same road model the tool uses."""
+    place = PLACE_BY_KEY.get(key)
+    if not place or place.get("lat") is None:
+        return ""
+    bands = [(1.5, "1:30"), (3, "3:00"), (5, "5:00")]
+    counts = {b[1]: 0 for b in bands}
+    for a in ATTRACTIONS.values():
+        f, v = road_model(a)
+        h = (_hav(place["lat"], place["lon"], a["lat"], a["lon"]) * f) / v
+        for lim, lab in bands:
+            if h <= lim:
+                counts[lab] += 1
+    name = place.get(lang) or place.get("en", key)
+    return (f'<tr><td>{E(name)}</td>'
+            + "".join(f'<td>{counts[lab]}</td>' for _, lab in bands) + "</tr>")
+
+
+def render_day_trip(lang):
+    u = UI[lang]
+    depth = 1 if lang == ROOT_LANG else 2
+    h1 = su("day_trip_h1", lang) or "What can I do today?"
+    lead = su("day_trip_lead", lang) or ""
+
+    cities = "".join(
+        f'<button type="button" class="chip" data-dt-city data-la="{PLACE_BY_KEY[k]["lat"]}" '
+        f'data-lo="{PLACE_BY_KEY[k]["lon"]}">'
+        f'{E(PLACE_BY_KEY[k].get(lang) or PLACE_BY_KEY[k].get("en", k))}</button>'
+        for k in RENTAL_PLACES if PLACE_BY_KEY.get(k, {}).get("lat") is not None
+        and not k.endswith("-airport"))
+    types = sorted({a["type"] for a in ATTRACTIONS.values()},
+                   key=lambda t: tl(lang, "type", t))
+    tchips = "".join(
+        f'<button type="button" class="chip" data-dt-type="{E(t)}">{E(tl(lang, "type", t))}</button>'
+        for t in types)
+    hchips = "".join(
+        f'<button type="button" class="chip{" on" if n == 5 else ""}" data-dt-hours="{n}">'
+        f'{E(su("dt_hours", lang, k) or f"{n} h")}</button>' for n, k in DT_HOURS)
+    pchips = "".join(
+        f'<button type="button" class="chip{" on" if n == 2 else ""}" data-dt-people="{n}">{n}{plus}</button>'
+        for n, plus in ((1, ""), (2, ""), (4, ""), (7, "+")))
+
+    rows = "".join(_dt_reach_table(lang, k) for k in RENTAL_PLACES if not k.endswith("-airport"))
+    reach = (f'<div class="tbl-wrap"><table class="spec"><thead><tr>'
+             f'<th>{E(su("pickup_locations", lang))}</th><th>1:30</th><th>3:00</th><th>5:00</th>'
+             f'</tr></thead><tbody>{rows}</tbody></table></div>') if rows else ""
+
+    body = (
+        f'<section class="page-head"><div class="wrap"><h1>{E(h1)}</h1>'
+        f'<p class="lead">{E(lead)}</p></div></section>'
+        f'<section class="sec"><div class="wrap"><div id="daytrip" class="dt">'
+        f'<div class="dt-row"><span class="dt-label">{E(su("dt_from", lang) or "Starting from")}</span>'
+        f'<div class="chips"><button type="button" class="chip" id="dt-geo">'
+        f'{E(su("dt_near_me", lang) or "Near me")}</button>{cities}</div></div>'
+        f'<div class="dt-row"><span class="dt-label">{E(su("dt_people", lang) or "How many of you")}</span>'
+        f'<div class="chips">{pchips}</div></div>'
+        f'<div class="dt-row"><span class="dt-label">{E(su("dt_interest", lang) or "What interests you")}</span>'
+        f'<div class="chips">{tchips}</div></div>'
+        f'<div class="dt-row"><span class="dt-label">{E(su("dt_time", lang) or "How long you have")}</span>'
+        f'<div class="chips">{hchips}</div></div>'
+        f'<div id="dt-result" class="dt-result"></div>'
+        f'</div></div></section>'
+        + (_sec(su("dt_reach_title", lang) or "What is within reach", reach, alt=True) if reach else "")
+        + guide_links_block(lang, list(GUIDES))
+        + f'<section class="sec alt"><div class="wrap"><div class="cta">'
+          f'<h2>{E(su("request_booking", lang))}</h2>'
+          f'<div class="row"><a class="btn" href="{rental_hub_url(lang, False)}">'
+          f'{E(((SEO_CAR_RENTAL.get("hub") or {}).get(lang) or {}).get("h1", u["nav"]["fleet"]))}</a>'
+          f'<a class="btn ghost" href="{planner_landing_url(lang, False)}">'
+          f'{E(su("open_in_planner", lang))}</a></div></div></div></section>'
+    )
+    title, desc = seo_meta("day_trip", lang, count=len(ATTRACTIONS))
+    title = title or f'{h1} | {BRAND}'
+    desc = desc or lead
+    url = day_trip_url(lang)
+    graph = [org_node(lang), website_node(lang),
+             {"@type": "WebApplication", "@id": url + "#app", "name": h1,
+              "url": url, "description": desc, "inLanguage": lang,
+              "applicationCategory": "TravelApplication",
+              "browserRequirements": "Requires JavaScript",
+              "offers": {"@type": "Offer", "price": 0, "priceCurrency": "GEL"},
+              "provider": {"@id": SITE_URL + "/#organization"}},
+             crumbs_node(lang, [(u["nav"]["index"], page_url(lang, "index")), (h1, url)])]
+    head = head_html(lang, "map", title, desc, "", url,
+                     {l: day_trip_url(l) for l in LANGS}, depth,
+                     {"@context": "https://schema.org", "@graph": graph})
+    t = {
+        "pick_start": su("dt_pick_start", lang), "nothing": su("dt_nothing", lang),
+        "best": su("dt_best", lang), "also": su("dt_also", lang),
+        "km": tu(lang, "km"), "h": tu(lang, "hrs"), "drive": su("dt_drive", lang),
+        "total_drive": su("total_drive", lang), "total_km": su("total_distance", lang),
+        "day_total": su("dt_day_total", lang), "car_needed": su("car_needed", lang),
+        "estimate": su("dt_estimate", lang), "open_planner": su("open_in_planner", lang),
+        "book_car": su("rent_car_for_trip", lang), "locating": su("dt_locating", lang),
+        "you_are_here": su("dt_near_me", lang), "geo_failed": su("dt_geo_failed", lang),
+        "planner_url": page_url(lang, "map", False),
+        "car_urls": {c: rental_cat_url(lang, c, False) for c in ("economy", "suv", "offroad")},
+        "car_names": {c: cat_label(c, lang) for c in ("economy", "suv", "offroad")},
+    }
+    js = (f'\n<script src="{TRAVEL_ASSET[lang]}"></script>'
+          f'\n<script>window.DAYTRIP_T={JC(t)};</script>'
+          f'\n<script defer src="{ASSET.get("daytrip", "/assets/daytrip.js")}"></script>')
+    crumbs = crumbs_html(lang, [(u["nav"]["index"], page_url(lang, "index", False)), (h1, None)])
+    return shell(lang, "map", head, crumbs + f'<main id="main">{body}</main>', depth, js)
+
+
 def render_guides_hub(lang):
     u = UI[lang]
     depth = 1 if lang == ROOT_LANG else 2
@@ -4558,6 +4680,10 @@ def render_planner_landing(lang):
                f'<ul class="linklist">{_route_links(lang, list(ROUTES)[:8], 8)}</ul>'
                f'<p><a class="btn ghost" href="{lang_root(lang)}tours/">{E(su("ready_made_routes", lang))}</a>'
                f' <a class="btn ghost" href="{itin_hub_url(lang, False)}">{E(su("itineraries", lang))}</a></p>', alt=True)
+        + _sec(su("day_trip_h1", lang),
+               f'<div class="article"><p>{E(su("day_trip_lead", lang))}</p>'
+               f'<p><a class="btn ghost" href="{day_trip_url(lang, False)}">'
+               f'{E(su("day_trip_h1", lang))}</a></p></div>')
         + guide_links_block(lang, list(GUIDES), alt=True)
         + (_sec("FAQ", f'<div class="faq">{_faq_html(P.get("faq"))}</div>') if P.get("faq") else "")
         + f'<section class="sec alt"><div class="wrap"><div class="cta">'
@@ -5235,7 +5361,7 @@ def main():
     # the HTML only ever links the hashed one. Copying the plain source as well
     # leaves an unversioned duplicate that no page requests but a browser can
     # still cache indefinitely.
-    hashed_sources = {"explorer.js", "planner.js", "auth.js", "booking.js", "analytics.js",
+    hashed_sources = {"explorer.js", "planner.js", "auth.js", "booking.js", "analytics.js", "daytrip.js",
                       "community.js", "admin-bookings.js", "app.js", "app-mobile.js", "trip.js"}
     for sdir, dst in (("static", os.path.join(out, "assets")),
                       ("admin", os.path.join(out, "admin"))):
@@ -5260,7 +5386,8 @@ def main():
                     ("app-mobile.js", "app_mobile"), ("trip.js", "trip"),
                     ("auth.js", "auth"), ("booking.js", "booking"),
                     ("community.js", "community"), ("admin-bookings.js", "admin_bookings"),
-                    ("analytics.js", "analytics"), ("app.js", "app")):
+                    ("analytics.js", "analytics"), ("app.js", "app"),
+                    ("daytrip.js", "daytrip")):
         p = os.path.join("static", fn)
         if os.path.exists(p):
             write_hashed(out, fn, open(p, encoding="utf-8").read(), key)
@@ -5340,6 +5467,11 @@ def main():
             if _h:
                 write(os.path.join(out, itin_url(lang, _sl, False).lstrip("/"), "index.html"), _h)
                 n += 1
+
+        _dt = render_day_trip(lang)
+        if _dt:
+            write(os.path.join(out, day_trip_url(lang, False).lstrip("/"), "index.html"), _dt)
+            n += 1
 
         # ── index hubs: /attractions/, /routes/, /regions/ ────────────────
         for _kind, _fn in (("attractions", render_attractions_hub),
