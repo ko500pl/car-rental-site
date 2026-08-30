@@ -4579,8 +4579,11 @@ def render_day_trip(lang):
         # The shared map index deliberately omits per-place URLs to stay light
         # (tests.test_map_chunking guards that), so build them from the slug.
         "attr_prefix": f"{lang_root(lang)}attractions/",
-        "car_urls": {c: rental_cat_url(lang, c, False) for c in ("economy", "suv", "offroad")},
-        "car_names": {c: cat_label(c, lang) for c in ("economy", "suv", "offroad")},
+        # Every fleet category, not just the three the road model recommends:
+        # a large group is sent to the minivan, and it must be named in the
+        # visitor's own language rather than shown as the raw key.
+        "car_urls": {c: rental_cat_url(lang, c, False) for c in SEO_CATEGORY_ORDER},
+        "car_names": {c: cat_label(c, lang) for c in SEO_CATEGORY_ORDER},
     }
     js = (f'\n<script src="{TRAVEL_ASSET[lang]}"></script>'
           f'\n<script>window.DAYTRIP_T={JC(t)};</script>'
