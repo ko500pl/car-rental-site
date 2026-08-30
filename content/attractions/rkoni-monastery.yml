@@ -8,11 +8,6 @@ featured: false
 order: 72
 image: /assets/photos/rkoni-monastery-1.webp
 gallery:
-- image: /assets/photos/rkoni-monastery-1.webp
-  author: Jaba1977
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Rkoni_Monastery,_Kaspi_(2).jpg
 - image: /assets/photos/rkoni-monastery-2.webp
   author: Jaba1977
   license: CC BY-SA 4.0
@@ -23,6 +18,21 @@ gallery:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Rkoni_Monastery,_Kaspi_(8).jpg
+- image: /assets/photos/rkoni-monastery-premium-ai-1-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/rkoni-monastery-premium-ai-2-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/rkoni-monastery-premium-ai-3-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '3'
 best_season: may-october
 open_year_round: false

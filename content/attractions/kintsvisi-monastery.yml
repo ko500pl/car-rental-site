@@ -8,11 +8,31 @@ featured: false
 order: 40
 image: /assets/photos/kintsvisi-monastery.webp
 gallery:
-- image: /assets/photos/kintsvisi-monastery-3.webp
+- image: /assets/photos/kintsvisi-monastery-verified-1-20260831.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Kintsvisi_Monastery,_Shida_Kartli,_Georgia_-_panoramio_(1).jpg
+- image: /assets/photos/kintsvisi-monastery-verified-2-20260831.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Kintsvisi_Monastery,_Shida_Kartli,_Georgia_-_panoramio_(3).jpg
+- image: /assets/photos/kintsvisi-monastery-verified-3-20260831.webp
   author: Jaba1977
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Kintsvisi_church_(5).jpg
+  source: https://commons.wikimedia.org/wiki/File:Kintsvisi_Monastery_(3).jpg
+- image: /assets/photos/kintsvisi-monastery-verified-4-20260831.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Kintsvisi_Monastery_(1).jpg
+- image: /assets/photos/kintsvisi-monastery-verified-5-20260831.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Kintsvisi_Monastery_(6).jpg
 visit_hours: '2'
 best_season: may-october
 open_year_round: true

@@ -8,11 +8,21 @@ featured: false
 order: 50
 image: /assets/photos/samtavisi-cathedral-3.webp
 gallery:
-- image: /assets/photos/samtavisi-cathedral-3.webp
+- image: /assets/photos/samtavisi-cathedral-verified-1-20260831.webp
   author: Kober
-  license: CC0
-  license_url: http://creativecommons.org/publicdomain/zero/1.0/deed.en
-  source: https://commons.wikimedia.org/wiki/File:Samtavisi_Cathedral,_panoramic_view_from_the_east._Georgia.jpg
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Samtavisi_Cathedral,_Georgia_02.jpg
+- image: /assets/photos/samtavisi-cathedral-verified-2-20260831.webp
+  author: Kober
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Samtavisi_Cathedral,_Georgia_22.jpg
+- image: /assets/photos/samtavisi-cathedral-verified-3-20260831.webp
+  author: Kober
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Samtavisi_Cathedral,_Georgia_24.jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true

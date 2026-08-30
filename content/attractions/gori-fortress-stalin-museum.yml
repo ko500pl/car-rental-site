@@ -17,14 +17,32 @@ gallery:
   author: Giorgi Balakhadze
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%E1%83%92%E1%83%9D%E1%83%A0%E1%83%98%E1%83%A1%E1%83%AA%E1%83%98%E1%83%AE%E1%83%98%E1%83%A1_%E1%83%9B%E1%83%AA%E1%83%98%E1%83%A0%E1%83%94_%E1%83%94%E1%83%99%E1%83%9A%E1%83%94%E1%83%A1%E1%83%98%E1%83%90,_%E1%83%92%E1%83%9D%E1%83%A0%E1%83%98.jpg
+  source: https://commons.wikimedia.org/wiki/File:%E1%83%92%E1%83%9D%E1%83%A0%E1%83%98%E1%83%A1%E1%83%AA%E1%83%98%E1%83%AE%E1%83%98%E1%83%A1_%E1%83%9B%E1%83%AA%E1%83%98%E1%83%A0%E1%83%94_%E1%83%94%E1%83%99%E1%83%9A%E1%83%94%E1%83%A1%E1%83%98%E1%83%90,_%E1%83%92%E1%83%9D%E1%83%A0%E1%83%98.jpg
 - image: /assets/photos/gori-fortress-stalin-museum-3.webp
   author: Giorgi Balakhadze
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:%E1%83%92%E1%83%9D%E1%83%A0%E1%83%98%E1%83%A1%E1%83%AA%E1%83%98%E1%83%AE%E1%83%98%E1%83%A1_%E1%83%9B%E1%83%AA%E1%83%98%E1%83%A0%E1%83%94_%E1%83%94%E1%83%99%E1%83%9A%E1%83%94%E1%83%A1%E1%83%98%E1%83%90,_%E1%83%92%E1%83%9D%E1%83%A0%E1%83%98_01.jpg
+  source: https://commons.wikimedia.org/wiki/File:%E1%83%92%E1%83%9D%E1%83%A0%E1%83%98%E1%83%A1%E1%83%AA%E1%83%98%E1%83%AE%E1%83%98%E1%83%A1_%E1%83%9B%E1%83%AA%E1%83%98%E1%83%A0%E1%83%94_%E1%83%94%E1%83%99%E1%83%9A%E1%83%94%E1%83%A1%E1%83%98%E1%83%90,_%E1%83%92%E1%83%9D%E1%83%A0%E1%83%98_01.jpg
+- image: /assets/photos/gori-fortress-stalin-museum-verified-1-20260831.webp
+  author: Armineaghayan
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Gori_fortress_by_ArmAg_(17).JPG
+- image: /assets/photos/gori-fortress-stalin-museum-verified-2-20260831.webp
+  author: Tiia Monto
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Gori_fortress_2018.jpg
+- image: /assets/photos/gori-fortress-stalin-museum-verified-3-20260831.webp
+  author: Sasha India
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Joseph_Stalin_Museum_(Gori,_Georgia)_(28145819800).jpg
+- image: /assets/photos/gori-fortress-stalin-museum-verified-4-20260831.webp
+  author: Bernard Gagnon
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0
+  source: https://commons.wikimedia.org/wiki/File:Railway_coach_of_Stalin,_Gori_02.jpg
 visit_hours: '3'
 best_season: all
 open_year_round: true
