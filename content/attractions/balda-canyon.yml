@@ -8,11 +8,6 @@ featured: false
 order: 60
 image: /assets/photos/balda-canyon-1.webp
 gallery:
-- image: /assets/photos/balda-canyon-1.webp
-  author: Kober
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Baldi_Canyon_(1).jpg
 - image: /assets/photos/balda-canyon-2.webp
   author: Kober
   license: CC BY-SA 4.0
@@ -23,6 +18,21 @@ gallery:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Baldi_Canyon_(3).jpg
+- image: /assets/photos/balda-canyon-verified-1-20260831.webp
+  author: Paata vardanashvili
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Balda_04.jpg
+- image: /assets/photos/balda-canyon-verified-2-20260831.webp
+  author: Paata vardanashvili
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Balda_09.jpg
+- image: /assets/photos/balda-canyon-verified-3-20260831.webp
+  author: Alexey Komarov
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Balda_Canyon_2023-08-27-1.jpg
 visit_hours: '2'
 best_season: may-october
 open_year_round: false

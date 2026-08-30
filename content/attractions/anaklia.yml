@@ -13,6 +13,26 @@ gallery:
   license: CC BY 2.0
   license_url: https://creativecommons.org/licenses/by/2.0
   source: https://commons.wikimedia.org/wiki/File:Sunset_in_Anaklia,_Georgia.jpg
+- image: /assets/photos/anaklia-verified-1-20260831.webp
+  author: Aleksey Muhranoff
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Anaklia_(Photo_A._Muhranoff,_2011).jpg
+- image: /assets/photos/anaklia-verified-2-20260831.webp
+  author: Anaklia2012
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Georgia,Anaklia_2012.jpg
+- image: /assets/photos/anaklia-verified-3-20260831.webp
+  author: Anaklia2012
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Georgia_Anaklia_%E1%83%90%E1%83%9C%E1%83%90%E1%83%99%E1%83%9A%E1%83%98%E1%83%90_%E1%83%AE%E1%83%98%E1%83%93%E1%83%98.jpg
+- image: /assets/photos/anaklia-verified-4-20260831.webp
+  author: Dalibor Z. Chvatal
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0
+  source: https://commons.wikimedia.org/wiki/File:Unnamed_Road,_Anaklia,_Georgia_-_panoramio.jpg
 visit_hours: '3'
 best_season: june-september
 open_year_round: true

@@ -7,7 +7,32 @@ unesco: false
 featured: false
 order: 88
 image: /assets/photos/zugdidi-botanical-garden.webp
-gallery: []
+gallery:
+- image: /assets/photos/zugdidi-botanical-garden-verified-1-20260831.webp
+  author: Lika (  ლ  ი  კ  ა  )
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:Botanical_garden_in_zugdidi(05).jpg
+- image: /assets/photos/zugdidi-botanical-garden-verified-2-20260831.webp
+  author: Lika (  ლ  ი  კ  ა  )
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:Botanical_garden_in_Zugdidi(07).jpg
+- image: /assets/photos/zugdidi-botanical-garden-verified-3-20260831.webp
+  author: Lika (  ლ  ი  კ  ა  )
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:Botanical_garden_in_zugdidi(12).jpg
+- image: /assets/photos/zugdidi-botanical-garden-verified-4-20260831.webp
+  author: Lika (  ლ  ი  კ  ა  )
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:Botanical_garden_in_Zugdidi(13).jpg
+- image: /assets/photos/zugdidi-botanical-garden-verified-5-20260831.webp
+  author: Lika (  ლ  ი  კ  ა  )
+  license: Public domain
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:Botanical_garden_in_zugdidi(24).jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true

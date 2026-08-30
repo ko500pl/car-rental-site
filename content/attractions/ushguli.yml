@@ -28,6 +28,21 @@ gallery:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Ushguli_towers_in_Svaneti,_Georgia.png
+- image: /assets/photos/ushguli-verified-1-20260831.webp
+  author: 'Elena Sakhno / Pixabay'
+  license: 'CC0'
+  license_url: 'https://creativecommons.org/publicdomain/zero/1.0/'
+  source: 'https://commons.wikimedia.org/wiki/File:Environs_of_Ushguli,_Georgia.jpg'
+- image: /assets/photos/ushguli-verified-2-20260831.webp
+  author: 'Jaba1977; improvements by Giorgi Balakhadze'
+  license: 'CC BY-SA 4.0'
+  license_url: 'https://creativecommons.org/licenses/by-sa/4.0'
+  source: 'https://commons.wikimedia.org/wiki/File:Lamaria_of_Ushguli_(edited).jpg'
+- image: /assets/photos/ushguli-verified-3-20260831.webp
+  author: 'FingerWiki'
+  license: 'CC BY-SA 4.0'
+  license_url: 'https://creativecommons.org/licenses/by-sa/4.0'
+  source: 'https://commons.wikimedia.org/wiki/File:View_from_the_Lower_Fortress_Tower_of_Chazhashi_over_Ushguli_and_the_Enguri_River_valley.jpg'
 visit_hours: '4'
 best_season: june-september
 open_year_round: false

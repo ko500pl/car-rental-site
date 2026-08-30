@@ -9,6 +9,7 @@ JSON evidence file and a labelled contact sheet. It does not modify content.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import html
 import json
 import re
@@ -125,7 +126,8 @@ def contact_sheet(rows: list[dict], path: Path) -> None:
     font = ImageFont.load_default()
     for idx, row in enumerate(rows):
         x, y = (idx % cols) * cell_w, (idx // cols) * cell_h
-        cache_path = CACHE / f"{idx:03d}.jpg"
+        cache_key = hashlib.sha1(row["page_url"].encode("utf-8")).hexdigest()[:16]
+        cache_path = CACHE / f"{cache_key}.jpg"
         try:
             download(row["image_url"], cache_path)
             with Image.open(cache_path) as source:

@@ -8,11 +8,31 @@ featured: false
 order: 90
 image: /assets/photos/nokalakevi-1.webp
 gallery:
-- image: /assets/photos/nokalakevi-1.webp
+- image: /assets/photos/nokalakevi-verified-1-20260831.webp
+  author: Aleksey Muhranoff
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Nokalakevi_(Photo_A._Muhranoff,_2011)-1.jpg
+- image: /assets/photos/nokalakevi-verified-2-20260831.webp
+  author: Aleksey Muhranoff
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Nokalakevi_(Photo_A._Muhranoff,_2011)-2.jpg
+- image: /assets/photos/nokalakevi-verified-3-20260831.webp
+  author: Aleksey Muhranoff
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:River_Tekhura_at_Nokalakevi_Nokalakevi_(Photo_A._Muhranoff,_2011).jpg
+- image: /assets/photos/nokalakevi-verified-4-20260831.webp
   author: G.N.
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Jikha_(G.N._2008).jpg
+  source: https://commons.wikimedia.org/wiki/File:Nokalakevi_fortress_-_panoramio.jpg
+- image: /assets/photos/nokalakevi-verified-5-20260831.webp
+  author: შალვა მინდაძე 11
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Nokalakevi_Church.jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true

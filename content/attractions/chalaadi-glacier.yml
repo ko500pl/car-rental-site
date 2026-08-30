@@ -13,6 +13,31 @@ gallery:
   license: CC BY 2.0
   license_url: https://creativecommons.org/licenses/by/2.0
   source: https://commons.wikimedia.org/wiki/File:On_the_trail_to_Chalaadi_Glacier,_Samegrelo-Zemo_Svaneti,_Georgia.jpg
+- image: /assets/photos/chalaadi-glacier-verified-1-20260831.webp
+  author: Alen Ištoković
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0
+  source: https://commons.wikimedia.org/wiki/File:Bridge_to_the_Chaladi_glacier_-_panoramio.jpg
+- image: /assets/photos/chalaadi-glacier-verified-2-20260831.webp
+  author: Alen Ištoković
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0
+  source: https://commons.wikimedia.org/wiki/File:To_the_Chaladi_glacier_-_panoramio.jpg
+- image: /assets/photos/chalaadi-glacier-premium-ai-1-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/chalaadi-glacier-premium-ai-2-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/chalaadi-glacier-premium-ai-3-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '4'
 best_season: june-september
 open_year_round: false
