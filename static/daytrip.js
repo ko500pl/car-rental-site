@@ -36,6 +36,12 @@
     return { km: km, h: km / (p.v || 50) };
   }
 
+  // The shared map index stays lightweight and ships no per-place URL, so we
+  // build it from the slug and this language's attraction prefix.
+  function placeUrl(p) {
+    return p.u || ((T.attr_prefix || "/attractions/") + p.s + "/");
+  }
+
   function fmtH(h) {
     var m = Math.round(h * 60);
     return Math.floor(m / 60) + ":" + String(m % 60).padStart(2, "0");
@@ -81,7 +87,14 @@
       return { p: p, km: l.km, h: l.h };
     }).filter(function (c) {
       // must be reachable there and back with time left to actually look at it
-      return c.h * 2 + c.p.hh <= budget;
+      if (c.h * 2 + c.p.hh > budget) return false;
+      // With no interest chosen the question is "where do I go today", so the
+      // answer has to involve going somewhere: require a drive proportional to
+      // the day. (A three-hour window still allows the church down the road.)
+      // When an interest IS chosen we honour it — someone who picks "theatre"
+      // wants the theatre, however close it is.
+      if (!st.types.length && c.h < budget * 0.06) return false;
+      return true;
     });
     if (!pool.length) return null;
 
@@ -165,7 +178,7 @@
     var rest = r.stops.slice(1);
     var h = "";
     h += '<div class="dt-head"><span class="tag">' + esc(T.best || "Best today") + "</span>" +
-         "<h3><a href=\"" + head.u + "\">" + esc(head.n) + "</a></h3>" +
+         "<h3><a href=\"" + placeUrl(head) + "\">" + esc(head.n) + "</a></h3>" +
          '<p class="dt-meta">' + esc(head.t) + " · " + esc(head.gn) + " · " +
          Math.round(r.stops[0].km) + " " + esc(T.km || "km") + " · " +
          fmtH(r.stops[0].h) + " " + esc(T.drive || "drive") + "</p></div>";
@@ -173,7 +186,7 @@
     if (rest.length) {
       h += "<h4>" + esc(T.also || "Also fits in your day") + "</h4><ul class=\"linklist\">";
       rest.forEach(function (s) {
-        h += "<li><a href=\"" + s.p.u + "\">" + esc(s.p.n) + "</a> <small>" +
+        h += "<li><a href=\"" + placeUrl(s.p) + "\">" + esc(s.p.n) + "</a> <small>" +
              esc(s.p.t) + " · " + s.p.hh + " " + esc(T.h || "h") + "</small></li>";
       });
       h += "</ul>";

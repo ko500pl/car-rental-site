@@ -4576,6 +4576,9 @@ def render_day_trip(lang):
         "book_car": su("rent_car_for_trip", lang), "locating": su("dt_locating", lang),
         "you_are_here": su("dt_near_me", lang), "geo_failed": su("dt_geo_failed", lang),
         "planner_url": page_url(lang, "map", False),
+        # The shared map index deliberately omits per-place URLs to stay light
+        # (tests.test_map_chunking guards that), so build them from the slug.
+        "attr_prefix": f"{lang_root(lang)}attractions/",
         "car_urls": {c: rental_cat_url(lang, c, False) for c in ("economy", "suv", "offroad")},
         "car_names": {c: cat_label(c, lang) for c in ("economy", "suv", "offroad")},
     }
