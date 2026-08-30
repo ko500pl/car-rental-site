@@ -940,12 +940,53 @@ def write_hashed(out, rel, data, key, also_plain=False):
     return ASSET[key]
 
 
+def _noindex(current):
+    return current in ("account", "trip", "card", "planner", "pricing")
+
+
+def _add_webpage_node(ld, lang, url, title, desc, image=None):
+    """Every page should say what it *is*, and tie its entity, breadcrumb and
+    language together. Without a WebPage node a crawler sees a bare Car or
+    TouristAttraction with nothing declaring which page it belongs to."""
+    graph = (ld or {}).get("@graph")
+    if not isinstance(graph, list) or not url:
+        return ld
+    if any(isinstance(n, dict) and n.get("@type") in
+           ("WebPage", "CollectionPage", "ItemPage", "AboutPage", "ContactPage", "FAQPage")
+           for n in graph):
+        return ld
+    crumbs = next((n for n in graph if isinstance(n, dict)
+                   and n.get("@type") == "BreadcrumbList"), None)
+    main = next((n for n in graph if isinstance(n, dict) and n.get("@type") not in
+                 ("Organization", "AutoRental", "LocalBusiness", "WebSite",
+                  "BreadcrumbList", "SoftwareApplication", "ImageObject", "FAQPage")
+                 and n.get("@id")), None)
+    node = {"@type": "WebPage", "@id": url + "#webpage", "url": url,
+            "name": title, "description": desc, "inLanguage": lang,
+            "isPartOf": {"@id": SITE_URL + "/#website"},
+            "publisher": {"@id": SITE_URL + "/#organization"}}
+    if main:
+        node["mainEntity"] = {"@id": main["@id"]}
+    if crumbs and crumbs.get("@id"):
+        node["breadcrumb"] = {"@id": crumbs["@id"]}
+    if image:
+        node["primaryImageOfPage"] = image
+    graph.insert(2 if len(graph) > 2 else len(graph), node)
+    return ld
+
+
 def head_html(lang, current, title, desc, keywords, url, alternates, depth, ld,
               og_type="website", image=None, leaflet=False):
     css_href = ASSET["css"]
-    alts = "\n".join(f'<link rel="alternate" hreflang="{l}" href="{u}">'
-                     for l, u in alternates.items())
-    alts += f'\n<link rel="alternate" hreflang="x-default" href="{alternates["en"]}">'
+    # A noindex page is not part of any language cluster — advertising hreflang
+    # on it invites a crawler to treat six excluded URLs as alternates.
+    if _noindex(current):
+        alts = ""
+    else:
+        alts = "\n".join(f'<link rel="alternate" hreflang="{l}" href="{u}">'
+                         for l, u in alternates.items())
+        alts += f'\n<link rel="alternate" hreflang="x-default" href="{alternates["en"]}">'
+    ld = _add_webpage_node(ld, lang, url, title, desc, image)
     og_img = image or f"{SITE_URL}/assets/og-{lang}.png"
     gf = DESIGN.get("google_fonts", "")
     if lang in LANG_FONT:
@@ -5424,10 +5465,11 @@ def main():
             elif page == "planner":
                 target = page_url(lang, "map", False) + "#planner"
                 write(os.path.join(out, rel, "index.html"),
-                      f'<!doctype html><meta charset="utf-8"><meta name="robots" content="noindex">'
+                      f'<!doctype html><html lang="{lang}" dir="{LANG_DIR[lang]}">'
+                      f'<meta charset="utf-8"><meta name="robots" content="noindex">'
                       f'<link rel="canonical" href="{page_url(lang, "map")}">'
                       f'<meta http-equiv="refresh" content="0;url={target}">'
-                      f'<script>location.replace({J(target)})</script>')
+                      f'<script>location.replace({J(target)})</script></html>')
             else:
                 write(os.path.join(out, rel, "index.html"), render_static_page(lang, page))
             n += 1
@@ -5504,10 +5546,11 @@ def main():
         pricing_rel = lang_root(lang).lstrip("/") + PAGE_SLUG["pricing"]
         fleet_target = page_url(lang, "fleet", False)
         write(os.path.join(out, pricing_rel, "index.html"),
-              f'<!doctype html><meta charset="utf-8"><meta name="robots" content="noindex">'
+              f'<!doctype html><html lang="{lang}" dir="{LANG_DIR[lang]}">'
+              f'<meta charset="utf-8"><meta name="robots" content="noindex">'
               f'<link rel="canonical" href="{page_url(lang, "fleet")}">'
               f'<meta http-equiv="refresh" content="0;url={fleet_target}">'
-              f'<script>location.replace({J(fleet_target)})</script>')
+              f'<script>location.replace({J(fleet_target)})</script></html>')
         for key, r in REGIONS.items():
             write(os.path.join(out, region_url(lang, key, False).lstrip("/"), "index.html"),
                   render_region(lang, key, r))
