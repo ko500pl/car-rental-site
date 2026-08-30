@@ -22,7 +22,7 @@ origin:
 car_category: economy
 best_season: march-november
 difficulty: easy
-image: ''
+image: /assets/photos/routes/gori-uplistsikhe-day-premium-20260830.webp
 waypoints: [gori-fortress-stalin-museum, gori-war-museum, uplistsikhe, ateni-sioni-church]
 polyline: []
 sources: [https://georgia.travel/regions/shida-kartli, https://georgia.travel/cities-towns/gori]

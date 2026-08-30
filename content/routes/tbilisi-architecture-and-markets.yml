@@ -22,7 +22,7 @@ origin:
 car_category: economy
 best_season: year-round
 difficulty: easy
-image: ''
+image: /assets/photos/routes/tbilisi-architecture-and-markets-premium-20260830.webp
 waypoints: [sololaki-art-nouveau, georgian-national-museum, dry-bridge-market, abanotubani-sulphur-baths, chronicle-of-georgia]
 polyline: []
 sources: [https://georgia.travel/cities-towns/tbilisi, https://georgia.travel/strolling-through-the-old-city-of-tbilisi, https://georgia.travel/travel-tips-for-exploring-tbilisi]

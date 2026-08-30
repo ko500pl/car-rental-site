@@ -22,7 +22,7 @@ origin:
 car_category: economy
 best_season: may-october
 difficulty: easy
-image: ''
+image: /assets/photos/routes/guria-slow-food-and-coast-premium-20260830.webp
 waypoints: [ozurgeti, nodar-dumbadze-house-museum, sameba-jikheti-monastery, nabeghlavi, shekvetili-dendrological-park, ureki]
 polyline: []
 sources: [https://georgia.travel/rural-tourism-in-georgia, https://georgia.travel/food-wine]

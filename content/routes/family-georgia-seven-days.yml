@@ -22,7 +22,7 @@ origin:
 car_category: suv
 best_season: april-october
 difficulty: easy
-image: ''
+image: /assets/photos/routes/family-georgia-seven-days-premium-20260830.webp
 waypoints: [tbilisi-botanical-garden, mtatsminda-park, svetitskhoveli-cathedral, borjomi-central-park, kukushka-narrow-gauge-railway, prometheus-cave, sataplia-nature-reserve, batumi-6-may-park-dolphinarium, batumi-botanical-garden]
 polyline: []
 sources: [https://georgia.travel/family-travel, https://georgia.travel/regions]

@@ -22,7 +22,7 @@ origin:
 car_category: suv
 best_season: may-october
 difficulty: moderate
-image: ''
+image: /assets/photos/routes/grand-georgia-classic-premium-20260830.webp
 waypoints: [tbilisi-botanical-garden, jvari-monastery, svetitskhoveli-cathedral, ananuri-fortress, gergeti-trinity-church, uplistsikhe, borjomi-central-park, vardzia, bagrati-cathedral, martvili-canyon, dadiani-palace-zugdidi, mestia, ushguli, batumi-boulevard-old-town]
 polyline: []
 sources: [https://exploregeorgiatours.com/guide/complete-georgia-itinerary-guide, https://www.enjoy-georgia.com/en/tours-to-georgia/trekking-hiking-in-georgia/roundtrip-in-georgia.html]

@@ -22,7 +22,7 @@ origin:
 car_category: suv
 best_season: may-october
 difficulty: moderate
-image: ''
+image: /assets/photos/routes/racha-lechkhumi-heritage-three-days-premium-20260830.webp
 waypoints: [shaori-reservoir, nikortsminda-cathedral, barakoni-church, minda-fortress, ambrolauri, khvanchkara-wine-zone, oni-synagogue, mravaldzali, lentekhi, mount-khvamli]
 polyline: []
 sources: [https://georgia.travel/regions/racha-lechkhumi, https://georgia.travel/destinations-in-georgia]

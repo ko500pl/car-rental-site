@@ -22,7 +22,7 @@ origin:
 car_category: economy
 best_season: all
 difficulty: easy
-image: ''
+image: /assets/photos/routes/tbilisi-theatre-night-premium-20260830.webp
 waypoints: [marjanishvili-theatre, tbilisi-opera-ballet-theatre, rustaveli-national-theatre, gabriadze-theatre-clock-tower]
 polyline: []
 sources: [https://marjanishvili.com/, https://opera.ge/eng, https://rustavelitheatre.ge/]

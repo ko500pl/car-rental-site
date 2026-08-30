@@ -22,7 +22,7 @@ origin:
 car_category: suv
 best_season: april-october
 difficulty: moderate
-image: ''
+image: /assets/photos/routes/kvemo-kartli-archaeology-road-premium-20260830.webp
 waypoints: [asureti, bolnisi-sioni, dmanisi, samshvilde, dashbashi-canyon]
 polyline: []
 sources: [https://georgia.travel/regions/kvemo-kartli, https://georgia.travel/popular-trips/one-day-kvemo-kartli-tour]

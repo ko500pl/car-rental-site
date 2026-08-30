@@ -22,7 +22,7 @@ origin:
 car_category: offroad
 best_season: june-september
 difficulty: moderate
-image: ''
+image: /assets/photos/routes/guria-mountain-spa-weekend-premium-20260830.webp
 waypoints: [nabeghlavi, bakhmaro, gomismta]
 polyline: []
 sources: [https://georgia.travel/regions/guria, https://georgia.travel/summer-adventures]

@@ -24,7 +24,7 @@ origin:
 car_category: offroad
 best_season: june-september
 difficulty: hard
-image: ''
+image: /assets/photos/routes/tusheti-highland-hike-premium-20260830.webp
 waypoints: [alaverdi-cathedral, abano-pass, omalo-tusheti, dartlo, shenako-diklo]
 polyline: []
 sources: [https://georgia.travel/trekking-in-georgia, https://georgia.travel/tusheti]
