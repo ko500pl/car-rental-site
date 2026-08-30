@@ -18,6 +18,31 @@ gallery:
   license: CC BY-SA 2.0
   license_url: https://creativecommons.org/licenses/by-sa/2.0
   source: https://commons.wikimedia.org/wiki/File:Vardzia_(5).jpg
+- image: /assets/photos/vardzia-verified-1-20260831.webp
+  author: Image by falco from Pixabay
+  license: CC0
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:Vardzia,_a_medieval_cave-city_in_Georgia.jpg
+- image: /assets/photos/vardzia-verified-2-20260831.webp
+  author: Bernard Gagnon
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Vardzia_Cave_Monastery_03.jpg
+- image: /assets/photos/vardzia-verified-3-20260831.webp
+  author: Bernard Gagnon
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Vardzia_Cave_Monastery_02.jpg
+- image: /assets/photos/vardzia-verified-4-20260831.webp
+  author: Bernard Gagnon
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Vardzia_Cave_Monastery_07.jpg
+- image: /assets/photos/vardzia-verified-5-20260831.webp
+  author: Bernard Gagnon
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Vardzia_Cave_Monastery_13.jpg
 visit_hours: '3'
 best_season: all
 open_year_round: true

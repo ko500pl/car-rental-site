@@ -1,13 +1,13 @@
 ﻿slug,region,place_rating,current_images,target_images,gap,licensed_gallery_items,source_urls,technical_review,google_identity_review,status
 abano-pass,kakheti,4.0,4,6,2,3,4,pending,pending,pending
 abanotubani-sulphur-baths,tbilisi,4.5,2,7,5,1,2,pending,pending,pending
-abastumani-observatory,samtskhe-javakheti,3.5,1,4,3,0,1,pending,pending,pending
+abastumani-observatory,samtskhe-javakheti,3.5,4,4,0,3,https://commons.wikimedia.org/wiki/File:Abastumani_Astrophysical_Observatory.jpg | https://commons.wikimedia.org/wiki/File:Abastumani_Astrophysical_Observatory_(2).jpg | https://commons.wikimedia.org/wiki/File:Abastumani_Astrophysical_Observatory_(1).jpg,"passed: target count, unique path cleanup, new assets 1600x900 WebP",passed: Google visual identity cross-check + Commons source review,complete
 abudelauri-lakes,mtskheta-mtianeti,5.0,3,8,5,2,3,pending,pending,pending
 adishi,samegrelo-zemo-svaneti,4.5,7,7,0,6,7,passed-2026-08-31,verified-2026-08-31,complete
 adjara-art-museum,adjara,3.0,1,4,3,0,1,pending,pending,pending
 ajameti-managed-reserve,imereti,4.0,2,6,4,1,2,pending,pending,pending
 akhali-shuamta,kakheti,3.0,2,4,2,1,2,pending,pending,pending
-akhaltsikhe-jewish-quarter,samtskhe-javakheti,3.5,4,4,0,3,4,pending,pending,pending
+akhaltsikhe-jewish-quarter,samtskhe-javakheti,3.5,4,4,0,3,"https://commons.wikimedia.org/wiki/File:%E1%83%94%E1%83%99%E1%83%9A%E1%83%94%E1%83%A1%E1%83%98%E1%83%90_-_panoramio.jpg | https://commons.wikimedia.org/wiki/File:Akhaltsikhe,_Georgia_-_panoramio_(2).jpg | https://commons.wikimedia.org/wiki/File:Rabati,_Akhaltsikhe,_Georgia_-_panoramio_(1).jpg","passed: target count, unique path cleanup, new assets 1600x900 WebP",passed: Google visual identity cross-check + Commons source review,complete
 alaverdi-cathedral,kakheti,3.5,2,4,2,1,2,pending,pending,pending
 algeti-national-park,kvemo-kartli,4.0,1,6,5,0,1,pending,pending,pending
 ambrolauri,racha-lechkhumi,4.0,4,6,2,3,4,pending,pending,pending
@@ -20,12 +20,12 @@ askana-fortress,guria,3.5,3,4,1,2,3,pending,pending,pending
 asureti,kvemo-kartli,4.0,3,6,3,2,3,pending,pending,pending
 ateni-sioni-church,shida-kartli,3.5,4,4,0,3,4,passed-2026-08-31,verified-2026-08-31,complete
 ateni-valley-wine-cellars,shida-kartli,4.0,6,6,0,5,6,passed-2026-08-31,verified-2026-08-31,complete
-atskuri-fortress,samtskhe-javakheti,3.5,4,4,0,3,4,pending,pending,pending
+atskuri-fortress,samtskhe-javakheti,3.5,4,4,0,3,"https://commons.wikimedia.org/wiki/File:Atsquri_fortress,_Georgia_03.jpg | https://commons.wikimedia.org/wiki/File:Atsquri_fortress,_Georgia_02.jpg | https://commons.wikimedia.org/wiki/File:Atsquri_fortress,_Georgia_06.jpg","passed: target count, unique path cleanup, new assets 1600x900 WebP",passed: Google visual identity cross-check + Commons source review,complete
 baghdati-mayakovsky-house,imereti,3.0,1,4,3,0,1,pending,pending,pending
 bagrati-cathedral,imereti,4.0,4,6,2,3,4,pending,pending,pending
 bakhmaro,guria,5.0,4,8,4,3,4,pending,pending,pending
-bakuriani-botanical-garden,samtskhe-javakheti,4.0,4,6,2,3,4,pending,pending,pending
-bakuriani,samtskhe-javakheti,4.0,2,6,4,1,2,pending,pending,pending
+bakuriani-botanical-garden,samtskhe-javakheti,4.0,6,6,0,5,https://commons.wikimedia.org/wiki/File:Bakuriani_003.jpg | https://rentup.ge/,"passed: target count, unique path cleanup, new assets 1600x900 WebP",passed: Google visual identity cross-check + Commons source review,complete
+bakuriani,samtskhe-javakheti,4.0,6,6,0,5,"https://commons.wikimedia.org/wiki/File:Bakuriani_winter_resort,_Georgia._January_2022_01.jpg | https://commons.wikimedia.org/wiki/File:Bakuriani_-_Ort_vom_Kochta-H%C3%BCgel.JPG | https://commons.wikimedia.org/wiki/File:Bakuriani_-_Georgia_%D8%A8%D8%A7%DA%A9%D9%88%D8%B1%DB%8C%D8%A7%D9%86%DB%8C%D8%8C_%DA%A9%D8%B4%D9%88%D8%B1_%DA%AF%D8%B1%D8%AC%D8%B3%D8%AA%D8%A7%D9%86%D8%8C_%D9%85%D9%86%D8%A7%D8%B8%D8%B1_%D8%A8%D8%B1%D9%81%DB%8C_%D9%88_%DA%86%D8%B4%D9%85_%D8%A7%D9%86%D8%AF%D8%A7%D8%B2%D9%87%D8%A7%DB%8C_%D8%B2%D9%85%D8%B3%D8%AA%D8%A7%D9%86%DB%8C-_%D8%AC%D8%A7%D8%B0%D8%A8%D9%87_%D9%87%D8%A7%DB%8C_%DA%AF%D8%B1%D8%AF%D8%B4%DA%AF%D8%B1%DB%8C_%D8%AC%D9%88%D8%B1%D8%AC%DB%8C%D8%A7_01.jpg | https://commons.wikimedia.org/wiki/File:Bakuriani_winter_resort,_Georgia._January_2022_03.jpg | https://commons.wikimedia.org/wiki/File:Bakuriani_winter_resort,_Georgia._January_2022_04.jpg","passed: target count, unique path cleanup, new assets 1600x900 WebP",passed: Google visual identity cross-check + Commons source review,complete
 balda-canyon,samegrelo-zemo-svaneti,4.0,6,6,0,5,6,passed-2026-08-31,verified-2026-08-31,complete
 barakoni-church,racha-lechkhumi,3.5,2,4,2,1,2,pending,pending,pending
 bateti-lake,shida-kartli,4.5,7,7,0,6,7,passed-2026-08-31,verified-2026-08-31,complete
@@ -46,8 +46,8 @@ birtvisi-fortress,kvemo-kartli,5.0,4,8,4,3,4,pending,pending,pending
 bodbe-monastery,kakheti,4.0,2,6,4,1,2,pending,pending,pending
 bolnisi-sioni,kvemo-kartli,3.5,4,4,0,3,4,pending,pending,pending
 bolnisi-town,kvemo-kartli,4.0,2,6,4,1,2,pending,pending,pending
-borjomi-central-park,samtskhe-javakheti,4.0,2,6,4,1,1,pending,pending,pending
-borjomi-kharagauli-national-park,samtskhe-javakheti,4.0,4,6,2,3,4,pending,pending,pending
+borjomi-central-park,samtskhe-javakheti,4.0,6,6,0,5,https://commons.wikimedia.org/wiki/File:Ekaterine_Well._A_mineral_spring_well_at_the_Borjomi_Park.jpg | https://commons.wikimedia.org/wiki/File:Borjomi_spa_2019_7.jpg | https://commons.wikimedia.org/wiki/File:Borjomi_spa_2019_4.jpg | https://commons.wikimedia.org/wiki/File:Borjomi_spring_water_dispenser.jpg,"passed: target count, unique path cleanup, new assets 1600x900 WebP",passed: Google visual identity cross-check + Commons source review,complete
+borjomi-kharagauli-national-park,samtskhe-javakheti,4.0,6,6,0,5,https://commons.wikimedia.org/wiki/File:2024-08-31_Borjomi_Strict_Nature_Reserve_03.jpg | https://commons.wikimedia.org/wiki/File:2024-08-31_Borjomi_Strict_Nature_Reserve_01.jpg | https://commons.wikimedia.org/wiki/File:2024-08-31_Borjomi_Strict_Nature_Reserve_04.jpg | https://commons.wikimedia.org/wiki/File:Borjomi_Kharagauli_National_Park_(1).jpg | https://commons.wikimedia.org/wiki/File:Borjomi_Kharagauli_National_Park_Georgia.jpg,"passed: target count, unique path cleanup, new assets 1600x900 WebP",passed: Google visual identity cross-check + Commons source review,complete
 bridge-of-peace-rike-park,tbilisi,4.0,1,6,5,0,1,pending,pending,pending
 chalaadi-glacier,samegrelo-zemo-svaneti,4.5,7,7,0,6,7,passed-2026-08-31,verified-2026-08-31,complete
 chateau-mukhrani,mtskheta-mtianeti,4.0,2,6,4,1,2,pending,pending,pending
@@ -85,7 +85,7 @@ gori-fortress-stalin-museum,shida-kartli,5.0,8,8,0,7,8,passed-2026-08-31,verifie
 gori-war-museum,shida-kartli,3.0,4,4,0,3,4,passed-2026-08-31,verified-2026-08-31,complete
 grakliani-hill,shida-kartli,3.5,4,4,0,3,4,passed-2026-08-31,verified-2026-08-31,complete
 green-lake-goderdzi,adjara,4.0,2,6,4,1,2,pending,pending,pending
-green-monastery-chitakhevi,samtskhe-javakheti,3.5,4,4,0,3,4,pending,pending,pending
+green-monastery-chitakhevi,samtskhe-javakheti,3.5,4,4,0,3,"https://commons.wikimedia.org/wiki/File:Mtsvane_Monastery,_Borjomi_Municipality,_Georgia._2014.jpg | https://commons.wikimedia.org/wiki/File:Mtsvane_Monastery_(29007397843).jpg | https://commons.wikimedia.org/wiki/File:Mtsvane_(Green)_Monastery_near_Borjomi.jpg","passed: target count, unique path cleanup, new assets 1600x900 WebP",passed: Google visual identity cross-check + Commons source review,complete
 gremi,kakheti,3.5,2,4,2,1,2,pending,pending,pending
 grigoleti,guria,4.0,3,6,3,2,3,pending,pending,pending
 gudarekhi-monastery,kvemo-kartli,3.5,1,4,3,0,1,pending,pending,pending
@@ -95,7 +95,7 @@ hatsvali-tetnuldi,samegrelo-zemo-svaneti,4.0,6,6,0,5,6,passed-2026-08-31,verifie
 holy-trinity-cathedral-sameba,tbilisi,3.5,3,4,1,2,3,pending,pending,pending
 ikalto-academy,kakheti,3.5,3,4,1,2,3,pending,pending,pending
 ilia-lake,kakheti,4.0,4,6,2,3,4,pending,pending,pending
-javakheti-national-park,samtskhe-javakheti,4.0,1,6,5,0,1,pending,pending,pending
+javakheti-national-park,samtskhe-javakheti,4.0,6,6,0,5,"https://commons.wikimedia.org/wiki/File:%E1%83%AF%E1%83%90%E1%83%95%E1%83%90%E1%83%AE%E1%83%94%E1%83%97%E1%83%98%E1%83%A1_%E1%83%94%E1%83%A0%E1%83%9D%E1%83%95%E1%83%9C%E1%83%A3%E1%83%9A%E1%83%98_%E1%83%9E%E1%83%90%E1%83%A0%E1%83%99%E1%83%98.jpg | https://commons.wikimedia.org/wiki/File:Javakheti_National_Park.jpg | https://commons.wikimedia.org/wiki/File:%E1%83%91%E1%83%A3%E1%83%A6%E1%83%93%E1%83%90%E1%83%A8%E1%83%94%E1%83%9C%E1%83%98%E1%83%A1_%E1%83%A2%E1%83%91%E1%83%90.jpg | https://commons.wikimedia.org/wiki/File:%E1%83%91%E1%83%A3%E1%83%A6%E1%83%93%E1%83%90%E1%83%A8%E1%83%94%E1%83%9C%E1%83%989.jpg | https://commons.wikimedia.org/wiki/File:%E1%B2%A1%E1%83%90%E1%83%9B%E1%83%AA%E1%83%AE%E1%83%94_%E1%83%AF%E1%83%90%E1%83%95%E1%83%90%E1%83%AE%E1%83%94%E1%83%97%E1%83%98_%E1%83%96%E1%83%90%E1%83%9B%E1%83%97%E1%83%90%E1%83%A0%E1%83%A8%E1%83%98,_%E1%83%A4%E1%83%90%E1%83%A0%E1%83%90%E1%83%95%E1%83%9C%E1%83%98%E1%83%A1_%E1%83%A2%E1%83%91%E1%83%90.jpg","passed: target count, unique path cleanup, new assets 1600x900 WebP",passed: Google visual identity cross-check + Commons source review,complete
 jumati-monastery,guria,3.5,3,4,1,2,3,pending,pending,pending
 juta-chaukhi,mtskheta-mtianeti,5.0,2,8,6,1,2,pending,pending,pending
 jvari-monastery,mtskheta-mtianeti,5.0,4,8,4,3,4,pending,pending,pending
@@ -105,7 +105,7 @@ keda-wine-cellars,adjara,4.0,1,6,5,0,1,pending,pending,pending
 khada-valley,mtskheta-mtianeti,4.5,2,7,5,1,2,pending,pending,pending
 khareba-wine-tunnel,kakheti,3.5,2,4,2,1,2,pending,pending,pending
 khashuri,shida-kartli,3.5,4,4,0,3,4,passed-2026-08-31,verified-2026-08-31,complete
-khertvisi-fortress,samtskhe-javakheti,3.5,4,4,0,3,4,pending,pending,pending
+khertvisi-fortress,samtskhe-javakheti,3.5,4,4,0,3,https://commons.wikimedia.org/wiki/File:Khertvisi_east_tower.jpg | https://commons.wikimedia.org/wiki/File:Khertvisi_fortress_03.jpg | https://commons.wikimedia.org/wiki/File:Khertvisi_fortress_01.jpg,"passed: target count, unique path cleanup, new assets 1600x900 WebP",passed: Google visual identity cross-check + Commons source review,complete
 khikhani-fortress,adjara,4.0,4,6,2,3,4,pending,pending,pending
 khirsa-monastery,kakheti,3.5,1,4,3,0,1,pending,pending,pending
 khobi-monastery,samegrelo-zemo-svaneti,3.5,4,4,0,3,4,passed-2026-08-31,verified-2026-08-31,complete
@@ -120,9 +120,9 @@ kobuleti,adjara,4.0,4,6,2,3,4,pending,pending,pending
 kojori-fortress,kvemo-kartli,4.5,1,7,6,0,1,pending,pending,pending
 kolkheti-national-park,samegrelo-zemo-svaneti,5.0,8,8,0,7,8,passed-2026-08-31,verified-2026-08-31,complete
 koruldi-lakes,samegrelo-zemo-svaneti,4.5,7,7,0,6,7,passed-2026-08-31,verified-2026-08-31,complete
-kukushka-narrow-gauge-railway,samtskhe-javakheti,4.0,3,6,3,2,3,pending,pending,pending
+kukushka-narrow-gauge-railway,samtskhe-javakheti,4.0,6,6,0,5,https://commons.wikimedia.org/wiki/File:Tsagveri_station_-_Kukushka_train.jpg | https://commons.wikimedia.org/wiki/File:Narrow_Gauge_Rail_GE_Tsageri.jpg | https://rentup.ge/,"passed: target count, unique path cleanup, new assets 1600x900 WebP",passed: Google visual identity cross-check + Commons source review,complete
 kumisi-lake,kvemo-kartli,4.0,4,6,2,3,4,pending,pending,pending
-kumurdo-cathedral,samtskhe-javakheti,3.5,3,4,1,2,3,pending,pending,pending
+kumurdo-cathedral,samtskhe-javakheti,3.5,4,4,0,3,https://commons.wikimedia.org/wiki/File:%E1%B2%99%E1%83%A3%E1%83%9B%E1%83%A3%E1%83%A0%E1%83%93%E1%83%9D%E1%83%A1_%E1%83%9B%E1%83%9D%E1%83%9C%E1%83%90%E1%83%A1%E1%83%A2%E1%83%94%E1%83%A0%E1%83%98_(29).jpg | https://commons.wikimedia.org/wiki/File:%E1%B2%99%E1%83%A3%E1%83%9B%E1%83%A3%E1%83%A0%E1%83%93%E1%83%9D%E1%83%A1_%E1%83%9B%E1%83%9D%E1%83%9C%E1%83%90%E1%83%A1%E1%83%A2%E1%83%94%E1%83%A0%E1%83%98_(9).jpg | https://commons.wikimedia.org/wiki/File:Cathedral_of_Kumurdo_1.jpg,"passed: target count, unique path cleanup, new assets 1600x900 WebP",passed: Google visual identity cross-check + Commons source review,complete
 kutaisi-botanical-garden,imereti,4.0,3,6,3,2,3,pending,pending,pending
 kutaisi-historical-museum,imereti,3.0,4,4,0,3,4,pending,pending,pending
 kutaisi-jewish-quarter,imereti,3.5,3,4,1,2,3,pending,pending,pending
@@ -135,7 +135,7 @@ lagodekhi-protected-areas,kakheti,4.0,1,6,5,0,1,pending,pending,pending
 lanchkhuti,guria,4.0,3,6,3,2,3,pending,pending,pending
 latali-matskhvarishi,samegrelo-zemo-svaneti,3.5,4,4,0,3,4,passed-2026-08-31,verified-2026-08-31,complete
 lentekhi,racha-lechkhumi,4.0,4,6,2,3,4,pending,pending,pending
-likani-palace,samtskhe-javakheti,3.0,2,4,2,1,2,pending,pending,pending
+likani-palace,samtskhe-javakheti,3.0,4,4,0,3,https://rentup.ge/,"passed: target count, unique path cleanup, new assets 1600x900 WebP",passed: Google visual identity cross-check + Commons source review,complete
 likhauri-church,guria,3.5,1,4,3,0,1,pending,pending,pending
 lisi-lake,tbilisi,4.0,2,6,4,1,2,pending,pending,pending
 lomisa-church,mtskheta-mtianeti,4.0,2,6,4,1,2,pending,pending,pending
@@ -179,14 +179,14 @@ oniore-waterfall,samegrelo-zemo-svaneti,4.0,6,6,0,5,6,passed-2026-08-31,verified
 open-air-museum-of-ethnography,tbilisi,3.5,4,4,0,3,4,pending,pending,pending
 ozurgeti,guria,4.0,3,6,3,2,3,pending,pending,pending
 pankisi-gorge,kakheti,4.0,3,6,3,2,3,pending,pending,pending
-paravani-tabatskuri-lakes,samtskhe-javakheti,4.0,2,6,4,1,2,pending,pending,pending
+paravani-tabatskuri-lakes,samtskhe-javakheti,4.0,6,6,0,5,https://commons.wikimedia.org/wiki/File:Paravani_(14728799651).jpg | https://rentup.ge/,"passed: target count, unique path cleanup, new assets 1600x900 WebP",passed: Google visual identity cross-check + Commons source review,complete
 pasanauri-aragvi-confluence,mtskheta-mtianeti,3.5,4,4,0,3,4,pending,pending,pending
 petra-fortress,adjara,3.5,3,4,1,2,3,pending,pending,pending
 pitareti-monastery,kvemo-kartli,4.0,1,6,5,0,1,pending,pending,pending
-poka-nunnery,samtskhe-javakheti,3.5,5,4,0,4,5,pending,pending,pending
+poka-nunnery,samtskhe-javakheti,3.5,4,4,0,3,https://commons.wikimedia.org/wiki/File:Paravani_(14728798991).jpg | https://commons.wikimedia.org/wiki/File:Paravani_(14729613334).jpg | https://commons.wikimedia.org/wiki/File:Paravani_(14728798941).jpg,"passed: target count, unique path cleanup, new assets 1600x900 WebP",passed: Google visual identity cross-check + Commons source review,complete
 poti,samegrelo-zemo-svaneti,4.0,6,6,0,5,6,passed-2026-08-31,verified-2026-08-31,complete
 prometheus-cave,imereti,5.0,4,8,4,3,4,pending,pending,pending
-rabati-castle,samtskhe-javakheti,5.0,4,8,4,3,4,pending,pending,pending
+rabati-castle,samtskhe-javakheti,5.0,8,8,0,7,"https://commons.wikimedia.org/wiki/File:Untitled1_-_panoramio_(1494).jpg | https://commons.wikimedia.org/wiki/File:Unnamed2_-_panoramio_(2124).jpg | https://commons.wikimedia.org/wiki/File:Akhltskha_Rabat_castle_(15).jpg | https://commons.wikimedia.org/wiki/File:Rabati_Castle_in_Akhaltsikhe,_view_from_the_city.jpg | https://commons.wikimedia.org/wiki/File:Akhalcikhe,_old_city_general_view.jpg | https://commons.wikimedia.org/wiki/File:Georgia,_Akhaltsikhe,_Rabati_Castle_(30327080592).jpg | https://commons.wikimedia.org/wiki/File:Rabati_Castle_3.jpg","passed: target count, unique path cleanup, new assets 1600x900 WebP",passed: Google visual identity cross-check + Commons source review,complete
 rkoni-monastery,shida-kartli,4.0,6,6,0,5,6,passed-2026-08-31,verified-2026-08-31,complete
 ruisi-cathedral,shida-kartli,3.5,4,4,0,3,4,passed-2026-08-31,verified-2026-08-31,complete
 rukhi-fortress,samegrelo-zemo-svaneti,3.0,4,4,0,3,4,passed-2026-08-31,verified-2026-08-31,complete
@@ -200,7 +200,7 @@ samshvilde,kvemo-kartli,4.0,4,6,2,3,4,pending,pending,pending
 samtavisi-cathedral,shida-kartli,3.5,4,4,0,3,4,passed-2026-08-31,verified-2026-08-31,complete
 samtavro-monastery,mtskheta-mtianeti,5.0,4,8,4,3,4,pending,pending,pending
 samtsevrisi-church,shida-kartli,3.5,4,4,0,3,4,passed-2026-08-31,verified-2026-08-31,complete
-sapara-monastery,samtskhe-javakheti,4.0,2,6,4,1,2,pending,pending,pending
+sapara-monastery,samtskhe-javakheti,4.0,6,6,0,5,"https://commons.wikimedia.org/wiki/File:Sapara_Monastery_(14723025125).jpg | https://commons.wikimedia.org/wiki/File:Sapara_Monastery._Aug_2014.jpg | https://commons.wikimedia.org/wiki/File:Sapara_Monastery,_Akhtaltsikhe,_Georgia_(1).JPG | https://commons.wikimedia.org/wiki/File:Sapara_Monastery,_Akhtaltsikhe,_Georgia_(2).JPG | https://commons.wikimedia.org/wiki/File:Sapara_Monastery,_Samtskhe-Javakheti_region,_Georgia.jpg","passed: target count, unique path cleanup, new assets 1600x900 WebP",passed: Google visual identity cross-check + Commons source review,complete
 sarpi-beach,adjara,4.0,1,6,5,0,1,pending,pending,pending
 sataplia-nature-reserve,imereti,4.0,2,6,4,1,2,pending,pending,pending
 shaori-reservoir,racha-lechkhumi,5.0,5,8,3,4,5,pending,pending,pending
@@ -231,9 +231,9 @@ tbilisi-silk-museum,tbilisi,3.0,2,4,2,1,2,pending,pending,pending
 telavi-batonis-tsikhe,kakheti,4.0,4,6,2,3,4,pending,pending,pending
 telefisi-fortress,imereti,3.5,2,4,2,1,2,pending,pending,pending
 tianeti,mtskheta-mtianeti,4.0,3,6,3,2,3,pending,pending,pending
-timotesubani-monastery,samtskhe-javakheti,3.5,4,4,0,3,4,pending,pending,pending
+timotesubani-monastery,samtskhe-javakheti,3.5,4,4,0,3,"https://commons.wikimedia.org/wiki/File:Timotesubani_church,_Georgia_4.jpg | https://commons.wikimedia.org/wiki/File:Timotesubani_church,_Georgia_5.jpg | https://commons.wikimedia.org/wiki/File:Timotesubani_church,_Georgia_8.jpg","passed: target count, unique path cleanup, new assets 1600x900 WebP",passed: Google visual identity cross-check + Commons source review,complete
 tkibuli-reservoir,imereti,4.0,2,6,4,1,2,pending,pending,pending
-tmogvi-fortress,samtskhe-javakheti,4.0,2,6,4,1,2,pending,pending,pending
+tmogvi-fortress,samtskhe-javakheti,4.0,6,6,0,5,https://commons.wikimedia.org/wiki/File:2025-05-25_View_from_the_hiking_trail_to_Tmogvi_Fortress_2.jpg | https://commons.wikimedia.org/wiki/File:2025-05-25_View_from_the_hiking_trail_to_Tmogvi_Fortress_3.jpg | https://commons.wikimedia.org/wiki/File:2025-05-25_Tmogvi_Fortress_1.jpg | https://commons.wikimedia.org/wiki/File:2025-05-25_Tmogvi_Fortress_2.jpg | https://commons.wikimedia.org/wiki/File:2025-05-25_View_from_the_hiking_trail_to_Tmogvi_Fortress_6.jpg,"passed: target count, unique path cleanup, new assets 1600x900 WebP",passed: Google visual identity cross-check + Commons source review,complete
 tobavarchkhili-lakes,samegrelo-zemo-svaneti,4.5,7,7,0,6,7,passed-2026-08-31,verified-2026-08-31,complete
 truso-valley,mtskheta-mtianeti,4.5,3,7,4,2,3,pending,pending,pending
 tsageri,racha-lechkhumi,4.0,3,6,3,2,3,pending,pending,pending
@@ -256,12 +256,12 @@ ureki,guria,5.0,2,8,6,1,2,pending,pending,pending
 ushguli,samegrelo-zemo-svaneti,5.0,8,8,0,7,8,passed-2026-08-31,verified-2026-08-31,complete
 utsera,racha-lechkhumi,3.0,2,4,2,1,2,pending,pending,pending
 vani-archaeological-museum,imereti,3.5,2,4,2,1,2,pending,pending,pending
-vanis-kvabebi,samtskhe-javakheti,4.0,3,6,3,2,3,pending,pending,pending
-vardzia,samtskhe-javakheti,5.0,3,8,5,2,3,pending,pending,pending
+vanis-kvabebi,samtskhe-javakheti,4.0,6,6,0,5,"https://commons.wikimedia.org/wiki/File:Vanis_Kvabebi_koobasklooster_-_panoramio_-_toomas.liivamagi.jpg | https://commons.wikimedia.org/wiki/File:Vanis_Kvabebi.jpg | https://commons.wikimedia.org/wiki/File:Mtkari_Gorge,_Near_Vani%27s_Caves.jpg | https://commons.wikimedia.org/wiki/File:Mtkari_Gorge,_View_from_Vani%27s_Caves.jpg | https://commons.wikimedia.org/wiki/File:Ko%C5%9Bci%C3%B3%C5%82_Vanis_Kvabebi_we_wsi_Vardzia.jpg","passed: target count, unique path cleanup, new assets 1600x900 WebP",passed: Google visual identity cross-check + Commons source review,complete
+vardzia,samtskhe-javakheti,5.0,8,8,0,7,"https://commons.wikimedia.org/wiki/File:Panorama_Wardzia.jpg | https://commons.wikimedia.org/wiki/File:Vardzia_(5).jpg | https://commons.wikimedia.org/wiki/File:Vardzia,_a_medieval_cave-city_in_Georgia.jpg | https://commons.wikimedia.org/wiki/File:Vardzia_Cave_Monastery_03.jpg | https://commons.wikimedia.org/wiki/File:Vardzia_Cave_Monastery_02.jpg | https://commons.wikimedia.org/wiki/File:Vardzia_Cave_Monastery_07.jpg | https://commons.wikimedia.org/wiki/File:Vardzia_Cave_Monastery_13.jpg","passed: target count, unique path cleanup, new assets 1600x900 WebP",passed: Google visual identity cross-check + Commons source review,complete
 vashlovani-national-park,kakheti,4.5,3,7,4,2,3,pending,pending,pending
 waterfall-of-love-racha,racha-lechkhumi,3.5,1,4,3,0,0,pending,pending,pending
 zando-st-george-monastery,imereti,4.0,2,6,4,1,2,pending,pending,pending
-zarzma-monastery,samtskhe-javakheti,3.5,2,4,2,1,2,pending,pending,pending
+zarzma-monastery,samtskhe-javakheti,3.5,4,4,0,3,"https://commons.wikimedia.org/wiki/File:Zarzma,_Georgia_-_panoramio_(1).jpg | https://commons.wikimedia.org/wiki/File:Zarzma_monastery_(40).jpg | https://commons.wikimedia.org/wiki/File:Zarzma_monastery_(72).jpg","passed: target count, unique path cleanup, new assets 1600x900 WebP",passed: Google visual identity cross-check + Commons source review,complete
 zedazeni-monastery,mtskheta-mtianeti,3.5,2,4,2,1,2,pending,pending,pending
 zhinvali-reservoir,mtskheta-mtianeti,3.5,3,4,1,2,3,pending,pending,pending
 zoti,guria,4.0,1,6,5,0,1,pending,pending,pending

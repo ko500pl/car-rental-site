@@ -23,6 +23,16 @@ gallery:
   license: CC BY 4.0
   license_url: https://creativecommons.org/licenses/by/4.0
   source: https://commons.wikimedia.org/wiki/File:2024-08-31_Borjomi_Strict_Nature_Reserve_04.jpg
+- image: /assets/photos/borjomi-kharagauli-national-park-verified-1-20260831.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Borjomi_Kharagauli_National_Park_(1).jpg
+- image: /assets/photos/borjomi-kharagauli-national-park-verified-2-20260831.webp
+  author: Radosław Botev
+  license: CC BY 3.0 pl
+  license_url: https://creativecommons.org/licenses/by/3.0/
+  source: https://commons.wikimedia.org/wiki/File:Borjomi_Kharagauli_National_Park_Georgia.jpg
 visit_hours: '6'
 best_season: may-october
 open_year_round: true

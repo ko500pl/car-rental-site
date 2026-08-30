@@ -8,11 +8,21 @@ featured: false
 order: 75
 image: /assets/photos/likani-palace-1.webp
 gallery:
-- image: /assets/photos/likani-palace-1.webp
-  author: Dv0rsky from Tbilisi, Georgia
-  license: CC BY 2.0
-  license_url: https://creativecommons.org/licenses/by/2.0
-  source: https://commons.wikimedia.org/wiki/File:%E1%83%9A%E1%83%98%E1%83%99%E1%83%90%E1%83%9C%E1%83%98,_%E1%83%A0%E1%83%9D%E1%83%9B%E1%83%90%E1%83%9C%E1%83%9D%E1%83%95%E1%83%94%E1%83%91%E1%83%98%E1%83%A1_%E1%83%A1%E1%83%90%E1%83%AE%E1%83%9A%E1%83%98.jpg
+- image: /assets/photos/likani-palace-premium-ai-1-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/likani-palace-premium-ai-2-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/likani-palace-premium-ai-3-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '1'
 best_season: all
 open_year_round: true
