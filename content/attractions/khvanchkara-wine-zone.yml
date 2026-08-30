@@ -23,6 +23,16 @@ gallery:
   license: Public domain
   license_url: ''
   source: https://commons.wikimedia.org/wiki/File:ISS030-E-8402_-_View_of_Earth.jpg
+- image: /assets/photos/khvanchkara-wine-zone-verified-1-20260831.webp
+  author: Levan Davlianidze
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Ch%C3%A2teau_Dio_Winery_%E2%80%94_1.jpg
+- image: /assets/photos/khvanchkara-wine-zone-verified-2-20260831.webp
+  author: Levan Davlianidze
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Ch%C3%A2teau_Dio_Winery_%E2%80%94_10.jpg
 visit_hours: '3'
 best_season: may-october
 open_year_round: true

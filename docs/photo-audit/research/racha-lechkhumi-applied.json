@@ -1,0 +1,200 @@
+{
+  "ambrolauri": {
+    "gallery_items": 5,
+    "total_images_including_primary": 6,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:View_to_Ambrolauri_-_panoramio.jpg",
+      "https://commons.wikimedia.org/wiki/File:Ambrolauri,_Georgia.jpg"
+    ],
+    "ai_assisted_originals": 0,
+    "identity_review": "passed"
+  },
+  "barakoni-church": {
+    "gallery_items": 3,
+    "total_images_including_primary": 4,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:2015-08-29_(24)_Barakoni.jpg",
+      "https://commons.wikimedia.org/wiki/File:View_to_Barakoni_Church_in_Tsesi.jpg",
+      "https://commons.wikimedia.org/wiki/File:Tsesi_and_Barakoni_Church.jpg"
+    ],
+    "ai_assisted_originals": 0,
+    "identity_review": "passed"
+  },
+  "chiora": {
+    "gallery_items": 5,
+    "total_images_including_primary": 6,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:Rioni_river_gorge_in_Upper_Racha.jpg"
+    ],
+    "ai_assisted_originals": 4,
+    "identity_review": "passed"
+  },
+  "glola": {
+    "gallery_items": 5,
+    "total_images_including_primary": 6,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:River_Chanchakhi_in_Glola.jpg",
+      "https://commons.wikimedia.org/wiki/File:Mt._Karaugom_%26_Boko_Glacier,_view_from_Glola_-_Lake_Udziro_trail,_Racha,_Georgia.jpg",
+      "https://commons.wikimedia.org/wiki/File:Chanchakhi_River_near_Glola_(Mountain_Racha,_Georgia).jpg"
+    ],
+    "ai_assisted_originals": 1,
+    "identity_review": "passed"
+  },
+  "gogolati": {
+    "gallery_items": 5,
+    "total_images_including_primary": 6,
+    "commons_sources": [],
+    "ai_assisted_originals": 6,
+    "identity_review": "passed"
+  },
+  "khvanchkara-wine-zone": {
+    "gallery_items": 5,
+    "total_images_including_primary": 6,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:Ch%C3%A2teau_Dio_Winery_%E2%80%94_1.jpg",
+      "https://commons.wikimedia.org/wiki/File:Ch%C3%A2teau_Dio_Winery_%E2%80%94_10.jpg"
+    ],
+    "ai_assisted_originals": 0,
+    "identity_review": "passed"
+  },
+  "lentekhi": {
+    "gallery_items": 5,
+    "total_images_including_primary": 6,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:Lentekhi.png",
+      "https://commons.wikimedia.org/wiki/File:Kheshkuri_river_(Lentekhi).jpg"
+    ],
+    "ai_assisted_originals": 0,
+    "identity_review": "passed"
+  },
+  "minda-fortress": {
+    "gallery_items": 5,
+    "total_images_including_primary": 6,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:2015-08-29_(23)_Mindatsikhe.jpg",
+      "https://commons.wikimedia.org/wiki/File:2015-08-29_(40)_Mindatsikhe.jpg",
+      "https://commons.wikimedia.org/wiki/File:Lukhunistskali_River_in_Racha.jpg"
+    ],
+    "ai_assisted_originals": 2,
+    "identity_review": "passed"
+  },
+  "mount-khvamli": {
+    "gallery_items": 6,
+    "total_images_including_primary": 7,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:Lechkhumi_Khvamli.jpg",
+      "https://commons.wikimedia.org/wiki/File:Khvami_Range_as_seen_from_the_Motsameta_monastery,_Georgia.jpg",
+      "https://commons.wikimedia.org/wiki/File:Khomli_Mountain_-_Lechkhumi_-_Georgia_(Sakartvelo).jpg",
+      "https://commons.wikimedia.org/wiki/File:%E1%83%AE%E1%83%94%E1%83%93%E1%83%98_%E1%83%AE%E1%83%95%E1%83%90%E1%83%9B%E1%83%9A%E1%83%98%E1%83%A1_%E1%83%AC%E1%83%9B._%E1%83%92%E1%83%98%E1%83%9D%E1%83%A0%E1%83%92%E1%83%98%E1%83%A1_%E1%83%94%E1%83%99%E1%83%9A%E1%83%94%E1%83%A1%E1%83%98%E1%83%98%E1%83%93%E1%83%90%E1%83%9C.jpg"
+    ],
+    "ai_assisted_originals": 1,
+    "identity_review": "passed"
+  },
+  "mravaldzali": {
+    "gallery_items": 5,
+    "total_images_including_primary": 6,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:Mravaldzali_Church_3.jpg",
+      "https://commons.wikimedia.org/wiki/File:Mravaldzali_Church_5.jpg",
+      "https://commons.wikimedia.org/wiki/File:Mravaldzali_Church_4.jpg",
+      "https://commons.wikimedia.org/wiki/File:Mravaldzali_Church_1.jpg",
+      "https://commons.wikimedia.org/wiki/File:Mravaldzali_Church_2.jpg"
+    ],
+    "ai_assisted_originals": 0,
+    "identity_review": "passed"
+  },
+  "muri-fortress": {
+    "gallery_items": 3,
+    "total_images_including_primary": 4,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:Muri_fort_at_Tsageri_(Photo_A._Muhranoff,_2011).jpg"
+    ],
+    "ai_assisted_originals": 2,
+    "identity_review": "passed"
+  },
+  "nikortsminda-cathedral": {
+    "gallery_items": 6,
+    "total_images_including_primary": 7,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:Nikortsminda_South.jpg",
+      "https://commons.wikimedia.org/wiki/File:Nikortsminda_church.jpg",
+      "https://commons.wikimedia.org/wiki/File:Nikortsminda_church2.jpg",
+      "https://commons.wikimedia.org/wiki/File:Nikortsminda,_Racha,_Georgia.jpg",
+      "https://commons.wikimedia.org/wiki/File:Nikortsminda_-_panoramio_(1).jpg",
+      "https://commons.wikimedia.org/wiki/File:Nikortsminda_-_panoramio_(2).jpg"
+    ],
+    "ai_assisted_originals": 0,
+    "identity_review": "passed"
+  },
+  "oni": {
+    "gallery_items": 5,
+    "total_images_including_primary": 6,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:Oni_town.jpg"
+    ],
+    "ai_assisted_originals": 3,
+    "identity_review": "passed"
+  },
+  "oni-synagogue": {
+    "gallery_items": 3,
+    "total_images_including_primary": 4,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:2015-08-29_(76)_Oni_Synagogue.jpg",
+      "https://commons.wikimedia.org/wiki/File:2025-06-20_Historical_synagogue_of_Oni_1.jpg",
+      "https://commons.wikimedia.org/wiki/File:2025-06-20_Historical_synagogue_of_Oni_2.jpg"
+    ],
+    "ai_assisted_originals": 0,
+    "identity_review": "passed"
+  },
+  "shaori-reservoir": {
+    "gallery_items": 7,
+    "total_images_including_primary": 8,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:Shaori_reservoir_-_panoramio.jpg",
+      "https://commons.wikimedia.org/wiki/File:View_to_Shaori_-_panoramio.jpg",
+      "https://commons.wikimedia.org/wiki/File:2015-08-30_(37)_Shaori_reservoir.jpg"
+    ],
+    "ai_assisted_originals": 0,
+    "identity_review": "passed"
+  },
+  "shovi-resort": {
+    "gallery_items": 6,
+    "total_images_including_primary": 7,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:Stormy_Sky_over_Shovi,_Racha,_Georgia.jpg",
+      "https://commons.wikimedia.org/wiki/File:Shovi._Racha_region._Georgia.jpg"
+    ],
+    "ai_assisted_originals": 0,
+    "identity_review": "passed"
+  },
+  "tsageri": {
+    "gallery_items": 5,
+    "total_images_including_primary": 6,
+    "commons_sources": [],
+    "ai_assisted_originals": 3,
+    "identity_review": "passed"
+  },
+  "udziro-lake-buba-glacier": {
+    "gallery_items": 7,
+    "total_images_including_primary": 8,
+    "commons_sources": [],
+    "ai_assisted_originals": 7,
+    "identity_review": "passed"
+  },
+  "utsera": {
+    "gallery_items": 3,
+    "total_images_including_primary": 4,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:Village_Utsera,_Racha,_Georgia_(1903-1904).jpg"
+    ],
+    "ai_assisted_originals": 1,
+    "identity_review": "passed"
+  },
+  "waterfall-of-love-racha": {
+    "gallery_items": 3,
+    "total_images_including_primary": 4,
+    "commons_sources": [],
+    "ai_assisted_originals": 4,
+    "identity_review": "passed"
+  }
+}

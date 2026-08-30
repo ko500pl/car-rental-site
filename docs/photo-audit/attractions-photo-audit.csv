@@ -10,7 +10,7 @@ akhali-shuamta,kakheti,3.0,2,4,2,1,2,pending,pending,pending
 akhaltsikhe-jewish-quarter,samtskhe-javakheti,3.5,4,4,0,3,"https://commons.wikimedia.org/wiki/File:%E1%83%94%E1%83%99%E1%83%9A%E1%83%94%E1%83%A1%E1%83%98%E1%83%90_-_panoramio.jpg | https://commons.wikimedia.org/wiki/File:Akhaltsikhe,_Georgia_-_panoramio_(2).jpg | https://commons.wikimedia.org/wiki/File:Rabati,_Akhaltsikhe,_Georgia_-_panoramio_(1).jpg","passed: target count, unique path cleanup, new assets 1600x900 WebP",passed: Google visual identity cross-check + Commons source review,complete
 alaverdi-cathedral,kakheti,3.5,2,4,2,1,2,pending,pending,pending
 algeti-national-park,kvemo-kartli,4.0,1,6,5,0,1,pending,pending,pending
-ambrolauri,racha-lechkhumi,4.0,4,6,2,3,4,pending,pending,pending
+ambrolauri,racha-lechkhumi,4.0,6,6,0,5,6,passed,passed,complete
 anaklia,samegrelo-zemo-svaneti,4.0,6,6,0,5,6,passed-2026-08-31,verified-2026-08-31,complete
 ananuri-fortress,mtskheta-mtianeti,3.5,1,4,3,0,1,pending,pending,pending
 anchiskhati-basilica,tbilisi,3.0,1,4,3,0,1,pending,pending,pending
@@ -27,7 +27,7 @@ bakhmaro,guria,5.0,4,8,4,3,4,pending,pending,pending
 bakuriani-botanical-garden,samtskhe-javakheti,4.0,6,6,0,5,https://commons.wikimedia.org/wiki/File:Bakuriani_003.jpg | https://rentup.ge/,"passed: target count, unique path cleanup, new assets 1600x900 WebP",passed: Google visual identity cross-check + Commons source review,complete
 bakuriani,samtskhe-javakheti,4.0,6,6,0,5,"https://commons.wikimedia.org/wiki/File:Bakuriani_winter_resort,_Georgia._January_2022_01.jpg | https://commons.wikimedia.org/wiki/File:Bakuriani_-_Ort_vom_Kochta-H%C3%BCgel.JPG | https://commons.wikimedia.org/wiki/File:Bakuriani_-_Georgia_%D8%A8%D8%A7%DA%A9%D9%88%D8%B1%DB%8C%D8%A7%D9%86%DB%8C%D8%8C_%DA%A9%D8%B4%D9%88%D8%B1_%DA%AF%D8%B1%D8%AC%D8%B3%D8%AA%D8%A7%D9%86%D8%8C_%D9%85%D9%86%D8%A7%D8%B8%D8%B1_%D8%A8%D8%B1%D9%81%DB%8C_%D9%88_%DA%86%D8%B4%D9%85_%D8%A7%D9%86%D8%AF%D8%A7%D8%B2%D9%87%D8%A7%DB%8C_%D8%B2%D9%85%D8%B3%D8%AA%D8%A7%D9%86%DB%8C-_%D8%AC%D8%A7%D8%B0%D8%A8%D9%87_%D9%87%D8%A7%DB%8C_%DA%AF%D8%B1%D8%AF%D8%B4%DA%AF%D8%B1%DB%8C_%D8%AC%D9%88%D8%B1%D8%AC%DB%8C%D8%A7_01.jpg | https://commons.wikimedia.org/wiki/File:Bakuriani_winter_resort,_Georgia._January_2022_03.jpg | https://commons.wikimedia.org/wiki/File:Bakuriani_winter_resort,_Georgia._January_2022_04.jpg","passed: target count, unique path cleanup, new assets 1600x900 WebP",passed: Google visual identity cross-check + Commons source review,complete
 balda-canyon,samegrelo-zemo-svaneti,4.0,6,6,0,5,6,passed-2026-08-31,verified-2026-08-31,complete
-barakoni-church,racha-lechkhumi,3.5,2,4,2,1,2,pending,pending,pending
+barakoni-church,racha-lechkhumi,3.5,4,4,0,3,4,passed,passed,complete
 bateti-lake,shida-kartli,4.5,7,7,0,6,7,passed-2026-08-31,verified-2026-08-31,complete
 batsara-reserve,kakheti,4.0,4,6,2,3,4,pending,pending,pending
 batumi-6-may-park-dolphinarium,adjara,4.0,4,6,2,3,4,pending,pending,pending
@@ -52,7 +52,7 @@ bridge-of-peace-rike-park,tbilisi,4.0,1,6,5,0,1,pending,pending,pending
 chalaadi-glacier,samegrelo-zemo-svaneti,4.5,7,7,0,6,7,passed-2026-08-31,verified-2026-08-31,complete
 chateau-mukhrani,mtskheta-mtianeti,4.0,2,6,4,1,2,pending,pending,pending
 chiatura-cable-cars,imereti,4.0,4,6,2,3,4,pending,pending,pending
-chiora,racha-lechkhumi,4.0,1,6,5,0,1,pending,pending,pending
+chiora,racha-lechkhumi,4.0,6,6,0,1,3,passed,passed,complete
 chokhatauri,guria,4.0,2,6,4,1,2,pending,pending,pending
 chronicle-of-georgia,tbilisi,3.0,4,4,0,3,4,pending,pending,pending
 dadiani-palace-zugdidi,samegrelo-zemo-svaneti,3.5,4,4,0,3,4,passed-2026-08-31,verified-2026-08-31,complete
@@ -75,9 +75,9 @@ geguti-palace,imereti,3.5,4,4,0,3,4,pending,pending,pending
 gelati-monastery,imereti,5.0,4,8,4,3,4,pending,pending,pending
 georgian-national-museum,tbilisi,3.5,4,4,0,3,4,pending,pending,pending
 gergeti-trinity-church,mtskheta-mtianeti,5.0,3,8,5,2,2,pending,pending,pending
-glola,racha-lechkhumi,4.0,2,6,4,1,2,pending,pending,pending
+glola,racha-lechkhumi,4.0,6,6,0,4,5,passed,passed,complete
 goderdzi-pass,adjara,4.5,4,7,3,3,4,pending,pending,pending
-gogolati,racha-lechkhumi,4.0,1,6,5,0,0,pending,pending,pending
+gogolati,racha-lechkhumi,4.0,6,6,0,0,2,passed,passed,complete
 gombori-pass,kakheti,3.5,2,4,2,1,2,pending,pending,pending
 gomismta,guria,4.5,3,7,4,2,3,pending,pending,pending
 gonio-fortress,adjara,4.0,4,6,2,3,4,pending,pending,pending
@@ -111,7 +111,7 @@ khirsa-monastery,kakheti,3.5,1,4,3,0,1,pending,pending,pending
 khobi-monastery,samegrelo-zemo-svaneti,3.5,4,4,0,3,4,passed-2026-08-31,verified-2026-08-31,complete
 khornabuji-fortress,kakheti,3.5,4,4,0,3,4,pending,pending,pending
 khulo-cable-car-upper-adjara,adjara,4.5,3,7,4,2,3,pending,pending,pending
-khvanchkara-wine-zone,racha-lechkhumi,4.0,4,6,2,3,4,pending,pending,pending
+khvanchkara-wine-zone,racha-lechkhumi,4.0,6,6,0,5,6,passed,passed,complete
 kinchkha-waterfall,imereti,4.0,1,6,5,0,1,pending,pending,pending
 kintrishi-protected-areas,adjara,4.0,3,6,3,2,3,pending,pending,pending
 kintsvisi-monastery,shida-kartli,4.0,6,6,0,5,6,passed-2026-08-31,verified-2026-08-31,complete
@@ -134,7 +134,7 @@ kvetera-fortress,kakheti,3.5,1,4,3,0,1,pending,pending,pending
 lagodekhi-protected-areas,kakheti,4.0,1,6,5,0,1,pending,pending,pending
 lanchkhuti,guria,4.0,3,6,3,2,3,pending,pending,pending
 latali-matskhvarishi,samegrelo-zemo-svaneti,3.5,4,4,0,3,4,passed-2026-08-31,verified-2026-08-31,complete
-lentekhi,racha-lechkhumi,4.0,4,6,2,3,4,pending,pending,pending
+lentekhi,racha-lechkhumi,4.0,6,6,0,5,6,passed,passed,complete
 likani-palace,samtskhe-javakheti,3.0,4,4,0,3,https://rentup.ge/,"passed: target count, unique path cleanup, new assets 1600x900 WebP",passed: Google visual identity cross-check + Commons source review,complete
 likhauri-church,guria,3.5,1,4,3,0,1,pending,pending,pending
 lisi-lake,tbilisi,4.0,2,6,4,1,2,pending,pending,pending
@@ -149,15 +149,15 @@ martvili-canyon,samegrelo-zemo-svaneti,4.0,6,6,0,5,6,passed-2026-08-31,verified-
 mestia,samegrelo-zemo-svaneti,5.0,8,8,0,7,8,passed-2026-08-31,verified-2026-08-31,complete
 metekhi-church,tbilisi,3.0,1,4,3,0,1,pending,pending,pending
 mgvimevi-monastery,imereti,3.5,4,4,0,3,4,pending,pending,pending
-minda-fortress,racha-lechkhumi,4.0,1,6,5,0,1,pending,pending,pending
+minda-fortress,racha-lechkhumi,4.0,6,6,0,3,5,passed,passed,complete
 modinakhe-fortress,imereti,3.5,2,4,2,1,2,pending,pending,pending
 motsameta-monastery,imereti,3.5,4,4,0,3,4,pending,pending,pending
-mount-khvamli,racha-lechkhumi,4.5,3,7,4,2,3,pending,pending,pending
-mravaldzali,racha-lechkhumi,4.0,1,6,5,0,1,pending,pending,pending
+mount-khvamli,racha-lechkhumi,4.5,7,7,0,6,7,passed,passed,complete
+mravaldzali,racha-lechkhumi,4.0,6,6,0,5,6,passed,passed,complete
 mtatsminda-pantheon,tbilisi,3.5,4,4,0,3,4,pending,pending,pending
 mtatsminda-park,tbilisi,4.0,4,6,2,3,4,pending,pending,pending
 mtirala-national-park,adjara,4.0,4,6,2,3,4,pending,pending,pending
-muri-fortress,racha-lechkhumi,3.5,1,4,3,0,1,pending,pending,pending
+muri-fortress,racha-lechkhumi,3.5,4,4,0,1,3,passed,passed,complete
 mutso,mtskheta-mtianeti,4.0,4,6,2,3,4,pending,pending,pending
 nabeghlavi,guria,3.5,3,4,1,2,3,pending,pending,pending
 nakerala-pass,imereti,4.0,1,6,5,0,1,pending,pending,pending
@@ -166,15 +166,15 @@ narikala-fortress,tbilisi,5.0,1,8,7,0,1,pending,pending,pending
 navenakhevi-cave,imereti,4.0,3,6,3,2,3,pending,pending,pending
 nekresi-monastery,kakheti,4.0,4,6,2,3,4,pending,pending,pending
 niko-nikoladze-house-museum,imereti,4.5,2,7,5,1,2,pending,pending,pending
-nikortsminda-cathedral,racha-lechkhumi,4.5,1,7,6,0,1,pending,pending,pending
+nikortsminda-cathedral,racha-lechkhumi,4.5,7,7,0,6,7,passed,passed,complete
 ninotsminda-cathedral,kakheti,3.5,4,4,0,3,4,pending,pending,pending
 nodar-dumbadze-house-museum,guria,4.5,2,7,5,1,2,pending,pending,pending
 nokalakevi,samegrelo-zemo-svaneti,4.0,6,6,0,5,6,passed-2026-08-31,verified-2026-08-31,complete
 nunisi-resort,imereti,4.0,1,6,5,0,1,pending,pending,pending
 okatse-canyon,imereti,4.0,2,6,4,1,2,pending,pending,pending
 omalo-tusheti,kakheti,5.0,1,8,7,0,1,pending,pending,pending
-oni-synagogue,racha-lechkhumi,3.0,2,4,2,1,2,pending,pending,pending
-oni,racha-lechkhumi,4.0,2,6,4,1,2,pending,pending,pending
+oni-synagogue,racha-lechkhumi,3.0,4,4,0,3,4,passed,passed,complete
+oni,racha-lechkhumi,4.0,6,6,0,2,4,passed,passed,complete
 oniore-waterfall,samegrelo-zemo-svaneti,4.0,6,6,0,5,6,passed-2026-08-31,verified-2026-08-31,complete
 open-air-museum-of-ethnography,tbilisi,3.5,4,4,0,3,4,pending,pending,pending
 ozurgeti,guria,4.0,3,6,3,2,3,pending,pending,pending
@@ -203,7 +203,7 @@ samtsevrisi-church,shida-kartli,3.5,4,4,0,3,4,passed-2026-08-31,verified-2026-08
 sapara-monastery,samtskhe-javakheti,4.0,6,6,0,5,"https://commons.wikimedia.org/wiki/File:Sapara_Monastery_(14723025125).jpg | https://commons.wikimedia.org/wiki/File:Sapara_Monastery._Aug_2014.jpg | https://commons.wikimedia.org/wiki/File:Sapara_Monastery,_Akhtaltsikhe,_Georgia_(1).JPG | https://commons.wikimedia.org/wiki/File:Sapara_Monastery,_Akhtaltsikhe,_Georgia_(2).JPG | https://commons.wikimedia.org/wiki/File:Sapara_Monastery,_Samtskhe-Javakheti_region,_Georgia.jpg","passed: target count, unique path cleanup, new assets 1600x900 WebP",passed: Google visual identity cross-check + Commons source review,complete
 sarpi-beach,adjara,4.0,1,6,5,0,1,pending,pending,pending
 sataplia-nature-reserve,imereti,4.0,2,6,4,1,2,pending,pending,pending
-shaori-reservoir,racha-lechkhumi,5.0,5,8,3,4,5,pending,pending,pending
+shaori-reservoir,racha-lechkhumi,5.0,8,8,0,7,8,passed,passed,complete
 shatili,mtskheta-mtianeti,4.0,4,6,2,3,4,pending,pending,pending
 shekvetili-black-sea-arena,guria,4.0,2,6,4,1,2,pending,pending,pending
 shekvetili-dendrological-park,guria,4.0,2,6,4,1,2,pending,pending,pending
@@ -212,7 +212,7 @@ shenako-diklo,kakheti,4.5,4,7,3,3,4,pending,pending,pending
 shiomghvime-monastery,mtskheta-mtianeti,3.5,2,4,2,1,2,pending,pending,pending
 shkhara-glacier,samegrelo-zemo-svaneti,5.0,8,8,0,7,8,passed-2026-08-31,verified-2026-08-31,complete
 shorapani-fortress,imereti,3.5,1,4,3,0,1,pending,pending,pending
-shovi-resort,racha-lechkhumi,4.5,5,7,2,4,5,pending,pending,pending
+shovi-resort,racha-lechkhumi,4.5,7,7,0,6,7,passed,passed,complete
 shukhuti-lelo-burti,guria,4.0,3,6,3,2,3,pending,pending,pending
 sighnaghi,kakheti,5.0,3,8,5,2,3,pending,pending,pending
 sioni-cathedral,tbilisi,3.0,3,4,1,2,3,pending,pending,pending
@@ -236,7 +236,7 @@ tkibuli-reservoir,imereti,4.0,2,6,4,1,2,pending,pending,pending
 tmogvi-fortress,samtskhe-javakheti,4.0,6,6,0,5,https://commons.wikimedia.org/wiki/File:2025-05-25_View_from_the_hiking_trail_to_Tmogvi_Fortress_2.jpg | https://commons.wikimedia.org/wiki/File:2025-05-25_View_from_the_hiking_trail_to_Tmogvi_Fortress_3.jpg | https://commons.wikimedia.org/wiki/File:2025-05-25_Tmogvi_Fortress_1.jpg | https://commons.wikimedia.org/wiki/File:2025-05-25_Tmogvi_Fortress_2.jpg | https://commons.wikimedia.org/wiki/File:2025-05-25_View_from_the_hiking_trail_to_Tmogvi_Fortress_6.jpg,"passed: target count, unique path cleanup, new assets 1600x900 WebP",passed: Google visual identity cross-check + Commons source review,complete
 tobavarchkhili-lakes,samegrelo-zemo-svaneti,4.5,7,7,0,6,7,passed-2026-08-31,verified-2026-08-31,complete
 truso-valley,mtskheta-mtianeti,4.5,3,7,4,2,3,pending,pending,pending
-tsageri,racha-lechkhumi,4.0,3,6,3,2,3,pending,pending,pending
+tsageri,racha-lechkhumi,4.0,6,6,0,2,4,passed,passed,complete
 tsaishi-cathedral,samegrelo-zemo-svaneti,3.0,4,4,0,3,4,passed-2026-08-31,verified-2026-08-31,complete
 tsalenjikha-cathedral,samegrelo-zemo-svaneti,3.5,4,4,0,3,4,passed-2026-08-31,verified-2026-08-31,complete
 tsalka-reservoir,kvemo-kartli,4.0,3,6,3,2,3,pending,pending,pending
@@ -248,18 +248,18 @@ tsughrughasheni-church,kvemo-kartli,3.5,2,4,2,1,2,pending,pending,pending
 tsutskhvati-caves,imereti,4.0,1,6,5,0,0,pending,pending,pending
 turtle-lake-vake-park,tbilisi,4.0,4,6,2,3,4,pending,pending,pending
 ubisa-monastery,imereti,3.5,1,4,3,0,1,pending,pending,pending
-udziro-lake-buba-glacier,racha-lechkhumi,5.0,4,8,4,3,4,pending,pending,pending
+udziro-lake-buba-glacier,racha-lechkhumi,5.0,8,8,0,0,2,passed,passed,complete
 ujarma-fortress,kakheti,3.5,4,4,0,3,4,pending,pending,pending
 uplistsikhe,shida-kartli,5.0,8,8,0,7,8,passed-2026-08-31,verified-2026-08-31,complete
 urbnisi-cathedral,shida-kartli,3.5,4,4,0,3,4,passed-2026-08-31,verified-2026-08-31,complete
 ureki,guria,5.0,2,8,6,1,2,pending,pending,pending
 ushguli,samegrelo-zemo-svaneti,5.0,8,8,0,7,8,passed-2026-08-31,verified-2026-08-31,complete
-utsera,racha-lechkhumi,3.0,2,4,2,1,2,pending,pending,pending
+utsera,racha-lechkhumi,3.0,4,4,0,2,4,passed,passed,complete
 vani-archaeological-museum,imereti,3.5,2,4,2,1,2,pending,pending,pending
 vanis-kvabebi,samtskhe-javakheti,4.0,6,6,0,5,"https://commons.wikimedia.org/wiki/File:Vanis_Kvabebi_koobasklooster_-_panoramio_-_toomas.liivamagi.jpg | https://commons.wikimedia.org/wiki/File:Vanis_Kvabebi.jpg | https://commons.wikimedia.org/wiki/File:Mtkari_Gorge,_Near_Vani%27s_Caves.jpg | https://commons.wikimedia.org/wiki/File:Mtkari_Gorge,_View_from_Vani%27s_Caves.jpg | https://commons.wikimedia.org/wiki/File:Ko%C5%9Bci%C3%B3%C5%82_Vanis_Kvabebi_we_wsi_Vardzia.jpg","passed: target count, unique path cleanup, new assets 1600x900 WebP",passed: Google visual identity cross-check + Commons source review,complete
 vardzia,samtskhe-javakheti,5.0,8,8,0,7,"https://commons.wikimedia.org/wiki/File:Panorama_Wardzia.jpg | https://commons.wikimedia.org/wiki/File:Vardzia_(5).jpg | https://commons.wikimedia.org/wiki/File:Vardzia,_a_medieval_cave-city_in_Georgia.jpg | https://commons.wikimedia.org/wiki/File:Vardzia_Cave_Monastery_03.jpg | https://commons.wikimedia.org/wiki/File:Vardzia_Cave_Monastery_02.jpg | https://commons.wikimedia.org/wiki/File:Vardzia_Cave_Monastery_07.jpg | https://commons.wikimedia.org/wiki/File:Vardzia_Cave_Monastery_13.jpg","passed: target count, unique path cleanup, new assets 1600x900 WebP",passed: Google visual identity cross-check + Commons source review,complete
 vashlovani-national-park,kakheti,4.5,3,7,4,2,3,pending,pending,pending
-waterfall-of-love-racha,racha-lechkhumi,3.5,1,4,3,0,0,pending,pending,pending
+waterfall-of-love-racha,racha-lechkhumi,3.5,4,4,0,0,2,passed,passed,complete
 zando-st-george-monastery,imereti,4.0,2,6,4,1,2,pending,pending,pending
 zarzma-monastery,samtskhe-javakheti,3.5,4,4,0,3,"https://commons.wikimedia.org/wiki/File:Zarzma,_Georgia_-_panoramio_(1).jpg | https://commons.wikimedia.org/wiki/File:Zarzma_monastery_(40).jpg | https://commons.wikimedia.org/wiki/File:Zarzma_monastery_(72).jpg","passed: target count, unique path cleanup, new assets 1600x900 WebP",passed: Google visual identity cross-check + Commons source review,complete
 zedazeni-monastery,mtskheta-mtianeti,3.5,2,4,2,1,2,pending,pending,pending

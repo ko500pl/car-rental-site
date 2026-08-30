@@ -13,6 +13,16 @@ gallery:
   license: CC BY 2.0
   license_url: https://creativecommons.org/licenses/by/2.0/
   source: https://commons.wikimedia.org/wiki/File:Rioni_river_gorge_in_Upper_Racha.jpg
+- image: /assets/photos/utsera-verified-1-20260831.webp
+  author: Alexandrovich
+  license: Public domain
+  license_url: https://creativecommons.org/publicdomain/mark/1.0/
+  source: https://commons.wikimedia.org/wiki/File:Village_Utsera,_Racha,_Georgia_(1903-1904).jpg
+- image: /assets/photos/utsera-premium-ai-1-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '1.5'
 best_season: may-october
 open_year_round: false
