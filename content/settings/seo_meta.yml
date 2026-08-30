@@ -48,6 +48,66 @@ placeholders:
 
 templates:
 
+  attractions_hub:
+    ka:
+      title: "საქართველოს სანახავი ადგილები — {count} ადგილი {regions} რეგიონში | RentUp"
+      description: "{count} ადგილი რეგიონების მიხედვით: მანძილი თბილისიდან, გზაში დრო, გზის მდგომარეობა და საჭირო ავტომობილის კატეგორია."
+    en:
+      title: "Places to Visit in Georgia — {count} Sights by Region | RentUp"
+      description: "{count} places across {regions} regions, each with the distance from Tbilisi, drive time, road surface and the car category it needs."
+    ru:
+      title: "Достопримечательности Грузии — {count} мест по регионам | RentUp"
+      description: "{count} мест в {regions} регионах: расстояние от Тбилиси, время в пути, состояние дороги и нужная категория автомобиля."
+    fa:
+      title: "دیدنی‌های گرجستان — {count} مکان بر پایهٔ منطقه | RentUp"
+      description: "{count} مکان در {regions} منطقه، هرکدام با فاصله از تفلیس، زمان رانندگی، وضعیت جاده و دستهٔ خودروی لازم."
+    he:
+      title: "אתרים בגאורגיה — {count} מקומות לפי אזור | RentUp"
+      description: "{count} מקומות ב-{regions} אזורים, כל אחד עם המרחק מטביליסי, זמן הנסיעה, מצב הדרך וקטגוריית הרכב הנדרשת."
+    ar:
+      title: "معالم جورجيا — {count} مكاناً حسب المنطقة | RentUp"
+      description: "{count} مكاناً في {regions} منطقة، ولكل منها المسافة من تبليسي وزمن القيادة وحالة الطريق وفئة السيارة اللازمة."
+
+  regions_hub:
+    ka:
+      title: "საქართველოს რეგიონები — {count} რეგიონი, {attractions} ადგილი | RentUp"
+      description: "საქართველოს {count} რეგიონი: რამდენი სანახავი ადგილია თითოეულში, რა გამოარჩევს და როგორ მივიდეთ."
+    en:
+      title: "Regions of Georgia — {count} Regions, {attractions} Places | RentUp"
+      description: "All {count} regions of Georgia: how many places each holds, what sets it apart and how to drive there."
+    ru:
+      title: "Регионы Грузии — {count} регионов, {attractions} мест | RentUp"
+      description: "Все {count} регионов Грузии: сколько мест в каждом, чем он отличается и как туда доехать."
+    fa:
+      title: "مناطق گرجستان — {count} منطقه، {attractions} مکان | RentUp"
+      description: "همهٔ {count} منطقهٔ گرجستان: هر منطقه چند مکان دارد، چه ویژگی دارد و چگونه با خودرو به آن برسیم."
+    he:
+      title: "אזורי גאורגיה — {count} אזורים, {attractions} מקומות | RentUp"
+      description: "כל {count} אזורי גאורגיה: כמה מקומות בכל אחד, מה מייחד אותו ואיך מגיעים ברכב."
+    ar:
+      title: "مناطق جورجيا — {count} منطقة، {attractions} مكاناً | RentUp"
+      description: "كل مناطق جورجيا الـ{count}: كم مكاناً في كل منها، وما يميزها، وكيف تصل بالسيارة."
+
+  guides_hub:
+    ka:
+      title: "გზამკვლევები საქართველოში მგზავრობაზე | RentUp"
+      description: "{count} პრაქტიკული გზამკვლევი ჩვენივე მონაცემებიდან: გზების მდგომარეობა, საუკეთესო სეზონი და რომელი ავტომობილი დაგჭირდებათ სად."
+    en:
+      title: "Driving in Georgia — Practical Guides | RentUp"
+      description: "{count} practical guides built from our own road, season and vehicle data — what the roads are really like and which car each one needs."
+    ru:
+      title: "Гиды по поездкам за рулём в Грузии | RentUp"
+      description: "{count} практических гида на основе наших данных: состояние дорог, лучший сезон и какой автомобиль нужен для каждого маршрута."
+    fa:
+      title: "راهنماهای رانندگی در گرجستان | RentUp"
+      description: "{count} راهنمای کاربردی بر پایهٔ داده‌های جاده، فصل و خودرو: جاده‌ها واقعاً چگونه‌اند و هر مسیر چه خودرویی می‌خواهد."
+    he:
+      title: "מדריכי נהיגה בגאורגיה | RentUp"
+      description: "{count} מדריכים מעשיים מנתוני הדרכים, העונות והרכבים שלנו: איך הדרכים באמת ואיזה רכב כל מסלול דורש."
+    ar:
+      title: "أدلة القيادة في جورجيا | RentUp"
+      description: "{count} أدلة عملية من بيانات الطرق والمواسم والسيارات لدينا: كيف هي الطرق فعلاً وأي سيارة يحتاجها كل مسار."
+
   # ---------------------------------------------------------------------
   # Home — /
   # ---------------------------------------------------------------------
@@ -56,7 +116,7 @@ templates:
       title: "Car Rental & Georgia Road Trip Planner | RentUp"
       description: "Rent a car anywhere in Georgia from 75 ₾/day and plan your route on the same site — real road data for 257 places and 32 ready-made trips."
     ka:
-      title: "ავტომობილის დაქირავება და მარშრუტის დაგეგმვა საქართველოში | RentUp"
+      title: "ავტომობილების გაქირავება და მარშრუტის დაგეგმვა საქართველოში | RentUp"
       description: "იქირავეთ ავტომობილი საქართველოს ნებისმიერ წერტილში 75 ₾-დან დღეში და დაგეგმეთ მარშრუტი იმავე საიტზე — 257 ადგილისა და 32 მზა მარშრუტის მონაცემები."
     ru:
       title: "Аренда авто и планировщик поездок по Грузии | RentUp"
@@ -103,11 +163,11 @@ templates:
       title: "{name} Rental in Georgia — from {price} ₾/day | RentUp"
       description: "Rent the {name} in Georgia: {category}, {seats} seats, from {price} ₾/day with full insurance and unlimited mileage across the country."
     ka:
-      title: "{name_gen} დაქირავება საქართველოში — {price} ₾-დან | RentUp"
+      title: "{name}-ის გაქირავება საქართველოში — {price} ₾-დან | RentUp"
       description: "იქირავეთ {name} საქართველოში: {category}, {seats} ადგილი, {price} ₾-დან დღეში, სრული დაზღვევითა და შეუზღუდავი გარბენით."
     ru:
       title: "Аренда {name} в Грузии — от {price} ₾/день | RentUp"
-      description: "Арендуйте {name} в Грузии: {category}, {seats} мест, от {price} ₾ в день, с полной страховкой и пробегом без ограничений."
+      description: "Арендуйте {name} в Грузии: {category}, число мест — {seats}, от {price} ₾ в день, с полной страховкой и пробегом без ограничений."
     fa:
       title: "اجاره {name} در گرجستان — از {price} لاری در روز | RentUp"
       description: "{name} را در گرجستان اجاره کنید: {category}، {seats} صندلی، از {price} لاری در روز، با بیمه کامل و کیلومتر نامحدود."
@@ -126,8 +186,8 @@ templates:
       title: "Georgia Road Trip Planner — Build Your Route | RentUp"
       description: "Build a road trip across Georgia on an interactive map: 257 attractions with real drive times and road conditions, plus 32 ready-made routes."
     ka:
-      title: "საქართველოს მოგზაურობის დამგეგმავი — ააგე მარშრუტი | RentUp"
-      description: "ააგეთ საქართველოს მარშრუტი ინტერაქტიულ რუკაზე: 257 ღირსშესანიშნაობა რეალური სამგზავრო დროითა და გზის მდგომარეობით, პლუს 32 მზა მარშრუტი."
+      title: "მარშრუტის დამგეგმავი საქართველოში — ააგეთ თქვენი გზა | RentUp"
+      description: "ააგეთ საქართველოს მარშრუტი ინტერაქტიულ რუკაზე: 257 ღირსშესანიშნაობა რეალური მართვის დროითა და გზის მდგომარეობით, პლუს 32 მზა მარშრუტი."
     ru:
       title: "Планировщик путешествий по Грузии — стройте маршрут | RentUp"
       description: "Постройте маршрут по Грузии на интерактивной карте: 257 достопримечательностей с реальным временем в пути и состоянием дорог, плюс 32 готовых маршрута."
@@ -151,10 +211,10 @@ templates:
       description: "{count} ready-made road trips across Georgia, each with distance, drive time, recommended car and every stop mapped — pick one and start driving."
     ka:
       title: "საქართველოს მზა მარშრუტები — {count} მარშრუტი | RentUp"
-      description: "{count} მზა საავტომობილო მარშრუტი საქართველოში — მანძილით, სამგზავრო დროით, საჭირო ავტომობილითა და ყველა გაჩერებით რუკაზე."
+      description: "{count} მზა საავტომობილო მარშრუტი საქართველოში — მანძილით, მართვის დროით, საჭირო ავტომობილითა და ყველა გაჩერებით რუკაზე."
     ru:
-      title: "Готовые маршруты по Грузии — {count} путешествий | RentUp"
-      description: "{count} готовых автомобильных маршрутов по Грузии — с расстоянием, временем в пути, нужной категорией машины и всеми остановками на карте."
+      title: "Готовые маршруты по Грузии — всего {count} | RentUp"
+      description: "Готовые автомобильные маршруты по Грузии, всего {count} — с расстоянием, временем в пути, нужной категорией машины и всеми остановками на карте."
     fa:
       title: "مسیرهای آماده سفر در گرجستان — {count} مسیر | RentUp"
       description: "{count} مسیر آمادهٔ سفر جاده‌ای در گرجستان، هرکدام با مسافت، زمان رانندگی، خودروی پیشنهادی و همهٔ توقف‌گاه‌ها روی نقشه."
@@ -180,19 +240,19 @@ templates:
         description: "{name} covers {km} km over {days} days ({drive} total drive) — the stops, road conditions and the {car} recommended."
       ka:
         title: "{name} — მარშრუტი, გაჩერებები და საჭირო მანქანა, {days} დღე | RentUp"
-        description: "{name} მოიცავს {km} კმ-ს {days} დღეში ({drive} მთლიანი სამგზავრო დრო) — გაჩერებები, გზის მდგომარეობა და რეკომენდებული ავტომობილი {car}."
+        description: "{name} მოიცავს {km} კმ-ს {days} დღეში ({drive} მთლიანი მართვის დრო) — გაჩერებები, გზის მდგომარეობა და რეკომენდებული ავტომობილი {car}."
       ru:
-        title: "{name} — маршрут, остановки и машина, {days} дней | RentUp"
-        description: "{name} — это {km} км за {days} дней ({drive} в пути) — остановки, состояние дорог и рекомендуемый автомобиль {car}."
+        title: "{name} — {days}-дневный маршрут, остановки и машина | RentUp"
+        description: "{name} — {days}-дневный маршрут на {km} км ({drive} в пути) — остановки, состояние дорог и рекомендуемый автомобиль {car}."
       fa:
         title: "{name} — مسیر، توقف‌گاه‌ها و خودروی مناسب، {days} روز | RentUp"
         description: "{name} شامل {km} کیلومتر در {days} روز است ({drive} رانندگی کل) — توقف‌گاه‌ها، وضعیت جاده و خودروی پیشنهادی {car}."
       he:
-        title: "{name} — מסלול, תחנות ורכב מומלץ, {days} ימים | RentUp"
-        description: "{name} כולל {km} ק״מ על פני {days} ימים ({drive} נסיעה כוללת) — התחנות, מצב הדרכים והרכב המומלץ {car}."
+        title: "{name} — מסלול, תחנות ורכב מומלץ, ימים: {days} | RentUp"
+        description: "{name} כולל {km} ק״מ ו-{drive} נסיעה כוללת — התחנות, מצב הדרכים והרכב המומלץ {car}."
       ar:
-        title: "{name} — المسار والمحطات والسيارة المناسبة، {days} أيام | RentUp"
-        description: "يغطي {name} مسافة {km} كم على مدى {days} أيام ({drive} إجمالي القيادة) — المحطات وحالة الطريق والسيارة الموصى بها {car}."
+        title: "{name} — المسار والمحطات والسيارة المناسبة، الأيام: {days} | RentUp"
+        description: "يغطي {name} مسافة {km} كم ({drive} إجمالي القيادة) — المحطات وحالة الطريق والسيارة الموصى بها {car}."
     by_purpose:
       history:
         en:
@@ -202,17 +262,17 @@ templates:
           title: "{name} — ისტორიული მარშრუტი, {days} დღე, {km} კმ | RentUp"
           description: "{name} — {days}-დღიანი ისტორიული მარშრუტი: {km} კმ, {drive} გზაში, რეკომენდებული ავტომობილი — {car}."
         ru:
-          title: "{name} — исторический маршрут, {days} дней, {km} км | RentUp"
+          title: "{name} — {days}-дневный исторический маршрут, {km} км | RentUp"
           description: "{name} — {days}-дневный исторический маршрут: {km} км, {drive} в пути, рекомендуемый автомобиль — {car}."
         fa:
           title: "{name} — مسیر تاریخی، {days} روزه، {km} کیلومتر | RentUp"
           description: "{name} یک مسیر تاریخی {days} روزه است: {km} کیلومتر، {drive} رانندگی، و خودروی پیشنهادی {car}."
         he:
-          title: "{name} — מסלול היסטורי, {days} ימים, {km} ק״מ | RentUp"
-          description: "{name} הוא מסלול היסטורי בן {days} ימים: {km} ק״מ, {drive} נהיגה, והרכב המומלץ הוא {car}."
+          title: "{name} — מסלול היסטורי, {km} ק״מ, ימים: {days} | RentUp"
+          description: "{name} הוא מסלול היסטורי: {km} ק״מ, {drive} נהיגה, והרכב המומלץ הוא {car}."
         ar:
-          title: "{name} — مسار تاريخي، {days} أيام، {km} كم | RentUp"
-          description: "{name} هو مسار تاريخي لمدة {days} أيام: {km} كم و{drive} من القيادة، والسيارة الموصى بها {car}."
+          title: "{name} — مسار تاريخي، {km} كم، الأيام: {days} | RentUp"
+          description: "{name} هو مسار تاريخي: {km} كم و{drive} من القيادة، والسيارة الموصى بها {car}."
       hiking:
         en:
           title: "{name}: Hiking Road Trip — {days} Days, {km} km | RentUp"
@@ -221,17 +281,17 @@ templates:
           title: "{name} — სალაშქრო მარშრუტი, {days} დღე, {km} კმ | RentUp"
           description: "{name} — {days}-დღიანი სალაშქრო მარშრუტი: {km} კმ, {drive} გზაში, რეკომენდებული ავტომობილი — {car}."
         ru:
-          title: "{name} — маршрут для походов, {days} дней, {km} км | RentUp"
+          title: "{name} — {days}-дневный маршрут для походов, {km} км | RentUp"
           description: "{name} — {days}-дневный маршрут для походов: {km} км, {drive} в пути, рекомендуемый автомобиль — {car}."
         fa:
           title: "{name} — مسیر پیاده‌روی، {days} روزه، {km} کیلومتر | RentUp"
           description: "{name} یک مسیر پیاده‌روی {days} روزه است: {km} کیلومتر، {drive} رانندگی، و خودروی پیشنهادی {car}."
         he:
-          title: "{name} — מסלול הליכה, {days} ימים, {km} ק״מ | RentUp"
-          description: "{name} הוא מסלול הליכה בן {days} ימים: {km} ק״מ, {drive} נהיגה, והרכב המומלץ הוא {car}."
+          title: "{name} — מסלול הליכה, {km} ק״מ, ימים: {days} | RentUp"
+          description: "{name} הוא מסלול הליכה: {km} ק״מ, {drive} נהיגה, והרכב המומלץ הוא {car}."
         ar:
-          title: "{name} — مسار للمشي، {days} أيام، {km} كم | RentUp"
-          description: "{name} هو مسار للمشي لمدة {days} أيام: {km} كم و{drive} من القيادة، والسيارة الموصى بها {car}."
+          title: "{name} — مسار للمشي، {km} كم، الأيام: {days} | RentUp"
+          description: "{name} هو مسار للمشي: {km} كم و{drive} من القيادة، والسيارة الموصى بها {car}."
       culinary:
         en:
           title: "{name}: Food & Wine Road Trip — {days} Days | RentUp"
@@ -240,17 +300,17 @@ templates:
           title: "{name} — კულინარიული მარშრუტი, {days} დღე | RentUp"
           description: "{name} — {days}-დღიანი კულინარიული მარშრუტი: {km} კმ, {drive} გზაში, დეგუსტაციები გზადაგზა და რეკომენდებული ავტომობილი — {car}."
         ru:
-          title: "{name} — гастрономический маршрут, {days} дней | RentUp"
+          title: "{name} — {days}-дневный гастрономический маршрут | RentUp"
           description: "{name} — {days}-дневный гастрономический маршрут: {km} км, {drive} в пути, дегустации по дороге и рекомендуемый автомобиль — {car}."
         fa:
           title: "{name} — مسیر غذا و شراب، {days} روزه | RentUp"
           description: "{name} یک مسیر غذا و شراب {days} روزه است: {km} کیلومتر، {drive} رانندگی، چشیدن محصولات محلی در طول راه، و خودروی پیشنهادی {car}."
         he:
-          title: "{name} — מסלול קולינרי ויין, {days} ימים | RentUp"
-          description: "{name} הוא מסלול קולינרי בן {days} ימים: {km} ק״מ, {drive} נהיגה, טעימות בדרך, והרכב המומלץ הוא {car}."
+          title: "{name} — מסלול קולינרי ויין, ימים: {days} | RentUp"
+          description: "{name} הוא מסלול קולינרי: {km} ק״מ, {drive} נהיגה, טעימות בדרך, והרכב המומלץ הוא {car}."
         ar:
-          title: "{name} — مسار الطعام والنبيذ، {days} أيام | RentUp"
-          description: "{name} هو مسار للطعام والنبيذ لمدة {days} أيام: {km} كم و{drive} من القيادة، وتذوق على الطريق، والسيارة الموصى بها {car}."
+          title: "{name} — مسار الطعام والنبيذ، الأيام: {days} | RentUp"
+          description: "{name} هو مسار للطعام والنبيذ: {km} كم و{drive} من القيادة، وتذوق على الطريق، والسيارة الموصى بها {car}."
       nature:
         en:
           title: "{name}: Nature Road Trip — {days} Days, {km} km | RentUp"
@@ -259,17 +319,17 @@ templates:
           title: "{name} — ბუნების მარშრუტი, {days} დღე, {km} კმ | RentUp"
           description: "{name} — {days}-დღიანი ბუნების მარშრუტი: {km} კმ, {drive} გზაში, რეკომენდებული ავტომობილი — {car}."
         ru:
-          title: "{name} — природный маршрут, {days} дней, {km} км | RentUp"
+          title: "{name} — {days}-дневный природный маршрут, {km} км | RentUp"
           description: "{name} — {days}-дневный природный маршрут: {km} км, {drive} в пути, рекомендуемый автомобиль — {car}."
         fa:
           title: "{name} — مسیر طبیعت‌گردی، {days} روزه، {km} کیلومتر | RentUp"
           description: "{name} یک مسیر طبیعت‌گردی {days} روزه است: {km} کیلومتر، {drive} رانندگی، و خودروی پیشنهادی {car}."
         he:
-          title: "{name} — מסלול טבע, {days} ימים, {km} ק״מ | RentUp"
-          description: "{name} הוא מסלול טבע בן {days} ימים: {km} ק״מ, {drive} נהיגה, והרכב המומלץ הוא {car}."
+          title: "{name} — מסלול טבע, {km} ק״מ, ימים: {days} | RentUp"
+          description: "{name} הוא מסלול טבע: {km} ק״מ, {drive} נהיגה, והרכב המומלץ הוא {car}."
         ar:
-          title: "{name} — مسار طبيعي، {days} أيام، {km} كم | RentUp"
-          description: "{name} هو مسار طبيعي لمدة {days} أيام: {km} كم و{drive} من القيادة، والسيارة الموصى بها {car}."
+          title: "{name} — مسار طبيعي، {km} كم، الأيام: {days} | RentUp"
+          description: "{name} هو مسار طبيعي: {km} كم و{drive} من القيادة، والسيارة الموصى بها {car}."
       culture:
         en:
           title: "{name}: Cultural Road Trip — {days} Days, {km} km | RentUp"
@@ -278,17 +338,17 @@ templates:
           title: "{name} — კულტურული მარშრუტი, {days} დღე, {km} კმ | RentUp"
           description: "{name} — {days}-დღიანი კულტურული მარშრუტი: {km} კმ, {drive} გზაში, რეკომენდებული ავტომობილი — {car}."
         ru:
-          title: "{name} — культурный маршрут, {days} дней, {km} км | RentUp"
+          title: "{name} — {days}-дневный культурный маршрут, {km} км | RentUp"
           description: "{name} — {days}-дневный культурный маршрут: {km} км, {drive} в пути, рекомендуемый автомобиль — {car}."
         fa:
           title: "{name} — مسیر فرهنگی، {days} روزه، {km} کیلومتر | RentUp"
           description: "{name} یک مسیر فرهنگی {days} روزه است: {km} کیلومتر، {drive} رانندگی، و خودروی پیشنهادی {car}."
         he:
-          title: "{name} — מסלול תרבות, {days} ימים, {km} ק״מ | RentUp"
-          description: "{name} הוא מסלול תרבות בן {days} ימים: {km} ק״מ, {drive} נהיגה, והרכב המומלץ הוא {car}."
+          title: "{name} — מסלול תרבות, {km} ק״מ, ימים: {days} | RentUp"
+          description: "{name} הוא מסלול תרבות: {km} ק״מ, {drive} נהיגה, והרכב המומלץ הוא {car}."
         ar:
-          title: "{name} — مسار ثقافي، {days} أيام، {km} كم | RentUp"
-          description: "{name} هو مسار ثقافي لمدة {days} أيام: {km} كم و{drive} من القيادة، والسيارة الموصى بها {car}."
+          title: "{name} — مسار ثقافي، {km} كم، الأيام: {days} | RentUp"
+          description: "{name} هو مسار ثقافي: {km} كم و{drive} من القيادة، والسيارة الموصى بها {car}."
       mountains:
         en:
           title: "{name}: Mountain Road Trip — {days} Days, {km} km | RentUp"
@@ -297,17 +357,17 @@ templates:
           title: "{name} — მთის მარშრუტი, {days} დღე, {km} კმ | RentUp"
           description: "{name} — {days}-დღიანი მთის მარშრუტი: {km} კმ, {drive} გზაში, უღელტეხილებისთვის საჭირო ავტომობილი — {car}."
         ru:
-          title: "{name} — горный маршрут, {days} дней, {km} км | RentUp"
+          title: "{name} — {days}-дневный горный маршрут, {km} км | RentUp"
           description: "{name} — {days}-дневный горный маршрут: {km} км, {drive} в пути, автомобиль, нужный для перевалов — {car}."
         fa:
           title: "{name} — مسیر کوهستانی، {days} روزه، {km} کیلومتر | RentUp"
           description: "{name} یک مسیر کوهستانی {days} روزه است: {km} کیلومتر، {drive} رانندگی، و خودرویی که گردنه‌ها به آن نیاز دارند {car}."
         he:
-          title: "{name} — מסלול הרים, {days} ימים, {km} ק״מ | RentUp"
-          description: "{name} הוא מסלול הרים בן {days} ימים: {km} ק״מ, {drive} נהיגה, והרכב שהמעברים דורשים הוא {car}."
+          title: "{name} — מסלול הרים, {km} ק״מ, ימים: {days} | RentUp"
+          description: "{name} הוא מסלול הרים: {km} ק״מ, {drive} נהיגה, והרכב שהמעברים דורשים הוא {car}."
         ar:
-          title: "{name} — مسار جبلي، {days} أيام، {km} كم | RentUp"
-          description: "{name} هو مسار جبلي لمدة {days} أيام: {km} كم و{drive} من القيادة، والسيارة التي تتطلبها الممرات {car}."
+          title: "{name} — مسار جبلي، {km} كم، الأيام: {days} | RentUp"
+          description: "{name} هو مسار جبلي: {km} كم و{drive} من القيادة، والسيارة التي تتطلبها الممرات {car}."
       family:
         en:
           title: "{name}: Family Road Trip — {days} Days, {km} km | RentUp"
@@ -316,17 +376,17 @@ templates:
           title: "{name} — საოჯახო მარშრუტი, {days} დღე, {km} კმ | RentUp"
           description: "{name} — {days}-დღიანი საოჯახო მარშრუტი: {km} კმ, {drive} გზაში, ყველასთვის მოსახერხებელი ავტომობილი — {car}."
         ru:
-          title: "{name} — семейный маршрут, {days} дней, {km} км | RentUp"
+          title: "{name} — {days}-дневный семейный маршрут, {km} км | RentUp"
           description: "{name} — {days}-дневный семейный маршрут: {km} км, {drive} в пути, удобный для всей семьи автомобиль — {car}."
         fa:
           title: "{name} — مسیر خانوادگی، {days} روزه، {km} کیلومتر | RentUp"
           description: "{name} یک مسیر خانوادگی {days} روزه است: {km} کیلومتر، {drive} رانندگی، و خودروی راحت برای همه {car}."
         he:
-          title: "{name} — מסלול משפחתי, {days} ימים, {km} ק״מ | RentUp"
-          description: "{name} הוא מסלול משפחתי בן {days} ימים: {km} ק״מ, {drive} נהיגה, והרכב הנוח לכל המשפחה הוא {car}."
+          title: "{name} — מסלול משפחתי, {km} ק״מ, ימים: {days} | RentUp"
+          description: "{name} הוא מסלול משפחתי: {km} ק״מ, {drive} נהיגה, והרכב הנוח לכל המשפחה הוא {car}."
         ar:
-          title: "{name} — مسار عائلي، {days} أيام، {km} كم | RentUp"
-          description: "{name} هو مسار عائلي لمدة {days} أيام: {km} كم و{drive} من القيادة، والسيارة المريحة للجميع {car}."
+          title: "{name} — مسار عائلي، {km} كم، الأيام: {days} | RentUp"
+          description: "{name} هو مسار عائلي: {km} كم و{drive} من القيادة، والسيارة المريحة للجميع {car}."
       cycling:
         en:
           title: "{name}: Cycling Road Trip — {days} Days, {km} km | RentUp"
@@ -335,17 +395,17 @@ templates:
           title: "{name} — საველოსიპედო მარშრუტი, {days} დღე, {km} კმ | RentUp"
           description: "{name} — {days}-დღიანი მარშრუტი ველოსიპედით გასაჩერებელი პუნქტებით: {km} კმ, {drive} გზაში, ავტომობილი ინვენტარისთვის — {car}."
         ru:
-          title: "{name} — веломаршрут, {days} дней, {km} км | RentUp"
+          title: "{name} — {days}-дневный веломаршрут, {km} км | RentUp"
           description: "{name} — {days}-дневный маршрут с остановками для велосипедистов: {km} км, {drive} в пути, автомобиль для перевозки велосипедов — {car}."
         fa:
           title: "{name} — مسیر دوچرخه‌سواری، {days} روزه، {km} کیلومتر | RentUp"
           description: "{name} یک مسیر {days} روزه با توقف‌های دوچرخه‌سواری است: {km} کیلومتر، {drive} رانندگی، و خودرو برای حمل دوچرخه و تجهیزات {car}."
         he:
-          title: "{name} — מסלול רכיבה על אופניים, {days} ימים, {km} ק״מ | RentUp"
-          description: "{name} הוא מסלול בן {days} ימים עם תחנות לרוכבי אופניים: {km} ק״מ, {drive} נהיגה, והרכב לנשיאת אופניים וציוד הוא {car}."
+          title: "{name} — מסלול רכיבה על אופניים, {km} ק״מ, ימים: {days} | RentUp"
+          description: "{name} הוא מסלול עם תחנות לרוכבי אופניים: {km} ק״מ, {drive} נהיגה, והרכב לנשיאת אופניים וציוד הוא {car}."
         ar:
-          title: "{name} — مسار لركوب الدراجات، {days} أيام، {km} كم | RentUp"
-          description: "{name} هو مسار لمدة {days} أيام مبني حول محطات ركوب الدراجات: {km} كم و{drive} من القيادة، والسيارة لحمل الدراجات والمعدات {car}."
+          title: "{name} — مسار لركوب الدراجات، {km} كم، الأيام: {days} | RentUp"
+          description: "{name} هو مسار مبني حول محطات ركوب الدراجات: {km} كم و{drive} من القيادة، والسيارة لحمل الدراجات والمعدات {car}."
       wine:
         en:
           title: "{name}: Wine Country Road Trip — {days} Days | RentUp"
@@ -354,17 +414,17 @@ templates:
           title: "{name} — ღვინის მარშრუტი, {days} დღე | RentUp"
           description: "{name} — {days}-დღიანი ღვინის მარშრუტი: {km} კმ, {drive} გზაში, მარნების მონახულება და რეკომენდებული ავტომობილი — {car}."
         ru:
-          title: "{name} — винный маршрут, {days} дней | RentUp"
+          title: "{name} — {days}-дневный винный маршрут | RentUp"
           description: "{name} — {days}-дневный винный маршрут: {km} км, {drive} в пути, посещение винных погребов и рекомендуемый автомобиль — {car}."
         fa:
           title: "{name} — مسیر شراب، {days} روزه | RentUp"
           description: "{name} یک مسیر شراب {days} روزه است: {km} کیلومتر، {drive} رانندگی، بازدید از انبارهای شراب، و خودروی پیشنهادی {car}."
         he:
-          title: "{name} — מסלול יין, {days} ימים | RentUp"
-          description: "{name} הוא מסלול יין בן {days} ימים: {km} ק״מ, {drive} נהיגה, ביקורים ביקבים, והרכב המומלץ הוא {car}."
+          title: "{name} — מסלול יין, ימים: {days} | RentUp"
+          description: "{name} הוא מסלול יין: {km} ק״מ, {drive} נהיגה, ביקורים ביקבים, והרכב המומלץ הוא {car}."
         ar:
-          title: "{name} — مسار النبيذ، {days} أيام | RentUp"
-          description: "{name} هو مسار للنبيذ لمدة {days} أيام: {km} كم و{drive} من القيادة، وزيارات لأقبية النبيذ، والسيارة الموصى بها {car}."
+          title: "{name} — مسار النبيذ، الأيام: {days} | RentUp"
+          description: "{name} هو مسار للنبيذ: {km} كم و{drive} من القيادة، وزيارات لأقبية النبيذ، والسيارة الموصى بها {car}."
       classic:
         en:
           title: "{name}: Classic Georgia Road Trip — {days} Days | RentUp"
@@ -373,36 +433,36 @@ templates:
           title: "{name} — კლასიკური მარშრუტი, {days} დღე | RentUp"
           description: "{name} — კლასიკური {days}-დღიანი მარშრუტი: {km} კმ, {drive} გზაში, ძირითადი გაჩერებები და რეკომენდებული ავტომობილი — {car}."
         ru:
-          title: "{name} — классический маршрут, {days} дней | RentUp"
+          title: "{name} — {days}-дневный классический маршрут | RentUp"
           description: "{name} — классический {days}-дневный маршрут: {km} км, {drive} в пути, главные остановки и рекомендуемый автомобиль — {car}."
         fa:
           title: "{name} — مسیر کلاسیک، {days} روزه | RentUp"
           description: "{name} مسیر کلاسیک {days} روزه است: {km} کیلومتر، {drive} رانندگی، توقف‌های اصلی، و خودروی پیشنهادی {car}."
         he:
-          title: "{name} — מסלול קלאסי, {days} ימים | RentUp"
-          description: "{name} הוא המסלול הקלאסי בן {days} ימים: {km} ק״מ, {drive} נהיגה, התחנות העיקריות, והרכב המומלץ הוא {car}."
+          title: "{name} — מסלול קלאסי, ימים: {days} | RentUp"
+          description: "{name} הוא המסלול הקלאסי: {km} ק״מ, {drive} נהיגה, התחנות העיקריות, והרכב המומלץ הוא {car}."
         ar:
-          title: "{name} — مسار كلاسيكي، {days} أيام | RentUp"
-          description: "{name} هو المسار الكلاسيكي لمدة {days} أيام: {km} كم و{drive} من القيادة، والمحطات الرئيسية، والسيارة الموصى بها {car}."
+          title: "{name} — مسار كلاسيكي، الأيام: {days} | RentUp"
+          description: "{name} هو المسار الكلاسيكي: {km} كم و{drive} من القيادة، والمحطات الرئيسية، والسيارة الموصى بها {car}."
       performance:
         en:
           title: "{name}: A Scenic Drive — {days} Days, {km} km | RentUp"
           description: "A {days}-day scenic drive on {name}, built for driving itself: {km} km, {drive} behind the wheel, and the {car} that makes the most of it."
         ka:
           title: "{name} — საავტომობილო მოგზაურობა, {days} დღე, {km} კმ | RentUp"
-          description: "{name} — {days}-დღიანი მარშრუტი, თავად სამგზავრო პროცესზეა აგებული: {km} კმ, {drive} საჭესთან, ავტომობილი — {car}."
+          description: "{name} — {days}-დღიანი მარშრუტი, თავად მართვის პროცესზეა აგებული: {km} კმ, {drive} საჭესთან, ავტომობილი — {car}."
         ru:
-          title: "{name} — маршрут для драйва, {days} дней, {km} км | RentUp"
+          title: "{name} — {days}-дневный маршрут для драйва, {km} км | RentUp"
           description: "{name} — {days}-дневный маршрут, построенный вокруг самого вождения: {km} км, {drive} за рулём, автомобиль, который раскроет его — {car}."
         fa:
           title: "{name} — مسیر رانندگی لذت‌بخش، {days} روزه، {km} کیلومتر | RentUp"
           description: "{name} یک مسیر {days} روزه است که حول خود رانندگی ساخته شده: {km} کیلومتر، {drive} پشت فرمان، و خودرویی که بیشترین بهره را می‌دهد {car}."
         he:
-          title: "{name} — מסלול נהיגה נופי, {days} ימים, {km} ק״מ | RentUp"
-          description: "{name} הוא מסלול בן {days} ימים שנבנה סביב הנהיגה עצמה: {km} ק״מ, {drive} מאחורי ההגה, והרכב שמפיק ממנו הכי הרבה הוא {car}."
+          title: "{name} — מסלול נהיגה נופי, {km} ק״מ, ימים: {days} | RentUp"
+          description: "{name} הוא מסלול שנבנה סביב הנהיגה עצמה: {km} ק״מ, {drive} מאחורי ההגה, והרכב שמפיק ממנו הכי הרבה הוא {car}."
         ar:
-          title: "{name} — مسار قيادة ممتع، {days} أيام، {km} كم | RentUp"
-          description: "{name} هو مسار لمدة {days} أيام مبني حول متعة القيادة نفسها: {km} كم و{drive} خلف المقود، والسيارة التي تستفيد منه أكثر {car}."
+          title: "{name} — مسار قيادة ممتع، {km} كم، الأيام: {days} | RentUp"
+          description: "{name} هو مسار مبني حول متعة القيادة نفسها: {km} كم و{drive} خلف المقود، والسيارة التي تستفيد منه أكثر {car}."
       beach:
         en:
           title: "{name}: Coastal Road Trip — {days} Days, {km} km | RentUp"
@@ -411,17 +471,17 @@ templates:
           title: "{name} — სანაპირო მარშრუტი, {days} დღე, {km} კმ | RentUp"
           description: "{name} — {days}-დღიანი სანაპირო მარშრუტი: {km} კმ, {drive} გზაში, რეკომენდებული ავტომობილი — {car}."
         ru:
-          title: "{name} — прибрежный маршрут, {days} дней, {km} км | RentUp"
+          title: "{name} — {days}-дневный прибрежный маршрут, {km} км | RentUp"
           description: "{name} — {days}-дневный прибрежный маршрут: {km} км, {drive} в пути, рекомендуемый автомобиль — {car}."
         fa:
           title: "{name} — مسیر ساحلی، {days} روزه، {km} کیلومتر | RentUp"
           description: "{name} یک مسیر ساحلی {days} روزه است: {km} کیلومتر، {drive} رانندگی، و خودروی پیشنهادی {car}."
         he:
-          title: "{name} — מסלול חופי, {days} ימים, {km} ק״מ | RentUp"
-          description: "{name} הוא מסלול חופי בן {days} ימים: {km} ק״מ, {drive} נהיגה, והרכב המומלץ הוא {car}."
+          title: "{name} — מסלול חופי, {km} ק״מ, ימים: {days} | RentUp"
+          description: "{name} הוא מסלול חופי: {km} ק״מ, {drive} נהיגה, והרכב המומלץ הוא {car}."
         ar:
-          title: "{name} — مسار ساحلي، {days} أيام، {km} كم | RentUp"
-          description: "{name} هو مسار ساحلي لمدة {days} أيام: {km} كم و{drive} من القيادة، والسيارة الموصى بها {car}."
+          title: "{name} — مسار ساحلي، {km} كم، الأيام: {days} | RentUp"
+          description: "{name} هو مسار ساحلي: {km} كم و{drive} من القيادة، والسيارة الموصى بها {car}."
 
   # ---------------------------------------------------------------------
   # Attraction — /attractions/{slug}/
@@ -769,10 +829,10 @@ templates:
       description: "{count} places to visit in {name}: drive times from Tbilisi, road conditions and the car category each site needs, all on one map."
     ka:
       title: "{name} — {count} ღირსშესანიშნაობა | RentUp"
-      description: "{count} სანახავი ადგილი {name_loc}: სამგზავრო დრო თბილისიდან, გზის მდგომარეობა და საჭირო ავტომობილის კატეგორია თითოეულისთვის."
+      description: "{count} სანახავი ადგილი {name_loc}: მგზავრობის დრო თბილისიდან, გზის მდგომარეობა და საჭირო ავტომობილის კატეგორია თითოეულისთვის."
     ru:
-      title: "{name} — {count} достопримечательностей | RentUp"
-      description: "{count} мест для посещения в регионе {name}: время в пути от Тбилиси, состояние дорог и нужная категория машины для каждого места."
+      title: "{name} — достопримечательности, всего {count} | RentUp"
+      description: "Все места для посещения в регионе {name} на одной карте: время в пути от Тбилиси, состояние дорог и нужная категория машины для каждого места."
     fa:
       title: "{name} — {count} جاذبهٔ گردشگری | RentUp"
       description: "{count} مکان دیدنی در {name}: زمان رانندگی از تفلیس، وضعیت جاده و دستهٔ خودروی لازم برای هرکدام."
@@ -792,7 +852,7 @@ templates:
       description: "Practical guides on driving and renting a car in Georgia: winter roads, border crossings, cost comparisons and the routes worth taking."
     ka:
       title: "ბლოგი — მოგზაურობა და ავტომობილით მართვა საქართველოში | RentUp"
-      description: "პრაქტიკული სტატიები საქართველოში ავტომობილის დაქირავებასა და მართვაზე: ზამთრის გზები, საზღვრის კვეთა, ხარჯების შედარება და მარშრუტები."
+      description: "პრაქტიკული სტატიები საქართველოში ავტომობილის გაქირავებასა და მართვაზე: ზამთრის გზები, საზღვრის კვეთა, ხარჯების შედარება და მარშრუტები."
     ru:
       title: "Блог о путешествиях по Грузии на машине | RentUp"
       description: "Практические статьи об аренде и вождении в Грузии: зимние дороги, пересечение границы, сравнение расходов и лучшие маршруты."
@@ -866,8 +926,8 @@ templates:
       title: "Car Rental FAQ — Georgia | RentUp"
       description: "30+ answers about renting a car in Georgia: pricing, documents, insurance, border crossings, winter driving, and deposit refunds."
     ka:
-      title: "ხშირად დასმული კითხვები — მანქანის დაქირავება | RentUp"
-      description: "30-ზე მეტი პასუხი მანქანის დაქირავებაზე საქართველოში: ფასი, საბუთები, დაზღვევა, საზღვრის კვეთა, ზამთრის მართვა და დეპოზიტის დაბრუნება."
+      title: "ხშირად დასმული კითხვები — მანქანის გაქირავება | RentUp"
+      description: "30-ზე მეტი პასუხი მანქანის გაქირავებაზე საქართველოში: ფასი, საბუთები, დაზღვევა, საზღვრის კვეთა, ზამთრის მართვა და დეპოზიტის დაბრუნება."
     ru:
       title: "Вопросы об аренде автомобиля в Грузии | RentUp"
       description: "Более 30 ответов об аренде авто в Грузии: цены, документы, страховка, пересечение границы, зимнее вождение и возврат депозита."
@@ -983,7 +1043,7 @@ templates:
       title: "Car Rental in Georgia | RentUp"
       description: "Rent a car anywhere in Georgia: 6 pickup points including 3 airports, 6 vehicle categories from 75 ₾/day, real deposits and clear terms."
     ka:
-      title: "მანქანის დაქირავება საქართველოში | RentUp"
+      title: "მანქანის გაქირავება საქართველოში | RentUp"
       description: "იქირავეთ ავტომობილი საქართველოს ნებისმიერ წერტილში: 6 მიწოდების პუნქტი, მათ შორის 3 აეროპორტი, 6 კატეგორია 75 ₾-დან და გამჭვირვალე პირობები."
     ru:
       title: "Аренда автомобиля в Грузии | RentUp"
@@ -1009,8 +1069,8 @@ templates:
         title: "Car Rental in {city} | RentUp Georgia"
         description: "Pick up a rental car in {city}: which routes start here, the nearest attractions, recommended vehicle categories and drive times."
       ka:
-        title: "მანქანის დაქირავება {city_loc} | RentUp"
-        description: "აიღეთ ავტომობილი {city_loc}: რომელი მარშრუტები იწყება აქედან, უახლოესი ღირსშესანიშნაობები, რეკომენდებული კატეგორია და სამგზავრო დრო."
+        title: "მანქანის გაქირავება {city_loc} | RentUp"
+        description: "აიღეთ ავტომობილი {city_loc}: რომელი მარშრუტები იწყება აქედან, უახლოესი ღირსშესანიშნაობები, რეკომენდებული კატეგორია და მგზავრობის დრო."
       ru:
         title: "Аренда авто в {city} | RentUp"
         description: "Заберите арендованный автомобиль в {city}: какие маршруты начинаются отсюда, ближайшие достопримечательности, категория и время в пути."
@@ -1028,8 +1088,8 @@ templates:
         title: "{city} Airport Car Rental ({iata}) | RentUp"
         description: "Rent a car at {city} Airport ({iata}): straightforward pickup, the routes and attractions closest to the airport, and available categories."
       ka:
-        title: "{city}ის აეროპორტში მანქანის დაქირავება ({iata}) | RentUp"
-        description: "იქირავეთ ავტომობილი {city}ის აეროპორტში ({iata}): მარტივი აღება, უახლოესი მარშრუტები და ღირსშესანიშნაობები, ხელმისაწვდომი კატეგორიები."
+        title: "{city_gen} აეროპორტში მანქანის გაქირავება ({iata}) | RentUp"
+        description: "იქირავეთ ავტომობილი {city_gen} აეროპორტში ({iata}): მარტივი აღება, უახლოესი მარშრუტები და ღირსშესანიშნაობები, ხელმისაწვდომი კატეგორიები."
       ru:
         title: "Аренда авто в аэропорту {city} ({iata}) | RentUp"
         description: "Арендуйте машину в аэропорту {city} ({iata}): простая выдача, ближайшие маршруты и достопримечательности, доступные категории."
@@ -1052,20 +1112,20 @@ templates:
       title: "{category} Rental in Georgia — from {price} ₾/day | RentUp"
       description: "{count} {category} models available in Georgia from {price} ₾/day: specs, seating, luggage space, and the routes best suited to it."
     ka:
-      title: "{category_gen} დაქირავება საქართველოში — {price} ₾-დან | RentUp"
-      description: "{count} {category} მოდელი საქართველოში {price} ₾-დან დღეში: მახასიათებლები, ადგილების რაოდენობა, ბარგის სივრცე და შესაფერისი მარშრუტები."
+      title: "{category} — გაქირავება საქართველოში, {price} ₾-დან | RentUp"
+      description: "{count} მოდელი კატეგორიაში „{category}“ საქართველოში {price} ₾-დან დღეში: მახასიათებლები, ადგილების რაოდენობა, ბარგის სივრცე და შესაფერისი მარშრუტები."
     ru:
-      title: "Аренда {category} в Грузии — от {price} ₾/день | RentUp"
-      description: "{count} моделей категории {category} в Грузии от {price} ₾ в день: характеристики, число мест, багажник и подходящие маршруты."
+      title: "Аренда авто «{category}» в Грузии — от {price} ₾/день | RentUp"
+      description: "Модели категории «{category}» в Грузии от {price} ₾ в день, всего {count}: характеристики, число мест, багажник и подходящие маршруты."
     fa:
       title: "اجارهٔ {category} در گرجستان — از {price} لاری | RentUp"
       description: "{count} مدل {category} در گرجستان از {price} لاری در روز: مشخصات، تعداد صندلی، فضای بار و مسیرهایی که برای این دسته مناسب‌اند."
     he:
       title: "השכרת {category} בגאורגיה — החל מ-{price} ₾ | RentUp"
-      description: "{count} דגמי {category} זמינים בגאורגיה החל מ-{price} ₾ ליום: מפרט, מספר מושבים, שטח מטען והמסלולים המתאימים לקטגוריה זו."
+      description: "דגמי {category} זמינים בגאורגיה החל מ-{price} ₾ ליום, סה״כ {count}: מפרט, מספר מושבים, שטח מטען והמסלולים המתאימים לקטגוריה זו."
     ar:
       title: "تأجير {category} في جورجيا — من {price} لاري | RentUp"
-      description: "{count} طرازاً من فئة {category} متاحة في جورجيا بسعر يبدأ من {price} لاري يومياً: المواصفات وعدد المقاعد ومساحة الأمتعة والمسارات الأنسب."
+      description: "طرازات من فئة «{category}» متاحة في جورجيا بسعر يبدأ من {price} لاري يومياً، عددها {count}: المواصفات وعدد المقاعد ومساحة الأمتعة والمسارات الأنسب."
 
   # ---------------------------------------------------------------------
   # Itineraries hub (Release C, NEW) — /itineraries/
@@ -1077,10 +1137,10 @@ templates:
       description: "{count} curated Georgia itineraries from 3 to 14 days, each built from real routes with a day-by-day plan, distances and drive times."
     ka:
       title: "საქართველოს მოგზაურობის გეგმები — 3-დან 14 დღემდე | RentUp"
-      description: "{count} შერჩეული მარშრუტის გეგმა საქართველოში, 3-დან 14 დღემდე, დღეების მიხედვით გაწერილი, მანძილითა და გაჩერებებით."
+      description: "{count} შერჩეული მოგზაურობის გეგმა საქართველოში, 3-დან 14 დღემდე, დღეების მიხედვით გაწერილი, მანძილითა და გაჩერებებით."
     ru:
       title: "Маршруты по Грузии на 3–14 дней | RentUp"
-      description: "{count} готовых маршрутов путешествия по Грузии от 3 до 14 дней, с планом по дням, расстояниями и временем в пути."
+      description: "Готовые маршруты путешествия по Грузии от 3 до 14 дней, всего {count} — с планом по дням, расстояниями и временем в пути."
     fa:
       title: "برنامهٔ سفر گرجستان — از 3 تا 14 روز | RentUp"
       description: "{count} برنامهٔ سفر منتخب برای گرجستان از 3 تا 14 روز، هرکدام با برنامهٔ روز به روز، مسافت و زمان رانندگی."
@@ -1089,7 +1149,7 @@ templates:
       description: "{count} מסלולי טיול נבחרים בגאורגיה מ-3 עד 14 ימים, כל אחד עם תוכנית יומית, מרחקים וזמני נסיעה."
     ar:
       title: "برامج رحلات جورجيا — من 3 إلى 14 يوماً | RentUp"
-      description: "{count} برنامج رحلة مُعدّ لجورجيا من 3 إلى 14 يوماً، لكل منها خطة يومية ومسافات وأوقات قيادة."
+      description: "برامج رحلات مُعدّة لجورجيا من 3 إلى 14 يوماً، عددها {count}، لكل منها خطة يومية ومسافات وأوقات قيادة."
 
   # ---------------------------------------------------------------------
   # Itinerary (Release C, NEW) — /itineraries/georgia-{n}-days/
@@ -1101,10 +1161,10 @@ templates:
       description: "A {days}-day Georgia itinerary covering {km} km and {stops} stops, with a day-by-day plan, drive times and the car category it needs."
     ka:
       title: "{days}-დღიანი მარშრუტი საქართველოში | RentUp"
-      description: "{days}-დღიანი მარშრუტი საქართველოში — {km} კმ და {stops} გაჩერება, დღეების მიხედვით გეგმით, სამგზავრო დროითა და საჭირო ავტომობილით."
+      description: "{days}-დღიანი მარშრუტი საქართველოში — {km} კმ და {stops} გაჩერება, დღეების მიხედვით გეგმით, მართვის დროითა და საჭირო ავტომობილით."
     ru:
-      title: "Маршрут по Грузии на {days} дней | RentUp"
-      description: "Маршрут по Грузии на {days} дней — {km} км и {stops} остановок, с планом по дням, временем в пути и нужной категорией автомобиля."
+      title: "{days}-дневный маршрут по Грузии | RentUp"
+      description: "{days}-дневный маршрут по Грузии — {km} км, остановок: {stops}. План по дням, время в пути и нужная категория автомобиля."
     fa:
       title: "برنامهٔ سفر {days} روزهٔ گرجستان | RentUp"
       description: "برنامهٔ سفر {days} روزه در گرجستان شامل {km} کیلومتر و {stops} توقف‌گاه، با برنامهٔ روز به روز، زمان رانندگی و دستهٔ خودروی لازم."
@@ -1112,5 +1172,5 @@ templates:
       title: "מסלול טיול בגאורגיה ל-{days} ימים | RentUp"
       description: "מסלול טיול בגאורגיה ל-{days} ימים — {km} ק״מ ו-{stops} תחנות, עם תוכנית יומית, זמני נסיעה וקטגוריית הרכב הנדרשת."
     ar:
-      title: "برنامج رحلة جورجيا لمدة {days} أيام | RentUp"
-      description: "برنامج رحلة في جورجيا لمدة {days} أيام يغطي {km} كم و{stops} محطة توقف، مع خطة يومية وأوقات قيادة وفئة السيارة المطلوبة."
+      title: "برنامج رحلة جورجيا — الأيام: {days} | RentUp"
+      description: "برنامج رحلة في جورجيا، الأيام: {days}، يغطي {km} كم، وعدد المحطات {stops}، مع خطة يومية وأوقات قيادة وفئة السيارة المطلوبة."

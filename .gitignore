@@ -32,3 +32,4 @@ venv/
 *.tar.gz
 deploy-rules.log
 _merge/
+.nbg-usd.json

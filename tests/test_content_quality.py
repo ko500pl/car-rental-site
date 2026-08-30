@@ -1,4 +1,5 @@
 import hashlib
+import re
 import unittest
 from collections import defaultdict
 from pathlib import Path
@@ -37,7 +38,7 @@ class AttractionMediaTests(unittest.TestCase):
         offenders = []
         needles = ("dezerter", "дезерт", "دزرت", "דזרט")
         for path in (ROOT / "content").rglob("*.yml"):
-            text = path.read_text(encoding="utf-8-sig").lower()
+            text = re.sub(r"\s+", " ", path.read_text(encoding="utf-8-sig").lower())
             if any(needle in text for needle in needles):
                 offenders.append(path.relative_to(ROOT).as_posix())
         self.assertEqual(offenders, [])
@@ -72,22 +73,54 @@ class PublicClaimsTests(unittest.TestCase):
         offenders = []
         paths = list((content / "pages").glob("*.yml")) + list((content / "settings").glob("*.yml"))
         for path in paths:
-            text = path.read_text(encoding="utf-8-sig").lower()
+            text = re.sub(r"\s+", " ", path.read_text(encoding="utf-8-sig").lower())
             if any(claim.lower() in text for claim in stale_claims):
                 offenders.append(path.relative_to(ROOT).as_posix())
         self.assertEqual(offenders, [], f"stale fleet-size claims: {offenders}")
 
-    def test_booking_copy_does_not_deny_online_requests(self):
-        forbidden = (
-            "no online payment", "ონლაინ გადახდა არ გვაქვს", "онлайн-оплаты нет",
-            "بدون پرداخت آنلاین", "אין תשלום מקוון", "لا دفع إلكتروني",
-        )
+    def test_booking_copy_matches_the_stated_payment_policy(self):
+        """Payment copy must agree with content/settings/rental_policy.yml.
+
+        This test used to simply ban the phrase "no online payment", on the
+        assumption that the site took payment online. The owner confirmed on
+        2026-08-30 that it does not: a customer requests a car, RentUp confirms
+        availability, and payment happens at pickup. Banning the true statement
+        was therefore enforcing the wrong fact. The guard now works in both
+        directions off the policy file, so it stays useful whichever way the
+        business goes.
+        """
+        import yaml
+        policy = yaml.safe_load(
+            (ROOT / "content/settings/rental_policy.yml").read_text(encoding="utf-8"))
+        prepay = (policy.get("cancellation") or {}).get("prepayment_required")
+
+        # Regexes, not substrings: "no prepayment is required" contains
+        # "prepayment is required", and flagging the correct sentence for
+        # containing the incorrect one is how a guard starts lying.
+        NEG = r"(?<!no )(?<!not )(?<!never )"
+        denies_online_payment = [
+            NEG + r"no online payment", r"ონლაინ გადახდა არ გვაქვს",
+            r"онлайн-оплаты нет", r"بدون پرداخت آنلاین",
+            r"אין תשלום מקוון", r"لا دفع إلكتروني",
+        ]
+        requires_prepayment = [
+            r"(?<!no )(?<!without )prepayment is required",
+            r"payment is required to confirm",
+            r"booking is confirmed only (?:once|after) .{0,40}pay",
+            r"ჯავშანი დასტურდება .{0,20}გადახდის შემდეგ",
+            r"бронирование подтверждается после оплаты",
+        ]
+        forbidden = requires_prepayment if prepay is False else denies_online_payment
+        why = ("rental_policy.yml says payment happens at pickup"
+               if prepay is False else
+               "rental_policy.yml says prepayment is required")
+
         offenders = []
         for path in (ROOT / "content").rglob("*.yml"):
-            text = path.read_text(encoding="utf-8-sig").lower()
-            if any(phrase.lower() in text for phrase in forbidden):
+            text = re.sub(r"\s+", " ", path.read_text(encoding="utf-8-sig").lower())
+            if any(re.search(pat, text) for pat in forbidden):
                 offenders.append(path.relative_to(ROOT).as_posix())
-        self.assertEqual(offenders, [], f"contradictory booking copy: {offenders}")
+        self.assertEqual(offenders, [], f"{why}, but these pages say otherwise: {offenders}")
 
 
 if __name__ == "__main__":

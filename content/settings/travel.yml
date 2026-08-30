@@ -44,6 +44,10 @@ ka:
     gravel: გრუნტოვანი მონაკვეთებით
     4x4_only: მხოლოდ 4x4
   season:
+    year-round: წელიწადში ღიაა
+    april-october: აპრილი–ოქტომბერი
+    july-september: ივლისი–სექტემბერი
+    march-november: მარტი–ნოემბერი
     all: მთელი წელი
     may-october: მაისი–ოქტომბერი
     june-september: ივნისი–სექტემბერი
@@ -142,7 +146,7 @@ ka:
     from: დან
     fuel: საწვავი, იქით-აქეთ
     approx: '~'
-    note: ორშ–კვ {o}–{c} · ჯავშანი დასტურდება სავალდებულო გადახდის შემდეგ
+    note: ორშ–კვ {o}–{c} · ჯავშანს ვადასტურებთ ხელმისაწვდომობის შემოწმების შემდეგ
     est: 'საწვავი სავარაუდოა: {l} ლ/100 კმ, {g} ₾/ლ'
 en:
   ui:
@@ -190,6 +194,10 @@ en:
     gravel: Unpaved sections
     4x4_only: 4x4 only
   season:
+    year-round: Year-round
+    april-october: April–October
+    july-september: July–September
+    march-november: March–November
     all: All year
     may-october: May–October
     june-september: June–September
@@ -290,7 +298,7 @@ en:
     from: from
     fuel: Fuel, round trip
     approx: '~'
-    note: Mon–Sun {o}–{c} · booking is confirmed after required payment
+    note: Mon–Sun {o}–{c} · we confirm your booking once we have checked availability
     est: 'Fuel is an estimate: {l} l/100 km at ₾{g}/l'
 ru:
   ui:
@@ -338,6 +346,10 @@ ru:
     gravel: Есть грунтовые участки
     4x4_only: Только 4x4
   season:
+    year-round: Круглогодично
+    april-october: Апрель–октябрь
+    july-september: Июль–сентябрь
+    march-november: Март–ноябрь
     all: Круглый год
     may-october: Май–октябрь
     june-september: Июнь–сентябрь
@@ -437,7 +449,7 @@ ru:
     from: от
     fuel: Топливо, туда-обратно
     approx: '~'
-    note: Пн–Вс {o}–{c} · бронь подтверждается после обязательной оплаты
+    note: Пн–Вс {o}–{c} · бронь подтверждаем после проверки наличия
     est: 'Топливо ориентировочно: {l} л/100 км, {g} ₾/л'
 fa:
   ui:
@@ -485,6 +497,10 @@ fa:
     gravel: بخش‌های خاکی
     4x4_only: فقط 4x4
   season:
+    year-round: در تمام طول سال
+    april-october: آوریل–اکتبر
+    july-september: ژوئیه–سپتامبر
+    march-november: مارس–نوامبر
     all: تمام سال
     may-october: مه–اکتبر
     june-september: ژوئن–سپتامبر
@@ -584,7 +600,7 @@ fa:
     from: از
     fuel: سوخت، رفت و برگشت
     approx: '~'
-    note: شنبه تا جمعه {o}–{c} · رزرو پس از پرداخت الزامی تأیید می‌شود
+    note: شنبه تا جمعه {o}–{c} · رزرو را پس از بررسی موجودی تأیید می‌کنیم
     est: 'سوخت تخمینی است: {l} لیتر در ۱۰۰ کیلومتر، {g} لاری بر لیتر'
 he:
   ui:
@@ -632,6 +648,10 @@ he:
     gravel: קטעים לא סלולים
     4x4_only: 4x4 בלבד
   season:
+    year-round: כל השנה
+    april-october: אפריל–אוקטובר
+    july-september: יולי–ספטמבר
+    march-november: מרץ–נובמבר
     all: כל השנה
     may-october: מאי–אוקטובר
     june-september: יוני–ספטמבר
@@ -730,7 +750,7 @@ he:
     from: החל מ-
     fuel: דלק, הלוך ושוב
     approx: '~'
-    note: א׳–ש׳ {o}–{c} · ההזמנה מאושרת לאחר התשלום הנדרש
+    note: א׳–ש׳ {o}–{c} · אנחנו מאשרים את ההזמנה לאחר בדיקת הזמינות
     est: 'הדלק הוא הערכה: {l} ל׳/100 ק״מ, {g} ₾ לליטר'
 ar:
   ui:
@@ -778,6 +798,10 @@ ar:
     gravel: مقاطع غير معبّدة
     4x4_only: دفع رباعي فقط
   season:
+    year-round: على مدار العام
+    april-october: أبريل–أكتوبر
+    july-september: يوليو–سبتمبر
+    march-november: مارس–نوفمبر
     all: طوال السنة
     may-october: مايو–أكتوبر
     june-september: يونيو–سبتمبر
@@ -877,5 +901,5 @@ ar:
     from: من
     fuel: الوقود، ذهاباً وإياباً
     approx: '~'
-    note: الأحد–السبت {o}–{c} · يُؤكد الحجز بعد الدفع المطلوب
+    note: الأحد–السبت {o}–{c} · نؤكد الحجز بعد التحقق من التوافر
     est: 'الوقود تقديري: {l} لتر/100 كم بسعر {g} ₾ لليتر'

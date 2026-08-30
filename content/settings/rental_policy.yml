@@ -91,6 +91,20 @@ min_rental_days: 1              # matches pages/index.yml "Minimum rental period
 # than guessed. Owner ask: is there an actual maximum rental length, or is
 # duration open-ended until a customer qualifies for corporate terms?
 
+# ── Young driver surcharge ─────────────────────────────────────────────
+# Per terms.yml / faq.yml, confirmed by the owner 2026-08-30.
+young_driver:
+  applies: true
+  bands:
+    - min_age: 23
+      max_age: 25
+      categories: [suv, minivan]
+      fee_gel_per_day: 15
+    - min_age: 25
+      max_age: 27
+      categories: [business, offroad]
+      fee_gel_per_day: 25
+
 # ── Insurance ──────────────────────────────────────────────────────────
 insurance:
   included: tpl_cdw             # was "tpl" only — terms.yml, pricing.yml AND
@@ -164,7 +178,7 @@ extras_gel:
 # ── Support ────────────────────────────────────────────────────────────
 support:
   roadside_assistance: true
-  hours_key: office_hours       # LIKELY WRONG: faq.yml and pricing.yml both
+  hours_key: always            # owner confirmed 24/7 roadside assistance       # LIKELY WRONG: faq.yml and pricing.yml both
                                  # state roadside assistance is 24/7, not
                                  # limited to office hours (09:00–21:00 per
                                  # site.yml). No "24/7" copy key exists to
