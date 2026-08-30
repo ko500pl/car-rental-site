@@ -8,7 +8,7 @@ region: <one of: tbilisi | shida-kartli | kvemo-kartli | mtskheta-mtianeti |
                 kakheti | samtskhe-javakheti | imereti | racha-lechkhumi |
                 samegrelo-zemo-svaneti | guria | adjara>
 type: <one of: archaeology beach canyon cave fortress lake monastery mountain
-               museum nature ski spa town waterfall winery>
+               museum nature ski spa theatre town waterfall winery>
 lat: 41.1234          # 4 decimals, must be inside Georgia
 lon: 44.1234
 elevation: 830        # metres, integer
@@ -17,7 +17,7 @@ featured: false       # true for at most 2 places per region
 order: 30             # integer, any value 10..90
 image: ''
 gallery: []
-visit_hours: '1'      # '0.5' '1' '1.5' '2' '3' '4' '6' — realistic time ON SITE
+visit_hours: '1'      # '0.5' '1' '1.5' '2' '2.5' '3' '4' '6' '8' — realistic time ON SITE
 best_season: <all | may-october | june-september | december-march>
 open_year_round: true
 entry_fee: free       # 'free' or e.g. '15 ₾' / '5 ₾'

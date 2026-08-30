@@ -1,0 +1,62 @@
+{
+  "generated_on": "2026-08-29",
+  "method": "OSRM driving route through origin and ordered waypoints; return leg is included only when return_to_origin=true",
+  "endpoint": "https://router.project-osrm.org/route/v1/driving",
+  "summary": {
+    "routes": 1,
+    "verified": 1,
+    "failed": 0,
+    "stated_below_osrm_distance": 0,
+    "stated_below_osrm_time": 0
+  },
+  "routes": [
+    {
+      "slug": "gori-uplistsikhe-day",
+      "name": "გორი და უფლისციხე ერთ დღეში",
+      "waypoints": [
+        "gori-fortress-stalin-museum",
+        "gori-war-museum",
+        "uplistsikhe",
+        "ateni-sioni-church"
+      ],
+      "return_to_origin": false,
+      "missing_waypoints": [],
+      "stated_distance_km": 205.0,
+      "stated_drive_hours": 3.5,
+      "osrm": {
+        "distance_km": 120.9,
+        "drive_hours": 3.39,
+        "legs": [
+          {
+            "from": "origin",
+            "to": "gori-fortress-stalin-museum",
+            "distance_km": 86.9,
+            "drive_hours": 1.22
+          },
+          {
+            "from": "gori-fortress-stalin-museum",
+            "to": "gori-war-museum",
+            "distance_km": 0.4,
+            "drive_hours": 0.01
+          },
+          {
+            "from": "gori-war-museum",
+            "to": "uplistsikhe",
+            "distance_km": 11.1,
+            "drive_hours": 0.97
+          },
+          {
+            "from": "uplistsikhe",
+            "to": "ateni-sioni-church",
+            "distance_km": 22.5,
+            "drive_hours": 1.19
+          }
+        ]
+      },
+      "distance_ratio": 1.7,
+      "drive_time_ratio": 1.03,
+      "status": "ok",
+      "error": null
+    }
+  ]
+}

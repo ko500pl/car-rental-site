@@ -2,12 +2,12 @@ ka:
   country: საქართველო
   payments: ნაღდი, Visa, Mastercard, საბანკო გადარიცხვა
   org_desc: >-
-    Drive On — ავტომობილების გაქირავების კომპანია საქართველოში. 17 ავტომობილი, დღიური, კვირეული
-    და თვიური გაქირავება, მიწოდება თბილისის, ქუთაისისა და ბათუმის აეროპორტებში, სრული სადაზღვევო დაფარვა
-    და შეზღუდვის გარეშე გარბენი საქართველოს ტერიტორიაზე.
+    RentUp — ავტომობილების გაქირავების კომპანია საქართველოში. 17 ავტომობილი, დღიური, კვირეული
+    და თვიური გაქირავება, მიწოდება თბილისის, ქუთაისისა და ბათუმის აეროპორტებში, ფასში ჩართული CDW და TPL
+    დაზღვევა და შეზღუდვის გარეშე გარბენი საქართველოს ტერიტორიაზე.
   software_subcat: ავტოპარკის მართვის სისტემა
   software_desc: >-
-    Drive On Manager — ავტომობილების გაქირავების ბიზნესის მართვის აპლიკაცია: ავტოპარკი, ჯავშნები, კლიენტები,
+    RentUp Manager — ავტომობილების გაქირავების ბიზნესის მართვის აპლიკაცია: ავტოპარკი, ჯავშნები, კლიენტები,
     ხარჯები, სესხები, დაზღვევა და თითოეული მანქანის მომგებიანობა (ROI, ROA, უკუგების ვადა) ერთ სისტემაში.
   software_offer: საბაზისო ვერსია უფასოა; გაფართოებული ფუნქციები — შეთანხმებით
   software_features:
@@ -39,12 +39,12 @@ en:
   country: Georgia
   payments: Cash, Visa, Mastercard, bank transfer
   org_desc: >-
-    Drive On is a car rental company operating across Georgia. 17 vehicles, daily, weekly
-    and monthly rentals, delivery to Tbilisi, Kutaisi and Batumi airports, full insurance coverage and
-    unlimited mileage within Georgia.
+    RentUp is a car rental company operating across Georgia. 17 vehicles, daily, weekly
+    and monthly rentals, delivery to Tbilisi, Kutaisi and Batumi airports, CDW and TPL insurance included
+    and unlimited mileage within Georgia.
   software_subcat: Fleet management system
   software_desc: >-
-    Drive On Manager is a management app for the car rental business: fleet, bookings, customers, expenses,
+    RentUp Manager is a management app for the car rental business: fleet, bookings, customers, expenses,
     loans, insurance and per-vehicle profitability (ROI, ROA, payback period) in a single system.
   software_offer: The basic version is free; advanced features are priced on request
   software_features:
@@ -90,25 +90,33 @@ en:
   - - Fuel policy
     - Full to full
   - - Insurance
-    - CDW and TPL included; SCDW zero-excess option for 25–45 GEL/day
+    - CDW and TPL included; excess 300–1,200 GEL depending on category; SCDW optional add-on
+      reduces the excess to 0 GEL for 25–45 GEL/day
+  - - Young driver surcharge
+    - 15 GEL/day for ages 23–25 on crossover/SUV/minivan; 25 GEL/day for ages 25–27 on business
+      class/4x4
   - - Deposit
     - 300–1,200 GEL depending on category, blocked on card and released within 3 business days
   - - Cross-border
-    - Armenia (150 GEL) and Turkey (250 GEL) allowed with permit; Azerbaijan and Russia prohibited
+    - Armenia (150 GEL) and Turkey (250 GEL, selected categories) allowed with permit arranged at
+      least 48 hours ahead; Azerbaijan and Russia prohibited
+  - - Cancellation
+    - Free more than 48 hours before pickup; one day's rate 24–48 hours ahead; two days' rate under
+      24 hours ahead or for a no-show
   - - Booking
-    - Booking requests are submitted online and require payment before confirmation
+    - Confirmed by RentUp after availability is checked; contact RentUp directly to arrange
   - - Own software
-    - Drive On Manager, an in-house fleet management app also offered to other rental companies
+    - RentUp Manager, an in-house fleet management app also offered to other rental companies
 ru:
   country: Грузия
   payments: Наличные, Visa, Mastercard, банковский перевод
   org_desc: >-
-    Drive On — компания по аренде автомобилей в Грузии. 17 машин, посуточная, недельная и помесячная
-    аренда, подача в аэропортах Тбилиси, Кутаиси и Батуми, полное страховое покрытие и неограниченный
+    RentUp — компания по аренде автомобилей в Грузии. 17 машин, посуточная, недельная и помесячная
+    аренда, подача в аэропортах Тбилиси, Кутаиси и Батуми, страхование CDW и TPL включено и неограниченный
     пробег по территории Грузии.
   software_subcat: система управления автопарком
   software_desc: >-
-    Drive On Manager — приложение для управления бизнесом по аренде автомобилей: автопарк, бронирования, клиенты,
+    RentUp Manager — приложение для управления бизнесом по аренде автомобилей: автопарк, бронирования, клиенты,
     расходы, кредиты, страховки и доходность каждой машины (ROI, ROA, срок окупаемости) в одной системе.
   software_offer: базовая версия бесплатна; расширенные функции — по договорённости
   software_features:
@@ -140,12 +148,12 @@ fa:
   country: گرجستان
   payments: نقدی، Visa، Mastercard، حوالهٔ بانکی
   org_desc: >-
-    Drive On شرکت اجارهٔ خودرو است که در سراسر گرجستان فعالیت می‌کند. 17 خودرو، اجارهٔ روزانه،
-    هفتگی و ماهانه، تحویل در فرودگاه‌های تفلیس، کوتایسی و باتومی، پوشش کامل بیمه و کیلومتر نامحدود در
+    RentUp شرکت اجارهٔ خودرو است که در سراسر گرجستان فعالیت می‌کند. 17 خودرو، اجارهٔ روزانه،
+    هفتگی و ماهانه، تحویل در فرودگاه‌های تفلیس، کوتایسی و باتومی، بیمهٔ CDW و TPL در قیمت و کیلومتر نامحدود در
     داخل گرجستان.
   software_subcat: سامانهٔ مدیریت ناوگان
   software_desc: >-
-    Drive On Manager نرم‌افزاری برای مدیریت کسب‌وکار اجارهٔ خودرو است: ناوگان، رزروها، مشتریان، هزینه‌ها، وام‌ها،
+    RentUp Manager نرم‌افزاری برای مدیریت کسب‌وکار اجارهٔ خودرو است: ناوگان، رزروها، مشتریان، هزینه‌ها، وام‌ها،
     بیمه و سودآوری هر خودرو (ROI، ROA، دورهٔ بازگشت سرمایه) در یک سامانه.
   software_offer: نسخهٔ پایه رایگان است؛ قیمت امکانات پیشرفته بنا به درخواست اعلام می‌شود
   software_features:
@@ -177,11 +185,11 @@ he:
   country: גאורגיה
   payments: מזומן, Visa, Mastercard, העברה בנקאית
   org_desc: >-
-    Drive On היא חברת השכרת רכב הפועלת בכל רחבי גאורגיה. 17 כלי רכב, השכרה יומית, שבועית וחודשית,
-    מסירה בנמלי התעופה של טביליסי, קוטאיסי ובטומי, כיסוי ביטוחי מלא וקילומטראז' ללא הגבלה בתחומי גאורגיה.
+    RentUp היא חברת השכרת רכב הפועלת בכל רחבי גאורגיה. 17 כלי רכב, השכרה יומית, שבועית וחודשית,
+    מסירה בנמלי התעופה של טביליסי, קוטאיסי ובטומי, ביטוחי CDW ו-TPL כלולים וקילומטראז' ללא הגבלה בתחומי גאורגיה.
   software_subcat: מערכת לניהול צי רכב
   software_desc: >-
-    Drive On Manager היא אפליקציה לניהול עסק של השכרת רכב: צי הרכב, הזמנות, לקוחות, הוצאות, הלוואות, ביטוחים
+    RentUp Manager היא אפליקציה לניהול עסק של השכרת רכב: צי הרכב, הזמנות, לקוחות, הוצאות, הלוואות, ביטוחים
     ורווחיות של כל רכב (ROI, ROA, תקופת החזר) במערכת אחת.
   software_offer: הגרסה הבסיסית חינמית; מחיר היכולות המתקדמות לפי דרישה
   software_features:
@@ -213,11 +221,11 @@ ar:
   country: جورجيا
   payments: نقدًا، Visa، Mastercard، حوالة مصرفية
   org_desc: >-
-    Drive On شركة لتأجير السيارات تعمل في جميع أنحاء جورجيا. 17 سيارة، وتأجير يومي وأسبوعي
-    وشهري، وتسليم في مطارات تبليسي وكوتايسي وباتومي، وتغطية تأمينية كاملة ومسافة غير محدودة داخل جورجيا.
+    RentUp شركة لتأجير السيارات تعمل في جميع أنحاء جورجيا. 17 سيارة، وتأجير يومي وأسبوعي
+    وشهري، وتسليم في مطارات تبليسي وكوتايسي وباتومي، وتأمين CDW وTPL مشمول في السعر ومسافة غير محدودة داخل جورجيا.
   software_subcat: نظام إدارة الأسطول
   software_desc: >-
-    Drive On Manager تطبيق لإدارة أعمال تأجير السيارات: الأسطول والحجوزات والعملاء والمصروفات والقروض والتأمين
+    RentUp Manager تطبيق لإدارة أعمال تأجير السيارات: الأسطول والحجوزات والعملاء والمصروفات والقروض والتأمين
     وربحية كل سيارة (ROI وROA ومدة استرداد رأس المال) في نظام واحد.
   software_offer: النسخة الأساسية مجانية؛ أسعار الميزات المتقدمة عند الطلب
   software_features:

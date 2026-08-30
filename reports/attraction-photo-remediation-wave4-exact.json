@@ -1,0 +1,366 @@
+[
+  {
+    "slug": "batumi-botanical-garden",
+    "status": "updated",
+    "media": [
+      {
+        "title": "File:View of Batumi skyline from the Botanical Garden (cropped).jpg",
+        "author": "Krzysztof Ziarnek, Kenraiz",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:View_of_Batumi_skyline_from_the_Botanical_Garden_(cropped).jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/View_of_Batumi_skyline_from_the_Botanical_Garden_%28cropped%29.jpg/1920px-View_of_Batumi_skyline_from_the_Botanical_Garden_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 4479,
+        "original_height": 1918,
+        "local_path": "static/photos/batumi-botanical-garden.webp",
+        "output_width": 1800,
+        "output_height": 771,
+        "bytes": 314100
+      },
+      {
+        "title": "File:Batumi2025botanic-garden-view-to-batumi-2.jpg",
+        "author": "Vitaly Zdanevich",
+        "license": "CC BY 4.0",
+        "license_url": "https://creativecommons.org/licenses/by/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Batumi2025botanic-garden-view-to-batumi-2.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Batumi2025botanic-garden-view-to-batumi-2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "original_width": 1536,
+        "original_height": 2048,
+        "local_path": "static/photos/batumi-botanical-garden-1.webp",
+        "output_width": 1050,
+        "output_height": 1400,
+        "bytes": 240640
+      },
+      {
+        "title": "File:View of the Black Sea coast from Batumi Botanical Garden.jpg",
+        "author": "FingerWiki",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:View_of_the_Black_Sea_coast_from_Batumi_Botanical_Garden.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/View_of_the_Black_Sea_coast_from_Batumi_Botanical_Garden.jpg/1920px-View_of_the_Black_Sea_coast_from_Batumi_Botanical_Garden.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 3072,
+        "original_height": 4080,
+        "local_path": "static/photos/batumi-botanical-garden-2.webp",
+        "output_width": 1054,
+        "output_height": 1400,
+        "bytes": 358388
+      },
+      {
+        "title": "File:Batumi Botanical Garden.jpg",
+        "author": "Ephraim Stillberg",
+        "license": "Public domain",
+        "license_url": "",
+        "source": "https://commons.wikimedia.org/wiki/File:Batumi_Botanical_Garden.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Batumi_Botanical_Garden.jpg/1920px-Batumi_Botanical_Garden.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 2448,
+        "original_height": 3264,
+        "local_path": "static/photos/batumi-botanical-garden-3.webp",
+        "output_width": 1050,
+        "output_height": 1400,
+        "bytes": 487928
+      }
+    ],
+    "errors": []
+  },
+  {
+    "slug": "adishi",
+    "status": "updated",
+    "media": [
+      {
+        "title": "File:Adishi Village (2050m), Samegrelo-Zemo Svaneti, Georgia.jpg",
+        "author": "Boris Kuznetsov",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Adishi_Village_(2050m),_Samegrelo-Zemo_Svaneti,_Georgia.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Adishi_Village_%282050m%29%2C_Samegrelo-Zemo_Svaneti%2C_Georgia.jpg/1920px-Adishi_Village_%282050m%29%2C_Samegrelo-Zemo_Svaneti%2C_Georgia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 5472,
+        "original_height": 3295,
+        "local_path": "static/photos/adishi.webp",
+        "output_width": 1800,
+        "output_height": 1084,
+        "bytes": 438740
+      },
+      {
+        "title": "File:Adishi – 03.jpg",
+        "author": "Maesi64",
+        "license": "CC0",
+        "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "source": "https://commons.wikimedia.org/wiki/File:Adishi_%E2%80%93_03.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Adishi_%E2%80%93_03.jpg/1920px-Adishi_%E2%80%93_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 3984,
+        "original_height": 2656,
+        "local_path": "static/photos/adishi-1.webp",
+        "output_width": 1800,
+        "output_height": 1200,
+        "bytes": 879990
+      },
+      {
+        "title": "File:Adishi Tower.jpg",
+        "author": "Damianenika",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Adishi_Tower.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Adishi_Tower.jpg/1920px-Adishi_Tower.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 3240,
+        "original_height": 4320,
+        "local_path": "static/photos/adishi-2.webp",
+        "output_width": 1050,
+        "output_height": 1400,
+        "bytes": 394852
+      },
+      {
+        "title": "File:Adishi – 01.jpg",
+        "author": "Maesi64",
+        "license": "CC0",
+        "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "source": "https://commons.wikimedia.org/wiki/File:Adishi_%E2%80%93_01.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Adishi_%E2%80%93_01.jpg/1920px-Adishi_%E2%80%93_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 3984,
+        "original_height": 2656,
+        "local_path": "static/photos/adishi-3.webp",
+        "output_width": 1800,
+        "output_height": 1200,
+        "bytes": 903156
+      }
+    ],
+    "errors": []
+  },
+  {
+    "slug": "becho-mazeri",
+    "status": "updated",
+    "media": [
+      {
+        "title": "File:Street in Mazeri village of Becho Community.jpg",
+        "author": "Grumbler eburg",
+        "license": "CC BY 4.0",
+        "license_url": "https://creativecommons.org/licenses/by/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Street_in_Mazeri_village_of_Becho_Community.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Street_in_Mazeri_village_of_Becho_Community.jpg/1920px-Street_in_Mazeri_village_of_Becho_Community.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 4912,
+        "original_height": 2760,
+        "local_path": "static/photos/becho-mazeri.webp",
+        "output_width": 1800,
+        "output_height": 1012,
+        "bytes": 524618
+      },
+      {
+        "title": "File:House in Becho community.jpg",
+        "author": "Grumbler eburg",
+        "license": "CC BY 4.0",
+        "license_url": "https://creativecommons.org/licenses/by/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:House_in_Becho_community.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/House_in_Becho_community.jpg/1920px-House_in_Becho_community.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 4912,
+        "original_height": 2760,
+        "local_path": "static/photos/becho-mazeri-1.webp",
+        "output_width": 1800,
+        "output_height": 1012,
+        "bytes": 403116
+      },
+      {
+        "title": "File:Mazeri, Svaneti, Georgia (36060612100).jpg",
+        "author": "Thijs van Exel from Amsterdam, Netherlands",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Mazeri,_Svaneti,_Georgia_(36060612100).jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Mazeri%2C_Svaneti%2C_Georgia_%2836060612100%29.jpg/1920px-Mazeri%2C_Svaneti%2C_Georgia_%2836060612100%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 2448,
+        "original_height": 3264,
+        "local_path": "static/photos/becho-mazeri-2.webp",
+        "output_width": 1050,
+        "output_height": 1400,
+        "bytes": 259936
+      },
+      {
+        "title": "File:Ushba from Dolasvipi (G.N. 2008).jpg",
+        "author": "G.N.",
+        "license": "CC BY-SA 3.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Ushba_from_Dolasvipi_(G.N._2008).jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Ushba_from_Dolasvipi_%28G.N._2008%29.jpg/1920px-Ushba_from_Dolasvipi_%28G.N._2008%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 2448,
+        "original_height": 3264,
+        "local_path": "static/photos/becho-mazeri-3.webp",
+        "output_width": 1050,
+        "output_height": 1400,
+        "bytes": 88596
+      }
+    ],
+    "errors": []
+  },
+  {
+    "slug": "shenako-diklo",
+    "status": "updated",
+    "media": [
+      {
+        "title": "File:Shenako panorama.jpg",
+        "author": "Pavelmarek100",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Shenako_panorama.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Shenako_panorama.jpg/1920px-Shenako_panorama.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 3301,
+        "original_height": 1200,
+        "local_path": "static/photos/shenako-diklo.webp",
+        "output_width": 1800,
+        "output_height": 654,
+        "bytes": 281632
+      },
+      {
+        "title": "File:Shenako.Tusheti.JPG",
+        "author": "Abramia Giorgi",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Shenako.Tusheti.JPG",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Shenako.Tusheti.JPG/1920px-Shenako.Tusheti.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 3088,
+        "original_height": 2056,
+        "local_path": "static/photos/shenako-diklo-1.webp",
+        "output_width": 1800,
+        "output_height": 1198,
+        "bytes": 773860
+      },
+      {
+        "title": "File:From Diklo to Shenako.jpg",
+        "author": "Daviti Zhorzholiani",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:From_Diklo_to_Shenako.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/From_Diklo_to_Shenako.jpg/1920px-From_Diklo_to_Shenako.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 2560,
+        "original_height": 1440,
+        "local_path": "static/photos/shenako-diklo-2.webp",
+        "output_width": 1800,
+        "output_height": 1013,
+        "bytes": 468226
+      },
+      {
+        "title": "File:Tusheti, Georgia — Shenako.jpg",
+        "author": "Levan Gokadze (uploader Giorgi Balakhadze )",
+        "license": "CC BY-SA 2.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Tusheti,_Georgia_%E2%80%94_Shenako.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/a/a0/Tusheti%2C_Georgia_%E2%80%94_Shenako.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "original_width": 900,
+        "original_height": 556,
+        "local_path": "static/photos/shenako-diklo-3.webp",
+        "output_width": 900,
+        "output_height": 556,
+        "bytes": 169404
+      }
+    ],
+    "errors": []
+  },
+  {
+    "slug": "vashlovani-national-park",
+    "status": "updated",
+    "media": [
+      {
+        "title": "File:Landscape in Vashlovani National Park.jpg",
+        "author": "David Talakhadze",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Landscape_in_Vashlovani_National_Park.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Landscape_in_Vashlovani_National_Park.jpg/1920px-Landscape_in_Vashlovani_National_Park.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 2848,
+        "original_height": 4288,
+        "local_path": "static/photos/vashlovani-national-park.webp",
+        "output_width": 930,
+        "output_height": 1400,
+        "bytes": 489244
+      },
+      {
+        "title": "File:Jahlinmarceta vashlovani.jpg",
+        "author": "Jesper Ahlin Marceta",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Jahlinmarceta_vashlovani.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Jahlinmarceta_vashlovani.jpg/1920px-Jahlinmarceta_vashlovani.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 6000,
+        "original_height": 4000,
+        "local_path": "static/photos/vashlovani-national-park-1.webp",
+        "output_width": 1800,
+        "output_height": 1200,
+        "bytes": 561594
+      },
+      {
+        "title": "File:Vashlovani State Reserve, Georgia.jpg",
+        "author": "Paata Vardanashvili from Tbilisi, Georgia",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Vashlovani_State_Reserve,_Georgia.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Vashlovani_State_Reserve%2C_Georgia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "original_width": 800,
+        "original_height": 533,
+        "local_path": "static/photos/vashlovani-national-park-2.webp",
+        "output_width": 800,
+        "output_height": 533,
+        "bytes": 91868
+      },
+      {
+        "title": "File:Vashlovani National Park in Georgia.jpg",
+        "author": "Paata Vardanashvili from Tbilisi, Georgia",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Vashlovani_National_Park_in_Georgia.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/2/25/Vashlovani_National_Park_in_Georgia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "original_width": 800,
+        "original_height": 533,
+        "local_path": "static/photos/vashlovani-national-park-3.webp",
+        "output_width": 800,
+        "output_height": 533,
+        "bytes": 77808
+      }
+    ],
+    "errors": []
+  },
+  {
+    "slug": "didgori-battle-memorial",
+    "status": "updated",
+    "media": [
+      {
+        "title": "File:Didgori Monument 01.jpg",
+        "author": "Alexander Bantyev",
+        "license": "CC0",
+        "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "source": "https://commons.wikimedia.org/wiki/File:Didgori_Monument_01.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Didgori_Monument_01.jpg/1920px-Didgori_Monument_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 8192,
+        "original_height": 4096,
+        "local_path": "static/photos/didgori-battle-memorial.webp",
+        "output_width": 1800,
+        "output_height": 900,
+        "bytes": 183034
+      },
+      {
+        "title": "File:Didgori Monument 04.jpg",
+        "author": "Alexander Bantyev",
+        "license": "CC0",
+        "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "source": "https://commons.wikimedia.org/wiki/File:Didgori_Monument_04.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Didgori_Monument_04.jpg/1920px-Didgori_Monument_04.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 3863,
+        "original_height": 2694,
+        "local_path": "static/photos/didgori-battle-memorial-1.webp",
+        "output_width": 1800,
+        "output_height": 1255,
+        "bytes": 262384
+      },
+      {
+        "title": "File:Didgori Memorial.jpg",
+        "author": "Paata Vardanashvili from Tbilisi, Georgia",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Didgori_Memorial.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/5/56/Didgori_Memorial.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "original_width": 800,
+        "original_height": 505,
+        "local_path": "static/photos/didgori-battle-memorial-2.webp",
+        "output_width": 800,
+        "output_height": 505,
+        "bytes": 41608
+      }
+    ],
+    "errors": []
+  }
+]

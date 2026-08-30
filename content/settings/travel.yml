@@ -1,5 +1,6 @@
 ka:
   ui:
+    photo_by: ფოტო
     regions: რეგიონები
     routes: მარშრუტები
     attractions: ღირსშესანიშნაობები
@@ -132,7 +133,7 @@ ka:
     down: ქვემოთ
     remove: ამოღება
     point: წერტილი
-    rate_label: Drive On-ის შეფასება
+    rate_label: RentUp-ის შეფასება
     gallery: გალერეა
   rent:
     title: დაიქირავე მანქანა ამ მოგზაურობისთვის
@@ -145,6 +146,7 @@ ka:
     est: 'საწვავი სავარაუდოა: {l} ლ/100 კმ, {g} ₾/ლ'
 en:
   ui:
+    photo_by: Photo
     regions: Regions
     routes: Road trips
     attractions: Attractions
@@ -279,7 +281,7 @@ en:
     down: Down
     remove: Remove
     point: Point
-    rate_label: Drive On rating
+    rate_label: RentUp rating
     gallery: Gallery
   rent:
     title: Rent a car for this trip
@@ -292,6 +294,7 @@ en:
     est: 'Fuel is an estimate: {l} l/100 km at ₾{g}/l'
 ru:
   ui:
+    photo_by: Фото
     regions: Регионы
     routes: Маршруты
     attractions: Достопримечательности
@@ -425,7 +428,7 @@ ru:
     down: Вниз
     remove: Убрать
     point: Точка
-    rate_label: Оценка Drive On
+    rate_label: Оценка RentUp
     gallery: Галерея
   rent:
     title: Возьмите машину для этой поездки
@@ -438,6 +441,7 @@ ru:
     est: 'Топливо ориентировочно: {l} л/100 км, {g} ₾/л'
 fa:
   ui:
+    photo_by: عکس
     regions: مناطق
     routes: سفرهای جاده‌ای
     attractions: دیدنی‌ها
@@ -571,7 +575,7 @@ fa:
     down: پایین
     remove: حذف
     point: نقطه
-    rate_label: امتیاز Drive On
+    rate_label: امتیاز RentUp
     gallery: گالری
   rent:
     title: برای این سفر خودرو اجاره کنید
@@ -584,6 +588,7 @@ fa:
     est: 'سوخت تخمینی است: {l} لیتر در ۱۰۰ کیلومتر، {g} لاری بر لیتر'
 he:
   ui:
+    photo_by: צילום
     regions: אזורים
     routes: מסלולי טיול
     attractions: אתרים
@@ -716,7 +721,7 @@ he:
     down: למטה
     remove: הסרה
     point: נקודה
-    rate_label: דירוג Drive On
+    rate_label: דירוג RentUp
     gallery: גלריה
   rent:
     title: שכרו רכב לטיול הזה
@@ -729,6 +734,7 @@ he:
     est: 'הדלק הוא הערכה: {l} ל׳/100 ק״מ, {g} ₾ לליטר'
 ar:
   ui:
+    photo_by: صورة
     regions: المناطق
     routes: رحلات برية
     attractions: المعالم
@@ -862,7 +868,7 @@ ar:
     down: أسفل
     remove: إزالة
     point: نقطة
-    rate_label: تقييم Drive On
+    rate_label: تقييم RentUp
     gallery: المعرض
   rent:
     title: استأجر سيارة لهذه الرحلة

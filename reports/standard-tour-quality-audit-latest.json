@@ -1,0 +1,1287 @@
+{
+  "generated_on": "2026-08-29",
+  "summary": {
+    "routes": 49,
+    "errors": 0,
+    "warnings": 41,
+    "routes_needing_review": 33
+  },
+  "issue_codes": {
+    "distance-needs-review": 13,
+    "long-single-leg": 1,
+    "missing-primary-photo": 1,
+    "very-tight-time-budget": 26
+  },
+  "routes": [
+    {
+      "slug": "adjara-guria-green-road",
+      "name": "აჭარა-გურიის მწვანე გზა",
+      "days": 5,
+      "routing_mode": "road",
+      "return_to_origin": false,
+      "daily_hours": 8.0,
+      "capacity_hours": 40.0,
+      "drive_hours": 11.33,
+      "visit_hours": 19.0,
+      "total_program_hours": 30.33,
+      "load_ratio": 0.758,
+      "waypoint_count": 8,
+      "stated_distance_km": 520.0,
+      "straight_chain_km": 170.4,
+      "distance_ratio": 3.05,
+      "longest_leg_km": 57.4,
+      "source_count": 3,
+      "missing_photos": [],
+      "issues": [
+        {
+          "severity": "warning",
+          "code": "distance-needs-review",
+          "detail": "ratio=3.05"
+        }
+      ]
+    },
+    {
+      "slug": "batumi-coast-family-day",
+      "name": "ბათუმის სანაპირო — საოჯახო ორი დღე",
+      "days": 2,
+      "routing_mode": "road",
+      "return_to_origin": false,
+      "daily_hours": 8.0,
+      "capacity_hours": 16.0,
+      "drive_hours": 1.83,
+      "visit_hours": 13.0,
+      "total_program_hours": 14.83,
+      "load_ratio": 0.927,
+      "waypoint_count": 4,
+      "stated_distance_km": 55.0,
+      "straight_chain_km": 30.9,
+      "distance_ratio": 1.78,
+      "longest_leg_km": 17.4,
+      "source_count": 2,
+      "missing_photos": [],
+      "issues": [
+        {
+          "severity": "warning",
+          "code": "very-tight-time-budget",
+          "detail": "93%"
+        }
+      ]
+    },
+    {
+      "slug": "black-sea-adjara",
+      "name": "შავი ზღვა და აჭარა",
+      "days": 4,
+      "routing_mode": "road",
+      "return_to_origin": true,
+      "daily_hours": 10.0,
+      "capacity_hours": 40.0,
+      "drive_hours": 14.5,
+      "visit_hours": 24.0,
+      "total_program_hours": 38.5,
+      "load_ratio": 0.963,
+      "waypoint_count": 7,
+      "stated_distance_km": 880.0,
+      "straight_chain_km": 598.2,
+      "distance_ratio": 1.47,
+      "longest_leg_km": 247.9,
+      "source_count": 2,
+      "missing_photos": [],
+      "issues": [
+        {
+          "severity": "warning",
+          "code": "very-tight-time-budget",
+          "detail": "96%"
+        }
+      ]
+    },
+    {
+      "slug": "borjomi-bike-and-nature",
+      "name": "ბორჯომის ველო და ბუნების წრე",
+      "days": 3,
+      "routing_mode": "cycling",
+      "return_to_origin": false,
+      "daily_hours": 8.5,
+      "capacity_hours": 25.5,
+      "drive_hours": 5.67,
+      "visit_hours": 19.0,
+      "total_program_hours": 24.67,
+      "load_ratio": 0.967,
+      "waypoint_count": 6,
+      "stated_distance_km": 280.0,
+      "straight_chain_km": 90.8,
+      "distance_ratio": 3.09,
+      "longest_leg_km": 53.5,
+      "source_count": 2,
+      "missing_photos": [],
+      "issues": [
+        {
+          "severity": "warning",
+          "code": "very-tight-time-budget",
+          "detail": "97%"
+        }
+      ]
+    },
+    {
+      "slug": "borjomi-spa-day",
+      "name": "ბორჯომის წყლები და მწვანე ხეობა",
+      "days": 1,
+      "routing_mode": "road",
+      "return_to_origin": false,
+      "daily_hours": 7.0,
+      "capacity_hours": 7.0,
+      "drive_hours": 1.5,
+      "visit_hours": 5.0,
+      "total_program_hours": 6.5,
+      "load_ratio": 0.929,
+      "waypoint_count": 3,
+      "stated_distance_km": 45.0,
+      "straight_chain_km": 7.6,
+      "distance_ratio": 5.91,
+      "longest_leg_km": 5.1,
+      "source_count": 2,
+      "missing_photos": [],
+      "issues": [
+        {
+          "severity": "warning",
+          "code": "very-tight-time-budget",
+          "detail": "93%"
+        },
+        {
+          "severity": "warning",
+          "code": "distance-needs-review",
+          "detail": "ratio=5.91"
+        }
+      ]
+    },
+    {
+      "slug": "family-georgia-seven-days",
+      "name": "ოჯახური საქართველო — 7 მშვიდი დღე",
+      "days": 7,
+      "routing_mode": "road",
+      "return_to_origin": false,
+      "daily_hours": 9.0,
+      "capacity_hours": 63.0,
+      "drive_hours": 15.0,
+      "visit_hours": 23.0,
+      "total_program_hours": 38.0,
+      "load_ratio": 0.603,
+      "waypoint_count": 9,
+      "stated_distance_km": 820.0,
+      "straight_chain_km": 355.8,
+      "distance_ratio": 2.3,
+      "longest_leg_km": 114.9,
+      "source_count": 2,
+      "missing_photos": [],
+      "issues": []
+    },
+    {
+      "slug": "georgia-essential-five-days",
+      "name": "საქართველოს მთავარი ადგილები — 5 დღე",
+      "days": 5,
+      "routing_mode": "road",
+      "return_to_origin": false,
+      "daily_hours": 9.0,
+      "capacity_hours": 45.0,
+      "drive_hours": 18.5,
+      "visit_hours": 20.5,
+      "total_program_hours": 39.0,
+      "load_ratio": 0.867,
+      "waypoint_count": 10,
+      "stated_distance_km": 980.0,
+      "straight_chain_km": 566.8,
+      "distance_ratio": 1.73,
+      "longest_leg_km": 271.3,
+      "source_count": 3,
+      "missing_photos": [],
+      "issues": [
+        {
+          "severity": "warning",
+          "code": "long-single-leg",
+          "detail": "271 km straight-line"
+        }
+      ]
+    },
+    {
+      "slug": "gori-uplistsikhe-day",
+      "name": "გორი და უფლისციხე ერთ დღეში",
+      "days": 1,
+      "routing_mode": "road",
+      "return_to_origin": false,
+      "daily_hours": 11.0,
+      "capacity_hours": 11.0,
+      "drive_hours": 3.5,
+      "visit_hours": 7.0,
+      "total_program_hours": 10.5,
+      "load_ratio": 0.955,
+      "waypoint_count": 4,
+      "stated_distance_km": 205.0,
+      "straight_chain_km": 89.9,
+      "distance_ratio": 2.28,
+      "longest_leg_km": 66.5,
+      "source_count": 2,
+      "missing_photos": [],
+      "issues": [
+        {
+          "severity": "warning",
+          "code": "very-tight-time-budget",
+          "detail": "95%"
+        }
+      ]
+    },
+    {
+      "slug": "grand-georgia-classic",
+      "name": "საქართველოს დიდი კლასიკური ტური",
+      "days": 10,
+      "routing_mode": "road",
+      "return_to_origin": false,
+      "daily_hours": 9.0,
+      "capacity_hours": 90.0,
+      "drive_hours": 31.0,
+      "visit_hours": 38.0,
+      "total_program_hours": 69.0,
+      "load_ratio": 0.767,
+      "waypoint_count": 14,
+      "stated_distance_km": 1680.0,
+      "straight_chain_km": 814.1,
+      "distance_ratio": 2.06,
+      "longest_leg_km": 180.7,
+      "source_count": 2,
+      "missing_photos": [],
+      "issues": []
+    },
+    {
+      "slug": "guria-coast-day",
+      "name": "გურიის სანაპირო და კულტურა",
+      "days": 1,
+      "routing_mode": "road",
+      "return_to_origin": false,
+      "daily_hours": 10.0,
+      "capacity_hours": 10.0,
+      "drive_hours": 3.0,
+      "visit_hours": 7.0,
+      "total_program_hours": 10.0,
+      "load_ratio": 1.0,
+      "waypoint_count": 3,
+      "stated_distance_km": 135.0,
+      "straight_chain_km": 77.1,
+      "distance_ratio": 1.75,
+      "longest_leg_km": 40.3,
+      "source_count": 2,
+      "missing_photos": [],
+      "issues": [
+        {
+          "severity": "warning",
+          "code": "very-tight-time-budget",
+          "detail": "100%"
+        }
+      ]
+    },
+    {
+      "slug": "guria-mountain-spa-weekend",
+      "name": "გურიის მთის კურორტები",
+      "days": 2,
+      "routing_mode": "road",
+      "return_to_origin": false,
+      "daily_hours": 10.0,
+      "capacity_hours": 20.0,
+      "drive_hours": 8.0,
+      "visit_hours": 12.0,
+      "total_program_hours": 20.0,
+      "load_ratio": 1.0,
+      "waypoint_count": 3,
+      "stated_distance_km": 310.0,
+      "straight_chain_km": 48.0,
+      "distance_ratio": 6.46,
+      "longest_leg_km": 23.2,
+      "source_count": 2,
+      "missing_photos": [],
+      "issues": [
+        {
+          "severity": "warning",
+          "code": "very-tight-time-budget",
+          "detail": "100%"
+        },
+        {
+          "severity": "warning",
+          "code": "distance-needs-review",
+          "detail": "ratio=6.46"
+        }
+      ]
+    },
+    {
+      "slug": "guria-slow-food-and-coast",
+      "name": "გურია — ნელი კულინარია და ზღვა",
+      "days": 3,
+      "routing_mode": "road",
+      "return_to_origin": false,
+      "daily_hours": 8.0,
+      "capacity_hours": 24.0,
+      "drive_hours": 7.0,
+      "visit_hours": 13.0,
+      "total_program_hours": 20.0,
+      "load_ratio": 0.833,
+      "waypoint_count": 6,
+      "stated_distance_km": 330.0,
+      "straight_chain_km": 161.6,
+      "distance_ratio": 2.04,
+      "longest_leg_km": 69.9,
+      "source_count": 2,
+      "missing_photos": [],
+      "issues": []
+    },
+    {
+      "slug": "imereti-caves-canyons",
+      "name": "იმერეთი: ღრმულები და კანიონები",
+      "days": 3,
+      "routing_mode": "road",
+      "return_to_origin": true,
+      "daily_hours": 10.5,
+      "capacity_hours": 31.5,
+      "drive_hours": 10.5,
+      "visit_hours": 17.0,
+      "total_program_hours": 27.5,
+      "load_ratio": 0.873,
+      "waypoint_count": 8,
+      "stated_distance_km": 640.0,
+      "straight_chain_km": 437.1,
+      "distance_ratio": 1.46,
+      "longest_leg_km": 211.7,
+      "source_count": 2,
+      "missing_photos": [],
+      "issues": []
+    },
+    {
+      "slug": "imereti-family-discovery",
+      "name": "იმერეთი ოჯახთან ერთად",
+      "days": 3,
+      "routing_mode": "road",
+      "return_to_origin": false,
+      "daily_hours": 8.0,
+      "capacity_hours": 24.0,
+      "drive_hours": 5.17,
+      "visit_hours": 13.0,
+      "total_program_hours": 18.17,
+      "load_ratio": 0.757,
+      "waypoint_count": 6,
+      "stated_distance_km": 240.0,
+      "straight_chain_km": 36.1,
+      "distance_ratio": 6.65,
+      "longest_leg_km": 14.2,
+      "source_count": 2,
+      "missing_photos": [],
+      "issues": [
+        {
+          "severity": "warning",
+          "code": "distance-needs-review",
+          "detail": "ratio=6.65"
+        }
+      ]
+    },
+    {
+      "slug": "javakheti-lakes-and-birds",
+      "name": "ჯავახეთის ტბები და ფრინველები",
+      "days": 3,
+      "routing_mode": "road",
+      "return_to_origin": false,
+      "daily_hours": 8.0,
+      "capacity_hours": 24.0,
+      "drive_hours": 11.5,
+      "visit_hours": 11.0,
+      "total_program_hours": 22.5,
+      "load_ratio": 0.938,
+      "waypoint_count": 5,
+      "stated_distance_km": 590.0,
+      "straight_chain_km": 141.2,
+      "distance_ratio": 4.18,
+      "longest_leg_km": 65.6,
+      "source_count": 2,
+      "missing_photos": [],
+      "issues": [
+        {
+          "severity": "warning",
+          "code": "very-tight-time-budget",
+          "detail": "94%"
+        },
+        {
+          "severity": "warning",
+          "code": "distance-needs-review",
+          "detail": "ratio=4.18"
+        }
+      ]
+    },
+    {
+      "slug": "kakheti-cycle-and-wine",
+      "name": "კახეთის ველო და ღვინის გზა",
+      "days": 5,
+      "routing_mode": "cycling",
+      "return_to_origin": false,
+      "daily_hours": 8.0,
+      "capacity_hours": 40.0,
+      "drive_hours": 8.67,
+      "visit_hours": 21.0,
+      "total_program_hours": 29.67,
+      "load_ratio": 0.742,
+      "waypoint_count": 8,
+      "stated_distance_km": 470.0,
+      "straight_chain_km": 384.4,
+      "distance_ratio": 1.22,
+      "longest_leg_km": 133.5,
+      "source_count": 3,
+      "missing_photos": [],
+      "issues": []
+    },
+    {
+      "slug": "kakheti-cycling-day",
+      "name": "კახეთის ერთდღიანი ველოწრე",
+      "days": 1,
+      "routing_mode": "cycling",
+      "return_to_origin": false,
+      "daily_hours": 8.0,
+      "capacity_hours": 8.0,
+      "drive_hours": 1.25,
+      "visit_hours": 6.5,
+      "total_program_hours": 7.75,
+      "load_ratio": 0.969,
+      "waypoint_count": 4,
+      "stated_distance_km": 58.0,
+      "straight_chain_km": 22.3,
+      "distance_ratio": 2.61,
+      "longest_leg_km": 11.9,
+      "source_count": 2,
+      "missing_photos": [],
+      "issues": [
+        {
+          "severity": "warning",
+          "code": "very-tight-time-budget",
+          "detail": "97%"
+        }
+      ]
+    },
+    {
+      "slug": "kakheti-table-and-cellar",
+      "name": "კახური სუფრა და მარანი",
+      "days": 3,
+      "routing_mode": "road",
+      "return_to_origin": false,
+      "daily_hours": 8.0,
+      "capacity_hours": 24.0,
+      "drive_hours": 7.33,
+      "visit_hours": 12.5,
+      "total_program_hours": 19.83,
+      "load_ratio": 0.826,
+      "waypoint_count": 6,
+      "stated_distance_km": 360.0,
+      "straight_chain_km": 177.3,
+      "distance_ratio": 2.03,
+      "longest_leg_km": 91.5,
+      "source_count": 2,
+      "missing_photos": [],
+      "issues": []
+    },
+    {
+      "slug": "kakheti-wine-day",
+      "name": "კახეთის ღვინის დღე",
+      "days": 1,
+      "routing_mode": "road",
+      "return_to_origin": false,
+      "daily_hours": 12.5,
+      "capacity_hours": 12.5,
+      "drive_hours": 5.33,
+      "visit_hours": 7.0,
+      "total_program_hours": 12.33,
+      "load_ratio": 0.987,
+      "waypoint_count": 3,
+      "stated_distance_km": 285.0,
+      "straight_chain_km": 136.8,
+      "distance_ratio": 2.08,
+      "longest_leg_km": 92.5,
+      "source_count": 2,
+      "missing_photos": [],
+      "issues": [
+        {
+          "severity": "warning",
+          "code": "very-tight-time-budget",
+          "detail": "99%"
+        }
+      ]
+    },
+    {
+      "slug": "kakheti-wine-loop",
+      "name": "კახეთის ღვინის მარშრუტი",
+      "days": 3,
+      "routing_mode": "road",
+      "return_to_origin": true,
+      "daily_hours": 8.0,
+      "capacity_hours": 24.0,
+      "drive_hours": 8.0,
+      "visit_hours": 15.0,
+      "total_program_hours": 23.0,
+      "load_ratio": 0.958,
+      "waypoint_count": 6,
+      "stated_distance_km": 420.0,
+      "straight_chain_km": 299.7,
+      "distance_ratio": 1.4,
+      "longest_leg_km": 91.5,
+      "source_count": 2,
+      "missing_photos": [],
+      "issues": [
+        {
+          "severity": "warning",
+          "code": "very-tight-time-budget",
+          "detail": "96%"
+        }
+      ]
+    },
+    {
+      "slug": "kazbegi-hiking-base",
+      "name": "ყაზბეგის ჰაიქინგის ბაზა",
+      "days": 4,
+      "routing_mode": "hiking",
+      "return_to_origin": false,
+      "daily_hours": 9.0,
+      "capacity_hours": 36.0,
+      "drive_hours": 8.17,
+      "visit_hours": 20.0,
+      "total_program_hours": 28.17,
+      "load_ratio": 0.782,
+      "waypoint_count": 7,
+      "stated_distance_km": 390.0,
+      "straight_chain_km": 184.8,
+      "distance_ratio": 2.11,
+      "longest_leg_km": 51.0,
+      "source_count": 2,
+      "missing_photos": [],
+      "issues": []
+    },
+    {
+      "slug": "kazbegi-mountain-day",
+      "name": "ყაზბეგის მთის ორი დღე",
+      "days": 2,
+      "routing_mode": "road",
+      "return_to_origin": false,
+      "daily_hours": 8.0,
+      "capacity_hours": 16.0,
+      "drive_hours": 7.17,
+      "visit_hours": 6.0,
+      "total_program_hours": 13.17,
+      "load_ratio": 0.823,
+      "waypoint_count": 4,
+      "stated_distance_km": 350.0,
+      "straight_chain_km": 116.1,
+      "distance_ratio": 3.01,
+      "longest_leg_km": 48.1,
+      "source_count": 2,
+      "missing_photos": [],
+      "issues": [
+        {
+          "severity": "warning",
+          "code": "distance-needs-review",
+          "detail": "ratio=3.01"
+        }
+      ]
+    },
+    {
+      "slug": "kutaisi-monasteries-caves-day",
+      "name": "ქუთაისის მონასტრები და მღვიმე",
+      "days": 1,
+      "routing_mode": "road",
+      "return_to_origin": false,
+      "daily_hours": 10.5,
+      "capacity_hours": 10.5,
+      "drive_hours": 2.5,
+      "visit_hours": 8.0,
+      "total_program_hours": 10.5,
+      "load_ratio": 1.0,
+      "waypoint_count": 4,
+      "stated_distance_km": 85.0,
+      "straight_chain_km": 25.1,
+      "distance_ratio": 3.39,
+      "longest_leg_km": 15.7,
+      "source_count": 2,
+      "missing_photos": [],
+      "issues": [
+        {
+          "severity": "warning",
+          "code": "very-tight-time-budget",
+          "detail": "100%"
+        },
+        {
+          "severity": "warning",
+          "code": "distance-needs-review",
+          "detail": "ratio=3.39"
+        }
+      ]
+    },
+    {
+      "slug": "kvemo-kartli-archaeology-road",
+      "name": "ქვემო ქართლის არქეოლოგიური გზა",
+      "days": 2,
+      "routing_mode": "road",
+      "return_to_origin": false,
+      "daily_hours": 8.5,
+      "capacity_hours": 17.0,
+      "drive_hours": 6.0,
+      "visit_hours": 11.0,
+      "total_program_hours": 17.0,
+      "load_ratio": 1.0,
+      "waypoint_count": 5,
+      "stated_distance_km": 285.0,
+      "straight_chain_km": 122.4,
+      "distance_ratio": 2.33,
+      "longest_leg_km": 39.0,
+      "source_count": 2,
+      "missing_photos": [],
+      "issues": [
+        {
+          "severity": "warning",
+          "code": "very-tight-time-budget",
+          "detail": "100%"
+        }
+      ]
+    },
+    {
+      "slug": "kvemo-kartli-monasteries-day",
+      "name": "ქვემო ქართლის მონასტრები ერთ დღეში",
+      "days": 1,
+      "routing_mode": "road",
+      "return_to_origin": false,
+      "daily_hours": 10.0,
+      "capacity_hours": 10.0,
+      "drive_hours": 5.0,
+      "visit_hours": 5.0,
+      "total_program_hours": 10.0,
+      "load_ratio": 1.0,
+      "waypoint_count": 3,
+      "stated_distance_km": 215.0,
+      "straight_chain_km": 64.7,
+      "distance_ratio": 3.32,
+      "longest_leg_km": 36.9,
+      "source_count": 2,
+      "missing_photos": [],
+      "issues": [
+        {
+          "severity": "warning",
+          "code": "very-tight-time-budget",
+          "detail": "100%"
+        },
+        {
+          "severity": "warning",
+          "code": "distance-needs-review",
+          "detail": "ratio=3.32"
+        }
+      ]
+    },
+    {
+      "slug": "lagodekhi-nature-weekend",
+      "name": "ლაგოდეხის ბუნების უქმეები",
+      "days": 2,
+      "routing_mode": "road",
+      "return_to_origin": false,
+      "daily_hours": 11.0,
+      "capacity_hours": 22.0,
+      "drive_hours": 6.5,
+      "visit_hours": 15.5,
+      "total_program_hours": 22.0,
+      "load_ratio": 1.0,
+      "waypoint_count": 5,
+      "stated_distance_km": 310.0,
+      "straight_chain_km": 120.7,
+      "distance_ratio": 2.57,
+      "longest_leg_km": 41.0,
+      "source_count": 3,
+      "missing_photos": [],
+      "issues": [
+        {
+          "severity": "warning",
+          "code": "very-tight-time-budget",
+          "detail": "100%"
+        }
+      ]
+    },
+    {
+      "slug": "martvili-nokalakevi-day",
+      "name": "ნოქალაქევი და მარტვილის კანიონი",
+      "days": 1,
+      "routing_mode": "road",
+      "return_to_origin": false,
+      "daily_hours": 9.0,
+      "capacity_hours": 9.0,
+      "drive_hours": 3.17,
+      "visit_hours": 5.0,
+      "total_program_hours": 8.17,
+      "load_ratio": 0.907,
+      "waypoint_count": 3,
+      "stated_distance_km": 145.0,
+      "straight_chain_km": 103.1,
+      "distance_ratio": 1.41,
+      "longest_leg_km": 43.5,
+      "source_count": 2,
+      "missing_photos": [],
+      "issues": [
+        {
+          "severity": "warning",
+          "code": "very-tight-time-budget",
+          "detail": "91%"
+        }
+      ]
+    },
+    {
+      "slug": "military-highway-kazbegi",
+      "name": "სამხედრო გზა და ყაზბეგი",
+      "days": 2,
+      "routing_mode": "road",
+      "return_to_origin": true,
+      "daily_hours": 10.5,
+      "capacity_hours": 21.0,
+      "drive_hours": 6.67,
+      "visit_hours": 14.0,
+      "total_program_hours": 20.67,
+      "load_ratio": 0.984,
+      "waypoint_count": 6,
+      "stated_distance_km": 340.0,
+      "straight_chain_km": 234.8,
+      "distance_ratio": 1.45,
+      "longest_leg_km": 113.0,
+      "source_count": 2,
+      "missing_photos": [],
+      "issues": [
+        {
+          "severity": "warning",
+          "code": "very-tight-time-budget",
+          "detail": "98%"
+        }
+      ]
+    },
+    {
+      "slug": "mtskheta-gori-heritage",
+      "name": "მცხეთა, უფლისციხე და ატენის ხეობა",
+      "days": 2,
+      "routing_mode": "road",
+      "return_to_origin": false,
+      "daily_hours": 8.0,
+      "capacity_hours": 16.0,
+      "drive_hours": 4.33,
+      "visit_hours": 10.0,
+      "total_program_hours": 14.33,
+      "load_ratio": 0.896,
+      "waypoint_count": 6,
+      "stated_distance_km": 230.0,
+      "straight_chain_km": 84.4,
+      "distance_ratio": 2.73,
+      "longest_leg_km": 44.4,
+      "source_count": 2,
+      "missing_photos": [],
+      "issues": []
+    },
+    {
+      "slug": "mtskheta-heritage-day",
+      "name": "მცხეთის მემკვიდრეობის დღე",
+      "days": 1,
+      "routing_mode": "road",
+      "return_to_origin": false,
+      "daily_hours": 8.0,
+      "capacity_hours": 8.0,
+      "drive_hours": 2.33,
+      "visit_hours": 5.5,
+      "total_program_hours": 7.83,
+      "load_ratio": 0.979,
+      "waypoint_count": 4,
+      "stated_distance_km": 85.0,
+      "straight_chain_km": 19.2,
+      "distance_ratio": 4.44,
+      "longest_leg_km": 15.8,
+      "source_count": 2,
+      "missing_photos": [],
+      "issues": [
+        {
+          "severity": "warning",
+          "code": "very-tight-time-budget",
+          "detail": "98%"
+        },
+        {
+          "severity": "warning",
+          "code": "distance-needs-review",
+          "detail": "ratio=4.44"
+        }
+      ]
+    },
+    {
+      "slug": "racha-alpine-hiking-week",
+      "name": "რაჭის ალპური ჰაიქინგის კვირეული",
+      "days": 5,
+      "routing_mode": "hiking",
+      "return_to_origin": false,
+      "daily_hours": 9.0,
+      "capacity_hours": 45.0,
+      "drive_hours": 13.0,
+      "visit_hours": 19.5,
+      "total_program_hours": 32.5,
+      "load_ratio": 0.722,
+      "waypoint_count": 6,
+      "stated_distance_km": 610.0,
+      "straight_chain_km": 115.7,
+      "distance_ratio": 5.27,
+      "longest_leg_km": 38.9,
+      "source_count": 2,
+      "missing_photos": [],
+      "issues": []
+    },
+    {
+      "slug": "racha-family-weekend",
+      "name": "რაჭის საოჯახო შაბათ-კვირა",
+      "days": 2,
+      "routing_mode": "road",
+      "return_to_origin": false,
+      "daily_hours": 10.0,
+      "capacity_hours": 20.0,
+      "drive_hours": 7.17,
+      "visit_hours": 12.5,
+      "total_program_hours": 19.67,
+      "load_ratio": 0.983,
+      "waypoint_count": 6,
+      "stated_distance_km": 335.0,
+      "straight_chain_km": 116.2,
+      "distance_ratio": 2.88,
+      "longest_leg_km": 40.5,
+      "source_count": 2,
+      "missing_photos": [],
+      "issues": [
+        {
+          "severity": "warning",
+          "code": "very-tight-time-budget",
+          "detail": "98%"
+        }
+      ]
+    },
+    {
+      "slug": "racha-lechkhumi-heritage-three-days",
+      "name": "რაჭა-ლეჩხუმის მემკვიდრეობის სამი დღე",
+      "days": 3,
+      "routing_mode": "road",
+      "return_to_origin": false,
+      "daily_hours": 10.0,
+      "capacity_hours": 30.0,
+      "drive_hours": 10.0,
+      "visit_hours": 19.0,
+      "total_program_hours": 29.0,
+      "load_ratio": 0.967,
+      "waypoint_count": 10,
+      "stated_distance_km": 470.0,
+      "straight_chain_km": 222.2,
+      "distance_ratio": 2.11,
+      "longest_leg_km": 59.0,
+      "source_count": 2,
+      "missing_photos": [],
+      "issues": [
+        {
+          "severity": "warning",
+          "code": "very-tight-time-budget",
+          "detail": "97%"
+        }
+      ]
+    },
+    {
+      "slug": "racha-mountain-loop",
+      "name": "რაჭა ორ დღეში — ტაძრები, ტბა და მთის სოფლები",
+      "days": 2,
+      "routing_mode": "road",
+      "return_to_origin": true,
+      "daily_hours": 12.0,
+      "capacity_hours": 24.0,
+      "drive_hours": 7.5,
+      "visit_hours": 14.5,
+      "total_program_hours": 22.0,
+      "load_ratio": 0.917,
+      "waypoint_count": 10,
+      "stated_distance_km": 330.0,
+      "straight_chain_km": 202.6,
+      "distance_ratio": 1.63,
+      "longest_leg_km": 78.6,
+      "source_count": 3,
+      "missing_photos": [
+        "gogolati",
+        "waterfall-of-love-racha"
+      ],
+      "issues": [
+        {
+          "severity": "warning",
+          "code": "very-tight-time-budget",
+          "detail": "92%"
+        },
+        {
+          "severity": "warning",
+          "code": "missing-primary-photo",
+          "detail": "gogolati, waterfall-of-love-racha"
+        }
+      ]
+    },
+    {
+      "slug": "racha-wine-and-mountains",
+      "name": "რაჭის ღვინო და მთის სამზარეულო",
+      "days": 4,
+      "routing_mode": "road",
+      "return_to_origin": true,
+      "daily_hours": 8.0,
+      "capacity_hours": 32.0,
+      "drive_hours": 11.67,
+      "visit_hours": 13.5,
+      "total_program_hours": 25.17,
+      "load_ratio": 0.786,
+      "waypoint_count": 8,
+      "stated_distance_km": 560.0,
+      "straight_chain_km": 185.1,
+      "distance_ratio": 3.02,
+      "longest_leg_km": 78.6,
+      "source_count": 2,
+      "missing_photos": [],
+      "issues": [
+        {
+          "severity": "warning",
+          "code": "distance-needs-review",
+          "detail": "ratio=3.02"
+        }
+      ]
+    },
+    {
+      "slug": "samegrelo-kingdoms-and-wetlands",
+      "name": "სამეგრელო — სამეფოები და ჭარბტენიანი ბუნება",
+      "days": 4,
+      "routing_mode": "road",
+      "return_to_origin": false,
+      "daily_hours": 8.0,
+      "capacity_hours": 32.0,
+      "drive_hours": 9.5,
+      "visit_hours": 12.0,
+      "total_program_hours": 21.5,
+      "load_ratio": 0.672,
+      "waypoint_count": 6,
+      "stated_distance_km": 480.0,
+      "straight_chain_km": 200.4,
+      "distance_ratio": 2.4,
+      "longest_leg_km": 60.8,
+      "source_count": 2,
+      "missing_photos": [],
+      "issues": []
+    },
+    {
+      "slug": "samtskhe-heritage-road",
+      "name": "სამცხე-ჯავახეთის დიდი ისტორიული გზა",
+      "days": 4,
+      "routing_mode": "road",
+      "return_to_origin": false,
+      "daily_hours": 8.0,
+      "capacity_hours": 32.0,
+      "drive_hours": 12.5,
+      "visit_hours": 17.0,
+      "total_program_hours": 29.5,
+      "load_ratio": 0.922,
+      "waypoint_count": 8,
+      "stated_distance_km": 690.0,
+      "straight_chain_km": 245.9,
+      "distance_ratio": 2.81,
+      "longest_leg_km": 120.3,
+      "source_count": 2,
+      "missing_photos": [],
+      "issues": [
+        {
+          "severity": "warning",
+          "code": "very-tight-time-budget",
+          "detail": "92%"
+        }
+      ]
+    },
+    {
+      "slug": "shida-kartli-monastery-trail",
+      "name": "შიდა ქართლის მონასტრების ბილიკი",
+      "days": 2,
+      "routing_mode": "road",
+      "return_to_origin": false,
+      "daily_hours": 8.0,
+      "capacity_hours": 16.0,
+      "drive_hours": 6.5,
+      "visit_hours": 9.0,
+      "total_program_hours": 15.5,
+      "load_ratio": 0.969,
+      "waypoint_count": 5,
+      "stated_distance_km": 310.0,
+      "straight_chain_km": 154.6,
+      "distance_ratio": 2.0,
+      "longest_leg_km": 50.9,
+      "source_count": 2,
+      "missing_photos": [],
+      "issues": [
+        {
+          "severity": "warning",
+          "code": "very-tight-time-budget",
+          "detail": "97%"
+        }
+      ]
+    },
+    {
+      "slug": "svaneti-alpine-circuit",
+      "name": "სვანეთის ალპური წრე",
+      "days": 6,
+      "routing_mode": "hiking",
+      "return_to_origin": false,
+      "daily_hours": 9.0,
+      "capacity_hours": 54.0,
+      "drive_hours": 15.0,
+      "visit_hours": 30.0,
+      "total_program_hours": 45.0,
+      "load_ratio": 0.833,
+      "waypoint_count": 7,
+      "stated_distance_km": 720.0,
+      "straight_chain_km": 69.1,
+      "distance_ratio": 10.42,
+      "longest_leg_km": 18.9,
+      "source_count": 2,
+      "missing_photos": [],
+      "issues": []
+    },
+    {
+      "slug": "svaneti-expedition",
+      "name": "სვანეთის ექსპედიცია",
+      "days": 5,
+      "routing_mode": "offroad",
+      "return_to_origin": true,
+      "daily_hours": 9.0,
+      "capacity_hours": 45.0,
+      "drive_hours": 21.0,
+      "visit_hours": 18.0,
+      "total_program_hours": 39.0,
+      "load_ratio": 0.867,
+      "waypoint_count": 6,
+      "stated_distance_km": 1050.0,
+      "straight_chain_km": 594.8,
+      "distance_ratio": 1.77,
+      "longest_leg_km": 200.1,
+      "source_count": 2,
+      "missing_photos": [],
+      "issues": []
+    },
+    {
+      "slug": "svaneti-village-trek",
+      "name": "სვანეთის სოფლების ტრეკი",
+      "days": 6,
+      "routing_mode": "hiking",
+      "return_to_origin": false,
+      "daily_hours": 9.0,
+      "capacity_hours": 54.0,
+      "drive_hours": 10.33,
+      "visit_hours": 27.5,
+      "total_program_hours": 37.83,
+      "load_ratio": 0.701,
+      "waypoint_count": 7,
+      "stated_distance_km": 460.0,
+      "straight_chain_km": 88.4,
+      "distance_ratio": 5.2,
+      "longest_leg_km": 31.3,
+      "source_count": 2,
+      "missing_photos": [],
+      "issues": []
+    },
+    {
+      "slug": "tbilisi-architecture-and-markets",
+      "name": "თბილისი — არქიტექტურა და ბაზრები",
+      "days": 2,
+      "routing_mode": "road",
+      "return_to_origin": false,
+      "daily_hours": 8.0,
+      "capacity_hours": 16.0,
+      "drive_hours": 2.0,
+      "visit_hours": 7.5,
+      "total_program_hours": 9.5,
+      "load_ratio": 0.594,
+      "waypoint_count": 5,
+      "stated_distance_km": 32.0,
+      "straight_chain_km": 14.1,
+      "distance_ratio": 2.28,
+      "longest_leg_km": 8.6,
+      "source_count": 3,
+      "missing_photos": [],
+      "issues": []
+    },
+    {
+      "slug": "tbilisi-history-walk",
+      "name": "თბილისის ისტორიული ფენები",
+      "days": 2,
+      "routing_mode": "road",
+      "return_to_origin": false,
+      "daily_hours": 8.0,
+      "capacity_hours": 16.0,
+      "drive_hours": 1.17,
+      "visit_hours": 11.5,
+      "total_program_hours": 12.67,
+      "load_ratio": 0.792,
+      "waypoint_count": 8,
+      "stated_distance_km": 35.0,
+      "straight_chain_km": 13.4,
+      "distance_ratio": 2.6,
+      "longest_leg_km": 7.7,
+      "source_count": 2,
+      "missing_photos": [],
+      "issues": []
+    },
+    {
+      "slug": "tbilisi-stage-and-museum-day",
+      "name": "მუზეუმი თეატრი და საღამოს წარმოდგენა",
+      "days": 1,
+      "routing_mode": "road",
+      "return_to_origin": false,
+      "daily_hours": 9.5,
+      "capacity_hours": 9.5,
+      "drive_hours": 0.5,
+      "visit_hours": 9.0,
+      "total_program_hours": 9.5,
+      "load_ratio": 1.0,
+      "waypoint_count": 4,
+      "stated_distance_km": 8.0,
+      "straight_chain_km": 2.1,
+      "distance_ratio": 3.75,
+      "longest_leg_km": 1.0,
+      "source_count": 3,
+      "missing_photos": [],
+      "issues": [
+        {
+          "severity": "warning",
+          "code": "very-tight-time-budget",
+          "detail": "100%"
+        },
+        {
+          "severity": "warning",
+          "code": "distance-needs-review",
+          "detail": "ratio=3.75"
+        }
+      ]
+    },
+    {
+      "slug": "tbilisi-theatre-night",
+      "name": "თბილისის თეატრებისა და სპექტაკლების დღე",
+      "days": 1,
+      "routing_mode": "road",
+      "return_to_origin": false,
+      "daily_hours": 9.5,
+      "capacity_hours": 9.5,
+      "drive_hours": 0.58,
+      "visit_hours": 8.5,
+      "total_program_hours": 9.08,
+      "load_ratio": 0.956,
+      "waypoint_count": 4,
+      "stated_distance_km": 9.0,
+      "straight_chain_km": 4.8,
+      "distance_ratio": 1.87,
+      "longest_leg_km": 2.8,
+      "source_count": 3,
+      "missing_photos": [],
+      "issues": [
+        {
+          "severity": "warning",
+          "code": "very-tight-time-budget",
+          "detail": "96%"
+        }
+      ]
+    },
+    {
+      "slug": "tusheti-highland-hike",
+      "name": "თუშეთის მაღალმთიანი ჰაიქინგი",
+      "days": 5,
+      "routing_mode": "offroad",
+      "return_to_origin": true,
+      "daily_hours": 9.0,
+      "capacity_hours": 45.0,
+      "drive_hours": 13.5,
+      "visit_hours": 18.0,
+      "total_program_hours": 31.5,
+      "load_ratio": 0.7,
+      "waypoint_count": 5,
+      "stated_distance_km": 430.0,
+      "straight_chain_km": 251.1,
+      "distance_ratio": 1.71,
+      "longest_leg_km": 97.2,
+      "source_count": 2,
+      "missing_photos": [],
+      "issues": []
+    },
+    {
+      "slug": "upper-adjara-wine-and-villages",
+      "name": "ზემო აჭარა — ღვინო და სოფლები",
+      "days": 4,
+      "routing_mode": "road",
+      "return_to_origin": false,
+      "daily_hours": 8.0,
+      "capacity_hours": 32.0,
+      "drive_hours": 8.5,
+      "visit_hours": 15.0,
+      "total_program_hours": 23.5,
+      "load_ratio": 0.734,
+      "waypoint_count": 6,
+      "stated_distance_km": 360.0,
+      "straight_chain_km": 88.6,
+      "distance_ratio": 4.06,
+      "longest_leg_km": 31.1,
+      "source_count": 2,
+      "missing_photos": [],
+      "issues": [
+        {
+          "severity": "warning",
+          "code": "distance-needs-review",
+          "detail": "ratio=4.06"
+        }
+      ]
+    },
+    {
+      "slug": "vardzia-borjomi-south",
+      "name": "ვარძია და ბორჯომი — სამხრეთის მარშრუტი",
+      "days": 2,
+      "routing_mode": "road",
+      "return_to_origin": true,
+      "daily_hours": 9.0,
+      "capacity_hours": 18.0,
+      "drive_hours": 9.0,
+      "visit_hours": 9.0,
+      "total_program_hours": 18.0,
+      "load_ratio": 1.0,
+      "waypoint_count": 4,
+      "stated_distance_km": 550.0,
+      "straight_chain_km": 336.5,
+      "distance_ratio": 1.63,
+      "longest_leg_km": 133.6,
+      "source_count": 2,
+      "missing_photos": [],
+      "issues": [
+        {
+          "severity": "warning",
+          "code": "very-tight-time-budget",
+          "detail": "100%"
+        }
+      ]
+    },
+    {
+      "slug": "western-georgia-food-road",
+      "name": "იმერული და მეგრული გემოები",
+      "days": 4,
+      "routing_mode": "road",
+      "return_to_origin": false,
+      "daily_hours": 8.0,
+      "capacity_hours": 32.0,
+      "drive_hours": 11.17,
+      "visit_hours": 16.0,
+      "total_program_hours": 27.17,
+      "load_ratio": 0.849,
+      "waypoint_count": 8,
+      "stated_distance_km": 610.0,
+      "straight_chain_km": 143.0,
+      "distance_ratio": 4.26,
+      "longest_leg_km": 46.6,
+      "source_count": 2,
+      "missing_photos": [],
+      "issues": [
+        {
+          "severity": "warning",
+          "code": "distance-needs-review",
+          "detail": "ratio=4.26"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,608 @@
+# UI strings for the SEO internal-linking blocks and the new SEO templates
+# (car-rental cluster, itineraries, trip-planner landing) — see
+# docs/seo/SEO_INTERNAL_LINKING.md and docs/seo/SEO_IMPLEMENTATION_PLAN.md.
+#
+# Style matches content/settings/ui.yml and content/settings/travel.yml:
+# short, plain, no marketing exclamation. Headings are noun phrases; buttons
+# are short imperatives.
+#
+# season/road value sets below cover exactly the values found in
+# content/routes/*.yml, content/attractions/*.yml and content/itineraries/*.yml
+# as of 2026-08-29 (see validation script output).
+
+# ── Internal-linking block headings ─────────────────────────────────────
+nearby_places:
+  ka: ახლომდებარე ადგილები
+  en: Nearby places
+  ru: Рядом
+  fa: جاهای نزدیک
+  he: מקומות בסביבה
+  ar: أماكن قريبة
+
+part_of_routes:
+  ka: ამ მარშრუტების ნაწილია
+  en: Part of these road trips
+  ru: Входит в маршруты
+  fa: بخشی از این مسیرهاست
+  he: חלק ממסלולים אלה
+  ar: جزء من هذه الرحلات
+
+stops_on_route:
+  ka: მარშრუტის გაჩერებები
+  en: Stops on this route
+  ru: Остановки на маршруте
+  fa: توقف‌های این مسیر
+  he: עצירות במסלול
+  ar: محطات على هذا المسار
+
+best_car_for_trip:
+  ka: საუკეთესო მანქანა ამ მოგზაურობისთვის
+  en: Best car for this trip
+  ru: Лучший автомобиль для этой поездки
+  fa: بهترین خودرو برای این سفر
+  he: הרכב הטוב ביותר לטיול הזה
+  ar: أفضل سيارة لهذه الرحلة
+
+popular_routes_from:
+  ka: პოპულარული მარშრუტები {place_abl}
+  en: Popular road trips from {place}
+  ru: Популярные маршруты из {place}
+  fa: سفرهای جادهٔ محبوب از {place}
+  he: מסלולי טיול פופולריים מ{place}
+  ar: رحلات برية شائعة من {place}
+
+open_in_planner:
+  ka: გახსნა დამგეგმავში
+  en: Open in Trip Planner
+  ru: Открыть в планировщике
+  fa: باز کردن در برنامه‌ریز سفر
+  he: פתיחה במתכנן הטיולים
+  ar: فتح في مخطط الرحلات
+
+continue_road_trip:
+  ka: გააგრძელეთ მოგზაურობა
+  en: Continue your road trip
+  ru: Продолжите поездку
+  fa: ادامهٔ سفر جاده‌ای
+  he: המשיכו את הטיול
+  ar: أكمل رحلتك البرية
+
+rent_car_for_trip:
+  ka: დაიქირავეთ მანქანა ამ მოგზაურობისთვის
+  en: Rent a car for this trip
+  ru: Возьмите машину для этой поездки
+  fa: برای این سفر خودرو اجاره کنید
+  he: שכרו רכב לטיול הזה
+  ar: استأجر سيارة لهذه الرحلة
+
+add_to_trip:
+  ka: მარშრუტში დამატება
+  en: Add to trip
+  ru: Добавить в маршрут
+  fa: افزودن به مسیر
+  he: הוספה למסלול
+  ar: إضافة إلى الرحلة
+
+routes_needing_this_car:
+  ka: მარშრუტები, სადაც ეს კატეგორია საჭიროა
+  en: Routes that need this car
+  ru: Маршруты, где нужен этот автомобиль
+  fa: مسیرهایی که به این خودرو نیاز دارند
+  he: מסלולים שדורשים רכב זה
+  ar: مسارات تحتاج إلى هذه السيارة
+
+attractions_for_this_car:
+  ka: ღირსშესანიშნაობები ამ კატეგორიისთვის
+  en: Attractions for this car
+  ru: Достопримечательности для этого класса
+  fa: دیدنی‌های مناسب این خودرو
+  he: אתרים המתאימים לרכב זה
+  ar: معالم مناسبة لهذه السيارة
+
+cars_in_category:
+  ka: ამ კატეგორიის მანქანები
+  en: Cars in this category
+  ru: Автомобили этой категории
+  fa: خودروهای این دسته
+  he: רכבים בקטגוריה זו
+  ar: سيارات هذه الفئة
+
+all_cars_in_class:
+  ka: ამ კლასის ყველა მანქანა
+  en: All cars in this class
+  ru: Все автомобили этого класса
+  fa: همهٔ خودروهای این کلاس
+  he: כל הרכבים בקטגוריה זו
+  ar: كل سيارات هذه الفئة
+
+# ── Car-rental cluster labels ────────────────────────────────────────────
+car_rental:
+  ka: მანქანის დაქირავება
+  en: Car rental
+  ru: Аренда автомобиля
+  fa: اجارهٔ خودرو
+  he: השכרת רכב
+  ar: تأجير السيارات
+
+rental_terms:
+  ka: დაქირავების პირობები
+  en: Rental terms
+  ru: Условия аренды
+  fa: شرایط اجاره
+  he: תנאי ההשכרה
+  ar: شروط التأجير
+
+requirements:
+  ka: მოთხოვნები
+  en: Requirements
+  ru: Требования
+  fa: الزامات
+  he: דרישות
+  ar: المتطلبات
+
+deposit:
+  ka: დეპოზიტი
+  en: Deposit
+  ru: Депозит
+  fa: ودیعه
+  he: פיקדון
+  ar: الوديعة
+
+mileage:
+  ka: გარბენი
+  en: Mileage
+  ru: Пробег
+  fa: کیلومتراژ
+  he: קילומטראז'
+  ar: المسافة المقطوعة
+
+fuel_policy:
+  ka: საწვავის პოლიტიკა
+  en: Fuel policy
+  ru: Топливная политика
+  fa: سیاست سوخت
+  he: מדיניות דלק
+  ar: سياسة الوقود
+
+insurance:
+  ka: დაზღვევა
+  en: Insurance
+  ru: Страхование
+  fa: بیمه
+  he: ביטוח
+  ar: التأمين
+
+delivery:
+  ka: მიწოდება
+  en: Delivery
+  ru: Доставка
+  fa: تحویل
+  he: אספקה
+  ar: التوصيل
+
+pickup_locations:
+  ka: აღების პუნქტები
+  en: Pickup locations
+  ru: Пункты выдачи
+  fa: نقاط تحویل خودرو
+  he: נקודות איסוף
+  ar: نقاط الاستلام
+
+one_way:
+  ka: ცალმხრივი დაქირავება
+  en: One-way rental
+  ru: Аренда в одну сторону
+  fa: اجارهٔ یک‌طرفه
+  he: השכרה חד-כיוונית
+  ar: تأجير باتجاه واحد
+
+extras:
+  ka: დამატებითი მომსახურება
+  en: Extras
+  ru: Дополнительные услуги
+  fa: خدمات اضافی
+  he: תוספות
+  ar: خدمات إضافية
+
+cancellation:
+  ka: გაუქმება
+  en: Cancellation
+  ru: Отмена
+  fa: لغو رزرو
+  he: ביטול
+  ar: الإلغاء
+
+support:
+  ka: მხარდაჭერა
+  en: Support
+  ru: Поддержка
+  fa: پشتیبانی
+  he: תמיכה
+  ar: الدعم
+
+price_from:
+  ka: ფასი დან
+  en: Price from
+  ru: Цена от
+  fa: قیمت از
+  he: מחיר החל מ-
+  ar: السعر يبدأ من
+
+per_day:
+  ka: დღეში
+  en: per day
+  ru: в сутки
+  fa: در روز
+  he: ליום
+  ar: يوميًا
+
+seats:
+  ka: ადგილი
+  en: Seats
+  ru: Мест
+  fa: صندلی
+  he: מושבים
+  ar: المقاعد
+
+luggage:
+  ka: ჩემოდანი
+  en: Luggage
+  ru: Багаж
+  fa: بار
+  he: מטען
+  ar: الأمتعة
+
+clearance:
+  ka: კლირენსი
+  en: Ground clearance
+  ru: Клиренс
+  fa: ارتفاع از زمین
+  he: מרווח גחון
+  ar: الخلوص الأرضي
+
+transmission:
+  ka: ტრანსმისია
+  en: Transmission
+  ru: Трансмиссия
+  fa: گیربکس
+  he: תיבת הילוכים
+  ar: ناقل الحركة
+
+drive_type:
+  ka: წამყვანი თვლები
+  en: Drivetrain
+  ru: Привод
+  fa: سیستم انتقال قدرت
+  he: הנעה
+  ar: نظام الدفع
+
+fuel_consumption:
+  ka: საწვავის ხარჯი
+  en: Fuel consumption
+  ru: Расход топлива
+  fa: مصرف سوخت
+  he: צריכת דלק
+  ar: استهلاك الوقود
+
+min_age:
+  ka: მინიმალური ასაკი
+  en: Minimum age
+  ru: Минимальный возраст
+  fa: حداقل سن
+  he: גיל מינימלי
+  ar: الحد الأدنى للعمر
+
+licence_years:
+  ka: მართვის მოწმობის სტაჟი
+  en: Licence held
+  ru: Стаж вождения
+  fa: سابقهٔ گواهینامه
+  he: ותק ברישיון
+  ar: مدة حيازة الرخصة
+
+book_now:
+  ka: დაჯავშნა
+  en: Book now
+  ru: Забронировать
+  fa: رزرو کنید
+  he: הזמינו עכשיו
+  ar: احجز الآن
+
+request_booking:
+  ka: ჯავშნის მოთხოვნა
+  en: Request booking
+  ru: Запросить бронь
+  fa: درخواست رزرو
+  he: בקשת הזמנה
+  ar: طلب الحجز
+
+see_all_cars:
+  ka: ყველა მანქანის ნახვა
+  en: See all cars
+  ru: Смотреть все автомобили
+  fa: مشاهدهٔ همهٔ خودروها
+  he: צפייה בכל הרכבים
+  ar: عرض كل السيارات
+
+view_car:
+  ka: მანქანის ნახვა
+  en: View car
+  ru: Смотреть автомобиль
+  fa: مشاهدهٔ خودرو
+  he: צפייה ברכב
+  ar: عرض السيارة
+
+# ── Itinerary labels ──────────────────────────────────────────────────────
+itineraries:
+  ka: მზა მარშრუტების გეგმები
+  en: Itineraries
+  ru: Готовые планы поездок
+  fa: برنامه‌های سفر آماده
+  he: תוכניות טיול מוכנות
+  ar: خطط رحلات جاهزة
+
+day:
+  ka: დღე
+  en: Day
+  ru: День
+  fa: روز
+  he: יום
+  ar: اليوم
+
+days:
+  ka: დღე
+  en: days
+  ru: дн.
+  fa: روز
+  he: ימים
+  ar: أيام
+
+nights:
+  ka: ღამე
+  en: nights
+  ru: ноч.
+  fa: شب
+  he: לילות
+  ar: ليالٍ
+
+total_distance:
+  ka: სულ მანძილი
+  en: Total distance
+  ru: Общее расстояние
+  fa: مسافت کل
+  he: מרחק כולל
+  ar: المسافة الإجمالية
+
+total_drive:
+  ka: სულ მართვაში
+  en: Total driving
+  ru: Всего за рулём
+  fa: کل زمان رانندگی
+  he: זמן נהיגה כולל
+  ar: إجمالي زمن القيادة
+
+recommended_car:
+  ka: რეკომენდებული კატეგორია
+  en: Recommended category
+  ru: Рекомендуемая категория
+  fa: دستهٔ پیشنهادی
+  he: קטגוריה מומלצת
+  ar: الفئة الموصى بها
+
+best_season:
+  ka: საუკეთესო სეზონი
+  en: Best season
+  ru: Лучший сезон
+  fa: بهترین فصل
+  he: העונה הטובה ביותר
+  ar: أفضل موسم
+
+start_point:
+  ka: საწყისი წერტილი
+  en: Start point
+  ru: Начальная точка
+  fa: نقطهٔ شروع
+  he: נקודת התחלה
+  ar: نقطة الانطلاق
+
+end_point:
+  ka: საბოლოო წერტილი
+  en: End point
+  ru: Конечная точка
+  fa: نقطهٔ پایان
+  he: נקודת סיום
+  ar: نقطة الوصول
+
+overnight:
+  ka: ღამის გათევა
+  en: Overnight
+  ru: Ночёвка
+  fa: اقامت شبانه
+  he: לינת לילה
+  ar: المبيت
+
+road_type:
+  ka: გზის ტიპი
+  en: Road type
+  ru: Тип дороги
+  fa: نوع جاده
+  he: סוג הכביש
+  ar: نوع الطريق
+
+day_by_day:
+  ka: დღეების გეგმა
+  en: Day-by-day plan
+  ru: План по дням
+  fa: برنامهٔ روزبه‌روز
+  he: תוכנית יום-יום
+  ar: خطة يومًا بيوم
+
+customize_this_trip:
+  ka: მარშრუტის მორგება
+  en: Customize this itinerary
+  ru: Настроить маршрут
+  fa: سفارشی‌سازی این برنامه
+  he: התאמה אישית של הטיול
+  ar: تخصيص هذه الرحلة
+
+difficulty:
+  ka: სირთულე
+  en: Difficulty
+  ru: Сложность
+  fa: سختی
+  he: דרגת קושי
+  ar: الصعوبة
+
+# ── Planner landing labels ─────────────────────────────────────────────────
+trip_planner:
+  ka: მოგზაურობის დამგეგმავი
+  en: Trip planner
+  ru: Планировщик поездок
+  fa: برنامه‌ریز سفر
+  he: מתכנן הטיולים
+  ar: مخطط الرحلات
+
+how_it_works:
+  ka: როგორ მუშაობს
+  en: How it works
+  ru: Как это работает
+  fa: نحوهٔ کارکرد
+  he: איך זה עובד
+  ar: كيف يعمل
+
+open_planner:
+  ka: დამგეგმავის გახსნა
+  en: Open the planner
+  ru: Открыть планировщик
+  fa: باز کردن برنامه‌ریز
+  he: פתיחת המתכנן
+  ar: فتح المخطط
+
+ready_made_routes:
+  ka: მზა მარშრუტები
+  en: Ready-made routes
+  ru: Готовые маршруты
+  fa: مسیرهای آماده
+  he: מסלולים מוכנים
+  ar: مسارات جاهزة
+
+browse_places:
+  ka: ადგილების დათვალიერება
+  en: Browse places
+  ru: Смотреть места
+  fa: مرور مکان‌ها
+  he: עיון במקומות
+  ar: تصفّح الأماكن
+
+plan_your_own:
+  ka: შექმენით საკუთარი მარშრუტი
+  en: Plan your own route
+  ru: Постройте свой маршрут
+  fa: مسیر خودتان را برنامه‌ریزی کنید
+  he: תכננו מסלול משלכם
+  ar: خطّط مسارك الخاص
+
+# ── Road-type values (attraction.road / route.road / plan[].road) ─────────
+# Real value set found in content/routes, content/attractions, content/itineraries:
+# paved, mostly_paved, gravel, 4x4_only — matches content/settings/travel.yml `road:`.
+road:
+  paved:
+    ka: ასფალტი
+    en: Paved
+    ru: Асфальт
+    fa: آسفالت
+    he: סלול
+    ar: معبّد
+  mostly_paved:
+    ka: ძირითადად ასფალტი
+    en: Mostly paved
+    ru: В основном асфальт
+    fa: بیشتر آسفالت
+    he: סלול ברובו
+    ar: معبّد في معظمه
+  gravel:
+    ka: გრუნტოვანი მონაკვეთებით
+    en: Unpaved sections
+    ru: Есть грунтовые участки
+    fa: بخش‌های خاکی
+    he: קטעים לא סלולים
+    ar: مقاطع غير معبّدة
+  4x4_only:
+    ka: მხოლოდ 4x4
+    en: 4x4 only
+    ru: Только 4x4
+    fa: فقط 4x4
+    he: 4x4 בלבד
+    ar: دفع رباعي فقط
+
+# ── Season values (route/attraction/itinerary `best_season:`) ─────────────
+# Real value set found across content/routes/*.yml, content/attractions/*.yml
+# and content/itineraries/*.yml: all, april-october, december-march,
+# july-september, june-september, march-november, may-october, year-round.
+# `all` and `year-round` are both present in content as distinct literal
+# values, so both are covered rather than merged.
+season:
+  all:
+    ka: მთელი წელი
+    en: All year
+    ru: Круглый год
+    fa: تمام سال
+    he: כל השנה
+    ar: طوال السنة
+  year-round:
+    ka: წელიწადში ღიაა
+    en: Year-round
+    ru: Круглогодично
+    fa: در تمام طول سال
+    he: כל השנה
+    ar: على مدار العام
+  april-october:
+    ka: აპრილი–ოქტომბერი
+    en: April–October
+    ru: Апрель–октябрь
+    fa: آوریل–اکتبر
+    he: אפריל–אוקטובר
+    ar: أبريل–أكتوبر
+  may-october:
+    ka: მაისი–ოქტომბერი
+    en: May–October
+    ru: Май–октябрь
+    fa: مه–اکتبر
+    he: מאי–אוקטובר
+    ar: مايو–أكتوبر
+  june-september:
+    ka: ივნისი–სექტემბერი
+    en: June–September
+    ru: Июнь–сентябрь
+    fa: ژوئن–سپتامبر
+    he: יוני–ספטמבר
+    ar: يونيو–سبتمبر
+  july-september:
+    ka: ივლისი–სექტემბერი
+    en: July–September
+    ru: Июль–сентябрь
+    fa: ژوئیه–سپتامبر
+    he: יולי–ספטמבר
+    ar: يوليو–سبتمبر
+  march-november:
+    ka: მარტი–ნოემბერი
+    en: March–November
+    ru: Март–ноябрь
+    fa: مارس–نوامبر
+    he: מרץ–נובמבר
+    ar: مارس–نوفمبر
+  december-march:
+    ka: დეკემბერი–მარტი
+    en: December–March
+    ru: Декабрь–март
+    fa: دسامبر–مارس
+    he: דצמבר–מרץ
+    ar: ديسمبر–مارس
+
+straight_line:
+  ka: სწორი ხაზით
+  en: straight line
+  ru: по прямой
+  fa: خط مستقیم
+  he: בקו אווירי
+  ar: بخط مستقيم

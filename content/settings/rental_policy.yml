@@ -1,0 +1,174 @@
+# Rental policy — commercial terms used by the /car-rental/ SEO cluster.
+#
+# STATUS: RECONCILED 2026-08-30. This file was originally a set of PROPOSED
+# DEFAULTS drafted by an assistant, not the business — it disagreed with the
+# pre-existing published pages (content/pages/terms.yml, faq.yml, pricing.yml)
+# on several material terms. Values below have been corrected to match those
+# pre-existing pages wherever they agree with each other. Full source-by-source
+# comparison: docs/seo/FACT_RECONCILIATION.md.
+#
+# Where terms.yml/faq.yml/pricing.yml/contact.yml disagree WITH EACH OTHER
+# (not just with this file), no side was picked — the line is marked
+# `# CONFLICT:` below and must be resolved by the owner, not by editing here.
+#
+# Also note: as of this pass, nothing in build.py actually reads RENTAL_POLICY
+# (it is loaded into a module-level variable and never referenced again) and
+# none of the note_key values below resolve to any copy in ui.yml/travel.yml.
+# This file currently affects no rendered page. See FACT_RECONCILIATION.md.
+
+# ── Driver requirements ────────────────────────────────────────────────
+min_driver_age: 21              # years — this is the ECONOMY-class minimum.
+                                 # terms.yml/faq.yml agree on full tiers this
+                                 # flat field can't hold: 21 economy, 23
+                                 # crossover/SUV/minivan, 25 business/4x4.
+min_licence_years: 2            # years held — economy-class minimum; terms.yml
+                                 # tiers this too: 2 economy, 3 crossover/
+                                 # minivan/commercial van, 4 off-road 4x4, 5
+                                 # business.
+licence_accepted:               # what we accept at pickup
+  - national            # national licence in Latin script
+  - idp                 # national licence + International Driving Permit
+passport_required: true
+# Owner ask: no field here captures the young-driver surcharge that terms.yml
+# and faq.yml both state (15 GEL/day ages 23–25 on crossover/minivan, 25
+# GEL/day ages 25–27 on business/4x4). Add a field once the schema is wired
+# into build.py — do not infer a single flat number, it varies by category.
+
+# ── Mileage ────────────────────────────────────────────────────────────
+mileage:
+  unlimited: true               # unlimited km on all rentals within Georgia
+  note_key: mileage_unlimited   # copy key in ui/travel yml — does not exist yet
+
+# ── Deposit ────────────────────────────────────────────────────────────
+deposit:
+  # Per-car amounts already live in content/cars/*.yml (`deposit:`), in GEL —
+  # confirmed to match pricing.yml's deposit table exactly (economy 300,
+  # crossover/SUV 600, business/minivan 1,000, off-road 4x4 1,200, van 800).
+  # These flags describe HOW the deposit is handled.
+  method: card_hold             # card_hold | cash | either
+  cash_accepted: true
+  released_days: 3              # working days after return
+  waiver_available: false       # no "no deposit" product offered (SCDW zeroes
+                                 # the CDW excess, it does not waive the deposit)
+
+# ── Fuel ───────────────────────────────────────────────────────────────
+fuel_policy: full_to_full       # returned with a full tank; was wrongly set to
+                                 # same_to_same — terms.yml states "full to
+                                 # full" explicitly and charges fuel + 20 GEL
+                                 # if the tank isn't full on return.
+
+# ── Delivery / pickup ──────────────────────────────────────────────────
+delivery:
+  office_pickup_free: true
+  city_delivery_free_in:        # place keys with free delivery
+    - tbilisi
+  airport_fee_gel:              # per place key; null = not served
+    tbilisi-airport: 40         # was 30 — pricing.yml states 40 (1–2 days;
+                                 # free from 3+ days)
+    kutaisi-airport: 60         # free from 5+ days
+    batumi-airport: 50          # was 60 — pricing.yml states 50 (1–4 days;
+                                 # free from 5+ days)
+  city_fee_gel:
+    kutaisi: 40                 # was 50 — pricing.yml "Kutaisi, city centre" is 40
+    batumi: 40                  # was 50 — pricing.yml "Batumi, city centre" is 40
+  night_surcharge_gel: 40       # was 20 — faq.yml and pricing.yml agree on 40
+  night_from: "22:00"
+  night_to: "07:00"             # was 08:00 — faq.yml and pricing.yml agree on 07:00
+
+# ── One-way ────────────────────────────────────────────────────────────
+one_way:
+  available: true
+  fee_gel: 100                  # between served cities (Tbilisi/Kutaisi/Batumi)
+  note_key: one_way_between_served_cities   # does not exist yet in ui/travel yml
+
+# ── Rental duration ────────────────────────────────────────────────────
+min_rental_days: 1              # matches pages/index.yml "Minimum rental period: 1 day"
+# max_rental_days removed: no source (terms.yml, faq.yml, pricing.yml) states a
+# maximum length for a standard rental. pricing.yml's monthly rate table is
+# open-ended past "30+ days", and its ">3 months" threshold is a CORPORATE
+# pricing trigger (also requires 3+ vehicles), not a stated cap on a single
+# rental. The old value of 90 was not sourced from anything — removed rather
+# than guessed. Owner ask: is there an actual maximum rental length, or is
+# duration open-ended until a customer qualifies for corporate terms?
+
+# ── Insurance ──────────────────────────────────────────────────────────
+insurance:
+  included: tpl_cdw             # was "tpl" only — terms.yml, pricing.yml AND
+                                 # meta.yml's own (already-correct) llms_facts
+                                 # all agree CDW is included in the base rate,
+                                 # not a paid add-on.
+  cdw_available: true           # NOTE: despite the key name, this now means
+                                 # "SCDW (full excess waiver) available as a
+                                 # paid upgrade" — CDW itself is included, see
+                                 # `included` above. Key name is stale; rename
+                                 # to scdw_available if/when this file is wired
+                                 # into build.py.
+  cdw_daily_gel: 25             # actually the SCDW upgrade price, which pricing.yml
+                                 # states as a RANGE of 25–45 GEL/day depending on
+                                 # category — this flat field stores only the low
+                                 # end. Do not read this as a single true price.
+  excess_gel: 300               # was 1000, mislabelled "without CDW". The real,
+                                 # sourced figure is a per-category table
+                                 # (pricing.yml): economy 300, crossover/SUV 600,
+                                 # business/minivan 1,000, off-road 4x4 1,200,
+                                 # commercial van 800. 300 (economy, the
+                                 # headline category) is stored here as the flat
+                                 # value; SCDW brings the excess to 0 GEL on
+                                 # every category.
+  # Deliberately NOT claimed: "full coverage".
+
+# ── Cross-border ───────────────────────────────────────────────────────
+cross_border:
+  allowed: true                 # was false. terms.yml, pricing.yml and
+                                 # meta.yml's own llms_facts all agree:
+                                 # Armenia (150 GEL) and Turkey (250 GEL,
+                                 # selected categories) permitted with 48h
+                                 # advance arrangement and a 300 km/day limit;
+                                 # Azerbaijan and Russia prohibited.
+  note_key: cross_border_limited  # was no_cross_border (backwards given the
+                                   # correction above) — this key does not
+                                   # exist yet in ui/travel yml either way.
+
+# ── Cancellation ───────────────────────────────────────────────────────
+cancellation:
+  free_until_hours: 48          # was 24 — terms.yml is the only source with a
+                                 # detailed cancellation policy: free >48h
+                                 # ahead, one day's rate 24–48h ahead, two
+                                 # days' rate under 24h or no-show. This flat
+                                 # schema has no field for the 24–48h middle
+                                 # tier (one day's rate) — do not treat
+                                 # free_until_hours as the only cutoff.
+  no_show_charge_days: 2        # was 1 — matches terms.yml ("two days' rate")
+  # CONFLICT: prepayment_required — pre-existing pages disagree with each
+  # other. contact.yml says "Bookings are made by phone or email — the site
+  # has no online form or payment system." terms.yml, faq.yml and pricing.yml
+  # all describe submitting a booking request online, with the booking
+  # confirmed only "after the required payment is completed." Left at its
+  # existing value (false) rather than picking a side — see
+  # docs/seo/FACT_RECONCILIATION.md and report to the owner.
+  prepayment_required: false    # pay at pickup — CONFLICTS with terms/faq/pricing, see above
+
+# ── Extras ─────────────────────────────────────────────────────────────
+extras_gel:
+  child_seat: 10                # per day — matches faq.yml and pricing.yml
+  additional_driver: 20         # was 10 — faq.yml and pricing.yml agree on 20
+  gps: 15                       # was 0 with a "not offered separately" note —
+                                 # WRONG: pricing.yml lists "GPS navigator,
+                                 # 15 ₾/day, with offline maps" as an actual
+                                 # paid extra.
+  # wifi_router removed: no source (terms.yml, faq.yml, pricing.yml, or any
+  # other published page) mentions a WiFi router rental at any price. The
+  # old value (15 GEL/day) was invented — removed rather than guessed. Owner
+  # ask: does RentUp actually offer a WiFi router extra, and at what price?
+
+# ── Support ────────────────────────────────────────────────────────────
+support:
+  roadside_assistance: true
+  hours_key: office_hours       # LIKELY WRONG: faq.yml and pricing.yml both
+                                 # state roadside assistance is 24/7, not
+                                 # limited to office hours (09:00–21:00 per
+                                 # site.yml). No "24/7" copy key exists to
+                                 # point this at instead — flagged rather than
+                                 # silently left wrong; see report.
+  languages: [ka, en, ru]       # matches terms.yml: "the agreement is drawn
+                                 # up in Georgian, English or Russian"

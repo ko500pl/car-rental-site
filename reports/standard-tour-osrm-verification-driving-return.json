@@ -1,0 +1,410 @@
+{
+  "generated_on": "2026-08-29",
+  "method": "OSRM driving route through origin and ordered waypoints; return leg is included only when return_to_origin=true",
+  "endpoint": "https://router.project-osrm.org/route/v1/driving",
+  "summary": {
+    "routes": 6,
+    "verified": 5,
+    "failed": 1,
+    "stated_below_osrm_distance": 0,
+    "stated_below_osrm_time": 1
+  },
+  "routes": [
+    {
+      "slug": "black-sea-adjara",
+      "name": "შავი ზღვა და აჭარა",
+      "waypoints": [
+        "bagrati-cathedral",
+        "kobuleti",
+        "batumi-botanical-garden",
+        "batumi-boulevard-old-town",
+        "gonio-fortress",
+        "makhuntseti-waterfall",
+        "mtirala-national-park"
+      ],
+      "return_to_origin": true,
+      "missing_waypoints": [],
+      "stated_distance_km": 880.0,
+      "stated_drive_hours": 14.5,
+      "osrm": {
+        "distance_km": 848.8,
+        "drive_hours": 13.03,
+        "legs": [
+          {
+            "from": "origin",
+            "to": "bagrati-cathedral",
+            "distance_km": 222.0,
+            "drive_hours": 3.02
+          },
+          {
+            "from": "bagrati-cathedral",
+            "to": "kobuleti",
+            "distance_km": 122.2,
+            "drive_hours": 1.81
+          },
+          {
+            "from": "kobuleti",
+            "to": "batumi-botanical-garden",
+            "distance_km": 21.4,
+            "drive_hours": 0.43
+          },
+          {
+            "from": "batumi-botanical-garden",
+            "to": "batumi-boulevard-old-town",
+            "distance_km": 9.4,
+            "drive_hours": 0.22
+          },
+          {
+            "from": "batumi-boulevard-old-town",
+            "to": "gonio-fortress",
+            "distance_km": 13.2,
+            "drive_hours": 0.31
+          },
+          {
+            "from": "gonio-fortress",
+            "to": "makhuntseti-waterfall",
+            "distance_km": 37.6,
+            "drive_hours": 0.86
+          },
+          {
+            "from": "makhuntseti-waterfall",
+            "to": "mtirala-national-park",
+            "distance_km": 61.9,
+            "drive_hours": 1.36
+          },
+          {
+            "from": "mtirala-national-park",
+            "to": "origin:return",
+            "distance_km": 361.1,
+            "drive_hours": 5.03
+          }
+        ]
+      },
+      "distance_ratio": 1.04,
+      "drive_time_ratio": 1.11,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "slug": "imereti-caves-canyons",
+      "name": "იმერეთი: ღრმულები და კანიონები",
+      "waypoints": [
+        "uplistsikhe",
+        "bagrati-cathedral",
+        "motsameta-monastery",
+        "gelati-monastery",
+        "sataplia-nature-reserve",
+        "prometheus-cave",
+        "okatse-canyon",
+        "kinchkha-waterfall"
+      ],
+      "return_to_origin": true,
+      "missing_waypoints": [],
+      "stated_distance_km": 640.0,
+      "stated_drive_hours": 10.5,
+      "osrm": {
+        "distance_km": 598.6,
+        "drive_hours": 12.71,
+        "legs": [
+          {
+            "from": "origin",
+            "to": "uplistsikhe",
+            "distance_km": 95.9,
+            "drive_hours": 2.14
+          },
+          {
+            "from": "uplistsikhe",
+            "to": "bagrati-cathedral",
+            "distance_km": 152.6,
+            "drive_hours": 2.9
+          },
+          {
+            "from": "bagrati-cathedral",
+            "to": "motsameta-monastery",
+            "distance_km": 5.4,
+            "drive_hours": 0.14
+          },
+          {
+            "from": "motsameta-monastery",
+            "to": "gelati-monastery",
+            "distance_km": 5.0,
+            "drive_hours": 0.12
+          },
+          {
+            "from": "gelati-monastery",
+            "to": "sataplia-nature-reserve",
+            "distance_km": 20.0,
+            "drive_hours": 1.0
+          },
+          {
+            "from": "sataplia-nature-reserve",
+            "to": "prometheus-cave",
+            "distance_km": 16.8,
+            "drive_hours": 0.62
+          },
+          {
+            "from": "prometheus-cave",
+            "to": "okatse-canyon",
+            "distance_km": 26.6,
+            "drive_hours": 0.65
+          },
+          {
+            "from": "okatse-canyon",
+            "to": "kinchkha-waterfall",
+            "distance_km": 9.9,
+            "drive_hours": 0.82
+          },
+          {
+            "from": "kinchkha-waterfall",
+            "to": "origin:return",
+            "distance_km": 266.4,
+            "drive_hours": 4.32
+          }
+        ]
+      },
+      "distance_ratio": 1.07,
+      "drive_time_ratio": 0.83,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "slug": "kakheti-wine-loop",
+      "name": "კახეთის ღვინის მარშრუტი",
+      "waypoints": [
+        "sighnaghi",
+        "bodbe-monastery",
+        "telavi-batonis-tsikhe",
+        "tsinandali-estate",
+        "alaverdi-cathedral",
+        "kvareli-kindzmarauli"
+      ],
+      "return_to_origin": true,
+      "missing_waypoints": [],
+      "stated_distance_km": 420.0,
+      "stated_drive_hours": 8.0,
+      "osrm": null,
+      "distance_ratio": null,
+      "drive_time_ratio": null,
+      "status": "routing-failed",
+      "error": "The read operation timed out"
+    },
+    {
+      "slug": "military-highway-kazbegi",
+      "name": "სამხედრო გზა და ყაზბეგი",
+      "waypoints": [
+        "jvari-monastery",
+        "zhinvali-reservoir",
+        "ananuri-fortress",
+        "gudauri",
+        "gergeti-trinity-church",
+        "dariali-gorge-gveleti-waterfalls"
+      ],
+      "return_to_origin": true,
+      "missing_waypoints": [],
+      "stated_distance_km": 340.0,
+      "stated_drive_hours": 6.666666666666667,
+      "osrm": {
+        "distance_km": 351.3,
+        "drive_hours": 6.95,
+        "legs": [
+          {
+            "from": "origin",
+            "to": "jvari-monastery",
+            "distance_km": 25.2,
+            "drive_hours": 0.52
+          },
+          {
+            "from": "jvari-monastery",
+            "to": "zhinvali-reservoir",
+            "distance_km": 45.2,
+            "drive_hours": 1.06
+          },
+          {
+            "from": "zhinvali-reservoir",
+            "to": "ananuri-fortress",
+            "distance_km": 7.2,
+            "drive_hours": 0.41
+          },
+          {
+            "from": "ananuri-fortress",
+            "to": "gudauri",
+            "distance_km": 58.0,
+            "drive_hours": 1.01
+          },
+          {
+            "from": "gudauri",
+            "to": "gergeti-trinity-church",
+            "distance_km": 38.9,
+            "drive_hours": 0.76
+          },
+          {
+            "from": "gergeti-trinity-church",
+            "to": "dariali-gorge-gveleti-waterfalls",
+            "distance_km": 14.0,
+            "drive_hours": 0.39
+          },
+          {
+            "from": "dariali-gorge-gveleti-waterfalls",
+            "to": "origin:return",
+            "distance_km": 162.8,
+            "drive_hours": 2.79
+          }
+        ]
+      },
+      "distance_ratio": 0.97,
+      "drive_time_ratio": 0.96,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "slug": "racha-mountain-loop",
+      "name": "რაჭა ორ დღეში — ტაძრები, ტბა და მთის სოფლები",
+      "waypoints": [
+        "gogolati",
+        "nakerala-pass",
+        "shaori-reservoir",
+        "nikortsminda-cathedral",
+        "ambrolauri",
+        "waterfall-of-love-racha",
+        "barakoni-church",
+        "oni-synagogue",
+        "oni",
+        "utsera"
+      ],
+      "return_to_origin": true,
+      "missing_waypoints": [],
+      "stated_distance_km": 330.0,
+      "stated_drive_hours": 7.5,
+      "osrm": {
+        "distance_km": 336.2,
+        "drive_hours": 7.77,
+        "legs": [
+          {
+            "from": "origin",
+            "to": "gogolati",
+            "distance_km": 68.6,
+            "drive_hours": 1.33
+          },
+          {
+            "from": "gogolati",
+            "to": "nakerala-pass",
+            "distance_km": 40.9,
+            "drive_hours": 0.82
+          },
+          {
+            "from": "nakerala-pass",
+            "to": "shaori-reservoir",
+            "distance_km": 22.1,
+            "drive_hours": 0.4
+          },
+          {
+            "from": "shaori-reservoir",
+            "to": "nikortsminda-cathedral",
+            "distance_km": 13.3,
+            "drive_hours": 1.09
+          },
+          {
+            "from": "nikortsminda-cathedral",
+            "to": "ambrolauri",
+            "distance_km": 21.8,
+            "drive_hours": 0.79
+          },
+          {
+            "from": "ambrolauri",
+            "to": "waterfall-of-love-racha",
+            "distance_km": 3.6,
+            "drive_hours": 0.12
+          },
+          {
+            "from": "waterfall-of-love-racha",
+            "to": "barakoni-church",
+            "distance_km": 8.8,
+            "drive_hours": 0.26
+          },
+          {
+            "from": "barakoni-church",
+            "to": "oni-synagogue",
+            "distance_km": 24.6,
+            "drive_hours": 0.58
+          },
+          {
+            "from": "oni-synagogue",
+            "to": "oni",
+            "distance_km": 1.0,
+            "drive_hours": 0.04
+          },
+          {
+            "from": "oni",
+            "to": "utsera",
+            "distance_km": 11.4,
+            "drive_hours": 0.23
+          },
+          {
+            "from": "utsera",
+            "to": "origin:return",
+            "distance_km": 120.0,
+            "drive_hours": 2.12
+          }
+        ]
+      },
+      "distance_ratio": 0.98,
+      "drive_time_ratio": 0.97,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "slug": "vardzia-borjomi-south",
+      "name": "ვარძია და ბორჯომი — სამხრეთის მარშრუტი",
+      "waypoints": [
+        "borjomi-central-park",
+        "rabati-castle",
+        "khertvisi-fortress",
+        "vardzia"
+      ],
+      "return_to_origin": true,
+      "missing_waypoints": [],
+      "stated_distance_km": 550.0,
+      "stated_drive_hours": 9.0,
+      "osrm": {
+        "distance_km": 500.9,
+        "drive_hours": 8.24,
+        "legs": [
+          {
+            "from": "origin",
+            "to": "borjomi-central-park",
+            "distance_km": 161.5,
+            "drive_hours": 2.34
+          },
+          {
+            "from": "borjomi-central-park",
+            "to": "rabati-castle",
+            "distance_km": 50.4,
+            "drive_hours": 0.97
+          },
+          {
+            "from": "rabati-castle",
+            "to": "khertvisi-fortress",
+            "distance_km": 47.5,
+            "drive_hours": 0.76
+          },
+          {
+            "from": "khertvisi-fortress",
+            "to": "vardzia",
+            "distance_km": 15.6,
+            "drive_hours": 0.33
+          },
+          {
+            "from": "vardzia",
+            "to": "origin:return",
+            "distance_km": 225.9,
+            "drive_hours": 3.85
+          }
+        ]
+      },
+      "distance_ratio": 1.1,
+      "drive_time_ratio": 1.09,
+      "status": "ok",
+      "error": null
+    }
+  ]
+}

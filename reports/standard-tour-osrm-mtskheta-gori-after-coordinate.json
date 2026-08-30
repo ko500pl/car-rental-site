@@ -1,0 +1,76 @@
+{
+  "generated_on": "2026-08-29",
+  "method": "OSRM driving route through origin and ordered waypoints; return leg is included only when return_to_origin=true",
+  "endpoint": "https://router.project-osrm.org/route/v1/driving",
+  "summary": {
+    "routes": 1,
+    "verified": 1,
+    "failed": 0,
+    "stated_below_osrm_distance": 0,
+    "stated_below_osrm_time": 0
+  },
+  "routes": [
+    {
+      "slug": "mtskheta-gori-heritage",
+      "name": "მცხეთა, უფლისციხე და ატენის ხეობა",
+      "waypoints": [
+        "jvari-monastery",
+        "svetitskhoveli-cathedral",
+        "samtavro-monastery",
+        "uplistsikhe",
+        "gori-fortress-stalin-museum",
+        "ateni-sioni-church"
+      ],
+      "return_to_origin": false,
+      "missing_waypoints": [],
+      "stated_distance_km": 230.0,
+      "stated_drive_hours": 4.333333333333333,
+      "osrm": {
+        "distance_km": 138.6,
+        "drive_hours": 3.89,
+        "legs": [
+          {
+            "from": "origin",
+            "to": "jvari-monastery",
+            "distance_km": 25.2,
+            "drive_hours": 0.52
+          },
+          {
+            "from": "jvari-monastery",
+            "to": "svetitskhoveli-cathedral",
+            "distance_km": 12.6,
+            "drive_hours": 0.28
+          },
+          {
+            "from": "svetitskhoveli-cathedral",
+            "to": "samtavro-monastery",
+            "distance_km": 0.4,
+            "drive_hours": 0.02
+          },
+          {
+            "from": "samtavro-monastery",
+            "to": "uplistsikhe",
+            "distance_km": 76.4,
+            "drive_hours": 1.85
+          },
+          {
+            "from": "uplistsikhe",
+            "to": "gori-fortress-stalin-museum",
+            "distance_km": 10.8,
+            "drive_hours": 0.95
+          },
+          {
+            "from": "gori-fortress-stalin-museum",
+            "to": "ateni-sioni-church",
+            "distance_km": 13.1,
+            "drive_hours": 0.28
+          }
+        ]
+      },
+      "distance_ratio": 1.66,
+      "drive_time_ratio": 1.11,
+      "status": "ok",
+      "error": null
+    }
+  ]
+}

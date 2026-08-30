@@ -1,0 +1,79 @@
+[
+  {
+    "slug": "dashbashi-canyon",
+    "status": "updated",
+    "media": [
+      {
+        "title": "File:Dashbashi Canyon Natural Monument1.jpg",
+        "author": "Paata vardanashvili",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Dashbashi_Canyon_Natural_Monument1.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/4/40/Dashbashi_Canyon_Natural_Monument1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "original_width": 1600,
+        "original_height": 900,
+        "local_path": "static/photos/dashbashi-canyon.webp",
+        "output_width": 1600,
+        "output_height": 900,
+        "bytes": 435058
+      },
+      {
+        "title": "File:Dashbashi Canyon Natural Monument2.jpg",
+        "author": "Paata vardanashvili",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Dashbashi_Canyon_Natural_Monument2.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Dashbashi_Canyon_Natural_Monument2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "original_width": 1600,
+        "original_height": 900,
+        "local_path": "static/photos/dashbashi-canyon-1.webp",
+        "output_width": 1600,
+        "output_height": 900,
+        "bytes": 501410
+      },
+      {
+        "title": "File:Dashbashi Canyon Natural Monument3.jpg",
+        "author": "Paata vardanashvili",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Dashbashi_Canyon_Natural_Monument3.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Dashbashi_Canyon_Natural_Monument3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "original_width": 1600,
+        "original_height": 900,
+        "local_path": "static/photos/dashbashi-canyon-2.webp",
+        "output_width": 1600,
+        "output_height": 900,
+        "bytes": 300206
+      },
+      {
+        "title": "File:Dashbashi Waterfall situated in the Dashbashi Canyon.jpg",
+        "author": "Daviti Zhorzholiani",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Dashbashi_Waterfall_situated_in_the_Dashbashi_Canyon.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Dashbashi_Waterfall_situated_in_the_Dashbashi_Canyon.jpg/1920px-Dashbashi_Waterfall_situated_in_the_Dashbashi_Canyon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 2560,
+        "original_height": 1440,
+        "local_path": "static/photos/dashbashi-canyon-3.webp",
+        "output_width": 1800,
+        "output_height": 1013,
+        "bytes": 702398
+      },
+      {
+        "title": "File:Dashbashi Canyon, Tsalka, Kvemo Kartli, Georgia.jpg",
+        "author": "Ani.Georgia",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Dashbashi_Canyon,_Tsalka,_Kvemo_Kartli,_Georgia.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Dashbashi_Canyon%2C_Tsalka%2C_Kvemo_Kartli%2C_Georgia.jpg/1920px-Dashbashi_Canyon%2C_Tsalka%2C_Kvemo_Kartli%2C_Georgia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 2048,
+        "original_height": 1536,
+        "local_path": "static/photos/dashbashi-canyon-4.webp",
+        "output_width": 1800,
+        "output_height": 1350,
+        "bytes": 593542
+      }
+    ],
+    "errors": []
+  }
+]

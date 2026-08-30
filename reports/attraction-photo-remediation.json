@@ -1,0 +1,91 @@
+[
+  {
+    "slug": "khulo-cable-car-upper-adjara",
+    "status": "updated",
+    "media": [
+      {
+        "title": "File:Starting point of Khulo - Tago ropeway cable car.jpg",
+        "author": "Jelger Groeneveld",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Starting_point_of_Khulo_-_Tago_ropeway_cable_car.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Starting_point_of_Khulo_-_Tago_ropeway_cable_car.jpg/1920px-Starting_point_of_Khulo_-_Tago_ropeway_cable_car.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 3872,
+        "original_height": 2592,
+        "local_path": "static/photos/khulo-cable-car-upper-adjara.webp",
+        "output_width": 1800,
+        "output_height": 1205,
+        "bytes": 383434
+      },
+      {
+        "title": "File:Khulo, wiev from Tago Cableway Station.jpg",
+        "author": "Gaga.vaa",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Khulo,_wiev_from_Tago_Cableway_Station.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Khulo%2C_wiev_from_Tago_Cableway_Station.jpg/1920px-Khulo%2C_wiev_from_Tago_Cableway_Station.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 5312,
+        "original_height": 2988,
+        "local_path": "static/photos/khulo-cable-car-upper-adjara-1.webp",
+        "output_width": 675,
+        "output_height": 900,
+        "bytes": 43560
+      },
+      {
+        "title": "File:Khulo main street Sh1.jpg",
+        "author": "Jelger Groeneveld",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Khulo_main_street_Sh1.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Khulo_main_street_Sh1.jpg/1920px-Khulo_main_street_Sh1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 3872,
+        "original_height": 2592,
+        "local_path": "static/photos/khulo-cable-car-upper-adjara-2.webp",
+        "output_width": 900,
+        "output_height": 500,
+        "bytes": 37566
+      }
+    ],
+    "errors": []
+  },
+  {
+    "slug": "batumi-botanical-garden",
+    "status": "updated",
+    "media": [
+      {
+        "title": "File:Batumi Botanical Garden.jpg",
+        "author": "Ephraim Stillberg",
+        "license": "Public domain",
+        "license_url": "",
+        "source": "https://commons.wikimedia.org/wiki/File:Batumi_Botanical_Garden.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Batumi_Botanical_Garden.jpg/1920px-Batumi_Botanical_Garden.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 2448,
+        "original_height": 3264,
+        "local_path": "static/photos/batumi-botanical-garden.webp",
+        "output_width": 1050,
+        "output_height": 1400,
+        "bytes": 487928
+      },
+      {
+        "title": "File:View of the Black Sea coast from Batumi Botanical Garden.jpg",
+        "author": "FingerWiki",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:View_of_the_Black_Sea_coast_from_Batumi_Botanical_Garden.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/View_of_the_Black_Sea_coast_from_Batumi_Botanical_Garden.jpg/1920px-View_of_the_Black_Sea_coast_from_Batumi_Botanical_Garden.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 3072,
+        "original_height": 4080,
+        "local_path": "static/photos/batumi-botanical-garden-1.webp",
+        "output_width": 760,
+        "output_height": 505,
+        "bytes": 93736
+      }
+    ],
+    "errors": [
+      {
+        "title": "File:Botanic Garden of Batumi.jpg",
+        "error": "The read operation timed out"
+      }
+    ]
+  }
+]

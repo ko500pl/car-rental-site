@@ -1,4 +1,4 @@
-/* Drive On PWA service worker. Network-first pages, cache-first local assets. */
+/* RentUp PWA service worker. Network-first pages, cache-first local assets. */
 const CACHE = "drive-on-v3";
 /* Pages are cached after their first successful visit. Keeping the large home/map
    documents out of install avoids downloading them twice during first load. */

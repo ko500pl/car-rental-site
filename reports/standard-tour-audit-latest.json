@@ -1,0 +1,1662 @@
+{
+  "generated_on": "2026-08-29",
+  "summary": {
+    "routes": 49,
+    "errors": 0,
+    "warnings": 0,
+    "duplicates": 0
+  },
+  "coverage": {
+    "purposes": {
+      "beach": 3,
+      "classic": 2,
+      "culinary": 4,
+      "culture": 6,
+      "cycling": 3,
+      "family": 4,
+      "hiking": 5,
+      "history": 7,
+      "mountains": 3,
+      "nature": 5,
+      "performance": 2,
+      "spa": 2,
+      "wine": 3
+    },
+    "durations": {
+      "1 day": 11,
+      "10 days": 1,
+      "2 days": 13,
+      "3 days": 8,
+      "4 days": 7,
+      "5 days": 6,
+      "6 days": 2,
+      "7 days": 1
+    },
+    "vehicles": {
+      "economy": 21,
+      "offroad": 5,
+      "suv": 23
+    },
+    "regions": {
+      "adjara": 6,
+      "guria": 4,
+      "imereti": 11,
+      "kakheti": 8,
+      "kvemo-kartli": 4,
+      "mtskheta-mtianeti": 9,
+      "racha-lechkhumi": 5,
+      "samegrelo-zemo-svaneti": 7,
+      "samtskhe-javakheti": 7,
+      "shida-kartli": 5,
+      "tbilisi": 7
+    }
+  },
+  "coverage_gaps": {
+    "regions": {},
+    "purposes": {},
+    "durations": {}
+  },
+  "issue_codes": {},
+  "duplicates": [],
+  "routes": [
+    {
+      "slug": "adjara-guria-green-road",
+      "name": "აჭარა-გურიის მწვანე გზა",
+      "status": "published",
+      "days": 5,
+      "purpose": "nature",
+      "vehicle": "suv",
+      "daily_hours": 8,
+      "waypoint_count": 8,
+      "waypoints": [
+        "batumi-botanical-garden",
+        "mtirala-national-park",
+        "makhuntseti-waterfall",
+        "keda-wine-cellars",
+        "khulo-cable-car-upper-adjara",
+        "shekvetili-dendrological-park",
+        "sameba-jikheti-monastery",
+        "nodar-dumbadze-house-museum"
+      ],
+      "regions": {
+        "adjara": 5,
+        "guria": 3
+      },
+      "types": {
+        "nature": 3,
+        "waterfall": 1,
+        "winery": 1,
+        "mountain": 1,
+        "monastery": 1,
+        "museum": 1
+      },
+      "stated_distance_km": 520.0,
+      "straight_chain_km": 170.4,
+      "distance_ratio": 3.05,
+      "source_count": 3,
+      "issues": []
+    },
+    {
+      "slug": "batumi-coast-family-day",
+      "name": "ბათუმის სანაპირო — საოჯახო ორი დღე",
+      "status": "published",
+      "days": 2,
+      "purpose": "beach",
+      "vehicle": "economy",
+      "daily_hours": 8,
+      "waypoint_count": 4,
+      "waypoints": [
+        "batumi-boulevard-old-town",
+        "batumi-6-may-park-dolphinarium",
+        "batumi-botanical-garden",
+        "gonio-fortress"
+      ],
+      "regions": {
+        "adjara": 4
+      },
+      "types": {
+        "town": 1,
+        "nature": 2,
+        "fortress": 1
+      },
+      "stated_distance_km": 55.0,
+      "straight_chain_km": 30.9,
+      "distance_ratio": 1.78,
+      "source_count": 2,
+      "issues": []
+    },
+    {
+      "slug": "black-sea-adjara",
+      "name": "შავი ზღვა და აჭარა",
+      "status": null,
+      "days": 4,
+      "purpose": "beach",
+      "vehicle": "suv",
+      "daily_hours": 10,
+      "waypoint_count": 7,
+      "waypoints": [
+        "bagrati-cathedral",
+        "kobuleti",
+        "batumi-botanical-garden",
+        "batumi-boulevard-old-town",
+        "gonio-fortress",
+        "makhuntseti-waterfall",
+        "mtirala-national-park"
+      ],
+      "regions": {
+        "imereti": 1,
+        "adjara": 6
+      },
+      "types": {
+        "town": 2,
+        "beach": 1,
+        "nature": 2,
+        "fortress": 1,
+        "waterfall": 1
+      },
+      "stated_distance_km": 880.0,
+      "straight_chain_km": 350.4,
+      "distance_ratio": 2.51,
+      "source_count": 2,
+      "issues": []
+    },
+    {
+      "slug": "borjomi-bike-and-nature",
+      "name": "ბორჯომის ველო და ბუნების წრე",
+      "status": "published",
+      "days": 3,
+      "purpose": "cycling",
+      "vehicle": "suv",
+      "daily_hours": 8.5,
+      "waypoint_count": 6,
+      "waypoints": [
+        "borjomi-central-park",
+        "green-monastery-chitakhevi",
+        "borjomi-kharagauli-national-park",
+        "bakuriani",
+        "timotesubani-monastery",
+        "tsalka-reservoir"
+      ],
+      "regions": {
+        "samtskhe-javakheti": 5,
+        "kvemo-kartli": 1
+      },
+      "types": {
+        "spa": 1,
+        "monastery": 2,
+        "nature": 1,
+        "ski": 1,
+        "lake": 1
+      },
+      "stated_distance_km": 280.0,
+      "straight_chain_km": 90.8,
+      "distance_ratio": 3.08,
+      "source_count": 2,
+      "issues": []
+    },
+    {
+      "slug": "borjomi-spa-day",
+      "name": "ბორჯომის წყლები და მწვანე ხეობა",
+      "status": "published",
+      "days": 1,
+      "purpose": "spa",
+      "vehicle": "economy",
+      "daily_hours": 7,
+      "waypoint_count": 3,
+      "waypoints": [
+        "borjomi-central-park",
+        "likani-palace",
+        "green-monastery-chitakhevi"
+      ],
+      "regions": {
+        "samtskhe-javakheti": 3
+      },
+      "types": {
+        "spa": 1,
+        "museum": 1,
+        "monastery": 1
+      },
+      "stated_distance_km": 45.0,
+      "straight_chain_km": 7.6,
+      "distance_ratio": 5.92,
+      "source_count": 2,
+      "issues": []
+    },
+    {
+      "slug": "family-georgia-seven-days",
+      "name": "ოჯახური საქართველო — 7 მშვიდი დღე",
+      "status": "published",
+      "days": 7,
+      "purpose": "family",
+      "vehicle": "suv",
+      "daily_hours": 9,
+      "waypoint_count": 9,
+      "waypoints": [
+        "tbilisi-botanical-garden",
+        "mtatsminda-park",
+        "svetitskhoveli-cathedral",
+        "borjomi-central-park",
+        "kukushka-narrow-gauge-railway",
+        "prometheus-cave",
+        "sataplia-nature-reserve",
+        "batumi-6-may-park-dolphinarium",
+        "batumi-botanical-garden"
+      ],
+      "regions": {
+        "tbilisi": 2,
+        "mtskheta-mtianeti": 1,
+        "samtskhe-javakheti": 2,
+        "imereti": 2,
+        "adjara": 2
+      },
+      "types": {
+        "nature": 5,
+        "monastery": 1,
+        "spa": 1,
+        "museum": 1,
+        "cave": 1
+      },
+      "stated_distance_km": 820.0,
+      "straight_chain_km": 355.8,
+      "distance_ratio": 2.3,
+      "source_count": 2,
+      "issues": []
+    },
+    {
+      "slug": "georgia-essential-five-days",
+      "name": "საქართველოს მთავარი ადგილები — 5 დღე",
+      "status": "published",
+      "days": 5,
+      "purpose": "classic",
+      "vehicle": "suv",
+      "daily_hours": 9,
+      "waypoint_count": 10,
+      "waypoints": [
+        "betlemi-quarter",
+        "jvari-monastery",
+        "svetitskhoveli-cathedral",
+        "ananuri-fortress",
+        "gergeti-trinity-church",
+        "bodbe-monastery",
+        "sighnaghi",
+        "gelati-monastery",
+        "bagrati-cathedral",
+        "prometheus-cave"
+      ],
+      "regions": {
+        "tbilisi": 1,
+        "mtskheta-mtianeti": 4,
+        "kakheti": 2,
+        "imereti": 3
+      },
+      "types": {
+        "town": 3,
+        "monastery": 5,
+        "fortress": 1,
+        "cave": 1
+      },
+      "stated_distance_km": 980.0,
+      "straight_chain_km": 566.8,
+      "distance_ratio": 1.73,
+      "source_count": 3,
+      "issues": []
+    },
+    {
+      "slug": "gori-uplistsikhe-day",
+      "name": "გორი და უფლისციხე ერთ დღეში",
+      "status": "published",
+      "days": 1,
+      "purpose": "history",
+      "vehicle": "economy",
+      "daily_hours": 11,
+      "waypoint_count": 4,
+      "waypoints": [
+        "gori-fortress-stalin-museum",
+        "gori-war-museum",
+        "uplistsikhe",
+        "ateni-sioni-church"
+      ],
+      "regions": {
+        "shida-kartli": 4
+      },
+      "types": {
+        "town": 1,
+        "museum": 1,
+        "cave": 1,
+        "monastery": 1
+      },
+      "stated_distance_km": 205.0,
+      "straight_chain_km": 89.9,
+      "distance_ratio": 2.28,
+      "source_count": 2,
+      "issues": []
+    },
+    {
+      "slug": "grand-georgia-classic",
+      "name": "საქართველოს დიდი კლასიკური ტური",
+      "status": "published",
+      "days": 10,
+      "purpose": "classic",
+      "vehicle": "suv",
+      "daily_hours": 9,
+      "waypoint_count": 14,
+      "waypoints": [
+        "tbilisi-botanical-garden",
+        "jvari-monastery",
+        "svetitskhoveli-cathedral",
+        "ananuri-fortress",
+        "gergeti-trinity-church",
+        "uplistsikhe",
+        "borjomi-central-park",
+        "vardzia",
+        "bagrati-cathedral",
+        "martvili-canyon",
+        "dadiani-palace-zugdidi",
+        "mestia",
+        "ushguli",
+        "batumi-boulevard-old-town"
+      ],
+      "regions": {
+        "tbilisi": 1,
+        "mtskheta-mtianeti": 4,
+        "shida-kartli": 1,
+        "samtskhe-javakheti": 2,
+        "imereti": 1,
+        "samegrelo-zemo-svaneti": 4,
+        "adjara": 1
+      },
+      "types": {
+        "nature": 1,
+        "monastery": 3,
+        "fortress": 1,
+        "cave": 2,
+        "spa": 1,
+        "town": 4,
+        "canyon": 1,
+        "museum": 1
+      },
+      "stated_distance_km": 1680.0,
+      "straight_chain_km": 814.1,
+      "distance_ratio": 2.06,
+      "source_count": 2,
+      "issues": []
+    },
+    {
+      "slug": "guria-coast-day",
+      "name": "გურიის სანაპირო და კულტურა",
+      "status": "published",
+      "days": 1,
+      "purpose": "beach",
+      "vehicle": "economy",
+      "daily_hours": 10,
+      "waypoint_count": 3,
+      "waypoints": [
+        "ureki",
+        "shekvetili-dendrological-park",
+        "nodar-dumbadze-house-museum"
+      ],
+      "regions": {
+        "guria": 3
+      },
+      "types": {
+        "beach": 1,
+        "nature": 1,
+        "museum": 1
+      },
+      "stated_distance_km": 135.0,
+      "straight_chain_km": 77.1,
+      "distance_ratio": 1.75,
+      "source_count": 2,
+      "issues": []
+    },
+    {
+      "slug": "guria-mountain-spa-weekend",
+      "name": "გურიის მთის კურორტები",
+      "status": "published",
+      "days": 2,
+      "purpose": "spa",
+      "vehicle": "offroad",
+      "daily_hours": 10,
+      "waypoint_count": 3,
+      "waypoints": [
+        "nabeghlavi",
+        "bakhmaro",
+        "gomismta"
+      ],
+      "regions": {
+        "guria": 3
+      },
+      "types": {
+        "spa": 2,
+        "mountain": 1
+      },
+      "stated_distance_km": 310.0,
+      "straight_chain_km": 48.0,
+      "distance_ratio": 6.46,
+      "source_count": 2,
+      "issues": []
+    },
+    {
+      "slug": "guria-slow-food-and-coast",
+      "name": "გურია — ნელი კულინარია და ზღვა",
+      "status": "published",
+      "days": 3,
+      "purpose": "culinary",
+      "vehicle": "economy",
+      "daily_hours": 8,
+      "waypoint_count": 6,
+      "waypoints": [
+        "ozurgeti",
+        "nodar-dumbadze-house-museum",
+        "sameba-jikheti-monastery",
+        "nabeghlavi",
+        "shekvetili-dendrological-park",
+        "ureki"
+      ],
+      "regions": {
+        "guria": 6
+      },
+      "types": {
+        "town": 1,
+        "museum": 1,
+        "monastery": 1,
+        "spa": 1,
+        "nature": 1,
+        "beach": 1
+      },
+      "stated_distance_km": 330.0,
+      "straight_chain_km": 161.6,
+      "distance_ratio": 2.04,
+      "source_count": 2,
+      "issues": []
+    },
+    {
+      "slug": "imereti-caves-canyons",
+      "name": "იმერეთი: ღრმულები და კანიონები",
+      "status": null,
+      "days": 3,
+      "purpose": "nature",
+      "vehicle": "suv",
+      "daily_hours": 10.5,
+      "waypoint_count": 8,
+      "waypoints": [
+        "uplistsikhe",
+        "bagrati-cathedral",
+        "motsameta-monastery",
+        "gelati-monastery",
+        "sataplia-nature-reserve",
+        "prometheus-cave",
+        "okatse-canyon",
+        "kinchkha-waterfall"
+      ],
+      "regions": {
+        "shida-kartli": 1,
+        "imereti": 7
+      },
+      "types": {
+        "cave": 2,
+        "town": 1,
+        "monastery": 2,
+        "nature": 1,
+        "canyon": 1,
+        "waterfall": 1
+      },
+      "stated_distance_km": 640.0,
+      "straight_chain_km": 225.4,
+      "distance_ratio": 2.84,
+      "source_count": 2,
+      "issues": []
+    },
+    {
+      "slug": "imereti-family-discovery",
+      "name": "იმერეთი ოჯახთან ერთად",
+      "status": "published",
+      "days": 3,
+      "purpose": "family",
+      "vehicle": "economy",
+      "daily_hours": 8,
+      "waypoint_count": 6,
+      "waypoints": [
+        "bagrati-cathedral",
+        "kutaisi-botanical-garden",
+        "sataplia-nature-reserve",
+        "prometheus-cave",
+        "tskaltubo-spa-town",
+        "gelati-monastery"
+      ],
+      "regions": {
+        "imereti": 6
+      },
+      "types": {
+        "town": 1,
+        "nature": 2,
+        "cave": 1,
+        "spa": 1,
+        "monastery": 1
+      },
+      "stated_distance_km": 240.0,
+      "straight_chain_km": 36.1,
+      "distance_ratio": 6.65,
+      "source_count": 2,
+      "issues": []
+    },
+    {
+      "slug": "javakheti-lakes-and-birds",
+      "name": "ჯავახეთის ტბები და ფრინველები",
+      "status": "published",
+      "days": 3,
+      "purpose": "nature",
+      "vehicle": "suv",
+      "daily_hours": 8,
+      "waypoint_count": 5,
+      "waypoints": [
+        "tsalka-reservoir",
+        "paravani-tabatskuri-lakes",
+        "poka-nunnery",
+        "javakheti-national-park",
+        "kumurdo-cathedral"
+      ],
+      "regions": {
+        "kvemo-kartli": 1,
+        "samtskhe-javakheti": 4
+      },
+      "types": {
+        "lake": 2,
+        "monastery": 2,
+        "nature": 1
+      },
+      "stated_distance_km": 590.0,
+      "straight_chain_km": 141.2,
+      "distance_ratio": 4.18,
+      "source_count": 2,
+      "issues": []
+    },
+    {
+      "slug": "kakheti-cycle-and-wine",
+      "name": "კახეთის ველო და ღვინის გზა",
+      "status": "published",
+      "days": 5,
+      "purpose": "cycling",
+      "vehicle": "suv",
+      "daily_hours": 8,
+      "waypoint_count": 8,
+      "waypoints": [
+        "david-gareja",
+        "sighnaghi",
+        "bodbe-monastery",
+        "telavi-batonis-tsikhe",
+        "alaverdi-cathedral",
+        "napareuli",
+        "lagodekhi-protected-areas",
+        "zhinvali-reservoir"
+      ],
+      "regions": {
+        "kakheti": 7,
+        "mtskheta-mtianeti": 1
+      },
+      "types": {
+        "monastery": 3,
+        "town": 2,
+        "winery": 1,
+        "nature": 1,
+        "lake": 1
+      },
+      "stated_distance_km": 470.0,
+      "straight_chain_km": 384.4,
+      "distance_ratio": 1.22,
+      "source_count": 3,
+      "issues": []
+    },
+    {
+      "slug": "kakheti-cycling-day",
+      "name": "კახეთის ერთდღიანი ველოწრე",
+      "status": "published",
+      "days": 1,
+      "purpose": "cycling",
+      "vehicle": "economy",
+      "daily_hours": 8,
+      "waypoint_count": 4,
+      "waypoints": [
+        "telavi-batonis-tsikhe",
+        "tsinandali-estate",
+        "akhali-shuamta",
+        "dzveli-shuamta"
+      ],
+      "regions": {
+        "kakheti": 4
+      },
+      "types": {
+        "town": 1,
+        "museum": 1,
+        "monastery": 2
+      },
+      "stated_distance_km": 58.0,
+      "straight_chain_km": 22.3,
+      "distance_ratio": 2.6,
+      "source_count": 2,
+      "issues": []
+    },
+    {
+      "slug": "kakheti-table-and-cellar",
+      "name": "კახური სუფრა და მარანი",
+      "status": "published",
+      "days": 3,
+      "purpose": "culinary",
+      "vehicle": "economy",
+      "daily_hours": 8,
+      "waypoint_count": 6,
+      "waypoints": [
+        "sighnaghi",
+        "bodbe-monastery",
+        "gurjaani-kvelatsminda",
+        "telavi-batonis-tsikhe",
+        "tsinandali-estate",
+        "khareba-wine-tunnel"
+      ],
+      "regions": {
+        "kakheti": 6
+      },
+      "types": {
+        "town": 2,
+        "monastery": 2,
+        "museum": 1,
+        "winery": 1
+      },
+      "stated_distance_km": 360.0,
+      "straight_chain_km": 177.3,
+      "distance_ratio": 2.03,
+      "source_count": 2,
+      "issues": []
+    },
+    {
+      "slug": "kakheti-wine-day",
+      "name": "კახეთის ღვინის დღე",
+      "status": "published",
+      "days": 1,
+      "purpose": "wine",
+      "vehicle": "economy",
+      "daily_hours": 12.5,
+      "waypoint_count": 3,
+      "waypoints": [
+        "bodbe-monastery",
+        "sighnaghi",
+        "tsinandali-estate"
+      ],
+      "regions": {
+        "kakheti": 3
+      },
+      "types": {
+        "monastery": 1,
+        "town": 1,
+        "museum": 1
+      },
+      "stated_distance_km": 285.0,
+      "straight_chain_km": 136.8,
+      "distance_ratio": 2.08,
+      "source_count": 2,
+      "issues": []
+    },
+    {
+      "slug": "kakheti-wine-loop",
+      "name": "კახეთის ღვინის მარშრუტი",
+      "status": null,
+      "days": 3,
+      "purpose": "culinary",
+      "vehicle": "economy",
+      "daily_hours": 8,
+      "waypoint_count": 6,
+      "waypoints": [
+        "sighnaghi",
+        "bodbe-monastery",
+        "telavi-batonis-tsikhe",
+        "tsinandali-estate",
+        "alaverdi-cathedral",
+        "kvareli-kindzmarauli"
+      ],
+      "regions": {
+        "kakheti": 6
+      },
+      "types": {
+        "town": 2,
+        "monastery": 2,
+        "museum": 1,
+        "winery": 1
+      },
+      "stated_distance_km": 420.0,
+      "straight_chain_km": 214.0,
+      "distance_ratio": 1.96,
+      "source_count": 2,
+      "issues": []
+    },
+    {
+      "slug": "kazbegi-hiking-base",
+      "name": "ყაზბეგის ჰაიქინგის ბაზა",
+      "status": "published",
+      "days": 4,
+      "purpose": "hiking",
+      "vehicle": "suv",
+      "daily_hours": 9,
+      "waypoint_count": 7,
+      "waypoints": [
+        "ananuri-fortress",
+        "zhinvali-reservoir",
+        "jvari-pass-friendship-monument",
+        "gergeti-trinity-church",
+        "dariali-gorge-gveleti-waterfalls",
+        "truso-valley",
+        "juta-chaukhi"
+      ],
+      "regions": {
+        "mtskheta-mtianeti": 7
+      },
+      "types": {
+        "fortress": 1,
+        "lake": 1,
+        "mountain": 3,
+        "monastery": 1,
+        "waterfall": 1
+      },
+      "stated_distance_km": 390.0,
+      "straight_chain_km": 184.8,
+      "distance_ratio": 2.11,
+      "source_count": 2,
+      "issues": []
+    },
+    {
+      "slug": "kazbegi-mountain-day",
+      "name": "ყაზბეგის მთის ორი დღე",
+      "status": "published",
+      "days": 2,
+      "purpose": "mountains",
+      "vehicle": "suv",
+      "daily_hours": 8,
+      "waypoint_count": 4,
+      "waypoints": [
+        "zhinvali-reservoir",
+        "ananuri-fortress",
+        "jvari-pass-friendship-monument",
+        "gergeti-trinity-church"
+      ],
+      "regions": {
+        "mtskheta-mtianeti": 4
+      },
+      "types": {
+        "lake": 1,
+        "fortress": 1,
+        "mountain": 1,
+        "monastery": 1
+      },
+      "stated_distance_km": 350.0,
+      "straight_chain_km": 116.1,
+      "distance_ratio": 3.01,
+      "source_count": 2,
+      "issues": []
+    },
+    {
+      "slug": "kutaisi-monasteries-caves-day",
+      "name": "ქუთაისის მონასტრები და მღვიმე",
+      "status": "published",
+      "days": 1,
+      "purpose": "culture",
+      "vehicle": "economy",
+      "daily_hours": 10.5,
+      "waypoint_count": 4,
+      "waypoints": [
+        "bagrati-cathedral",
+        "gelati-monastery",
+        "motsameta-monastery",
+        "prometheus-cave"
+      ],
+      "regions": {
+        "imereti": 4
+      },
+      "types": {
+        "town": 1,
+        "monastery": 2,
+        "cave": 1
+      },
+      "stated_distance_km": 85.0,
+      "straight_chain_km": 25.1,
+      "distance_ratio": 3.39,
+      "source_count": 2,
+      "issues": []
+    },
+    {
+      "slug": "kvemo-kartli-archaeology-road",
+      "name": "ქვემო ქართლის არქეოლოგიური გზა",
+      "status": "published",
+      "days": 2,
+      "purpose": "history",
+      "vehicle": "suv",
+      "daily_hours": 8.5,
+      "waypoint_count": 5,
+      "waypoints": [
+        "asureti",
+        "bolnisi-sioni",
+        "dmanisi",
+        "samshvilde",
+        "dashbashi-canyon"
+      ],
+      "regions": {
+        "kvemo-kartli": 5
+      },
+      "types": {
+        "town": 1,
+        "monastery": 1,
+        "archaeology": 2,
+        "canyon": 1
+      },
+      "stated_distance_km": 285.0,
+      "straight_chain_km": 122.4,
+      "distance_ratio": 2.33,
+      "source_count": 2,
+      "issues": []
+    },
+    {
+      "slug": "kvemo-kartli-monasteries-day",
+      "name": "ქვემო ქართლის მონასტრები ერთ დღეში",
+      "status": "published",
+      "days": 1,
+      "purpose": "culture",
+      "vehicle": "suv",
+      "daily_hours": 10,
+      "waypoint_count": 3,
+      "waypoints": [
+        "manglisi-cathedral",
+        "gudarekhi-monastery",
+        "pitareti-monastery"
+      ],
+      "regions": {
+        "kvemo-kartli": 3
+      },
+      "types": {
+        "monastery": 3
+      },
+      "stated_distance_km": 215.0,
+      "straight_chain_km": 64.7,
+      "distance_ratio": 3.32,
+      "source_count": 2,
+      "issues": []
+    },
+    {
+      "slug": "lagodekhi-nature-weekend",
+      "name": "ლაგოდეხის ბუნების უქმეები",
+      "status": "published",
+      "days": 2,
+      "purpose": "nature",
+      "vehicle": "suv",
+      "daily_hours": 11,
+      "waypoint_count": 5,
+      "waypoints": [
+        "ilia-lake",
+        "kvareli-kindzmarauli",
+        "lagodekhi-protected-areas",
+        "artsivi-eagle-gorge",
+        "khornabuji-fortress"
+      ],
+      "regions": {
+        "kakheti": 5
+      },
+      "types": {
+        "lake": 1,
+        "winery": 1,
+        "nature": 1,
+        "canyon": 1,
+        "fortress": 1
+      },
+      "stated_distance_km": 310.0,
+      "straight_chain_km": 120.7,
+      "distance_ratio": 2.57,
+      "source_count": 3,
+      "issues": []
+    },
+    {
+      "slug": "martvili-nokalakevi-day",
+      "name": "ნოქალაქევი და მარტვილის კანიონი",
+      "status": "published",
+      "days": 1,
+      "purpose": "family",
+      "vehicle": "economy",
+      "daily_hours": 9,
+      "waypoint_count": 3,
+      "waypoints": [
+        "nokalakevi",
+        "martvili-canyon",
+        "salkhino-palace"
+      ],
+      "regions": {
+        "samegrelo-zemo-svaneti": 3
+      },
+      "types": {
+        "archaeology": 1,
+        "canyon": 1,
+        "museum": 1
+      },
+      "stated_distance_km": 145.0,
+      "straight_chain_km": 103.1,
+      "distance_ratio": 1.41,
+      "source_count": 2,
+      "issues": []
+    },
+    {
+      "slug": "military-highway-kazbegi",
+      "name": "სამხედრო გზა და ყაზბეგი",
+      "status": null,
+      "days": 2,
+      "purpose": "mountains",
+      "vehicle": "suv",
+      "daily_hours": 10.5,
+      "waypoint_count": 6,
+      "waypoints": [
+        "jvari-monastery",
+        "zhinvali-reservoir",
+        "ananuri-fortress",
+        "gudauri",
+        "gergeti-trinity-church",
+        "dariali-gorge-gveleti-waterfalls"
+      ],
+      "regions": {
+        "mtskheta-mtianeti": 6
+      },
+      "types": {
+        "monastery": 2,
+        "lake": 1,
+        "fortress": 1,
+        "ski": 1,
+        "waterfall": 1
+      },
+      "stated_distance_km": 340.0,
+      "straight_chain_km": 121.8,
+      "distance_ratio": 2.79,
+      "source_count": 2,
+      "issues": []
+    },
+    {
+      "slug": "mtskheta-gori-heritage",
+      "name": "მცხეთა, უფლისციხე და ატენის ხეობა",
+      "status": "published",
+      "days": 2,
+      "purpose": "history",
+      "vehicle": "economy",
+      "daily_hours": 8,
+      "waypoint_count": 6,
+      "waypoints": [
+        "jvari-monastery",
+        "svetitskhoveli-cathedral",
+        "samtavro-monastery",
+        "uplistsikhe",
+        "gori-fortress-stalin-museum",
+        "ateni-sioni-church"
+      ],
+      "regions": {
+        "mtskheta-mtianeti": 3,
+        "shida-kartli": 3
+      },
+      "types": {
+        "monastery": 4,
+        "cave": 1,
+        "town": 1
+      },
+      "stated_distance_km": 230.0,
+      "straight_chain_km": 84.4,
+      "distance_ratio": 2.73,
+      "source_count": 2,
+      "issues": []
+    },
+    {
+      "slug": "mtskheta-heritage-day",
+      "name": "მცხეთის მემკვიდრეობის დღე",
+      "status": "published",
+      "days": 1,
+      "purpose": "history",
+      "vehicle": "economy",
+      "daily_hours": 8,
+      "waypoint_count": 4,
+      "waypoints": [
+        "jvari-monastery",
+        "svetitskhoveli-cathedral",
+        "samtavro-monastery",
+        "armaztsikhe-bagineti"
+      ],
+      "regions": {
+        "mtskheta-mtianeti": 4
+      },
+      "types": {
+        "monastery": 3,
+        "archaeology": 1
+      },
+      "stated_distance_km": 85.0,
+      "straight_chain_km": 19.2,
+      "distance_ratio": 4.43,
+      "source_count": 2,
+      "issues": []
+    },
+    {
+      "slug": "racha-alpine-hiking-week",
+      "name": "რაჭის ალპური ჰაიქინგის კვირეული",
+      "status": "published",
+      "days": 5,
+      "purpose": "hiking",
+      "vehicle": "suv",
+      "daily_hours": 9,
+      "waypoint_count": 6,
+      "waypoints": [
+        "shaori-reservoir",
+        "nikortsminda-cathedral",
+        "oni",
+        "shovi-resort",
+        "udziro-lake-buba-glacier",
+        "glola"
+      ],
+      "regions": {
+        "racha-lechkhumi": 6
+      },
+      "types": {
+        "lake": 1,
+        "monastery": 1,
+        "town": 1,
+        "mountain": 3
+      },
+      "stated_distance_km": 610.0,
+      "straight_chain_km": 115.7,
+      "distance_ratio": 5.27,
+      "source_count": 2,
+      "issues": []
+    },
+    {
+      "slug": "racha-family-weekend",
+      "name": "რაჭის საოჯახო შაბათ-კვირა",
+      "status": "published",
+      "days": 2,
+      "purpose": "family",
+      "vehicle": "suv",
+      "daily_hours": 10,
+      "waypoint_count": 6,
+      "waypoints": [
+        "shaori-reservoir",
+        "nikortsminda-cathedral",
+        "ambrolauri",
+        "khvanchkara-wine-zone",
+        "oni",
+        "utsera"
+      ],
+      "regions": {
+        "racha-lechkhumi": 6
+      },
+      "types": {
+        "lake": 1,
+        "monastery": 1,
+        "town": 2,
+        "winery": 1,
+        "spa": 1
+      },
+      "stated_distance_km": 335.0,
+      "straight_chain_km": 116.2,
+      "distance_ratio": 2.88,
+      "source_count": 2,
+      "issues": []
+    },
+    {
+      "slug": "racha-lechkhumi-heritage-three-days",
+      "name": "რაჭა-ლეჩხუმის მემკვიდრეობის სამი დღე",
+      "status": "published",
+      "days": 3,
+      "purpose": "culture",
+      "vehicle": "suv",
+      "daily_hours": 10,
+      "waypoint_count": 10,
+      "waypoints": [
+        "shaori-reservoir",
+        "nikortsminda-cathedral",
+        "barakoni-church",
+        "minda-fortress",
+        "ambrolauri",
+        "khvanchkara-wine-zone",
+        "oni-synagogue",
+        "mravaldzali",
+        "lentekhi",
+        "mount-khvamli"
+      ],
+      "regions": {
+        "racha-lechkhumi": 10
+      },
+      "types": {
+        "lake": 1,
+        "monastery": 3,
+        "fortress": 1,
+        "town": 2,
+        "winery": 1,
+        "museum": 1,
+        "mountain": 1
+      },
+      "stated_distance_km": 470.0,
+      "straight_chain_km": 222.2,
+      "distance_ratio": 2.12,
+      "source_count": 2,
+      "issues": []
+    },
+    {
+      "slug": "racha-mountain-loop",
+      "name": "რაჭა ორ დღეში — ტაძრები, ტბა და მთის სოფლები",
+      "status": "published",
+      "days": 2,
+      "purpose": "nature",
+      "vehicle": "suv",
+      "daily_hours": 12,
+      "waypoint_count": 10,
+      "waypoints": [
+        "gogolati",
+        "nakerala-pass",
+        "shaori-reservoir",
+        "nikortsminda-cathedral",
+        "ambrolauri",
+        "waterfall-of-love-racha",
+        "barakoni-church",
+        "oni-synagogue",
+        "oni",
+        "utsera"
+      ],
+      "regions": {
+        "racha-lechkhumi": 9,
+        "imereti": 1
+      },
+      "types": {
+        "town": 3,
+        "mountain": 1,
+        "lake": 1,
+        "monastery": 2,
+        "waterfall": 1,
+        "museum": 1,
+        "spa": 1
+      },
+      "stated_distance_km": 330.0,
+      "straight_chain_km": 124.0,
+      "distance_ratio": 2.66,
+      "source_count": 3,
+      "issues": []
+    },
+    {
+      "slug": "racha-wine-and-mountains",
+      "name": "რაჭის ღვინო და მთის სამზარეულო",
+      "status": "published",
+      "days": 4,
+      "purpose": "wine",
+      "vehicle": "suv",
+      "daily_hours": 8,
+      "waypoint_count": 8,
+      "waypoints": [
+        "nakerala-pass",
+        "shaori-reservoir",
+        "nikortsminda-cathedral",
+        "khvanchkara-wine-zone",
+        "ambrolauri",
+        "barakoni-church",
+        "oni-synagogue",
+        "utsera"
+      ],
+      "regions": {
+        "imereti": 1,
+        "racha-lechkhumi": 7
+      },
+      "types": {
+        "mountain": 1,
+        "lake": 1,
+        "monastery": 2,
+        "winery": 1,
+        "town": 1,
+        "museum": 1,
+        "spa": 1
+      },
+      "stated_distance_km": 560.0,
+      "straight_chain_km": 106.5,
+      "distance_ratio": 5.26,
+      "source_count": 2,
+      "issues": []
+    },
+    {
+      "slug": "samegrelo-kingdoms-and-wetlands",
+      "name": "სამეგრელო — სამეფოები და ჭარბტენიანი ბუნება",
+      "status": "published",
+      "days": 4,
+      "purpose": "culture",
+      "vehicle": "economy",
+      "daily_hours": 8,
+      "waypoint_count": 6,
+      "waypoints": [
+        "nokalakevi",
+        "salkhino-palace",
+        "martvili-canyon",
+        "dadiani-palace-zugdidi",
+        "kolkheti-national-park",
+        "poti"
+      ],
+      "regions": {
+        "samegrelo-zemo-svaneti": 6
+      },
+      "types": {
+        "archaeology": 1,
+        "museum": 2,
+        "canyon": 1,
+        "nature": 1,
+        "town": 1
+      },
+      "stated_distance_km": 480.0,
+      "straight_chain_km": 200.4,
+      "distance_ratio": 2.4,
+      "source_count": 2,
+      "issues": []
+    },
+    {
+      "slug": "samtskhe-heritage-road",
+      "name": "სამცხე-ჯავახეთის დიდი ისტორიული გზა",
+      "status": "published",
+      "days": 4,
+      "purpose": "history",
+      "vehicle": "suv",
+      "daily_hours": 8,
+      "waypoint_count": 8,
+      "waypoints": [
+        "borjomi-central-park",
+        "rabati-castle",
+        "sapara-monastery",
+        "khertvisi-fortress",
+        "vardzia",
+        "vanis-kvabebi",
+        "kumurdo-cathedral",
+        "paravani-tabatskuri-lakes"
+      ],
+      "regions": {
+        "samtskhe-javakheti": 8
+      },
+      "types": {
+        "spa": 1,
+        "fortress": 2,
+        "monastery": 2,
+        "cave": 2,
+        "lake": 1
+      },
+      "stated_distance_km": 690.0,
+      "straight_chain_km": 245.9,
+      "distance_ratio": 2.81,
+      "source_count": 2,
+      "issues": []
+    },
+    {
+      "slug": "shida-kartli-monastery-trail",
+      "name": "შიდა ქართლის მონასტრების ბილიკი",
+      "status": "published",
+      "days": 2,
+      "purpose": "culture",
+      "vehicle": "suv",
+      "daily_hours": 8,
+      "waypoint_count": 5,
+      "waypoints": [
+        "samtavisi-cathedral",
+        "kintsvisi-monastery",
+        "rkoni-monastery",
+        "ateni-sioni-church",
+        "uplistsikhe"
+      ],
+      "regions": {
+        "shida-kartli": 5
+      },
+      "types": {
+        "monastery": 4,
+        "cave": 1
+      },
+      "stated_distance_km": 310.0,
+      "straight_chain_km": 154.6,
+      "distance_ratio": 2.01,
+      "source_count": 2,
+      "issues": []
+    },
+    {
+      "slug": "svaneti-alpine-circuit",
+      "name": "სვანეთის ალპური წრე",
+      "status": "published",
+      "days": 6,
+      "purpose": "hiking",
+      "vehicle": "offroad",
+      "daily_hours": 9,
+      "waypoint_count": 7,
+      "waypoints": [
+        "mestia",
+        "becho-mazeri",
+        "chalaadi-glacier",
+        "koruldi-lakes",
+        "adishi",
+        "ushguli",
+        "shkhara-glacier"
+      ],
+      "regions": {
+        "samegrelo-zemo-svaneti": 7
+      },
+      "types": {
+        "town": 3,
+        "mountain": 3,
+        "lake": 1
+      },
+      "stated_distance_km": 720.0,
+      "straight_chain_km": 69.1,
+      "distance_ratio": 10.42,
+      "source_count": 2,
+      "issues": []
+    },
+    {
+      "slug": "svaneti-expedition",
+      "name": "სვანეთის ექსპედიცია",
+      "status": null,
+      "days": 5,
+      "purpose": "mountains",
+      "vehicle": "offroad",
+      "daily_hours": 9,
+      "waypoint_count": 6,
+      "waypoints": [
+        "bagrati-cathedral",
+        "dadiani-palace-zugdidi",
+        "enguri-dam",
+        "mestia",
+        "chalaadi-glacier",
+        "ushguli"
+      ],
+      "regions": {
+        "imereti": 1,
+        "samegrelo-zemo-svaneti": 5
+      },
+      "types": {
+        "town": 3,
+        "museum": 1,
+        "lake": 1,
+        "mountain": 1
+      },
+      "stated_distance_km": 1050.0,
+      "straight_chain_km": 394.7,
+      "distance_ratio": 2.66,
+      "source_count": 2,
+      "issues": []
+    },
+    {
+      "slug": "svaneti-village-trek",
+      "name": "სვანეთის სოფლების ტრეკი",
+      "status": "published",
+      "days": 6,
+      "purpose": "hiking",
+      "vehicle": "offroad",
+      "daily_hours": 9,
+      "waypoint_count": 7,
+      "waypoints": [
+        "mestia",
+        "becho-mazeri",
+        "koruldi-lakes",
+        "adishi",
+        "ushguli",
+        "shkhara-glacier",
+        "svaneti-museum-mestia"
+      ],
+      "regions": {
+        "samegrelo-zemo-svaneti": 7
+      },
+      "types": {
+        "town": 3,
+        "mountain": 2,
+        "lake": 1,
+        "museum": 1
+      },
+      "stated_distance_km": 460.0,
+      "straight_chain_km": 88.4,
+      "distance_ratio": 5.2,
+      "source_count": 2,
+      "issues": []
+    },
+    {
+      "slug": "tbilisi-architecture-and-markets",
+      "name": "თბილისი — არქიტექტურა და ბაზრები",
+      "status": "published",
+      "days": 2,
+      "purpose": "history",
+      "vehicle": "economy",
+      "daily_hours": 8,
+      "waypoint_count": 5,
+      "waypoints": [
+        "sololaki-art-nouveau",
+        "georgian-national-museum",
+        "dry-bridge-market",
+        "abanotubani-sulphur-baths",
+        "chronicle-of-georgia"
+      ],
+      "regions": {
+        "tbilisi": 5
+      },
+      "types": {
+        "town": 2,
+        "museum": 2,
+        "spa": 1
+      },
+      "stated_distance_km": 32.0,
+      "straight_chain_km": 14.1,
+      "distance_ratio": 2.27,
+      "source_count": 3,
+      "issues": []
+    },
+    {
+      "slug": "tbilisi-history-walk",
+      "name": "თბილისის ისტორიული ფენები",
+      "status": "published",
+      "days": 2,
+      "purpose": "history",
+      "vehicle": "economy",
+      "daily_hours": 8,
+      "waypoint_count": 8,
+      "waypoints": [
+        "georgian-national-museum",
+        "freedom-square-old-parliament",
+        "sololaki-art-nouveau",
+        "betlemi-quarter",
+        "narikala-fortress",
+        "abanotubani-sulphur-baths",
+        "holy-trinity-cathedral-sameba",
+        "chronicle-of-georgia"
+      ],
+      "regions": {
+        "tbilisi": 8
+      },
+      "types": {
+        "museum": 2,
+        "town": 3,
+        "fortress": 1,
+        "spa": 1,
+        "monastery": 1
+      },
+      "stated_distance_km": 35.0,
+      "straight_chain_km": 13.4,
+      "distance_ratio": 2.61,
+      "source_count": 2,
+      "issues": []
+    },
+    {
+      "slug": "tbilisi-stage-and-museum-day",
+      "name": "მუზეუმი თეატრი და საღამოს წარმოდგენა",
+      "status": "published",
+      "days": 1,
+      "purpose": "performance",
+      "vehicle": "economy",
+      "daily_hours": 9.5,
+      "waypoint_count": 4,
+      "waypoints": [
+        "georgian-national-museum",
+        "tbilisi-opera-ballet-theatre",
+        "rustaveli-national-theatre",
+        "sololaki-art-nouveau"
+      ],
+      "regions": {
+        "tbilisi": 4
+      },
+      "types": {
+        "museum": 1,
+        "theatre": 2,
+        "town": 1
+      },
+      "stated_distance_km": 8.0,
+      "straight_chain_km": 2.1,
+      "distance_ratio": 3.81,
+      "source_count": 3,
+      "issues": []
+    },
+    {
+      "slug": "tbilisi-theatre-night",
+      "name": "თბილისის თეატრებისა და სპექტაკლების დღე",
+      "status": "published",
+      "days": 1,
+      "purpose": "performance",
+      "vehicle": "economy",
+      "daily_hours": 9.5,
+      "waypoint_count": 4,
+      "waypoints": [
+        "marjanishvili-theatre",
+        "tbilisi-opera-ballet-theatre",
+        "rustaveli-national-theatre",
+        "gabriadze-theatre-clock-tower"
+      ],
+      "regions": {
+        "tbilisi": 4
+      },
+      "types": {
+        "theatre": 3,
+        "town": 1
+      },
+      "stated_distance_km": 9.0,
+      "straight_chain_km": 4.8,
+      "distance_ratio": 1.88,
+      "source_count": 3,
+      "issues": []
+    },
+    {
+      "slug": "tusheti-highland-hike",
+      "name": "თუშეთის მაღალმთიანი ჰაიქინგი",
+      "status": "published",
+      "days": 5,
+      "purpose": "hiking",
+      "vehicle": "offroad",
+      "daily_hours": 9,
+      "waypoint_count": 5,
+      "waypoints": [
+        "alaverdi-cathedral",
+        "abano-pass",
+        "omalo-tusheti",
+        "dartlo",
+        "shenako-diklo"
+      ],
+      "regions": {
+        "kakheti": 5
+      },
+      "types": {
+        "monastery": 1,
+        "mountain": 2,
+        "town": 2
+      },
+      "stated_distance_km": 430.0,
+      "straight_chain_km": 153.9,
+      "distance_ratio": 2.79,
+      "source_count": 2,
+      "issues": []
+    },
+    {
+      "slug": "upper-adjara-wine-and-villages",
+      "name": "ზემო აჭარა — ღვინო და სოფლები",
+      "status": "published",
+      "days": 4,
+      "purpose": "wine",
+      "vehicle": "suv",
+      "daily_hours": 8,
+      "waypoint_count": 6,
+      "waypoints": [
+        "makhuntseti-waterfall",
+        "keda-wine-cellars",
+        "khulo-cable-car-upper-adjara",
+        "skhalta-monastery",
+        "green-lake-goderdzi",
+        "beshumi"
+      ],
+      "regions": {
+        "adjara": 6
+      },
+      "types": {
+        "waterfall": 1,
+        "winery": 1,
+        "mountain": 2,
+        "monastery": 1,
+        "lake": 1
+      },
+      "stated_distance_km": 360.0,
+      "straight_chain_km": 88.6,
+      "distance_ratio": 4.06,
+      "source_count": 2,
+      "issues": []
+    },
+    {
+      "slug": "vardzia-borjomi-south",
+      "name": "ვარძია და ბორჯომი — სამხრეთის მარშრუტი",
+      "status": null,
+      "days": 2,
+      "purpose": "culture",
+      "vehicle": "economy",
+      "daily_hours": 9,
+      "waypoint_count": 4,
+      "waypoints": [
+        "borjomi-central-park",
+        "rabati-castle",
+        "khertvisi-fortress",
+        "vardzia"
+      ],
+      "regions": {
+        "samtskhe-javakheti": 4
+      },
+      "types": {
+        "spa": 1,
+        "fortress": 2,
+        "cave": 1
+      },
+      "stated_distance_km": 550.0,
+      "straight_chain_km": 202.8,
+      "distance_ratio": 2.71,
+      "source_count": 2,
+      "issues": []
+    },
+    {
+      "slug": "western-georgia-food-road",
+      "name": "იმერული და მეგრული გემოები",
+      "status": "published",
+      "days": 4,
+      "purpose": "culinary",
+      "vehicle": "economy",
+      "daily_hours": 8,
+      "waypoint_count": 8,
+      "waypoints": [
+        "bagrati-cathedral",
+        "kutaisi-jewish-quarter",
+        "gelati-monastery",
+        "martvili-canyon",
+        "salkhino-palace",
+        "dadiani-palace-zugdidi",
+        "kolkheti-national-park",
+        "poti"
+      ],
+      "regions": {
+        "imereti": 3,
+        "samegrelo-zemo-svaneti": 5
+      },
+      "types": {
+        "town": 3,
+        "monastery": 1,
+        "canyon": 1,
+        "museum": 2,
+        "nature": 1
+      },
+      "stated_distance_km": 610.0,
+      "straight_chain_km": 143.0,
+      "distance_ratio": 4.27,
+      "source_count": 2,
+      "issues": []
+    }
+  ]
+}

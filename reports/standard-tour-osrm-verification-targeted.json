@@ -1,0 +1,68 @@
+{
+  "generated_on": "2026-08-29",
+  "method": "OSRM driving route through origin and ordered waypoints; no automatic return leg",
+  "endpoint": "https://router.project-osrm.org/route/v1/driving",
+  "summary": {
+    "routes": 2,
+    "verified": 2,
+    "failed": 0,
+    "stated_below_osrm_distance": 0,
+    "stated_below_osrm_time": 0
+  },
+  "routes": [
+    {
+      "slug": "georgia-essential-five-days",
+      "name": "საქართველოს მთავარი ადგილები — 5 დღე",
+      "waypoints": [
+        "betlemi-quarter",
+        "jvari-monastery",
+        "svetitskhoveli-cathedral",
+        "ananuri-fortress",
+        "gergeti-trinity-church",
+        "bodbe-monastery",
+        "sighnaghi",
+        "gelati-monastery",
+        "bagrati-cathedral",
+        "prometheus-cave"
+      ],
+      "missing_waypoints": [],
+      "stated_distance_km": 980.0,
+      "stated_drive_hours": 18.5,
+      "osrm": {
+        "distance_km": 816.1,
+        "drive_hours": 13.18
+      },
+      "distance_ratio": 1.2,
+      "drive_time_ratio": 1.4,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "slug": "racha-mountain-loop",
+      "name": "რაჭა ორ დღეში — ტაძრები, ტბა და მთის სოფლები",
+      "waypoints": [
+        "gogolati",
+        "nakerala-pass",
+        "shaori-reservoir",
+        "nikortsminda-cathedral",
+        "ambrolauri",
+        "waterfall-of-love-racha",
+        "barakoni-church",
+        "oni-synagogue",
+        "oni",
+        "utsera"
+      ],
+      "missing_waypoints": [],
+      "stated_distance_km": 330.0,
+      "stated_drive_hours": 7.5,
+      "osrm": {
+        "distance_km": 215.9,
+        "drive_hours": 5.63
+      },
+      "distance_ratio": 1.53,
+      "drive_time_ratio": 1.33,
+      "status": "ok",
+      "error": null
+    }
+  ]
+}

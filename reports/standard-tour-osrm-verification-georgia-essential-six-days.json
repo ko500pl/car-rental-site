@@ -1,0 +1,111 @@
+{
+  "generated_on": "2026-08-29",
+  "method": "OSRM driving route through origin and ordered waypoints; return leg is included only when return_to_origin=true",
+  "endpoint": "https://router.project-osrm.org/route/v1/driving",
+  "summary": {
+    "routes": 1,
+    "verified": 1,
+    "failed": 0,
+    "stated_below_osrm_distance": 0,
+    "stated_below_osrm_time": 0
+  },
+  "routes": [
+    {
+      "slug": "georgia-essential-five-days",
+      "name": "საქართველოს მთავარი ადგილები — 6 დღე",
+      "waypoints": [
+        "betlemi-quarter",
+        "jvari-monastery",
+        "svetitskhoveli-cathedral",
+        "ananuri-fortress",
+        "gergeti-trinity-church",
+        "bodbe-monastery",
+        "sighnaghi",
+        "uplistsikhe",
+        "gelati-monastery",
+        "bagrati-cathedral",
+        "prometheus-cave"
+      ],
+      "return_to_origin": false,
+      "missing_waypoints": [],
+      "stated_distance_km": 1030.0,
+      "stated_drive_hours": 20.5,
+      "osrm": {
+        "distance_km": 842.6,
+        "drive_hours": 15.21,
+        "legs": [
+          {
+            "from": "origin",
+            "to": "betlemi-quarter",
+            "distance_km": 6.0,
+            "drive_hours": 0.18
+          },
+          {
+            "from": "betlemi-quarter",
+            "to": "jvari-monastery",
+            "distance_km": 24.7,
+            "drive_hours": 0.48
+          },
+          {
+            "from": "jvari-monastery",
+            "to": "svetitskhoveli-cathedral",
+            "distance_km": 12.6,
+            "drive_hours": 0.28
+          },
+          {
+            "from": "svetitskhoveli-cathedral",
+            "to": "ananuri-fortress",
+            "distance_km": 46.3,
+            "drive_hours": 0.89
+          },
+          {
+            "from": "ananuri-fortress",
+            "to": "gergeti-trinity-church",
+            "distance_km": 94.7,
+            "drive_hours": 1.61
+          },
+          {
+            "from": "gergeti-trinity-church",
+            "to": "bodbe-monastery",
+            "distance_km": 267.8,
+            "drive_hours": 4.31
+          },
+          {
+            "from": "bodbe-monastery",
+            "to": "sighnaghi",
+            "distance_km": 4.6,
+            "drive_hours": 0.11
+          },
+          {
+            "from": "sighnaghi",
+            "to": "uplistsikhe",
+            "distance_km": 196.4,
+            "drive_hours": 3.57
+          },
+          {
+            "from": "uplistsikhe",
+            "to": "gelati-monastery",
+            "distance_km": 158.1,
+            "drive_hours": 3.03
+          },
+          {
+            "from": "gelati-monastery",
+            "to": "bagrati-cathedral",
+            "distance_km": 9.9,
+            "drive_hours": 0.21
+          },
+          {
+            "from": "bagrati-cathedral",
+            "to": "prometheus-cave",
+            "distance_km": 21.5,
+            "drive_hours": 0.54
+          }
+        ]
+      },
+      "distance_ratio": 1.22,
+      "drive_time_ratio": 1.35,
+      "status": "ok",
+      "error": null
+    }
+  ]
+}

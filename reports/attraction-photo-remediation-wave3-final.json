@@ -1,0 +1,114 @@
+[
+  {
+    "slug": "ushguli",
+    "status": "updated",
+    "media": [
+      {
+        "title": "File:Ushguli, Georgia-3883095.jpg",
+        "author": "Image by https://pixabay.com/users/peterw1950-631321/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=3883095 \">Peter Wieser from https://pixabay.com/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=3883095 \">Pixabay",
+        "license": "CC0",
+        "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "source": "https://commons.wikimedia.org/wiki/File:Ushguli,_Georgia-3883095.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Ushguli%2C_Georgia-3883095.jpg/1920px-Ushguli%2C_Georgia-3883095.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 5472,
+        "original_height": 3080,
+        "local_path": "static/photos/ushguli.webp",
+        "output_width": 1800,
+        "output_height": 1013,
+        "bytes": 468210
+      },
+      {
+        "title": "File:Ushguli village.JPG",
+        "author": "İhsan Deniz Kılıçoğlu",
+        "license": "CC BY-SA 3.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Ushguli_village.JPG",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Ushguli_village.JPG/1920px-Ushguli_village.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 5184,
+        "original_height": 3456,
+        "local_path": "static/photos/ushguli-1.webp",
+        "output_width": 1800,
+        "output_height": 1200,
+        "bytes": 889412
+      },
+      {
+        "title": "File:Ushguli Village, Svaneti.jpg",
+        "author": "D.Rovchak",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Ushguli_Village,_Svaneti.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Ushguli_Village%2C_Svaneti.jpg/1920px-Ushguli_Village%2C_Svaneti.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 4272,
+        "original_height": 2848,
+        "local_path": "static/photos/ushguli-2.webp",
+        "output_width": 1800,
+        "output_height": 1200,
+        "bytes": 405468
+      },
+      {
+        "title": "File:Ushguli Village, Svaneti, view of Shkhara mountain.jpg",
+        "author": "D.Rovchak",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Ushguli_Village,_Svaneti,_view_of_Shkhara_mountain.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Ushguli_Village%2C_Svaneti%2C_view_of_Shkhara_mountain.jpg/1920px-Ushguli_Village%2C_Svaneti%2C_view_of_Shkhara_mountain.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 4272,
+        "original_height": 2848,
+        "local_path": "static/photos/ushguli-3.webp",
+        "output_width": 1800,
+        "output_height": 1200,
+        "bytes": 436570
+      },
+      {
+        "title": "File:Ushguli towers in Svaneti, Georgia.png",
+        "author": "Dito1993",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Ushguli_towers_in_Svaneti,_Georgia.png",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Ushguli_towers_in_Svaneti%2C_Georgia.png/1920px-Ushguli_towers_in_Svaneti%2C_Georgia.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 4288,
+        "original_height": 2848,
+        "local_path": "static/photos/ushguli-4.webp",
+        "output_width": 1800,
+        "output_height": 1195,
+        "bytes": 695430
+      }
+    ],
+    "errors": []
+  },
+  {
+    "slug": "khada-valley",
+    "status": "updated",
+    "media": [
+      {
+        "title": "File:Khada gorge as seen from Mt Lomisi (Photo A. Muhranoff, 2011).jpg",
+        "author": "Aleksey Muhranoff",
+        "license": "CC BY-SA 3.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Khada_gorge_as_seen_from_Mt_Lomisi_(Photo_A._Muhranoff,_2011).jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Khada_gorge_as_seen_from_Mt_Lomisi_%28Photo_A._Muhranoff%2C_2011%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "original_width": 1258,
+        "original_height": 908,
+        "local_path": "static/photos/khada-valley.webp",
+        "output_width": 1258,
+        "output_height": 908,
+        "bytes": 111612
+      },
+      {
+        "title": "File:Khada Gorge Valley Filled with Morning Fog in Georgia.jpg",
+        "author": "David Osipov 0000 0005 1802 960X 0009-0005-2713-9242 📱 This photograph was taken with a Xiaomi Redmi Note 9 Pro .",
+        "license": "CC BY 4.0",
+        "license_url": "https://creativecommons.org/licenses/by/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Khada_Gorge_Valley_Filled_with_Morning_Fog_in_Georgia.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Khada_Gorge_Valley_Filled_with_Morning_Fog_in_Georgia.jpg/1920px-Khada_Gorge_Valley_Filled_with_Morning_Fog_in_Georgia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 4640,
+        "original_height": 2088,
+        "local_path": "static/photos/khada-valley-1.webp",
+        "output_width": 1800,
+        "output_height": 810,
+        "bytes": 286582
+      }
+    ],
+    "errors": []
+  }
+]

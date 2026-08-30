@@ -7,12 +7,12 @@
   }
   var promptEvent = null;
   var copy = {
-    ka: ["Drive On აპლიკაცია", "დააინსტალირეთ ტელეფონზე და დაგეგმეთ მოგზაურობა სწრაფად.", "ინსტალაცია", "iPhone-ზე: Share → Add to Home Screen"],
-    en: ["Drive On app", "Install it on your phone and plan trips faster.", "Install", "On iPhone: Share → Add to Home Screen"],
-    ru: ["Приложение Drive On", "Установите на телефон и планируйте поездки быстрее.", "Установить", "На iPhone: Поделиться → На экран Домой"],
-    fa: ["اپلیکیشن Drive On", "روی تلفن نصب کنید و سریع‌تر سفر بسازید.", "نصب", "در iPhone: Share → Add to Home Screen"],
-    he: ["אפליקציית Drive On", "התקינו בטלפון ותכננו טיולים מהר יותר.", "התקנה", "ב-iPhone: Share → Add to Home Screen"],
-    ar: ["تطبيق Drive On", "ثبّته على هاتفك وخطط للرحلات بسرعة.", "تثبيت", "على iPhone: Share → Add to Home Screen"]
+    ka: ["RentUp აპლიკაცია", "დააინსტალირეთ ტელეფონზე და დაგეგმეთ მოგზაურობა სწრაფად.", "ინსტალაცია", "iPhone-ზე: Share → Add to Home Screen"],
+    en: ["RentUp app", "Install it on your phone and plan trips faster.", "Install", "On iPhone: Share → Add to Home Screen"],
+    ru: ["Приложение RentUp", "Установите на телефон и планируйте поездки быстрее.", "Установить", "На iPhone: Поделиться → На экран Домой"],
+    fa: ["اپلیکیشن RentUp", "روی تلفن نصب کنید و سریع‌تر سفر بسازید.", "نصب", "در iPhone: Share → Add to Home Screen"],
+    he: ["אפליקציית RentUp", "התקינו בטלפון ותכננו טיולים מהר יותר.", "התקנה", "ב-iPhone: Share → Add to Home Screen"],
+    ar: ["تطبيق RentUp", "ثبّته على هاتفك وخطط للرحلات بسرعة.", "تثبيت", "على iPhone: Share → Add to Home Screen"]
   };
   function language() {
     var value = (document.documentElement.lang || "ka").toLowerCase().split("-")[0];

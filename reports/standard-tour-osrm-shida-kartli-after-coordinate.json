@@ -1,0 +1,69 @@
+{
+  "generated_on": "2026-08-29",
+  "method": "OSRM driving route through origin and ordered waypoints; return leg is included only when return_to_origin=true",
+  "endpoint": "https://router.project-osrm.org/route/v1/driving",
+  "summary": {
+    "routes": 1,
+    "verified": 1,
+    "failed": 0,
+    "stated_below_osrm_distance": 0,
+    "stated_below_osrm_time": 0
+  },
+  "routes": [
+    {
+      "slug": "shida-kartli-monastery-trail",
+      "name": "შიდა ქართლის მონასტრების ბილიკი",
+      "waypoints": [
+        "samtavisi-cathedral",
+        "kintsvisi-monastery",
+        "rkoni-monastery",
+        "ateni-sioni-church",
+        "uplistsikhe"
+      ],
+      "return_to_origin": false,
+      "missing_waypoints": [],
+      "stated_distance_km": 310.0,
+      "stated_drive_hours": 6.5,
+      "osrm": {
+        "distance_km": 274.1,
+        "drive_hours": 6.57,
+        "legs": [
+          {
+            "from": "origin",
+            "to": "samtavisi-cathedral",
+            "distance_km": 57.6,
+            "drive_hours": 1.13
+          },
+          {
+            "from": "samtavisi-cathedral",
+            "to": "kintsvisi-monastery",
+            "distance_km": 67.4,
+            "drive_hours": 1.09
+          },
+          {
+            "from": "kintsvisi-monastery",
+            "to": "rkoni-monastery",
+            "distance_km": 75.3,
+            "drive_hours": 1.57
+          },
+          {
+            "from": "rkoni-monastery",
+            "to": "ateni-sioni-church",
+            "distance_km": 51.8,
+            "drive_hours": 1.61
+          },
+          {
+            "from": "ateni-sioni-church",
+            "to": "uplistsikhe",
+            "distance_km": 22.0,
+            "drive_hours": 1.18
+          }
+        ]
+      },
+      "distance_ratio": 1.13,
+      "drive_time_ratio": 0.99,
+      "status": "ok",
+      "error": null
+    }
+  ]
+}

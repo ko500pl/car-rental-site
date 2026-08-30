@@ -1,0 +1,158 @@
+# Trust / E-E-A-T copy for RentUp.ge — companion to docs/seo/SEO_TRUST.md.
+#
+# STATUS: content only, drafted 2026-08-29. Like content/settings/seo_meta.yml,
+# this file is NOT yet wired into build.py / render_static_page() / head_html().
+# A future change should surface it as follows:
+#   - editorial.policy_heading / editorial.policy_body — once near the top of
+#     every /attractions/{slug}/ and /routes/{slug}/ page (the "how this page
+#     was made" note), sourced from the attraction's road:/car_category:/
+#     drive_time_tbilisi: fields and the route's equivalents.
+#   - last_reviewed_label — paired with a per-entry "reviewed" date once
+#     attractions/routes carry one (none exists yet; see SEO_TRUST.md
+#     remediation list — do not print a date until the field exists).
+#   - data_source_label — a short caption under the same note, or in a page
+#     footer, pointing at the structured data rather than at a named author.
+#   - trust.heading / trust.body — the /fleet/, /pricing/ and future
+#     /car-rental/* pages (Release B in SEO_IMPLEMENTATION_PLAN.md).
+#   - disclaimer — every /attractions/ and /routes/ page, near the CTA.
+#
+# Every sentence below is sourced from content/settings/site.yml (founded,
+# fleet_size, address, phone_e164, whatsapp, opens/closes) or from the fact
+# that road/car_category/drive_time fields already exist on every attraction
+# and route (see docs/seo/SEO_AUDIT.md §1, "Data model strength"). No claim
+# here is invented, and none should be added without a source.
+#
+# Brand note: site.yml → rental_brand and content/settings/seo_meta.yml →
+# brand both say "RentUp" today — there is no pending rebrand. (Corrected
+# 2026-08-30: this comment previously claimed seo_meta.yml recorded "a
+# planned rebrand to 'RentUp'" — stale residue of an earlier find-and-replace
+# that overwrote the old brand name along with everything else it touched,
+# leaving a rebrand note that pointed from "RentUp" to "RentUp". seo_meta.yml
+# has no rebrand field or language at all; both settings files simply agree
+# on "RentUp".) The copy below uses "RentUp" to match what a visitor can
+# verify on the site right now. If the brand ever changes, update both
+# settings files and this comment together — see SEO_TRUST.md §Remediation.
+
+ka:
+  editorial:
+    policy_heading: როგორ ვამზადებთ ამ გვერდს
+    policy_body: >-
+      გზის ტიპი, სავალი დრო და რეკომენდებული ავტომობილის კატეგორია ამ გვერდზე აღებულია ჩვენივე
+      სტრუქტურირებული მარშრუტის მონაცემებიდან — იმავე road და car_category ველებიდან, რომლებიც საიტზე
+      ჯავშნასა და ფასწარმოქმნასაც განსაზღვრავს. სავალი დრო არის შეფასება გზის ტიპისა და მანძილის
+      მიხედვით და არა რეალურ დროში მოძრაობის მონაცემი — ცუდ ამინდში ან საგზაო სამუშაოების დროს
+      გაითვალისწინეთ დამატებითი დრო. შესვლის საფასური, სამუშაო თვეები და გზის მდგომარეობა სეზონურად
+      იცვლება — გამგზავრებამდე ადგილზე გადაამოწმეთ.
+  last_reviewed_label: ბოლო განახლება
+  data_source_label: 'წყარო: მარშრუტისა და ადგილის მონაცემები'
+  trust:
+    heading: ვინ ვართ ჩვენ
+    body: >-
+      RentUp საქართველოში ავტომობილებს 2019 წლიდან აქირავებს, ავტოპარკში 17 ავტომობილია, ოფისი კი
+      თბილისში, ვაჟა-ფშაველას გამზირზეა. დაგვირეკეთ ან მოგვწერეთ WhatsApp-ზე +995 597 55 55 65-ზე,
+      ნებისმიერ დღეს 09:00-დან 21:00-მდე.
+  disclaimer: >-
+    განკუთვნილია მოგზაურობის დაგეგმვისთვის. დეტალები შეიძლება შეიცვალოს — გამგზავრებამდე ადგილზე
+    გადაამოწმეთ.
+
+en:
+  editorial:
+    policy_heading: How we put this page together
+    policy_body: >-
+      Road type, drive time and the recommended vehicle category on this page come from our own
+      structured trip data — the same road and car_category fields that also drive bookings and
+      pricing on this site. Drive time is an estimate based on road surface and distance, not live
+      traffic, so allow extra time in poor weather or during roadworks. Entry fees, opening months
+      and road conditions can change with the season — please confirm locally before you travel.
+  last_reviewed_label: Last reviewed
+  data_source_label: 'Source: route and place data'
+  trust:
+    heading: Who we are
+    body: >-
+      RentUp has rented cars in Georgia since 2019 and runs a fleet of 17 vehicles from its office
+      on Vazha-Pshavela Avenue in Tbilisi. Call or message us on WhatsApp at +995 597 55 55 65, any
+      day from 09:00 to 21:00.
+  disclaimer: >-
+    Provided for trip planning. Details can change — please verify locally before you go.
+
+ru:
+  editorial:
+    policy_heading: Как мы готовим эту страницу
+    policy_body: >-
+      Тип дороги, время в пути и рекомендованная категория автомобиля на этой странице взяты из
+      наших собственных структурированных данных о маршрутах — тех же полей road и car_category, по
+      которым на сайте формируются бронирования и цены. Время в пути — это оценка на основе типа
+      дороги и расстояния, а не данные о трафике в реальном времени: в плохую погоду или во время
+      дорожных работ закладывайте больше времени. Стоимость входа, сезон работы и состояние дороги
+      могут меняться — уточняйте на месте перед поездкой.
+  last_reviewed_label: Дата последнего обновления
+  data_source_label: 'Источник: данные о маршрутах и местах'
+  trust:
+    heading: Кто мы
+    body: >-
+      RentUp сдаёт автомобили в аренду в Грузии с 2019 года, автопарк насчитывает 17 автомобилей,
+      офис находится в Тбилиси на проспекте Важа-Пшавела. Звоните или пишите нам в WhatsApp по
+      номеру +995 597 55 55 65 ежедневно с 09:00 до 21:00.
+  disclaimer: >-
+    Информация предназначена для планирования поездки. Детали могут меняться — уточняйте на месте
+    перед выездом.
+
+fa:
+  editorial:
+    policy_heading: این صفحه چگونه تهیه می‌شود
+    policy_body: >-
+      نوع جاده، زمان تقریبی رانندگی و دستهٔ خودروی پیشنهادی در این صفحه از داده‌های ساختاریافتهٔ
+      خودمان دربارهٔ مسیرها گرفته شده — همان فیلدهای road و car_category که رزرو و قیمت‌گذاری در
+      سایت را نیز تعیین می‌کنند. زمان رانندگی برآوردی است بر پایهٔ نوع جاده و مسافت، نه داده‌های
+      ترافیک زنده؛ در هوای بد یا هنگام تعمیر جاده زمان بیشتری در نظر بگیرید. هزینهٔ ورودی، ماه‌های
+      فعالیت و وضعیت جاده ممکن است فصلی تغییر کند — پیش از سفر به‌صورت محلی بررسی کنید.
+  last_reviewed_label: آخرین به‌روزرسانی
+  data_source_label: 'منبع: داده‌های مسیر و مکان'
+  trust:
+    heading: ما چه کسی هستیم
+    body: >-
+      RentUp از سال 2019 در گرجستان خودرو اجاره می‌دهد و ناوگان آن 17 خودرو دارد؛ دفتر ما در
+      تفلیس، خیابان واژا-پشاولا قرار دارد. هر روز از ساعت 09:00 تا 21:00 با ما تماس بگیرید یا در
+      واتساپ به شمارهٔ +995 597 55 55 65 پیام دهید.
+  disclaimer: >-
+    این اطلاعات برای برنامه‌ریزی سفر ارائه شده است. جزئیات ممکن است تغییر کند — پیش از حرکت
+    به‌صورت محلی بررسی کنید.
+
+he:
+  editorial:
+    policy_heading: איך אנחנו מכינים את העמוד הזה
+    policy_body: >-
+      סוג הדרך, זמן הנסיעה המשוער וקטגוריית הרכב המומלצת בעמוד זה מבוססים על נתוני המסלולים
+      המובנים שלנו — אותם שדות road ו-car_category שקובעים גם הזמנות ותמחור באתר. זמן הנסיעה הוא
+      הערכה לפי סוג הדרך והמרחק, לא נתוני תנועה בזמן אמת — במזג אוויר גרוע או בזמן עבודות כביש כדאי
+      להשאיר זמן נוסף. דמי כניסה, חודשי פעילות ומצב הדרכים עשויים להשתנות בהתאם לעונה — יש לוודא
+      מקומית לפני היציאה לדרך.
+  last_reviewed_label: עודכן לאחרונה
+  data_source_label: 'מקור: נתוני מסלולים ומקומות'
+  trust:
+    heading: מי אנחנו
+    body: >-
+      RentUp משכירה רכבים בגאורגיה מאז 2019, עם צי של 17 רכבים ומשרד בטביליסי בשדרות
+      ואז'ה-פשאוולה. התקשרו או כתבו לנו בוואטסאפ למספר +995 597 55 55 65, בכל יום בין 09:00 ל-21:00.
+  disclaimer: >-
+    המידע מיועד לתכנון טיול. פרטים עשויים להשתנות — יש לוודא מקומית לפני היציאה.
+
+ar:
+  editorial:
+    policy_heading: كيف نُعدّ هذه الصفحة
+    policy_body: >-
+      نوع الطريق ومدة القيادة التقديرية وفئة السيارة الموصى بها في هذه الصفحة مأخوذة من بيانات
+      مساراتنا المُهيكلة الخاصة بنا — نفس حقلَي road وcar_category اللذين يحددان أيضاً الحجوزات
+      والتسعير في الموقع. مدة القيادة تقدير مبني على نوع الطريق والمسافة، وليست بيانات ازدحام مروري
+      لحظية — خصّص وقتاً إضافياً في الطقس السيئ أو أثناء أعمال الطرق. رسوم الدخول وأشهر التشغيل
+      وحالة الطريق قد تتغيّر بحسب الموسم — يُرجى التحقق محلياً قبل السفر.
+  last_reviewed_label: آخر مراجعة
+  data_source_label: 'المصدر: بيانات المسارات والأماكن'
+  trust:
+    heading: من نحن
+    body: >-
+      تعمل RentUp في تأجير السيارات في جورجيا منذ عام 2019، ويضم أسطولها 17 سيارة، ومكتبنا في
+      تبليسي على جادة فاجا-بشافيلا. اتصل بنا أو راسلنا عبر واتساب على الرقم +995 597 55 55 65، يومياً
+      من الساعة 09:00 حتى 21:00.
+  disclaimer: >-
+    المعلومات مُقدَّمة لأغراض التخطيط للرحلة. قد تتغيّر التفاصيل — يُرجى التحقق محلياً قبل السفر.

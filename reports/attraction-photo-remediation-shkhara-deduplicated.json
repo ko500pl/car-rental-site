@@ -1,0 +1,51 @@
+[
+  {
+    "slug": "shkhara-glacier",
+    "status": "updated",
+    "media": [
+      {
+        "title": "File:Shkhara Glacier.jpg",
+        "author": "Jordan Sanchez",
+        "license": "CC0",
+        "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "source": "https://commons.wikimedia.org/wiki/File:Shkhara_Glacier.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Shkhara_Glacier.jpg/1920px-Shkhara_Glacier.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 5647,
+        "original_height": 3770,
+        "local_path": "static/photos/shkhara-glacier.webp",
+        "output_width": 1800,
+        "output_height": 1202,
+        "bytes": 628480
+      },
+      {
+        "title": "File:Shkhara Mountain, view from Chubedishi Mountain.jpg",
+        "author": "Boris Kuznetsov",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Shkhara_Mountain,_view_from_Chubedishi_Mountain.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Shkhara_Mountain%2C_view_from_Chubedishi_Mountain.jpg/1920px-Shkhara_Mountain%2C_view_from_Chubedishi_Mountain.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 5469,
+        "original_height": 3197,
+        "local_path": "static/photos/shkhara-glacier-1.webp",
+        "output_width": 1800,
+        "output_height": 1052,
+        "bytes": 473500
+      },
+      {
+        "title": "File:Shkhara.jpg",
+        "author": "Paweł Pieńkowski",
+        "license": "CC BY-SA 3.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Shkhara.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Shkhara.jpg/1920px-Shkhara.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 3264,
+        "original_height": 2176,
+        "local_path": "static/photos/shkhara-glacier-2.webp",
+        "output_width": 1800,
+        "output_height": 1200,
+        "bytes": 630588
+      }
+    ],
+    "errors": []
+  }
+]

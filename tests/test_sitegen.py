@@ -115,12 +115,13 @@ class ProductFeatureTests(unittest.TestCase):
         source = Path("build.py").read_text(encoding="utf-8")
         app = Path("static", "app.js").read_text(encoding="utf-8")
         apk = Path("static", "downloads", "rentup-android.apk")
-        self.assertIn('app-download', source)
+        self.assertIn('class="app-download"', source)
         self.assertIn('rentup-android.apk', source)
         self.assertIn('data-ios-install', source)
         self.assertIn('FH_SHOW_IOS_INSTALL', app)
         self.assertTrue(apk.exists())
-        self.assertGreater(apk.stat().st_size, 10_000)
+        # The WebView shell APK is intentionally tiny (~54 KB); it loads /app/ live.
+        self.assertGreater(apk.stat().st_size, 20_000)
 
     def test_safe_vehicle_floor_has_no_downgrade_fallback(self):
         planner = Path("static", "planner.js").read_text(encoding="utf-8")

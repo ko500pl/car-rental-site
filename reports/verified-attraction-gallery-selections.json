@@ -1,0 +1,11 @@
+{
+  "georgian-national-museum": {"primary": 0, "gallery": [4, 8, 9]},
+  "open-air-museum-of-ethnography": {"primary": 18, "gallery": [20, 24, 27]},
+  "petra-fortress": {"primary": 28, "gallery": [33, 34]},
+  "mtatsminda-park": {"primary": 38, "gallery": [39, 42, 43]},
+  "rustaveli-avenue": {"primary": 46, "gallery": [47, 49, 50]},
+  "svaneti-museum-mestia": {"primary": 56, "gallery": [57, 58, 61]},
+  "kintrishi-protected-areas": {"primary": 67, "gallery": [68, 69]},
+  "nunisi-resort": {"primary": 70, "gallery": []},
+  "utsera": {"primary": 73, "gallery": [72]}
+}

@@ -1,0 +1,57 @@
+{
+  "generated_on": "2026-08-29",
+  "method": "OSRM driving route through origin and ordered waypoints for road routes only; cycling, hiking and off-road routes are explicitly skipped; return leg is included only when return_to_origin=true",
+  "endpoint": "https://router.project-osrm.org/route/v1/driving",
+  "summary": {
+    "routes": 1,
+    "verified": 1,
+    "skipped_non_road": 0,
+    "failed": 0,
+    "stated_below_osrm_distance": 0,
+    "stated_below_osrm_time": 0
+  },
+  "routes": [
+    {
+      "slug": "guria-coast-day",
+      "name": "გურიის სანაპირო და კულტურა",
+      "waypoints": [
+        "ureki",
+        "shekvetili-dendrological-park",
+        "nodar-dumbadze-house-museum"
+      ],
+      "return_to_origin": false,
+      "routing_mode": "road",
+      "missing_waypoints": [],
+      "stated_distance_km": 135.0,
+      "stated_drive_hours": 3.0,
+      "osrm": {
+        "distance_km": 104.9,
+        "drive_hours": 2.34,
+        "legs": [
+          {
+            "from": "origin",
+            "to": "ureki",
+            "distance_km": 48.8,
+            "drive_hours": 0.87
+          },
+          {
+            "from": "ureki",
+            "to": "shekvetili-dendrological-park",
+            "distance_km": 1.5,
+            "drive_hours": 0.08
+          },
+          {
+            "from": "shekvetili-dendrological-park",
+            "to": "nodar-dumbadze-house-museum",
+            "distance_km": 54.5,
+            "drive_hours": 1.4
+          }
+        ]
+      },
+      "distance_ratio": 1.29,
+      "drive_time_ratio": 1.28,
+      "status": "ok",
+      "error": null
+    }
+  ]
+}

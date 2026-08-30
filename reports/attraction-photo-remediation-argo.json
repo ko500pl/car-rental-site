@@ -1,0 +1,51 @@
+[
+  {
+    "slug": "batumi-argo-cable-car",
+    "status": "updated",
+    "media": [
+      {
+        "title": "File:Argo Cable Car, Batumi (51154027556).jpg",
+        "author": "Andrew Milligan sumo",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Argo_Cable_Car,_Batumi_(51154027556).jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Argo_Cable_Car%2C_Batumi_%2851154027556%29.jpg/1920px-Argo_Cable_Car%2C_Batumi_%2851154027556%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 6000,
+        "original_height": 4000,
+        "local_path": "static/photos/batumi-argo-cable-car.webp",
+        "output_width": 1800,
+        "output_height": 1200,
+        "bytes": 421440
+      },
+      {
+        "title": "File:Argo Cable Car, Batumi (51155088905).jpg",
+        "author": "Andrew Milligan sumo",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Argo_Cable_Car,_Batumi_(51155088905).jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Argo_Cable_Car%2C_Batumi_%2851155088905%29.jpg/1920px-Argo_Cable_Car%2C_Batumi_%2851155088905%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 6000,
+        "original_height": 4000,
+        "local_path": "static/photos/batumi-argo-cable-car-1.webp",
+        "output_width": 1800,
+        "output_height": 1200,
+        "bytes": 295724
+      },
+      {
+        "title": "File:Argo Cable Car, Batumi (51154032306).jpg",
+        "author": "Andrew Milligan sumo",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Argo_Cable_Car,_Batumi_(51154032306).jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Argo_Cable_Car%2C_Batumi_%2851154032306%29.jpg/1920px-Argo_Cable_Car%2C_Batumi_%2851154032306%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 6000,
+        "original_height": 4000,
+        "local_path": "static/photos/batumi-argo-cable-car-2.webp",
+        "output_width": 1800,
+        "output_height": 1200,
+        "bytes": 185328
+      }
+    ],
+    "errors": []
+  }
+]

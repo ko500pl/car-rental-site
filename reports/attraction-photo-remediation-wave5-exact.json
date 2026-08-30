@@ -1,0 +1,191 @@
+[
+  {
+    "slug": "abastumani-observatory",
+    "status": "updated",
+    "media": [
+      {
+        "title": "File:Abastumani Astrophysical Observatory (1).jpg",
+        "author": "Surprizi",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Abastumani_Astrophysical_Observatory_(1).jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Abastumani_Astrophysical_Observatory_%281%29.jpg/1920px-Abastumani_Astrophysical_Observatory_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 3264,
+        "original_height": 2448,
+        "local_path": "static/photos/abastumani-observatory.webp",
+        "output_width": 1800,
+        "output_height": 1350,
+        "bytes": 275568
+      },
+      {
+        "title": "File:Abastumani Astrophysical Observatory (2).jpg",
+        "author": "Surprizi",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Abastumani_Astrophysical_Observatory_(2).jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Abastumani_Astrophysical_Observatory_%282%29.jpg/1920px-Abastumani_Astrophysical_Observatory_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 3264,
+        "original_height": 2448,
+        "local_path": "static/photos/abastumani-observatory-1.webp",
+        "output_width": 1800,
+        "output_height": 1350,
+        "bytes": 649722
+      },
+      {
+        "title": "File:Abastumani Astrophysical Observatory (3).jpg",
+        "author": "Surprizi",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Abastumani_Astrophysical_Observatory_(3).jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Abastumani_Astrophysical_Observatory_%283%29.jpg/1920px-Abastumani_Astrophysical_Observatory_%283%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 3264,
+        "original_height": 2448,
+        "local_path": "static/photos/abastumani-observatory-2.webp",
+        "output_width": 1800,
+        "output_height": 1350,
+        "bytes": 752674
+      },
+      {
+        "title": "File:Dome of ASA AZ1500 telescope in Abastumani.jpg",
+        "author": "Unrecognizablepineapple",
+        "license": "CC0",
+        "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "source": "https://commons.wikimedia.org/wiki/File:Dome_of_ASA_AZ1500_telescope_in_Abastumani.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Dome_of_ASA_AZ1500_telescope_in_Abastumani.jpg/1920px-Dome_of_ASA_AZ1500_telescope_in_Abastumani.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 4096,
+        "original_height": 3072,
+        "local_path": "static/photos/abastumani-observatory-3.webp",
+        "output_width": 1800,
+        "output_height": 1350,
+        "bytes": 780954
+      }
+    ],
+    "errors": []
+  },
+  {
+    "slug": "batumi-6-may-park-dolphinarium",
+    "status": "updated",
+    "media": [
+      {
+        "title": "File:Batumi Dolphinarium 3.jpg",
+        "author": "Kharkil",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Batumi_Dolphinarium_3.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Batumi_Dolphinarium_3.jpg/1920px-Batumi_Dolphinarium_3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 4624,
+        "original_height": 2604,
+        "local_path": "static/photos/batumi-6-may-park-dolphinarium.webp",
+        "output_width": 1800,
+        "output_height": 1013,
+        "bytes": 348942
+      },
+      {
+        "title": "File:Nuri Lake.jpg",
+        "author": "Otogi",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Nuri_Lake.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Nuri_Lake.jpg/1920px-Nuri_Lake.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 4000,
+        "original_height": 3000,
+        "local_path": "static/photos/batumi-6-may-park-dolphinarium-1.webp",
+        "output_width": 1800,
+        "output_height": 1350,
+        "bytes": 317838
+      },
+      {
+        "title": "File:Batumi dolphinarium.jpg",
+        "author": "Jeremy Teigen from USA",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Batumi_dolphinarium.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Batumi_dolphinarium.jpg/1920px-Batumi_dolphinarium.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 2592,
+        "original_height": 1944,
+        "local_path": "static/photos/batumi-6-may-park-dolphinarium-2.webp",
+        "output_width": 1800,
+        "output_height": 1350,
+        "bytes": 348902
+      },
+      {
+        "title": "File:Pokaz delfinarium batumi 1.jpg",
+        "author": "W0zny",
+        "license": "CC BY-SA 3.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Pokaz_delfinarium_batumi_1.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Pokaz_delfinarium_batumi_1.jpg/1920px-Pokaz_delfinarium_batumi_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 4288,
+        "original_height": 2848,
+        "local_path": "static/photos/batumi-6-may-park-dolphinarium-3.webp",
+        "output_width": 1800,
+        "output_height": 1195,
+        "bytes": 387596
+      }
+    ],
+    "errors": []
+  },
+  {
+    "slug": "jvari-pass-friendship-monument",
+    "status": "updated",
+    "media": [
+      {
+        "title": "File:Russia-Georgia friendship monument, Dzhvaris pass.jpg",
+        "author": "Tadeáš Gregor",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Russia-Georgia_friendship_monument,_Dzhvaris_pass.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Russia-Georgia_friendship_monument%2C_Dzhvaris_pass.jpg/1920px-Russia-Georgia_friendship_monument%2C_Dzhvaris_pass.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 4160,
+        "original_height": 3120,
+        "local_path": "static/photos/jvari-pass-friendship-monument.webp",
+        "output_width": 1800,
+        "output_height": 1350,
+        "bytes": 595204
+      },
+      {
+        "title": "File:Russia–Georgia Friendship Monument 09.23.jpg",
+        "author": "This Photo was taken by Supanut Arunoprayote . Feel free to use any of my images, but please mention me as the author and may send me a message. (สามารถใช้ภาพได้อิสระ แต่กรุณาใส่เครดิตผู้ถ่ายและอาจส่ง ข้อความบอกกล่าวด้วย ) Please do not upload an updated image here without consultation with the Author. The author would like to make corrections only at his own source. This ensures that the changes are preserved. Please if you think that any changes should be required, please inform the author. Otherwise you can upload a new image with a new name. Please use one of the templates derivative or extract .",
+        "license": "CC BY 4.0",
+        "license_url": "https://creativecommons.org/licenses/by/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Russia%E2%80%93Georgia_Friendship_Monument_09.23.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Russia%E2%80%93Georgia_Friendship_Monument_09.23.jpg/1920px-Russia%E2%80%93Georgia_Friendship_Monument_09.23.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 6474,
+        "original_height": 3642,
+        "local_path": "static/photos/jvari-pass-friendship-monument-1.webp",
+        "output_width": 1800,
+        "output_height": 1013,
+        "bytes": 504408
+      },
+      {
+        "title": "File:Russia–Georgia Friendship Monument Gruzia 2019 5.jpg",
+        "author": "Karelj",
+        "license": "CC BY-SA 3.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Russia%E2%80%93Georgia_Friendship_Monument_Gruzia_2019_5.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Russia%E2%80%93Georgia_Friendship_Monument_Gruzia_2019_5.jpg/1920px-Russia%E2%80%93Georgia_Friendship_Monument_Gruzia_2019_5.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 2600,
+        "original_height": 1733,
+        "local_path": "static/photos/jvari-pass-friendship-monument-2.webp",
+        "output_width": 1800,
+        "output_height": 1200,
+        "bytes": 823608
+      },
+      {
+        "title": "File:Russia–Georgia Friendship Monument Gruzia 2019 2.jpg",
+        "author": "Karelj",
+        "license": "CC BY-SA 3.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Russia%E2%80%93Georgia_Friendship_Monument_Gruzia_2019_2.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Russia%E2%80%93Georgia_Friendship_Monument_Gruzia_2019_2.jpg/1920px-Russia%E2%80%93Georgia_Friendship_Monument_Gruzia_2019_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 2400,
+        "original_height": 1600,
+        "local_path": "static/photos/jvari-pass-friendship-monument-3.webp",
+        "output_width": 1800,
+        "output_height": 1200,
+        "bytes": 459634
+      }
+    ],
+    "errors": []
+  }
+]

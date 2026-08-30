@@ -75,6 +75,153 @@ HOME_HERO = load("content/settings/home_hero.yml")
 CATS = load("content/settings/categories.yml")["categories"]
 
 
+def load_opt(path, default=None):
+    """SEO content packs are optional — the site must build without them."""
+    return load(path) if os.path.exists(path) else (default if default is not None else {})
+
+
+# ── SEO content packs (docs/seo/*) ────────────────────────────────────────
+RENTAL_POLICY = load_opt("content/settings/rental_policy.yml")
+SEO_META = load_opt("content/settings/seo_meta.yml")
+SEO_UI = load_opt("content/settings/seo_ui.yml")
+SEO_CAR_RENTAL = load_opt("content/settings/seo_car_rental.yml")
+SEO_CATEGORIES = load_opt("content/settings/seo_categories.yml")
+SEO_TRIP_PLANNER = load_opt("content/settings/seo_trip_planner.yml")
+SEO_TRUST = load_opt("content/settings/seo_trust.yml")
+KA_FORMS = load_opt("content/settings/ka_forms.yml")
+ITINERARIES = {os.path.splitext(os.path.basename(p))[0]: load(p)
+               for p in sorted(glob.glob("content/itineraries/*.yml"))}
+
+
+def ka_case(name, case="loc"):
+    """Georgian place names take case endings, and gluing them on with a hyphen
+    ("ბათუმი-ში") is the clearest sign of machine-generated text. Hand-checked
+    forms live in content/settings/ka_forms.yml; the rules below are the
+    fallback for anything not in that table.
+
+    case: 'gen' -ის · 'loc' -ში · 'abl' -დან · 'dat' -ს
+    """
+    if not name:
+        return ""
+    entry = (KA_FORMS.get("places") or {}).get(name) or (KA_FORMS.get("regions") or {}).get(name)
+    if isinstance(entry, dict) and entry.get(case):
+        return entry[case]
+    # Multi-word names decline on the last word only.
+    head, _, last = name.rpartition(" ")
+    if head:
+        return (head + " " + ka_case(last, case)).strip()
+    if name.endswith("ი"):          # consonantal stem: the -ი drops out
+        stem = name[:-1]
+        return {"gen": stem + "ის", "loc": stem + "ში",
+                "abl": stem + "იდან", "dat": stem + "ს"}[case]
+    if name.endswith("ა"):          # -ა stem: kept in the locative, dropped elsewhere
+        stem = name[:-1]
+        return {"gen": stem + "ის", "loc": name + "ში",
+                "abl": stem + "იდან", "dat": name + "ს"}[case]
+    if name[-1] in "ეოუ":           # vowel stems keep the vowel
+        return {"gen": name + "ს", "loc": name + "ში",
+                "abl": name + "დან", "dat": name + "ს"}[case]
+    return {"gen": name + "ის", "loc": name + "ში",
+            "abl": name + "იდან", "dat": name + "ს"}[case]
+
+
+def abs_url(u):
+    """Absolutise a site-relative path. Already-absolute URLs pass through — a
+    gallery photo hosted on Wikimedia must not become rentup.gehttps://…"""
+    if not u:
+        return None
+    return (SITE_URL + u) if u.startswith("/") else u
+
+
+class _Blanks(dict):
+    """format_map helper: an unsupplied placeholder renders as nothing rather
+    than raising, so a missing value can never leak `{name}` onto a page."""
+
+    def __missing__(self, key):
+        return ""
+
+
+def _ka_variants(fmt):
+    """Georgian templates need declined forms, not a hyphen-glued suffix. For
+    every string value we also expose {x_gen}, {x_loc}, {x_abl} and {x_dat}, so
+    a template writes "{region_loc}" instead of the wrong "{region}-ში"."""
+    out = dict(fmt or {})
+    for k, v in list(out.items()):
+        if isinstance(v, str) and v and not k.endswith(("_gen", "_loc", "_abl", "_dat")):
+            for c in ("gen", "loc", "abl", "dat"):
+                out.setdefault(f"{k}_{c}", ka_case(v, c))
+    return out
+
+
+def _fmt(s, fmt, lang=None):
+    """Substitute {placeholders} and tidy what an empty substitution leaves behind."""
+    if not s:
+        return ""
+    if lang == "ka":
+        fmt = _ka_variants(fmt)
+    try:
+        s = str(s).format_map(_Blanks(fmt or {}))
+    except (IndexError, ValueError):
+        return str(s)
+    # An emptied placeholder can strand its punctuation: "Routes from  — RentUp".
+    s = re.sub(r"\s{2,}", " ", s)
+    s = re.sub(r"\s+([,.;:!?»])", r"\1", s)
+    s = re.sub(r"[ \t]*[—–·|,]\s*(?=[—–·|,]|$)", "", s)
+    return s.strip(" \t—–·|,")
+
+
+def su(key, lang, *path, **fmt):
+    """seo_ui.yml lookup: su('nearby_places', lang) or su('road', lang, 'gravel').
+
+    Strings may carry {placeholders} — pass them as keywords:
+    su('popular_routes_from', lang, place='Batumi')."""
+    node = SEO_UI.get(key)
+    for p in path:
+        if not isinstance(node, dict):
+            return ""
+        node = node.get(p)
+    if isinstance(node, dict):
+        node = node.get(lang) or node.get("en") or ""
+    return _fmt(node, fmt, lang) if fmt else (node or "")
+
+
+def seo_meta(template, lang, **fmt):
+    """seo_meta.yml → (title, description). Falls back to ('','') when absent."""
+    t = (SEO_META.get("templates") or {}).get(template)
+    if not isinstance(t, dict):
+        return "", ""
+    # nested variants: attraction.by_type.<type>, route.by_purpose.<purpose>,
+    # car_rental_location.<city|airport>
+    for group, key in (("by_type", fmt.get("type")), ("by_purpose", fmt.get("purpose")),
+                       (None, fmt.get("kind"))):
+        if group and group in t:
+            t = t[group].get(key) or t[group].get("default") or t.get("default") or {}
+            break
+        if group is None and key and key in t:
+            t = t[key]
+            break
+    else:
+        if "default" in t and lang not in t:
+            t = t["default"]
+    node = t.get(lang) or t.get("en") or {}
+    title = _fmt(node.get("title", ""), fmt, lang)
+    return _trim_title(title), _fmt(node.get("description", ""), fmt, lang)
+
+
+def _trim_title(title, limit=70):
+    """Keep a title under the SERP cut without ever truncating mid-word.
+
+    Titles here are built as clauses joined by " — " / " · " / " | ", the first
+    clause always being the entity's own name. We drop whole trailing clauses,
+    least important first, and never touch the first one — so a long name stays
+    intact and simply loses its qualifiers."""
+    if len(title) <= limit:
+        return title
+    parts = re.split(r"\s+(?=[—–·|]\s)", title)
+    while len(parts) > 1 and len(" ".join(parts)) > limit:
+        parts.pop()
+    out = " ".join(parts).strip(" \t—–·|,")
+    return out or title
 # ══════════════════════════════════════════════ ფასის დანამატები (გამჭვირვალობა)
 # წყარო: content/settings/booking.yml → season: / young_driver:.
 # იგივე ციფრები მიდის FH_CFG-ში (JS) და ჩანს ავტომობილისა და ავტოპარკის გვერდზე.
@@ -470,7 +617,7 @@ def booking_open_btn(lang, cls="btn booking-hero-cta"):
 
 
 def cars_grid(category, lang, limit=None):
-    # Drive On Pages მაკეტის ბარათი: სახელი + ფირუზი ფასი ერთ ხაზზე, მეტა,
+    # RentUp Pages მაკეტის ბარათი: სახელი + ფირუზი ფასი ერთ ხაზზე, მეტა,
     # ვადიანი ფასები, ფირუზი „დაჯავშნა" + ghost „დეტალები".
     items = [(s, c) for s, c in CARS.items() if not category or c["category"] == category]
     if limit:
@@ -571,13 +718,19 @@ def crumbs_node(lang, trail):
         for i, (n, u) in enumerate(trail)]}
 
 
-def faq_node(blocks):
-    qas = [x for b in blocks if b["type"] == "faq" for x in b["items"]]
-    if not qas:
+def faq_items_node(items):
+    """FAQPage from a plain [{q, a}] list — the shape the SEO cluster uses.
+    Only ever called where the same Q&A is rendered visibly on the page."""
+    items = [x for x in (items or []) if x.get("q") and x.get("a")]
+    if not items:
         return None
     return {"@type": "FAQPage", "mainEntity": [
         {"@type": "Question", "name": x["q"],
-         "acceptedAnswer": {"@type": "Answer", "text": x["a"]}} for x in qas]}
+         "acceptedAnswer": {"@type": "Answer", "text": x["a"]}} for x in items]}
+
+
+def faq_node(blocks):
+    return faq_items_node([x for b in blocks if b["type"] == "faq" for x in b["items"]])
 
 
 def software_node(lang):
@@ -626,7 +779,7 @@ def car_node(slug, c, lang):
                    "seller": {"@id": SITE_URL + "/#organization"}},
     }
     if c.get("image"):
-        node["image"] = SITE_URL + c["image"] if c["image"].startswith("/") else c["image"]
+        node["image"] = abs_url(c["image"])
     return node
 
 
@@ -640,7 +793,7 @@ def post_node(slug, p, lang):
             "publisher": {"@id": SITE_URL + "/#organization"},
             "mainEntityOfPage": post_url(lang, slug)}
     if p.get("image"):
-        node["image"] = SITE_URL + p["image"] if p["image"].startswith("/") else p["image"]
+        node["image"] = abs_url(p["image"])
     return node
 
 
@@ -651,16 +804,22 @@ LEAFLET_JS = "/assets/leaflet/leaflet.js"
 
 ASSET = {"css": "/assets/style.css", "explorer": "/assets/explorer.js",
          "planner": "/assets/planner.js", "workspace": "/assets/workspace.js",
-         "app_mobile": "/assets/app-mobile.js", "trip": "/assets/trip.js",
-         "analytics": "/assets/analytics.js"}
+         "app_mobile": "/assets/app-mobile.js", "trip": "/assets/trip.js"}
 TRAVEL_ASSET = {}
 
 
 def analytics_html():
-    """Build-time GA4 config. Empty IDs intentionally produce a client-side no-op."""
+    """Build-time GA4 config. Empty IDs intentionally produce a client-side no-op.
+
+    `static/analytics.js` is optional. Emitting the tag unconditionally shipped a
+    404 on every page, so the loader is only linked once the file is actually
+    written into dist/ by write_hashed()."""
+    src = ASSET.get("analytics")
+    if not src:
+        return ""
     measurement_id = os.environ.get("GA_MEASUREMENT_ID", "").strip()
     return (f'<script>window.FH_ANALYTICS_CONFIG={{"measurementId":{J(measurement_id)}}};</script>\n'
-            f'<script defer src="{ASSET.get("analytics", "/assets/analytics.js")}"></script>')
+            f'<script defer src="{src}"></script>')
 
 
 def _hash(data):
@@ -707,13 +866,12 @@ def head_html(lang, current, title, desc, keywords, url, alternates, depth, ld,
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Drive On">
+<meta name="apple-mobile-web-app-title" content="RentUp">
 <title>{E(title)}</title>
 <meta name="description" content="{E(desc)}">
-<meta name="keywords" content="{E(keywords)}">
 <link rel="canonical" href="{url}">
 {alts}
-<meta name="robots" content="{"noindex, nofollow" if current in ("account", "trip") else "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"}">
+<meta name="robots" content="{"noindex, nofollow" if current in ("account", "trip", "card") else "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"}">
 <meta name="author" content="{E(BRAND)}">
 <meta name="geo.region" content="GE">
 <meta name="geo.placename" content="{E(SITE['address'][lang]['city'])}">
@@ -753,7 +911,7 @@ def header_html(lang, current):
     app_soon = {"ka": "მალე", "en": "Coming soon", "ru": "Скоро", "fa": "به‌زودی",
                 "he": "בקרוב", "ar": "قريباً"}[lang]
     CUR = ' aria-current="page"'
-    # Drive On Pages მაკეტი: ტაბები — მთავარი გვერდები; დანარჩენი "..." მენიუში.
+    # RentUp Pages მაკეტი: ტაბები — მთავარი გვერდები; დანარჩენი "..." მენიუში.
     more_pages = {"terms", "faq", "blog", "software"}
     lis = "".join(
         f'<li><a href="{page_url(lang, "map", False) + "#planner" if p == "planner" else page_url(lang, p, False)}"'
@@ -868,11 +1026,18 @@ def shell(lang, current, head, body, depth, tail=""):
             "password", "forgot", "reset_sent", "why_account", "legal_note", "please_sign_in",
             "no_trips", "to_planner", "planned", "done", "mark_done", "mark_planned", "open",
             "delete", "confirm_del", "days", "stops", "save_trip", "saved") if k in u["ui"]}
+        # Perf: only ship the bundles a page can actually use. auth.js and app.js
+        # are global (header account state + shared UI); booking.js is needed
+        # wherever a booking CTA exists; community.js only on the community page.
+        _needs_booking = current in ("index", "fleet", "map", "planner", "account")
+        _needs_community = current == "community"
         fb = (f'\n<script>window.FH_CFG={J(cfg)};</script>'
               f'\n<script type="module" src="{ASSET.get("auth", "/assets/auth.js")}"></script>'
-              f'\n<script type="module" src="{ASSET.get("booking", "/assets/booking.js")}"></script>'
-              f'\n<script type="module" src="{ASSET.get("community", "/assets/community.js")}"></script>'
-              f'\n<script defer src="{ASSET.get("app", "/assets/app.js")}"></script>')
+              + (f'\n<script type="module" src="{ASSET.get("booking", "/assets/booking.js")}"></script>'
+                 if _needs_booking else "")
+              + (f'\n<script type="module" src="{ASSET.get("community", "/assets/community.js")}"></script>'
+                 if _needs_community else "")
+              + f'\n<script defer src="{ASSET.get("app", "/assets/app.js")}"></script>')
     inquiry = inquiry_widget(lang, current) if current in ("index", "fleet", "map", "planner") else ""
     return (f'<!DOCTYPE html>\n<html lang="{lang}" dir="{LANG_DIR[lang]}">\n<head>\n{head}\n{analytics_html()}\n'
             f'{style}</head>\n<body class="page-{E(current)}">\n'
@@ -1001,7 +1166,7 @@ def render_static_page(lang, page):
                     f'<div><h2>{E(flow[0])}</h2><p>{E(flow[1])}</p></div>'
                     f'<a class="text-link" href="{page_url(lang, "community", False)}">{E(flow[11])} →</a>'
                     f'</div><div class="journey-steps">{steps}</div></div></section>')
-        # ── Drive On Pages მაკეტის სექციები: სტანდარტული ტურები + ავტოპარკი ──
+        # ── RentUp Pages მაკეტის სექციები: სტანდარტული ტურები + ავტოპარკი ──
         tt = {
             "ka": ("სტანდარტული ტურები", "მზა მარშრუტები ღამისთევებით, რეალური სავალი დროებით და რეკომენდებული ავტომობილით.",
                    "დღე", "კმ", "ნახვა", "დაგეგმვა", "ყველა ტურის ნახვა",
@@ -1050,11 +1215,11 @@ def render_static_page(lang, page):
                 f'<p class="meta">{days} {E(tt[2])} · {km} {E(tt[3])}</p>'
                 f'<p class="sub">{E(R.get("short", ""))}</p>'
                 f'<div class="btns"><a class="btn sm" href="{ru_}">{E(tt[4])}</a>'
-                f'<a class="btn sm ghost" href="#planner" data-open-standard-tour data-tour="{E(slug)}">{E(tt[5])}</a>'
+                f'<a class="btn sm ghost" href="{page_url(lang, "map", False)}#planner" data-open-standard-tour data-tour="{E(slug)}">{E(tt[5])}</a>'
                 f'</div></div></article>')
         body.append(f'<section class="sec home-tours"><div class="wrap">'
                     f'<div class="sec-head"><div><h2>{E(tt[0])}</h2><p class="lead">{E(tt[1])}</p></div>'
-                    f'<a class="btn ghost" href="#planner" data-open-standard-tour>{E(tt[6])}</a></div>'
+                    f'<a class="btn ghost" href="{page_url(lang, "map", False)}#planner" data-open-standard-tour>{E(tt[6])}</a></div>'
                     f'<div class="tour-grid">{"".join(tcards)}</div></div></section>')
         body.append(f'<section class="sec alt home-fleet"><div class="wrap">'
                     f'<div class="sec-head"><div><h2>{E(tt[7])}</h2><p class="lead">{E(tt[8])}</p></div>'
@@ -1166,11 +1331,20 @@ def render_static_page(lang, page):
             {"@type": "ListItem", "position": i + 1, "url": car_url(lang, s)}
             for i, s in enumerate(CARS)]})
 
+    _tpl = {"index": "home", "fleet": "fleet", "terms": "terms", "faq": "faq",
+            "about": "about", "contact": "contact", "community": "community",
+            "software": "software"}.get(page)
+    if _tpl:
+        _st, _sd = seo_meta(_tpl, lang, count=len(CARS))
+        if _st:
+            p = dict(p); p["title"] = _st; p["desc"] = _sd or p["desc"]
     head = head_html(lang, page, p["title"], p["desc"], p.get("keywords", ""),
                      page_url(lang, page),
                      {l: page_url(l, page) for l in LANGS}, depth,
                      {"@context": "https://schema.org", "@graph": graph},
-                     leaflet=(page == "index"))
+                     # The homepage is a landing page since the planner moved to
+                     # /map/ — it renders no Leaflet map, so don't ship its CSS.
+                     leaflet=False)
     crumbs = crumbs_html(lang, [] if page == "index" else
                          [(u["nav"]["index"], page_url(lang, "index", False)),
                           (u["nav"][page], None)])
@@ -1180,20 +1354,20 @@ def render_static_page(lang, page):
 
 def render_business_card(lang):
     tx = {
-        "ka": ("შოთა ლომიძე", "ავტო გაქირავება • მძღოლით მომსახურება", "დარეკვა", "ვებგვერდი", "კონტაქტის შენახვა", "დაასკანირე QR და დაამატე კონტაქტებში", "შოთა ლომიძე — Drive On | ელექტრონული ვიზიტკა", "Drive On-ის ავტო გაქირავებისა და მძღოლით მომსახურების საკონტაქტო ვიზიტკა."),
-        "en": ("Shota Lomidze", "Car rental • Chauffeur service", "Call", "Website", "Save contact", "Scan the QR code to add the contact", "Shota Lomidze — Drive On | Business card", "Drive On car rental and chauffeur service contact card."),
-        "ru": ("Шота Ломидзе", "Аренда автомобилей • Услуги водителя", "Позвонить", "Веб-сайт", "Сохранить контакт", "Отсканируйте QR-код, чтобы добавить контакт", "Шота Ломидзе — Drive On | Визитка", "Контактная визитка Drive On: аренда автомобилей и услуги водителя."),
-        "fa": ("شوتا لومیدزه", "اجاره خودرو • خدمات خودرو با راننده", "تماس", "وب‌سایت", "ذخیره مخاطب", "برای افزودن مخاطب، کد QR را اسکن کنید", "شوتا لومیدزه — Drive On | کارت ویزیت", "کارت تماس خدمات اجاره خودرو و خودرو با راننده Drive On."),
-        "he": ("שוטה לומידזה", "השכרת רכב • שירות עם נהג", "התקשרו", "אתר", "שמירת איש קשר", "סרקו את קוד ה-QR כדי להוסיף את איש הקשר", "שוטה לומידזה — Drive On | כרטיס ביקור", "כרטיס קשר לשירותי השכרת רכב ורכב עם נהג של Drive On."),
-        "ar": ("شوتا لوميدزه", "تأجير السيارات • خدمة سيارة مع سائق", "اتصال", "الموقع", "حفظ جهة الاتصال", "امسح رمز QR لإضافة جهة الاتصال", "شوتا لوميدزه — Drive On | بطاقة العمل", "بطاقة اتصال لخدمات تأجير السيارات والسيارة مع سائق من Drive On."),
+        "ka": ("შოთა ლომიძე", "ავტო გაქირავება • მძღოლით მომსახურება", "დარეკვა", "ვებგვერდი", "კონტაქტის შენახვა", "დაასკანირე QR და დაამატე კონტაქტებში", "შოთა ლომიძე — RentUp | ელექტრონული ვიზიტკა", "RentUp-ის ავტო გაქირავებისა და მძღოლით მომსახურების საკონტაქტო ვიზიტკა."),
+        "en": ("Shota Lomidze", "Car rental • Chauffeur service", "Call", "Website", "Save contact", "Scan the QR code to add the contact", "Shota Lomidze — RentUp | Business card", "RentUp car rental and chauffeur service contact card."),
+        "ru": ("Шота Ломидзе", "Аренда автомобилей • Услуги водителя", "Позвонить", "Веб-сайт", "Сохранить контакт", "Отсканируйте QR-код, чтобы добавить контакт", "Шота Ломидзе — RentUp | Визитка", "Контактная визитка RentUp: аренда автомобилей и услуги водителя."),
+        "fa": ("شوتا لومیدزه", "اجاره خودرو • خدمات خودرو با راننده", "تماس", "وب‌سایت", "ذخیره مخاطب", "برای افزودن مخاطب، کد QR را اسکن کنید", "شوتا لومیدزه — RentUp | کارت ویزیت", "کارت تماس خدمات اجاره خودرو و خودرو با راننده RentUp."),
+        "he": ("שוטה לומידזה", "השכרת רכב • שירות עם נהג", "התקשרו", "אתר", "שמירת איש קשר", "סרקו את קוד ה-QR כדי להוסיף את איש הקשר", "שוטה לומידזה — RentUp | כרטיס ביקור", "כרטיס קשר לשירותי השכרת רכב ורכב עם נהג של RentUp."),
+        "ar": ("شوتا لوميدزه", "تأجير السيارات • خدمة سيارة مع سائق", "اتصال", "الموقع", "حفظ جهة الاتصال", "امسح رمز QR لإضافة جهة الاتصال", "شوتا لوميدزه — RentUp | بطاقة العمل", "بطاقة اتصال لخدمات تأجير السيارات والسيارة مع سائق من RentUp."),
     }[lang]
     name, role, call, website, save, scan, title, desc = tx
     url = page_url(lang, "card")
     alternates = {l: page_url(l, "card") for l in LANGS}
     ld = {"@context": "https://schema.org", "@type": "Person", "name": "Shota Lomidze",
-          "worksFor": {"@type": "Organization", "name": "Drive On", "url": SITE_URL},
+          "worksFor": {"@type": "Organization", "name": "RentUp", "url": SITE_URL},
           "telephone": "+995597555565", "url": url}
-    head = head_html(lang, "card", title, desc, "Drive On, Shota Lomidze", url,
+    head = head_html(lang, "card", title, desc, "RentUp, Shota Lomidze", url,
                      alternates, 1, ld)
     def card_lang_href(target):
         if target == lang:
@@ -1212,7 +1386,7 @@ def render_business_card(lang):
 <article class="road-pass-card" aria-labelledby="card-name">
 <div class="road-pass-top"><span>DRIVE ON • GEORGIA</span><strong>ROAD PASS <span aria-hidden="true">✈</span></strong></div>
 <div class="road-pass-body"><div class="road-pass-identity">
-<div class="road-pass-brand"><img src="/assets/do-logo-tight.png" alt=""><b>Drive On</b></div>
+<div class="road-pass-brand"><img src="/assets/do-logo-tight.png" alt=""><b>RentUp</b></div>
 <h1 id="card-name">{E(name)}</h1><p class="road-pass-role">{E(role)}</p>
 <a class="card-contact-line" href="tel:+995597555565" aria-label="{E(call)}: +995 597 55 55 65"><span aria-hidden="true">☎</span><bdi dir="ltr">+995 597 55 55 65</bdi></a>
 <a class="card-contact-line card-site" href="https://www.rentup.ge/" aria-label="{E(website)}: www.rentup.ge"><span aria-hidden="true">↗</span><bdi dir="ltr">www.rentup.ge</bdi></a>
@@ -1300,11 +1474,15 @@ def render_car(lang, slug, c):
              crumbs_node(lang, [(u["nav"]["index"], page_url(lang, "index")),
                                 (u["nav"]["fleet"], page_url(lang, "fleet")),
                                 (L["name"], car_url(lang, slug))])]
+    _st, _sd = seo_meta("car", lang, name=L["name"], price=c.get("price_1_6", ""),
+                        category=car_cat_label(c["category"], lang), seats=c.get("seats", ""))
+    if _st:
+        title, desc = _st, (_sd or desc)
     head = head_html(lang, "fleet", title, desc,
                      f'{L["name"]}, {L["name"]} {u["ui"]["rent_word"]}, {cat_label(c["category"], lang)}',
                      car_url(lang, slug), {l: car_url(l, slug) for l in LANGS}, depth,
                      {"@context": "https://schema.org", "@graph": graph},
-                     og_type="product", image=(SITE_URL + img) if img and img.startswith("/") else img)
+                     og_type="product", image=abs_url(img))
     crumbs = crumbs_html(lang, [(u["nav"]["index"], page_url(lang, "index", False)),
                                 (u["nav"]["fleet"], page_url(lang, "fleet", False)),
                                 (L["name"], None)])
@@ -1391,7 +1569,7 @@ def render_post(lang, slug, post):
                      {l: post_url(l, slug) for l in LANGS}, depth,
                      {"@context": "https://schema.org", "@graph": graph},
                      og_type="article",
-                     image=(SITE_URL + post["image"]) if post.get("image", "").startswith("/") else post.get("image"))
+                     image=abs_url(post.get("image")))
     crumbs = crumbs_html(lang, [(u["nav"]["index"], page_url(lang, "index", False)),
                                 (u["nav"]["blog"], page_url(lang, "blog", False)),
                                 (L["title"], None)])
@@ -1429,7 +1607,9 @@ def tu(lang, key):
 
 
 def car_cat_label(cat, lang):
-    return cat_label({"economy": "economy", "suv": "suv", "offroad": "offroad"}[cat], lang)
+    # Routes/attractions only ever recommend economy/suv/offroad, but the fleet
+    # also has business/minivan/van — fall back to the fleet category label.
+    return cat_label(cat, lang) if cat in {c["key"] for c in CATS} else cat_label("economy", lang)
 
 
 def stars_html(r, lang, small=False):
@@ -1453,7 +1633,7 @@ def gallery_html(a, lang):
     g = a.get("gallery") or []
     if not g:
         return ""
-    cap = te(lang, "photo_by")
+    cap = tu(lang, "photo_by")
     figs = "".join(
         f'<figure class="gph"><img src="{E(x["image"])}" alt="{E(a[lang]["name"])} — {i+1}" '
         f'loading="lazy" decoding="async">'
@@ -1486,7 +1666,7 @@ def photo_html(a, lang, cls="photo", hero=False):
     lic = c.get("license") or ""
     src = c.get("source") or ""
     lurl = c.get("license_url") or ""
-    cap = f'{E(te(lang, "photo_by") if "photo_by" in TRAVEL[lang]["exp"] else "Photo")}: '
+    cap = f'{E(tu(lang, "photo_by"))}: '
     bits = [f'<a href="{E(src)}" rel="nofollow noopener" target="_blank">{E(who)}</a>' if src
             else E(who)]
     if lic:
@@ -1847,6 +2027,9 @@ def explorer_block(lang, depth, height="72vh", hero=False):
     return html, js
 
 
+NOINDEX_PAGES = {"account", "trip", "card", "planner", "pricing"}
+
+
 def counts_sub(s):
     """{attractions} / {regions} / {routes} — რიცხვები არასდროს ძველდება."""
     if not isinstance(s, str):
@@ -1863,7 +2046,16 @@ def render_map_page(lang):
     u = UI[lang]
     depth = 1 if lang == ROOT_LANG else 2
     mp, js = travel_workspace_block(lang, depth, "72vh", initial="planner")
-    body = (f'<section class="sec wide maphero" id="planner"><div class="wrap wide">{mp}</div></section>')
+    # SEO: the planner page needs a real H1 and search-intent metadata.
+    pl = (SEO_TRIP_PLANNER.get("planner") or {}).get(lang) or {}
+    h1 = pl.get("h1") or p["title"]
+    lead = pl.get("lead") or p["desc"]
+    st, sd = seo_meta("planner", lang)
+    p["title"] = st or p["title"]
+    p["desc"] = sd or p["desc"]
+    body = (f'<section class="page-head"><div class="wrap"><h1>{E(h1)}</h1>'
+            f'<p class="lead">{E(lead)}</p></div></section>'
+            f'<section class="sec wide maphero" id="planner"><div class="wrap wide">{mp}</div></section>')
     graph = [org_node(lang), website_node(lang),
              {"@type": "CollectionPage", "@id": page_url(lang, "map") + "#webpage",
               "url": page_url(lang, "map"), "name": p["title"], "description": p["desc"]}]
@@ -1957,7 +2149,10 @@ def render_region(lang, key, r):
         f"</ul></div>" for s, a in sub.items())
     best = "".join(f"<li>{inline(x, lang)}</li>" for x in L["best_for"])
     title = f'{L["name"]} — {tu(lang, "attractions")}, {tu(lang, "routes")} | {BRAND}'
-    desc = re.sub(r"\s+", " ", L["short"] + " " + L["body"])[:158].rsplit(" ", 1)[0]
+    _st, _sd = seo_meta("region", lang, name=L["name"], count=len(sub))
+    if _st:
+        title = _st
+    desc = _sd or re.sub(r"\s+", " ", L["short"] + " " + L["body"])[:158].rsplit(" ", 1)[0]
     body = (
         f'<section class="page-head"><div class="wrap"><h1>{E(L["name"])}</h1>'
         f'<p class="lead">{E(L["short"])}</p></div></section>'
@@ -2060,7 +2255,12 @@ def render_attraction(lang, slug, a):
              f'<span class="tag muted">{E(r[lang]["name"])}</span>'
              + (f'<span class="tag muted">{E(tu(lang,"unesco"))}</span>' if a["unesco"] else ""))
     title = f'{L["name"]} — {tl(lang, "type", a["type"])}, {a["drive_time_tbilisi"]} {tu(lang,"from_tbilisi")}'
+    _st, _sd = seo_meta("attraction", lang, type=a.get("type", ""), name=L["name"],
+                        region=r[lang]["name"], drive=a.get("drive_time_tbilisi", ""),
+                        km=a.get("distance_tbilisi_km", ""))
     title = title[:70] + f" | {BRAND}" if len(title) < 55 else title[:74]
+    if _st:
+        title = _st
     desc = re.sub(r"\s+", " ", f'{L["short"]} {tu(lang,"visit_time")}: {a["visit_hours"]} '
                                f'{tu(lang,"hrs")}. {tu(lang,"from_tbilisi")} '
                                f'{a["distance_tbilisi_km"]} {tu(lang,"km")}, '
@@ -2081,6 +2281,7 @@ def render_attraction(lang, slug, a):
         f'<div class="article">{render_md(L["route"], lang)}</div>{mp}</div></section>'
         + (f'<section class="sec"><div class="wrap"><h2>{E(tu(lang,"nearby_title"))}</h2>'
            f'<div class="cards">{near}</div></div></section>' if near else "")
+        + attraction_links_block(lang, slug, a)
         + f'<section class="sec alt"><div class="wrap"><div class="cta">'
           f'<h2>{E(u["ui"]["book_title"])}</h2><p>{E(TRIP_CTA_TEXT[lang])}</p>'
           f'<div class="row">{booking_open_btn(lang)}'
@@ -2088,10 +2289,12 @@ def render_attraction(lang, slug, a):
           f'<a class="btn ghost" href="{page_url(lang,"fleet",False)}">{E(u["nav"]["fleet"])}</a>'
           f'<a class="btn ghost" href="{region_url(lang, a["region"], False)}">{E(r[lang]["name"])}</a>'
           f"</div></div></div></section>")
+    if _sd:
+        desc = _sd
     graph = [org_node(lang), website_node(lang),
              {"@type": "TouristAttraction", "@id": attr_url(lang, slug) + "#attraction",
               "name": L["name"], "description": L["short"], "url": attr_url(lang, slug),
-              **({"image": SITE_URL + a["image"]} if a.get("image") else {}),
+              **({"image": abs_url(a["image"])} if a.get("image") else {}),
               "geo": {"@type": "GeoCoordinates", "latitude": a["lat"], "longitude": a["lon"],
                       "elevation": a["elevation"]},
               "address": {"@type": "PostalAddress", "addressRegion": r[lang]["name"],
@@ -2109,7 +2312,7 @@ def render_attraction(lang, slug, a):
                      f'{L["name"]}, {tl(lang,"type",a["type"])}, {r[lang]["name"]}',
                      attr_url(lang, slug), {l: attr_url(l, slug) for l in LANGS},
                      depth, {"@context": "https://schema.org", "@graph": graph}, leaflet=True,
-                     image=(SITE_URL + a["image"]) if a.get("image") else None)
+                     image=abs_url(a.get("image")))
     crumbs = crumbs_html(lang, [(u["nav"]["index"], page_url(lang, "index", False)),
                                 (u["nav"]["map"], page_url(lang, "map", False)),
                                 (r[lang]["name"], region_url(lang, a["region"], False)),
@@ -2145,7 +2348,13 @@ def render_route(lang, slug, r):
         for s, a in wp.items())
     tips = "".join(f"<li>{inline(x, lang)}</li>" for x in L["tips"])
     title = f'{L["name"]} — {r["days"]} {tu(lang,"days")}, {r["distance_km"]} {tu(lang,"km")} | {BRAND}'
-    desc = re.sub(r"\s+", " ", L["short"] + " " + L["body"])[:158].rsplit(" ", 1)[0]
+    _st, _sd = seo_meta("route", lang, purpose=r.get("purpose", ""), name=L["name"],
+                        days=r.get("days", ""), km=r.get("distance_km", ""),
+                        drive=r.get("drive_time_total", ""),
+                        car=car_cat_label(r.get("car_category", "economy"), lang))
+    if _st:
+        title = _st
+    desc = _sd or re.sub(r"\s+", " ", L["short"] + " " + L["body"])[:158].rsplit(" ", 1)[0]
     body = (
         f'<section class="page-head"><div class="wrap"><h1>{E(L["name"])}</h1>'
         f'<p class="lead">{E(L["short"])}</p></div></section>'
@@ -2157,7 +2366,9 @@ def render_route(lang, slug, r):
         f'<div class="article">{render_md(L["plan"], lang)}</div></div></section>'
         f'<section class="sec"><div class="wrap"><h2>{E(tu(lang,"waypoints_title"))}</h2>'
         f'<div class="cards">{stops}</div>'
-        f'<h2>{E(tu(lang,"tips_title"))}</h2><ul>{tips}</ul>'
+        f'<h2>{E(tu(lang,"tips_title"))}</h2><ul>{tips}</ul></div></section>'
+        + route_links_block(lang, slug, r)
+        + f'<section class="sec"><div class="wrap">'
         f'<div class="cta"><h2>{E(u["ui"]["book_title"])}</h2>'
         f'<p>{E(TRIP_CTA_TEXT[lang])}</p><div class="row">'
         f'{booking_open_btn(lang)}'
@@ -2527,7 +2738,7 @@ for _l, _v in _DOW_SAVE_T.items():
 
 
 def travel_workspace_block(lang, depth, height="72vh", hero=False, initial="explore"):
-    """Drive On Trip Workspace — მომხმარებლის მაკეტის ზუსტი განლაგება."""
+    """RentUp Trip Workspace — მომხმარებლის მაკეტის ზუსტი განლაგება."""
     base = rel_prefix(depth)
     U = DOW_UI[lang]
     types = sorted({a["type"] for a in ATTRACTIONS.values()},
@@ -2735,12 +2946,12 @@ def source_lastmod(path):
         return TODAY
 
 
-def sitemap():
+def _sitemap_urls(entries):
+    """entries: list of (loc_fn, priority, source_path or None)."""
     urls = []
-
-    def add(loc_fn, prio, langs=LANGS, source=None):
+    for loc_fn, prio, source in entries:
         lastmod = source_lastmod(source) if source else source_lastmod("build.py")
-        for lang in langs:
+        for lang in LANGS:
             alts = "".join(
                 f'\n    <xhtml:link rel="alternate" hreflang="{l}" href="{loc_fn(l)}"/>'
                 for l in LANGS)
@@ -2752,30 +2963,74 @@ def sitemap():
     <changefreq>weekly</changefreq>
     <priority>{prio}</priority>{alts}
   </url>""")
-
-    for page in PAGE_ORDER:
-        if page == "planner":
-            continue
-        if page in NAV_HIDDEN:
-            continue
-        add(lambda l, p=page: page_url(l, p),
-            "1.0" if page == "index" else
-            ("0.9" if page in ("fleet", "pricing", "software", "blog") else "0.7"),
-            source=Path("content/pages") / f"{page}.yml")
-    for slug in CARS:
-        add(lambda l, s=slug: car_url(l, s), "0.8", source=Path("content/cars") / f"{slug}.yml")
-    for slug in POSTS:
-        add(lambda l, s=slug: post_url(l, s), "0.6", source=Path("content/posts") / f"{slug}.yml")
-    for key in REGIONS:
-        add(lambda l, k=key: region_url(l, k), "0.8", source=Path("content/regions") / f"{key}.yml")
-    for slug in ATTRACTIONS:
-        add(lambda l, s=slug: attr_url(l, s), "0.7", source=Path("content/attractions") / f"{slug}.yml")
-    for slug in ROUTES:
-        add(lambda l, s=slug: route_url(l, s), "0.8", source=Path("content/routes") / f"{slug}.yml")
     return ('<?xml version="1.0" encoding="UTF-8"?>\n'
             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n'
             '        xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
             + "\n".join(urls) + "\n</urlset>\n")
+
+
+def sitemap_children():
+    """Sitemap split by content type. Only canonical, indexable, 200 pages."""
+    core = []
+    for page in PAGE_ORDER:
+        if page in ("planner", "account"):
+            continue          # planner is an alias of /map/; account is noindex
+        prio = ("1.0" if page == "index" else
+                "0.9" if page in ("fleet", "map", "blog", "software") else "0.7")
+        core.append((lambda l, p=page: page_url(l, p), prio,
+                     Path("content/pages") / f"{page}.yml"))
+    # /tours/ — the ready-made routes hub (was missing from the sitemap)
+    core.append((lambda l: SITE_URL + lang_root(l) + "tours/", "0.9", None))
+    out = {"core": core}
+    rental = []
+    if (SEO_CAR_RENTAL.get("hub") or {}):
+        rental.append((lambda l: rental_hub_url(l), "0.9", Path("content/settings/seo_car_rental.yml")))
+    for k in RENTAL_PLACES:
+        if rental_quality_ok("location", (SEO_CAR_RENTAL.get("locations") or {}).get(k, {})):
+            rental.append((lambda l, kk=k: rental_place_url(l, kk), "0.8",
+                           Path("content/settings/seo_car_rental.yml")))
+    for k in ("economy", "suv", "offroad", "minivan"):
+        if rental_quality_ok("category", _seo_cats().get(k, {})):
+            rental.append((lambda l, kk=k: rental_cat_url(l, kk), "0.8",
+                           Path("content/settings/seo_categories.yml")))
+    if rental:
+        out["car-rental"] = rental
+    travel = []
+    if (SEO_TRIP_PLANNER.get("planner") or {}):
+        travel.append((lambda l: planner_landing_url(l), "0.9",
+                       Path("content/settings/seo_trip_planner.yml")))
+    good_itins = [k for k, v in ITINERARIES.items() if itinerary_quality_ok(v)]
+    if good_itins:
+        travel.append((lambda l: itin_hub_url(l), "0.8", None))
+        for k in good_itins:
+            travel.append((lambda l, kk=k: itin_url(l, kk), "0.8",
+                           Path("content/itineraries") / f"{k}.yml"))
+    if travel:
+        out["itineraries"] = travel
+    out["cars"] = [(lambda l, s=slug: car_url(l, s), "0.8",
+                    Path("content/cars") / f"{slug}.yml") for slug in CARS]
+    out["attractions"] = [(lambda l, s=slug: attr_url(l, s), "0.7",
+                           Path("content/attractions") / f"{slug}.yml") for slug in ATTRACTIONS]
+    out["routes"] = [(lambda l, s=slug: route_url(l, s), "0.8",
+                      Path("content/routes") / f"{slug}.yml") for slug in ROUTES]
+    out["regions"] = [(lambda l, k=key: region_url(l, k), "0.8",
+                       Path("content/regions") / f"{key}.yml") for key in REGIONS]
+    out["blog"] = [(lambda l, s=slug: post_url(l, s), "0.6",
+                    Path("content/posts") / f"{slug}.yml") for slug in POSTS]
+    for name, entries in list(out.items()):
+        if not entries:
+            del out[name]
+    return out
+
+
+def sitemap_index(children):
+    lastmod = source_lastmod("build.py")
+    items = "\n".join(
+        f"  <sitemap>\n    <loc>{SITE_URL}/sitemaps/{n}.xml</loc>\n"
+        f"    <lastmod>{lastmod}</lastmod>\n  </sitemap>" for n in children)
+    return ('<?xml version="1.0" encoding="UTF-8"?>\n'
+            '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+            + items + "\n</sitemapindex>\n")
 
 
 AI_BOTS = ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-User",
@@ -2809,8 +3064,38 @@ def llms_txt():
         out.append(f"- **{k}:** {v}")
     out += ["", "## Pages", ""]
     for p in PAGE_ORDER:
-        d = (PLANNER["en"] if p == "planner" else PAGES[p]["en"])["desc"]
+        if p in NOINDEX_PAGES:          # never point an assistant at a noindex page
+            continue
+        d = counts_sub((PLANNER["en"] if p == "planner" else PAGES[p]["en"])["desc"])
         out.append(f"- [{u['nav'][p]}]({page_url('en', p)}): {d}")
+    # The commercial and planning clusters are the pages an assistant is most
+    # likely to be asked about, and they were missing entirely.
+    _hub = (SEO_CAR_RENTAL.get("hub") or {}).get("en") or {}
+    if _hub:
+        out.append(f"- [{_hub.get('h1', 'Car rental in Georgia')}]"
+                   f"({rental_hub_url('en')}): {_hub.get('lead', '')}")
+    for k in RENTAL_PLACES:
+        loc = (SEO_CAR_RENTAL.get("locations") or {}).get(k) or {}
+        L = loc.get("en") or {}
+        if L and rental_quality_ok("location", loc):
+            out.append(f"- [{L.get('h1', k)}]({rental_place_url('en', k)}): {L.get('lead', '')}")
+    for k in ("economy", "suv", "offroad", "minivan"):
+        cat = (_seo_cats() or {}).get(k) or {}
+        L = cat.get("en") or {}
+        if L and rental_quality_ok("category", cat):
+            out.append(f"- [{L.get('h1', k)}]({rental_cat_url('en', k)}): {L.get('lead', '')}")
+    _pl = (SEO_TRIP_PLANNER.get("planner") or {}).get("en") or {}
+    if _pl:
+        out.append(f"- [{_pl.get('h1', 'Trip planner')}]"
+                   f"({planner_landing_url('en')}): {_pl.get('lead', '')}")
+    out += ["", "## Ready-made itineraries", ""]
+    for sl, it in ITINERARIES.items():
+        if not itinerary_quality_ok(it):
+            continue
+        L = it.get("en") or {}
+        out.append(f"- [{L.get('name', sl)}]({itin_url('en', sl)}): {it['days']} days, "
+                   f"{it['total_km']} km, {it['total_drive']} driving, "
+                   f"{it.get('car_category', 'economy')} category — {L.get('short', '')}")
     out += ["", "## Fleet", ""]
     for s, c in CARS.items():
         L = c["en"]
@@ -2936,7 +3221,7 @@ def render_404():
 
 # ══════════════════════════════════════════════════════════════ main
 # ══════════════════════════════════════════════════ Landing (მთავარი ჰერო)
-# "Drive On - Landing" მაკეტის პორტი: ჰერო ფოტო + 4 სამოქმედო ბარათი + სტატისტიკა.
+# "RentUp - Landing" მაკეტის პორტი: ჰერო ფოტო + 4 სამოქმედო ბარათი + სტატისტიკა.
 LAND_UI = {
     "ka": {"h1": "რა გეგმა გაქვს დღეს?", "lead": "აირჩიე სასურველი და დაიწყე შენი მოგზაურობა საქართველოში",
            "c1t": "დაგეგმე ტური დამოუკიდებლად", "c1d": "შეადგინე შენი მარშრუტი, აირჩიე ადგილები და დაგეგმე დღეები",
@@ -2997,6 +3282,36 @@ def landing_stats():
     return places, cars, avg
 
 
+def home_semantic_block(lang):
+    """Crawlable prose that states, in HTML, what RentUp actually is.
+    Rendered under the visual landing hero — visible to users, not hidden text."""
+    H = (SEO_TRIP_PLANNER.get("home") or {}).get(lang) or {}
+    secs = H.get("sections") or {}
+    if not secs:
+        return ""
+    links = {
+        "rent_a_car": (rental_hub_url(lang, False), su("car_rental", lang)),
+        "plan_your_trip": (planner_landing_url(lang, False), su("trip_planner", lang)),
+        "ready_made_routes": (lang_root(lang) + "tours/", su("ready_made_routes", lang)),
+        "places_to_visit": (page_url(lang, "map", False), su("browse_places", lang)),
+        "cars_for_every_route": (page_url(lang, "fleet", False), su("see_all_cars", lang)),
+    }
+    out = ""
+    for i, key in enumerate(["rent_a_car", "plan_your_trip", "ready_made_routes",
+                             "places_to_visit", "cars_for_every_route"]):
+        v = secs.get(key)
+        if not v:
+            continue
+        href, label = links.get(key, ("", ""))
+        cta = (f'<p><a class="btn ghost" href="{href}">{E(label)}</a></p>'
+               if href and label else "")
+        out += (f'<section class="sec{" alt" if i % 2 else ""}"><div class="wrap">'
+                f'<h2>{E(v.get("h2", ""))}</h2>'
+                f'<div class="article"><p>{E(v.get("body", ""))}</p>{cta}</div>'
+                f'</div></section>')
+    return out
+
+
 def landing_block(lang):
     t = LAND_UI[lang]
     places, cars_n, avg = landing_stats()
@@ -3029,7 +3344,8 @@ def landing_block(lang):
             f'<div class="land-hero-copy"><h1>{E(t["h1"])}</h1><p>{E(t["lead"])}</p></div></div>'
             f'<div class="land-cards">{cards_html}</div></div>'
             f'<div class="land-stats">{stats_html}</div>'
-            f'</div></section>')
+            f'</div></section>'
+            + home_semantic_block(lang))
 
 
 
@@ -3042,6 +3358,677 @@ TOURS_UI = {
     "he": ("טיולים מוכנים", "מסלולים מוכנים באזורי גאורגיה — עם זמני נסיעה אמיתיים ורכב מומלץ.", "ימים", "לילות", 'ק"מ', "נהיגה", "צפייה בטיול", "פתיחה במתכנן"),
     "ar": ("جولات جاهزة", "مسارات جاهزة في مناطق جورجيا — بأوقات قيادة حقيقية وسيارة مقترحة.", "أيام", "ليالٍ", "كم", "قيادة", "عرض الجولة", "افتح في المخطط"),
 }
+
+
+# ══════════════════════════════════════════ car-rental cluster (/car-rental/)
+CAR_RENTAL_SLUG = "car-rental"
+RENTAL_PLACES = ["tbilisi", "tbilisi-airport", "kutaisi", "kutaisi-airport",
+                 "batumi", "batumi-airport"]
+# public URL slug per fleet category key
+CATEGORY_SLUG = {"economy": "economy", "suv": "suv", "offroad": "4x4",
+                 "minivan": "minivan", "business": "business", "van": "van"}
+PLACE_BY_KEY = {p["key"]: p for p in PLACES}
+
+
+def rental_hub_url(lang, absolute=True):
+    p = f"{lang_root(lang)}{CAR_RENTAL_SLUG}/"
+    return (SITE_URL + p) if absolute else p
+
+
+def rental_place_url(lang, key, absolute=True):
+    p = f"{lang_root(lang)}{CAR_RENTAL_SLUG}/{key}/"
+    return (SITE_URL + p) if absolute else p
+
+
+def rental_cat_url(lang, cat, absolute=True):
+    p = f"{lang_root(lang)}{CAR_RENTAL_SLUG}/{CATEGORY_SLUG.get(cat, cat)}/"
+    return (SITE_URL + p) if absolute else p
+
+
+def _seo_cats():
+    return {c["key"]: c for c in (SEO_CATEGORIES.get("seo_categories") or [])}
+
+
+def rental_quality_ok(kind, payload):
+    """Content quality gate — a generated page is only indexable when it
+    carries enough genuine data (docs/seo/SEO_VALIDATION.md)."""
+    if kind == "location":
+        d = payload.get("data") or {}
+        return (len(d.get("route_slugs") or []) >= 2
+                and len(d.get("category_keys") or []) >= 1
+                and len(d.get("nearest_attraction_slugs") or []) >= 3)
+    if kind == "category":
+        d = payload.get("data") or {}
+        return len(d.get("car_slugs") or []) >= 2
+    return True
+
+
+def _car_card(lang, slug):
+    c = CARS.get(slug)
+    if not c:
+        return ""
+    L = c[lang]
+    price = c.get("price_1_6")
+    specs = " · ".join(str(x) for x in [
+        f'{c.get("seats")} {su("seats", lang)}' if c.get("seats") else "",
+        f'{c.get("luggage")} {su("luggage", lang)}' if c.get("luggage") else "",
+        f'{c.get("clearance")} mm' if c.get("clearance") else "",
+    ] if x)
+    img = (f'<a class="stop-img" href="{car_url(lang, slug, False)}" tabindex="-1" aria-hidden="true">'
+           f'<img src="{E(c["image"])}" alt="" loading="lazy"></a>') if c.get("image") else ""
+    return (f'<div class="card stop-card">{img}'
+            f'<h3><a href="{car_url(lang, slug, False)}">{E(L["name"])}</a></h3>'
+            f'<p>{E(specs)}</p>'
+            f'<span class="price">{su("price_from", lang)} {price} ₾/{SPECS["units"]["day"][lang]}</span>'
+            f'</div>')
+
+
+def _route_links(lang, slugs, limit=6):
+    out = []
+    for sl in list(slugs)[:limit]:
+        r = ROUTES.get(sl)
+        if not r:
+            continue
+        out.append(f'<li><a href="{route_url(lang, sl, False)}">{E(r[lang]["name"])}</a> '
+                   f'<small>{r["days"]} {E(tu(lang, "days"))} · {r["distance_km"]} {E(tu(lang, "km"))}</small></li>')
+    return "".join(out)
+
+
+def _attr_links(lang, slugs, limit=8):
+    out = []
+    for sl in list(slugs)[:limit]:
+        a = ATTRACTIONS.get(sl)
+        if not a:
+            continue
+        out.append(f'<li><a href="{attr_url(lang, sl, False)}">{E(a[lang]["name"])}</a></li>')
+    return "".join(out)
+
+
+def _sec(h, body, alt=False):
+    return (f'<section class="sec{" alt" if alt else ""}"><div class="wrap">'
+            f'<h2>{E(h)}</h2>{body}</div></section>')
+
+
+def _faq_html(items):
+    return "".join(f'<details class="faq-item"><summary>{E(x["q"])}</summary>'
+                   f'<div class="article"><p>{E(x["a"])}</p></div></details>'
+                   for x in (items or []))
+
+
+def _rental_distance_table(lang, key, attr_slugs, limit=6):
+    """Real distances from this pickup point to the nearest mapped places.
+    Straight-line (great-circle) km — labelled as such, never presented as
+    driving distance, because no per-place road distance exists in the data."""
+    place = PLACE_BY_KEY.get(key)
+    if not place or not attr_slugs:
+        return ""
+    rows = []
+    for sl in attr_slugs[:limit]:
+        a = ATTRACTIONS.get(sl)
+        if not a:
+            continue
+        km = _hav(place["lat"], place["lon"], a["lat"], a["lon"])
+        rows.append((km, sl, a))
+    rows.sort(key=lambda x: x[0])
+    if not rows:
+        return ""
+    body = "".join(
+        f'<tr><td><a href="{attr_url(lang, sl, False)}">{E(a[lang]["name"])}</a></td>'
+        f'<td>{round(km)} {E(tu(lang, "km"))}</td>'
+        f'<td>{E(su("road", lang, a.get("road", "paved")))}</td></tr>'
+        for km, sl, a in rows)
+    return (f'<div class="tbl-wrap"><table class="spec"><tbody>{body}</tbody></table></div>')
+
+
+# ── internal-linking graph (computed from real relationships) ─────────────
+def _routes_by_attraction():
+    idx = {}
+    for slug, r in ROUTES.items():
+        for w in r.get("waypoints") or []:
+            idx.setdefault(w, []).append(slug)
+    return idx
+
+
+ROUTES_BY_ATTRACTION = _routes_by_attraction()
+
+
+def _itineraries_by_attraction():
+    idx = {}
+    for slug, it in ITINERARIES.items():
+        if not itinerary_quality_ok(it):
+            continue
+        for d in it.get("plan") or []:
+            for w in d.get("stops") or []:
+                idx.setdefault(w, []).append(slug)
+    return idx
+
+
+def nearest_rental_place(lat, lon):
+    """Which of our pickup points a visitor would actually collect a car from.
+    Great-circle, which is enough to pick between Tbilisi, Kutaisi and Batumi."""
+    best, best_km = None, None
+    for k in RENTAL_PLACES:
+        p = PLACE_BY_KEY.get(k)
+        if not p or p.get("lat") is None:
+            continue
+        km = _hav(p["lat"], p["lon"], lat, lon)
+        if best_km is None or km < best_km:
+            best, best_km = k, km
+    return best, best_km
+
+
+def pickup_link_block(lang, lat, lon):
+    """A place page's link to the pickup point that serves it. Without this the
+    commercial cluster is a leaf: routes and attractions link *out* to it and
+    nothing links back, so it collects no authority."""
+    if lat is None or lon is None:
+        return ""
+    key, km = nearest_rental_place(lat, lon)
+    if not key:
+        return ""
+    loc = (SEO_CAR_RENTAL.get("locations") or {}).get(key) or {}
+    if not rental_quality_ok("location", loc):
+        return ""
+    p = PLACE_BY_KEY.get(key, {})
+    name = p.get(lang) or p.get("en", key)
+    h1 = (loc.get(lang) or {}).get("h1") or name
+    return _sec(su("pickup_locations", lang),
+                f'<div class="article"><p>'
+                f'<a href="{rental_place_url(lang, key, False)}">{E(h1)}</a> — '
+                f'{round(km)} {E(tu(lang, "km"))} ({E(su("straight_line", lang) or "straight line")})'
+                f'</p></div>', alt=True)
+
+
+def attraction_links_block(lang, slug, a):
+    """Part-of-these-routes + best-car-for-this-drive + where to pick the car up."""
+    out = ""
+    rs = ROUTES_BY_ATTRACTION.get(slug) or []
+    if rs:
+        out += _sec(su("part_of_routes", lang),
+                    f'<ul class="linklist">{_route_links(lang, rs, 4)}</ul>')
+    cat = a.get("car_category") or "economy"
+    road = a.get("road") or "paved"
+    if cat in {c["key"] for c in CATS}:
+        out += _sec(su("best_car_for_trip", lang),
+                    f'<div class="article"><p>{E(su("road", lang, road))}</p>'
+                    f'<p><a class="btn ghost" href="{rental_cat_url(lang, cat, False)}">'
+                    f'{E(cat_label(cat, lang))} — {E(su("price_from", lang))} '
+                    f'{cheapest_price(cat)} ₾/{E(SPECS["units"]["day"][lang])}</a></p></div>', alt=True)
+    out += pickup_link_block(lang, a.get("lat"), a.get("lon"))
+    return out
+
+
+def route_links_block(lang, slug, r):
+    """Recommended vehicle + open-in-planner + itineraries that include it."""
+    cat = r.get("car_category") or "economy"
+    out = _sec(su("best_car_for_trip", lang),
+               f'<div class="article"><p><a class="btn ghost" '
+               f'href="{rental_cat_url(lang, cat, False)}">{E(cat_label(cat, lang))} — '
+               f'{E(su("price_from", lang))} {cheapest_price(cat)} ₾/'
+               f'{E(SPECS["units"]["day"][lang])}</a></p></div>')
+    # The specific cars in that class, not just the class page — a visitor
+    # deciding on a route wants to see the actual vehicle.
+    cars_in_cat = [s for s, c in CARS.items() if c.get("category") == cat][:3]
+    if cars_in_cat:
+        out += _sec(su("cars_in_category", lang) or UI[lang]["nav"]["fleet"],
+                    f'<div class="cards">{"".join(_car_card(lang, s) for s in cars_in_cat)}</div>')
+    its = ITINERARIES_BY_ATTRACTION_ROUTES.get(slug) or []
+    if its:
+        cards = "".join(
+            f'<li><a href="{itin_url(lang, sl, False)}">{E(ITINERARIES[sl][lang]["name"])}</a> '
+            f'<small>{ITINERARIES[sl]["days"]} {E(tu(lang, "days"))}</small></li>'
+            for sl in its if ITINERARIES.get(sl, {}).get(lang))
+        if cards:
+            out += _sec(su("itineraries", lang), f'<ul class="linklist">{cards}</ul>', alt=True)
+    # Where the trip actually starts from.
+    wps = [w for w in (r.get("waypoints") or []) if w in ATTRACTIONS]
+    if wps:
+        a0 = ATTRACTIONS[wps[0]]
+        out += pickup_link_block(lang, a0.get("lat"), a0.get("lon"))
+    return out
+
+
+def render_car_rental_hub(lang):
+    u = UI[lang]
+    depth = 1 if lang == ROOT_LANG else 2
+    h = (SEO_CAR_RENTAL.get("hub") or {}).get(lang) or {}
+    if not h:
+        return None
+    sec = h.get("sections") or {}
+    cats = _seo_cats()
+    order = [k for k in ("economy", "suv", "offroad", "minivan") if k in cats]
+    cat_cards = "".join(
+        f'<div class="card"><h3><a href="{rental_cat_url(lang, k, False)}">'
+        f'{E((cats[k].get(lang) or {}).get("h1", cat_label(k, lang)))}</a></h3>'
+        f'<p>{E((cats[k].get(lang) or {}).get("lead", ""))}</p>'
+        f'<span class="price">{su("price_from", lang)} '
+        f'{cats[k]["data"].get("price_from_gel", cheapest_price(k))} ₾/{SPECS["units"]["day"][lang]}</span></div>'
+        for k in order if rental_quality_ok("category", cats[k]))
+    loc_links = "".join(
+        f'<li><a href="{rental_place_url(lang, k, False)}">'
+        f'{E(((SEO_CAR_RENTAL.get("locations") or {}).get(k, {}).get(lang) or {}).get("h1", k))}</a></li>'
+        for k in RENTAL_PLACES
+        if rental_quality_ok("location", (SEO_CAR_RENTAL.get("locations") or {}).get(k, {})))
+    fleet_preview = "".join(_car_card(lang, s) for s in list(CARS)[:6])
+    order_keys = ["intro", "how_it_works", "requirements", "deposit_explained", "mileage",
+                  "fuel", "insurance", "delivery", "one_way", "extras", "cancellation", "support"]
+    prose = ""
+    for k in order_keys:
+        v = sec.get(k)
+        if not v:
+            continue
+        if isinstance(v, list):
+            inner = "<ol>" + "".join(f"<li>{E(x)}</li>" for x in v) + "</ol>"
+        elif isinstance(v, dict):
+            inner = (f'<p>{E(v.get("body", ""))}</p>' if v.get("body") else "")
+            k_head = v.get("heading")
+        else:
+            inner = f"<p>{E(v)}</p>"
+        head = (v.get("heading") if isinstance(v, dict) else None) or su(k, lang) or k.replace("_", " ").title()
+        prose += _sec(head, f'<div class="article">{inner}</div>', alt=(len(prose) // 900) % 2 == 1)
+    body = (
+        f'<section class="page-head"><div class="wrap"><h1>{E(h.get("h1", ""))}</h1>'
+        f'<p class="lead">{E(h.get("lead", ""))}</p></div></section>'
+        + _sec(su("cars_in_category", lang) or u["nav"]["fleet"],
+               f'<div class="cards">{cat_cards}</div>')
+        + _sec(su("pickup_locations", lang), f'<ul class="linklist">{loc_links}</ul>', alt=True)
+        + _sec(u["nav"]["fleet"], f'<div class="cards">{fleet_preview}</div>'
+               f'<p><a class="btn ghost" href="{page_url(lang, "fleet", False)}">'
+               f'{su("see_all_cars", lang)}</a></p>')
+        + prose
+        + (_sec("FAQ", f'<div class="faq">{_faq_html(h.get("faq"))}</div>', alt=True)
+           if h.get("faq") else "")
+    )
+    _tt, _td = seo_meta("car_rental_hub", lang, count=len(CARS), price=cheapest_price("economy"))
+    title = h.get("meta_title") or _tt or f'{h.get("h1", "")} | {BRAND}'
+    desc = h.get("meta_description") or _td or ""
+    title = _trim_title(title)
+    url = rental_hub_url(lang)
+    graph = [org_node(lang), website_node(lang),
+             {"@type": "WebPage", "@id": url + "#webpage", "url": url,
+              "name": title, "description": desc, "inLanguage": lang},
+             {"@type": "ItemList", "name": h.get("h1", ""),
+              "itemListElement": [
+                  {"@type": "ListItem", "position": i + 1, "url": rental_cat_url(lang, k),
+                   "name": (cats[k].get(lang) or {}).get("h1", k)}
+                  for i, k in enumerate(order)]},
+             crumbs_node(lang, [(u["nav"]["index"], page_url(lang, "index")),
+                                (h.get("h1", "Car rental"), url)])]
+    _fq = faq_items_node(h.get("faq"))
+    if _fq:
+        graph.append(_fq)
+    head = head_html(lang, "fleet", title, desc, "", url,
+                     {l: rental_hub_url(l) for l in LANGS}, depth,
+                     {"@context": "https://schema.org", "@graph": graph})
+    crumbs = crumbs_html(lang, [(u["nav"]["index"], page_url(lang, "index", False)),
+                                (h.get("h1", "Car rental"), None)])
+    return shell(lang, "fleet", head, crumbs + f'<main id="main">{body}</main>', depth)
+
+
+def render_rental_location(lang, key):
+    u = UI[lang]
+    depth = 2 if lang == ROOT_LANG else 3
+    loc = (SEO_CAR_RENTAL.get("locations") or {}).get(key) or {}
+    L = loc.get(lang) or {}
+    if not L or not rental_quality_ok("location", loc):
+        return None
+    d = loc.get("data") or {}
+    place = PLACE_BY_KEY.get(key, {})
+    hub_h1 = ((SEO_CAR_RENTAL.get("hub") or {}).get(lang) or {}).get("h1", "Car rental")
+    gtk = "".join(f"<li>{E(x)}</li>" for x in (L.get("good_to_know") or []))
+    cat_cards = "".join(
+        f'<div class="card"><h3><a href="{rental_cat_url(lang, k, False)}">'
+        f'{E(cat_label(k, lang))}</a></h3>'
+        f'<span class="price">{su("price_from", lang)} {cheapest_price(k)} ₾/'
+        f'{SPECS["units"]["day"][lang]}</span></div>'
+        for k in (d.get("category_keys") or []))
+    # The airport template already says "Airport"; feed the bare city name so we
+    # never render "Tbilisi Airport Airport Car Rental".
+    _city_key = key.replace("-airport", "")
+    _city_place = PLACE_BY_KEY.get(_city_key) or place
+    _city = _city_place.get(lang) or _city_place.get("en", _city_key)
+    # Heading strings such as "Popular road trips from {place}" take the full
+    # place name, declined for Georgian.
+    _place_label = place.get(lang) or place.get("en", key)
+    body = (
+        f'<section class="page-head"><div class="wrap"><h1>{E(L.get("h1", ""))}</h1>'
+        f'<p class="lead">{E(L.get("lead", ""))}</p></div></section>'
+        + _sec(su("pickup_locations", lang), f'<div class="article"><p>{E(L.get("pickup", ""))}</p></div>')
+        + (_sec(su("popular_routes_from", lang, place=_place_label, place_abl=ka_case(_place_label, "abl")),
+                f'<ul class="linklist">{_route_links(lang, d.get("route_slugs") or [])}</ul>'
+                + _rental_distance_table(lang, key, d.get("nearest_attraction_slugs") or []), alt=True)
+           if d.get("route_slugs") else "")
+        + _sec(su("best_car_for_trip", lang), f'<div class="cards">{cat_cards}</div>')
+        + (_sec(su("nearby_places", lang),
+                f'<ul class="linklist">{_attr_links(lang, d.get("nearest_attraction_slugs") or [])}</ul>', alt=True)
+           if d.get("nearest_attraction_slugs") else "")
+        + _sec(u["nav"].get("faq", "Good to know"),
+               f'<div class="article"><p>{E(L.get("getting_around", ""))}</p><ul>{gtk}</ul></div>')
+        + f'<section class="sec"><div class="wrap"><div class="cta">'
+          f'<h2>{E(su("request_booking", lang))}</h2>'
+          f'<div class="row"><a class="btn" href="{page_url(lang, "contact", False)}">'
+          f'{E(u["nav"]["contact"])}</a>'
+          f'<a class="btn ghost" href="{rental_hub_url(lang, False)}">{E(hub_h1)}</a>'
+          f'</div></div></div></section>'
+    )
+    kind = "airport" if place.get("kind") == "airport" else "city"
+    title, desc = seo_meta("car_rental_location", lang, kind=kind,
+                           city=_city,
+                           name=place.get(lang, place.get("en", key)),
+                           iata={"tbilisi-airport": "TBS", "kutaisi-airport": "KUT",
+                                 "batumi-airport": "BUS"}.get(key, ""))
+    title = L.get("meta_title") or title or f'{L.get("h1", "")} | {BRAND}'
+    desc = L.get("meta_description") or desc or ""
+    title = _trim_title(title)
+    url = rental_place_url(lang, key)
+    graph = [org_node(lang), website_node(lang),
+             {"@type": "WebPage", "@id": url + "#webpage", "url": url,
+              "name": title, "description": desc, "inLanguage": lang,
+              **({"about": {"@type": "Place", "name": place.get(lang, key),
+                            "geo": {"@type": "GeoCoordinates", "latitude": place["lat"],
+                                    "longitude": place["lon"]}}}
+                 if place.get("lat") else {})},
+             crumbs_node(lang, [(u["nav"]["index"], page_url(lang, "index")),
+                                (hub_h1, rental_hub_url(lang)),
+                                (L.get("h1", key), url)])]
+    _fq = faq_items_node(L.get("faq"))
+    if _fq:
+        graph.append(_fq)
+    head = head_html(lang, "fleet", title, desc, "", url,
+                     {l: rental_place_url(l, key) for l in LANGS}, depth,
+                     {"@context": "https://schema.org", "@graph": graph})
+    crumbs = crumbs_html(lang, [(u["nav"]["index"], page_url(lang, "index", False)),
+                                (hub_h1, rental_hub_url(lang, False)),
+                                (L.get("h1", key), None)])
+    return shell(lang, "fleet", head, crumbs + f'<main id="main">{body}</main>', depth)
+
+
+def render_rental_category(lang, key):
+    u = UI[lang]
+    depth = 2 if lang == ROOT_LANG else 3
+    cat = _seo_cats().get(key) or {}
+    L = cat.get(lang) or {}
+    if not L or not rental_quality_ok("category", cat):
+        return None
+    d = cat.get("data") or {}
+    hub_h1 = ((SEO_CAR_RENTAL.get("hub") or {}).get(lang) or {}).get("h1", "Car rental")
+    cars_html = "".join(_car_card(lang, s) for s in (d.get("car_slugs") or []))
+    body = (
+        f'<section class="page-head"><div class="wrap"><h1>{E(L.get("h1", ""))}</h1>'
+        f'<p class="lead">{E(L.get("lead", ""))}</p></div></section>'
+        + _sec(su("all_cars_in_class", lang) or u["nav"]["fleet"], f'<div class="cards">{cars_html}</div>')
+        + _sec(su("best_car_for_trip", lang),
+               f'<div class="article"><p>{E(L.get("when_to_choose", ""))}</p></div>', alt=True)
+        + _sec(su("rental_terms", lang),
+               f'<div class="article"><p>{E(L.get("limitations", ""))}</p>'
+               f'<p>{E(L.get("terms_note", ""))}</p></div>')
+        + (_sec(su("routes_needing_this_car", lang),
+                f'<ul class="linklist">{_route_links(lang, d.get("route_slugs") or [], 8)}</ul>', alt=True)
+           if d.get("route_slugs") else "")
+        + (_sec(su("attractions_for_this_car", lang),
+                f'<ul class="linklist">{_attr_links(lang, d.get("attraction_slugs") or [])}</ul>')
+           if d.get("attraction_slugs") else "")
+        + (_sec("FAQ", f'<div class="faq">{_faq_html(L.get("faq"))}</div>', alt=True)
+           if L.get("faq") else "")
+    )
+    title, desc = seo_meta("car_rental_category", lang,
+                           category=cat_label(key, lang), name=cat_label(key, lang),
+                           count=len(d.get("car_slugs") or []),
+                           price=d.get("price_from_gel", cheapest_price(key)))
+    title = L.get("meta_title") or title or f'{L.get("h1", "")} | {BRAND}'
+    desc = L.get("meta_description") or desc or ""
+    title = _trim_title(title)
+    url = rental_cat_url(lang, key)
+    graph = [org_node(lang), website_node(lang),
+             {"@type": "WebPage", "@id": url + "#webpage", "url": url,
+              "name": title, "description": desc, "inLanguage": lang},
+             {"@type": "ItemList", "numberOfItems": len(d.get("car_slugs") or []),
+              "itemListElement": [
+                  {"@type": "ListItem", "position": i + 1, "url": car_url(lang, s),
+                   "name": CARS[s][lang]["name"]}
+                  for i, s in enumerate(d.get("car_slugs") or []) if s in CARS]},
+             crumbs_node(lang, [(u["nav"]["index"], page_url(lang, "index")),
+                                (hub_h1, rental_hub_url(lang)),
+                                (L.get("h1", key), url)])]
+    _fq = faq_items_node(L.get("faq"))
+    if _fq:
+        graph.append(_fq)
+    head = head_html(lang, "fleet", title, desc, "", url,
+                     {l: rental_cat_url(l, key) for l in LANGS}, depth,
+                     {"@context": "https://schema.org", "@graph": graph})
+    crumbs = crumbs_html(lang, [(u["nav"]["index"], page_url(lang, "index", False)),
+                                (hub_h1, rental_hub_url(lang, False)),
+                                (L.get("h1", key), None)])
+    return shell(lang, "fleet", head, crumbs + f'<main id="main">{body}</main>', depth)
+
+
+# ══════════════════════════════════════ itineraries + trip-planner landing
+def itin_hub_url(lang, absolute=True):
+    p = f"{lang_root(lang)}itineraries/"
+    return (SITE_URL + p) if absolute else p
+
+
+def itin_url(lang, slug, absolute=True):
+    p = f"{lang_root(lang)}itineraries/{slug}/"
+    return (SITE_URL + p) if absolute else p
+
+
+def planner_landing_url(lang, absolute=True):
+    p = f"{lang_root(lang)}trip-planner/"
+    return (SITE_URL + p) if absolute else p
+
+
+def itinerary_quality_ok(it):
+    plan = it.get("plan") or []
+    stops = {s for d in plan for s in (d.get("stops") or [])}
+    return (len(plan) >= 3
+            # a rest day legitimately has km == 0 — require presence, not truthiness
+            and all(d.get("to") and d.get("km") is not None and d.get("drive") for d in plan)
+            and (it.get("total_km") or 0) > 0
+            and len(stops) >= 5)
+
+
+def _place_name(lang, key):
+    p = PLACE_BY_KEY.get(key)
+    if p:
+        return p.get(lang) or p.get("en") or key
+    a = ATTRACTIONS.get(key)
+    if a:
+        return a[lang]["name"]
+    return key
+
+
+def _itin_pickup_block(lang, it):
+    """Link the trip back to the pickup point it starts from — otherwise the
+    commercial pages receive no links from the planning cluster at all."""
+    key = it.get("start", "")
+    if key not in RENTAL_PLACES:
+        p = PLACE_BY_KEY.get(key) or {}
+        if p.get("lat") is None:
+            return ""
+        return pickup_link_block(lang, p["lat"], p["lon"])
+    loc = (SEO_CAR_RENTAL.get("locations") or {}).get(key) or {}
+    if not rental_quality_ok("location", loc):
+        return ""
+    h1 = (loc.get(lang) or {}).get("h1") or _place_name(lang, key)
+    return _sec(su("pickup_locations", lang),
+                f'<div class="article"><p>'
+                f'<a href="{rental_place_url(lang, key, False)}">{E(h1)}</a></p></div>', alt=True)
+
+
+def render_itinerary(lang, slug, it):
+    u = UI[lang]
+    depth = 2 if lang == ROOT_LANG else 3
+    L = it.get(lang) or {}
+    if not L or not itinerary_quality_ok(it):
+        return None
+    hub_h1 = su("itineraries", lang) or "Itineraries"
+    facts = [
+        (tu(lang, "days"), f'{it["days"]}'),
+        (su("total_distance", lang), f'{it["total_km"]} {tu(lang, "km")}'),
+        (su("total_drive", lang), it["total_drive"]),
+        (su("recommended_car", lang), car_cat_label(it.get("car_category", "economy"), lang)),
+        (su("best_season", lang), su("season", lang, it.get("best_season", "all")) or it.get("best_season", "")),
+        (su("start_point", lang), _place_name(lang, it.get("start", ""))),
+    ]
+    fh = ('<dl class="facts">' + "".join(
+        f'<div><dt class="k">{E(k)}</dt><dd class="v">{E(v)}</dd></div>' for k, v in facts if v) + "</dl>")
+    days_html = ""
+    for d in it.get("plan") or []:
+        stops = "".join(
+            f'<li><a href="{attr_url(lang, sl, False)}">{E(ATTRACTIONS[sl][lang]["name"])}</a></li>'
+            for sl in (d.get("stops") or []) if sl in ATTRACTIONS)
+        days_html += (
+            f'<div class="trip-day"><h3>{E(su("day", lang))} {d["day"]} — '
+            f'{E(_place_name(lang, d.get("from", "")))} → {E(_place_name(lang, d.get("to", "")))} '
+            f'<small>{d["km"]} {E(tu(lang, "km"))} · {E(d["drive"])}</small></h3>'
+            f'<ul>{stops}</ul>'
+            f'<p class="pshort">{E(su("overnight", lang))}: {E(_place_name(lang, d.get("overnight", "")))}'
+            f' · {E(su("road", lang, d.get("road", "paved")))}</p></div>')
+    tips = "".join(f"<li>{inline(t, lang)}</li>" for t in (L.get("tips") or []))
+    tour_hash = ",".join(
+        sl for d in (it.get("plan") or []) for sl in (d.get("stops") or []) if sl in ATTRACTIONS)
+    body = (
+        f'<section class="page-head"><div class="wrap"><h1>{E(L.get("name", ""))}</h1>'
+        f'<p class="lead">{E(L.get("short", ""))}</p></div></section>'
+        f'<section class="sec"><div class="wrap">{fh}'
+        f'<div class="article">{render_md(L.get("body", ""), lang)}</div></div></section>'
+        + _sec(su("day_by_day", lang), f'<div class="trip-days">{days_html}</div>', alt=True)
+        + (_sec(tu(lang, "tips_title"), f"<ul>{tips}</ul>") if tips else "")
+        + _itin_pickup_block(lang, it)
+        + _sec(su("routes_needing_this_car", lang) or tu(lang, "routes"),
+               f'<ul class="linklist">{_route_links(lang, it.get("route_slugs") or [], 6)}</ul>', alt=True)
+        + f'<section class="sec"><div class="wrap"><div class="cta">'
+          f'<h2>{E(su("customize_this_trip", lang))}</h2><div class="row">'
+          f'<a class="btn" href="{page_url(lang, "map", False)}#trip='
+          f'{tour_hash}">{E(su("open_in_planner", lang))}</a>'
+          f'<a class="btn ghost" href="{rental_cat_url(lang, it.get("car_category", "economy"), False)}">'
+          f'{E(su("rent_car_for_trip", lang))}</a></div></div></div></section>'
+    )
+    title, desc = seo_meta("itinerary", lang, days=it["days"], km=it["total_km"],
+                           drive=it["total_drive"], name=L.get("name", ""),
+                           stops=sum(len(d.get("stops") or []) for d in (it.get("plan") or [])),
+                           start=_place_name(lang, it.get("start", "")),
+                           end=_place_name(lang, it.get("end", "")),
+                           car=car_cat_label(it.get("car_category", "economy"), lang))
+    title = title or f'{L.get("name", "")} | {BRAND}'
+    desc = desc or L.get("short", "")
+    url = itin_url(lang, slug)
+    graph = [org_node(lang), website_node(lang),
+             {"@type": "TouristTrip", "@id": url + "#trip", "name": L.get("name", ""),
+              "description": L.get("short", ""), "url": url,
+              "provider": {"@id": SITE_URL + "/#organization"},
+              "itinerary": {"@type": "ItemList", "itemListElement": [
+                  {"@type": "ListItem", "position": i + 1,
+                   "item": {"@type": "TouristAttraction", "name": ATTRACTIONS[sl][lang]["name"],
+                            "url": attr_url(lang, sl)}}
+                  for i, sl in enumerate(dict.fromkeys(
+                      sl for d in (it.get("plan") or []) for sl in (d.get("stops") or [])
+                      if sl in ATTRACTIONS))]}},
+             crumbs_node(lang, [(u["nav"]["index"], page_url(lang, "index")),
+                                (hub_h1, itin_hub_url(lang)), (L.get("name", ""), url)])]
+    head = head_html(lang, "map", title, desc, "", url,
+                     {l: itin_url(l, slug) for l in LANGS}, depth,
+                     {"@context": "https://schema.org", "@graph": graph})
+    crumbs = crumbs_html(lang, [(u["nav"]["index"], page_url(lang, "index", False)),
+                                (hub_h1, itin_hub_url(lang, False)), (L.get("name", ""), None)])
+    return shell(lang, "map", head, crumbs + f'<main id="main">{body}</main>', depth)
+
+
+def render_itineraries_hub(lang):
+    u = UI[lang]
+    depth = 1 if lang == ROOT_LANG else 2
+    items = [(sl, it) for sl, it in sorted(ITINERARIES.items(), key=lambda kv: kv[1].get("days", 0))
+             if itinerary_quality_ok(it) and it.get(lang)]
+    if not items:
+        return None
+    hub_h1 = su("itineraries", lang) or "Itineraries"
+    cards = "".join(
+        f'<div class="card tour-card"><h3><a href="{itin_url(lang, sl, False)}">'
+        f'{E(it[lang]["name"])}</a></h3>'
+        f'<p class="tour-meta">{it["days"]} {E(tu(lang, "days"))} · {it["total_km"]} '
+        f'{E(tu(lang, "km"))} · {E(it["total_drive"])} · '
+        f'{E(car_cat_label(it.get("car_category", "economy"), lang))}</p>'
+        f'<p>{E(it[lang].get("short", ""))}</p>'
+        f'<div class="row"><a class="btn sm" href="{itin_url(lang, sl, False)}">'
+        f'{E(su("day_by_day", lang))}</a></div></div>'
+        for sl, it in items)
+    body = (f'<section class="page-head"><div class="wrap"><h1>{E(hub_h1)}</h1>'
+            f'<p class="lead">{E(su("plan_your_own", lang))}</p></div></section>'
+            f'<section class="sec"><div class="wrap"><div class="cards tours-grid">{cards}</div></div></section>')
+    title, desc = seo_meta("itineraries_hub", lang, count=len(items))
+    title = title or f'{hub_h1} | {BRAND}'
+    url = itin_hub_url(lang)
+    graph = [org_node(lang), website_node(lang),
+             {"@type": "CollectionPage", "@id": url + "#webpage", "url": url,
+              "name": title, "description": desc},
+             {"@type": "ItemList", "numberOfItems": len(items), "itemListElement": [
+                 {"@type": "ListItem", "position": i + 1, "url": itin_url(lang, sl),
+                  "name": it[lang]["name"]} for i, (sl, it) in enumerate(items)]},
+             crumbs_node(lang, [(u["nav"]["index"], page_url(lang, "index")), (hub_h1, url)])]
+    head = head_html(lang, "map", title, desc, "", url,
+                     {l: itin_hub_url(l) for l in LANGS}, depth,
+                     {"@context": "https://schema.org", "@graph": graph})
+    crumbs = crumbs_html(lang, [(u["nav"]["index"], page_url(lang, "index", False)), (hub_h1, None)])
+    return shell(lang, "map", head, crumbs + f'<main id="main">{body}</main>', depth)
+
+
+def render_planner_landing(lang):
+    """/trip-planner/ — crawlable landing for the interactive planner at /map/."""
+    u = UI[lang]
+    depth = 1 if lang == ROOT_LANG else 2
+    P = (SEO_TRIP_PLANNER.get("planner") or {}).get(lang) or {}
+    if not P:
+        return None
+    steps = "".join(
+        f'<li><b>{E(x.get("title", ""))}</b> — {E(x.get("body", x.get("text", "")))}</li>'
+        if isinstance(x, dict) else f"<li>{E(x)}</li>" for x in (P.get("steps") or []))
+    feats = "".join(f"<li>{E(x)}</li>" for x in (P.get("features") or []))
+    body = (
+        f'<section class="page-head"><div class="wrap"><h1>{E(P.get("h1", ""))}</h1>'
+        f'<p class="lead">{E(P.get("lead", ""))}</p></div></section>'
+        + _sec(su("how_it_works", lang) or "How it works",
+               f'<div class="article"><p>{E(P.get("what_it_does", ""))}</p><ol>{steps}</ol></div>')
+        + _sec(su("trip_planner", lang), f"<ul>{feats}</ul>", alt=True)
+        + (f'<section class="sec"><div class="wrap"><div class="article">'
+           f'<p>{E(P.get("for_whom", ""))}</p></div></div></section>' if P.get("for_whom") else "")
+        + _sec(su("ready_made_routes", lang),
+               f'<ul class="linklist">{_route_links(lang, list(ROUTES)[:8], 8)}</ul>'
+               f'<p><a class="btn ghost" href="{lang_root(lang)}tours/">{E(su("ready_made_routes", lang))}</a>'
+               f' <a class="btn ghost" href="{itin_hub_url(lang, False)}">{E(su("itineraries", lang))}</a></p>', alt=True)
+        + (_sec("FAQ", f'<div class="faq">{_faq_html(P.get("faq"))}</div>') if P.get("faq") else "")
+        + f'<section class="sec alt"><div class="wrap"><div class="cta">'
+          f'<h2>{E(P.get("cta_open", ""))}</h2><div class="row">'
+          f'<a class="btn" href="{page_url(lang, "map", False)}">{E(P.get("cta_open", ""))}</a>'
+          f'<a class="btn ghost" href="{rental_hub_url(lang, False)}">{E(P.get("cta_car", ""))}</a>'
+          f'</div></div></div></section>'
+    )
+    title = P.get("meta_title") or f'{P.get("h1", "")} | {BRAND}'
+    desc = P.get("meta_description", "")
+    url = planner_landing_url(lang)
+    graph = [org_node(lang), website_node(lang),
+             {"@type": "WebApplication", "@id": url + "#app", "name": P.get("h1", ""),
+              "description": desc, "url": page_url(lang, "map"),
+              "applicationCategory": "TravelApplication", "operatingSystem": "Web browser",
+              "inLanguage": lang, "isAccessibleForFree": True,
+              "provider": {"@id": SITE_URL + "/#organization"}},
+             crumbs_node(lang, [(u["nav"]["index"], page_url(lang, "index")),
+                                (P.get("h1", ""), url)])]
+    _fq = faq_items_node(P.get("faq"))
+    if _fq:
+        graph.append(_fq)
+    head = head_html(lang, "map", title, desc, "", url,
+                     {l: planner_landing_url(l) for l in LANGS}, depth,
+                     {"@context": "https://schema.org", "@graph": graph})
+    crumbs = crumbs_html(lang, [(u["nav"]["index"], page_url(lang, "index", False)),
+                                (P.get("h1", ""), None)])
+    return shell(lang, "map", head, crumbs + f'<main id="main">{body}</main>', depth)
+
+
+ITINERARIES_BY_ATTRACTION_ROUTES = {
+    rs: [sl for sl, it in ITINERARIES.items()
+         if itinerary_quality_ok(it) and rs in (it.get("route_slugs") or [])]
+    for rs in ROUTES}
 
 
 def render_tours_page(lang):
@@ -3064,7 +4051,12 @@ def render_tours_page(lang):
         for r in tours)
     body = (f'<section class="page-head"><div class="wrap"><h1>{E(t[0])}</h1>'
             f'<p class="lead">{E(t[1])}</p></div></section>'
-            f'<section class="sec"><div class="wrap"><div class="cards tours-grid">{cards}</div></div></section>')
+            f'<section class="sec"><div class="wrap"><div class="cards tours-grid">{cards}</div></div></section>'
+            + _sec(su("itineraries", lang),
+                   f'<p><a class="btn ghost" href="{itin_hub_url(lang, False)}">'
+                   f'{E(su("itineraries", lang))}</a> '
+                   f'<a class="btn ghost" href="{planner_landing_url(lang, False)}">'
+                   f'{E(su("trip_planner", lang))}</a></p>', alt=True))
     title = f'{t[0]} | {BRAND}'
     url = SITE_URL + lang_root(lang) + "tours/"
     head = head_html(lang, "map", title, t[1], "", url,
@@ -3167,7 +4159,7 @@ def render_trip_page(lang):
 
 
 # ══════════════════════════════════════════════════════════ Mobile App (/app/)
-# "Drive On - Mobile App" მაკეტის ზუსტი პორტი — ცალკე დგას საიტის ქრომისგან.
+# "RentUp - Mobile App" მაკეტის ზუსტი პორტი — ცალკე დგას საიტის ქრომისგან.
 DOA_UI = {
     "ka": {"appSub": "მოგზაურობის დამგეგმავი", "h1": "დაგეგმე მოგზაურობა საქართველოში", "lead": "აირჩიე ადგილები, დაითვალე დრო და გააზიარე მარშრუტი.", "origin": "საწყისი ადგილი", "originPh": "ქალაქი ან ადგილი", "myLoc": "ჩემი მდებარეობა", "start": "დაწყება", "end": "დასრულება", "days": "რამდენი დღე", "people": "რამდენი ხართ", "transport": "ტრანსპორტი", "tr1": "შემომთავაზეთ მანქანა", "tr2": "ჩემი მანქანით ვარ", "tr3": "მანქანის ქირაობა მინდა", "tr4": "მძღოლი მჭირდება", "dayTime": "დღიური დრო", "plan": "დაგეგმე მოგზაურობა", "tours": "სტანდარტული ტურები", "searchTour": "ტურის ძებნა", "chooseTour": "ამ ტურის არჩევა", "chosen": "არჩეული", "used": "გამოყენებული", "left": "დარჩენილი", "searchPlace": "ადგილის ძებნა", "details": "დეტალები", "tabHome": "მთავარი", "tabMap": "რუკა", "tabRoute": "მარშრუტი", "tabComm": "საზოგადოება", "tabAcc": "ჩემი", "save": "მარშრუტის შენახვა", "share": "გაზიარება", "book": "მანქანის დაჯავშნა", "close": "დახურვა", "notifications": "შეტყობინებები", "emptyTitle": "შედეგი არ არის", "resetFilters": "ფილტრების მოხსნა", "routeEmptyTitle": "მარშრუტი ცარიელია", "routeEmptyText": "აირჩიე ადგილები რუკაზე ან სტანდარტული ტური.", "routeLoading": "მარშრუტი იგება…", "routeError": "გზის სერვისი მიუწვდომელია", "name": "სახელი", "phone": "ტელეფონი", "sendRequest": "მოთხოვნის გაგზავნა", "bookingDone": "მოთხოვნა გაიგზავნა", "bookingInvalid": "შეავსეთ სახელი და ტელეფონი", "commH1": "მოგზაურთა საზოგადოება", "commLead": "იპოვეთ თანამგზავრები, გააზიარეთ მარშრუტი და გამოცდილება, ან შეუერთდით თქვენთვის საინტერესო ტურს.", "accH1": "ჩემი გვერდი", "accLead": "აქ ინახება მარშრუტები, რომლებიც დამგეგმავში ააგეთ — თარიღით და სტატუსით.", "install": "მთავარ ეკრანზე დამატება", "join": "შეერთება", "joined": "შეერთებული ✓", "pub": "საჯარო", "priv": "პირადი", "day": "დღე", "visitedMark": "ნამყოფად მონიშვნა", "visited": "ნამყოფი ✓", "add": "მარშრუტში დამატება", "remove": "მარშრუტიდან მოშორება", "noTime": "დროში არ ეტევა", "saved": "შენახულია ✓", "copied": "ბმული დაკოპირდა ✓", "placeDetails": "ადგილის დეტალები", "inGroup": "ადგილი ამ ჯგუფში", "fitsL": "ეტევა დროში", "notVisited": "არ ვარ ნამყოფი", "placesWord": "ადგილი", "tripsWord": "მოგზაურობა", "freeSeats": "თავისუფალი ადგილი", "noSeats": "ადგილები შევსებულია", "all": "ყველა", "installHint": "მენიუდან აირჩიეთ „მთავარ ეკრანზე დამატება“", "minU": "წთ", "hU": "სთ", "kmU": "კმ", "seats": "ადგილი", "people2": "ადამიანი", "stdCar": "სტანდარტული", "sending": "იგზავნება…", "sendErr": "ვერ გაიგზავნა — სცადეთ ხელახლა ან დაგვირეკეთ", "carWhy4": "მაღალმთიანი გზა — 4WD რეკომენდებულია", "carWhyStd": "ასფალტის მარშრუტი — სტანდარტული კლასი საკმარისია", "accPlanned": "დაგეგმილი ტურები", "accSaved": "შენახული მარშრუტები", "accVisited": "მონახულებული ადგილები", "accGroups": "ჯგუფები", "accCars": "ნაქირავები ავტომობილები", "notif1": "გიორგიმ მოგიწვია ჯგუფში „სვანეთი, სექტემბერი“", "when1": "2 საათის წინ", "notif2": "თქვენი მარშრუტი გაზიარებულია", "when2": "გუშინ"},
     "en": {"appSub": "Trip planner", "h1": "Plan a trip in Georgia", "lead": "Pick places, count the time and share the route.", "origin": "Starting point", "originPh": "City or place", "myLoc": "My location", "start": "From", "end": "To", "days": "How many days", "people": "How many of you", "transport": "Transport", "tr1": "Suggest a car", "tr2": "I have my own car", "tr3": "I want to rent a car", "tr4": "I need a driver", "dayTime": "Hours per day", "plan": "Plan a trip", "tours": "Standard tours", "searchTour": "Search a tour", "chooseTour": "Choose this tour", "chosen": "Budget", "used": "Used", "left": "Left", "searchPlace": "Search a place", "details": "Details", "tabHome": "Home", "tabMap": "Map", "tabRoute": "Route", "tabComm": "Community", "tabAcc": "Me", "save": "Save route", "share": "Share", "book": "Book the car", "close": "Close", "notifications": "Notifications", "emptyTitle": "No results", "resetFilters": "Clear filters", "routeEmptyTitle": "The route is empty", "routeEmptyText": "Pick places on the map or choose a standard tour.", "routeLoading": "Building the route…", "routeError": "Routing service unavailable", "name": "Name", "phone": "Phone", "sendRequest": "Send request", "bookingDone": "Request sent", "bookingInvalid": "Fill in name and phone", "commH1": "Traveller community", "commLead": "Find travel companions, share a route and experience, or join a trip that interests you.", "accH1": "My page", "accLead": "This is where the routes you build in the planner are kept — with the date and the status.", "install": "Add to home screen", "join": "Join", "joined": "Joined ✓", "pub": "Public", "priv": "Private", "day": "day", "visitedMark": "Mark as visited", "visited": "Visited ✓", "add": "Add to route", "remove": "Remove from route", "noTime": "does not fit in time", "saved": "Saved ✓", "copied": "Link copied ✓", "placeDetails": "Place details", "inGroup": "places in this cluster", "fitsL": "Fits in time", "notVisited": "Not visited", "placesWord": "places", "tripsWord": "trips", "freeSeats": "seats free", "noSeats": "full", "all": "All", "installHint": "Use the browser menu → “Add to home screen”", "minU": "min", "hU": "h", "kmU": "km", "seats": "seats", "people2": "people", "stdCar": "Standard", "sending": "Sending…", "sendErr": "Could not send — try again or call us", "carWhy4": "High mountain road — 4WD recommended", "carWhyStd": "Paved route — a standard class is enough", "accPlanned": "Planned trips", "accSaved": "Saved routes", "accVisited": "Visited places", "accGroups": "Groups", "accCars": "Rented cars", "notif1": "Giorgi invited you to “Svaneti, September”", "when1": "2 h ago", "notif2": "Your route has been shared", "when2": "yesterday"},
@@ -3314,7 +4306,7 @@ def render_app_page(lang):
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0b2f4d">
 <meta name="robots" content="noindex">
-<title>Drive On — {E(t["appSub"])}</title>
+<title>RentUp — {E(t["appSub"])}</title>
 <link rel="manifest" href="/assets/manifest.webmanifest">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/app-icon-180.png">
@@ -3327,7 +4319,7 @@ def render_app_page(lang):
 <div id="doa" style="height:100dvh;max-width:520px;margin:0 auto;display:flex;flex-direction:column;background:#f4f7f9;overflow:hidden;position:relative">
 
   <div style="flex:0 0 auto;display:flex;align-items:center;gap:8px;height:54px;padding:0 12px;padding-top:env(safe-area-inset-top);background:#fff;border-bottom:1px solid #dde5ec">
-    <img src="/assets/do-logo-transparent.png" alt="Drive On" width="92" height="28" style="height:28px;width:auto;display:block">
+    <img src="/assets/do-logo-transparent.png" alt="RentUp" width="92" height="28" style="height:28px;width:auto;display:block">
     <span style="font-size:13px;font-weight:600;color:#5a6b7b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{E(t["appSub"])}</span>
     <div style="flex:1"></div>
     <select id="doalang" aria-label="Language" style="height:44px;padding:0 6px;border:1px solid #dde5ec;border-radius:10px;background:#fff;font-size:13px">{lang_opts}</select>
@@ -3640,7 +4632,7 @@ def render_booking_admin():
     cfg = {k: AUTH.get(k, "") for k in ("apiKey", "authDomain", "projectId",
                                          "storageBucket", "messagingSenderId", "appId")}
     return f'''<!doctype html><html lang="ka"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex,nofollow"><title>ჯავშნების მართვა — Drive On</title>
+<meta name="robots" content="noindex,nofollow"><title>ჯავშნების მართვა — RentUp</title>
 <link rel="stylesheet" href="{ASSET["css"]}"><style>
 body{{background:#07101a;color:#edf6fc}}#booking-admin{{width:min(1100px,94%);margin:30px auto}}.admin-head{{display:flex;justify-content:space-between;align-items:center}}
 .admin-filters{{display:flex;gap:10px;margin:20px 0}}.admin-booking{{display:grid;grid-template-columns:minmax(250px,1fr) 170px 170px auto;gap:12px;align-items:end;padding:15px;margin:8px 0;border:1px solid #26384a;border-radius:14px;background:#0d1824}}
@@ -3754,6 +4746,37 @@ def main():
         n += 1
         tours_rel = (lang_root(lang) + "tours/").lstrip("/")
         write(os.path.join(out, tours_rel, "index.html"), render_tours_page(lang))
+
+        # ── car-rental cluster ────────────────────────────────────────────
+        html_hub = render_car_rental_hub(lang)
+        if html_hub:
+            write(os.path.join(out, rental_hub_url(lang, False).lstrip("/"), "index.html"), html_hub)
+            n += 1
+        for _k in RENTAL_PLACES:
+            _h = render_rental_location(lang, _k)
+            if _h:
+                write(os.path.join(out, rental_place_url(lang, _k, False).lstrip("/"), "index.html"), _h)
+                n += 1
+        for _k in ("economy", "suv", "offroad", "minivan"):
+            _h = render_rental_category(lang, _k)
+            if _h:
+                write(os.path.join(out, rental_cat_url(lang, _k, False).lstrip("/"), "index.html"), _h)
+                n += 1
+
+        # ── travel cluster: planner landing + itineraries ─────────────────
+        _pl = render_planner_landing(lang)
+        if _pl:
+            write(os.path.join(out, planner_landing_url(lang, False).lstrip("/"), "index.html"), _pl)
+            n += 1
+        _ih = render_itineraries_hub(lang)
+        if _ih:
+            write(os.path.join(out, itin_hub_url(lang, False).lstrip("/"), "index.html"), _ih)
+            n += 1
+        for _sl, _it in ITINERARIES.items():
+            _h = render_itinerary(lang, _sl, _it)
+            if _h:
+                write(os.path.join(out, itin_url(lang, _sl, False).lstrip("/"), "index.html"), _h)
+                n += 1
         n += 1
         # Preserve old bookmarked pricing URLs, but send visitors to the fleet where all rates live.
         pricing_rel = lang_root(lang).lstrip("/") + PAGE_SLUG["pricing"]
@@ -3795,7 +4818,11 @@ def main():
             write(os.path.join(out, "data", "attr", lang, f"{slug}.json"),
                   J(attr_detail(lang, slug, a)))
 
-    for name, data in [("sitemap.xml", sitemap()), ("robots.txt", robots(with_docs)),
+    children = sitemap_children()
+    for cname, entries in children.items():
+        write(os.path.join(out, "sitemaps", f"{cname}.xml"), _sitemap_urls(entries))
+    for name, data in [("sitemap.xml", sitemap_index(children)),
+                       ("robots.txt", robots(with_docs)),
                        ("llms.txt", llms_txt()), ("llms-full.txt", llms_full_txt()),
                        ("404.html", render_404()), (".nojekyll", "")]:
         write(os.path.join(out, name), data)

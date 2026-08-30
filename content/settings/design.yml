@@ -1,6 +1,6 @@
 # ═══ დიზაინის პარამეტრები — იმართება ადმინიდან: Settings → დიზაინი ═══
-# Drive On light — „Drive On Pages" მაკეტის ზუსტი ტოკენები.
-logo_image: "/assets/do-logo-tight.png"
+# RentUp light — „RentUp Pages" მაკეტის ზუსტი ტოკენები.
+logo_image: "/assets/rentup-header-logo.png"
 logo_height: "62"
 logo_mark: "DO"           # ლოგოს კვადრატში ჩაწერილი ასოები
 

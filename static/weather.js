@@ -1,4 +1,4 @@
-/* Drive On — ამინდი Open-Meteo-დან (უფასო, გასაღების გარეშე).
+/* RentUp — ამინდი Open-Meteo-დან (უფასო, გასაღების გარეშე).
    window.WX.get(points, date) -> Promise<[{code,tmax,tmin,rain,wind}|null]>
    ერთი მოთხოვნით ეკითხება ყველა წერტილს.                                */
 (function () {

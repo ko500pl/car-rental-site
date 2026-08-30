@@ -1,0 +1,119 @@
+[
+  {
+    "slug": "khornabuji-fortress",
+    "status": "updated",
+    "media": [
+      {
+        "title": "File:Khornabuji Fortress, Kakheti, Georgia.jpg",
+        "author": "Aleksey Muhranoff",
+        "license": "CC BY-SA 3.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Khornabuji_Fortress,_Kakheti,_Georgia.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/6/69/Khornabuji_Fortress%2C_Kakheti%2C_Georgia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "original_width": 1366,
+        "original_height": 994,
+        "local_path": "static/photos/khornabuji-fortress.webp",
+        "output_width": 1366,
+        "output_height": 994,
+        "bytes": 192938
+      },
+      {
+        "title": "File:Khornabuji Fortress, Georgia.jpg",
+        "author": "Aleksey Muhranoff",
+        "license": "CC BY-SA 3.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Khornabuji_Fortress,_Georgia.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Khornabuji_Fortress%2C_Georgia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "original_width": 1334,
+        "original_height": 998,
+        "local_path": "static/photos/khornabuji-fortress-1.webp",
+        "output_width": 1334,
+        "output_height": 998,
+        "bytes": 261060
+      },
+      {
+        "title": "File:Khornabuji Fortress. Ruins.jpg",
+        "author": "Aleksey Muhranoff",
+        "license": "CC BY-SA 3.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Khornabuji_Fortress._Ruins.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Khornabuji_Fortress._Ruins.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "original_width": 1320,
+        "original_height": 1000,
+        "local_path": "static/photos/khornabuji-fortress-2.webp",
+        "output_width": 1320,
+        "output_height": 1000,
+        "bytes": 370492
+      },
+      {
+        "title": "File:Ruins of Khornabuji.jpg",
+        "author": "AlexandreAssatiani",
+        "license": "CC BY 4.0",
+        "license_url": "https://creativecommons.org/licenses/by/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Ruins_of_Khornabuji.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Ruins_of_Khornabuji.jpg/1920px-Ruins_of_Khornabuji.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 3024,
+        "original_height": 4032,
+        "local_path": "static/photos/khornabuji-fortress-3.webp",
+        "output_width": 1050,
+        "output_height": 1400,
+        "bytes": 739890
+      }
+    ],
+    "errors": []
+  },
+  {
+    "slug": "holy-trinity-cathedral-sameba",
+    "status": "updated",
+    "media": [
+      {
+        "title": "File:Sameba Cathedral, Courtyard, Holy Trinity Cathedral, Tbilisi, Georgia.jpg",
+        "author": "Vyacheslav Argenberg",
+        "license": "CC BY 4.0",
+        "license_url": "https://creativecommons.org/licenses/by/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Sameba_Cathedral,_Courtyard,_Holy_Trinity_Cathedral,_Tbilisi,_Georgia.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Sameba_Cathedral%2C_Courtyard%2C_Holy_Trinity_Cathedral%2C_Tbilisi%2C_Georgia.jpg/1920px-Sameba_Cathedral%2C_Courtyard%2C_Holy_Trinity_Cathedral%2C_Tbilisi%2C_Georgia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 4912,
+        "original_height": 3264,
+        "local_path": "static/photos/holy-trinity-cathedral-sameba.webp",
+        "output_width": 1800,
+        "output_height": 1196,
+        "bytes": 393240
+      },
+      {
+        "title": "File:Tbilisi Holy Trinity Cathedral (Sameba) IMG 8956 1920.jpg",
+        "author": "Alexxx1979",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Tbilisi_Holy_Trinity_Cathedral_(Sameba)_IMG_8956_1920.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/b/bb/Tbilisi_Holy_Trinity_Cathedral_%28Sameba%29_IMG_8956_1920.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "original_width": 1920,
+        "original_height": 2915,
+        "local_path": "static/photos/holy-trinity-cathedral-sameba-1.webp",
+        "output_width": 922,
+        "output_height": 1400,
+        "bytes": 422402
+      },
+      {
+        "title": "File:Tbilisi - Holy Trinity Cathedral (Sameba) (9458120939).jpg",
+        "author": "Andrzej Wójtowicz from Poznań, Poland",
+        "license": "CC BY-SA 2.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Tbilisi_-_Holy_Trinity_Cathedral_(Sameba)_(9458120939).jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Tbilisi_-_Holy_Trinity_Cathedral_%28Sameba%29_%289458120939%29.jpg/1920px-Tbilisi_-_Holy_Trinity_Cathedral_%28Sameba%29_%289458120939%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 3008,
+        "original_height": 2000,
+        "local_path": "static/photos/holy-trinity-cathedral-sameba-2.webp",
+        "output_width": 1800,
+        "output_height": 1197,
+        "bytes": 105504
+      }
+    ],
+    "errors": [
+      {
+        "title": "File:Sameba Cathedral, Holy Trinity Cathedral, Courtyard, Dusk 2, Tbilisi, Georgia.jpg",
+        "error": "The read operation timed out"
+      }
+    ]
+  }
+]

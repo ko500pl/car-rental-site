@@ -26,3 +26,9 @@ venv/
 *service-account*.json
 *.pem
 *.key
+
+# build/merge scratch
+*.bak-*
+*.tar.gz
+deploy-rules.log
+_merge/

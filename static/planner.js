@@ -696,7 +696,7 @@
       var grad = ctx.createLinearGradient(0, 0, 1240, 0); grad.addColorStop(0, "#25bfd1"); grad.addColorStop(1, "#3b82f6");
       var brandLogo = window.FH_BRAND_LOGO;
       if (brandLogo && brandLogo.complete && brandLogo.naturalWidth) ctx.drawImage(brandLogo, 60, 38, 130, 92);
-      ctx.fillStyle = "#f4f8fc"; ctx.font = "800 40px sans-serif"; ctx.fillText("Drive On", 215, 90);
+      ctx.fillStyle = "#f4f8fc"; ctx.font = "800 40px sans-serif"; ctx.fillText("RentUp", 215, 90);
       ctx.fillStyle = "#9fb0c4"; ctx.font = "500 22px sans-serif"; ctx.fillText("TRIP SUMMARY", 215, 126);
       ctx.fillStyle = "#0b1724"; ctx.font = "800 38px sans-serif";
       var y = wrap(ctx, start.n + " · " + res.days.length + " " + T.day, 70, 250, 1100, 48) + 16;

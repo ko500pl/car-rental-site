@@ -1,4 +1,4 @@
-/* Drive On — Trip Workspace (მომხმარებლის მაკეტის ზუსტი პორტი).
+/* RentUp — Trip Workspace (მომხმარებლის მაკეტის ზუსტი პორტი).
    Needs: window.EXP (pts, towns), window.PLANNER_DATA (fleet, standardTours),
    window.DOWT (ლოკალიზებული ტექსტები), window.WX (ამინდი), Leaflet. */
 (function () {
@@ -1102,7 +1102,7 @@
     var text = trip.name + ' · ' + st.start + ' – ' + st.end + ' · ' + st.selected.length + ' ' + T.stop;
     var url = shareUrl();
     if (navigator.share) {
-      navigator.share({ title: 'Drive On', text: text, url: url }).catch(function () {});
+      navigator.share({ title: 'RentUp', text: text, url: url }).catch(function () {});
       flash(T.shareOpened);
     } else if (navigator.clipboard) {
       navigator.clipboard.writeText(text + ' — ' + url).then(function () { flash(T.linkCopied); })
@@ -1217,7 +1217,7 @@
   function waHref(car) {
     var num = String((window.FH_CFG || {}).whatsapp || '').replace(/\D/g, '');
     if (!num) return '';
-    var text = 'Drive On: ' + (car ? car.n : '') + ' · ' + tripSummary() + ' · ' +
+    var text = 'RentUp: ' + (car ? car.n : '') + ' · ' + tripSummary() + ' · ' +
       st.selected.map(function (s) { return (BY[s] || {}).n || s; }).join(', ') + ' · ' + shareUrl();
     return 'https://wa.me/' + num + '?text=' + encodeURIComponent(text);
   }

@@ -1,0 +1,285 @@
+[
+  {
+    "slug": "shkhara-glacier",
+    "status": "updated",
+    "media": [
+      {
+        "title": "File:Shkhara Glacier.jpg",
+        "author": "Jordan Sanchez",
+        "license": "CC0",
+        "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "source": "https://commons.wikimedia.org/wiki/File:Shkhara_Glacier.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Shkhara_Glacier.jpg/1920px-Shkhara_Glacier.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 5647,
+        "original_height": 3770,
+        "local_path": "static/photos/shkhara-glacier.webp",
+        "output_width": 1800,
+        "output_height": 1202,
+        "bytes": 628480
+      },
+      {
+        "title": "File:Shkhara Mountain, view from Chubedishi Mountain.jpg",
+        "author": "Boris Kuznetsov",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Shkhara_Mountain,_view_from_Chubedishi_Mountain.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Shkhara_Mountain%2C_view_from_Chubedishi_Mountain.jpg/1920px-Shkhara_Mountain%2C_view_from_Chubedishi_Mountain.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 5469,
+        "original_height": 3197,
+        "local_path": "static/photos/shkhara-glacier-1.webp",
+        "output_width": 1800,
+        "output_height": 1052,
+        "bytes": 473500
+      },
+      {
+        "title": "File:Ushguli Village, Svaneti, view of Shkhara mountain.jpg",
+        "author": "D.Rovchak",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Ushguli_Village,_Svaneti,_view_of_Shkhara_mountain.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Ushguli_Village%2C_Svaneti%2C_view_of_Shkhara_mountain.jpg/1920px-Ushguli_Village%2C_Svaneti%2C_view_of_Shkhara_mountain.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 4272,
+        "original_height": 2848,
+        "local_path": "static/photos/shkhara-glacier-2.webp",
+        "output_width": 1800,
+        "output_height": 1200,
+        "bytes": 436570
+      },
+      {
+        "title": "File:Shkhara.jpg",
+        "author": "Paweł Pieńkowski",
+        "license": "CC BY-SA 3.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Shkhara.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Shkhara.jpg/1920px-Shkhara.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 3264,
+        "original_height": 2176,
+        "local_path": "static/photos/shkhara-glacier-3.webp",
+        "output_width": 1800,
+        "output_height": 1200,
+        "bytes": 630588
+      }
+    ],
+    "errors": []
+  },
+  {
+    "slug": "chalaadi-glacier",
+    "status": "updated",
+    "media": [
+      {
+        "title": "File:Chalaadi Glacier and Mt Chatintau.jpg",
+        "author": "Jelger Groeneveld",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Chalaadi_Glacier_and_Mt_Chatintau.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Chalaadi_Glacier_and_Mt_Chatintau.jpg/1920px-Chalaadi_Glacier_and_Mt_Chatintau.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 3872,
+        "original_height": 2592,
+        "local_path": "static/photos/chalaadi-glacier.webp",
+        "output_width": 1800,
+        "output_height": 1205,
+        "bytes": 836954
+      },
+      {
+        "title": "File:Chalaati Glacier, Samegrelo-Zemo Svaneti, Georgia.jpg",
+        "author": "Boris Kuznetsov",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Chalaati_Glacier,_Samegrelo-Zemo_Svaneti,_Georgia.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Chalaati_Glacier%2C_Samegrelo-Zemo_Svaneti%2C_Georgia.jpg/1920px-Chalaati_Glacier%2C_Samegrelo-Zemo_Svaneti%2C_Georgia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 5469,
+        "original_height": 3216,
+        "local_path": "static/photos/chalaadi-glacier-1.webp",
+        "output_width": 1800,
+        "output_height": 1058,
+        "bytes": 631316
+      },
+      {
+        "title": "File:On the trail to Chalaadi Glacier, Samegrelo-Zemo Svaneti, Georgia.jpg",
+        "author": "Boris Kuznetsov",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:On_the_trail_to_Chalaadi_Glacier,_Samegrelo-Zemo_Svaneti,_Georgia.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/On_the_trail_to_Chalaadi_Glacier%2C_Samegrelo-Zemo_Svaneti%2C_Georgia.jpg/1920px-On_the_trail_to_Chalaadi_Glacier%2C_Samegrelo-Zemo_Svaneti%2C_Georgia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 5469,
+        "original_height": 3578,
+        "local_path": "static/photos/chalaadi-glacier-2.webp",
+        "output_width": 1800,
+        "output_height": 1178,
+        "bytes": 846816
+      }
+    ],
+    "errors": [
+      {
+        "title": "File:Chalaati glacier, Georgia, June, 2018-1.jpg",
+        "error": "The read operation timed out"
+      }
+    ]
+  },
+  {
+    "slug": "batumi-boulevard-old-town",
+    "status": "updated",
+    "media": [
+      {
+        "title": "File:Batumi Boulevard Alley.jpg",
+        "author": "Sosotedrd",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Batumi_Boulevard_Alley.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Batumi_Boulevard_Alley.jpg/1920px-Batumi_Boulevard_Alley.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 6720,
+        "original_height": 4480,
+        "local_path": "static/photos/batumi-boulevard-old-town.webp",
+        "output_width": 1800,
+        "output_height": 1200,
+        "bytes": 387832
+      },
+      {
+        "title": "File:Batumi Boulevard Bycicle Path.jpg",
+        "author": "Sosotedrd",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Batumi_Boulevard_Bycicle_Path.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Batumi_Boulevard_Bycicle_Path.jpg/1920px-Batumi_Boulevard_Bycicle_Path.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 6000,
+        "original_height": 4000,
+        "local_path": "static/photos/batumi-boulevard-old-town-1.webp",
+        "output_width": 1800,
+        "output_height": 1200,
+        "bytes": 382796
+      },
+      {
+        "title": "File:Batumi Boulevard Colonnades.jpg",
+        "author": "Sosotedrd",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Batumi_Boulevard_Colonnades.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Batumi_Boulevard_Colonnades.jpg/1920px-Batumi_Boulevard_Colonnades.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 5464,
+        "original_height": 3070,
+        "local_path": "static/photos/batumi-boulevard-old-town-2.webp",
+        "output_width": 1800,
+        "output_height": 1012,
+        "bytes": 604608
+      }
+    ],
+    "errors": [
+      {
+        "title": "File:Batumi Boulevard From Above.jpg",
+        "error": "Unsupported license for File:Batumi Boulevard From Above.jpg: Attribution"
+      }
+    ]
+  },
+  {
+    "slug": "khada-valley",
+    "status": "updated",
+    "media": [
+      {
+        "title": "File:Khada Gorge Valley Filled with Morning Fog in Georgia.jpg",
+        "author": "David Osipov 0000 0005 1802 960X 0009-0005-2713-9242 📱 This photograph was taken with a Xiaomi Redmi Note 9 Pro .",
+        "license": "CC BY 4.0",
+        "license_url": "https://creativecommons.org/licenses/by/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Khada_Gorge_Valley_Filled_with_Morning_Fog_in_Georgia.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Khada_Gorge_Valley_Filled_with_Morning_Fog_in_Georgia.jpg/1920px-Khada_Gorge_Valley_Filled_with_Morning_Fog_in_Georgia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 4640,
+        "original_height": 2088,
+        "local_path": "static/photos/khada-valley.webp",
+        "output_width": 1800,
+        "output_height": 810,
+        "bytes": 286582
+      },
+      {
+        "title": "File:Khada gorge as seen from Mt Lomisi (Photo A. Muhranoff, 2011).jpg",
+        "author": "Aleksey Muhranoff",
+        "license": "CC BY-SA 3.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Khada_gorge_as_seen_from_Mt_Lomisi_(Photo_A._Muhranoff,_2011).jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Khada_gorge_as_seen_from_Mt_Lomisi_%28Photo_A._Muhranoff%2C_2011%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "original_width": 1258,
+        "original_height": 908,
+        "local_path": "static/photos/khada-valley-1.webp",
+        "output_width": 1258,
+        "output_height": 908,
+        "bytes": 111612
+      }
+    ],
+    "errors": []
+  },
+  {
+    "slug": "shovi-resort",
+    "status": "updated",
+    "media": [
+      {
+        "title": "File:A Trail in The Pine Forest, Shovi, Racha, Georgia.jpg",
+        "author": "Boris Kuznetsov",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:A_Trail_in_The_Pine_Forest,_Shovi,_Racha,_Georgia.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/A_Trail_in_The_Pine_Forest%2C_Shovi%2C_Racha%2C_Georgia.jpg/1920px-A_Trail_in_The_Pine_Forest%2C_Shovi%2C_Racha%2C_Georgia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 5469,
+        "original_height": 3376,
+        "local_path": "static/photos/shovi-resort.webp",
+        "output_width": 1800,
+        "output_height": 1111,
+        "bytes": 729032
+      },
+      {
+        "title": "File:Pine Forest, Shovi, Racha, Georgia.jpg",
+        "author": "Boris Kuznetsov",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Pine_Forest,_Shovi,_Racha,_Georgia.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Pine_Forest%2C_Shovi%2C_Racha%2C_Georgia.jpg/1920px-Pine_Forest%2C_Shovi%2C_Racha%2C_Georgia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 5469,
+        "original_height": 3457,
+        "local_path": "static/photos/shovi-resort-1.webp",
+        "output_width": 1800,
+        "output_height": 1138,
+        "bytes": 751644
+      },
+      {
+        "title": "File:Road to Mamison Pass at Shovi.jpg",
+        "author": "Jelger Groeneveld",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Road_to_Mamison_Pass_at_Shovi.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Road_to_Mamison_Pass_at_Shovi.jpg/1920px-Road_to_Mamison_Pass_at_Shovi.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 3456,
+        "original_height": 4608,
+        "local_path": "static/photos/shovi-resort-2.webp",
+        "output_width": 1050,
+        "output_height": 1400,
+        "bytes": 479962
+      },
+      {
+        "title": "File:Shovi - Old Holiday House “Stalin’s House”.jpg",
+        "author": "Damianenika",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Shovi_-_Old_Holiday_House_%E2%80%9CStalin%E2%80%99s_House%E2%80%9D.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Shovi_-_Old_Holiday_House_%E2%80%9CStalin%E2%80%99s_House%E2%80%9D.jpg/1920px-Shovi_-_Old_Holiday_House_%E2%80%9CStalin%E2%80%99s_House%E2%80%9D.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 4481,
+        "original_height": 3361,
+        "local_path": "static/photos/shovi-resort-3.webp",
+        "output_width": 1800,
+        "output_height": 1350,
+        "bytes": 328404
+      },
+      {
+        "title": "File:Shovi old hotel.jpg",
+        "author": "Jelger Groeneveld",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Shovi_old_hotel.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Shovi_old_hotel.jpg/1920px-Shovi_old_hotel.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "original_width": 4608,
+        "original_height": 3456,
+        "local_path": "static/photos/shovi-resort-4.webp",
+        "output_width": 1800,
+        "output_height": 1350,
+        "bytes": 786928
+      }
+    ],
+    "errors": []
+  }
+]

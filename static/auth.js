@@ -1,4 +1,4 @@
-/* Drive On — ანგარიში და შენახული მარშრუტები (Firebase).
+/* RentUp — ანგარიში და შენახული მარშრუტები (Firebase).
    კონფიგურაცია: window.FH_CFG (content/settings/auth.yml-იდან).
    თუ კონფიგურაცია ცარიელია, სკრიპტი ჩუმად ითიშება და საიტი ისე მუშაობს,
    როგორც აქამდე — ავტორიზაციის ღილაკები უბრალოდ არ ჩანს.                */
@@ -362,7 +362,7 @@
     return boot.then(function () {
       if (!user) { openDialog(); return Promise.reject("no-user"); }
       return M.db.addDoc(M.db.collection(db, "trips"), Object.assign({
-        uid: user.uid, ownerName: user.displayName || "Traveller" /* ელფოსტა საჯარო დოკუმენტში არასოდეს */,
+        uid: user.uid, ownerName: user.displayName || user.email || "Traveller",
         status: "planned", visibility: "private", purpose: "general",
         created: M.db.serverTimestamp()
       }, trip));
@@ -419,7 +419,7 @@
     on(function (u) {
       if (!u) {
         root.innerHTML = '<div class="account-empty"><div class="account-orbit" aria-hidden="true"><span></span></div>' +
-          '<p class="account-eyebrow">Drive On</p><h2>' + esc(T.account || "My page") + '</h2><p>' +
+          '<p class="account-eyebrow">RentUp</p><h2>' + esc(T.account || "My page") + '</h2><p>' +
           esc(T.please_sign_in || "") + '</p><div class="account-actions"><button class="btn" type="button" id="accin">' +
           esc(T.sign_in || "Sign in") + '</button><a class="btn ghost" href="' + esc(C.plannerUrl || "/planner/") + '">' +
           esc(T.to_planner || "Planner") + "</a></div></div>";
@@ -542,7 +542,7 @@
         return '<article class="booking-card"><div class="booking-card-head"><div><b>'+esc(x.carName||x.carSlug)+'</b><span>'+esc(x.start)+' → '+esc(x.end)+' · '+(x.days||1)+' '+esc(copy.days)+'</span></div><span class="booking-status '+esc(x.status||"pending")+'">'+statusLabel(x.status)+'</span></div><div class="booking-facts"><span>'+Math.round(x.paymentDueGel||0)+' GEL</span><span>'+esc(x.paymentStatus==="paid"?copy.paid:copy.required)+'</span></div>'+ext+rating+'</article>';
       }).join('')+'</div>':'<p class="note">'+esc(copy.empty)+'</p>');
       box.querySelectorAll('[data-extend]').forEach(function(b){b.onclick=function(){var x=rows.find(function(r){return r.id===b.dataset.extend;});if(!x)return;b.disabled=true;boot.then(function(){return M.db.addDoc(M.db.collection(db,'extensionRequests'),{uid:user.uid,bookingId:x.id,carSlug:x.carSlug,extraDays:parseInt(b.dataset.days,10),discountPercent:parseInt(b.dataset.discount,10),status:'pending',paymentStatus:'required',created:M.db.serverTimestamp()});}).then(function(){b.textContent='✓';}).catch(function(){b.disabled=false;});};});
-      box.querySelectorAll('.car-review').forEach(function(form){form.onsubmit=function(e){e.preventDefault();var booking=rows.find(function(r){return r.id===form.dataset.reviewBooking;});var checked=form.querySelector('input:checked'),status=form.querySelector('[role="status"]');if(!booking||!checked)return;var button=form.querySelector('button');button.disabled=true;status.textContent='…';M.db.addDoc(M.db.collection(db,'reviews'),{uid:user.uid,bookingId:booking.id,carSlug:booking.carSlug||'',subject:booking.carName||booking.carSlug||'',kind:'car',rating:parseInt(checked.value,10),text:form.querySelector('textarea').value.trim(),authorName:user.displayName||'Traveller',created:M.db.serverTimestamp()}).then(function(){status.textContent=copy.saved;setTimeout(function(){box.remove();renderBookings();},500);}).catch(function(){button.disabled=false;status.textContent='!';});};});
+      box.querySelectorAll('.car-review').forEach(function(form){form.onsubmit=function(e){e.preventDefault();var booking=rows.find(function(r){return r.id===form.dataset.reviewBooking;});var checked=form.querySelector('input:checked'),status=form.querySelector('[role="status"]');if(!booking||!checked)return;var button=form.querySelector('button');button.disabled=true;status.textContent='…';M.db.addDoc(M.db.collection(db,'reviews'),{uid:user.uid,bookingId:booking.id,carSlug:booking.carSlug||'',subject:booking.carName||booking.carSlug||'',kind:'car',rating:parseInt(checked.value,10),text:form.querySelector('textarea').value.trim(),authorName:user.displayName||user.email||'Traveller',created:M.db.serverTimestamp()}).then(function(){status.textContent=copy.saved;setTimeout(function(){box.remove();renderBookings();},500);}).catch(function(){button.disabled=false;status.textContent='!';});};});
     }).catch(function(err){console.warn('[bookings]',err);box.innerHTML='<h2>'+esc(copy.title)+'</h2><p class="note error">'+esc(copy.loadError)+'</p>';});
   }
   function renderMessages() {
