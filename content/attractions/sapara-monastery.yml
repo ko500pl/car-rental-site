@@ -13,6 +13,26 @@ gallery:
   license: CC BY-SA 2.0
   license_url: https://creativecommons.org/licenses/by-sa/2.0
   source: https://commons.wikimedia.org/wiki/File:Sapara_Monastery_(14723025125).jpg
+- image: /assets/photos/sapara-monastery-verified-1-20260831.webp
+  author: Kober
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Sapara_Monastery._Aug_2014.jpg
+- image: /assets/photos/sapara-monastery-verified-2-20260831.webp
+  author: Kober
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Sapara_Monastery,_Akhtaltsikhe,_Georgia_(1).JPG
+- image: /assets/photos/sapara-monastery-verified-3-20260831.webp
+  author: Kober
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Sapara_Monastery,_Akhtaltsikhe,_Georgia_(2).JPG
+- image: /assets/photos/sapara-monastery-verified-4-20260831.webp
+  author: Unknown author Unknown author
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Sapara_Monastery,_Samtskhe-Javakheti_region,_Georgia.jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true

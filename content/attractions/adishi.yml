@@ -23,6 +23,21 @@ gallery:
   license: CC0
   license_url: http://creativecommons.org/publicdomain/zero/1.0/deed.en
   source: https://commons.wikimedia.org/wiki/File:Adishi_%E2%80%93_01.jpg
+- image: /assets/photos/adishi-verified-1-20260831.webp
+  author: Boris Kuznetsov
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Adishi_Village_(2050m),_Samegrelo-Zemo_Svaneti,_Georgia.jpg
+- image: /assets/photos/adishi-verified-2-20260831.webp
+  author: Maesi64
+  license: CC0
+  license_url: http://creativecommons.org/publicdomain/zero/1.0/deed.en
+  source: https://commons.wikimedia.org/wiki/File:Adishi_%E2%80%93_02.jpg
+- image: /assets/photos/adishi-verified-3-20260831.webp
+  author: Maesi64
+  license: CC0
+  license_url: http://creativecommons.org/publicdomain/zero/1.0/deed.en
+  source: https://commons.wikimedia.org/wiki/File:Adishi_%E2%80%93_04.jpg
 visit_hours: '3'
 best_season: june-september
 open_year_round: false

@@ -8,21 +8,41 @@ featured: false
 order: 40
 image: /assets/photos/udziro-lake-buba-glacier.webp
 gallery:
-- image: /assets/photos/udziro-lake-buba-glacier-1.webp
-  author: Boris Kuznetsov
-  license: CC BY 2.0
-  license_url: https://creativecommons.org/licenses/by/2.0
-  source: https://commons.wikimedia.org/wiki/File:Pine_Forest,_Shovi,_Racha,_Georgia.jpg
-- image: /assets/photos/udziro-lake-buba-glacier-2.webp
-  author: Boris Kuznetsov
-  license: CC BY 2.0
-  license_url: https://creativecommons.org/licenses/by/2.0
-  source: https://commons.wikimedia.org/wiki/File:A_Trail_in_The_Pine_Forest,_Shovi,_Racha,_Georgia.jpg
-- image: /assets/photos/udziro-lake-buba-glacier-3.webp
-  author: Jelger Groeneveld
-  license: CC BY 2.0
-  license_url: https://creativecommons.org/licenses/by/2.0
-  source: https://commons.wikimedia.org/wiki/File:View_towards_Lechkhumi_Range_at_Shovi.jpg
+- image: /assets/photos/udziro-lake-buba-glacier-premium-ai-1-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/udziro-lake-buba-glacier-premium-ai-2-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/udziro-lake-buba-glacier-premium-ai-3-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/udziro-lake-buba-glacier-premium-ai-4-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/udziro-lake-buba-glacier-premium-ai-5-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/udziro-lake-buba-glacier-premium-ai-6-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/udziro-lake-buba-glacier-premium-ai-7-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '8'
 best_season: june-september
 open_year_round: false

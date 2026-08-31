@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 68
 image: /assets/photos/kveshi-fortress.webp
-gallery: []
+gallery:
+- image: /assets/photos/kveshi-fortress-verified-1-20260831.webp
+  author: Maria Ekster
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0/
+  source: https://commons.wikimedia.org/wiki/File:Kveshi_fortress_(Photo_Maria_Ekster,_2010)-1.jpg
+- image: /assets/photos/kveshi-fortress-verified-2-20260831.webp
+  author: Maria Ekster
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0/
+  source: https://commons.wikimedia.org/wiki/File:Kveshi_fortress_(Photo_Maria_Ekster,_2010)-2.jpg
+- image: /assets/photos/kveshi-fortress-verified-3-20260831.webp
+  author: Maria Ekster
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0/
+  source: https://commons.wikimedia.org/wiki/File:Kveshi_fortress_(Photo_Maria_Ekster,_2010)-3.jpg
 visit_hours: '1.5'
 best_season: may-october
 open_year_round: true

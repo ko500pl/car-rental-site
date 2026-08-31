@@ -9,15 +9,35 @@ order: 90
 image: /assets/photos/didgori-battle-memorial.webp
 gallery:
 - image: /assets/photos/didgori-battle-memorial-1.webp
-  author: "Alexander Bantyev"
-  license: "CC0"
-  license_url: "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
-  source: "https://commons.wikimedia.org/wiki/File:Didgori_Monument_04.jpg"
+  author: Alexander Bantyev
+  license: CC0
+  license_url: http://creativecommons.org/publicdomain/zero/1.0/deed.en
+  source: https://commons.wikimedia.org/wiki/File:Didgori_Monument_04.jpg
 - image: /assets/photos/didgori-battle-memorial-2.webp
-  author: "Paata Vardanashvili from Tbilisi, Georgia"
-  license: "CC BY 2.0"
-  license_url: "https://creativecommons.org/licenses/by/2.0"
-  source: "https://commons.wikimedia.org/wiki/File:Didgori_Memorial.jpg"
+  author: Paata Vardanashvili from Tbilisi, Georgia
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Didgori_Memorial.jpg
+- image: /assets/photos/didgori-battle-memorial-verified-1-20260831.webp
+  author: Alexander Bantyev
+  license: CC0
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:Didgori_Monument_01.jpg
+- image: /assets/photos/didgori-battle-memorial-verified-2-20260831.webp
+  author: Alexander Bantyev
+  license: CC0
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:Didgori_Monument_04.jpg
+- image: /assets/photos/didgori-battle-memorial-verified-3-20260831.webp
+  author: U.S. Army WRAIR by [null Courtesy]
+  license: Public domain
+  license_url: https://creativecommons.org/publicdomain/mark/1.0/
+  source: https://commons.wikimedia.org/wiki/File:WRAIR-EME_conducts_a_staff_ride_to_Didgori_Memorial_(9195966).jpg
+- image: /assets/photos/didgori-battle-memorial-verified-4-20260831.webp
+  author: U.S. Army WRAIR by [null Courtesy]
+  license: Public domain
+  license_url: https://creativecommons.org/publicdomain/mark/1.0/
+  source: https://commons.wikimedia.org/wiki/File:WRAIR-EME_conducts_a_staff_ride_to_Kojori_Memorial_(9195968).jpg
 visit_hours: '1'
 best_season: may-october
 open_year_round: false

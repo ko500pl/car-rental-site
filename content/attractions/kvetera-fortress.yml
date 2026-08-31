@@ -8,6 +8,21 @@ featured: false
 order: 42
 image: /assets/photos/kvetera-fortress.webp
 gallery:
+- image: /assets/photos/kvetera-fortress-verified-1-20260831.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Akhmeta,_Kvetera_13.jpg
+- image: /assets/photos/kvetera-fortress-verified-2-20260831.webp
+  author: Jaba1977
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0/
+  source: https://commons.wikimedia.org/wiki/File:Kvetera_fortress_plan.jpg
+- image: /assets/photos/kvetera-fortress-premium-ai-1-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '1'
 best_season: all
 open_year_round: true

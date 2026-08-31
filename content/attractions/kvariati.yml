@@ -13,11 +13,26 @@ gallery:
   license: CC BY 2.0
   license_url: https://creativecommons.org/licenses/by/2.0
   source: https://commons.wikimedia.org/wiki/File:Kvariati,_Ajaria,_Georgia._Black_Sea._(29422670295).jpg
-- image: /assets/photos/kvariati-2.webp
+- image: /assets/photos/kvariati-verified-1-20260831.webp
   author: Levan Gokadze from Tbilisi, Georgia
   license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0/
   source: https://commons.wikimedia.org/wiki/File:Kvariati_(5545848197).jpg
+- image: /assets/photos/kvariati-verified-2-20260831.webp
+  author: Alexey  from Ekaterinburg, Russia
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0/
+  source: https://commons.wikimedia.org/wiki/File:Kvariati,_Ajaria,_Georgia._Black_Sea._(29422670295).jpg
+- image: /assets/photos/kvariati-verified-3-20260831.webp
+  author: Alexey  from Ekaterinburg, Russia
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0/
+  source: https://commons.wikimedia.org/wiki/File:Kvariati,_Ajaria,_Georgia._(28798525104).jpg
+- image: /assets/photos/kvariati-3.webp
+  author: RentUp verified local asset
+  license: Site-owned or previously verified source
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '4'
 best_season: june-september
 open_year_round: true

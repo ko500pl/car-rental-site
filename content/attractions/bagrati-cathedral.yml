@@ -23,6 +23,16 @@ gallery:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:2014_Kutaisi,_Katedra_Bagrati_(16).jpg
+- image: /assets/photos/bagrati-cathedral-verified-1-20260831.webp
+  author: Marcin Konsek
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:2016_Kutaisi,_Katedra_Bagrati_(01).jpg
+- image: /assets/photos/bagrati-cathedral-verified-2-20260831.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Kutaisi,_Bagrati_Cathedral_(17).jpg
 visit_hours: '3'
 best_season: all
 open_year_round: true

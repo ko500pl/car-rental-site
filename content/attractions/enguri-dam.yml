@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 70
 image: /assets/photos/enguri-dam.webp
-gallery: []
+gallery:
+- image: /assets/photos/enguri-dam-verified-1-20260831.webp
+  author: İhsan Deniz Kılıçoğlu
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Inguri_dam_lake.JPG
+- image: /assets/photos/enguri-dam-verified-2-20260831.webp
+  author: Gaga.vaa
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Enguri_Dam_2016_4.jpg
+- image: /assets/photos/enguri-dam-verified-3-20260831.webp
+  author: Shogiradze
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:%E1%83%94%E1%83%9C%E1%83%92%E1%83%A3%E1%83%A0%E1%83%B0%E1%83%94%E1%83%A1%E1%83%98,_%E1%83%92%E1%83%90%E1%83%A1%E1%83%94%E1%83%98%E1%83%A0%E1%83%9C%E1%83%94%E1%83%91%E1%83%90_%E1%83%B0%E1%83%94%E1%83%A1%E1%83%96%E1%83%94.jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true

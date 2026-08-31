@@ -8,16 +8,31 @@ featured: false
 order: 68
 image: /assets/photos/napareuli.webp
 gallery:
-- image: /assets/photos/napareuli-2.webp
-  author: Bernard Gagnon
-  license: CC BY 4.0
-  license_url: https://creativecommons.org/licenses/by/4.0
-  source: https://commons.wikimedia.org/wiki/File:Bird_nest_boxes_in_Napareuli.jpg
 - image: /assets/photos/napareuli-3.webp
   author: Jelger Groeneveld
   license: CC BY 2.0
   license_url: https://creativecommons.org/licenses/by/2.0
   source: https://commons.wikimedia.org/wiki/File:Sh43_Pshaveli_-_Napareuli.jpg
+- image: /assets/photos/napareuli-premium-ai-final-3-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/napareuli-premium-ai-final-4-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/napareuli-premium-ai-final-5-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/napareuli-premium-ai-extra-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '2'
 best_season: all
 open_year_round: true

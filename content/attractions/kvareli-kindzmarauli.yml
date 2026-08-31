@@ -22,8 +22,17 @@ gallery:
   author: Adam Jones from Kelowna, BC, Canada
   license: CC BY-SA 2.0
   license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:Young_Women_outside_Kindzmarauli_Winery_-_Near_Telavi_-_Georgia_(18398224136).jpg
+  source: https://commons.wikimedia.org/wiki/File:Young_Women_outside_Kindzmarauli_Winery_-_Near_Telavi_-_Georgia_(18398224136).jpg
+- image: /assets/photos/kvareli-kindzmarauli-premium-ai-1-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/kvareli-kindzmarauli-premium-ai-2-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '4'
 best_season: all
 open_year_round: true

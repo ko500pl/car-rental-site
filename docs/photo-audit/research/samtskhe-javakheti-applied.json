@@ -1,0 +1,169 @@
+{
+  "abastumani-observatory": {
+    "gallery_items": 3,
+    "total_images_including_primary": 4,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:Abastumani_Astrophysical_Observatory.jpg",
+      "https://commons.wikimedia.org/wiki/File:Abastumani_Astrophysical_Observatory_(2).jpg",
+      "https://commons.wikimedia.org/wiki/File:Abastumani_Astrophysical_Observatory_(1).jpg"
+    ],
+    "ai_assisted_originals": 0,
+    "identity_review": "passed"
+  },
+  "bakuriani": {
+    "gallery_items": 5,
+    "total_images_including_primary": 6,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:Bakuriani_-_Ort_vom_Kochta-H%C3%BCgel.JPG",
+      "https://commons.wikimedia.org/wiki/File:Bakuriani_-_Georgia_%D8%A8%D8%A7%DA%A9%D9%88%D8%B1%DB%8C%D8%A7%D9%86%DB%8C%D8%8C_%DA%A9%D8%B4%D9%88%D8%B1_%DA%AF%D8%B1%D8%AC%D8%B3%D8%AA%D8%A7%D9%86%D8%8C_%D9%85%D9%86%D8%A7%D8%B8%D8%B1_%D8%A8%D8%B1%D9%81%DB%8C_%D9%88_%DA%86%D8%B4%D9%85_%D8%A7%D9%86%D8%AF%D8%A7%D8%B2%D9%87%D8%A7%DB%8C_%D8%B2%D9%85%D8%B3%D8%AA%D8%A7%D9%86%DB%8C-_%D8%AC%D8%A7%D8%B0%D8%A8%D9%87_%D9%87%D8%A7%DB%8C_%DA%AF%D8%B1%D8%AF%D8%B4%DA%AF%D8%B1%DB%8C_%D8%AC%D9%88%D8%B1%D8%AC%DB%8C%D8%A7_01.jpg",
+      "https://commons.wikimedia.org/wiki/File:Bakuriani_winter_resort,_Georgia._January_2022_03.jpg",
+      "https://commons.wikimedia.org/wiki/File:Bakuriani_winter_resort,_Georgia._January_2022_04.jpg"
+    ],
+    "ai_assisted_originals": 0,
+    "identity_review": "passed"
+  },
+  "bakuriani-botanical-garden": {
+    "gallery_items": 5,
+    "total_images_including_primary": 6,
+    "commons_sources": [],
+    "ai_assisted_originals": 4,
+    "identity_review": "passed"
+  },
+  "borjomi-central-park": {
+    "gallery_items": 5,
+    "total_images_including_primary": 6,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:Borjomi_spa_2019_7.jpg",
+      "https://commons.wikimedia.org/wiki/File:Borjomi_spa_2019_4.jpg",
+      "https://commons.wikimedia.org/wiki/File:Borjomi_spring_water_dispenser.jpg",
+      "https://commons.wikimedia.org/wiki/File:Ekaterine_Well._A_mineral_spring_well_at_the_Borjomi_Park.jpg"
+    ],
+    "ai_assisted_originals": 0,
+    "identity_review": "passed"
+  },
+  "borjomi-kharagauli-national-park": {
+    "gallery_items": 5,
+    "total_images_including_primary": 6,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:Borjomi_Kharagauli_National_Park_(1).jpg",
+      "https://commons.wikimedia.org/wiki/File:Borjomi_Kharagauli_National_Park_Georgia.jpg"
+    ],
+    "ai_assisted_originals": 0,
+    "identity_review": "passed"
+  },
+  "javakheti-national-park": {
+    "gallery_items": 5,
+    "total_images_including_primary": 6,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:%E1%83%AF%E1%83%90%E1%83%95%E1%83%90%E1%83%AE%E1%83%94%E1%83%97%E1%83%98%E1%83%A1_%E1%83%94%E1%83%A0%E1%83%9D%E1%83%95%E1%83%9C%E1%83%A3%E1%83%9A%E1%83%98_%E1%83%9E%E1%83%90%E1%83%A0%E1%83%99%E1%83%98.jpg",
+      "https://commons.wikimedia.org/wiki/File:Javakheti_National_Park.jpg",
+      "https://commons.wikimedia.org/wiki/File:%E1%83%91%E1%83%A3%E1%83%A6%E1%83%93%E1%83%90%E1%83%A8%E1%83%94%E1%83%9C%E1%83%98%E1%83%A1_%E1%83%A2%E1%83%91%E1%83%90.jpg",
+      "https://commons.wikimedia.org/wiki/File:%E1%83%91%E1%83%A3%E1%83%A6%E1%83%93%E1%83%90%E1%83%A8%E1%83%94%E1%83%9C%E1%83%989.jpg",
+      "https://commons.wikimedia.org/wiki/File:%E1%B2%A1%E1%83%90%E1%83%9B%E1%83%AA%E1%83%AE%E1%83%94_%E1%83%AF%E1%83%90%E1%83%95%E1%83%90%E1%83%AE%E1%83%94%E1%83%97%E1%83%98_%E1%83%96%E1%83%90%E1%83%9B%E1%83%97%E1%83%90%E1%83%A0%E1%83%A8%E1%83%98,_%E1%83%A4%E1%83%90%E1%83%A0%E1%83%90%E1%83%95%E1%83%9C%E1%83%98%E1%83%A1_%E1%83%A2%E1%83%91%E1%83%90.jpg"
+    ],
+    "ai_assisted_originals": 0,
+    "identity_review": "passed"
+  },
+  "kukushka-narrow-gauge-railway": {
+    "gallery_items": 5,
+    "total_images_including_primary": 6,
+    "commons_sources": [],
+    "ai_assisted_originals": 3,
+    "identity_review": "passed"
+  },
+  "kumurdo-cathedral": {
+    "gallery_items": 3,
+    "total_images_including_primary": 4,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:Cathedral_of_Kumurdo_1.jpg"
+    ],
+    "ai_assisted_originals": 0,
+    "identity_review": "passed"
+  },
+  "likani-palace": {
+    "gallery_items": 4,
+    "total_images_including_primary": 5,
+    "commons_sources": [],
+    "ai_assisted_originals": 3,
+    "identity_review": "passed"
+  },
+  "paravani-tabatskuri-lakes": {
+    "gallery_items": 5,
+    "total_images_including_primary": 6,
+    "commons_sources": [],
+    "ai_assisted_originals": 4,
+    "identity_review": "passed"
+  },
+  "rabati-castle": {
+    "gallery_items": 7,
+    "total_images_including_primary": 8,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:Rabati_Castle_in_Akhaltsikhe,_view_from_the_city.jpg",
+      "https://commons.wikimedia.org/wiki/File:Akhalcikhe,_old_city_general_view.jpg",
+      "https://commons.wikimedia.org/wiki/File:Georgia,_Akhaltsikhe,_Rabati_Castle_(30327080592).jpg",
+      "https://commons.wikimedia.org/wiki/File:Rabati_Castle_3.jpg"
+    ],
+    "ai_assisted_originals": 0,
+    "identity_review": "passed"
+  },
+  "sapara-monastery": {
+    "gallery_items": 5,
+    "total_images_including_primary": 6,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:Sapara_Monastery._Aug_2014.jpg",
+      "https://commons.wikimedia.org/wiki/File:Sapara_Monastery,_Akhtaltsikhe,_Georgia_(1).JPG",
+      "https://commons.wikimedia.org/wiki/File:Sapara_Monastery,_Akhtaltsikhe,_Georgia_(2).JPG",
+      "https://commons.wikimedia.org/wiki/File:Sapara_Monastery,_Samtskhe-Javakheti_region,_Georgia.jpg"
+    ],
+    "ai_assisted_originals": 0,
+    "identity_review": "passed"
+  },
+  "tmogvi-fortress": {
+    "gallery_items": 6,
+    "total_images_including_primary": 7,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:2025-05-25_View_from_the_hiking_trail_to_Tmogvi_Fortress_2.jpg",
+      "https://commons.wikimedia.org/wiki/File:2025-05-25_View_from_the_hiking_trail_to_Tmogvi_Fortress_3.jpg",
+      "https://commons.wikimedia.org/wiki/File:2025-05-25_Tmogvi_Fortress_1.jpg",
+      "https://commons.wikimedia.org/wiki/File:2025-05-25_Tmogvi_Fortress_2.jpg",
+      "https://commons.wikimedia.org/wiki/File:2025-05-25_View_from_the_hiking_trail_to_Tmogvi_Fortress_6.jpg"
+    ],
+    "ai_assisted_originals": 0,
+    "identity_review": "passed"
+  },
+  "vanis-kvabebi": {
+    "gallery_items": 6,
+    "total_images_including_primary": 7,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:Vanis_Kvabebi.jpg",
+      "https://commons.wikimedia.org/wiki/File:Mtkari_Gorge,_Near_Vani%27s_Caves.jpg",
+      "https://commons.wikimedia.org/wiki/File:Mtkari_Gorge,_View_from_Vani%27s_Caves.jpg",
+      "https://commons.wikimedia.org/wiki/File:Ko%C5%9Bci%C3%B3%C5%82_Vanis_Kvabebi_we_wsi_Vardzia.jpg"
+    ],
+    "ai_assisted_originals": 0,
+    "identity_review": "passed"
+  },
+  "vardzia": {
+    "gallery_items": 7,
+    "total_images_including_primary": 8,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:Vardzia,_a_medieval_cave-city_in_Georgia.jpg",
+      "https://commons.wikimedia.org/wiki/File:Vardzia_Cave_Monastery_03.jpg",
+      "https://commons.wikimedia.org/wiki/File:Vardzia_Cave_Monastery_02.jpg",
+      "https://commons.wikimedia.org/wiki/File:Vardzia_Cave_Monastery_07.jpg",
+      "https://commons.wikimedia.org/wiki/File:Vardzia_Cave_Monastery_13.jpg"
+    ],
+    "ai_assisted_originals": 0,
+    "identity_review": "passed"
+  },
+  "zarzma-monastery": {
+    "gallery_items": 3,
+    "total_images_including_primary": 4,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:Zarzma_monastery_(40).jpg",
+      "https://commons.wikimedia.org/wiki/File:Zarzma_monastery_(72).jpg"
+    ],
+    "ai_assisted_originals": 0,
+    "identity_review": "passed"
+  }
+}

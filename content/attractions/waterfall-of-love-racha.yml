@@ -6,8 +6,23 @@ elevation: 520
 unesco: false
 featured: true
 order: 67
-image: ''
-gallery: []
+image: /assets/photos/waterfall-of-love-racha-premium-ai-1-20260831.webp
+gallery:
+- image: /assets/photos/waterfall-of-love-racha-premium-ai-2-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/waterfall-of-love-racha-premium-ai-3-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/waterfall-of-love-racha-premium-ai-4-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '0.5'
 best_season: may-october
 open_year_round: true
@@ -23,6 +38,10 @@ ru: {name: Водопад Любви, short: Небольшой водопад �
 fa: {name: آبشار عشق, short: آبشار کوچک با دهانه سنگی قلب‌شکل نزدیک آمبرولائوری., body: آب مانند پرده از دهانه قلب‌شکل فرو می‌ریزد و مسیر کوتاهی دارد., tip: سنگ خیس لغزنده است., route: در ورودی آمبرولائوری؛ از نشان دقیق نقشه استفاده کنید.}
 he: {name: מפל האהבה, short: מפל קטן דרך פתח סלע בצורת לב ליד אמברולאורי., body: המים יורדים כווילון מעל הפתח ושביל קצר מוביל למקום., tip: הסלע הרטוב חלק., route: סמוך לכניסה לאמברולאורי; השתמשו בסימון המדויק.}
 ar: {name: شلال الحب, short: شلال صغير عبر فتحة صخرية على شكل قلب قرب أمبرولاوري., body: ينساب الماء كالستار فوق الفتحة ويصل إليه مسار قصير., tip: الصخور المبتلة زلقة., route: قرب مدخل أمبرولاوري؛ استخدم علامة الخريطة الدقيقة.}
-image_credit: {}
+image_credit:
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
 rating: 3.5
 sources: [https://georgia.travel/waterfall-of-love]

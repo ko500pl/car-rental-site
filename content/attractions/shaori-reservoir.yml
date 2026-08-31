@@ -28,6 +28,21 @@ gallery:
   license: CC BY-SA 2.0
   license_url: https://creativecommons.org/licenses/by-sa/2.0
   source: https://commons.wikimedia.org/wiki/File:2015-08-27_(32)_Shaori_reservoir.jpg
+- image: /assets/photos/shaori-reservoir-verified-1-20260831.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0/
+  source: https://commons.wikimedia.org/wiki/File:Shaori_reservoir_-_panoramio.jpg
+- image: /assets/photos/shaori-reservoir-verified-2-20260831.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0/
+  source: https://commons.wikimedia.org/wiki/File:View_to_Shaori_-_panoramio.jpg
+- image: /assets/photos/shaori-reservoir-verified-3-20260831.webp
+  author: Yasuhiro Kojima
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0/
+  source: https://commons.wikimedia.org/wiki/File:2015-08-30_(37)_Shaori_reservoir.jpg
 visit_hours: '3'
 best_season: may-october
 open_year_round: false

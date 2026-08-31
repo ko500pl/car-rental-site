@@ -13,6 +13,16 @@ gallery:
   license: CC BY 3.0
   license_url: https://creativecommons.org/licenses/by/3.0
   source: https://commons.wikimedia.org/wiki/File:Alaverdi_Monastery_2012_(takunodaibouken_77108815).jpg
+- image: /assets/photos/alaverdi-cathedral-verified-1-20260831.webp
+  author: Bernard Gagnon
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Cathedral_of_Saint_George_(Alaverdi)_03.jpg
+- image: /assets/photos/alaverdi-cathedral-verified-2-20260831.webp
+  author: Image by lenmic2 from Pixabay
+  license: CC0
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:Alaverdi_Cathedral,_Kakheti,_Georgia.jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true

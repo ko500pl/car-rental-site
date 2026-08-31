@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 76
 image: /assets/photos/baghdati-mayakovsky-house.webp
-gallery: []
+gallery:
+- image: /assets/photos/baghdati-mayakovsky-house-verified-1-20260831.webp
+  author: Yasuhiro Kojima
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Mayakovsky_House_Museum_2.jpg
+- image: /assets/photos/baghdati-mayakovsky-house-verified-2-20260831.webp
+  author: Yasuhiro Kojima
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Mayakovsky_House_Museum_3.jpg
+- image: /assets/photos/baghdati-mayakovsky-house-verified-3-20260831.webp
+  author: Yasuhiro Kojima
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Mayakovsky_House_Museum_1.jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true

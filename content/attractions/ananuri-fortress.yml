@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 30
 image: /assets/photos/ananuri-fortress.webp
-gallery: []
+gallery:
+- image: /assets/photos/ananuri-fortress-verified-1-20260831.webp
+  author: Bernard Gagnon
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Ananuri_Fortress_01.jpg
+- image: /assets/photos/ananuri-fortress-verified-2-20260831.webp
+  author: Bernard Gagnon
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Ananuri_Fortress_11.jpg
+- image: /assets/photos/ananuri-fortress-verified-3-20260831.webp
+  author: Bernard Gagnon
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Ananuri_Fortress_06.jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true

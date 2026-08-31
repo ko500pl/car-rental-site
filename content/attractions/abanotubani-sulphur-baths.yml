@@ -12,8 +12,32 @@ gallery:
   author: Andrew Milligan sumo
   license: CC BY 2.0
   license_url: https://creativecommons.org/licenses/by/2.0
-  source: >-
-    https://commons.wikimedia.org/wiki/File:Sulphur_Baths,_Tbilisi_(50501860146).jpg
+  source: https://commons.wikimedia.org/wiki/File:Sulphur_Baths,_Tbilisi_(50501860146).jpg
+- image: /assets/photos/abanotubani-sulphur-baths-verified-1-20260831.webp
+  author: Andrew Milligan sumo
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0/
+  source: https://commons.wikimedia.org/wiki/File:Sulphur_Baths,_Tbilisi_(50501860146).jpg
+- image: /assets/photos/abanotubani-sulphur-baths-verified-2-20260831.webp
+  author: Andrew Milligan sumo
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0/
+  source: https://commons.wikimedia.org/wiki/File:Sulphur_Baths,_Tbilisi_(50501149033).jpg
+- image: /assets/photos/abanotubani-sulphur-baths-verified-3-20260831.webp
+  author: Andrew Milligan sumo
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0/
+  source: https://commons.wikimedia.org/wiki/File:Sulphur_Baths,_Tbilisi_(50501861726).jpg
+- image: /assets/photos/abanotubani-sulphur-baths-verified-4-20260831.webp
+  author: Andrew Milligan sumo
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0/
+  source: https://commons.wikimedia.org/wiki/File:Sulphur_Baths,_Tbilisi_(50502022017).jpg
+- image: /assets/photos/abanotubani-sulphur-baths-verified-5-20260831.webp
+  author: George Kennan
+  license: Public domain
+  license_url: https://creativecommons.org/publicdomain/mark/1.0/
+  source: https://commons.wikimedia.org/wiki/File:Part_of_old_city._Street_on_right_leads_to_Botanical_garden_and_on_the_left_to_Sulphur_Baths_(A).jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true

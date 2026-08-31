@@ -8,11 +8,21 @@ featured: false
 order: 58
 image: /assets/photos/kvatakhevi-monastery.webp
 gallery:
-- image: /assets/photos/kvatakhevi-monastery-1.webp
-  author: Valeri zanguri
+- image: /assets/photos/kvatakhevi-monastery-verified-1-20260831.webp
+  author: FellixPhoto
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Kvatakhevi_monastery1.jpg
+  source: https://commons.wikimedia.org/wiki/File:Kvatakhevi_church_2.jpg
+- image: /assets/photos/kvatakhevi-monastery-verified-2-20260831.webp
+  author: FellixPhoto
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Kvatakhevi_road_3.jpg
+- image: /assets/photos/kvatakhevi-monastery-verified-3-20260831.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Kvatakhevi_church,_Kaspi_04.jpg
 visit_hours: '1.5'
 best_season: all
 open_year_round: true

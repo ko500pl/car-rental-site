@@ -8,11 +8,36 @@ featured: false
 order: 40
 image: /assets/photos/koruldi-lakes-3.webp
 gallery:
-- image: /assets/photos/koruldi-lakes-3.webp
+- image: /assets/photos/koruldi-lakes-premium-ai-3-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/koruldi-lakes-verified-1-20260831.webp
   author: Alexey Komarov
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Koruldi_Lakes,_Svaneti,_June,_2018-1.jpg
+  source: https://commons.wikimedia.org/wiki/File:Koruldi_Lakes,_Svaneti,_June,_2018-2.jpg
+- image: /assets/photos/koruldi-lakes-verified-2-20260831.webp
+  author: Alexey Komarov
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Koruldi_Lakes,_Svaneti,_June,_2018-3.jpg
+- image: /assets/photos/koruldi-lakes-verified-3-20260831.webp
+  author: Alexey Komarov
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Koruldi_Lakes,_Svaneti,_June,_2018-4.jpg
+- image: /assets/photos/koruldi-lakes-premium-ai-1-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/koruldi-lakes-premium-ai-2-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '3'
 best_season: june-september
 open_year_round: false

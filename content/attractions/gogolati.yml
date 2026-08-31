@@ -6,8 +6,33 @@ elevation: 900
 unesco: false
 featured: true
 order: 66
-image: ''
-gallery: []
+image: /assets/photos/gogolati-premium-ai-1-20260831.webp
+gallery:
+- image: /assets/photos/gogolati-premium-ai-2-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/gogolati-premium-ai-3-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/gogolati-premium-ai-4-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/gogolati-premium-ai-5-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/gogolati-premium-ai-6-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '1.5'
 best_season: all
 open_year_round: true
@@ -23,6 +48,10 @@ ru: {name: Историческое село Гоголати, short: Охран
 fa: {name: روستای تاریخی گوگولاتی, short: روستای میراثی با خانه‌های چوبی کولخی و بالکن‌های کنده‌کاری‌شده., body: گوگولاتی مانند موزه روباز با خانه‌های قدیمی و دره شارئولا است., tip: خانه‌ها مسکونی‌اند؛ برای ورود اجازه بگیرید., route: حدود یک ساعت و ۴۵ دقیقه از کوتایسی.}
 he: {name: הכפר ההיסטורי גוגולאטי, short: כפר מורשת עם בתי עץ קולכיים ומרפסות מגולפות., body: גוגולאטי הוא מעין מוזיאון פתוח של בתי עץ עתיקים ועמק שראולה., tip: הבתים מאוכלסים; בקשו רשות לפני כניסה לחצר., route: כשעה ו־45 דקות מקוטאיסי.}
 ar: {name: قرية غوغولاتي التاريخية, short: قرية تراثية بمنازل كولخية خشبية وشرفات منحوتة., body: تبدو غوغولاتي كمتحف مفتوح للمنازل القديمة ووادي شاريولا., tip: المنازل مأهولة؛ اطلب الإذن قبل دخول الساحات., route: نحو ساعة و45 دقيقة من كوتايسي.}
-image_credit: {}
+image_credit:
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
 rating: 4.0
 sources: [https://georgia.travel/villages/gogolati]

@@ -13,6 +13,26 @@ gallery:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Mukhranbatoni_Palace_(3c).jpg
+- image: /assets/photos/chateau-mukhrani-verified-1-20260831.webp
+  author: Archil sutiashvili
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Mukhranbatoni_Palace_(1).jpg
+- image: /assets/photos/chateau-mukhrani-verified-2-20260831.webp
+  author: Dominic Lockyer
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0/
+  source: https://commons.wikimedia.org/wiki/File:Chateau_Mukhrani_Georgian_wine.jpg
+- image: /assets/photos/chateau-mukhrani-verified-3-20260831.webp
+  author: Press Service of the President of the Republic of Azerbaijan
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Cultural_program_was_presented_at_Ch%C3%A2teau_Mukhrani_in_Mtskheta_Municipality_of_Georgia_02.jpg
+- image: /assets/photos/chateau-mukhrani-verified-4-20260831.webp
+  author: Press Service of the President of the Republic of Azerbaijan
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Cultural_program_was_presented_at_Ch%C3%A2teau_Mukhrani_in_Mtskheta_Municipality_of_Georgia_06.jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true

@@ -8,11 +8,31 @@ featured: false
 order: 35
 image: /assets/photos/bazaleti-lake-3.webp
 gallery:
-- image: /assets/photos/bazaleti-lake-3.webp
-  author: Kober
+- image: /assets/photos/bazaleti-lake-verified-1-20260831.webp
+  author: ნიკალალიაშვილი
   license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Snow_around_Bazaleti_Lake,_Georgia.jpg
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:%E1%83%91%E1%83%90%E1%83%96%E1%83%90%E1%83%9A%E1%83%94%E1%83%97%E1%83%98%E1%83%A1_%E1%83%A2%E1%83%91%E1%83%90-bazaleti_lake.jpg
+- image: /assets/photos/bazaleti-lake-verified-2-20260831.webp
+  author: Kober
+  license: Public domain
+  license_url: https://creativecommons.org/publicdomain/mark/1.0/
+  source: https://commons.wikimedia.org/wiki/File:Bazaleti_Lake,_Georgia_(A).jpg
+- image: /assets/photos/bazaleti-lake-verified-3-20260831.webp
+  author: Kober
+  license: Public domain
+  license_url: https://creativecommons.org/publicdomain/mark/1.0/
+  source: https://commons.wikimedia.org/wiki/File:Bazaleti_Lake,_Georgia_(G).jpg
+- image: /assets/photos/bazaleti-lake-verified-4-20260831.webp
+  author: Myself
+  license: Public domain
+  license_url: https://creativecommons.org/publicdomain/mark/1.0/
+  source: https://commons.wikimedia.org/wiki/File:Bazaleti_Lake,_Georgia_(H).jpg
+- image: /assets/photos/bazaleti-lake-1.webp
+  author: RentUp verified local asset
+  license: Site-owned or previously verified source
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '2'
 best_season: may-october
 open_year_round: true

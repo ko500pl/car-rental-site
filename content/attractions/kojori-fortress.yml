@@ -7,7 +7,37 @@ unesco: false
 featured: false
 order: 91
 image: /assets/photos/kojori-fortress.webp
-gallery: []
+gallery:
+- image: /assets/photos/kojori-fortress-verified-1-20260831.webp
+  author: ''
+  license: CC0
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:Agarani_fortress_Kojori.jpeg
+- image: /assets/photos/kojori-fortress-verified-2-20260831.webp
+  author: Alexey Komarov
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:A_view_from_Azeula_Fortress_2023-06-25-1.jpg
+- image: /assets/photos/kojori-fortress-verified-3-20260831.webp
+  author: Yuri Samoylov
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:2024-01-28_View_from_Agarani_Fortress_towards_Kumisi_Lake.jpg
+- image: /assets/photos/kojori-fortress-verified-4-20260831.webp
+  author: Yuri Samoylov
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:2025-05-11_Kojori_Fortress_and_road_along_Didi_Kedi_Range.jpg
+- image: /assets/photos/kojori-fortress-verified-5-20260831.webp
+  author: Yuri Samoylov
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:2024-01-28_Kojori_from_Agarani_Fortress.jpg
+- image: /assets/photos/kojori-fortress-verified-6-20260831.webp
+  author: Arkaitz1974
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Kojori_%E2%80%93_Agarani_Fortress_(6_October_2013)._002.jpg
 visit_hours: '1.5'
 best_season: all
 open_year_round: true

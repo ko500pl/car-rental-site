@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 62
 image: /assets/photos/gudarekhi-monastery.webp
-gallery: []
+gallery:
+- image: /assets/photos/gudarekhi-monastery-verified-1-20260831.webp
+  author: Unknown author Unknown author
+  license: Public domain
+  license_url: https://creativecommons.org/publicdomain/mark/1.0/
+  source: https://commons.wikimedia.org/wiki/File:Gudarekhi_southern_wall_inscription.JPG
+- image: /assets/photos/gudarekhi-monastery-verified-2-20260831.webp
+  author: Aleksey Muhranoff
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0/
+  source: https://commons.wikimedia.org/wiki/File:Gudarekhi_monastery_(Photo_A._Muhranoff,_2011).jpg
+- image: /assets/photos/gudarekhi-monastery-verified-3-20260831.webp
+  author: Aleksey Muhranoff
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0/
+  source: https://commons.wikimedia.org/wiki/File:Gudarekhi_monastery._An_inscription_on_the_southern_wall_close_up_(Photo_A._Muhranoff,_2011).jpg
 visit_hours: '1.5'
 best_season: may-october
 open_year_round: true

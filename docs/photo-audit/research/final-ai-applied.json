@@ -1,0 +1,250 @@
+{
+  "samtavro-monastery": {
+    "target": 8,
+    "total_images": 8,
+    "added": []
+  },
+  "shekvetili-black-sea-arena": {
+    "target": 6,
+    "total_images": 6,
+    "added": []
+  },
+  "tbilisi-botanical-garden": {
+    "target": 6,
+    "total_images": 6,
+    "added": []
+  },
+  "tbilisi-sea": {
+    "target": 7,
+    "total_images": 7,
+    "added": []
+  },
+  "truso-valley": {
+    "target": 7,
+    "total_images": 7,
+    "added": []
+  },
+  "vashlovani-national-park": {
+    "target": 7,
+    "total_images": 7,
+    "added": []
+  },
+  "marneuli": {
+    "target": 6,
+    "total_images": 6,
+    "added": []
+  },
+  "mtirala-national-park": {
+    "target": 6,
+    "total_images": 6,
+    "added": []
+  },
+  "mutso": {
+    "target": 6,
+    "total_images": 6,
+    "added": []
+  },
+  "napareuli": {
+    "target": 6,
+    "total_images": 6,
+    "added": [
+      "exec-3e3fed7c-f186-46bc-a843-85cfd212a902.png#panel-1"
+    ]
+  },
+  "nekresi-monastery": {
+    "target": 6,
+    "total_images": 6,
+    "added": []
+  },
+  "pankisi-gorge": {
+    "target": 6,
+    "total_images": 6,
+    "added": []
+  },
+  "ozurgeti": {
+    "target": 6,
+    "total_images": 6,
+    "added": []
+  },
+  "rustavi": {
+    "target": 6,
+    "total_images": 6,
+    "added": []
+  },
+  "samshvilde": {
+    "target": 6,
+    "total_images": 6,
+    "added": []
+  },
+  "shatili": {
+    "target": 6,
+    "total_images": 6,
+    "added": []
+  },
+  "shemokmedi-monastery": {
+    "target": 4,
+    "total_images": 4,
+    "added": []
+  },
+  "shenako-diklo": {
+    "target": 7,
+    "total_images": 7,
+    "added": []
+  },
+  "shiomghvime-monastery": {
+    "target": 4,
+    "total_images": 4,
+    "added": []
+  },
+  "tbilisi-silk-museum": {
+    "target": 4,
+    "total_images": 4,
+    "added": []
+  },
+  "telavi-batonis-tsikhe": {
+    "target": 6,
+    "total_images": 6,
+    "added": []
+  },
+  "tianeti": {
+    "target": 6,
+    "total_images": 6,
+    "added": []
+  },
+  "tsalka-reservoir": {
+    "target": 6,
+    "total_images": 6,
+    "added": []
+  },
+  "tsughrughasheni-church": {
+    "target": 4,
+    "total_images": 4,
+    "added": []
+  },
+  "turtle-lake-vake-park": {
+    "target": 6,
+    "total_images": 6,
+    "added": []
+  },
+  "zedazeni-monastery": {
+    "target": 4,
+    "total_images": 4,
+    "added": []
+  },
+  "rustaveli-avenue": {
+    "target": 6,
+    "total_images": 6,
+    "added": []
+  },
+  "nabeghlavi": {
+    "target": 4,
+    "total_images": 4,
+    "added": []
+  },
+  "petra-fortress": {
+    "target": 4,
+    "total_images": 4,
+    "added": []
+  },
+  "sioni-cathedral": {
+    "target": 4,
+    "total_images": 4,
+    "added": []
+  },
+  "zhinvali-reservoir": {
+    "target": 4,
+    "total_images": 4,
+    "added": []
+  },
+  "narikala-fortress": {
+    "target": 8,
+    "total_images": 8,
+    "added": []
+  },
+  "omalo-tusheti": {
+    "target": 8,
+    "total_images": 8,
+    "added": []
+  },
+  "marjanishvili-theatre": {
+    "target": 7,
+    "total_images": 7,
+    "added": []
+  },
+  "rustaveli-national-theatre": {
+    "target": 7,
+    "total_images": 7,
+    "added": []
+  },
+  "svetitskhoveli-cathedral": {
+    "target": 8,
+    "total_images": 8,
+    "added": []
+  },
+  "ureki": {
+    "target": 8,
+    "total_images": 8,
+    "added": []
+  },
+  "tbilisi-opera-ballet-theatre": {
+    "target": 8,
+    "total_images": 8,
+    "added": []
+  },
+  "askana-fortress": {
+    "target": 4,
+    "total_images": 4,
+    "added": [
+      "exec-c32f0609-f47e-4c59-9964-f007b2048afa.png#panel-1"
+    ]
+  },
+  "batumi-archaeological-museum": {
+    "target": 4,
+    "total_images": 4,
+    "added": [
+      "exec-c32f0609-f47e-4c59-9964-f007b2048afa.png#panel-2"
+    ]
+  },
+  "geguti-palace": {
+    "target": 4,
+    "total_images": 4,
+    "added": [
+      "exec-c32f0609-f47e-4c59-9964-f007b2048afa.png#panel-3"
+    ]
+  },
+  "kutaisi-historical-museum": {
+    "target": 4,
+    "total_images": 4,
+    "added": [
+      "exec-c32f0609-f47e-4c59-9964-f007b2048afa.png#panel-4"
+    ]
+  },
+  "nodar-dumbadze-house-museum": {
+    "target": 7,
+    "total_images": 7,
+    "added": [
+      "exec-3e3fed7c-f186-46bc-a843-85cfd212a902.png#panel-2"
+    ]
+  },
+  "takhti-tepha-mud-volcanoes": {
+    "target": 6,
+    "total_images": 6,
+    "added": [
+      "exec-3e3fed7c-f186-46bc-a843-85cfd212a902.png#panel-3"
+    ]
+  },
+  "telefisi-fortress": {
+    "target": 4,
+    "total_images": 4,
+    "added": [
+      "exec-3e3fed7c-f186-46bc-a843-85cfd212a902.png#panel-4"
+    ]
+  },
+  "zando-st-george-monastery": {
+    "target": 6,
+    "total_images": 6,
+    "added": [
+      "exec-add99454-7537-41fb-8753-904badab572f.png#panel-1"
+    ]
+  }
+}

@@ -9,20 +9,35 @@ order: 30
 image: /assets/photos/becho-mazeri.webp
 gallery:
 - image: /assets/photos/becho-mazeri-1.webp
-  author: "Grumbler eburg"
-  license: "CC BY 4.0"
-  license_url: "https://creativecommons.org/licenses/by/4.0"
-  source: "https://commons.wikimedia.org/wiki/File:House_in_Becho_community.jpg"
+  author: Grumbler eburg
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0
+  source: https://commons.wikimedia.org/wiki/File:House_in_Becho_community.jpg
 - image: /assets/photos/becho-mazeri-2.webp
-  author: "Thijs van Exel from Amsterdam, Netherlands"
-  license: "CC BY 2.0"
-  license_url: "https://creativecommons.org/licenses/by/2.0"
-  source: "https://commons.wikimedia.org/wiki/File:Mazeri,_Svaneti,_Georgia_(36060612100).jpg"
+  author: Thijs van Exel from Amsterdam, Netherlands
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Mazeri,_Svaneti,_Georgia_(36060612100).jpg
 - image: /assets/photos/becho-mazeri-3.webp
-  author: "G.N."
-  license: "CC BY-SA 3.0"
-  license_url: "https://creativecommons.org/licenses/by-sa/3.0"
-  source: "https://commons.wikimedia.org/wiki/File:Ushba_from_Dolasvipi_(G.N._2008).jpg"
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Ushba_from_Dolasvipi_(G.N._2008).jpg
+- image: /assets/photos/becho-mazeri-premium-ai-1-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/becho-mazeri-premium-ai-2-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/becho-mazeri-premium-ai-3-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '6'
 best_season: may-october
 open_year_round: false

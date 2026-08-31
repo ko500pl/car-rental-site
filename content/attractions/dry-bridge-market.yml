@@ -8,11 +8,21 @@ featured: false
 order: 55
 image: /assets/photos/dry-bridge-market.jpg
 gallery:
-- image: /assets/photos/dry-bridge-market.jpg
-  author: Ekkatterrinna
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Dry_Bridge_Market._Tbilisi.jpg
+- image: /assets/photos/dry-bridge-market-verified-1-20260831.webp
+  author: Alexkom000
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:2025-03-30_Dry_Bridge_Market,_Tbilisi_1.jpg
+- image: /assets/photos/dry-bridge-market-verified-2-20260831.webp
+  author: Alexkom000
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:2025-03-30_Dry_Bridge_Market,_Tbilisi_3.jpg
+- image: /assets/photos/dry-bridge-market-1.webp
+  author: RentUp verified local asset
+  license: Site-owned or previously verified source
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '1'
 best_season: all
 open_year_round: true

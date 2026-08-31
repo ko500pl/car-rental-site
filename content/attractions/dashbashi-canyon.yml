@@ -28,6 +28,21 @@ gallery:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Dashbashi_Canyon,_Tsalka,_Kvemo_Kartli,_Georgia.jpg
+- image: /assets/photos/dashbashi-canyon-verified-1-20260831.webp
+  author: Daviti Zhorzholiani
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Dashbashi_Waterfall_situated_in_the_Dashbashi_Canyon.jpg
+- image: /assets/photos/dashbashi-canyon-verified-2-20260831.webp
+  author: Paata vardanashvili
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Dashbashi_Canyon_Natural_Monument2.jpg
+- image: /assets/photos/dashbashi-canyon-verified-3-20260831.webp
+  author: Paata vardanashvili
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Dashbashi_Canyon_Natural_Monument3.jpg
 visit_hours: '3'
 best_season: may-october
 open_year_round: true

@@ -23,6 +23,16 @@ gallery:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Chiatura_Cable_Cars_1.jpg
+- image: /assets/photos/chiatura-cable-cars-verified-1-20260831.webp
+  author: Kabelleger, David Gubler
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Chiatura_Cable_Cars_11.jpg
+- image: /assets/photos/chiatura-cable-cars-verified-2-20260831.webp
+  author: Lorenz King, Giessen university.de
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Town_of_Chiatura._seen_from_upper_cable_car_station.jpg
 visit_hours: '3'
 best_season: all
 open_year_round: true

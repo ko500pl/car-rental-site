@@ -7,7 +7,32 @@ unesco: false
 featured: false
 order: 60
 image: /assets/photos/kinchkha-waterfall.webp
-gallery: []
+gallery:
+- image: /assets/photos/kinchkha-waterfall-verified-1-20260831.webp
+  author: M.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0/
+  source: https://commons.wikimedia.org/wiki/File:Kinchkha_Waterfall.jpg
+- image: /assets/photos/kinchkha-waterfall-verified-2-20260831.webp
+  author: Paata vardanashvili
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Kinchkha_03.jpg
+- image: /assets/photos/kinchkha-waterfall-verified-3-20260831.webp
+  author: Paata vardanashvili
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Kinchkha_12.jpg
+- image: /assets/photos/kinchkha-waterfall-verified-4-20260831.webp
+  author: Paata vardanashvili
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Kinchkha_32.jpg
+- image: /assets/photos/kinchkha-waterfall-verified-5-20260831.webp
+  author: Lasha ge
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Kinchkha_Waterfall_Okatse_Waterfall_Natural_Monument.jpg
 visit_hours: '2'
 best_season: may-october
 open_year_round: false

@@ -8,11 +8,6 @@ featured: false
 order: 60
 image: /assets/photos/poka-nunnery.jpg
 gallery:
-- image: /assets/photos/poka-nunnery.jpg
-  author: ჯაბა ლაბაძე (Jaba1977)
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Foka_St._Nino_Monastery_(19).jpg
 - image: /assets/photos/poka-nunnery-1.webp
   author: Sarah Murray from South Bend, IN, USA
   license: CC BY-SA 2.0

@@ -8,11 +8,31 @@ featured: false
 order: 52
 image: /assets/photos/lomisa-church.webp
 gallery:
-- image: /assets/photos/lomisa-church-3.webp
-  author: Damianenika
+- image: /assets/photos/lomisa-church-verified-1-20260831.webp
+  author: Jaba1977
   license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Lomisa._church.jpg
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Kavtiskhevi,_Lomisa_church_(1).jpg
+- image: /assets/photos/lomisa-church-verified-2-20260831.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Kavtiskhevi,_Lomisa_church_(3).jpg
+- image: /assets/photos/lomisa-church-verified-3-20260831.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Kavtiskhevi,_Lomisa_church_(2).jpg
+- image: /assets/photos/lomisa-church-verified-4-20260831.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Kavtiskhevi,_Lomisa_church_(4).jpg
+- image: /assets/photos/lomisa-church-1.webp
+  author: RentUp verified local asset
+  license: Site-owned or previously verified source
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '4'
 best_season: june-september
 open_year_round: false

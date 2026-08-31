@@ -8,11 +8,21 @@ featured: false
 order: 50
 image: /assets/photos/gremi.webp
 gallery:
-- image: /assets/photos/gremi-3.webp
-  author: Sarah Murray from South Bend, IN, USA
-  license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0
-  source: https://commons.wikimedia.org/wiki/File:Kakheti_15465_(9124094644).jpg
+- image: /assets/photos/gremi-verified-1-20260831.webp
+  author: Bernard Gagnon
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Citadel_of_Gremi_07.jpg
+- image: /assets/photos/gremi-verified-2-20260831.webp
+  author: Bernard Gagnon
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Citadel_of_Gremi_11.jpg
+- image: /assets/photos/gremi-1.webp
+  author: RentUp verified local asset
+  license: Site-owned or previously verified source
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '1'
 best_season: all
 open_year_round: true

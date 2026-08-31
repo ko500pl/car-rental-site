@@ -7,7 +7,32 @@ unesco: false
 featured: true
 order: 65
 image: /assets/photos/mravaldzali.webp
-gallery: []
+gallery:
+- image: /assets/photos/mravaldzali-verified-1-20260831.webp
+  author: Island
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Mravaldzali_Church_3.jpg
+- image: /assets/photos/mravaldzali-verified-2-20260831.webp
+  author: Island
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Mravaldzali_Church_5.jpg
+- image: /assets/photos/mravaldzali-verified-3-20260831.webp
+  author: Island
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Mravaldzali_Church_4.jpg
+- image: /assets/photos/mravaldzali-verified-4-20260831.webp
+  author: Kojima Yasuhiro
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Mravaldzali_Church_1.jpg
+- image: /assets/photos/mravaldzali-verified-5-20260831.webp
+  author: Kojima Yasuhiro
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Mravaldzali_Church_2.jpg
 visit_hours: '1.5'
 best_season: may-october
 open_year_round: false

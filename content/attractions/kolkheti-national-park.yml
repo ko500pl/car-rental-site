@@ -7,7 +7,42 @@ unesco: true
 featured: false
 order: 55
 image: /assets/photos/kolkheti-national-park.webp
-gallery: []
+gallery:
+- image: /assets/photos/kolkheti-national-park-verified-1-20260831.webp
+  author: Giorgi Abdaladze
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Boat_in_Kolkheti_National_Park.jpg
+- image: /assets/photos/kolkheti-national-park-verified-2-20260831.webp
+  author: Giorgi Abdaladze
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Forest_-_Kolkheti_National_Park.jpg
+- image: /assets/photos/kolkheti-national-park-verified-3-20260831.webp
+  author: Giorgi Balakhadze
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Kolkheti_National_Park,_Paliastomi_Lake,_Georgia.jpg
+- image: /assets/photos/kolkheti-national-park-verified-4-20260831.webp
+  author: Bloomgirl26
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Kolkheti_National_Park._Paliastomi_Lake.jpg
+- image: /assets/photos/kolkheti-national-park-verified-5-20260831.webp
+  author: Giorgi Abdaladze
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Kolkheti_National_Park_-_Estuaries.jpg
+- image: /assets/photos/kolkheti-national-park-verified-6-20260831.webp
+  author: Giorgi Abdaladze
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Kolkheti_National_Park_-_Tourist_Boat.jpg
+- image: /assets/photos/kolkheti-national-park-verified-7-20260831.webp
+  author: Kober
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Pichori_River._Kolkheti_National_Park,_Georgia._August_2022.jpg
 visit_hours: '3'
 best_season: all
 open_year_round: true

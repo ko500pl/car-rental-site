@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 60
 image: /assets/photos/khirsa-monastery.webp
-gallery: []
+gallery:
+- image: /assets/photos/khirsa-monastery-verified-1-20260831.webp
+  author: Jelger Groeneveld
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Khirsa_Monastery_in_Tibaani.jpg
+- image: /assets/photos/khirsa-monastery-verified-2-20260831.webp
+  author: Beso Maisuradze
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0/
+  source: https://commons.wikimedia.org/wiki/File:Kakheti._The_Khirsa_church_in_Tibaani_(Photo_Beso_Maisuradze,_2010)-1.jpg
+- image: /assets/photos/khirsa-monastery-verified-3-20260831.webp
+  author: Beso Maisuradze
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0/
+  source: https://commons.wikimedia.org/wiki/File:Kakheti._The_Khirsa_church_in_Tibaani_(Photo_Beso_Maisuradze,_2010)-5.jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true

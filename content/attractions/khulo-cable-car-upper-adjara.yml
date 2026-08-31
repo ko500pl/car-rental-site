@@ -9,15 +9,35 @@ order: 60
 image: /assets/photos/khulo-cable-car-upper-adjara.webp
 gallery:
 - image: /assets/photos/khulo-cable-car-upper-adjara-1.webp
-  author: "Gaga.vaa"
-  license: "CC BY-SA 4.0"
-  license_url: "https://creativecommons.org/licenses/by-sa/4.0"
-  source: "https://commons.wikimedia.org/wiki/File:Khulo,_wiev_from_Tago_Cableway_Station.jpg"
+  author: Gaga.vaa
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Khulo,_wiev_from_Tago_Cableway_Station.jpg
 - image: /assets/photos/khulo-cable-car-upper-adjara-2.webp
-  author: "Jelger Groeneveld"
-  license: "CC BY 2.0"
-  license_url: "https://creativecommons.org/licenses/by/2.0"
-  source: "https://commons.wikimedia.org/wiki/File:Khulo_main_street_Sh1.jpg"
+  author: Jelger Groeneveld
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Khulo_main_street_Sh1.jpg
+- image: /assets/photos/khulo-cable-car-upper-adjara-verified-1-20260831.webp
+  author: Gaga.vaa
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Khulo,_wiev_from_Tago_Cableway_Station.jpg
+- image: /assets/photos/khulo-cable-car-upper-adjara-verified-2-20260831.webp
+  author: Jelger Groeneveld
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0/
+  source: https://commons.wikimedia.org/wiki/File:Starting_point_of_Khulo_-_Tago_ropeway_cable_car.jpg
+- image: /assets/photos/khulo-cable-car-upper-adjara-verified-3-20260831.webp
+  author: Jelger Groeneveld
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0/
+  source: https://commons.wikimedia.org/wiki/File:Khulo_main_street_Sh1.jpg
+- image: /assets/photos/khulo-cable-car-upper-adjara-premium-ai-1-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '3'
 best_season: may-october
 open_year_round: true

@@ -23,6 +23,26 @@ gallery:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Akhltskha_Rabat_castle_(15).jpg
+- image: /assets/photos/rabati-castle-verified-1-20260831.webp
+  author: Aleksey Mukhranov
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0/
+  source: https://commons.wikimedia.org/wiki/File:Rabati_Castle_in_Akhaltsikhe,_view_from_the_city.jpg
+- image: /assets/photos/rabati-castle-verified-2-20260831.webp
+  author: I kynitsky
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Akhalcikhe,_old_city_general_view.jpg
+- image: /assets/photos/rabati-castle-verified-3-20260831.webp
+  author: John Wagner
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0/
+  source: https://commons.wikimedia.org/wiki/File:Georgia,_Akhaltsikhe,_Rabati_Castle_(30327080592).jpg
+- image: /assets/photos/rabati-castle-verified-4-20260831.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Rabati_Castle_3.jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true

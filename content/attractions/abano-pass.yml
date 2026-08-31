@@ -8,11 +8,6 @@ featured: false
 order: 90
 image: /assets/photos/abano-pass-1.webp
 gallery:
-- image: /assets/photos/abano-pass-1.webp
-  author: Moahim
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:2019_-_Tusheti_National_Park_-_the_view_from_Abano_pass.jpg
 - image: /assets/photos/abano-pass-2.webp
   author: Surprizi
   license: CC BY-SA 4.0
@@ -23,6 +18,21 @@ gallery:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Abano_Pass_2021_(1).jpg
+- image: /assets/photos/abano-pass-verified-1-20260831.webp
+  author: Draceane
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Abano,_2024_(03).jpg
+- image: /assets/photos/abano-pass-verified-2-20260831.webp
+  author: Draceane
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Abano,_2024_(06).jpg
+- image: /assets/photos/abano-pass.webp
+  author: RentUp verified local asset
+  license: Site-owned or previously verified source
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '1'
 best_season: june-september
 open_year_round: false

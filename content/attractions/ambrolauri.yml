@@ -23,6 +23,16 @@ gallery:
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Ambrolauri_-_panoramio.jpg
+- image: /assets/photos/ambrolauri-verified-1-20260831.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0/
+  source: https://commons.wikimedia.org/wiki/File:View_to_Ambrolauri_-_panoramio.jpg
+- image: /assets/photos/ambrolauri-verified-2-20260831.webp
+  author: Yasuhiro Kojima
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0/
+  source: https://commons.wikimedia.org/wiki/File:Ambrolauri,_Georgia.jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true

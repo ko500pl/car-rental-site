@@ -7,7 +7,37 @@ unesco: false
 featured: true
 order: 10
 image: /assets/photos/nikortsminda-cathedral.webp
-gallery: []
+gallery:
+- image: /assets/photos/nikortsminda-cathedral-verified-1-20260831.webp
+  author: ალ-ო
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0/
+  source: https://commons.wikimedia.org/wiki/File:Nikortsminda_South.jpg
+- image: /assets/photos/nikortsminda-cathedral-verified-2-20260831.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Nikortsminda_church.jpg
+- image: /assets/photos/nikortsminda-cathedral-verified-3-20260831.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Nikortsminda_church2.jpg
+- image: /assets/photos/nikortsminda-cathedral-verified-4-20260831.webp
+  author: Natia Maisashvili
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Nikortsminda,_Racha,_Georgia.jpg
+- image: /assets/photos/nikortsminda-cathedral-verified-5-20260831.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0/
+  source: https://commons.wikimedia.org/wiki/File:Nikortsminda_-_panoramio_(1).jpg
+- image: /assets/photos/nikortsminda-cathedral-verified-6-20260831.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0/
+  source: https://commons.wikimedia.org/wiki/File:Nikortsminda_-_panoramio_(2).jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true

@@ -18,6 +18,26 @@ gallery:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Bebris-Tsikhe_fortress,_Mtskheta_Georgia._2021_01.jpg
+- image: /assets/photos/bebris-tsikhe-verified-1-20260831.webp
+  author: Rymfoley
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Bebristsikhe_2.jpg
+- image: /assets/photos/bebris-tsikhe-verified-2-20260831.webp
+  author: Rymfoley
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Bebristsikhe_5.jpg
+- image: /assets/photos/bebris-tsikhe-verified-3-20260831.webp
+  author: Marcin Konsek
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:2016_Mccheta,_Twierdza_Bebriscyche_(03).jpg
+- image: /assets/photos/bebris-tsikhe-verified-4-20260831.webp
+  author: Kober
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Bebris-Tsikhe_fortress,_Mtskheta_Georgia._2021_01.jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true

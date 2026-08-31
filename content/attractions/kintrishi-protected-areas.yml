@@ -18,6 +18,21 @@ gallery:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0/
   source: https://commons.wikimedia.org/wiki/File:View_from_Kintrishi_Protected_Area.jpg
+- image: /assets/photos/kintrishi-protected-areas-verified-1-20260831.webp
+  author: გრიგოლ
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0/
+  source: https://commons.wikimedia.org/wiki/File:Tskhemovani_Bridge.JPG
+- image: /assets/photos/kintrishi-protected-areas-verified-2-20260831.webp
+  author: Paata vardanashvili
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:View_from_Kintrishi_Protected_Area.jpg
+- image: /assets/photos/kintrishi-protected-areas-verified-3-20260831.webp
+  author: Paata vardanashvili
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:View_from_Kintrishi_Protected_Area_2.jpg
 visit_hours: '4'
 best_season: may-october
 open_year_round: false

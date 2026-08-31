@@ -8,16 +8,31 @@ featured: false
 order: 60
 image: /assets/photos/martvili-canyon-2.webp
 gallery:
-- image: /assets/photos/martvili-canyon-2.webp
-  author: AlexandreAssatiani
-  license: CC BY 4.0
-  license_url: https://creativecommons.org/licenses/by/4.0
-  source: https://commons.wikimedia.org/wiki/File:Martvili_Canyon_Waterfalls.jpg
-- image: /assets/photos/martvili-canyon-3.webp
+- image: /assets/photos/martvili-canyon-verified-1-20260831.webp
+  author: DDohler
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Gachedili_canyon,_Georgia.jpg
+- image: /assets/photos/martvili-canyon-verified-2-20260831.webp
   author: Kober
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Martvili_Canyon,_Georgia._2018_(11).jpg
+- image: /assets/photos/martvili-canyon-verified-3-20260831.webp
+  author: Kober
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Martvili_Canyon,_Georgia._2018_(18).jpg
+- image: /assets/photos/martvili-canyon-verified-4-20260831.webp
+  author: AlexandreAssatiani
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0
+  source: https://commons.wikimedia.org/wiki/File:Martvili_Canyon_View.jpg
+- image: /assets/photos/martvili-canyon-verified-5-20260831.webp
+  author: AlexandreAssatiani
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0
+  source: https://commons.wikimedia.org/wiki/File:Martvili_Canyon_Waterfall.jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true

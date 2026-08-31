@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 70
 image: /assets/photos/katskhi-pillar.webp
-gallery: []
+gallery:
+- image: /assets/photos/katskhi-pillar-verified-1-20260831.webp
+  author: Andrew Milligan sumo
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0/
+  source: https://commons.wikimedia.org/wiki/File:Katskhi_Pillar,_Georgia_02.jpg
+- image: /assets/photos/katskhi-pillar-verified-2-20260831.webp
+  author: Andrew Milligan sumo
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0/
+  source: https://commons.wikimedia.org/wiki/File:Katskhi_Pillar,_Georgia_01.jpg
+- image: /assets/photos/katskhi-pillar-verified-3-20260831.webp
+  author: Alexkom000
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:2025-06-17_Katskhi_pillar_4.jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true

@@ -18,6 +18,11 @@ gallery:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Tbilisi%27s_Sioni_(5).jpg
+- image: /assets/photos/sioni-cathedral-premium-ai-final-3-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '0.5'
 best_season: all
 open_year_round: true

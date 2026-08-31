@@ -1,0 +1,262 @@
+{
+  "batumi-alphabetic-tower": {
+    "target": 4,
+    "total_images": 4,
+    "added_ai_assisted": []
+  },
+  "dandalo-arched-bridge": {
+    "target": 4,
+    "total_images": 4,
+    "added_ai_assisted": []
+  },
+  "dariali-gorge-gveleti-waterfalls": {
+    "target": 6,
+    "total_images": 6,
+    "added_ai_assisted": []
+  },
+  "fabrika-marjanishvili": {
+    "target": 6,
+    "total_images": 6,
+    "added_ai_assisted": []
+  },
+  "green-lake-goderdzi": {
+    "target": 6,
+    "total_images": 6,
+    "added_ai_assisted": []
+  },
+  "keda-wine-cellars": {
+    "target": 6,
+    "total_images": 6,
+    "added_ai_assisted": []
+  },
+  "khareba-wine-tunnel": {
+    "target": 4,
+    "total_images": 4,
+    "added_ai_assisted": []
+  },
+  "kobuleti": {
+    "target": 6,
+    "total_images": 6,
+    "added_ai_assisted": []
+  },
+  "kvareli-kindzmarauli": {
+    "target": 6,
+    "total_images": 6,
+    "added_ai_assisted": []
+  },
+  "likhauri-church": {
+    "target": 4,
+    "total_images": 4,
+    "added_ai_assisted": []
+  },
+  "makhuntseti-waterfall": {
+    "target": 6,
+    "total_images": 6,
+    "added_ai_assisted": []
+  },
+  "mtatsminda-park": {
+    "target": 6,
+    "total_images": 6,
+    "added_ai_assisted": []
+  },
+  "nodar-dumbadze-house-museum": {
+    "target": 7,
+    "total_images": 7,
+    "added_ai_assisted": []
+  },
+  "sameba-jikheti-monastery": {
+    "target": 7,
+    "total_images": 7,
+    "added_ai_assisted": []
+  },
+  "shekvetili-dendrological-park": {
+    "target": 6,
+    "total_images": 6,
+    "added_ai_assisted": []
+  },
+  "shukhuti-lelo-burti": {
+    "target": 6,
+    "total_images": 6,
+    "added_ai_assisted": []
+  },
+  "sno-valley": {
+    "target": 6,
+    "total_images": 6,
+    "added_ai_assisted": []
+  },
+  "sololaki-art-nouveau": {
+    "target": 4,
+    "total_images": 4,
+    "added_ai_assisted": []
+  },
+  "takhti-tepha-mud-volcanoes": {
+    "target": 6,
+    "total_images": 6,
+    "added_ai_assisted": []
+  },
+  "tsitsinatela-amusement-park": {
+    "target": 6,
+    "total_images": 6,
+    "added_ai_assisted": []
+  },
+  "bolnisi-town": {
+    "target": 6,
+    "total_images": 6,
+    "added_ai_assisted": []
+  },
+  "khada-valley": {
+    "target": 7,
+    "total_images": 7,
+    "added_ai_assisted": []
+  },
+  "khulo-cable-car-upper-adjara": {
+    "target": 7,
+    "total_images": 7,
+    "added_ai_assisted": []
+  },
+  "kvetera-fortress": {
+    "target": 4,
+    "total_images": 4,
+    "added_ai_assisted": []
+  },
+  "batumi-boulevard-old-town": {
+    "target": 8,
+    "total_images": 8,
+    "added_ai_assisted": []
+  },
+  "beshumi": {
+    "target": 7,
+    "total_images": 7,
+    "added_ai_assisted": []
+  },
+  "marjanishvili-theatre": {
+    "target": 7,
+    "total_images": 6,
+    "added_ai_assisted": [
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-9d8ce9cb-b2fe-4632-8fbc-705e44662af1-1.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-9d8ce9cb-b2fe-4632-8fbc-705e44662af1-2.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-9d8ce9cb-b2fe-4632-8fbc-705e44662af1-3.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-9d8ce9cb-b2fe-4632-8fbc-705e44662af1-4.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-9d8ce9cb-b2fe-4632-8fbc-705e44662af1-5.png"
+    ]
+  },
+  "narikala-fortress": {
+    "target": 8,
+    "total_images": 6,
+    "added_ai_assisted": [
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-2b6c29c6-8989-4d93-a651-b78840f2a348-1.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-2b6c29c6-8989-4d93-a651-b78840f2a348-2.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-2b6c29c6-8989-4d93-a651-b78840f2a348-3.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-2b6c29c6-8989-4d93-a651-b78840f2a348-4.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-2b6c29c6-8989-4d93-a651-b78840f2a348-5.png"
+    ]
+  },
+  "omalo-tusheti": {
+    "target": 8,
+    "total_images": 6,
+    "added_ai_assisted": [
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-c3312a45-e594-4e04-9ede-871452b67728-1.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-c3312a45-e594-4e04-9ede-871452b67728-2.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-c3312a45-e594-4e04-9ede-871452b67728-3.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-c3312a45-e594-4e04-9ede-871452b67728-4.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-c3312a45-e594-4e04-9ede-871452b67728-5.png"
+    ]
+  },
+  "metekhi-church": {
+    "target": 4,
+    "total_images": 4,
+    "added_ai_assisted": [
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-feacb714-5292-4d16-8399-c747bdd66cef-1.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-feacb714-5292-4d16-8399-c747bdd66cef-2.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-feacb714-5292-4d16-8399-c747bdd66cef-3.png"
+    ]
+  },
+  "rustaveli-national-theatre": {
+    "target": 7,
+    "total_images": 6,
+    "added_ai_assisted": [
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-c3e6cb6b-0537-49f3-8ac7-5a01dbc178e3-1.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-c3e6cb6b-0537-49f3-8ac7-5a01dbc178e3-2.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-c3e6cb6b-0537-49f3-8ac7-5a01dbc178e3-3.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-c3e6cb6b-0537-49f3-8ac7-5a01dbc178e3-4.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-c3e6cb6b-0537-49f3-8ac7-5a01dbc178e3-5.png"
+    ]
+  },
+  "svetitskhoveli-cathedral": {
+    "target": 8,
+    "total_images": 7,
+    "added_ai_assisted": [
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-b6f02557-e83d-40f5-b4d8-3597954b091f-1.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-b6f02557-e83d-40f5-b4d8-3597954b091f-2.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-b6f02557-e83d-40f5-b4d8-3597954b091f-3.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-b6f02557-e83d-40f5-b4d8-3597954b091f-4.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-b6f02557-e83d-40f5-b4d8-3597954b091f-5.png"
+    ]
+  },
+  "tbilisi-opera-ballet-theatre": {
+    "target": 8,
+    "total_images": 6,
+    "added_ai_assisted": [
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-ea48f820-23bb-4502-838d-41df3d0e054e-1.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-ea48f820-23bb-4502-838d-41df3d0e054e-2.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-ea48f820-23bb-4502-838d-41df3d0e054e-3.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-ea48f820-23bb-4502-838d-41df3d0e054e-4.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-ea48f820-23bb-4502-838d-41df3d0e054e-5.png"
+    ]
+  },
+  "ureki": {
+    "target": 8,
+    "total_images": 7,
+    "added_ai_assisted": [
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-8e3c4c90-2a25-4092-9e44-d02d83105660-1.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-8e3c4c90-2a25-4092-9e44-d02d83105660-2.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-8e3c4c90-2a25-4092-9e44-d02d83105660-3.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-8e3c4c90-2a25-4092-9e44-d02d83105660-4.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-8e3c4c90-2a25-4092-9e44-d02d83105660-5.png"
+    ]
+  },
+  "zoti": {
+    "target": 6,
+    "total_images": 6,
+    "added_ai_assisted": [
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-ff3cebab-b7f5-477b-9fba-f222caae5bdb-1.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-ff3cebab-b7f5-477b-9fba-f222caae5bdb-2.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-ff3cebab-b7f5-477b-9fba-f222caae5bdb-3.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-ff3cebab-b7f5-477b-9fba-f222caae5bdb-4.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-ff3cebab-b7f5-477b-9fba-f222caae5bdb-5.png"
+    ]
+  },
+  "sighnaghi": {
+    "target": 8,
+    "total_images": 8,
+    "added_ai_assisted": [
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-e51d6420-0433-4279-b9f5-94c93c1d24b9-1.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-e51d6420-0433-4279-b9f5-94c93c1d24b9-2.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-e51d6420-0433-4279-b9f5-94c93c1d24b9-3.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-e51d6420-0433-4279-b9f5-94c93c1d24b9-4.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-e51d6420-0433-4279-b9f5-94c93c1d24b9-5.png"
+    ]
+  },
+  "sarpi-beach": {
+    "target": 6,
+    "total_images": 6,
+    "added_ai_assisted": [
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-9dbd83be-45ec-4c9b-9547-2ed6f46dea20-1.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-9dbd83be-45ec-4c9b-9547-2ed6f46dea20-2.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-9dbd83be-45ec-4c9b-9547-2ed6f46dea20-3.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-9dbd83be-45ec-4c9b-9547-2ed6f46dea20-4.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-9dbd83be-45ec-4c9b-9547-2ed6f46dea20-5.png"
+    ]
+  },
+  "pitareti-monastery": {
+    "target": 6,
+    "total_images": 6,
+    "added_ai_assisted": [
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-e6d2f188-10a3-4c58-b9b2-1cbdd84eccaf-1.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-e6d2f188-10a3-4c58-b9b2-1cbdd84eccaf-2.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-e6d2f188-10a3-4c58-b9b2-1cbdd84eccaf-3.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-e6d2f188-10a3-4c58-b9b2-1cbdd84eccaf-4.png",
+      "C:\\Users\\t.kopaliani\\.codex\\generated_images\\019ffbc0-c66e-7e40-9897-1c16e55a8c6b\\exec-e6d2f188-10a3-4c58-b9b2-1cbdd84eccaf-5.png"
+    ]
+  }
+}

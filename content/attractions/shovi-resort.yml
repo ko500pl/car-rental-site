@@ -9,25 +9,35 @@ order: 30
 image: /assets/photos/shovi-resort.webp
 gallery:
 - image: /assets/photos/shovi-resort-1.webp
-  author: "Boris Kuznetsov"
-  license: "CC BY 2.0"
-  license_url: "https://creativecommons.org/licenses/by/2.0"
-  source: "https://commons.wikimedia.org/wiki/File:Pine_Forest,_Shovi,_Racha,_Georgia.jpg"
+  author: Boris Kuznetsov
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Pine_Forest,_Shovi,_Racha,_Georgia.jpg
 - image: /assets/photos/shovi-resort-2.webp
-  author: "Jelger Groeneveld"
-  license: "CC BY 2.0"
-  license_url: "https://creativecommons.org/licenses/by/2.0"
-  source: "https://commons.wikimedia.org/wiki/File:Road_to_Mamison_Pass_at_Shovi.jpg"
+  author: Jelger Groeneveld
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Road_to_Mamison_Pass_at_Shovi.jpg
 - image: /assets/photos/shovi-resort-3.webp
-  author: "Damianenika"
-  license: "CC BY-SA 4.0"
-  license_url: "https://creativecommons.org/licenses/by-sa/4.0"
-  source: "https://commons.wikimedia.org/wiki/File:Shovi_-_Old_Holiday_House_%E2%80%9CStalin%E2%80%99s_House%E2%80%9D.jpg"
+  author: Damianenika
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Shovi_-_Old_Holiday_House_%E2%80%9CStalin%E2%80%99s_House%E2%80%9D.jpg
 - image: /assets/photos/shovi-resort-4.webp
-  author: "Jelger Groeneveld"
-  license: "CC BY 2.0"
-  license_url: "https://creativecommons.org/licenses/by/2.0"
-  source: "https://commons.wikimedia.org/wiki/File:Shovi_old_hotel.jpg"
+  author: Jelger Groeneveld
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Shovi_old_hotel.jpg
+- image: /assets/photos/shovi-resort-verified-1-20260831.webp
+  author: Boris Kuznetsov
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0/
+  source: https://commons.wikimedia.org/wiki/File:Stormy_Sky_over_Shovi,_Racha,_Georgia.jpg
+- image: /assets/photos/shovi-resort-verified-2-20260831.webp
+  author: George Kvizhinadze  from Tbilisi, Georgia
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0/
+  source: https://commons.wikimedia.org/wiki/File:Shovi._Racha_region._Georgia.jpg
 visit_hours: '4'
 best_season: june-september
 open_year_round: false

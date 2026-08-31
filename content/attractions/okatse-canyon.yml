@@ -13,6 +13,26 @@ gallery:
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Okatse_visitor_centrum_2019_1.jpg
+- image: /assets/photos/okatse-canyon-verified-1-20260831.webp
+  author: United States Embassy Tbilisi, Georgia
+  license: Public domain
+  license_url: https://creativecommons.org/publicdomain/mark/1.0/
+  source: https://commons.wikimedia.org/wiki/File:Okatse_Canyon_Nature_Reserve,_Georgia_01.jpg
+- image: /assets/photos/okatse-canyon-verified-2-20260831.webp
+  author: United States Embassy Tbilisi, Georgia
+  license: Public domain
+  license_url: https://creativecommons.org/publicdomain/mark/1.0/
+  source: https://commons.wikimedia.org/wiki/File:Okatse_Canyon_Nature_Reserve,_Georgia_04.jpg
+- image: /assets/photos/okatse-canyon-verified-3-20260831.webp
+  author: United States Embassy Tbilisi, Georgia
+  license: Public domain
+  license_url: https://creativecommons.org/publicdomain/mark/1.0/
+  source: https://commons.wikimedia.org/wiki/File:Okatse_Canyon_Nature_Reserve,_Georgia_06.jpg
+- image: /assets/photos/okatse-canyon-verified-4-20260831.webp
+  author: FingerWiki
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Okatse_Canyon,_Imereti,_Georgia.jpg
 visit_hours: '3'
 best_season: may-october
 open_year_round: true

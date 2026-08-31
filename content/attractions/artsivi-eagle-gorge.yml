@@ -13,6 +13,31 @@ gallery:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Artsivi_Gorge_17.jpg
+- image: /assets/photos/artsivi-eagle-gorge-verified-1-20260831.webp
+  author: Paata vardanashvili
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Artsivi_Gorge_04.jpg
+- image: /assets/photos/artsivi-eagle-gorge-verified-2-20260831.webp
+  author: Paata vardanashvili
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Artsivi_Gorge_05.jpg
+- image: /assets/photos/artsivi-eagle-gorge-verified-3-20260831.webp
+  author: Paata vardanashvili
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Artsivi_Gorge_10.jpg
+- image: /assets/photos/artsivi-eagle-gorge-verified-4-20260831.webp
+  author: Paata vardanashvili
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Artsivi_Gorge_11.jpg
+- image: /assets/photos/artsivi-eagle-gorge-verified-5-20260831.webp
+  author: Paata vardanashvili
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Artsivi_Gorge_14.jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true

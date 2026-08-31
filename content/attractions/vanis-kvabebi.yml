@@ -8,16 +8,31 @@ featured: false
 order: 35
 image: /assets/photos/vanis-kvabebi-1.webp
 gallery:
-- image: /assets/photos/vanis-kvabebi-1.webp
-  author: toomas.liivamagi
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Vanis_Kvabebi_koobasklooster_-_panoramio.jpg
 - image: /assets/photos/vanis-kvabebi-2.webp
   author: toomas.liivamagi
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Vanis_Kvabebi_koobasklooster_-_panoramio_-_toomas.liivamagi.jpg
+- image: /assets/photos/vanis-kvabebi-verified-1-20260831.webp
+  author: henribergius
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0/
+  source: https://commons.wikimedia.org/wiki/File:Vanis_Kvabebi.jpg
+- image: /assets/photos/vanis-kvabebi-verified-2-20260831.webp
+  author: Gaga.vaa
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Mtkari_Gorge,_Near_Vani%27s_Caves.jpg
+- image: /assets/photos/vanis-kvabebi-verified-3-20260831.webp
+  author: Gaga.vaa
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Mtkari_Gorge,_View_from_Vani%27s_Caves.jpg
+- image: /assets/photos/vanis-kvabebi-verified-4-20260831.webp
+  author: Damian Pankowiec
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Ko%C5%9Bci%C3%B3%C5%82_Vanis_Kvabebi_we_wsi_Vardzia.jpg
 visit_hours: '2'
 best_season: may-october
 open_year_round: true

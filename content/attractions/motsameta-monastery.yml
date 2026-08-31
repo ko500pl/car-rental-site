@@ -8,11 +8,6 @@ featured: false
 order: 80
 image: /assets/photos/motsameta-monastery-1.webp
 gallery:
-- image: /assets/photos/motsameta-monastery-1.webp
-  author: Aldis Dzenovskis
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Motsameta,_Georgia_-_panoramio_(19).jpg
 - image: /assets/photos/motsameta-monastery-2.webp
   author: Aldis Dzenovskis
   license: CC BY-SA 3.0
@@ -23,6 +18,11 @@ gallery:
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Motsameta,_Georgia_-_panoramio_(22).jpg
+- image: /assets/photos/motsameta-monastery.webp
+  author: RentUp verified local asset
+  license: Site-owned or previously verified source
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '1'
 best_season: all
 open_year_round: true

@@ -8,16 +8,41 @@ featured: true
 order: 20
 image: /assets/photos/batumi-botanical-garden.webp
 gallery:
-- image: /assets/photos/batumi-botanical-garden-2.webp
-  author: FingerWiki
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:View_of_the_Black_Sea_coast_from_Batumi_Botanical_Garden.jpg
 - image: /assets/photos/batumi-botanical-garden-3.webp
   author: Ephraim Stillberg
   license: Public domain
   license_url: ''
   source: https://commons.wikimedia.org/wiki/File:Batumi_Botanical_Garden.jpg
+- image: /assets/photos/batumi-botanical-garden-verified-1-20260831.webp
+  author: FingerWiki
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:View_of_the_Black_Sea_coast_from_Batumi_Botanical_Garden.jpg
+- image: /assets/photos/batumi-botanical-garden-verified-2-20260831.webp
+  author: Krzysztof Ziarnek, Kenraiz
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:View_of_Batumi_skyline_from_the_Botanical_Garden_(cropped).jpg
+- image: /assets/photos/batumi-botanical-garden-verified-3-20260831.webp
+  author: Ephraim Stillberg
+  license: Public domain
+  license_url: https://creativecommons.org/publicdomain/mark/1.0/
+  source: https://commons.wikimedia.org/wiki/File:Batumi_Botanical_Garden.jpg
+- image: /assets/photos/batumi-botanical-garden-verified-4-20260831.webp
+  author: Vitaly Zdanevich
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Batumi2025botanic-garden-view-to-batumi-2.jpg
+- image: /assets/photos/batumi-botanical-garden-verified-5-20260831.webp
+  author: Sasha India
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0/
+  source: https://commons.wikimedia.org/wiki/File:Botanical_Garden_(Batumi,_Georgia)_(28119598990).jpg
+- image: /assets/photos/batumi-botanical-garden-1.webp
+  author: RentUp verified local asset
+  license: Site-owned or previously verified source
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '3'
 best_season: all
 open_year_round: true

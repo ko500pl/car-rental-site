@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 76
 image: /assets/photos/muri-fortress.webp
-gallery: []
+gallery:
+- image: /assets/photos/muri-fortress-verified-1-20260831.webp
+  author: Aleksey Muhranoff
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0/
+  source: https://commons.wikimedia.org/wiki/File:Muri_fort_at_Tsageri_(Photo_A._Muhranoff,_2011).jpg
+- image: /assets/photos/muri-fortress-premium-ai-1-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/muri-fortress-premium-ai-2-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '1.5'
 best_season: all
 open_year_round: true

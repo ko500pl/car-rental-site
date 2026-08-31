@@ -7,7 +7,32 @@ unesco: false
 featured: false
 order: 110
 image: /assets/photos/lagodekhi-protected-areas.webp
-gallery: []
+gallery:
+- image: /assets/photos/lagodekhi-protected-areas-verified-1-20260831.webp
+  author: Giorgimailo
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:View_in_Lagodekhi_National_Park_-_%E1%83%AE%E1%83%94%E1%83%93%E1%83%98_%E1%83%9A%E1%83%90%E1%83%92%E1%83%9D%E1%83%93%E1%83%94%E1%83%AE%E1%83%98%E1%83%A1_%E1%83%94%E1%83%A0%E1%83%9D%E1%83%95%E1%83%9C%E1%83%A3%E1%83%9A_%E1%83%9E%E1%83%90%E1%83%A0%E1%83%99%E1%83%96%E1%83%94.jpg
+- image: /assets/photos/lagodekhi-protected-areas-verified-2-20260831.webp
+  author: Giorgi Balakhadze
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Lake_Grdzeli,_Lagodekhi_Protected_Area,_Georgia_02.jpg
+- image: /assets/photos/lagodekhi-protected-areas-verified-3-20260831.webp
+  author: Giorgi Balakhadze
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Lake_Grdzeli,_Lagodekhi_Protected_Area,_Georgia.jpg
+- image: /assets/photos/lagodekhi-protected-areas-verified-4-20260831.webp
+  author: Giorgi Balakhadze
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Lagodekhi_Protected_Area,_Georgia.jpg
+- image: /assets/photos/lagodekhi-protected-areas-verified-5-20260831.webp
+  author: გიორგი ზედელაშვილი
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0/
+  source: https://commons.wikimedia.org/wiki/File:Lagodekhi_sanctuary_3.jpg
 visit_hours: '6'
 best_season: may-october
 open_year_round: true

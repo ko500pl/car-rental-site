@@ -8,11 +8,31 @@ featured: false
 order: 78
 image: /assets/photos/tmogvi-fortress.jpg
 gallery:
-- image: /assets/photos/tmogvi-fortress.jpg
-  author: ჯაბა ლაბაძე (Jaba1977)
-  license: Attribution required
-  license_url: ''
-  source: https://commons.wikimedia.org/wiki/File:Fortress_of_Tmogvi.jpg
+- image: /assets/photos/tmogvi-fortress-verified-1-20260831.webp
+  author: Alexkom000
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:2025-05-25_View_from_the_hiking_trail_to_Tmogvi_Fortress_2.jpg
+- image: /assets/photos/tmogvi-fortress-verified-2-20260831.webp
+  author: Alexkom000
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:2025-05-25_View_from_the_hiking_trail_to_Tmogvi_Fortress_3.jpg
+- image: /assets/photos/tmogvi-fortress-verified-3-20260831.webp
+  author: Alexkom000
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:2025-05-25_Tmogvi_Fortress_1.jpg
+- image: /assets/photos/tmogvi-fortress-verified-4-20260831.webp
+  author: Alexkom000
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:2025-05-25_Tmogvi_Fortress_2.jpg
+- image: /assets/photos/tmogvi-fortress-verified-5-20260831.webp
+  author: Alexkom000
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:2025-05-25_View_from_the_hiking_trail_to_Tmogvi_Fortress_6.jpg
 visit_hours: '2'
 best_season: may-october
 open_year_round: false

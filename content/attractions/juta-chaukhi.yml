@@ -8,11 +8,41 @@ featured: false
 order: 65
 image: /assets/photos/juta-chaukhi.webp
 gallery:
-- image: /assets/photos/juta-chaukhi-3.webp
+- image: /assets/photos/juta-chaukhi-verified-1-20260831.webp
+  author: Boris Kuznetsov
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0/
+  source: https://commons.wikimedia.org/wiki/File:Chaukhi_Mountain,_Mtskheta-Mtianeti,_Georgia.jpg
+- image: /assets/photos/juta-chaukhi-verified-2-20260831.webp
+  author: Boris Kuznetsov
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0/
+  source: https://commons.wikimedia.org/wiki/File:Chaukhi_Mountain_%26_Tina_Lake,_Juta_Valley,_Mtskheta-Mtianeti,_Georgia.jpg
+- image: /assets/photos/juta-chaukhi-verified-3-20260831.webp
+  author: Alexey Komarov
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:A_view_from_the_trail_from_Juta_to_Chaukhi_Pass_2023-07-29-2.jpg
+- image: /assets/photos/juta-chaukhi-verified-4-20260831.webp
+  author: Boris Kuznetsov
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0/
+  source: https://commons.wikimedia.org/wiki/File:Juta_Valley_at_Night,_Mtskheta-Mtianeti,_Georgia.jpg
+- image: /assets/photos/juta-chaukhi-verified-5-20260831.webp
   author: Levan Gokadze
   license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0/
   source: https://commons.wikimedia.org/wiki/File:Khevi,_Georgia_%E2%80%94_Mountainous_Village_Juta.jpg
+- image: /assets/photos/juta-chaukhi-verified-6-20260831.webp
+  author: Bmphotography
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Chaukhi_Pond.jpg
+- image: /assets/photos/juta-chaukhi-1.webp
+  author: RentUp verified local asset
+  license: Site-owned or previously verified source
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '6'
 best_season: june-september
 open_year_round: false

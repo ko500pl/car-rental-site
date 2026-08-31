@@ -8,11 +8,6 @@ featured: false
 order: 45
 image: /assets/photos/kutaisi-historical-museum.webp
 gallery:
-- image: /assets/photos/kutaisi-historical-museum-1.webp
-  author: Herbert Frank from Wien (Vienna), AT
-  license: CC BY 2.0
-  license_url: https://creativecommons.org/licenses/by/2.0
-  source: https://commons.wikimedia.org/wiki/File:%E1%83%A5%E1%83%A3%E1%83%97%E1%83%90%E1%83%98%E1%83%A1%E1%83%98_Kutaisi_State_Historical_Museum_(48731408532).jpg
 - image: /assets/photos/kutaisi-historical-museum-2.webp
   author: Herbert Frank from Wien (Vienna), AT
   license: CC BY 2.0
@@ -23,6 +18,11 @@ gallery:
   license: CC BY 2.0
   license_url: https://creativecommons.org/licenses/by/2.0
   source: https://commons.wikimedia.org/wiki/File:%E1%83%A5%E1%83%A3%E1%83%97%E1%83%90%E1%83%98%E1%83%A1%E1%83%98_Kutaisi_State_Historical_Museum_(48731227231).jpg
+- image: /assets/photos/kutaisi-historical-museum-premium-ai-final-3-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '1.5'
 best_season: all
 open_year_round: true

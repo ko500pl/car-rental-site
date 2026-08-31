@@ -18,6 +18,21 @@ gallery:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:2023-10-22_A_view_from_the_trail_between_Asureti_and_Kojori_1.jpg
+- image: /assets/photos/asureti-verified-1-20260831.webp
+  author: Alexey Komarov
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:2023-10-22_Lutheran_church_in_Asureti.jpg
+- image: /assets/photos/asureti-verified-2-20260831.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Asureti_church_(2).jpg
+- image: /assets/photos/asureti-verified-3-20260831.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Asureti_church_(5).jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true

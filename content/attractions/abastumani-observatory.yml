@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 50
 image: /assets/photos/abastumani-observatory.webp
-gallery: []
+gallery:
+- image: /assets/photos/abastumani-observatory-verified-1-20260831.webp
+  author: Surprizi
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Abastumani_Astrophysical_Observatory.jpg
+- image: /assets/photos/abastumani-observatory-verified-2-20260831.webp
+  author: Surprizi
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Abastumani_Astrophysical_Observatory_(2).jpg
+- image: /assets/photos/abastumani-observatory-verified-3-20260831.webp
+  author: Surprizi
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Abastumani_Astrophysical_Observatory_(1).jpg
 visit_hours: '2'
 best_season: may-october
 open_year_round: true

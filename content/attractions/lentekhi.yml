@@ -23,6 +23,16 @@ gallery:
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Lentekhi_(Photo_A._Muhranoff,_2011).jpg
+- image: /assets/photos/lentekhi-verified-1-20260831.webp
+  author: Me
+  license: Public domain
+  license_url: https://creativecommons.org/publicdomain/mark/1.0/
+  source: https://commons.wikimedia.org/wiki/File:Lentekhi.png
+- image: /assets/photos/lentekhi-verified-2-20260831.webp
+  author: Jelger Groeneveld
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0/
+  source: https://commons.wikimedia.org/wiki/File:Kheshkuri_river_(Lentekhi).jpg
 visit_hours: '2'
 best_season: may-october
 open_year_round: true

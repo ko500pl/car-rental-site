@@ -8,11 +8,21 @@ featured: false
 order: 60
 image: /assets/photos/barakoni-church-1.webp
 gallery:
-- image: /assets/photos/barakoni-church-1.webp
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Barakoni_church_(G.N._2009).jpg
+- image: /assets/photos/barakoni-church-verified-1-20260831.webp
+  author: Yasuhiro Kojima
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0/
+  source: https://commons.wikimedia.org/wiki/File:2015-08-29_(24)_Barakoni.jpg
+- image: /assets/photos/barakoni-church-verified-2-20260831.webp
+  author: Jelger Groeneveld
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0/
+  source: https://commons.wikimedia.org/wiki/File:View_to_Barakoni_Church_in_Tsesi.jpg
+- image: /assets/photos/barakoni-church-2.webp
+  author: RentUp verified local asset
+  license: Site-owned or previously verified source
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '1'
 best_season: all
 open_year_round: true

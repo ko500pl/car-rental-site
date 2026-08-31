@@ -7,7 +7,32 @@ unesco: false
 featured: false
 order: 22
 image: /assets/photos/bridge-of-peace-rike-park.webp
-gallery: []
+gallery:
+- image: /assets/photos/bridge-of-peace-rike-park-verified-1-20260831.webp
+  author: falco
+  license: CC0
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:Tbilisi_Peace_Bridge_and_Rike_Park.jpg
+- image: /assets/photos/bridge-of-peace-rike-park-verified-2-20260831.webp
+  author: falco
+  license: CC0
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:Rike_Park_viewed_from_Tbilisi%27s_Peace_Bridge.jpg
+- image: /assets/photos/bridge-of-peace-rike-park-verified-3-20260831.webp
+  author: Tiia Monto
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0/
+  source: https://commons.wikimedia.org/wiki/File:Rike_park_2018.jpg
+- image: /assets/photos/bridge-of-peace-rike-park-verified-4-20260831.webp
+  author: Kober
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0/
+  source: https://commons.wikimedia.org/wiki/File:Rike_Park,_Peace_Bridge_%26_Mt_Mtatsminda.jpg
+- image: /assets/photos/bridge-of-peace-rike-park-verified-5-20260831.webp
+  author: Saskia Heijltjes
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0/
+  source: https://commons.wikimedia.org/wiki/File:Tbilisi._Panoramic_view_on_Rike_area_and_surroundings.jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true

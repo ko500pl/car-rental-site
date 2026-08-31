@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 33
 image: /assets/photos/metekhi-church.webp
-gallery: []
+gallery:
+- image: /assets/photos/metekhi-church-premium-ai-1-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/metekhi-church-premium-ai-2-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/metekhi-church-premium-ai-3-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '0.5'
 best_season: all
 open_year_round: true
