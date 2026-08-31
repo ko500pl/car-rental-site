@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 35
 image: /assets/photos/ubisa-monastery.webp
-gallery: []
+gallery:
+- image: /assets/photos/ubisa-monastery-verified-1-20260831.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0/
+  source: https://commons.wikimedia.org/wiki/File:Ubisa_monastery_(G.N._2008).jpg
+- image: /assets/photos/ubisa-monastery-verified-2-20260831.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Ubisi_monastery_(2).jpg
+- image: /assets/photos/ubisa-monastery-verified-3-20260831.webp
+  author: User:Melberg  of the derivative work, and   Jaba1977  of the original.
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:The_Last_Supper_fresco_-_Ubisa_Monastery.png
 visit_hours: '1'
 best_season: all
 open_year_round: true

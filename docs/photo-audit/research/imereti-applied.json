@@ -1,0 +1,275 @@
+{
+  "ajameti-managed-reserve": {
+    "gallery_items": 5,
+    "total_images_including_primary": 6,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:Ajameti_Managed_Reserve.jpg",
+      "https://commons.wikimedia.org/wiki/File:%E1%83%90%E1%83%AF%E1%83%90%E1%83%9B%E1%83%94%E1%83%97%E1%83%98.jpg",
+      "https://commons.wikimedia.org/wiki/File:%E1%83%90%E1%83%AF%E1%83%90%E1%83%9B%E1%83%94%E1%83%97%E1%83%981.jpg"
+    ],
+    "ai_assisted_originals": 1,
+    "identity_review": "passed"
+  },
+  "baghdati-mayakovsky-house": {
+    "gallery_items": 3,
+    "total_images_including_primary": 4,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:Mayakovsky_House_Museum_2.jpg",
+      "https://commons.wikimedia.org/wiki/File:Mayakovsky_House_Museum_3.jpg",
+      "https://commons.wikimedia.org/wiki/File:Mayakovsky_House_Museum_1.jpg"
+    ],
+    "ai_assisted_originals": 0,
+    "identity_review": "passed"
+  },
+  "bagrati-cathedral": {
+    "gallery_items": 5,
+    "total_images_including_primary": 6,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:2016_Kutaisi,_Katedra_Bagrati_(01).jpg",
+      "https://commons.wikimedia.org/wiki/File:Kutaisi,_Bagrati_Cathedral_(17).jpg"
+    ],
+    "ai_assisted_originals": 0,
+    "identity_review": "passed"
+  },
+  "chiatura-cable-cars": {
+    "gallery_items": 5,
+    "total_images_including_primary": 6,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:Chiatura_Cable_Cars_11.jpg",
+      "https://commons.wikimedia.org/wiki/File:Town_of_Chiatura._seen_from_upper_cable_car_station.jpg"
+    ],
+    "ai_assisted_originals": 0,
+    "identity_review": "passed"
+  },
+  "gelati-monastery": {
+    "gallery_items": 7,
+    "total_images_including_primary": 8,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:2014_Imeretia,_Gelati,_Monastyr_Gelati_(02).jpg",
+      "https://commons.wikimedia.org/wiki/File:Gelati_Monastery_-_indoors.png",
+      "https://commons.wikimedia.org/wiki/File:Belfry_in_Gelati_Monastery.jpg",
+      "https://commons.wikimedia.org/wiki/File:Fountain_in_Gelati_Monastery.jpg"
+    ],
+    "ai_assisted_originals": 0,
+    "identity_review": "passed"
+  },
+  "katskhi-pillar": {
+    "gallery_items": 3,
+    "total_images_including_primary": 4,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:Katskhi_Pillar,_Georgia_02.jpg",
+      "https://commons.wikimedia.org/wiki/File:Katskhi_Pillar,_Georgia_01.jpg",
+      "https://commons.wikimedia.org/wiki/File:2025-06-17_Katskhi_pillar_4.jpg"
+    ],
+    "ai_assisted_originals": 0,
+    "identity_review": "passed"
+  },
+  "kinchkha-waterfall": {
+    "gallery_items": 5,
+    "total_images_including_primary": 6,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:Kinchkha_Waterfall.jpg",
+      "https://commons.wikimedia.org/wiki/File:Kinchkha_03.jpg",
+      "https://commons.wikimedia.org/wiki/File:Kinchkha_12.jpg",
+      "https://commons.wikimedia.org/wiki/File:Kinchkha_32.jpg",
+      "https://commons.wikimedia.org/wiki/File:Kinchkha_Waterfall_Okatse_Waterfall_Natural_Monument.jpg"
+    ],
+    "ai_assisted_originals": 0,
+    "identity_review": "passed"
+  },
+  "kutaisi-botanical-garden": {
+    "gallery_items": 5,
+    "total_images_including_primary": 6,
+    "commons_sources": [],
+    "ai_assisted_originals": 3,
+    "identity_review": "passed"
+  },
+  "kutaisi-jewish-quarter": {
+    "gallery_items": 3,
+    "total_images_including_primary": 4,
+    "commons_sources": [],
+    "ai_assisted_originals": 1,
+    "identity_review": "passed"
+  },
+  "modinakhe-fortress": {
+    "gallery_items": 3,
+    "total_images_including_primary": 4,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:ModiNakhe.jpg",
+      "https://commons.wikimedia.org/wiki/File:Milky_way_and_castle.jpg"
+    ],
+    "ai_assisted_originals": 0,
+    "identity_review": "passed"
+  },
+  "nakerala-pass": {
+    "gallery_items": 5,
+    "total_images_including_primary": 6,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:Nakerala_pass_-_panoramio.jpg",
+      "https://commons.wikimedia.org/wiki/File:Nakerala_pass_-_panoramio_(1).jpg",
+      "https://commons.wikimedia.org/wiki/File:Nakerala_Pass.jpg",
+      "https://commons.wikimedia.org/wiki/File:Rocks_at_Nakerala_Pass.jpg",
+      "https://commons.wikimedia.org/wiki/File:View_from_Nakerala_Pass.jpg"
+    ],
+    "ai_assisted_originals": 0,
+    "identity_review": "passed"
+  },
+  "navenakhevi-cave": {
+    "gallery_items": 5,
+    "total_images_including_primary": 6,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:%E1%B2%9C%E1%83%90%E1%83%95%E1%83%94%E1%83%9C%E1%83%90%E1%83%AE%E1%83%94%E1%83%95%E1%83%98%E1%83%A1_%E1%83%9B%E1%83%A6%E1%83%95%E1%83%98%E1%83%9B%E1%83%94.jpg",
+      "https://commons.wikimedia.org/wiki/File:%E1%B2%9C%E1%83%90%E1%83%95%E1%83%94%E1%83%9C%E1%83%90%E1%83%AE%E1%83%94%E1%83%95%E1%83%98%E1%83%A1_%E1%83%9B%E1%83%A6%E1%83%95%E1%83%98%E1%83%9B%E1%83%94,_%E1%83%97%E1%83%94%E1%83%A0%E1%83%AF%E1%83%9D%E1%83%9A%E1%83%98%E1%83%A1_%E1%83%A0%E1%83%90%E1%83%98%E1%83%9D%E1%83%9C%E1%83%98.jpg"
+    ],
+    "ai_assisted_originals": 1,
+    "identity_review": "passed"
+  },
+  "niko-nikoladze-house-museum": {
+    "gallery_items": 6,
+    "total_images_including_primary": 7,
+    "commons_sources": [],
+    "ai_assisted_originals": 5,
+    "identity_review": "passed"
+  },
+  "nunisi-resort": {
+    "gallery_items": 5,
+    "total_images_including_primary": 6,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:Nunisi.jpg"
+    ],
+    "ai_assisted_originals": 4,
+    "identity_review": "passed"
+  },
+  "okatse-canyon": {
+    "gallery_items": 5,
+    "total_images_including_primary": 6,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:Okatse_Canyon_Nature_Reserve,_Georgia_01.jpg",
+      "https://commons.wikimedia.org/wiki/File:Okatse_Canyon_Nature_Reserve,_Georgia_04.jpg",
+      "https://commons.wikimedia.org/wiki/File:Okatse_Canyon_Nature_Reserve,_Georgia_06.jpg",
+      "https://commons.wikimedia.org/wiki/File:Okatse_Canyon,_Imereti,_Georgia.jpg"
+    ],
+    "ai_assisted_originals": 0,
+    "identity_review": "passed"
+  },
+  "prometheus-cave": {
+    "gallery_items": 7,
+    "total_images_including_primary": 8,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:Kumistavi_cave_(8).jpg",
+      "https://commons.wikimedia.org/wiki/File:Kumistavi_cave_(51).jpg",
+      "https://commons.wikimedia.org/wiki/File:Prometheus_Cave_reflection,_Georgia.jpg",
+      "https://commons.wikimedia.org/wiki/File:Prometheus_cave,_Georgia.jpg"
+    ],
+    "ai_assisted_originals": 0,
+    "identity_review": "passed"
+  },
+  "sairme-resort": {
+    "gallery_items": 5,
+    "total_images_including_primary": 6,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:Sairme_resort,_Georgia_02.jpg",
+      "https://commons.wikimedia.org/wiki/File:Sairme_resort,_Georgia_06.jpg"
+    ],
+    "ai_assisted_originals": 0,
+    "identity_review": "passed"
+  },
+  "sataplia-nature-reserve": {
+    "gallery_items": 5,
+    "total_images_including_primary": 6,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:Sataplia_Managed_Reserve_02.jpg",
+      "https://commons.wikimedia.org/wiki/File:Sataplia_Managed_Reserve_15.jpg",
+      "https://commons.wikimedia.org/wiki/File:Sataplia_Managed_Reserve_34.jpg",
+      "https://commons.wikimedia.org/wiki/File:Sataplia_Managed_Reserve_48.jpg"
+    ],
+    "ai_assisted_originals": 0,
+    "identity_review": "passed"
+  },
+  "shorapani-fortress": {
+    "gallery_items": 3,
+    "total_images_including_primary": 4,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:Shorapani_Fortress_(3).jpg",
+      "https://commons.wikimedia.org/wiki/File:Shorapani_Fortress_(13).jpg",
+      "https://commons.wikimedia.org/wiki/File:Shorapani_Fortress_(26).jpg"
+    ],
+    "ai_assisted_originals": 0,
+    "identity_review": "passed"
+  },
+  "skhvitori-akaki-tsereteli-museum": {
+    "gallery_items": 3,
+    "total_images_including_primary": 4,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:Akaki_Tsereteli_House-Museum_4.jpg",
+      "https://commons.wikimedia.org/wiki/File:Akaki_Tsereteli_House-Museum_3.jpg"
+    ],
+    "ai_assisted_originals": 0,
+    "identity_review": "passed"
+  },
+  "telefisi-fortress": {
+    "gallery_items": 3,
+    "total_images_including_primary": 4,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:Telefisi_Fortress.jpg"
+    ],
+    "ai_assisted_originals": 1,
+    "identity_review": "passed"
+  },
+  "tkibuli-reservoir": {
+    "gallery_items": 5,
+    "total_images_including_primary": 6,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:View_of_Tkibuli_Reservoir.jpg",
+      "https://commons.wikimedia.org/wiki/File:Tkibuli_Reservoir_2023-06-29-2.jpg",
+      "https://commons.wikimedia.org/wiki/File:Tkibuli_Reservoir_2023-06-29-1.jpg",
+      "https://commons.wikimedia.org/wiki/File:Tkibuli_Reservoir_2023-06-29-5.jpg"
+    ],
+    "ai_assisted_originals": 0,
+    "identity_review": "passed"
+  },
+  "tskaltubo-spa-town": {
+    "gallery_items": 5,
+    "total_images_including_primary": 6,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:Georgia,_Imereti,_Tskaltubo_-_%D0%A1%D0%B0%D0%BD%D0%B0%D1%82%D0%BE%D1%80%D0%B8%D0%B9_%D0%9C%D0%B8%D0%BD%D0%BE%D0%B1%D0%BE%D1%80%D0%BE%D0%BD%D1%8B_(%D0%A6%D1%85%D0%B0%D0%BB%D1%82%D1%83%D0%B1%D0%BE_Spa_Resort)_(%D0%A6%D1%85%D0%B0%D0%BB%D1%82%D1%83%D0%B1%D0%BE)_WMID9062701.jpg"
+    ],
+    "ai_assisted_originals": 4,
+    "identity_review": "passed"
+  },
+  "tsutskhvati-caves": {
+    "gallery_items": 5,
+    "total_images_including_primary": 6,
+    "commons_sources": [],
+    "ai_assisted_originals": 5,
+    "identity_review": "passed"
+  },
+  "ubisa-monastery": {
+    "gallery_items": 3,
+    "total_images_including_primary": 4,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:Ubisa_monastery_(G.N._2008).jpg",
+      "https://commons.wikimedia.org/wiki/File:Ubisi_monastery_(2).jpg",
+      "https://commons.wikimedia.org/wiki/File:The_Last_Supper_fresco_-_Ubisa_Monastery.png"
+    ],
+    "ai_assisted_originals": 0,
+    "identity_review": "passed"
+  },
+  "vani-archaeological-museum": {
+    "gallery_items": 3,
+    "total_images_including_primary": 4,
+    "commons_sources": [
+      "https://commons.wikimedia.org/wiki/File:Vani_Archaeological_Museum.jpg",
+      "https://commons.wikimedia.org/wiki/File:Vani_Museum_2020.jpg"
+    ],
+    "ai_assisted_originals": 0,
+    "identity_review": "passed"
+  },
+  "zando-st-george-monastery": {
+    "gallery_items": 5,
+    "total_images_including_primary": 6,
+    "commons_sources": [],
+    "ai_assisted_originals": 4,
+    "identity_review": "passed"
+  }
+}

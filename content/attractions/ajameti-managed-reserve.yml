@@ -13,6 +13,26 @@ gallery:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Ajameti_Managed_Reserve.jpg
+- image: /assets/photos/ajameti-managed-reserve-verified-1-20260831.webp
+  author: Paata vardanashvili
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Ajameti_Managed_Reserve.jpg
+- image: /assets/photos/ajameti-managed-reserve-verified-2-20260831.webp
+  author: Stratovara
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:%E1%83%90%E1%83%AF%E1%83%90%E1%83%9B%E1%83%94%E1%83%97%E1%83%98.jpg
+- image: /assets/photos/ajameti-managed-reserve-verified-3-20260831.webp
+  author: Stratovara
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:%E1%83%90%E1%83%AF%E1%83%90%E1%83%9B%E1%83%94%E1%83%97%E1%83%981.jpg
+- image: /assets/photos/ajameti-managed-reserve-premium-ai-1-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '2'
 best_season: all
 open_year_round: true

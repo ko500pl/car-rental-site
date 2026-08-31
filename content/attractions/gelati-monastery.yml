@@ -23,6 +23,26 @@ gallery:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:2014_Imeretia,_Gelati,_Monastyr_Gelati_(01).jpg
+- image: /assets/photos/gelati-monastery-verified-1-20260831.webp
+  author: Marcin Konsek
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:2014_Imeretia,_Gelati,_Monastyr_Gelati_(02).jpg
+- image: /assets/photos/gelati-monastery-verified-2-20260831.webp
+  author: krvrd
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Gelati_Monastery_-_indoors.png
+- image: /assets/photos/gelati-monastery-verified-3-20260831.webp
+  author: Bernard Gagnon
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Belfry_in_Gelati_Monastery.jpg
+- image: /assets/photos/gelati-monastery-verified-4-20260831.webp
+  author: Bernard Gagnon
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Fountain_in_Gelati_Monastery.jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true

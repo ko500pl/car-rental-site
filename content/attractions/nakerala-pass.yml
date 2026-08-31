@@ -7,7 +7,32 @@ unesco: false
 featured: false
 order: 90
 image: /assets/photos/nakerala-pass.webp
-gallery: []
+gallery:
+- image: /assets/photos/nakerala-pass-verified-1-20260831.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0/
+  source: https://commons.wikimedia.org/wiki/File:Nakerala_pass_-_panoramio.jpg
+- image: /assets/photos/nakerala-pass-verified-2-20260831.webp
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0/
+  source: https://commons.wikimedia.org/wiki/File:Nakerala_pass_-_panoramio_(1).jpg
+- image: /assets/photos/nakerala-pass-verified-3-20260831.webp
+  author: Yasuhiro Kojima
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Nakerala_Pass.jpg
+- image: /assets/photos/nakerala-pass-verified-4-20260831.webp
+  author: Jelger Groeneveld
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0/
+  source: https://commons.wikimedia.org/wiki/File:Rocks_at_Nakerala_Pass.jpg
+- image: /assets/photos/nakerala-pass-verified-5-20260831.webp
+  author: Jelger Groeneveld
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0/
+  source: https://commons.wikimedia.org/wiki/File:View_from_Nakerala_Pass.jpg
 visit_hours: '1'
 best_season: may-october
 open_year_round: true

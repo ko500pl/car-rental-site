@@ -13,6 +13,16 @@ gallery:
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Vani,_Georgia._Archaeological_museum_(Photo_A._Muhranoff).jpg
+- image: /assets/photos/vani-archaeological-museum-verified-1-20260831.webp
+  author: Jaba1977
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Vani_Archaeological_Museum.jpg
+- image: /assets/photos/vani-archaeological-museum-verified-2-20260831.webp
+  author: National Museum of Georgia
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Vani_Museum_2020.jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true

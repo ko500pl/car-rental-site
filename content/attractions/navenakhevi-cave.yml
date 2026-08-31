@@ -18,6 +18,21 @@ gallery:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:%E1%B2%9C%E1%83%90%E1%83%95%E1%83%94%E1%83%9C%E1%83%90%E1%83%AE%E1%83%94%E1%83%95%E1%83%98%E1%83%A1_%E1%83%9B%E1%83%A6%E1%83%95%E1%83%98%E1%83%9B%E1%83%94,_%E1%83%97%E1%83%94%E1%83%A0%E1%83%AF%E1%83%9D%E1%83%9A%E1%83%98%E1%83%A1_%E1%83%A0%E1%83%90%E1%83%98%E1%83%9D%E1%83%9C%E1%83%98.jpg
+- image: /assets/photos/navenakhevi-cave-verified-1-20260831.webp
+  author: Ninomirotadze
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:%E1%B2%9C%E1%83%90%E1%83%95%E1%83%94%E1%83%9C%E1%83%90%E1%83%AE%E1%83%94%E1%83%95%E1%83%98%E1%83%A1_%E1%83%9B%E1%83%A6%E1%83%95%E1%83%98%E1%83%9B%E1%83%94.jpg
+- image: /assets/photos/navenakhevi-cave-verified-2-20260831.webp
+  author: Ninomirotadze
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:%E1%B2%9C%E1%83%90%E1%83%95%E1%83%94%E1%83%9C%E1%83%90%E1%83%AE%E1%83%94%E1%83%95%E1%83%98%E1%83%A1_%E1%83%9B%E1%83%A6%E1%83%95%E1%83%98%E1%83%9B%E1%83%94,_%E1%83%97%E1%83%94%E1%83%A0%E1%83%AF%E1%83%9D%E1%83%9A%E1%83%98%E1%83%A1_%E1%83%A0%E1%83%90%E1%83%98%E1%83%9D%E1%83%9C%E1%83%98.jpg
+- image: /assets/photos/navenakhevi-cave-premium-ai-1-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '1'
 best_season: all
 open_year_round: true

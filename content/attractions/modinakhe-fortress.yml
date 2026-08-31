@@ -13,6 +13,16 @@ gallery:
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Modinakhe_fortress-2_(Photo_A._Muhranoff,_2011).jpg
+- image: /assets/photos/modinakhe-fortress-verified-1-20260831.webp
+  author: Gaga.vaa
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:ModiNakhe.jpg
+- image: /assets/photos/modinakhe-fortress-verified-2-20260831.webp
+  author: ბაჩო გაფრინდაშვილი
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Milky_way_and_castle.jpg
 visit_hours: '1'
 best_season: may-october
 open_year_round: true

@@ -23,6 +23,16 @@ gallery:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Sairme_resort,_Georgia_07.jpg
+- image: /assets/photos/sairme-resort-verified-1-20260831.webp
+  author: Kober
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Sairme_resort,_Georgia_02.jpg
+- image: /assets/photos/sairme-resort-verified-2-20260831.webp
+  author: Kober
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Sairme_resort,_Georgia_06.jpg
 visit_hours: '4'
 best_season: may-october
 open_year_round: true
