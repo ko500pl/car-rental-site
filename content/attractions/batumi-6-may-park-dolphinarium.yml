@@ -6,33 +6,33 @@ elevation: 5
 unesco: false
 featured: false
 order: 25
-image: /assets/photos/batumi-6-may-park-dolphinarium.webp
+image: /assets/photos/batumi-6-may-park-dolphinarium-accurate-main-20260831.webp
 gallery:
-- image: /assets/photos/batumi-6-may-park-dolphinarium-1.webp
-  author: Jeremy Teigen from USA
-  license: CC BY 2.0
-  license_url: https://creativecommons.org/licenses/by/2.0
-  source: https://commons.wikimedia.org/wiki/File:Batumi_dolphinarium.jpg
-- image: /assets/photos/batumi-6-may-park-dolphinarium-2.webp
-  author: Otogi
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Nuri_Lake.jpg
-- image: /assets/photos/batumi-6-may-park-dolphinarium-3.webp
+- image: /assets/photos/batumi-6-may-park-dolphinarium-accurate-1-20260831.webp
   author: Kharkil
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Batumi_Dolphinarium_3.jpg
+  source: https://commons.wikimedia.org/wiki/File:Batumi_Dolphinarium_2.jpg
+- image: /assets/photos/batumi-6-may-park-dolphinarium-accurate-2-20260831.webp
+  author: Vitaly Zdanevich
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Batumi--nuri-lake.jpg
+- image: /assets/photos/batumi-6-may-park-dolphinarium-accurate-3-20260831.webp
+  author: Kober
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Nuri_Lake,_Batumi._Aug_2016_(1).jpg
+- image: /assets/photos/batumi-6-may-park-dolphinarium-accurate-4-20260831.webp
+  author: Андрей Романенко
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Show_in_Batumi_dolphinarium.jpg
 - image: /assets/photos/batumi-6-may-park-dolphinarium-verified-1-20260831.webp
   author: W0zny
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0/
   source: https://commons.wikimedia.org/wiki/File:Pokaz_delfinarium_batumi_1.jpg
-- image: /assets/photos/batumi-6-may-park-dolphinarium-verified-2-20260831.webp
-  author: Kharkil
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0/
-  source: https://commons.wikimedia.org/wiki/File:Batumi_Dolphinarium_3.jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true
