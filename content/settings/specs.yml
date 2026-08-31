@@ -83,6 +83,14 @@ labels:
     fa: ودیعه
     he: פיקדון
     ar: الوديعة
+  range:
+    ka: გარბენი დატენვაზე
+    en: Range per charge
+    ru: Запас хода
+    fa: برد با هر شارژ
+    he: טווח נסיעה
+    ar: مدى الشحنة
+
 values:
   automatic:
     ka: ავტომატი
@@ -147,6 +155,28 @@ values:
     fa: هیبریدی
     he: היברידי
     ar: هجين
+  electric:
+    ka: ელექტრო
+    en: Electric
+    ru: Электро
+    fa: برقی
+    he: חשמלי
+    ar: كهربائي
+  phev:
+    ka: დატენვადი ჰიბრიდი
+    en: Plug-in hybrid
+    ru: Гибрид с зарядкой
+    fa: هیبرید قابل شارژ
+    he: היברידי נטען
+    ar: هجين قابل للشحن
+  lpg:
+    ka: გაზი
+    en: LPG
+    ru: Газ
+    fa: گاز مایع
+    he: גז
+    ar: غاز
+
 units:
   mm:
     ka: მმ
@@ -169,3 +199,10 @@ units:
     fa: روز
     he: יום
     ar: يوم
+  km:
+    ka: კმ
+    en: km
+    ru: км
+    fa: کیلومتر
+    he: ק"מ
+    ar: كم

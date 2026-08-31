@@ -137,6 +137,10 @@ td:first-child{{font-weight:600;color:var(--ink)}}
 .car{{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--surface);display:flex;flex-direction:column}}
 .car .ph{{aspect-ratio:16/10;background:var(--bg-3);display:flex;align-items:center;justify-content:center;color:var(--ink-3);font-size:13px}}
 .car .ph img{{width:100%;height:100%;object-fit:cover}}
+/* ცოცხალი ბარათი: მანქანა აპიდან მოვიდა, ფოტო კი ფაილია და საიტის
+   რეპოზიტორიაშია — ღრუბლით ვერ გაივლის. ცარიელი, დახრილზოლებიანი
+   ჩარჩო გატეხილ <img>-ზე და ყოველ ბარათზე ერთ 404-ზე სჯობს. */
+.car-live .ph-none{{background:repeating-linear-gradient(135deg,var(--bg-3),var(--bg-3) 10px,var(--surface) 10px,var(--surface) 20px)}}
 .car .in{{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1}}
 .car h3{{margin:0 0 4px;font-size:18px;color:var(--brand-ink)}}
 .car h3 a{{color:inherit}}

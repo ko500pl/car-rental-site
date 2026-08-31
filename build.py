@@ -561,7 +561,7 @@ def render_block(b, lang):
         return (f'<div class="cta"><h2>{E(b["title"])}</h2><p>{inline(b["text"], lang)}</p>'
                 f'<div class="row">{row}</div></div>')
     if t == "cars":
-        return cars_grid(b.get("category"), lang)
+        return cars_grid(b.get("category"), lang, live=True)
     raise ValueError(f"უცნობი ბლოკის ტიპი: {t}")
 
 
@@ -662,7 +662,7 @@ def booking_open_btn(lang, cls="btn booking-hero-cta"):
             f'{E(BOOKING_TEXT[lang]["book"])}</button>')
 
 
-def cars_grid(category, lang, limit=None):
+def cars_grid(category, lang, limit=None, live=False):
     # RentUp Pages მაკეტის ბარათი: სახელი + ფირუზი ფასი ერთ ხაზზე, მეტა,
     # ვადიანი ფასები, ფირუზი „დაჯავშნა" + ghost „დეტალები".
     items = [(s, c) for s, c in CARS.items() if not category or c["category"] == category]
@@ -698,7 +698,13 @@ def cars_grid(category, lang, limit=None):
             f'data-car="{E(slug)}" data-car-name="{E(L["name"])}">{E(BOOKING_TEXT[lang]["book"])}</button>'
             f'<a class="btn sm ghost" href="{car_url(lang, slug, False)}">{E(DETAILS_LABEL[lang])}</a>'
             f'</div></div></article>')
-    return f'<div class="cars">{"".join(out)}</div>'
+    # `data-live-catalogue` is what `catalogue.js` looks for. Its value is the
+    # category this grid holds, so a car published from the phone lands in the
+    # right section of the page rather than all of them in a heap at the end.
+    # Absent on the home page teaser and anywhere else a grid is decorative:
+    # a three-car preview that silently grew to nineteen is not a preview.
+    tag = f' data-live-catalogue="{E(category or "")}"' if live else ""
+    return f'<div class="cars"{tag}>{"".join(out)}</div>'
 
 
 # ══════════════════════════════════════════════════════════════ markdown
@@ -1138,6 +1144,41 @@ def footer_html(lang):
 </div></div></footer>"""
 
 
+def catalogue_cfg(lang):
+    """The words `catalogue.js` needs to draw a card in this language.
+
+    Every value comes from `content/settings/specs.yml`, the same table the
+    static car pages print from — so a Tucson with a page and an Audi without
+    one say „ავტომატი" the same way, in all six languages. The phone publishes
+    codes (`automatic`, `awd`, `petrol`); this is where a code becomes a word.
+
+    A code the site has never heard of simply produces no text: the card omits
+    that line rather than printing the raw code at a customer.
+    """
+    lab = SPECS["labels"]
+    val = SPECS["values"]
+    unit = SPECS["units"]
+
+    def pick(table, key):
+        entry = table.get(key) or {}
+        return entry.get(lang) or entry.get("en") or ""
+
+    return {
+        # The card prints „130 ₾ · ≈ $50", the same shape `money()` builds for
+        # every static price on the site. The rate and the rounding step travel
+        # rather than a finished string, because the number is only known in
+        # the browser — and a live card that formatted money differently from
+        # the card beside it would read as two different websites.
+        "usdRate": float(USD_RATE),
+        "usdStep": int(SITE.get("usd_rounding", 10)),
+        "book": BOOKING_TEXT[lang]["book"],
+        "l": {k: pick(lab, k) for k in
+              ("seats", "luggage", "clearance", "range", "transmission", "drive")},
+        "v": {k: pick(val, k) for k in val},
+        "u": {k: pick(unit, k) for k in unit},
+    }
+
+
 def shell(lang, current, head, body, depth, tail=""):
     u = UI[lang]
     fs = LANG_FONT_STACK.get(lang, "")
@@ -1167,10 +1208,18 @@ def shell(lang, current, head, body, depth, tail=""):
         # wherever a booking CTA exists; community.js only on the community page.
         _needs_booking = current in ("index", "fleet", "map", "planner", "account")
         _needs_community = current == "community"
+        # The live catalogue only has somewhere to draw on the fleet page,
+        # which is the one page with a grid per category and a catch-all
+        # section. Shipping it elsewhere would be a fetch that renders nothing.
+        _needs_catalogue = current == "fleet"
         fb = (f'\n<script>window.FH_CFG={J(cfg)};</script>'
-              f'\n<script type="module" src="{ASSET.get("auth", "/assets/auth.js")}"></script>'
+              + (f'\n<script>window.FH_CAT={J(catalogue_cfg(lang))};</script>'
+                 if _needs_catalogue else "")
+              + f'\n<script type="module" src="{ASSET.get("auth", "/assets/auth.js")}"></script>'
               + (f'\n<script type="module" src="{ASSET.get("booking", "/assets/booking.js")}"></script>'
                  if _needs_booking else "")
+              + (f'\n<script defer src="{ASSET.get("catalogue", "/assets/catalogue.js")}"></script>'
+                 if _needs_catalogue else "")
               + (f'\n<script type="module" src="{ASSET.get("community", "/assets/community.js")}"></script>'
                  if _needs_community else "")
               + f'\n<script defer src="{ASSET.get("app", "/assets/app.js")}"></script>')
@@ -1438,6 +1487,22 @@ def render_static_page(lang, page):
                     f'{"".join(rendered_sections)}</details></div></section>')
     else:
         body.extend(rendered_sections)
+
+    if page == "fleet":
+        other_label = {
+            "ka": "სხვა ავტომობილები",
+            "en": "More cars",
+            "ru": "Другие автомобили",
+            "fa": "خودروهای دیگر",
+            "he": "רכבים נוספים",
+            "ar": "سيارات أخرى",
+        }[lang]
+        # Hidden until `catalogue.js` puts a car in it — see the note above.
+        body.append(
+            f'<section class="sec" data-live-other hidden>'
+            f'<div class="wrap"><h2 id="{slugify_anchor(other_label)}">'
+            f'{E(other_label)}</h2>'
+            f'<div class="cars" data-live-catalogue="*"></div></div></section>')
 
     graph = [org_node(lang), website_node(lang),
              {"@type": "WebPage", "@id": page_url(lang, page) + "#webpage",
@@ -5409,7 +5474,8 @@ def main():
     # leaves an unversioned duplicate that no page requests but a browser can
     # still cache indefinitely.
     hashed_sources = {"explorer.js", "planner.js", "auth.js", "booking.js", "analytics.js", "daytrip.js",
-                      "community.js", "admin-bookings.js", "app.js", "app-mobile.js", "trip.js"}
+                      "community.js", "admin-bookings.js", "app.js", "app-mobile.js", "trip.js",
+                      "catalogue.js"}
     for sdir, dst in (("static", os.path.join(out, "assets")),
                       ("admin", os.path.join(out, "admin"))):
         if os.path.isdir(sdir):
@@ -5434,6 +5500,7 @@ def main():
                     ("auth.js", "auth"), ("booking.js", "booking"),
                     ("community.js", "community"), ("admin-bookings.js", "admin_bookings"),
                     ("analytics.js", "analytics"), ("app.js", "app"),
+                    ("catalogue.js", "catalogue"),
                     ("daytrip.js", "daytrip")):
         p = os.path.join("static", fn)
         if os.path.exists(p):
