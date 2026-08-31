@@ -25,7 +25,11 @@ def main() -> int:
     ]
     if args.node: stages[-1][1].extend(["--node",args.node])
     build = [python,"build.py",args.output] + (["--strict"] if args.strict else [])
-    stages += [("Site build",build),("HTML and internal links",[python,"scripts/check_internal_links.py",args.output])]
+    stages += [("Site build",build),("HTML and internal links",[python,"scripts/check_internal_links.py",args.output]),
+               # The SEO audit is the guard for canonicals, hreflang, sitemap
+               # coverage, titles, schema validity and leaked placeholders. It
+               # exits non-zero only on ERROR, so warnings stay informational.
+               ("SEO audit",[python,"scripts/seo_audit.py",args.output])]
     started, completed = dt.datetime.now(dt.timezone.utc), []
     for index,(name,command) in enumerate(stages,1):
         print(f"\n==> [{index}/{len(stages)}] {name}",flush=True)
