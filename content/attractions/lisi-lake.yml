@@ -13,6 +13,26 @@ gallery:
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Lake_Lisi_shore.jpg
+- image: /assets/photos/lisi-lake-verified-1-20260831.webp
+  author: Kober
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Lake_Lisi_frozen_in_January_2022._Tbilisi,_Georgia_01.jpg
+- image: /assets/photos/lisi-lake-verified-2-20260831.webp
+  author: Kober
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Lisi_Lake,_Tbilisi,_Georgia_02.jpg
+- image: /assets/photos/lisi-lake-verified-3-20260831.webp
+  author: Kober
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Lisi_Lake,_Tbilisi,_Georgia_01.jpg
+- image: /assets/photos/lisi-lake-verified-4-20260831.webp
+  author: Kober
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Lisi_Lake,_Tbilisi,_Georgia_04.jpg
 visit_hours: '2'
 best_season: may-october
 open_year_round: true

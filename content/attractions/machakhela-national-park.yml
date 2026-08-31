@@ -7,7 +7,32 @@ unesco: false
 featured: false
 order: 58
 image: /assets/photos/machakhela-national-park.webp
-gallery: []
+gallery:
+- image: /assets/photos/machakhela-national-park-verified-1-20260831.webp
+  author: Alexey Komarov
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Dunga%27s_Small_Waterfall_in_Machakhela_National_Park.jpg
+- image: /assets/photos/machakhela-national-park-verified-2-20260831.webp
+  author: Alexey Komarov
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Machakhela_National_Park_2023-09-01-4.jpg
+- image: /assets/photos/machakhela-national-park-verified-3-20260831.webp
+  author: Alexey Komarov
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Dunga%27s_Small_Waterfall_in_Machakhela_National_Park_2.jpg
+- image: /assets/photos/machakhela-national-park-verified-4-20260831.webp
+  author: Alexey Komarov
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Machakhela_National_Park_2023-09-01-2.jpg
+- image: /assets/photos/machakhela-national-park-verified-5-20260831.webp
+  author: Alexey Komarov
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Machakhela_National_Park_2023-09-01-3.jpg
 visit_hours: '4'
 best_season: may-october
 open_year_round: true

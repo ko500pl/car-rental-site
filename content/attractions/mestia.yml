@@ -19,30 +19,30 @@ gallery:
   license_url: https://creativecommons.org/licenses/by/3.0
   source: https://commons.wikimedia.org/wiki/File:A_modern_house_in_Mestia_-_panoramio.jpg
 - image: /assets/photos/mestia-verified-1-20260831.webp
-  author: 'G.N.'
-  license: 'CC BY-SA 3.0'
-  license_url: 'https://creativecommons.org/licenses/by-sa/3.0'
-  source: 'https://commons.wikimedia.org/wiki/File:Mestia,_Georgia_-_panoramio.jpg'
+  author: G.N.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Mestia,_Georgia_-_panoramio.jpg
 - image: /assets/photos/mestia-verified-2-20260831.webp
-  author: 'Alexey Komarov'
-  license: 'CC BY-SA 4.0'
-  license_url: 'https://creativecommons.org/licenses/by-sa/4.0'
-  source: 'https://commons.wikimedia.org/wiki/File:Mestia,_June,_2018-1.jpg'
+  author: Alexey Komarov
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Mestia,_June,_2018-1.jpg
 - image: /assets/photos/mestia-verified-3-20260831.webp
-  author: 'madras91'
-  license: 'CC BY 2.0'
-  license_url: 'https://creativecommons.org/licenses/by/2.0'
-  source: 'https://commons.wikimedia.org/wiki/File:Mestia,_Svaneti.jpg'
+  author: madras91
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Mestia,_Svaneti.jpg
 - image: /assets/photos/mestia-verified-4-20260831.webp
-  author: 'Dmytro Balkhovitin'
-  license: 'CC BY-SA 4.0'
-  license_url: 'https://creativecommons.org/licenses/by-sa/4.0'
-  source: 'https://commons.wikimedia.org/wiki/File:Mestia,_evening.jpg'
+  author: Dmytro Balkhovitin
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Mestia,_evening.jpg
 - image: /assets/photos/mestia-verified-5-20260831.webp
-  author: 'Anne Sande'
-  license: 'CC BY 4.0'
-  license_url: 'https://creativecommons.org/licenses/by/4.0'
-  source: 'https://commons.wikimedia.org/wiki/File:Mestia_April_2025.jpg'
+  author: Anne Sande
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0
+  source: https://commons.wikimedia.org/wiki/File:Mestia_April_2025.jpg
 visit_hours: '4'
 best_season: may-october
 open_year_round: true

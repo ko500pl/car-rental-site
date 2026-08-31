@@ -8,11 +8,21 @@ featured: false
 order: 45
 image: /assets/photos/batumi-archaeological-museum.webp
 gallery:
-- image: /assets/photos/batumi-archaeological-museum-4.webp
-  author: Aleksey Muhranoff
+- image: /assets/photos/batumi-archaeological-museum-verified-1-20260831.webp
+  author: Jonathan Cardy
   license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:Batumi_Archaeology_Museum_(Photo_A._Muhranoff_2011).jpg
+  license_url: https://creativecommons.org/licenses/by-sa/3.0/
+  source: https://commons.wikimedia.org/wiki/File:Slag,_iron_age,_Georgia.jpg
+- image: /assets/photos/batumi-archaeological-museum-verified-2-20260831.webp
+  author: Jonathan Cardy
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0/
+  source: https://commons.wikimedia.org/wiki/File:Mortar_and_Pestle,_stone,_Georgian_(2).jpg
+- image: /assets/photos/batumi-archaeological-museum-premium-ai-final-3-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '1'
 best_season: all
 open_year_round: true

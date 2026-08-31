@@ -13,6 +13,26 @@ gallery:
   license: CC0
   license_url: https://creativecommons.org/publicdomain/zero/1.0
   source: https://commons.wikimedia.org/wiki/File:%E1%83%91%E1%83%90%E1%83%9B%E1%83%91%E1%83%A3%E1%83%99%E1%83%98%E1%83%A1_%E1%83%91%E1%83%98%E1%83%9A%E1%83%98%E1%83%99%E1%83%98.jpg
+- image: /assets/photos/shekvetili-dendrological-park-premium-ai-1-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/shekvetili-dendrological-park-premium-ai-2-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/shekvetili-dendrological-park-premium-ai-3-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/shekvetili-dendrological-park-premium-ai-4-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '2'
 best_season: all
 open_year_round: true

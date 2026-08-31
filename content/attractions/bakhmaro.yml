@@ -23,6 +23,26 @@ gallery:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Village_Bakhmaro_2023-08-30-1.jpg
+- image: /assets/photos/bakhmaro-verified-1-20260831.webp
+  author: Alexey Komarov
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Wooden_church_in_Bakhmaro_2023-08-30-2.jpg
+- image: /assets/photos/bakhmaro-verified-2-20260831.webp
+  author: Alexey Komarov
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Village_Bakhmaro_2023-08-30-4.jpg
+- image: /assets/photos/bakhmaro-verified-3-20260831.webp
+  author: Alexey Komarov
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Village_Bakhmaro_2023-08-30-3.jpg
+- image: /assets/photos/bakhmaro-verified-4-20260831.webp
+  author: Alexey Komarov
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Village_Bakhmaro_2023-08-30-2.jpg
 visit_hours: '6'
 best_season: june-september
 open_year_round: false

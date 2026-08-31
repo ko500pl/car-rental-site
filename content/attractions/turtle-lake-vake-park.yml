@@ -23,6 +23,16 @@ gallery:
   license: CC BY 4.0
   license_url: https://creativecommons.org/licenses/by/4.0
   source: https://commons.wikimedia.org/wiki/File:Cable_car_Vake_Park_-_Turtle_Lake,_Tbilisi,_Georgia_(2).jpg
+- image: /assets/photos/turtle-lake-vake-park-premium-ai-final-4-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/turtle-lake-vake-park-premium-ai-final-5-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '2'
 best_season: all
 open_year_round: true

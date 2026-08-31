@@ -9,20 +9,35 @@ order: 86
 image: /assets/photos/shenako-diklo.webp
 gallery:
 - image: /assets/photos/shenako-diklo-1.webp
-  author: "Abramia Giorgi"
-  license: "CC BY-SA 4.0"
-  license_url: "https://creativecommons.org/licenses/by-sa/4.0"
-  source: "https://commons.wikimedia.org/wiki/File:Shenako.Tusheti.JPG"
+  author: Abramia Giorgi
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Shenako.Tusheti.JPG
 - image: /assets/photos/shenako-diklo-2.webp
-  author: "Daviti Zhorzholiani"
-  license: "CC BY-SA 4.0"
-  license_url: "https://creativecommons.org/licenses/by-sa/4.0"
-  source: "https://commons.wikimedia.org/wiki/File:From_Diklo_to_Shenako.jpg"
+  author: Daviti Zhorzholiani
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:From_Diklo_to_Shenako.jpg
 - image: /assets/photos/shenako-diklo-3.webp
-  author: "Levan Gokadze (uploader Giorgi Balakhadze )"
-  license: "CC BY-SA 2.0"
-  license_url: "https://creativecommons.org/licenses/by-sa/2.0"
-  source: "https://commons.wikimedia.org/wiki/File:Tusheti,_Georgia_%E2%80%94_Shenako.jpg"
+  author: Levan Gokadze (uploader Giorgi Balakhadze )
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0
+  source: https://commons.wikimedia.org/wiki/File:Tusheti,_Georgia_%E2%80%94_Shenako.jpg
+- image: /assets/photos/shenako-diklo-premium-ai-final-4-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/shenako-diklo-premium-ai-final-5-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/shenako-diklo-premium-ai-final-6-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '4'
 best_season: june-september
 open_year_round: false

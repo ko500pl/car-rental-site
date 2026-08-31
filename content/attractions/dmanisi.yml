@@ -8,11 +8,31 @@ featured: false
 order: 20
 image: /assets/photos/dmanisi.webp
 gallery:
-- image: /assets/photos/dmanisi-3.webp
-  author: Lgabelia
+- image: /assets/photos/dmanisi-verified-1-20260831.webp
+  author: Reda Kerbush
   license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:%E1%83%93%E1%83%9B%E1%83%90%E1%83%9C%E1%83%98%E1%83%A1%E1%83%98%E1%83%A1_%E1%83%A1%E1%83%98%E1%83%9D%E1%83%9C%E1%83%98_02.jpg
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Dmanisi_Mall,_Georgia.jpg
+- image: /assets/photos/dmanisi-verified-2-20260831.webp
+  author: Image by Georgia Pictures from Pixabay
+  license: CC0
+  license_url: ''
+  source: https://commons.wikimedia.org/wiki/File:Dmanisi_cathedral_narthex.jpg
+- image: /assets/photos/dmanisi-verified-3-20260831.webp
+  author: DDohler
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0/
+  source: https://commons.wikimedia.org/wiki/File:Dmanisi-8.jpg
+- image: /assets/photos/dmanisi-verified-4-20260831.webp
+  author: Reda Kerbush
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Dog_of_Dmanisi_(1).jpg
+- image: /assets/photos/dmanisi-1.webp
+  author: RentUp verified local asset
+  license: Site-owned or previously verified source
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '2'
 best_season: may-october
 open_year_round: true

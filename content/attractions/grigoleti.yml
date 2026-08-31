@@ -18,6 +18,21 @@ gallery:
   license: Public domain
   license_url: ''
   source: https://commons.wikimedia.org/wiki/File:Supsa_Fusion_Center_opens_in_Georgia_(14671799541).jpg
+- image: /assets/photos/grigoleti-verified-1-20260831.webp
+  author: M.
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Grigoleti_Beachfront.jpg
+- image: /assets/photos/grigoleti-verified-2-20260831.webp
+  author: M.
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0/
+  source: https://commons.wikimedia.org/wiki/File:Grigoleti.JPG
+- image: /assets/photos/grigoleti-verified-3-20260831.webp
+  author: U.S. Army Corps of Engineers Europe District  from Wiesbaden, Germany
+  license: Public domain
+  license_url: https://creativecommons.org/publicdomain/mark/1.0/
+  source: https://commons.wikimedia.org/wiki/File:Supsa_Fusion_Center_opens_in_Georgia_(14671799541).jpg
 visit_hours: '4'
 best_season: june-september
 open_year_round: true

@@ -13,6 +13,16 @@ gallery:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Dzveli-Shuamta_monastery_(Old-Shuamta)._Telavi_region.jpg
+- image: /assets/photos/dzveli-shuamta-verified-1-20260831.webp
+  author: Kakhi Kuloshvili
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Dzveli-Shuamta_monastery_(Old-Shuamta)._Telavi_region.jpg
+- image: /assets/photos/dzveli-shuamta-verified-2-20260831.webp
+  author: Roberto Strauss  from Frankfurt am Main, Deutschland
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0/
+  source: https://commons.wikimedia.org/wiki/File:Akhali_Shuamta_monastery_in_Telavi_District,_Georgia_2011_304_(5680866923).jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true

@@ -18,6 +18,11 @@ gallery:
   license: Public domain
   license_url: ''
   source: https://commons.wikimedia.org/wiki/File:Icon_of_Archangels_from_Jumati_monastery_(Georgia).JPG
+- image: /assets/photos/jumati-monastery-verified-1-20260831.webp
+  author: Dmitri Yermakov
+  license: Public domain
+  license_url: https://creativecommons.org/publicdomain/mark/1.0/
+  source: https://commons.wikimedia.org/wiki/File:Djumati_mikael_icon.jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true

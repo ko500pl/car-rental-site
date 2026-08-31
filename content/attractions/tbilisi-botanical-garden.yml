@@ -13,6 +13,26 @@ gallery:
   license: CC BY-SA 2.0
   license_url: https://creativecommons.org/licenses/by-sa/2.0
   source: https://commons.wikimedia.org/wiki/File:Most_photgraphed_spot_in_the_National_Botanical_Garden_of_Georgia.jpg
+- image: /assets/photos/tbilisi-botanical-garden-premium-ai-final-2-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/tbilisi-botanical-garden-premium-ai-final-3-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/tbilisi-botanical-garden-premium-ai-final-4-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/tbilisi-botanical-garden-premium-ai-final-5-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '2'
 best_season: may-october
 open_year_round: true

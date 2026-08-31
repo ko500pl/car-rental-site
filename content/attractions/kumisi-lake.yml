@@ -23,6 +23,16 @@ gallery:
   license: CC BY 4.0
   license_url: https://creativecommons.org/licenses/by/4.0
   source: https://commons.wikimedia.org/wiki/File:2024-06-29_Kumisi_Lake.jpg
+- image: /assets/photos/kumisi-lake-verified-1-20260831.webp
+  author: Alexkom000
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:2024-06-29_Kumisi_Lake.jpg
+- image: /assets/photos/kumisi-lake-verified-2-20260831.webp
+  author: Yasuhiro Kojima
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Lake_Kumisi_and_a_hill.jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true

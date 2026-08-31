@@ -7,7 +7,22 @@ unesco: false
 featured: false
 order: 55
 image: /assets/photos/adjara-art-museum.webp
-gallery: []
+gallery:
+- image: /assets/photos/adjara-art-museum-verified-1-20260831.webp
+  author: Soghomon Matevosyan
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Batumi_Art_museum_(7).jpg
+- image: /assets/photos/adjara-art-museum-verified-2-20260831.webp
+  author: Soghomon Matevosyan
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Batumi_Art_museum_(8).jpg
+- image: /assets/photos/adjara-art-museum-verified-3-20260831.webp
+  author: Soghomon Matevosyan
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Batumi_Art_museum_(11).jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true

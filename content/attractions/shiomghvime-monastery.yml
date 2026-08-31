@@ -8,11 +8,21 @@ featured: false
 order: 22
 image: /assets/photos/shiomghvime-monastery-1.webp
 gallery:
-- image: /assets/photos/shiomghvime-monastery-1.webp
-  author: G.N.
-  license: CC BY-SA 3.0
-  license_url: https://creativecommons.org/licenses/by-sa/3.0
-  source: https://commons.wikimedia.org/wiki/File:%E1%83%A8%E1%83%98%E1%83%9D%E1%83%9B%E1%83%A6%E1%83%95%E1%83%98%E1%83%9B%E1%83%98%E1%83%A1_%E1%83%9B%E1%83%9D%E1%83%9C%E1%83%90%E1%83%A1%E1%83%A2%E1%83%94%E1%83%A0%E1%83%98_(G.N._2008).jpg
+- image: /assets/photos/shiomghvime-monastery-premium-ai-final-2-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/shiomghvime-monastery-premium-ai-final-3-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/shiomghvime-monastery-2.webp
+  author: RentUp verified local asset
+  license: Site-owned or previously verified source
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '1.5'
 best_season: all
 open_year_round: true

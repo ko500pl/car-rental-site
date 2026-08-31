@@ -18,6 +18,11 @@ gallery:
   license: CC BY 4.0
   license_url: https://creativecommons.org/licenses/by/4.0
   source: https://commons.wikimedia.org/wiki/File:Academy_of_Ikalto_01.jpg
+- image: /assets/photos/ikalto-academy-verified-1-20260831.webp
+  author: Bernard Gagnon
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Academy_of_Ikalto_03.jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true

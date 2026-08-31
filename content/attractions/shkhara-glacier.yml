@@ -9,40 +9,40 @@ order: 25
 image: /assets/photos/shkhara-glacier.webp
 gallery:
 - image: /assets/photos/shkhara-glacier-verified-1-20260831.webp
-  author: 'Aleksey Muhranoff'
-  license: 'CC BY-SA 3.0'
-  license_url: 'https://creativecommons.org/licenses/by-sa/3.0'
-  source: 'https://commons.wikimedia.org/wiki/File:Chazhashi_church_and_Mt_Shkhara_(Photo_A._Muhranoff,_2011).jpg'
+  author: Aleksey Muhranoff
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Chazhashi_church_and_Mt_Shkhara_(Photo_A._Muhranoff,_2011).jpg
 - image: /assets/photos/shkhara-glacier-verified-2-20260831.webp
-  author: 'Aleksey Muhranoff'
-  license: 'CC BY-SA 3.0'
-  license_url: 'https://creativecommons.org/licenses/by-sa/3.0'
-  source: 'https://commons.wikimedia.org/wiki/File:Mt_Shkhara_as_seen_from_Khalde_(Photo_A._Muhranoff,_2011).jpg'
+  author: Aleksey Muhranoff
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Mt_Shkhara_as_seen_from_Khalde_(Photo_A._Muhranoff,_2011).jpg
 - image: /assets/photos/shkhara-glacier-verified-3-20260831.webp
-  author: 'Tadeáš Gregor'
-  license: 'CC BY-SA 3.0'
-  license_url: 'https://creativecommons.org/licenses/by-sa/3.0'
-  source: 'https://commons.wikimedia.org/wiki/File:Schara_Katyntau_southside.jpg'
+  author: Tadeáš Gregor
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0
+  source: https://commons.wikimedia.org/wiki/File:Schara_Katyntau_southside.jpg
 - image: /assets/photos/shkhara-glacier-verified-4-20260831.webp
-  author: 'Boris Kuznetsov'
-  license: 'CC BY 2.0'
-  license_url: 'https://creativecommons.org/licenses/by/2.0'
-  source: 'https://commons.wikimedia.org/wiki/File:Shkhara_Mountain,_view_from_Chubedishi_Mountain.jpg'
+  author: Boris Kuznetsov
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Shkhara_Mountain,_view_from_Chubedishi_Mountain.jpg
 - image: /assets/photos/shkhara-glacier-verified-5-20260831.webp
-  author: 'Alen Ištoković'
-  license: 'CC BY 3.0'
-  license_url: 'https://creativecommons.org/licenses/by/3.0'
-  source: 'https://commons.wikimedia.org/wiki/File:Shkhara_mt._(5193_m)_in_clouds_-_panoramio.jpg'
+  author: Alen Ištoković
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0
+  source: https://commons.wikimedia.org/wiki/File:Shkhara_mt._(5193_m)_in_clouds_-_panoramio.jpg
 - image: /assets/photos/shkhara-glacier-verified-6-20260831.webp
-  author: 'Arian Zwegers from Brussels, Belgium'
-  license: 'CC BY 2.0'
-  license_url: 'https://creativecommons.org/licenses/by/2.0'
-  source: 'https://commons.wikimedia.org/wiki/File:Ushguli_and_Mt_Shkhara_(35923023802).jpg'
+  author: Arian Zwegers from Brussels, Belgium
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0
+  source: https://commons.wikimedia.org/wiki/File:Ushguli_and_Mt_Shkhara_(35923023802).jpg
 - image: /assets/photos/shkhara-glacier-verified-7-20260831.webp
-  author: 'D.Rovchak'
-  license: 'CC BY-SA 4.0'
-  license_url: 'https://creativecommons.org/licenses/by-sa/4.0'
-  source: 'https://commons.wikimedia.org/wiki/File:Virgin_Mary_Church_%22Lamaria%22,_view_of_Shkhara_mountain.jpg'
+  author: D.Rovchak
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Virgin_Mary_Church_%22Lamaria%22,_view_of_Shkhara_mountain.jpg
 visit_hours: '6'
 best_season: june-september
 open_year_round: false

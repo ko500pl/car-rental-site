@@ -9,10 +9,35 @@ order: 48
 image: /assets/photos/khada-valley.webp
 gallery:
 - image: /assets/photos/khada-valley-1.webp
-  author: "David Osipov 0000 0005 1802 960X 0009-0005-2713-9242 📱 This photograph was taken with a Xiaomi Redmi Note 9 Pro ."
-  license: "CC BY 4.0"
-  license_url: "https://creativecommons.org/licenses/by/4.0"
-  source: "https://commons.wikimedia.org/wiki/File:Khada_Gorge_Valley_Filled_with_Morning_Fog_in_Georgia.jpg"
+  author: David Osipov 0000 0005 1802 960X 0009-0005-2713-9242 📱 This photograph was taken with a Xiaomi Redmi Note 9 Pro .
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0
+  source: https://commons.wikimedia.org/wiki/File:Khada_Gorge_Valley_Filled_with_Morning_Fog_in_Georgia.jpg
+- image: /assets/photos/khada-valley-verified-1-20260831.webp
+  author: Aleksey Muhranoff
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0/
+  source: https://commons.wikimedia.org/wiki/File:Khada_gorge_as_seen_from_Mt_Lomisi_(Photo_A._Muhranoff,_2011).jpg
+- image: /assets/photos/khada-valley-verified-2-20260831.webp
+  author: David Osipov           0000 0005 1802 960X          0009-0005-2713-9242      📱  This  photograph  was taken with a  Xiaomi Redmi Note 9 Pro .
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Khada_Gorge_Valley_Filled_with_Morning_Fog_in_Georgia.jpg
+- image: /assets/photos/khada-valley-premium-ai-1-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/khada-valley-premium-ai-2-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/khada-valley-premium-ai-3-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '3'
 best_season: may-october
 open_year_round: false

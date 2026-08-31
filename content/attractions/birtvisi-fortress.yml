@@ -23,6 +23,26 @@ gallery:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Birtvisi_20.jpg
+- image: /assets/photos/birtvisi-fortress-verified-1-20260831.webp
+  author: Alexkom000
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:2024-01-07_Gate_on_the_way_to_Birtvisi_Fortress_1.jpg
+- image: /assets/photos/birtvisi-fortress-verified-2-20260831.webp
+  author: Paata vardanashvili
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Birtvisi_20.jpg
+- image: /assets/photos/birtvisi-fortress-verified-3-20260831.webp
+  author: Paata vardanashvili
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Birtvisi.jpg
+- image: /assets/photos/birtvisi-fortress-verified-4-20260831.webp
+  author: Alexkom000
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:2024-01-07_Gate_on_the_way_to_Birtvisi_Fortress_2.jpg
 visit_hours: '4'
 best_season: may-october
 open_year_round: true

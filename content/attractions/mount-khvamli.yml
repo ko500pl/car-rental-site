@@ -8,11 +8,6 @@ featured: false
 order: 74
 image: /assets/photos/mount-khvamli-2.webp
 gallery:
-- image: /assets/photos/mount-khvamli-2.webp
-  author: Jaba1977
-  license: Attribution
-  license_url: ''
-  source: https://commons.wikimedia.org/wiki/File:Khvamli.jpg
 - image: /assets/photos/mount-khvamli-3.webp
   author: Roberto Strauss from Frankfurt am Main, Deutschland
   license: CC BY-SA 2.0
@@ -38,6 +33,11 @@ gallery:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0/
   source: https://commons.wikimedia.org/wiki/File:%E1%83%AE%E1%83%94%E1%83%93%E1%83%98_%E1%83%AE%E1%83%95%E1%83%90%E1%83%9B%E1%83%9A%E1%83%98%E1%83%A1_%E1%83%AC%E1%83%9B._%E1%83%92%E1%83%98%E1%83%9D%E1%83%A0%E1%83%92%E1%83%98%E1%83%A1_%E1%83%94%E1%83%99%E1%83%9A%E1%83%94%E1%83%A1%E1%83%98%E1%83%98%E1%83%93%E1%83%90%E1%83%9C.jpg
+- image: /assets/photos/mount-khvamli-1.webp
+  author: RentUp verified local asset
+  license: Site-owned or previously verified source
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '3'
 best_season: may-october
 open_year_round: false

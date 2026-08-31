@@ -23,6 +23,16 @@ gallery:
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Samshvilde_Complex_Road,_Georgia_-_panoramio_(3).jpg
+- image: /assets/photos/samshvilde-premium-ai-final-4-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/samshvilde-premium-ai-final-5-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '3'
 best_season: may-october
 open_year_round: true

@@ -23,6 +23,16 @@ gallery:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Gonio_fortress_(2).jpg
+- image: /assets/photos/gonio-fortress-verified-1-20260831.webp
+  author: Kober
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Gonio-Apsaros_Fortress_Museum,_Adjara,_Georgia_(3).jpg
+- image: /assets/photos/gonio-fortress-verified-2-20260831.webp
+  author: Kober
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Gonio-Apsaros_Fortress_Museum,_Adjara,_Georgia_(2).jpg
 visit_hours: '2'
 best_season: all
 open_year_round: true

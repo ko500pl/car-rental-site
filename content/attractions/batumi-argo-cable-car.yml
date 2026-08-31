@@ -28,6 +28,11 @@ gallery:
   license: CC BY 2.0
   license_url: https://creativecommons.org/licenses/by/2.0
   source: https://commons.wikimedia.org/wiki/File:Argo_Cable_Car,_Batumi_(51154243623).jpg
+- image: /assets/photos/batumi-argo-cable-car-verified-1-20260831.webp
+  author: Andrew Milligan sumo
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0/
+  source: https://commons.wikimedia.org/wiki/File:Argo_Cable_Car,_Batumi_(51155086395).jpg
 visit_hours: '1.5'
 best_season: all
 open_year_round: true

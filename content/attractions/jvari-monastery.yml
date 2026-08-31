@@ -23,6 +23,26 @@ gallery:
   license: CC BY 3.0
   license_url: https://creativecommons.org/licenses/by/3.0
   source: https://commons.wikimedia.org/wiki/File:Zahesi-Jvari_Monastery,_Georgia_-_panoramio_(10).jpg
+- image: /assets/photos/jvari-monastery-verified-1-20260831.webp
+  author: Diego Delso
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Monasterio_de_Jvari,_Miskheta,_Georgia,_2016-09-29,_DD_08-10_HDR.jpg
+- image: /assets/photos/jvari-monastery-verified-2-20260831.webp
+  author: Bernard Gagnon
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Jvari_Monastery_01.jpg
+- image: /assets/photos/jvari-monastery-verified-3-20260831.webp
+  author: Vyacheslav Argenberg
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Mtskheta,_Jvari_Monastery,_Church,_Georgia.jpg
+- image: /assets/photos/jvari-monastery-verified-4-20260831.webp
+  author: Bernard Gagnon
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Jvari_Monastery_02.jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true

@@ -18,6 +18,31 @@ gallery:
   license: Public domain
   license_url: ''
   source: https://commons.wikimedia.org/wiki/File:Betania_Monastery,_George_IV_Lasha,_Tamar_and_George_III_of_Georgia.jpg
+- image: /assets/photos/betania-monastery-verified-1-20260831.webp
+  author: Alexkom000
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:2024-05-18_Betania_Monastery_4.jpg
+- image: /assets/photos/betania-monastery-verified-2-20260831.webp
+  author: Alexkom000
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:2024-05-18_Betania_Monastery_3.jpg
+- image: /assets/photos/betania-monastery-verified-3-20260831.webp
+  author: Alexkom000
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:2024-05-18_Betania_Monastery_2.jpg
+- image: /assets/photos/betania-monastery-verified-4-20260831.webp
+  author: Alexkom000
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:2024-05-18_Betania_Monastery_5.jpg
+- image: /assets/photos/betania-monastery-verified-5-20260831.webp
+  author: 13th century painter
+  license: Public domain
+  license_url: https://creativecommons.org/publicdomain/mark/1.0/
+  source: https://commons.wikimedia.org/wiki/File:Betania_Monastery,_George_III_of_Georgia.jpg
 visit_hours: '1.5'
 best_season: all
 open_year_round: true

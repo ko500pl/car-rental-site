@@ -18,6 +18,21 @@ gallery:
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0
   source: https://commons.wikimedia.org/wiki/File:Ansichten_von_Dawit_Garedscha_12.jpg
+- image: /assets/photos/david-gareja-verified-1-20260831.webp
+  author: Vyacheslav Argenberg
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:David_Gareja_monastic_complex,_Georgia.jpg
+- image: /assets/photos/david-gareja-verified-2-20260831.webp
+  author: Vyacheslav Argenberg
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:David_Gareja,_Georgia.jpg
+- image: /assets/photos/david-gareja-verified-3-20260831.webp
+  author: Vyacheslav Argenberg
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:David_Gareja,_Orthodox_monk,_Georgia.jpg
 visit_hours: '3'
 best_season: all
 open_year_round: true

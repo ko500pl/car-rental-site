@@ -18,6 +18,21 @@ gallery:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Machkhvareti.jpg
+- image: /assets/photos/lanchkhuti-verified-1-20260831.webp
+  author: Gaga.vaa
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Center_of_Lanchkhuti.jpg
+- image: /assets/photos/lanchkhuti-verified-2-20260831.webp
+  author: Daniel-tbs
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Lanchkhuti_-_Monument_on_main_square.jpg
+- image: /assets/photos/lanchkhuti-verified-3-20260831.webp
+  author: Sofo Doborjginidze
+  license: CC BY-SA 2.5
+  license_url: https://creativecommons.org/licenses/by-sa/2.0/
+  source: https://commons.wikimedia.org/wiki/File:Lanchkhuti_(Sofo_Doborjginidze_2004).JPG
 visit_hours: '2'
 best_season: all
 open_year_round: true

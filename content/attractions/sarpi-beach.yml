@@ -7,7 +7,32 @@ unesco: false
 featured: false
 order: 75
 image: /assets/photos/sarpi-beach.webp
-gallery: []
+gallery:
+- image: /assets/photos/sarpi-beach-premium-ai-1-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/sarpi-beach-premium-ai-2-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/sarpi-beach-premium-ai-3-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/sarpi-beach-premium-ai-4-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/sarpi-beach-premium-ai-5-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '3'
 best_season: june-september
 open_year_round: true

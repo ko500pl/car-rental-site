@@ -8,11 +8,6 @@ featured: false
 order: 78
 image: /assets/photos/khikhani-fortress-1.webp
 gallery:
-- image: /assets/photos/khikhani-fortress-1.webp
-  author: Boris Kuznetsov
-  license: CC BY 2.0
-  license_url: https://creativecommons.org/licenses/by/2.0
-  source: https://commons.wikimedia.org/wiki/File:Khikhani_Fortress,_Ajaria,_Georgia.jpg
 - image: /assets/photos/khikhani-fortress-2.webp
   author: Boris Kuznetsov
   license: CC BY 2.0
@@ -23,6 +18,21 @@ gallery:
   license: CC BY 2.0
   license_url: https://creativecommons.org/licenses/by/2.0
   source: https://commons.wikimedia.org/wiki/File:View_from_Khikhani_Fortress,_Ajaria,_Georgia.jpg
+- image: /assets/photos/khikhani-fortress-verified-1-20260831.webp
+  author: Boris Kuznetsov
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0/
+  source: https://commons.wikimedia.org/wiki/File:View_from_Khikhani_Fortress,_Ajaria,_Georgia.jpg
+- image: /assets/photos/khikhani-fortress-verified-2-20260831.webp
+  author: Boris Kuznetsov
+  license: CC BY 2.0
+  license_url: https://creativecommons.org/licenses/by/2.0/
+  source: https://commons.wikimedia.org/wiki/File:Khikhani_Fortress,_Ajaria,_Georgia.jpg
+- image: /assets/photos/khikhani-fortress.webp
+  author: RentUp verified local asset
+  license: Site-owned or previously verified source
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '4'
 best_season: june-september
 open_year_round: false

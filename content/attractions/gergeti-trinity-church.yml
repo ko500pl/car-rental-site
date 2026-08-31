@@ -18,6 +18,31 @@ gallery:
   license: CC BY 3.0
   license_url: https://creativecommons.org/licenses/by/3.0
   source: https://commons.wikimedia.org/wiki/File:%E1%83%92%E1%83%94%E1%83%A0%E1%83%92%E1%83%94%E1%83%A2%E1%83%98%E1%83%A1_%E1%83%A1%E1%83%90%E1%83%9B%E1%83%94%E1%83%91%E1%83%90,_Georgia_-_panoramio_(4).jpg
+- image: /assets/photos/gergeti-trinity-church-verified-1-20260831.webp
+  author: Philipp Weigell
+  license: CC BY 3.0
+  license_url: https://creativecommons.org/licenses/by/3.0/
+  source: https://commons.wikimedia.org/wiki/File:Kazbeg_Panorama.jpg
+- image: /assets/photos/gergeti-trinity-church-verified-2-20260831.webp
+  author: Vyacheslav Argenberg
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Gergeti_Trinity_Church,_Interior,_Georgia.jpg
+- image: /assets/photos/gergeti-trinity-church-verified-3-20260831.webp
+  author: Vyacheslav Argenberg
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Gergeti_Trinity_Church,_Clouds,_Georgia.jpg
+- image: /assets/photos/gergeti-trinity-church-verified-4-20260831.webp
+  author: Vyacheslav Argenberg
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Gergeti_Trinity_Church,_Mountain_pasture,_Georgia.jpg
+- image: /assets/photos/gergeti-trinity-church-verified-5-20260831.webp
+  author: Bernard Gagnon
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Gergeti_Trinity_Church_04.jpg
 visit_hours: '3'
 best_season: may-october
 open_year_round: true

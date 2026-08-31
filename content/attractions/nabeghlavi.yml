@@ -8,16 +8,21 @@ featured: false
 order: 40
 image: /assets/photos/nabeghlavi-2.webp
 gallery:
-- image: /assets/photos/nabeghlavi-2.webp
-  author: გრიგოლ
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Gubazeuli_in_Nabeghlavi.jpg
 - image: /assets/photos/nabeghlavi-3.webp
   author: M.
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Nabeghlavi_FA.jpg
+- image: /assets/photos/nabeghlavi-premium-ai-final-3-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/nabeghlavi-1.webp
+  author: RentUp verified local asset
+  license: Site-owned or previously verified source
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '2'
 best_season: may-october
 open_year_round: true

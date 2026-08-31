@@ -8,11 +8,6 @@ featured: false
 order: 90
 image: /assets/photos/sairme-resort-1.webp
 gallery:
-- image: /assets/photos/sairme-resort-1.webp
-  author: Kober
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0
-  source: https://commons.wikimedia.org/wiki/File:Sairme_resort,_Georgia_01.jpg
 - image: /assets/photos/sairme-resort-2.webp
   author: Kober
   license: CC BY-SA 4.0
@@ -33,6 +28,11 @@ gallery:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0/
   source: https://commons.wikimedia.org/wiki/File:Sairme_resort,_Georgia_06.jpg
+- image: /assets/photos/sairme-resort.webp
+  author: RentUp verified local asset
+  license: Site-owned or previously verified source
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '4'
 best_season: may-october
 open_year_round: true

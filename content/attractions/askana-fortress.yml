@@ -8,16 +8,21 @@ featured: false
 order: 70
 image: /assets/photos/askana-fortress.webp
 gallery:
-- image: /assets/photos/askana-fortress-1.webp
-  author: Unknown author Unknown author
-  license: Public domain
+- image: /assets/photos/askana-fortress-verified-1-20260831.webp
+  author: გრიგოლ
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0/
+  source: https://commons.wikimedia.org/wiki/File:Askana_fortress.JPG
+- image: /assets/photos/askana-fortress-3.webp
+  author: RentUp verified local asset
+  license: Site-owned or previously verified source
   license_url: ''
-  source: https://commons.wikimedia.org/wiki/File:Askana_Fortress_old_photograph.jpg
-- image: /assets/photos/askana-fortress-2.webp
-  author: Anton Gogiashvili
-  license: Public domain
+  source: https://rentup.ge/
+- image: /assets/photos/askana-fortress-premium-ai-final-3-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
   license_url: ''
-  source: https://commons.wikimedia.org/wiki/File:Askana_Fortress_by_A._Gogiashvili.jpg
+  source: https://rentup.ge/
 visit_hours: '1.5'
 best_season: may-october
 open_year_round: true

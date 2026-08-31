@@ -8,11 +8,6 @@ featured: false
 order: 257
 image: /assets/photos/zando-st-george-monastery.jpg
 gallery:
-- image: /assets/photos/zando-st-george-monastery.jpg
-  author: Samtredia Municipality
-  license: Official tourism source
-  license_url: https://www.samtredia.gov.ge/en/tourism/truismobjects.html
-  source: https://www.samtredia.gov.ge/images/istoriuliekskursi/zandosmonasteri.jpg
 - image: /assets/photos/zando-st-george-monastery-premium-ai-1-20260831.webp
   author: OpenAI / RentUp
   license: Original commissioned AI-assisted asset
@@ -29,6 +24,11 @@ gallery:
   license_url: ''
   source: https://rentup.ge/
 - image: /assets/photos/zando-st-george-monastery-premium-ai-4-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/zando-st-george-monastery-premium-ai-final-5-20260831.webp
   author: OpenAI / RentUp
   license: Original commissioned AI-assisted asset
   license_url: ''

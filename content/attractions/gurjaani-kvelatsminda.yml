@@ -13,6 +13,16 @@ gallery:
   license: CC BY-SA 2.0
   license_url: https://creativecommons.org/licenses/by-sa/2.0
   source: https://commons.wikimedia.org/wiki/File:Gurjaani_-_Kvelatsminda_Church_(9460990882).jpg
+- image: /assets/photos/gurjaani-kvelatsminda-verified-1-20260831.webp
+  author: Kober
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Gurjaani_Qvelatsminda_church_(1).jpg
+- image: /assets/photos/gurjaani-kvelatsminda-verified-2-20260831.webp
+  author: Kober
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Gurjaani_Qvelatsminda_church_(2).jpg
 visit_hours: '1'
 best_season: all
 open_year_round: true

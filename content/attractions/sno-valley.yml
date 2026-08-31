@@ -8,11 +8,31 @@ featured: false
 order: 62
 image: /assets/photos/sno-valley-3.webp
 gallery:
-- image: /assets/photos/sno-valley-3.webp
-  author: Vyacheslav Argenberg
-  license: CC BY 4.0
-  license_url: https://creativecommons.org/licenses/by/4.0
-  source: https://commons.wikimedia.org/wiki/File:Lake_in_Sno_river_valley,_Caucasian_mountains,_Georgia.jpg
+- image: /assets/photos/sno-valley-premium-ai-1-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/sno-valley-premium-ai-2-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/sno-valley-premium-ai-3-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/sno-valley-premium-ai-4-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/sno-valley-1.webp
+  author: RentUp verified local asset
+  license: Site-owned or previously verified source
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '1.5'
 best_season: may-october
 open_year_round: true

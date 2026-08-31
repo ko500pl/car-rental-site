@@ -7,7 +7,37 @@ unesco: false
 featured: false
 order: 72
 image: /assets/photos/beshumi.webp
-gallery: []
+gallery:
+- image: /assets/photos/beshumi-verified-1-20260831.webp
+  author: Beniamin Netan  from Tbilisi, Georgia
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0/
+  source: https://commons.wikimedia.org/wiki/File:Beshumi_(29651287145).jpg
+- image: /assets/photos/beshumi-verified-2-20260831.webp
+  author: Beniamin Netan  from Tbilisi, Georgia
+  license: CC BY-SA 2.0
+  license_url: https://creativecommons.org/licenses/by-sa/2.0/
+  source: https://commons.wikimedia.org/wiki/File:%E1%83%91%E1%83%94%E1%83%A8%E1%83%A3%E1%83%9B%E1%83%98_(29651276755).jpg
+- image: /assets/photos/beshumi-verified-3-20260831.webp
+  author: Aleksey Muhranoff
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0/
+  source: https://commons.wikimedia.org/wiki/File:Beshumi,_Adjara,_Georgia-3.jpg
+- image: /assets/photos/beshumi-verified-4-20260831.webp
+  author: Aleksey Muhranoff
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0/
+  source: https://commons.wikimedia.org/wiki/File:Beshumi,_Adjara,_Georgia-2.jpg
+- image: /assets/photos/beshumi-verified-5-20260831.webp
+  author: Aleksey Muhranoff
+  license: CC BY-SA 3.0
+  license_url: https://creativecommons.org/licenses/by-sa/3.0/
+  source: https://commons.wikimedia.org/wiki/File:Beshumi,_Adjara,_Georgia-1.jpg
+- image: /assets/photos/beshumi-premium-ai-1-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '4'
 best_season: june-september
 open_year_round: false

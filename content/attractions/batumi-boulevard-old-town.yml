@@ -9,15 +9,40 @@ order: 10
 image: /assets/photos/batumi-boulevard-old-town.webp
 gallery:
 - image: /assets/photos/batumi-boulevard-old-town-1.webp
-  author: "Sosotedrd"
-  license: "CC BY-SA 4.0"
-  license_url: "https://creativecommons.org/licenses/by-sa/4.0"
-  source: "https://commons.wikimedia.org/wiki/File:Batumi_Boulevard_Bycicle_Path.jpg"
+  author: Sosotedrd
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Batumi_Boulevard_Bycicle_Path.jpg
 - image: /assets/photos/batumi-boulevard-old-town-2.webp
-  author: "Sosotedrd"
-  license: "CC BY-SA 4.0"
-  license_url: "https://creativecommons.org/licenses/by-sa/4.0"
-  source: "https://commons.wikimedia.org/wiki/File:Batumi_Boulevard_Colonnades.jpg"
+  author: Sosotedrd
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0
+  source: https://commons.wikimedia.org/wiki/File:Batumi_Boulevard_Colonnades.jpg
+- image: /assets/photos/batumi-boulevard-old-town-verified-1-20260831.webp
+  author: Sosotedrd
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Batumi_Boulevard_Alley.jpg
+- image: /assets/photos/batumi-boulevard-old-town-verified-2-20260831.webp
+  author: Sosotedrd
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Batumi_Boulevard_Bycicle_Path.jpg
+- image: /assets/photos/batumi-boulevard-old-town-verified-3-20260831.webp
+  author: Sosotedrd
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Batumi_Boulevard_Colonnades.jpg
+- image: /assets/photos/batumi-boulevard-old-town-premium-ai-1-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
+- image: /assets/photos/batumi-boulevard-old-town-premium-ai-2-20260831.webp
+  author: OpenAI / RentUp
+  license: Original commissioned AI-assisted asset
+  license_url: ''
+  source: https://rentup.ge/
 visit_hours: '6'
 best_season: all
 open_year_round: true

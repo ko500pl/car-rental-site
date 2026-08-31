@@ -18,6 +18,31 @@ gallery:
   license: CC BY 4.0
   license_url: https://creativecommons.org/licenses/by/4.0
   source: https://commons.wikimedia.org/wiki/File:Abudelauri_lakes_under_Chaukhi_pass,_crystall_clear_water,_Georgia.jpg
+- image: /assets/photos/abudelauri-lakes-verified-1-20260831.webp
+  author: FingerWiki
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Abudelauri_Blue_Lake,_Dusheti_Municipality_02.jpg
+- image: /assets/photos/abudelauri-lakes-verified-2-20260831.webp
+  author: Vyacheslav Argenberg
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Abudelauri_lakes_under_Chaukhi_pass,_crystall_clear_water,_Georgia.jpg
+- image: /assets/photos/abudelauri-lakes-verified-3-20260831.webp
+  author: Vyacheslav Argenberg
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Abudelauri_Lakes_2,_Georgia.jpg
+- image: /assets/photos/abudelauri-lakes-verified-4-20260831.webp
+  author: Vyacheslav Argenberg
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Abudelauri_Lakes,_Georgia.jpg
+- image: /assets/photos/abudelauri-lakes-verified-5-20260831.webp
+  author: Vyacheslav Argenberg
+  license: CC BY 4.0
+  license_url: https://creativecommons.org/licenses/by/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Abudelauri_Lakes,_Georgia,_Caucasus.jpg
 visit_hours: '6'
 best_season: june-september
 open_year_round: false

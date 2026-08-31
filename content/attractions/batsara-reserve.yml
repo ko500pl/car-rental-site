@@ -23,6 +23,16 @@ gallery:
   license: CC BY-SA 4.0
   license_url: https://creativecommons.org/licenses/by-sa/4.0
   source: https://commons.wikimedia.org/wiki/File:Duisi_info_board_DX.jpg
+- image: /assets/photos/batsara-reserve-verified-1-20260831.webp
+  author: Paata vardanashvili
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  source: https://commons.wikimedia.org/wiki/File:Ilto.jpg
+- image: /assets/photos/batsara-reserve-verified-2-20260831.webp
+  author: Post of Georgia
+  license: Public domain
+  license_url: https://creativecommons.org/publicdomain/mark/1.0/
+  source: https://commons.wikimedia.org/wiki/File:Stamp_of_Georgia_-_1999_-_Colnect_292345_-_National_reserve_Batsara_Babaneury.jpeg
 visit_hours: '6'
 best_season: may-october
 open_year_round: true
