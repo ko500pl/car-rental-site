@@ -973,3 +973,51 @@ dt_hours:
     fa: 'روز طولانی'
     he: 'יום ארוך'
     ar: 'يوم طويل'
+
+dur_per_day:
+  ka: 'დღეში'
+  en: 'Per day'
+  ru: 'В сутки'
+  fa: 'روزانه'
+  he: 'ליום'
+  ar: 'في اليوم'
+
+dur_thirty_days:
+  ka: '30 დღე'
+  en: '30 days'
+  ru: '30 дней'
+  fa: '۳۰ روز'
+  he: '30 יום'
+  ar: '30 يوماً'
+
+dur_you_save:
+  ka: 'დაზოგავთ'
+  en: 'You save'
+  ru: 'Экономия'
+  fa: 'صرفه‌جویی'
+  he: 'חיסכון'
+  ar: 'توفير'
+
+dur_what_it_costs:
+  ka: 'რა ჯდება'
+  en: 'What it costs'
+  ru: 'Сколько стоит'
+  fa: 'هزینه چقدر است'
+  he: 'כמה זה עולה'
+  ar: 'كم يكلّف'
+
+dur_a_month_with_the_car:
+  ka: 'თვე ავტომობილთან ერთად'
+  en: 'A month with the car'
+  ru: 'Месяц с автомобилем'
+  fa: 'یک ماه با خودرو'
+  he: 'חודש עם הרכב'
+  ar: 'شهر مع السيارة'
+
+dur_how_it_works:
+  ka: 'როგორ მუშაობს'
+  en: 'How it works'
+  ru: 'Как это работает'
+  fa: 'چگونه کار می‌کند'
+  he: 'איך זה עובד'
+  ar: 'كيف تسير الأمور'

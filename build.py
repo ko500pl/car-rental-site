@@ -561,7 +561,7 @@ def render_block(b, lang):
         return (f'<div class="cta"><h2>{E(b["title"])}</h2><p>{inline(b["text"], lang)}</p>'
                 f'<div class="row">{row}</div></div>')
     if t == "cars":
-        return cars_grid(b.get("category"), lang, live=True)
+        return cars_grid(b.get("category"), lang)
     raise ValueError(f"უცნობი ბლოკის ტიპი: {t}")
 
 
@@ -662,7 +662,7 @@ def booking_open_btn(lang, cls="btn booking-hero-cta"):
             f'{E(BOOKING_TEXT[lang]["book"])}</button>')
 
 
-def cars_grid(category, lang, limit=None, live=False):
+def cars_grid(category, lang, limit=None):
     # RentUp Pages მაკეტის ბარათი: სახელი + ფირუზი ფასი ერთ ხაზზე, მეტა,
     # ვადიანი ფასები, ფირუზი „დაჯავშნა" + ghost „დეტალები".
     items = [(s, c) for s, c in CARS.items() if not category or c["category"] == category]
@@ -698,13 +698,7 @@ def cars_grid(category, lang, limit=None, live=False):
             f'data-car="{E(slug)}" data-car-name="{E(L["name"])}">{E(BOOKING_TEXT[lang]["book"])}</button>'
             f'<a class="btn sm ghost" href="{car_url(lang, slug, False)}">{E(DETAILS_LABEL[lang])}</a>'
             f'</div></div></article>')
-    # `data-live-catalogue` is what `catalogue.js` looks for. Its value is the
-    # category this grid holds, so a car published from the phone lands in the
-    # right section of the page rather than all of them in a heap at the end.
-    # Absent on the home page teaser and anywhere else a grid is decorative:
-    # a three-car preview that silently grew to nineteen is not a preview.
-    tag = f' data-live-catalogue="{E(category or "")}"' if live else ""
-    return f'<div class="cars"{tag}>{"".join(out)}</div>'
+    return f'<div class="cars">{"".join(out)}</div>'
 
 
 # ══════════════════════════════════════════════════════════════ markdown
@@ -1144,41 +1138,6 @@ def footer_html(lang):
 </div></div></footer>"""
 
 
-def catalogue_cfg(lang):
-    """The words `catalogue.js` needs to draw a card in this language.
-
-    Every value comes from `content/settings/specs.yml`, the same table the
-    static car pages print from — so a Tucson with a page and an Audi without
-    one say „ავტომატი" the same way, in all six languages. The phone publishes
-    codes (`automatic`, `awd`, `petrol`); this is where a code becomes a word.
-
-    A code the site has never heard of simply produces no text: the card omits
-    that line rather than printing the raw code at a customer.
-    """
-    lab = SPECS["labels"]
-    val = SPECS["values"]
-    unit = SPECS["units"]
-
-    def pick(table, key):
-        entry = table.get(key) or {}
-        return entry.get(lang) or entry.get("en") or ""
-
-    return {
-        # The card prints „130 ₾ · ≈ $50", the same shape `money()` builds for
-        # every static price on the site. The rate and the rounding step travel
-        # rather than a finished string, because the number is only known in
-        # the browser — and a live card that formatted money differently from
-        # the card beside it would read as two different websites.
-        "usdRate": float(USD_RATE),
-        "usdStep": int(SITE.get("usd_rounding", 10)),
-        "book": BOOKING_TEXT[lang]["book"],
-        "l": {k: pick(lab, k) for k in
-              ("seats", "luggage", "clearance", "range", "transmission", "drive")},
-        "v": {k: pick(val, k) for k in val},
-        "u": {k: pick(unit, k) for k in unit},
-    }
-
-
 def shell(lang, current, head, body, depth, tail=""):
     u = UI[lang]
     fs = LANG_FONT_STACK.get(lang, "")
@@ -1208,18 +1167,10 @@ def shell(lang, current, head, body, depth, tail=""):
         # wherever a booking CTA exists; community.js only on the community page.
         _needs_booking = current in ("index", "fleet", "map", "planner", "account")
         _needs_community = current == "community"
-        # The live catalogue only has somewhere to draw on the fleet page,
-        # which is the one page with a grid per category and a catch-all
-        # section. Shipping it elsewhere would be a fetch that renders nothing.
-        _needs_catalogue = current == "fleet"
         fb = (f'\n<script>window.FH_CFG={J(cfg)};</script>'
-              + (f'\n<script>window.FH_CAT={J(catalogue_cfg(lang))};</script>'
-                 if _needs_catalogue else "")
-              + f'\n<script type="module" src="{ASSET.get("auth", "/assets/auth.js")}"></script>'
+              f'\n<script type="module" src="{ASSET.get("auth", "/assets/auth.js")}"></script>'
               + (f'\n<script type="module" src="{ASSET.get("booking", "/assets/booking.js")}"></script>'
                  if _needs_booking else "")
-              + (f'\n<script defer src="{ASSET.get("catalogue", "/assets/catalogue.js")}"></script>'
-                 if _needs_catalogue else "")
               + (f'\n<script type="module" src="{ASSET.get("community", "/assets/community.js")}"></script>'
                  if _needs_community else "")
               + f'\n<script defer src="{ASSET.get("app", "/assets/app.js")}"></script>')
@@ -1487,22 +1438,6 @@ def render_static_page(lang, page):
                     f'{"".join(rendered_sections)}</details></div></section>')
     else:
         body.extend(rendered_sections)
-
-    if page == "fleet":
-        other_label = {
-            "ka": "სხვა ავტომობილები",
-            "en": "More cars",
-            "ru": "Другие автомобили",
-            "fa": "خودروهای دیگر",
-            "he": "רכבים נוספים",
-            "ar": "سيارات أخرى",
-        }[lang]
-        # Hidden until `catalogue.js` puts a car in it — see the note above.
-        body.append(
-            f'<section class="sec" data-live-other hidden>'
-            f'<div class="wrap"><h2 id="{slugify_anchor(other_label)}">'
-            f'{E(other_label)}</h2>'
-            f'<div class="cars" data-live-catalogue="*"></div></div></section>')
 
     graph = [org_node(lang), website_node(lang),
              {"@type": "WebPage", "@id": page_url(lang, page) + "#webpage",
@@ -1874,11 +1809,116 @@ def photo_html(a, lang, cls="photo", hero=False):
     if lic:
         bits.append(f'<a href="{E(lurl)}" rel="license nofollow noopener" target="_blank">{E(lic)}</a>'
                     if lurl else E(lic))
-    priority = ('loading="eager" fetchpriority="high" decoding="async" width="1100" height="688"'
-                if hero else 'loading="lazy" decoding="async" width="1100" height="688"')
-    return (f'<figure class="{cls}"><img src="{E(img)}" alt="{E(a[lang]["name"])}" {priority} '
-            f'sizes="(max-width: 760px) 100vw, 1100px">'
-            f'<figcaption>{cap}{" · ".join(bits)}</figcaption></figure>')
+    dims = photo_dims(img) or (1100, 688)
+    load = ('loading="eager" fetchpriority="high"' if hero else 'loading="lazy"')
+    ss = img_srcset(img)
+    return (f'<figure class="{cls}"><img src="{E(img)}" alt="{E(a[lang]["name"])}" {load} '
+            f'decoding="async" width="{dims[0]}" height="{dims[1]}"'
+            + (f' srcset="{E(ss)}" sizes="(max-width: 760px) 100vw, 1100px"' if ss else "")
+            + f'><figcaption>{cap}{" · ".join(bits)}</figcaption></figure>')
+
+
+PHOTO_THUMB_W = 480          # the widest a card image is ever displayed
+
+
+@functools.lru_cache(maxsize=1)
+def _thumbable():
+    """Photos that will get a card-sized variant.
+
+    Only the hero image of an attraction, car or route is ever shown in a card,
+    so only those need a small copy — 315 of them rather than all 1 697 photos
+    on disk, which is what made the first version of this add minutes to a
+    build. A photo already narrower than a card is left alone, and without
+    Pillow the set is empty and every page serves the original, as before."""
+    out = set()
+    try:
+        from PIL import Image
+    except ImportError:
+        print("NOTE: Pillow not installed — cards will serve full-size photos")
+        return out
+    heroes = {r["image"] for src in (ATTRACTIONS, CARS, ROUTES) for r in src.values()
+              if isinstance(r, dict) and r.get("image")}
+    for rel in heroes:
+        if not rel.startswith("/assets/photos/") or not rel.lower().endswith(".webp"):
+            continue
+        local = os.path.join("static", rel[len("/assets/"):])
+        try:
+            with Image.open(local) as im:
+                if im.width > PHOTO_THUMB_W:
+                    out.add(rel)
+        except Exception:
+            pass
+    return out
+
+
+def make_photo_thumbnails(out_photo_dir):
+    """Write the card-sized copies into dist/ only.
+
+    A card renders at about 400 CSS pixels but was served the full 900-1100px
+    original — roughly 70 KB where 15 would do, eight times over on a page of
+    cards. These variants never enter the repository: they are generated in the
+    built tree, so nothing is committed and nothing goes stale."""
+    thumbable = _thumbable()
+    if not thumbable or not os.path.isdir(out_photo_dir):
+        return 0
+    from PIL import Image
+    from concurrent.futures import ThreadPoolExecutor
+
+    def one(rel):
+        src = os.path.join(out_photo_dir, os.path.basename(rel))
+        if not os.path.exists(src):
+            return 0
+        stem, ext = os.path.splitext(src)
+        dst = f"{stem}-{PHOTO_THUMB_W}{ext}"
+        if os.path.exists(dst):
+            return 0
+        try:
+            with Image.open(src) as im:
+                im = im.convert("RGB")
+                im.thumbnail((PHOTO_THUMB_W, PHOTO_THUMB_W * 4), Image.LANCZOS)
+                im.save(dst, "WEBP", quality=78, method=4)
+            return 1
+        except Exception as e:
+            print(f"WARNING: thumbnail failed for {os.path.basename(src)}: {e}")
+            return 0
+
+    # Writing through a mounted filesystem dominates the cost, so overlap it.
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        made = sum(pool.map(one, sorted(thumbable)))
+    if made:
+        print(f"  {made} card-sized photo variants")
+    return made
+
+
+def card_img(path):
+    """The card-sized variant when the build will produce one, else the original."""
+    return f"{os.path.splitext(path)[0]}-{PHOTO_THUMB_W}.webp" if path in _thumbable() else path
+
+
+def img_srcset(path):
+    """srcset only for photos that really have both widths."""
+    if path not in _thumbable():
+        return ""
+    stem, ext = os.path.splitext(path)
+    return f'{stem}-{PHOTO_THUMB_W}{ext} {PHOTO_THUMB_W}w, {path} 1100w'
+
+
+@functools.lru_cache(maxsize=4096)
+def photo_dims(path):
+    """Real intrinsic size, so the browser reserves the right box.
+
+    Every photo was declared 1100x688 whatever its actual size; the median photo
+    is 900px wide, so the reserved box was wrong on most pages and the layout
+    shifted once the image arrived."""
+    if not path or not path.startswith("/assets/photos/"):
+        return None
+    local = os.path.join("static", path[len("/assets/"):])
+    try:
+        from PIL import Image
+        with Image.open(local) as im:
+            return im.size
+    except Exception:
+        return None
 
 
 def attr_facts(a, lang):
@@ -2363,7 +2403,7 @@ def render_region(lang, key, r):
     cards = "".join(
         f'<div class="card">'
         + (f'<a class="card-img" href="{attr_url(lang, s, False)}" tabindex="-1" aria-hidden="true">'
-           f'<img src="{E(a["image"])}" alt="" loading="lazy"></a>' if a.get("image") else "")
+           f'<img src="{E(card_img(a["image"]))}" alt="" loading="lazy" decoding="async"></a>' if a.get("image") else "")
         + f'<span class="tag">{E(tl(lang,"type",a["type"]))}</span>{stars_html(a.get("rating"), lang, True)}'
         f'<h3><a href="{attr_url(lang, s, False)}">{E(a[lang]["name"])}</a></h3>'
         f'<p>{E(a[lang]["short"])}</p><ul>'
@@ -2469,7 +2509,7 @@ def render_attraction(lang, slug, a):
     near = "".join(
         f'<div class="card">'
         + (f'<a class="card-img" href="{attr_url(lang, n, False)}" tabindex="-1" aria-hidden="true">'
-           f'<img src="{E(ATTRACTIONS[n]["image"])}" alt="" loading="lazy"></a>'
+           f'<img src="{E(card_img(ATTRACTIONS[n]["image"]))}" alt="" loading="lazy" decoding="async"></a>'
            if ATTRACTIONS[n].get("image") else "")
         + f'<span class="tag">{E(tl(lang,"type",ATTRACTIONS[n]["type"]))}</span>'
         f'<h3><a href="{attr_url(lang, n, False)}">{E(ATTRACTIONS[n][lang]["name"])}</a></h3>'
@@ -2581,7 +2621,7 @@ def render_route(lang, slug, r):
     stops = "".join(
         f'<div class="card stop-card">'
         + (f'<a class="stop-img" href="{attr_url(lang, s, False)}" tabindex="-1" aria-hidden="true">'
-           f'<img src="{E(a["image"])}" alt="" loading="lazy"></a>' if a.get("image") else "")
+           f'<img src="{E(card_img(a["image"]))}" alt="" loading="lazy" decoding="async"></a>' if a.get("image") else "")
         + f'<span class="tag">{E(tl(lang,"type",a["type"]))}</span>'
         f'<h3><a href="{attr_url(lang, s, False)}">{E(a[lang]["name"])}</a></h3>'
         f'<p>{E(a[lang]["short"])}</p>'
@@ -3262,6 +3302,10 @@ def sitemap_children():
         if rental_quality_ok("location", (SEO_CAR_RENTAL.get("locations") or {}).get(k, {})):
             rental.append((lambda l, kk=k: rental_place_url(l, kk), "0.8",
                            Path("content/settings/seo_car_rental.yml")))
+    for k in (SEO_CAR_RENTAL.get("durations") or {}):
+        if rental_quality_ok("duration", (SEO_CAR_RENTAL.get("durations") or {})[k]):
+            rental.append((lambda l, kk=k: rental_duration_url(l, kk), "0.8",
+                           Path("content/settings/seo_car_rental.yml")))
     for k in SEO_CATEGORY_ORDER:
         if rental_quality_ok("category", _seo_cats().get(k, {})):
             rental.append((lambda l, kk=k: rental_cat_url(l, kk), "0.8",
@@ -3688,6 +3732,11 @@ def rental_place_url(lang, key, absolute=True):
     return (SITE_URL + p) if absolute else p
 
 
+def rental_duration_url(lang, key, absolute=True):
+    p = f"{lang_root(lang)}car-rental/{key}/"
+    return (SITE_URL + p) if absolute else p
+
+
 def rental_cat_url(lang, cat, absolute=True):
     p = f"{lang_root(lang)}{CAR_RENTAL_SLUG}/{CATEGORY_SLUG.get(cat, cat)}/"
     return (SITE_URL + p) if absolute else p
@@ -3708,6 +3757,12 @@ def rental_quality_ok(kind, payload):
     if kind == "category":
         d = payload.get("data") or {}
         return len(d.get("car_slugs") or []) >= 2
+    if kind == "duration":
+        # A duration page earns its place on the price table: without real
+        # per-category rates it is just a claim that renting longer is cheaper.
+        d = payload.get("data") or {}
+        return (len(d.get("price_table") or []) >= 3
+                and len(d.get("category_keys") or []) >= 3)
     return True
 
 
@@ -3723,7 +3778,7 @@ def _car_card(lang, slug):
         f'{c.get("clearance")} mm' if c.get("clearance") else "",
     ] if x)
     img = (f'<a class="stop-img" href="{car_url(lang, slug, False)}" tabindex="-1" aria-hidden="true">'
-           f'<img src="{E(c["image"])}" alt="" loading="lazy"></a>') if c.get("image") else ""
+           f'<img src="{E(card_img(c["image"]))}" alt="" loading="lazy" decoding="async"></a>') if c.get("image") else ""
     return (f'<div class="card stop-card">{img}'
             f'<h3><a href="{car_url(lang, slug, False)}">{E(L["name"])}</a></h3>'
             f'<p>{E(specs)}</p>'
@@ -4115,6 +4170,99 @@ def render_rental_location(lang, key):
         graph.append(_fq)
     head = head_html(lang, "fleet", title, desc, "", url,
                      {l: rental_place_url(l, key) for l in LANGS}, depth,
+                     {"@context": "https://schema.org", "@graph": graph})
+    crumbs = crumbs_html(lang, [(u["nav"]["index"], page_url(lang, "index", False)),
+                                (hub_h1, rental_hub_url(lang, False)),
+                                (L.get("h1", key), None)])
+    return shell(lang, "fleet", head, crumbs + f'<main id="main">{body}</main>', depth)
+
+
+def _duration_price_table(lang, rows):
+    """Real per-category rates: the 30+ day price, what thirty days costs, and
+    how much less that is than the same month at the short-term rate. Every
+    number is computed from content/cars/*.yml, none of it is rounded up."""
+    if not rows:
+        return ""
+    gel = SPECS["units"].get("gel", {}).get(lang, "₾")
+    day = SPECS["units"]["day"][lang]
+    head = (f'<tr><th>{E(su("car_needed", lang))}</th>'
+            f'<th>{E(su("dur_per_day", lang))}</th>'
+            f'<th>{E(su("dur_thirty_days", lang))}</th>'
+            f'<th>{E(su("dur_you_save", lang))}</th>'
+            f'<th>{E(su("deposit", lang))}</th></tr>')
+    body = "".join(
+        f'<tr><td><a href="{rental_cat_url(lang, r["category"], False)}">'
+        f'{E(cat_label(r["category"], lang))}</a></td>'
+        f'<td>{r["price_30"]} {E(gel)}/{E(day)}</td>'
+        f'<td>{r["thirty_days_gel"]} {E(gel)}</td>'
+        f'<td>{r["saving_gel"]} {E(gel)} ({r["saving_pct"]}%)</td>'
+        f'<td>{r["deposit_gel"]} {E(gel)}</td></tr>'
+        for r in rows if r.get("category") in {c["key"] for c in CATS})
+    return (f'<div class="tbl-wrap"><table class="spec"><thead>{head}</thead>'
+            f'<tbody>{body}</tbody></table></div>')
+
+
+def render_rental_duration(lang, key):
+    u = UI[lang]
+    depth = 2 if lang == ROOT_LANG else 3
+    dur = (SEO_CAR_RENTAL.get("durations") or {}).get(key) or {}
+    L = dur.get(lang) or {}
+    if not L or not rental_quality_ok("duration", dur):
+        return None
+    d = dur.get("data") or {}
+    hub_h1 = ((SEO_CAR_RENTAL.get("hub") or {}).get(lang) or {}).get("h1", "Car rental")
+    gtk = "".join(f"<li>{E(x)}</li>" for x in (L.get("good_to_know") or []))
+    cat_cards = "".join(
+        f'<div class="card"><h3><a href="{rental_cat_url(lang, k, False)}">'
+        f'{E(cat_label(k, lang))}</a></h3>'
+        f'<span class="price">{su("price_from", lang)} {cheapest_price(k)} ₾/'
+        f'{SPECS["units"]["day"][lang]}</span></div>'
+        for k in (d.get("category_keys") or []) if k in {c["key"] for c in CATS})
+    body = (
+        f'<section class="page-head"><div class="wrap"><h1>{E(L.get("h1", ""))}</h1>'
+        f'<p class="lead">{E(L.get("lead", ""))}</p></div></section>'
+        + _sec(su("dur_what_it_costs", lang) or su("price_from", lang),
+               _duration_price_table(lang, d.get("price_table")))
+        + (_sec(su("dur_a_month_with_the_car", lang) or u["nav"].get("faq", "Good to know"),
+                f'<div class="article"><p>{E(L.get("getting_around", ""))}</p><ul>{gtk}</ul></div>',
+                alt=True) if L.get("getting_around") or gtk else "")
+        + (_sec(su("dur_how_it_works", lang) or su("pickup_locations", lang),
+                f'<div class="article"><p>{E(L.get("pickup", ""))}</p></div>')
+           if L.get("pickup") else "")
+        + (_sec(su("best_car_for_trip", lang), f'<div class="cards">{cat_cards}</div>', alt=True)
+           if cat_cards else "")
+        + (_sec(su("rental_terms", lang) or "Rental terms", policy_table_html(lang))
+           if policy_facts(lang) else "")
+        + guide_links_block(lang, list(GUIDES), alt=True)
+        + f'<section class="sec"><div class="wrap"><div class="cta">'
+          f'<h2>{E(su("request_booking", lang))}</h2>'
+          f'<div class="row"><a class="btn" href="{page_url(lang, "contact", False)}">'
+          f'{E(u["nav"]["contact"])}</a>'
+          f'<a class="btn ghost" href="{rental_hub_url(lang, False)}">{E(hub_h1)}</a>'
+          f'<a class="btn ghost" href="{page_url(lang, "fleet", False)}">{E(u["nav"]["fleet"])}</a>'
+          f'</div></div></div></section>'
+    )
+    title = _trim_title(L.get("meta_title") or f'{L.get("h1", "")} | {BRAND}')
+    desc = L.get("meta_description", "")
+    url = rental_duration_url(lang, key)
+    rows = [r for r in (d.get("price_table") or []) if r.get("price_30")]
+    graph = [org_node(lang), website_node(lang),
+             {"@type": "Product", "@id": url + "#offer", "name": L.get("h1", ""),
+              "description": desc, "url": url,
+              "category": su("car_rental", lang) or "Car rental",
+              "brand": {"@id": SITE_URL + "/#organization"},
+              "offers": {"@type": "AggregateOffer", "priceCurrency": "GEL",
+                         "lowPrice": min(r["price_30"] for r in rows),
+                         "highPrice": max(r["price_30"] for r in rows),
+                         "offerCount": len(rows),
+                         "unitCode": "DAY",
+                         "seller": {"@id": SITE_URL + "/#organization"}}} if rows else None,
+             crumbs_node(lang, [(u["nav"]["index"], page_url(lang, "index")),
+                                (hub_h1, rental_hub_url(lang)),
+                                (L.get("h1", key), url)])]
+    graph = [n for n in graph if n]
+    head = head_html(lang, "fleet", title, desc, "", url,
+                     {l: rental_duration_url(l, key) for l in LANGS}, depth,
                      {"@context": "https://schema.org", "@graph": graph})
     crumbs = crumbs_html(lang, [(u["nav"]["index"], page_url(lang, "index", False)),
                                 (hub_h1, rental_hub_url(lang, False)),
@@ -5474,14 +5622,14 @@ def main():
     # leaves an unversioned duplicate that no page requests but a browser can
     # still cache indefinitely.
     hashed_sources = {"explorer.js", "planner.js", "auth.js", "booking.js", "analytics.js", "daytrip.js",
-                      "community.js", "admin-bookings.js", "app.js", "app-mobile.js", "trip.js",
-                      "catalogue.js"}
+                      "community.js", "admin-bookings.js", "app.js", "app-mobile.js", "trip.js"}
     for sdir, dst in (("static", os.path.join(out, "assets")),
                       ("admin", os.path.join(out, "admin"))):
         if os.path.isdir(sdir):
             skip = (lambda d, names: [n for n in names if n in hashed_sources]) \
                 if sdir == "static" else None
             shutil.copytree(sdir, dst, dirs_exist_ok=True, ignore=skip)
+    make_photo_thumbnails(os.path.join(out, "assets", "photos"))
 
     # Internal team documentation, only with --with-docs. The markdown sources
     # never ship. Even when included it stays out of robots.txt and the
@@ -5500,7 +5648,6 @@ def main():
                     ("auth.js", "auth"), ("booking.js", "booking"),
                     ("community.js", "community"), ("admin-bookings.js", "admin_bookings"),
                     ("analytics.js", "analytics"), ("app.js", "app"),
-                    ("catalogue.js", "catalogue"),
                     ("daytrip.js", "daytrip")):
         p = os.path.join("static", fn)
         if os.path.exists(p):
@@ -5561,6 +5708,12 @@ def main():
             _h = render_rental_location(lang, _k)
             if _h:
                 write(os.path.join(out, rental_place_url(lang, _k, False).lstrip("/"), "index.html"), _h)
+                n += 1
+        for _k in (SEO_CAR_RENTAL.get("durations") or {}):
+            _h = render_rental_duration(lang, _k)
+            if _h:
+                write(os.path.join(out, rental_duration_url(lang, _k, False).lstrip("/"),
+                                   "index.html"), _h)
                 n += 1
         for _k in SEO_CATEGORY_ORDER:
             _h = render_rental_category(lang, _k)
