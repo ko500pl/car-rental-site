@@ -903,16 +903,36 @@ ASSET = {"css": "/assets/style.css", "explorer": "/assets/explorer.js",
 TRAVEL_ASSET = {}
 
 
+def verification_html():
+    """Search-engine ownership tags.
+
+    Without one of these nobody has told Google, Bing or Yandex that this site
+    exists, and there is no way to see whether it is indexed at all. They are
+    read from site.yml so the owner pastes a code in one place; each tag is
+    emitted only when its code is really set."""
+    v = SITE.get("verification") or {}
+    tags = [(name, str(v.get(key, "")).strip()) for key, name in (
+        ("google", "google-site-verification"),
+        ("bing", "msvalidate.01"),
+        ("yandex", "yandex-verification"),
+    )]
+    return "\n".join(f'<meta name="{n}" content="{E(c)}">' for n, c in tags if c)
+
+
 def analytics_html():
     """Build-time GA4 config. Empty IDs intentionally produce a client-side no-op.
 
     `static/analytics.js` is optional. Emitting the tag unconditionally shipped a
     404 on every page, so the loader is only linked once the file is actually
-    written into dist/ by write_hashed()."""
+    written into dist/ by write_hashed().
+
+    The id comes from site.yml first and the environment second: CI never set
+    GA_MEASUREMENT_ID, so analytics has been switched off on every deploy."""
     src = ASSET.get("analytics")
     if not src:
         return ""
-    measurement_id = os.environ.get("GA_MEASUREMENT_ID", "").strip()
+    measurement_id = (str(SITE.get("ga_measurement_id", "")).strip()
+                      or os.environ.get("GA_MEASUREMENT_ID", "").strip())
     return (f'<script>window.FH_ANALYTICS_CONFIG={{"measurementId":{J(measurement_id)}}};</script>\n'
             f'<script defer src="{src}"></script>')
 
@@ -1029,6 +1049,7 @@ def head_html(lang, current, title, desc, keywords, url, alternates, depth, ld,
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/app-icon-180.png">
 <link rel="manifest" href="/assets/manifest.webmanifest">
 <link rel="stylesheet" href="{css_href}">{lf}
+{verification_html()}
 <script type="application/ld+json">
 {JC(ld)}
 </script>"""

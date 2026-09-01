@@ -40,3 +40,18 @@ social: []
 fuel_l_100km: 8.5
 fuel_price_gel: 3.1
 whatsapp: '995597555565'
+
+# ── Search engines ─────────────────────────────────────────────────────
+# Paste the verification code each console gives you; the meta tag is only
+# emitted for codes that are actually set. Without these nobody has told a
+# search engine this site exists, and there is no way to see what it indexes.
+#   Google:  search.google.com/search-console  → HTML tag method
+#   Bing:    bing.com/webmasters               → also feeds DuckDuckGo
+#   Yandex:  webmaster.yandex.com              → matters for the Russian market
+verification:
+  google: ''
+  bing: ''
+  yandex: ''
+
+# GA4 property id, e.g. G-XXXXXXXXXX. Empty means analytics stays switched off.
+ga_measurement_id: ''
