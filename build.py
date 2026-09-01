@@ -2475,10 +2475,22 @@ def render_region(lang, key, r):
     return shell(lang, "map", head, crumbs + f'<main id="main">{body}</main>', depth, js)
 
 
+def price_from_text(lang, price):
+    """"Price from 75 ₾/day" in each language's own word order. Georgian puts
+    the ablative on the number — "75 ₾-დან დღეში" — so a literal "ფასი დან 75"
+    reads as broken Georgian on every card."""
+    day = SPECS["units"]["day"][lang]
+    if lang == "ka":
+        return f"{price} ₾-დან დღეში"
+    return f'{su("price_from", lang)} {price} ₾/{day}'
+
+
 def cheapest_price(cat):
     """იმ კატეგორიის ყველაზე იაფი ავტომობილის დღიური ტარიფი."""
-    m = {"economy": "economy", "suv": "suv", "offroad": "offroad"}.get(cat, "economy")
-    ps = [int(c["price_1_6"]) for c in CARS.values() if c["category"] == m]
+    # Every category prices itself. The old map sent business, minivan and
+    # van to the economy rate, so their cards advertised "from 75 ₾" for a
+    # 210 ₾ Camry.
+    ps = [int(c["price_1_6"]) for c in CARS.values() if c["category"] == cat]
     if not ps:
         ps = [int(c["price_1_6"]) for c in CARS.values()]
     return min(ps) if ps else 0
@@ -3782,6 +3794,13 @@ def rental_quality_ok(kind, payload):
         # A duration page earns its place on the price table: without real
         # per-category rates it is just a claim that renting longer is cheaper.
         d = payload.get("data") or {}
+        if d.get("kind") == "service":
+            # A service page (one-way, with driver, airport) has no price
+            # tiers; it earns its place with real terms in every language.
+            return (len(d.get("category_keys") or []) >= 1
+                    and all(len((payload.get(l) or {}).get("good_to_know") or []) >= 5
+                            and (payload.get(l) or {}).get("pickup")
+                            for l in LANGS))
         return (len(d.get("price_table") or []) >= 3
                 and len(d.get("category_keys") or []) >= 3)
     return True
@@ -3803,7 +3822,7 @@ def _car_card(lang, slug):
     return (f'<div class="card stop-card">{img}'
             f'<h3><a href="{car_url(lang, slug, False)}">{E(L["name"])}</a></h3>'
             f'<p>{E(specs)}</p>'
-            f'<span class="price">{su("price_from", lang)} {price} ₾/{SPECS["units"]["day"][lang]}</span>'
+            f'<span class="price">{E(price_from_text(lang, price))}</span>'
             f'</div>')
 
 
@@ -3936,8 +3955,7 @@ def attraction_links_block(lang, slug, a):
         out += _sec(su("best_car_for_trip", lang),
                     f'<div class="article"><p>{E(su("road", lang, road))}</p>'
                     f'<p><a class="btn ghost" href="{rental_cat_url(lang, cat, False)}">'
-                    f'{E(cat_label(cat, lang))} — {E(su("price_from", lang))} '
-                    f'{cheapest_price(cat)} ₾/{E(SPECS["units"]["day"][lang])}</a></p></div>', alt=True)
+                    f'{E(cat_label(cat, lang))} — {E(price_from_text(lang, cheapest_price(cat)))}</a></p></div>', alt=True)
     out += guide_links_block(lang, guides_for_place(a))
     out += pickup_link_block(lang, a.get("lat"), a.get("lon"))
     return out
@@ -3949,8 +3967,7 @@ def route_links_block(lang, slug, r):
     out = _sec(su("best_car_for_trip", lang),
                f'<div class="article"><p><a class="btn ghost" '
                f'href="{rental_cat_url(lang, cat, False)}">{E(cat_label(cat, lang))} — '
-               f'{E(su("price_from", lang))} {cheapest_price(cat)} ₾/'
-               f'{E(SPECS["units"]["day"][lang])}</a></p></div>')
+               f'{E(price_from_text(lang, cheapest_price(cat)))}</a></p></div>')
     # The specific cars in that class, not just the class page — a visitor
     # deciding on a route wants to see the actual vehicle.
     cars_in_cat = [s for s, c in CARS.items() if c.get("category") == cat][:3]
@@ -4053,8 +4070,7 @@ def render_car_rental_hub(lang):
         f'<div class="card"><h3><a href="{rental_cat_url(lang, k, False)}">'
         f'{E((cats[k].get(lang) or {}).get("h1", cat_label(k, lang)))}</a></h3>'
         f'<p>{E((cats[k].get(lang) or {}).get("lead", ""))}</p>'
-        f'<span class="price">{su("price_from", lang)} '
-        f'{cats[k]["data"].get("price_from_gel", cheapest_price(k))} ₾/{SPECS["units"]["day"][lang]}</span></div>'
+        f'<span class="price">{E(price_from_text(lang, cats[k]["data"].get("price_from_gel", cheapest_price(k))))}</span></div>'
         for k in order if rental_quality_ok("category", cats[k]))
     loc_links = "".join(
         f'<li><a href="{rental_place_url(lang, k, False)}">'
@@ -4134,8 +4150,7 @@ def render_rental_location(lang, key):
     cat_cards = "".join(
         f'<div class="card"><h3><a href="{rental_cat_url(lang, k, False)}">'
         f'{E(cat_label(k, lang))}</a></h3>'
-        f'<span class="price">{su("price_from", lang)} {cheapest_price(k)} ₾/'
-        f'{SPECS["units"]["day"][lang]}</span></div>'
+        f'<span class="price">{E(price_from_text(lang, cheapest_price(k)))}</span></div>'
         for k in (d.get("category_keys") or []))
     # The airport template already says "Airport"; feed the bare city name so we
     # never render "Tbilisi Airport Airport Car Rental".
@@ -4231,27 +4246,49 @@ def render_rental_duration(lang, key):
     if not L or not rental_quality_ok("duration", dur):
         return None
     d = dur.get("data") or {}
+    service = d.get("kind") == "service"
     hub_h1 = ((SEO_CAR_RENTAL.get("hub") or {}).get(lang) or {}).get("h1", "Car rental")
     gtk = "".join(f"<li>{E(x)}</li>" for x in (L.get("good_to_know") or []))
+    durs = SEO_CAR_RENTAL.get("durations") or {}
+    # Sibling services and the pickup points this service applies to — the
+    # cross-links that make one-way / airport / driver a cluster rather than
+    # three orphans.
+    sib = "".join(
+        f'<li><a href="{rental_duration_url(lang, k, False)}">'
+        f'{E(((durs.get(k) or {}).get(lang) or {}).get("h1", k))}</a></li>'
+        for k in (d.get("related_keys") or [])
+        if k in durs and rental_quality_ok("duration", durs[k]) and (durs[k].get(lang) or {}).get("h1"))
+    locs = "".join(
+        f'<li><a href="{rental_place_url(lang, k, False)}">'
+        f'{E((((SEO_CAR_RENTAL.get("locations") or {}).get(k) or {}).get(lang) or {}).get("h1", k))}</a></li>'
+        for k in (d.get("location_keys") or [])
+        if k in RENTAL_PLACES and rental_quality_ok("location", (SEO_CAR_RENTAL.get("locations") or {}).get(k, {})))
     cat_cards = "".join(
         f'<div class="card"><h3><a href="{rental_cat_url(lang, k, False)}">'
         f'{E(cat_label(k, lang))}</a></h3>'
-        f'<span class="price">{su("price_from", lang)} {cheapest_price(k)} ₾/'
-        f'{SPECS["units"]["day"][lang]}</span></div>'
+        f'<span class="price">{E(price_from_text(lang, cheapest_price(k)))}</span></div>'
         for k in (d.get("category_keys") or []) if k in {c["key"] for c in CATS})
     body = (
         f'<section class="page-head"><div class="wrap"><h1>{E(L.get("h1", ""))}</h1>'
         f'<p class="lead">{E(L.get("lead", ""))}</p></div></section>'
-        + _sec(su("dur_what_it_costs", lang) or su("price_from", lang),
-               _duration_price_table(lang, d.get("price_table")))
-        + (_sec(su("dur_a_month_with_the_car", lang) or u["nav"].get("faq", "Good to know"),
+        + (_sec(su("dur_what_it_costs", lang) or su("price_from", lang),
+                _duration_price_table(lang, d.get("price_table")))
+           if d.get("price_table") else "")
+        + (_sec(su("dur_how_it_works", lang) or su("pickup_locations", lang),
+                f'<div class="article"><p>{E(L.get("pickup", ""))}</p></div>'
+                + (f'<ul class="linklist">{locs}</ul>' if locs else ""))
+           if service and L.get("pickup") else "")
+        + (_sec((su("svc_good_to_know", lang) if service else su("dur_a_month_with_the_car", lang))
+                or u["nav"].get("faq", "Good to know"),
                 f'<div class="article"><p>{E(L.get("getting_around", ""))}</p><ul>{gtk}</ul></div>',
                 alt=True) if L.get("getting_around") or gtk else "")
         + (_sec(su("dur_how_it_works", lang) or su("pickup_locations", lang),
                 f'<div class="article"><p>{E(L.get("pickup", ""))}</p></div>')
-           if L.get("pickup") else "")
+           if L.get("pickup") and not service else "")
         + (_sec(su("best_car_for_trip", lang), f'<div class="cards">{cat_cards}</div>', alt=True)
            if cat_cards else "")
+        + (_sec(su("svc_more_ways", lang) or hub_h1, f'<ul class="linklist">{sib}</ul>')
+           if sib else "")
         + (_sec(su("rental_terms", lang) or "Rental terms", policy_table_html(lang))
            if policy_facts(lang) else "")
         + guide_links_block(lang, list(GUIDES), alt=True)
@@ -4267,7 +4304,17 @@ def render_rental_duration(lang, key):
     desc = L.get("meta_description", "")
     url = rental_duration_url(lang, key)
     rows = [r for r in (d.get("price_table") or []) if r.get("price_30")]
-    graph = [org_node(lang), website_node(lang),
+    svc_node = {"@type": "Service", "@id": url + "#service", "name": L.get("h1", ""),
+                "description": desc, "url": url,
+                "serviceType": su("car_rental", lang) or "Car rental",
+                "provider": {"@id": SITE_URL + "/#organization"},
+                "areaServed": [{"@type": "Airport" if PLACE_BY_KEY[k].get("kind") == "airport" else "City",
+                                "name": PLACE_BY_KEY[k].get(lang) or PLACE_BY_KEY[k].get("en") or k}
+                               for k in (d.get("location_keys") or [])
+                               if k in PLACE_BY_KEY] or None} if service else None
+    if svc_node and not svc_node["areaServed"]:
+        svc_node.pop("areaServed")
+    graph = [org_node(lang), website_node(lang), svc_node,
              {"@type": "Product", "@id": url + "#offer", "name": L.get("h1", ""),
               "description": desc, "url": url,
               "category": su("car_rental", lang) or "Car rental",
@@ -4517,8 +4564,7 @@ def _guide_related(lang, g):
         out += _sec(su("best_car_for_trip", lang),
                     f'<div class="article"><p><a class="btn ghost" '
                     f'href="{rental_cat_url(lang, cat, False)}">{E(cat_label(cat, lang))} — '
-                    f'{E(su("price_from", lang))} {cheapest_price(cat)} ₾/'
-                    f'{E(SPECS["units"]["day"][lang])}</a></p></div>')
+                    f'{E(price_from_text(lang, cheapest_price(cat)))}</a></p></div>')
     return out
 
 
@@ -4528,6 +4574,10 @@ def guide_links_block(lang, slugs, alt=False):
     that matches its own data."""
     items = [(sl, GUIDES[sl]) for sl in slugs
              if sl in GUIDES and guide_quality_ok(GUIDES[sl], lang)]
+    if len(items) > 4:
+        # A full list is the guides hub in miniature: show it in editorial
+        # order, not the order the files happen to load in.
+        items.sort(key=lambda it: (it[1].get("order", 99), it[0]))
     if not items:
         return ""
     li = "".join(
@@ -4540,12 +4590,20 @@ def guide_links_block(lang, slugs, alt=False):
 def guides_for_place(a):
     """Which guides actually answer this place's own question."""
     out = []
+    slug = a.get("slug") or next((k for k, v in ATTRACTIONS.items() if v is a), None)
+    # A guide that names this place explicitly is the most specific answer:
+    # the Kazbegi road guide for Ananuri, the Svaneti one for Ushguli.
+    for g, gd in GUIDES.items():
+        if slug and slug in (gd.get("related_attractions") or []) and g.startswith("road-to-"):
+            out.append(g)
     if (a.get("road") in ("gravel", "4x4_only")) or a.get("car_category") == "offroad":
         out.append("do-i-need-a-4x4-in-georgia")
+    if a.get("open_year_round") is False or "december" in str(a.get("best_season") or ""):
+        out.append("winter-driving-in-georgia")
     if (a.get("best_season") or "all") != "all" or a.get("open_year_round") is False:
         out.append("best-time-to-visit-georgia")
     out.append("driving-in-georgia")
-    return list(dict.fromkeys(out))[:2]
+    return [g for g in dict.fromkeys(out) if g in GUIDES][:2]
 
 
 def image_object(url, credit, name=""):
