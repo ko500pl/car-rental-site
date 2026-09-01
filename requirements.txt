@@ -2,3 +2,6 @@
 # Codex, Claude Code and CI builds resolve the same packages.
 PyYAML==6.0.3
 Markdown==3.10.3
+# Card-sized photo variants at build time (build.py: make_photo_thumbnails).
+# Optional at runtime — without it every page simply serves the full-size photo.
+Pillow==12.3.0
