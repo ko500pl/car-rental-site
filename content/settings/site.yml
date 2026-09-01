@@ -55,3 +55,10 @@ verification:
 
 # GA4 property id, e.g. G-XXXXXXXXXX. Empty means analytics stays switched off.
 ga_measurement_id: ''
+
+# IndexNow — tells Bing, Yandex, Seznam and Naver about new or changed pages
+# within hours instead of waiting weeks for a crawl. The key is a public token,
+# not a secret: it is published at https://rentup.ge/<key>.txt so the engines
+# can confirm we own the site. Generated once; changing it means republishing
+# the file. Submit with: python scripts/indexnow_submit.py
+indexnow_key: 'ca8bf56ae2966915fa1138e5451f0615'

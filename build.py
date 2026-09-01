@@ -5832,6 +5832,12 @@ def main():
                        ("llms.txt", llms_txt()), ("llms-full.txt", llms_full_txt()),
                        ("404.html", render_404()), (".nojekyll", "")]:
         write(os.path.join(out, name), data)
+    # IndexNow ownership file. Publishing it is what lets Bing, Yandex, Seznam
+    # and Naver accept a submission for this host; scripts/indexnow_submit.py
+    # sends the URL list after a deploy.
+    _inkey = str(SITE.get("indexnow_key", "")).strip()
+    if _inkey:
+        write(os.path.join(out, f"{_inkey}.txt"), _inkey)
 
     print(f"✔ {n} HTML გვერდი ({len(CARS)} ავტომობილი, {len(POSTS)} სტატია, {len(LANGS)} ენა) → ./{out}")
 
