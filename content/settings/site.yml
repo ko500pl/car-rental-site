@@ -49,7 +49,7 @@ whatsapp: '995597555565'
 #   Bing:    bing.com/webmasters               → also feeds DuckDuckGo
 #   Yandex:  webmaster.yandex.com              → matters for the Russian market
 verification:
-  google: ''
+  google: 'S1S-80iSkMTssLF4iNTtbhbuSj3ogl6iZTrIagQ0NMg'
   bing: ''
   yandex: ''
 
