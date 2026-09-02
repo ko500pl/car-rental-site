@@ -78,6 +78,22 @@ class PublicClaimsTests(unittest.TestCase):
                 offenders.append(path.relative_to(ROOT).as_posix())
         self.assertEqual(offenders, [], f"stale fleet-size claims: {offenders}")
 
+    def test_fuel_policy_is_named_consistently(self):
+        """rental_policy.yml says full_to_full; the hub once called the same
+        rule "same-to-same", which is the sentence an assistant quotes for
+        "what is the fuel policy". No copy may name a different policy."""
+        banned = ("same-to-same", "same to same", "level-to-level", "quarter tank")
+        content = ROOT / "content"
+        offenders = []
+        for path in list((content / "pages").glob("*.yml")) + list((content / "settings").glob("*.yml")) \
+                + list((content / "guides").glob("*.yml")):
+            if path.name == "seo_ui.yml":      # the label table for every policy value, not prose
+                continue
+            text = re.sub(r"\s+", " ", path.read_text(encoding="utf-8-sig").lower())
+            if any(b in text for b in banned):
+                offenders.append(path.relative_to(ROOT).as_posix())
+        self.assertEqual(offenders, [], f"fuel policy named inconsistently: {offenders}")
+
     def test_booking_copy_matches_the_stated_payment_policy(self):
         """Payment copy must agree with content/settings/rental_policy.yml.
 

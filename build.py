@@ -760,6 +760,9 @@ def org_node(lang):
         "availableLanguage": [LANG_LABEL.get(l, l) for l in LANGS],
         "areaServed": "GE",
         **({"email": SITE["email"]} if SITE.get("email") else {})}
+    node["knowsAbout"] = ["Car rental in Georgia", "Georgian road conditions",
+                          "Georgian Military Highway", "Svaneti and Tusheti roads",
+                          "4x4 requirements in Georgia"]
     return node
 
 
@@ -3417,7 +3420,7 @@ def robots(include_docs=False):
     for b in AI_BOTS:
         out += [f"User-agent: {b}", "Allow: /", ""]
     # `Host:` was a Yandex-only directive, retired in 2018 — it does nothing now.
-    out += [f"Sitemap: {SITE_URL}/sitemap.xml", ""]
+    out += [f"Sitemap: {SITE_URL}/sitemap.xml", f"Llms: {SITE_URL}/llms.txt", ""]
     return "\n".join(out)
 
 
@@ -3430,6 +3433,19 @@ def llms_txt():
     out = [f"# {BRAND}", "", f"> {m['org_desc']}", "", "## Key facts", ""]
     for k, v in m["llms_facts"]:
         out.append(f"- **{k}:** {v}")
+    # The guides are the most quotable pages on the site — declarative
+    # sentences with counted numbers — and were absent from the one file
+    # written for assistants. They go first, with their answer paragraph.
+    out += ["", "## Guides", ""]
+    for sl in sorted(GUIDES, key=lambda x: (GUIDES[x].get("order", 99), x)):
+        g = GUIDES[sl]; L = g.get("en") or {}
+        if not L or not guide_quality_ok(g, "en"):
+            continue
+        line = f"- [{L['name']}]({guide_url('en', sl)})"
+        if g.get("updated"):
+            line += f" (verified {g['updated']})"
+        line += f": {L.get('answer') or L.get('short', '')}"
+        out.append(line)
     out += ["", "## Pages", ""]
     for p in PAGE_ORDER:
         if p in NOINDEX_PAGES:          # never point an assistant at a noindex page
@@ -3452,6 +3468,11 @@ def llms_txt():
         L = cat.get("en") or {}
         if L and rental_quality_ok("category", cat):
             out.append(f"- [{L.get('h1', k)}]({rental_cat_url('en', k)}): {L.get('lead', '')}")
+    for k in (SEO_CAR_RENTAL.get("durations") or {}):
+        dur = SEO_CAR_RENTAL["durations"][k]; L = dur.get("en") or {}
+        if L and rental_quality_ok("duration", dur):
+            out.append(f"- [{L.get('h1', k)}]({rental_duration_url('en', k)}): "
+                       f"{L.get('answer') or L.get('lead', '')}")
     _pl = (SEO_TRIP_PLANNER.get("planner") or {}).get("en") or {}
     if _pl:
         out.append(f"- [{_pl.get('h1', 'Trip planner')}]"
@@ -3481,19 +3502,19 @@ def llms_txt():
     out += ["", "## Regions", ""]
     for k, r in REGIONS.items():
         out.append(f"- [{r['en']['name']}]({region_url('en', k)}): {r['en']['short']}")
-    out += ["", "## Attractions", ""]
-    for s, a in ATTRACTIONS.items():
-        out.append(f"- [{a['en']['name']}]({attr_url('en', s)}): {a['en']['short']} "
-                   f"Time needed {a['visit_hours']} h; {a['distance_tbilisi_km']} km / "
-                   f"{a['drive_time_tbilisi']} from Tbilisi; road {a['road']}; "
-                   f"car {a['car_category']}; season {a['best_season']}; entry {a['entry_fee']}")
+    # The per-place dump (267 lines, two thirds of the file) lives in
+    # llms-full.txt; the index stays an index.
+    out += ["", "## Attractions", "",
+            f"- [All {len(ATTRACTIONS)} places with road, car and season data]"
+            f"({index_hub_url('en', 'attractions')}) — the full list is in "
+            f"[llms-full.txt]({SITE_URL}/llms-full.txt)"]
     out += ["", "## Languages", ""]
     out += [f"- [{LANG_LABEL[l]}]({SITE_URL + lang_root(l)})" for l in LANGS]
     out += ["", "## Contact", "", f"- Phone: {SITE['phone']}", f"- Mobile: {SITE['mobile']}",
             f"- Email: {SITE['email']}",
             f"- Address: {SITE['address']['en']['street']}, {SITE['address']['en']['city']} "
             f"{SITE['address_zip']}, Georgia", "", f"Last updated: {TODAY}", ""]
-    return "\n".join(out)
+    return "\n".join(out).replace("''", "'")
 
 
 def llms_full_txt():
@@ -3558,6 +3579,18 @@ def llms_full_txt():
         out += [f"### {rg['en']['name']}", f"URL: {region_url('en', k)}",
                 strip_md(rg["en"]["body"]),
                 "Driving: " + strip_md(rg["en"]["driving"]), ""]
+    out += ["\n## Guides", ""]
+    for sl in sorted(GUIDES, key=lambda x: (GUIDES[x].get("order", 99), x)):
+        g = GUIDES[sl]; L = g.get("en") or {}
+        if not L or not guide_quality_ok(g, "en"):
+            continue
+        out += [f"\n### {L['name']}", f"URL: {guide_url('en', sl)}",
+                *( [f"Last verified: {g['updated']}"] if g.get("updated") else []), ""]
+        if L.get("answer"):
+            out += [L["answer"], ""]
+        out += [strip_md(L["body"]), ""]
+        for x in (L.get("faq") or []):
+            out += [f"Q: {x['q']}", f"A: {strip_md(x['a'])}"]
     out += ["\n## Attractions", ""]
     for s, a in ATTRACTIONS.items():
         out += [f"### {a['en']['name']}", f"URL: {attr_url('en', s)}",
@@ -4097,6 +4130,8 @@ def render_car_rental_hub(lang):
     body = (
         f'<section class="page-head"><div class="wrap"><h1>{E(h.get("h1", ""))}</h1>'
         f'<p class="lead">{E(h.get("lead", ""))}</p></div></section>'
+        + (f'<section class="sec"><div class="wrap">{keyfacts_html(lang, h.get("answer"))}</div></section>'
+           if h.get("answer") else "")
         + _sec(su("cars_in_category", lang) or u["nav"]["fleet"],
                f'<div class="cards">{cat_cards}</div>')
         + _sec(su("pickup_locations", lang), f'<ul class="linklist">{loc_links}</ul>', alt=True)
@@ -4271,6 +4306,8 @@ def render_rental_duration(lang, key):
     body = (
         f'<section class="page-head"><div class="wrap"><h1>{E(L.get("h1", ""))}</h1>'
         f'<p class="lead">{E(L.get("lead", ""))}</p></div></section>'
+        + (f'<section class="sec"><div class="wrap">{keyfacts_html(lang, L.get("answer"))}</div></section>'
+           if L.get("answer") else "")
         + (_sec(su("dur_what_it_costs", lang) or su("price_from", lang),
                 _duration_price_table(lang, d.get("price_table")))
            if d.get("price_table") else "")
@@ -4630,6 +4667,21 @@ def image_object(url, credit, name=""):
     return node
 
 
+def keyfacts_html(lang, answer, updated=None):
+    """The one span an answer engine should lift: a declarative paragraph
+    with the real numbers, a visible verification date, and a line saying
+    who counted and why they would know. dateModified in JSON-LD is not
+    enough — extractors weigh the date they can *read*."""
+    if not answer:
+        return ""
+    when = ""
+    if updated:
+        when = (f'<time datetime="{E(str(updated))}">'
+                f'{E(su("last_verified", lang) or "Last verified")} {E(fmt_date(str(updated), lang))}</time> · ')
+    return (f'<div class="keyfacts"><p>{E(answer)}</p>'
+            f'<p class="meta">{when}{E(su("published_by_line", lang) or "")}</p></div>')
+
+
 def render_guide(lang, slug, g):
     u = UI[lang]
     depth = 2 if lang == ROOT_LANG else 3
@@ -4641,8 +4693,9 @@ def render_guide(lang, slug, g):
     body = (
         f'<section class="page-head"><div class="wrap"><h1>{E(L["name"])}</h1>'
         f'<p class="lead">{E(L.get("short", ""))}</p></div></section>'
-        f'<section class="sec"><div class="wrap"><div class="article">'
-        f'{render_md(L["body"], lang)}</div></div></section>'
+        f'<section class="sec"><div class="wrap">'
+        f'{keyfacts_html(lang, L.get("answer"), g.get("updated"))}'
+        f'<div class="article">{render_md(L["body"], lang)}</div></div></section>'
         + _guide_related(lang, g)
         + (_sec("FAQ", f'<div class="faq">{_faq_html(faq)}</div>', alt=True) if faq else "")
         + f'<section class="sec"><div class="wrap"><div class="cta">'
@@ -4661,6 +4714,10 @@ def render_guide(lang, slug, g):
               "author": {"@id": SITE_URL + "/#organization"},
               "publisher": {"@id": SITE_URL + "/#organization"},
               "mainEntityOfPage": url,
+              **({"abstract": L["answer"],
+                  "speakable": {"@type": "SpeakableSpecification",
+                                "cssSelector": [".keyfacts"]}} if L.get("answer") else {}),
+              **({"datePublished": g["published"]} if g.get("published") else {}),
               **({"dateModified": g["updated"]} if g.get("updated") else {}),
               **({"image": abs_url(g["image"])} if g.get("image") else {})},
              crumbs_node(lang, [(u["nav"]["index"], page_url(lang, "index")),
@@ -5669,6 +5726,38 @@ body{{background:#07101a;color:#edf6fc}}#booking-admin{{width:min(1100px,94%);ma
 <main id="booking-admin"></main><script>window.FH_ADMIN_CFG={J(cfg)};</script><script type="module" src="{ASSET["admin_bookings"]}"></script></body></html>'''
 
 
+def _legacy_en_redirects(out):
+    """The previous site served English under /en/. Bing still lists
+    /en/about, /en/fleet and friends, and every one of them now 404s — so
+    whatever trust those URLs earned dies at the door. GitHub Pages cannot
+    send a 301, so each legacy path gets a tiny stub that canonicalises to
+    the current root-language URL and forwards the visitor there. Not in
+    the sitemap; noindex; crawlable so the canonical is seen."""
+    skip = set(LANGS) | {"assets", "data", "sitemaps", "en",
+            "account", "admin", "app", "trip", "business-card", "community"}
+    made = 0
+    for dirpath, dirnames, filenames in os.walk(out):
+        rel = os.path.relpath(dirpath, out)
+        top = rel.split(os.sep)[0]
+        if rel == "." :
+            dirnames[:] = [d for d in dirnames if d not in skip]
+        elif top in skip:
+            continue
+        if "index.html" not in filenames:
+            continue
+        path = "/" if rel == "." else "/" + rel.replace(os.sep, "/") + "/"
+        target = SITE_URL + path
+        stub = (f'<!doctype html><html lang="{ROOT_LANG}" dir="{LANG_DIR[ROOT_LANG]}">'
+                f'<meta charset="utf-8"><meta name="robots" content="noindex">'
+                f'<link rel="canonical" href="{target}">'
+                f'<meta http-equiv="refresh" content="0;url={path}">'
+                f'<script>location.replace({J(path)})</script></html>')
+        dest = os.path.join(out, "en", "" if rel == "." else rel, "index.html")
+        write(dest, stub)
+        made += 1
+    print(f"  {made} legacy /en/ redirects")
+
+
 def main():
     args = [x for x in sys.argv[1:] if not x.startswith("--")]
     out = args[0] if args else "dist"
@@ -5896,6 +5985,7 @@ def main():
     _inkey = str(SITE.get("indexnow_key", "")).strip()
     if _inkey:
         write(os.path.join(out, f"{_inkey}.txt"), _inkey)
+    _legacy_en_redirects(out)
 
     print(f"✔ {n} HTML გვერდი ({len(CARS)} ავტომობილი, {len(POSTS)} სტატია, {len(LANGS)} ენა) → ./{out}")
 
