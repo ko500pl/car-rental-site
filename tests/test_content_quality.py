@@ -33,15 +33,43 @@ class AttractionMediaTests(unittest.TestCase):
         self.assertIn("zando-st-george-monastery", names)
         self.assertIn("telefisi-fortress", names)
 
-    def test_dezerters_bazaar_is_fully_removed(self):
-        self.assertFalse((ROOT / "content" / "attractions" / "dezerters-bazaar.yml").exists())
+    def test_attraction_photos_are_not_the_known_mismatches(self):
+        """No attraction may reuse the photographs that were mislabelled once.
+
+        This replaces test_dezerters_bazaar_is_fully_removed. That guard
+        banned the string "dezerter" anywhere in content/ after the card for
+        Dezerter Bazaar was deleted on 2026-08-16 in "Add verified
+        attractions". The card was not removed because of the place — it is
+        Tbilisi's main food market and a real attraction. It was removed
+        because its photographs were of something else: a Ministry of Defence
+        building, a church (Kirche Neu-Tiflis) and an unrelated stone
+        building, all credited as the bazaar.
+
+        Banning the name blocked the verified card too, which is the wrong
+        target. What must never come back is the mislabelled imagery, so that
+        is what this checks — for every place, not just one.
+        """
+        mislabelled = (
+            "MoD_Georgia.JPG",
+            "Kirche_Neu-Tiflis.jpg",
+            "Stone_building_in_Georgia_with_signs.jpg",
+        )
         offenders = []
-        needles = ("dezerter", "дезерт", "دزرت", "דזרט")
-        for path in (ROOT / "content").rglob("*.yml"):
-            text = re.sub(r"\s+", " ", path.read_text(encoding="utf-8-sig").lower())
-            if any(needle in text for needle in needles):
-                offenders.append(path.relative_to(ROOT).as_posix())
-        self.assertEqual(offenders, [])
+        for path in (ROOT / "content" / "attractions").glob("*.yml"):
+            text = path.read_text(encoding="utf-8-sig")
+            for bad in mislabelled:
+                if bad in text:
+                    offenders.append(f"{path.name}: {bad}")
+        self.assertEqual(offenders, [], f"mislabelled photo reused: {offenders}")
+
+    def test_every_attraction_photo_states_its_provenance(self):
+        """A photo with no credit is how the mislabelled ones got in."""
+        missing = []
+        for path in (ROOT / "content" / "attractions").glob("*.yml"):
+            d = yaml.safe_load(path.read_text(encoding="utf-8-sig")) or {}
+            if d.get("image") and not (d.get("image_credit") or d.get("gallery")):
+                missing.append(path.stem)
+        self.assertEqual(missing, [], f"attraction photos with no credit: {missing[:10]}")
 
     def test_attraction_car_categories_are_supported(self):
         invalid = []

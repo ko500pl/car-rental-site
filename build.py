@@ -4875,7 +4875,7 @@ def _gal_bucket(h):
 # Filtering runs over the rendered cards — no second copy of the data, and the
 # page is complete before this executes. Every control is a real button or
 # select, so keyboard and screen readers get it for free.
-GALLERY_JS = """<script>
+GALLERY_JS = r"""<script>
 (function(){
   var grid=document.getElementById('ggrid'); if(!grid) return;
   var cards=[].slice.call(grid.children), q=document.getElementById('gq'),
