@@ -3,22 +3,21 @@ chcp 65001 >nul
 
 rem ===========================================================
 rem   RentUp  >>  GitHub (main)
-rem   Live catalogue: every car sells, page or no page
+rem   Design pass: one voice across the app and the site
 rem ===========================================================
 rem
-rem This script deliberately does NOT use %~dp0. There are several
-rem worktrees of this repository under C:\Projects\car-rental-site,
-rem they all share one .git, and running an old copy of this file from
-rem one of them is what reset the branch back to an already-pushed
-rem commit last time. One fixed path, one answer.
+rem Fixed path on purpose. There are several worktrees of this
+rem repository under C:\Projects\car-rental-site and they share one
+rem .git, so running a copy of this file from one of them is how the
+rem branch got reset to an already-pushed commit once before.
 set REPO=C:\Projects\car-rental-site\car-rental-site
-set WANT=6d48f5b7a37fdad15e9f7f593daffe831e3314c6
+set WANT=44dabc99606f9e349eff212d0e0ff827b2a0a1e7
 
 cd /d "%REPO%" || (echo Cannot find %REPO% & timeout /t 20 & exit /b 1)
 
 echo ============================================================
 echo   RentUp  ^>^>  GitHub (main)
-echo   Live catalogue: every car sells, page or no page
+echo   Design pass: one voice across the app and the site
 echo   Repo: %REPO%
 echo ============================================================
 echo.
@@ -33,10 +32,11 @@ echo Fetching what is on GitHub right now...
 git fetch origin
 echo.
 
-rem Refuse to push blind. The commit below was built on top of a
-rem specific origin/main; if GitHub has moved since, forcing the branch
-rem to it would try a non-fast-forward push and fail anyway - or, worse,
-rem be "fixed" later with a force push that drops somebody's work.
+rem Refuse to push blind. This commit was built on a specific
+rem origin/main; if GitHub has moved since, forcing the branch to it
+rem would fail anyway, or be "fixed" later with a force push that drops
+rem somebody else's work. Another agent has been committing to this
+rem repository today, so this check is not theoretical.
 for /f %%i in ('git rev-parse "%WANT%^"') do set PARENT=%%i
 for /f %%i in ('git rev-parse origin/main') do set REMOTE=%%i
 
@@ -48,8 +48,7 @@ if not "%PARENT%"=="%REMOTE%" (
   echo   origin/main is now: %REMOTE%
   echo.
   echo   Nothing was changed and nothing was pushed. Tell Claude and
-  echo   it will rebuild the commit on the current origin/main - it
-  echo   takes a minute and loses nothing.
+  echo   it will rebuild the commit on the current origin/main.
   echo   ============================================================
   echo.
   timeout /t 30
@@ -61,8 +60,7 @@ echo.
 git --no-pager show --stat --oneline %WANT%
 echo.
 
-rem NO "git add -A" HERE, ON PURPOSE - your local photo-audit edits
-rem stay local. Only the six files above go up.
+rem NO "git add -A" here, on purpose - your local edits stay local.
 git update-ref refs/heads/harden-static-rental-funnel %WANT%
 git branch -f main %WANT%
 

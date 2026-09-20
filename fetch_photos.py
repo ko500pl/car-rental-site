@@ -38,7 +38,15 @@ def get(url, params, tries=3):
     for i in range(tries):
         try:
             with urllib.request.urlopen(req, timeout=25) as r:
+                time.sleep(0.8)          # be polite: stay under API rate limits
                 return json.loads(r.read().decode("utf-8"))
+        except urllib.error.HTTPError as e:
+            if e.code == 429:            # rate limited — back off hard
+                time.sleep(8 * (i + 1))
+            elif i == tries - 1:
+                return {}
+            else:
+                time.sleep(1.5 * (i + 1))
         except Exception:
             if i == tries - 1:
                 return {}
@@ -90,14 +98,16 @@ def from_wikipedia(name, lat, lon):
         return None
     d = get(WP, {"action": "query", "titles": "|".join(hits),
                  "prop": "coordinates|pageimages", "piprop": "original"})
-    for p in (d.get("query", {}).get("pages") or {}).values():
+    pages = list((d.get("query", {}).get("pages") or {}).values())
+    pages.sort(key=lambda p: hits.index(p["title"]) if p.get("title") in hits else 99)
+    for p in pages:
         co = (p.get("coordinates") or [None])[0]
         img = (p.get("original") or {}).get("source")
         if not co or not img:
             continue
         if hav(lat, lon, co["lat"], co["lon"]) > 6:      # არასწორი სტატია
             continue
-        fn = urllib.parse.unquote(img.rsplit("/", 1)[-1])
+        fn = urllib.parse.unquote(img.split("?", 1)[0].rsplit("/", 1)[-1])
         if BAD.search(fn):
             continue
         m = commons_meta("File:" + fn)
@@ -138,7 +148,7 @@ def save(slug, url):
     req = urllib.request.Request(url, headers={"User-Agent": UA})
     with urllib.request.urlopen(req, timeout=45) as r:
         raw = r.read()
-    tmp = os.path.join(OUT, slug + ".src")
+    tmp = os.path.join("/tmp" if os.access("/tmp", os.W_OK) else OUT, slug + ".src")
     with open(tmp, "wb") as f:
         f.write(raw)
     im = Image.open(tmp)
@@ -182,7 +192,7 @@ def main():
         files = [f for f in files if os.path.basename(f)[:-4] in only]
     ok = none = err = skip = 0
     total = 0
-    with ThreadPoolExecutor(max_workers=4) as ex:
+    with ThreadPoolExecutor(max_workers=1) as ex:
         for slug, st, size in ex.map(lambda f: one(f, force), files):
             if st == "ok":
                 ok += 1; total += size
