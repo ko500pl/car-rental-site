@@ -563,6 +563,106 @@ html,body{{overflow-x:hidden;max-width:100%}}
   body.has-actbar{{padding-bottom:74px}}
 }}
 
+/* Home: six places as photographs. A sentence about 267 attractions is a
+   claim; six pictures are the reason to rent the car. */
+.pstrip-head{{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:14px}}
+.pstrip-head h2{{margin:0;font-size:clamp(20px,2.3vw,25px)}}
+.pstrip{{display:grid;gap:12px;grid-template-columns:repeat(6,1fr)}}
+.pstrip-c{{position:relative;display:block;aspect-ratio:3/4;border-radius:14px;overflow:hidden;
+  background:var(--bg-3);color:#fff;transition:transform .18s ease,box-shadow .18s ease}}
+.pstrip-c img{{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}}
+.pstrip-c::after{{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 42%,rgba(8,22,33,.82))}}
+.pstrip-c:hover{{transform:translateY(-3px);box-shadow:0 12px 26px rgba(14,35,51,.18);
+  text-decoration:none;color:#fff}}
+.pstrip-c:hover img{{transform:scale(1.05)}}
+.pstrip-t{{position:absolute;inset-inline:0;bottom:0;z-index:1;padding:12px 13px;display:block}}
+.pstrip-t b{{display:block;font-size:14.5px;line-height:1.28;text-wrap:pretty}}
+.pstrip-t small{{display:block;margin-top:3px;font-size:12px;color:rgba(255,255,255,.82)}}
+@media (max-width:1100px){{.pstrip{{grid-template-columns:repeat(3,1fr)}}}}
+@media (max-width:560px){{
+  /* Six portrait cards stacked is a scroll; a swipe strip keeps them on one screen. */
+  .pstrip{{display:flex;overflow-x:auto;gap:10px;scroll-snap-type:x mandatory;
+    scrollbar-width:none;padding-bottom:4px;margin-inline:-16px;padding-inline:16px}}
+  .pstrip::-webkit-scrollbar{{display:none}}
+  .pstrip-c{{flex:0 0 152px;scroll-snap-align:start}}
+}}
+
+/* ── /attractions/ gallery ────────────────────────────────────────────────
+   The page was eleven region tables; nobody browses a table to pick where to
+   drive on a Saturday. Filter rail left, cards right, the rail becoming a
+   horizontal strip on a phone. */
+.gwrap{{display:grid;grid-template-columns:232px 1fr;gap:26px;align-items:start}}
+.gfilters{{position:sticky;top:84px;display:grid;gap:18px}}
+.gfil-g h2{{margin:0 0 8px;font-size:12.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:600}}
+.gchips{{display:flex;flex-wrap:wrap;gap:7px}}
+.gchip{{min-height:38px;padding:7px 13px;border:1px solid var(--line);border-radius:999px;
+  background:var(--bg-2);color:var(--ink);font:inherit;font-size:14px;font-weight:500;
+  cursor:pointer;transition:background .16s ease,border-color .16s ease,color .16s ease}}
+.gchip:hover{{border-color:var(--brand-2);background:var(--bg-3)}}
+.gchip.on{{background:var(--brand);border-color:var(--brand);color:var(--on-brand);font-weight:600}}
+.gsel{{width:100%;min-height:44px;padding:0 12px;border:1px solid var(--line);
+  border-radius:10px;background:var(--bg-2);color:var(--ink);font:inherit;font-size:14.5px}}
+
+.gbar{{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}}
+.gsearch{{position:relative;flex:1 1 260px;display:flex;align-items:center}}
+.gsearch svg{{position:absolute;inset-inline-start:13px;color:var(--ink-3);pointer-events:none}}
+.gsearch input{{width:100%;min-height:46px;padding-inline:40px 14px;border:1px solid var(--line);
+  border-radius:12px;background:var(--bg-2);color:var(--ink);font:inherit;font-size:15px}}
+[dir="rtl"] .gsearch input{{padding-inline:40px 14px}}
+.gbar .gsel{{width:auto;min-width:184px;flex:0 0 auto}}
+.gcount{{margin:0 0 14px;font-size:13.5px;color:var(--ink-2)}}
+.gempty{{margin:26px 0;padding:22px;text-align:center;color:var(--ink-2);
+  border:1px dashed var(--line);border-radius:var(--radius);background:var(--bg-2)}}
+
+.ggrid{{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(244px,1fr))}}
+.gcard{{display:flex;flex-direction:column;background:var(--bg-2);border:1px solid var(--line);
+  border-radius:var(--radius);overflow:hidden;
+  transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}}
+.gcard:hover{{transform:translateY(-2px);box-shadow:0 10px 24px rgba(14,35,51,.10);
+  border-color:color-mix(in srgb,var(--brand) 26%,var(--line))}}
+.gcard[hidden]{{display:none}}
+.gcard-img{{position:relative;display:block;aspect-ratio:4/3;background:var(--bg-3);overflow:hidden}}
+.gcard-img img{{width:100%;height:100%;object-fit:cover}}
+/* The rating sits on the photo, so it needs its own contrast rather than
+   borrowing the image's — a 5.0 over a pale sky is otherwise unreadable. */
+.gcard-rate{{position:absolute;inset-block-start:9px;inset-inline-start:9px;
+  padding:4px 9px;border-radius:999px;background:rgba(10,26,38,.82);color:#fff;
+  font-size:12.5px;font-weight:600;letter-spacing:.01em;backdrop-filter:blur(3px)}}
+.gcard-in{{padding:13px 14px 15px;display:flex;flex-direction:column;gap:9px;flex:1}}
+.gcard-in h3{{margin:0;font-size:16px;line-height:1.32;color:var(--brand-ink);font-weight:700}}
+.gcard-in h3 a{{color:inherit}}
+.gcard-in h3 a:hover{{color:var(--brand-2);text-decoration:none}}
+.gcard-tags{{display:flex;flex-wrap:wrap;gap:6px;margin:0}}
+.gtag{{padding:3px 9px;border-radius:999px;font-size:12px;font-weight:600;
+  background:color-mix(in srgb,var(--brand) 9%,var(--bg-2));color:var(--brand)}}
+.gtag.alt{{background:var(--bg-3);color:var(--ink-2);font-weight:500}}
+.gtag.car{{background:color-mix(in srgb,var(--ok) 11%,var(--bg-2));color:var(--ok)}}
+.gcard-facts{{display:grid;grid-template-columns:1fr auto;gap:6px 12px;margin:auto 0 0;
+  padding-top:10px;border-top:1px solid var(--line)}}
+.gcard-facts>div{{min-width:0}}
+.gcard-facts dt{{margin:0;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
+.gcard-facts dd{{margin:1px 0 0;font-size:13.5px;font-weight:600;color:var(--ink);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
+
+@media (max-width:900px){{
+  .gwrap{{grid-template-columns:1fr;gap:16px}}
+  /* The rail becomes a scrollable strip rather than 18 stacked groups that
+     push the first card below the fold. */
+  .gfilters{{position:static;grid-auto-flow:column;grid-auto-columns:max-content;
+    overflow-x:auto;gap:22px;padding-bottom:6px;scrollbar-width:none}}
+  .gfilters::-webkit-scrollbar{{display:none}}
+  .gchips{{flex-wrap:nowrap}}
+  .gfilters .gsel{{min-width:180px}}
+  #gclear{{align-self:center}}
+}}
+@media (max-width:520px){{
+  .ggrid{{grid-template-columns:repeat(auto-fill,minmax(158px,1fr));gap:12px}}
+  .gcard-facts{{grid-template-columns:1fr auto}}
+}}
+
 /* F-10 · Motion is opt-out, not opt-in. */
 @media (prefers-reduced-motion:reduce){{
   *,*::before,*::after{{animation-duration:.001ms !important;animation-iteration-count:1 !important;
@@ -964,9 +1064,7 @@ nav.main a{{font-size:13.5px;padding:6px 9px}}
 .card-title{{font-size:16px}}
 .card-text{{font-size:13.5px}}
 @media(max-width:760px){{
-  /* was a hardcoded 14px, which silently undid the base_font_size
-     token and dropped mobile body text two steps below the 16px floor. */
-  body{{font-size:{d['base_font_size']}px}}
+  body{{font-size:14px}}
   h1{{font-size:26px}}
   .page-head .lead{{font-size:15px}}
   .sec{{padding:30px 0}}
@@ -1437,7 +1535,7 @@ body.booking-open{{overflow:hidden}}
   --brand:#0d94ae;--brand-2:#0b8399;--brand-ink:#102a32;--accent:#0d94ae;--on-brand:#fff;
   --radius:12px
 }}
-body{{font-size:{d['base_font_size']}px;line-height:1.5;background:var(--bg);color:var(--ink)}}
+body{{font-size:14px;line-height:1.5;background:var(--bg);color:var(--ink)}}
 a{{color:#0d94ae}}
 .site-head{{background:#fff}}
 .btn,.head-tel a{{min-height:42px;padding:9px 16px;border-radius:9px;background:#0d94ae;color:#fff;font-weight:750}}
@@ -1664,7 +1762,7 @@ body{{
   --brand:#0b2f4d;--brand-2:#0d94ae;--brand-ink:#0e2333;--accent:#0d94ae;--on-brand:#fff;
   --ok:#0b7a55;--radius:12px
 }}
-body{{font-size:{d['base_font_size']}px;line-height:1.55;color:var(--ink);
+body{{font-size:15px;line-height:1.55;color:var(--ink);
   background:#f4f7f9;background-image:none;background-attachment:scroll}}
 a{{color:#0b5f73}}
 .site-head{{background:#fff}}

@@ -3734,13 +3734,40 @@ def home_semantic_block(lang):
     return out
 
 
+def home_places_strip(lang):
+    """Six of the highest-rated places, as photographs, linking into /attractions/.
+
+    The home page had a paragraph that said the map holds 257 attractions.
+    A paragraph about photographs is not a substitute for photographs, and
+    this is the only place on the site where the 267-place dataset is a
+    visible reason to rent a car rather than a claim."""
+    top = sorted(ATTRACTIONS.items(),
+                 key=lambda kv: (-(kv[1].get("rating") or 0), kv[1][lang]["name"]))[:6]
+    hub = index_hub_url(lang, "attractions", False)
+    cards = ""
+    for sl, a in top:
+        img = a.get("image")
+        pic = (f'<img src="{E(card_img(img))}" {img_srcset(img)} alt="" loading="lazy" '
+               f'decoding="async" {photo_dims(img)}>') if img else ""
+        cards += (f'<a class="pstrip-c" href="{attr_url(lang, sl, False)}">{pic}'
+                  f'<span class="pstrip-t"><b>{E(a[lang]["name"])}</b>'
+                  # .lower() turned "From Tbilisi" into "from tbilisi" — Tbilisi is a
+                  # proper noun in every language here.
+                  f'<small>{E(tl(lang, "type", a["type"]))} · {E(a["drive_time_tbilisi"])} '
+                  f'{E(tu(lang, "from_tbilisi"))}</small></span></a>')
+    return (f'<section class="sec"><div class="wrap">'
+            f'<div class="pstrip-head"><h2>{E(tu(lang, "attractions") or "Places")}</h2>'
+            f'<a class="btn ghost sm" href="{hub}">{E(su("browse_places", lang))}</a></div>'
+            f'<div class="pstrip">{cards}</div></div></section>')
+
+
 def landing_block(lang):
     t = LAND_UI[lang]
     places, cars_n, avg = landing_stats()
     cards = [
         (page_url(lang, "fleet", False), "", t["c3t"], t["c3d"], "rentup-card-cars.jpg", "#eaf3fc", "#cfe1f2", "#0b5f9e"),
         (lang_root(lang) + "tours/", "", t["c2t"], t["c2d"], "rentup-card-tours.jpg", "#fdf6e3", "#f0e2bd", "#a5760a"),
-        (page_url(lang, "map", False) + "#planner", "", t["c1t"], t["c1d"], "rentup-card-plan.jpg", "#e9f7ef", "#cbe8d8", "#0b7a55"),
+        (index_hub_url(lang, "attractions", False), "", t["c1t"], t["c1d"], "rentup-card-plan.jpg", "#e9f7ef", "#cbe8d8", "#0b7a55"),
         (page_url(lang, "community", False), "", t["c4t"], t["c4d"], "rentup-card-community.jpg", "#f4eefc", "#e0d3f4", "#6b3fa0"),
     ]
     cards_html = "".join(
@@ -3776,6 +3803,7 @@ def landing_block(lang):
             f'<div class="land-cards">{cards_html}</div></div>'
             f'<div class="land-stats">{stats_html}</div>'
             f'</div></section>'
+            + home_places_strip(lang)
             + home_semantic_block(lang))
 
 
@@ -4800,39 +4828,185 @@ def index_hub_url(lang, kind, absolute=True):
     return (SITE_URL + p) if absolute else p
 
 
+# The 16 raw place types are too many to use as a filter rail — Hick's law:
+# every extra choice costs decision time. They group into five the traveller
+# actually thinks in.
+GAL_GROUPS = [
+    ("nature",  {"nature", "mountain", "canyon", "cave"}),
+    ("history", {"monastery", "fortress", "museum", "archaeology"}),
+    ("town",    {"town", "theatre"}),
+    ("water",   {"lake", "waterfall", "beach"}),
+    ("active",  {"ski", "spa", "winery"}),
+]
+GAL_OF = {t: g for g, ts in GAL_GROUPS for t in ts}
+
+
+def _gal_bucket(h):
+    """Visit length in the three bands the filter offers."""
+    try:
+        v = float(str(h).split("-")[0].replace(",", "."))
+    except (TypeError, ValueError):
+        return "1to3"
+    return "under1" if v < 1 else ("1to3" if v <= 3 else "3plus")
+
+
+# Filtering runs over the rendered cards — no second copy of the data, and the
+# page is complete before this executes. Every control is a real button or
+# select, so keyboard and screen readers get it for free.
+GALLERY_JS = """<script>
+(function(){
+  var grid=document.getElementById('ggrid'); if(!grid) return;
+  var cards=[].slice.call(grid.children), q=document.getElementById('gq'),
+      sort=document.getElementById('gsort'), region=document.getElementById('gregion'),
+      count=document.getElementById('gcount'), empty=document.getElementById('gempty'),
+      tpl=count?count.textContent:'', total=cards.length, f={g:'',rate:'',t:''};
+  function apply(){
+    var s=(q&&q.value||'').trim().toLowerCase(), r=region?region.value:'', n=0;
+    cards.forEach(function(c){
+      var ok=(!f.g||c.dataset.g===f.g)&&(!f.t||c.dataset.t===f.t)
+           &&(!f.rate||parseFloat(c.dataset.rate)>=parseFloat(f.rate))
+           &&(!r||c.dataset.r===r)&&(!s||c.dataset.n.indexOf(s)>-1);
+      c.hidden=!ok; if(ok) n++;
+    });
+    if(count) count.textContent=tpl.replace(/\d+/, n);
+    if(empty) empty.hidden=n>0;
+  }
+  function order(){
+    var k=sort?sort.value:'rate', a=cards.slice();
+    a.sort(function(x,y){
+      if(k==='name') return x.querySelector('h3').textContent.localeCompare(y.querySelector('h3').textContent);
+      if(k==='near') return (+x.dataset.km)-(+y.dataset.km);
+      return (+y.dataset.rate)-(+x.dataset.rate);
+    });
+    a.forEach(function(c){grid.appendChild(c);});
+  }
+  [].slice.call(document.querySelectorAll('.gchip')).forEach(function(b){
+    b.addEventListener('click',function(){
+      var key=b.dataset.f; f[key]=b.dataset.v;
+      [].slice.call(document.querySelectorAll('.gchip[data-f="'+key+'"]')).forEach(function(o){
+        o.classList.toggle('on',o===b); o.setAttribute('aria-pressed',o===b);
+      });
+      apply();
+    });
+    b.setAttribute('aria-pressed', b.classList.contains('on'));
+  });
+  if(q) q.addEventListener('input',apply);
+  if(region) region.addEventListener('change',apply);
+  if(sort) sort.addEventListener('change',function(){order();apply();});
+  var clear=document.getElementById('gclear');
+  if(clear) clear.addEventListener('click',function(){
+    f={g:'',rate:'',t:''}; if(q)q.value=''; if(region)region.value='';
+    [].slice.call(document.querySelectorAll('.gchip')).forEach(function(o){
+      var on=o.dataset.v===''; o.classList.toggle('on',on); o.setAttribute('aria-pressed',on);
+    });
+    apply();
+  });
+})();
+</script>"""
+
+
 def render_attractions_hub(lang):
+    """The 267 places as a filterable gallery.
+
+    This page used to be eleven region tables — accurate, and nobody browses a
+    table to choose where to drive on a Saturday. The cards carry the same
+    numbers (distance, drive time, road, car class) plus the photograph, and
+    the filter rail is the one the trip actually starts from: what kind of
+    place, which region, how long it takes, how good it is.
+
+    Every card is in the HTML. Filtering is progressive enhancement over the
+    rendered DOM, so a crawler — and a visitor whose JS fails — still gets all
+    267 places and their links."""
     u = UI[lang]
     depth = 1 if lang == ROOT_LANG else 2
     hub_h1 = tu(lang, "attractions") or "Attractions"
-    by_region = {}
-    for sl, a in ATTRACTIONS.items():
-        by_region.setdefault(a["region"], []).append((sl, a))
-    secs = ""
-    for rk in REGIONS:
-        rows = sorted(by_region.get(rk, []), key=lambda kv: kv[1][lang]["name"])
-        if not rows:
-            continue
-        body = "".join(
-            f'<tr><td><a href="{attr_url(lang, sl, False)}">{E(a[lang]["name"])}</a></td>'
-            f'<td>{a["distance_tbilisi_km"]} {E(tu(lang, "km"))}</td>'
-            f'<td>{E(a["drive_time_tbilisi"])}</td>'
-            f'<td>{E(su("road", lang, a.get("road", "paved")))}</td>'
-            f'<td>{E(car_cat_label(a.get("car_category", "economy"), lang))}</td></tr>'
-            for sl, a in rows)
-        head = (f'<tr><th>{E(hub_h1)}</th><th>{E(tu(lang, "from_tbilisi"))}</th>'
-                f'<th>{E(tu(lang, "drive_time"))}</th><th>{E(su("road_surface", lang))}</th>'
-                f'<th>{E(su("car_needed", lang))}</th></tr>')
-        secs += _sec(f'<a href="{region_url(lang, rk, False)}">{E(REGIONS[rk][lang]["name"])}</a>',
-                     f'<div class="tbl-wrap"><table class="spec"><thead>{head}</thead>'
-                     f'<tbody>{body}</tbody></table></div>',
-                     alt=(len(secs) // 900) % 2 == 1)
-    title, desc = seo_meta("attractions_hub", lang, count=len(ATTRACTIONS),
-                           regions=len(REGIONS))
+    total = len(ATTRACTIONS)
+
+    rows = sorted(ATTRACTIONS.items(),
+                  key=lambda kv: (-(kv[1].get("rating") or 0), kv[1][lang]["name"]))
+    cards = ""
+    for sl, a in rows:
+        g = GAL_OF.get(a["type"], "nature")
+        rating = a.get("rating") or 0
+        hrs = a.get("visit_hours", "")
+        img = a.get("image")
+        pic = (f'<img src="{E(card_img(img))}" {img_srcset(img)} alt="" loading="lazy" '
+               f'decoding="async" {photo_dims(img)}>') if img else ""
+        region_name = REGIONS.get(a["region"], {}).get(lang, {}).get("name", a["region"])
+        cards += (
+            f'<article class="gcard" data-g="{E(g)}" data-r="{E(a["region"])}" '
+            f'data-rate="{rating}" data-t="{E(_gal_bucket(hrs))}" '
+            f'data-km="{a.get("distance_tbilisi_km", 0)}" '
+            f'data-n="{E((a[lang]["name"] + " " + region_name).lower())}">'
+            f'<a class="gcard-img" href="{attr_url(lang, sl, False)}" tabindex="-1" aria-hidden="true">{pic}'
+            f'<span class="gcard-rate">★ {rating:g}</span></a>'
+            f'<div class="gcard-in"><h3><a href="{attr_url(lang, sl, False)}">{E(a[lang]["name"])}</a></h3>'
+            f'<p class="gcard-tags"><span class="gtag">{E(tl(lang, "type", a["type"]))}</span>'
+            f'<span class="gtag alt">{E(region_name)}</span>'
+            f'<span class="gtag car">{E(car_cat_label(a.get("car_category", "economy"), lang))}</span></p>'
+            # Two facts, not three: at 158px the third column truncated its own
+            # label. Distance and drive time answer one question, so they share
+            # a row; the car class is a category and belongs with the chips.
+            f'<dl class="gcard-facts">'
+            f'<div><dt>{E(tu(lang, "from_tbilisi"))}</dt>'
+            f'<dd>{a["distance_tbilisi_km"]} {E(tu(lang, "km"))} · {E(a["drive_time_tbilisi"])}</dd></div>'
+            f'<div><dt>{E(tu(lang, "visit_time"))}</dt>'
+            f'<dd>{E(str(hrs))} {E(su("gal_hours_unit", lang))}</dd></div>'
+            f'</dl></div></article>')
+
+    def chips(name, items):
+        out = (f'<button type="button" class="gchip on" data-f="{name}" data-v="">'
+               f'{E(su("gal_all", lang))}</button>')
+        return out + "".join(
+            f'<button type="button" class="gchip" data-f="{name}" data-v="{E(v)}">{E(l)}</button>'
+            for v, l in items)
+
+    regions_opts = "".join(
+        f'<option value="{E(rk)}">{E(REGIONS[rk][lang]["name"])}</option>'
+        for rk in REGIONS if any(a["region"] == rk for a in ATTRACTIONS.values()))
+
+    rail = (
+        f'<div class="gfil-g"><h2>{E(su("gal_category", lang))}</h2><div class="gchips">'
+        + chips("g", [(g, su("gal_cat_" + g, lang)) for g, _ in GAL_GROUPS]) + '</div></div>'
+        f'<div class="gfil-g"><h2>{E(su("gal_rating", lang))}</h2><div class="gchips">'
+        + chips("rate", [("4", "4+ ★"), ("4.5", "4.5+ ★"), ("5", "5 ★")]) + '</div></div>'
+        f'<div class="gfil-g"><h2>{E(su("gal_visit_time", lang))}</h2><div class="gchips">'
+        + chips("t", [("under1", su("gal_under1", lang)), ("1to3", su("gal_1to3", lang)),
+                      ("3plus", su("gal_3plus", lang))]) + '</div></div>'
+        f'<div class="gfil-g"><h2><label for="gregion">{E(su("gal_region", lang))}</label></h2>'
+        f'<select id="gregion" class="gsel"><option value="">{E(su("gal_all_regions", lang))}</option>'
+        f'{regions_opts}</select></div>'
+        f'<button type="button" class="btn ghost sm" id="gclear">{E(su("gal_clear", lang))}</button>')
+
+    toolbar = (
+        f'<div class="gbar"><div class="gsearch">'
+        f'<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+        f'stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/>'
+        f'<path d="m20 20-3.2-3.2"/></svg>'
+        f'<input type="search" id="gq" placeholder="{E(su("gal_search", lang))}" '
+        f'aria-label="{E(su("gal_search", lang))}"></div>'
+        f'<select id="gsort" class="gsel" aria-label="{E(su("gal_sort_rating", lang))}">'
+        f'<option value="rate">{E(su("gal_sort_rating", lang))}</option>'
+        f'<option value="name">{E(su("gal_sort_name", lang))}</option>'
+        f'<option value="near">{E(su("gal_sort_near", lang))}</option>'
+        f'</select></div>')
+
+    title, desc = seo_meta("attractions_hub", lang, count=total, regions=len(REGIONS))
     title = title or f'{hub_h1} | {BRAND}'
     lead = su("attractions_hub_lead", lang) or desc
-    body = (f'<section class="page-head"><div class="wrap"><h1>{E(hub_h1)}</h1>'
-            f'<p class="lead">{E(lead)}</p></div></section>' + secs
-            + guide_links_block(lang, list(GUIDES), alt=True))
+    body = (
+        f'<section class="page-head"><div class="wrap"><h1>{E(hub_h1)}</h1>'
+        f'<p class="lead">{E(lead)}</p></div></section>'
+        f'<section class="sec"><div class="wrap gwrap">'
+        f'<aside class="gfilters" aria-label="{E(su("gal_category", lang))}">{rail}</aside>'
+        f'<div class="gmain">{toolbar}'
+        f'<p class="gcount" id="gcount" role="status">'
+        f'{E(_fmt(su("gal_count", lang), {"n": total, "total": total}, lang))}</p>'
+        f'<div class="ggrid" id="ggrid">{cards}</div>'
+        f'<p class="gempty" id="gempty" hidden>{E(su("gal_none", lang))}</p>'
+        f'</div></div></section>'
+        + guide_links_block(lang, list(GUIDES), alt=True))
+
     url = index_hub_url(lang, "attractions")
     graph = [org_node(lang), website_node(lang),
              {"@type": "CollectionPage", "@id": url + "#webpage", "url": url,
@@ -4842,7 +5016,8 @@ def render_attractions_hub(lang):
                      {l: index_hub_url(l, "attractions") for l in LANGS}, depth,
                      {"@context": "https://schema.org", "@graph": graph})
     crumbs = crumbs_html(lang, [(u["nav"]["index"], page_url(lang, "index", False)), (hub_h1, None)])
-    return shell(lang, "map", head, crumbs + f'<main id="main">{body}</main>', depth)
+    return shell(lang, "map", head,
+                 crumbs + f'<main id="main">{body}</main>' + GALLERY_JS, depth)
 
 
 def render_routes_hub(lang):
