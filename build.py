@@ -672,10 +672,14 @@ def cars_grid(category, lang, limit=None):
     for slug, c in items:
         L = c[lang]
         img = c.get("image")
+        # Without a photo this printed the model name on a grey box — and in
+        # Georgian it printed "<name> — ფოტო", a placeholder that shipped to
+        # production. None of the 17 cars has an image, so the fallback is the
+        # card, not an edge case: it now draws the class and keeps the 16:10
+        # box the real photo will take.
         ph = (f'<div class="ph"><img src="{E(img)}" alt="{E(L["name"])} — '
               f'{E(cat_label(c["category"], lang))}" loading="lazy" width="640" height="400"></div>'
-              if img else f'<div class="ph">{E(L["name"])} — ფოტო</div>' if lang == "ka"
-              else f'<div class="ph">{E(L["name"])}</div>')
+              if img else car_plate(lang, c["category"]))
         feats = " · ".join(re.sub(r"<[^>]+>", "", inline(x, lang)) for x in L.get(
             "features", [])[:3])
         unit = SPECS["units"]["day"][lang]
@@ -1582,7 +1586,7 @@ def render_car(lang, slug, c):
     gal = "".join(f'<img src="{E(g)}" alt="{E(L["name"])}" loading="lazy">'
                   for g in gal_items if g)
     main_img = (f'<img src="{E(img)}" alt="{E(L["name"])} — {E(cat_label(c["category"], lang))}" '
-                f'width="960" height="600">' if img else f'<div class="ph">{E(L["name"])}</div>')
+                f'width="960" height="600">' if img else car_plate(lang, c["category"]))
 
     rows = []
     for k in ("years", "engine", "transmission", "drive", "seats", "luggage",
@@ -3629,37 +3633,37 @@ LAND_UI = {
            "c2t": "სტანდარტული ტურები", "c2d": "აირჩიე უკვე დაგეგმილი ტური საქართველოს რეგიონებში",
            "c3t": "მანქანის დაჯავშნა", "c3d": "იპოვე და დაჯავშნე მარშრუტისთვის შესაბამისი ავტომობილი",
            "c4t": "განვერიანდი Community-ში", "c4d": "გაუზიარე გამოცდილება, იპოვე თანამგზავრები და ახალი ადგილები",
-           "s1": "სანახავი ადგილი", "s2": "ავტომობილი", "s3": "მოგზაური", "s4": "საშუალო რეიტინგი"},
+           "s1": "სანახავი ადგილი", "s2": "ავტომობილი", "s3": "აყვანის წერტილი", "s4": "მხარდაჭერა", "s4v": "24/7", "cta": "აირჩიე ავტომობილი", "cta2": "დღის მარშრუტი"},
     "en": {"h1": "What is your plan for today?", "lead": "Pick what you feel like and start your journey across Georgia",
            "c1t": "Plan your own trip", "c1d": "Build your route, pick the places and lay out the days",
            "c2t": "Standard tours", "c2d": "Take a ready-made route through the regions of Georgia",
            "c3t": "Book a car", "c3d": "Find and book the car that matches your route",
            "c4t": "Join the community", "c4d": "Share what you know, find companions and new places",
-           "s1": "places to see", "s2": "cars", "s3": "travellers", "s4": "average rating"},
+           "s1": "places to see", "s2": "cars", "s3": "pickup points", "s4": "roadside support", "s4v": "24/7", "cta": "See the cars", "cta2": "What can I do today?"},
     "ru": {"h1": "Какие планы на сегодня?", "lead": "Выберите, что вам ближе, и начните путешествие по Грузии",
            "c1t": "Спланировать поездку самому", "c1d": "Составьте маршрут, выберите места и распределите дни",
            "c2t": "Готовые туры", "c2d": "Возьмите готовый маршрут по регионам Грузии",
            "c3t": "Забронировать машину", "c3d": "Найдите и забронируйте машину под ваш маршрут",
            "c4t": "Присоединиться к сообществу", "c4d": "Делитесь опытом, находите попутчиков и новые места",
-           "s1": "мест", "s2": "машин", "s3": "путешественников", "s4": "средний рейтинг"},
+           "s1": "мест", "s2": "машин", "s3": "точек выдачи", "s4": "поддержка", "s4v": "24/7", "cta": "Выбрать машину", "cta2": "Куда поехать сегодня"},
     "fa": {"h1": "برنامهٔ امروز شما چیست؟", "lead": "آنچه دوست دارید انتخاب کنید و سفر خود در گرجستان را آغاز کنید",
            "c1t": "سفر خود را بسازید", "c1d": "مسیر خود را بچینید، مکان‌ها را انتخاب و روزها را تقسیم کنید",
            "c2t": "تورهای آماده", "c2d": "یک مسیر آماده در مناطق گرجستان را انتخاب کنید",
            "c3t": "رزرو خودرو", "c3d": "خودروی مناسب مسیر خود را پیدا و رزرو کنید",
            "c4t": "به جامعه بپیوندید", "c4d": "تجربه‌تان را بگویید، همسفر و مکان‌های نو پیدا کنید",
-           "s1": "مکان دیدنی", "s2": "خودرو", "s3": "مسافر", "s4": "میانگین امتیاز"},
+           "s1": "مکان دیدنی", "s2": "خودرو", "s3": "نقطه تحویل", "s4": "پشتیبانی", "s4v": "24/7", "cta": "دیدن خودروها", "cta2": "امروز کجا برویم"},
     "he": {"h1": "מה התוכנית שלך להיום?", "lead": "בחרו את מה שמתאים לכם והתחילו את המסע בגאורגיה",
            "c1t": "לתכנן טיול בעצמכם", "c1d": "בנו מסלול, בחרו מקומות וחלקו את הימים",
            "c2t": "טיולים מוכנים", "c2d": "קחו מסלול מוכן באזורי גאורגיה",
            "c3t": "להזמין רכב", "c3d": "מצאו והזמינו את הרכב שמתאים למסלול",
            "c4t": "להצטרף לקהילה", "c4d": "שתפו ידע, מצאו שותפים ומקומות חדשים",
-           "s1": "מקומות", "s2": "רכבים", "s3": "מטיילים", "s4": "דירוג ממוצע"},
+           "s1": "מקומות", "s2": "רכבים", "s3": "נקודות איסוף", "s4": "תמיכה בדרך", "s4v": "24/7", "cta": "לצפות ברכבים", "cta2": "לאן נוסעים היום"},
     "ar": {"h1": "ما خطتك اليوم؟", "lead": "اختر ما يناسبك وابدأ رحلتك في جورجيا",
            "c1t": "خطط رحلتك بنفسك", "c1d": "ارسم مسارك، اختر الأماكن ووزّع الأيام",
            "c2t": "جولات جاهزة", "c2d": "اختر مساراً جاهزاً في مناطق جورجيا",
            "c3t": "احجز سيارة", "c3d": "اعثر على السيارة المناسبة لمسارك واحجزها",
            "c4t": "انضم إلى المجتمع", "c4d": "شارك خبرتك، واعثر على رفقاء وأماكن جديدة",
-           "s1": "أماكن للزيارة", "s2": "سيارات", "s3": "مسافرين", "s4": "متوسط التقييم"},
+           "s1": "أماكن للزيارة", "s2": "سيارات", "s3": "نقاط استلام", "s4": "مساندة على الطريق", "s4v": "24/7", "cta": "شاهد السيارات", "cta2": "إلى أين اليوم"},
 }
 
 _LAND_ICONS = {
@@ -3745,11 +3749,16 @@ def landing_block(lang):
         f'<span class="land-card-body"><b>{E(title)}</b><span>{E(desc)}</span>'
         f'{_LAND_ARROW.format(b=border, i=ink)}</span></a>'
         for href, attr, title, desc, img, bg, border, ink in cards)
+    # Every number here is counted from the repository at build time. The strip
+    # used to advertise "5000+ travellers" — a figure with no source — and the
+    # mean *attraction* rating (3.9) under the label "average rating", which
+    # reads as a customer score and is both wrong and unflattering. Invented
+    # social proof is the one thing a rental site cannot afford to be caught at.
     stats = [
         (f"{places}", t["s1"], _LAND_ICONS["pin"], "#e9f2fa"),
         (f"{cars_n}", t["s2"], _LAND_ICONS["car"], "#e9f7ef"),
-        ("5000+", t["s3"], _LAND_ICONS["users"], "#f4eefc"),
-        (f"{avg}", t["s4"], _LAND_ICONS["star"], "#fdf6e3"),
+        (str(len(RENTAL_PLACES)), t["s3"], _LAND_ICONS["users"], "#f4eefc"),
+        (t["s4v"], t["s4"], _LAND_ICONS["star"], "#fdf6e3"),
     ]
     stats_html = "".join(
         f'<div class="land-stat"><span class="land-stat-ico" style="background:{bg}">{ico}</span>'
@@ -3759,7 +3768,11 @@ def landing_block(lang):
             f'<div class="land-hero"><div class="land-hero-photo">'
             f'<img class="land-hero-img" src="/assets/rentup-hero2.jpg" alt="" loading="eager" decoding="async">'
             f'<div class="land-hero-fade"></div>'
-            f'<div class="land-hero-copy"><h1>{E(t["h1"])}</h1><p>{E(t["lead"])}</p></div></div>'
+            f'<div class="land-hero-copy"><h1>{E(t["h1"])}</h1><p>{E(t["lead"])}</p>'
+            f'<div class="land-hero-cta">'
+            f'<a class="btn" href="{page_url(lang, "fleet", False)}">{E(t["cta"])}</a>'
+            f'<a class="btn ghost" href="{day_trip_url(lang, False)}">{E(t["cta2"])}</a>'
+            f'</div></div></div>'
             f'<div class="land-cards">{cards_html}</div></div>'
             f'<div class="land-stats">{stats_html}</div>'
             f'</div></section>'
@@ -3839,6 +3852,30 @@ def rental_quality_ok(kind, payload):
     return True
 
 
+_CAR_ICON = {
+    "economy": '<path d="M5 17h14M3 17v-4.2L5.4 7A2 2 0 0 1 7.3 5.7h9.4A2 2 0 0 1 18.6 7L21 12.8V17"/><path d="M6.5 17v1.5M17.5 17v1.5M3 12.8h18"/>',
+    "suv": '<path d="M4 17h16M2.5 17v-5l2.2-5.2A2 2 0 0 1 6.6 5.5h10.8a2 2 0 0 1 1.9 1.3L21.5 12v5"/><path d="M6 17v1.6M18 17v1.6M2.5 12h19"/>',
+    "offroad": '<path d="M4 16.5h16M2.5 16.5v-4.8l2.3-5A2 2 0 0 1 6.6 5.4h10.8a2 2 0 0 1 1.8 1.3l2.3 5v4.8"/><path d="M2.5 11.7h19"/><circle cx="7" cy="17.6" r="2.2"/><circle cx="17" cy="17.6" r="2.2"/>',
+    "minivan": '<path d="M3 16.5h18M2.5 16.5V9a2 2 0 0 1 2-2h12.2a2 2 0 0 1 1.6.8L21.5 11v5.5"/><path d="M8.5 7v4M14 7v4M2.5 11h19"/><circle cx="7" cy="17.6" r="2"/><circle cx="17" cy="17.6" r="2"/>',
+    "business": '<path d="M5 16.8h14M3 16.8v-4l2.2-4.9A2 2 0 0 1 7 6.6h10a2 2 0 0 1 1.8 1.3L21 12.8v4"/><path d="M3 12.8h18M6.6 16.8v1.5M17.4 16.8v1.5"/>',
+    "van": '<path d="M2.5 16.5h19M2.5 16.5V7.5a1 1 0 0 1 1-1h10.5v10M14.5 10h3.6l3.4 3.6v2.9"/><circle cx="7" cy="17.8" r="1.9"/><circle cx="17.5" cy="17.8" r="1.9"/>',
+}
+
+
+def car_plate(lang, cat):
+    """The image slot for a car with no photograph yet.
+
+    Every one of the 17 fleet records ships without an image, so the card used
+    to start at the heading and the grid read as broken. A plate keeps the
+    16:10 box the photo will occupy — so nothing shifts when the owner adds
+    real pictures — and names the class rather than pretending to be a photo."""
+    d = _CAR_ICON.get(cat) or _CAR_ICON["economy"]
+    return (f'<div class="car-plate" role="presentation">'
+            f'<svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+            f'stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{d}</svg>'
+            f'<b>{E(cat_label(cat, lang))}</b></div>')
+
+
 def _car_card(lang, slug):
     c = CARS.get(slug)
     if not c:
@@ -3851,7 +3888,8 @@ def _car_card(lang, slug):
         f'{c.get("clearance")} mm' if c.get("clearance") else "",
     ] if x)
     img = (f'<a class="stop-img" href="{car_url(lang, slug, False)}" tabindex="-1" aria-hidden="true">'
-           f'<img src="{E(card_img(c["image"]))}" alt="" loading="lazy" decoding="async"></a>') if c.get("image") else ""
+           f'<img src="{E(card_img(c["image"]))}" alt="" loading="lazy" decoding="async"></a>'
+           if c.get("image") else car_plate(lang, c.get("category", "economy")))
     return (f'<div class="card stop-card">{img}'
             f'<h3><a href="{car_url(lang, slug, False)}">{E(L["name"])}</a></h3>'
             f'<p>{E(specs)}</p>'
@@ -4113,7 +4151,14 @@ def render_car_rental_hub(lang):
     fleet_preview = "".join(_car_card(lang, s) for s in list(CARS)[:6])
     order_keys = ["intro", "how_it_works", "requirements", "deposit_explained", "mileage",
                   "fuel", "insurance", "delivery", "one_way", "extras", "cancellation", "support"]
-    prose = ""
+    # The twelve policy topics used to render as twelve full-width sections,
+    # each one heading + one paragraph on an alternating background. Nobody
+    # reads twelve screens of that; the alternation only made the page longer.
+    # "intro" and "how_it_works" stay full width because they are the page's
+    # argument — the ten terms after them are reference material, so they go
+    # into one card grid the reader can scan and stop at the row they need.
+    lead_keys = {"intro", "how_it_works"}
+    prose, tiles = "", ""
     for k in order_keys:
         v = sec.get(k)
         if not v:
@@ -4121,12 +4166,25 @@ def render_car_rental_hub(lang):
         if isinstance(v, list):
             inner = "<ol>" + "".join(f"<li>{E(x)}</li>" for x in v) + "</ol>"
         elif isinstance(v, dict):
+            # "how_it_works" carries `steps`, not `body`. Only `body` was ever
+            # read, so the one section that explains how to actually rent a car
+            # rendered as a bare heading with nothing under it.
             inner = (f'<p>{E(v.get("body", ""))}</p>' if v.get("body") else "")
-            k_head = v.get("heading")
+            if v.get("steps"):
+                inner += ('<ol class="steps">'
+                          + "".join(f"<li>{E(x)}</li>" for x in v["steps"]) + "</ol>")
         else:
             inner = f"<p>{E(v)}</p>"
+        if not inner.strip():
+            continue
         head = (v.get("heading") if isinstance(v, dict) else None) or su(k, lang) or k.replace("_", " ").title()
-        prose += _sec(head, f'<div class="article">{inner}</div>', alt=(len(prose) // 900) % 2 == 1)
+        if k in lead_keys:
+            prose += _sec(head, f'<div class="article">{inner}</div>', alt=(len(prose) // 900) % 2 == 1)
+        else:
+            tiles += f'<div><h3>{E(head)}</h3>{inner}</div>'
+    if tiles:
+        prose += _sec(su("svc_good_to_know", lang) or "What to know",
+                      f'<div class="prose-grid">{tiles}</div>', alt=True)
     body = (
         f'<section class="page-head"><div class="wrap"><h1>{E(h.get("h1", ""))}</h1>'
         f'<p class="lead">{E(h.get("lead", ""))}</p></div></section>'

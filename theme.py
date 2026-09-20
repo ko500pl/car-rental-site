@@ -137,6 +137,8 @@ td:first-child{{font-weight:600;color:var(--ink)}}
 .car{{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--surface);display:flex;flex-direction:column}}
 .car .ph{{aspect-ratio:16/10;background:var(--bg-3);display:flex;align-items:center;justify-content:center;color:var(--ink-3);font-size:13px}}
 .car .ph img{{width:100%;height:100%;object-fit:cover}}
+.car .car-plate{{margin:0;border:0;border-radius:0;border-bottom:1px solid var(--line)}}
+.cardetail .car-plate{{margin:0;aspect-ratio:16/10}}
 .car .in{{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1}}
 .car h3{{margin:0 0 4px;font-size:18px;color:var(--brand-ink)}}
 .car h3 a{{color:inherit}}
@@ -468,6 +470,105 @@ body.pdrag-active{{user-select:none;-webkit-user-select:none;overscroll-behavior
   .site-head{{position:sticky}}
 }}
 @media (max-width:520px){{ .facts{{grid-template-columns:1fr}} }}
+
+/* ── Design pass 2026-09-20 ───────────────────────────────────────────────
+   Audited against ui-ux-pro-max (119 UX guidelines), Anthropic frontend-design
+   and the design-audit marketing-site profile. Each block below closes one
+   finding; the finding is named so the next person knows why it exists. */
+
+/* F-2 · Link lists rendered as raw browser bullets in 17 places — the
+   "Browse places", "Pickup locations" and "Guides" blocks read as a sitemap
+   dump mid-page. They are navigation, so they get a target-sized grid. */
+ul.linklist{{list-style:none;margin:0;padding:0;display:grid;gap:8px;
+  grid-template-columns:repeat(auto-fill,minmax(248px,1fr))}}
+ul.linklist>li{{margin:0}}
+ul.linklist>li>a{{display:flex;align-items:center;gap:8px;min-height:44px;
+  padding:11px 14px;border:1px solid var(--line);border-radius:10px;
+  background:var(--bg-2);color:var(--brand-ink);font-weight:600;line-height:1.35;
+  transition:border-color .18s ease,background .18s ease,transform .18s ease}}
+ul.linklist>li>a::after{{content:"";margin-inline-start:auto;flex:0 0 auto;width:7px;height:7px;
+  border-top:2px solid var(--ink-3);border-right:2px solid var(--ink-3);
+  transform:rotate(45deg);transition:border-color .18s ease}}
+[dir="rtl"] ul.linklist>li>a::after{{transform:rotate(225deg)}}
+ul.linklist>li>a:hover{{text-decoration:none;border-color:var(--brand-2);
+  background:var(--bg-3);transform:translateY(-1px)}}
+ul.linklist>li>a:hover::after{{border-color:var(--brand-2)}}
+ul.linklist>li>a small{{display:block;font-weight:400;font-size:13px;color:var(--ink-2);
+  margin-inline-start:0;max-width:44ch}}
+ul.linklist.rich>li>a{{flex-direction:column;align-items:flex-start;gap:3px;padding:13px 15px}}
+ul.linklist.rich>li>a::after{{display:none}}
+
+/* F-4 · Every touch target at least 44x44 with 8px separation. */
+.btn,.chip,nav.main a,.pill{{min-height:44px;display:inline-flex;align-items:center;
+  justify-content:center;gap:7px}}
+.btn.sm{{min-height:38px}}
+
+/* F-5 · Focus was only styled on <a>. Anything focusable needs a visible ring. */
+:where(button,summary,[tabindex],input,select,textarea):focus-visible{{
+  outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}}
+
+/* F-6 · Fleet cards had no image at all (0/17 cars carry a photo), so the card
+   opened with a bare heading. Until real photos exist, the slot renders a
+   branded plate that states the category — honest, and it stops the layout
+   from shifting when photos do arrive. */
+.car-plate{{position:relative;aspect-ratio:16/10;border-radius:calc(var(--radius) - 2px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+  background:linear-gradient(140deg,var(--bg-3),var(--bg-2));
+  border:1px solid var(--line);overflow:hidden;margin-bottom:12px}}
+.car-plate svg{{opacity:.5}}
+.car-plate b{{font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:600}}
+
+/* F-7 · Mobile: the hero copy was clipped and the nav row ran off-screen.
+   Nothing may exceed the viewport width. */
+html,body{{overflow-x:hidden;max-width:100%}}
+@media (max-width:760px){{
+  nav.main>ul{{overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;
+    padding-bottom:2px;mask-image:linear-gradient(90deg,#000 88%,transparent)}}
+  nav.main>ul::-webkit-scrollbar{{display:none}}
+  ul.linklist{{grid-template-columns:1fr}}
+}}
+
+/* F-8 · Prose rhythm. The rental hub stacked twelve identical
+   heading+paragraph sections; alternating backgrounds did not make them
+   scannable. Consecutive prose sections now share one surface and are
+   separated by a rule, so the eye reads a list instead of twelve pages. */
+.sec.alt+.sec.alt,.sec+.sec{{border-top:0}}
+.prose-grid{{display:grid;gap:2px;background:var(--line);
+  border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+  grid-template-columns:repeat(auto-fit,minmax(310px,1fr))}}
+.prose-grid>div{{background:var(--bg-2);padding:20px 22px}}
+.prose-grid h3{{margin:0 0 7px;font-size:16.5px;color:var(--brand-ink);font-weight:700}}
+.prose-grid p{{margin:0;color:var(--ink-2);font-size:14.5px;line-height:1.62}}
+/* Numbered steps read as a sequence, so they get real numerals rather than
+   the default marker squeezed against the text. */
+.article ol.steps{{list-style:none;counter-reset:s;margin:14px 0 0;padding:0;display:grid;gap:12px;
+  grid-template-columns:repeat(auto-fit,minmax(270px,1fr))}}
+.article ol.steps>li{{counter-increment:s;position:relative;padding-inline-start:44px;
+  min-height:34px;color:var(--ink-2);line-height:1.58}}
+.article ol.steps>li::before{{content:counter(s);position:absolute;inset-inline-start:0;top:0;
+  width:32px;height:32px;border-radius:50%;display:grid;place-items:center;
+  background:var(--brand);color:var(--on-brand);font-weight:700;font-size:14px}}
+
+/* F-9 · A rental page with no way to start a rental. One primary action,
+   pinned on small screens where the header CTA scrolls away. */
+.act-bar{{position:fixed;inset-inline:0;bottom:0;z-index:60;display:none;gap:10px;
+  padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+  background:color-mix(in srgb,var(--bg-2) 94%,transparent);
+  backdrop-filter:saturate(140%) blur(10px);
+  border-top:1px solid var(--line);box-shadow:0 -6px 22px rgba(14,35,51,.08)}}
+.act-bar .btn{{flex:1 1 0;min-height:48px;font-size:15.5px}}
+@media (max-width:760px){{
+  .act-bar{{display:flex}}
+  body.has-actbar{{padding-bottom:74px}}
+}}
+
+/* F-10 · Motion is opt-out, not opt-in. */
+@media (prefers-reduced-motion:reduce){{
+  *,*::before,*::after{{animation-duration:.001ms !important;animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;scroll-behavior:auto !important}}
+}}
+
 
 /* Compact typography — keeps information-dense pages comfortable on desktop. */
 .hero h1{{font-size:clamp(25px,3.4vw,38px)}}
@@ -1841,9 +1942,34 @@ main .lead,p.lead{{font-size:15px;color:var(--ink-2)}}
 @media(max-width:900px){{.land-cards{{grid-template-columns:repeat(2,1fr)}}.land-stats{{grid-template-columns:repeat(2,1fr)}}
   .land-stat:nth-child(2){{border-inline-end:0}}.land-stat{{border-bottom:1px solid #eef3f6}}
   .land-stat:nth-child(3),.land-stat:nth-child(4){{border-bottom:0}}}}
+/* F-1 · The hero carried no call to action at any viewport width, so the
+   first screen of a rental site asked for nothing. One primary action, one
+   secondary; the copy block is pointer-events:none so the buttons need their
+   own pointer-events back or they are decorative. */
+.land-hero-cta{{display:flex;flex-wrap:wrap;gap:10px;pointer-events:auto;margin-top:4px}}
+.land-hero-cta .btn{{min-height:48px;padding:0 22px;font-size:15.5px;font-weight:600}}
+.land-hero-cta .btn.ghost{{background:color-mix(in srgb,#fff 88%,transparent);
+  border-color:color-mix(in srgb,var(--brand) 22%,transparent);color:var(--brand-ink)}}
+.land-hero-cta .btn.ghost:hover{{background:#fff}}
+
 @media(max-width:640px){{.land-cards{{grid-template-columns:1fr}}
   .land{{padding:10px}}.land-shell{{border-radius:16px}}.land-stats{{margin:14px 14px 18px}}
-  .land-hero-copy{{padding:20px 16px 0}}.land-hero-copy h1{{font-size:27px}}}}
+  /* F-7 · At 390px the headline and lead were clipped: the copy is nested
+     inside the photo box and was overlaid on a full-bleed image with no room
+     of its own. On small screens the photo becomes a band across the top and
+     the copy takes the space under it — same markup, no overlap, nothing cut.
+     (Giving the copy an opaque background instead would hide the photo, since
+     the copy is a child of the photo container.) */
+  .land-hero{{min-height:0}}
+  .land-hero-photo{{min-height:0;display:flow-root}}
+  .land-hero-img{{height:min(210px,30vh);bottom:auto}}
+  .land-hero-fade{{height:min(210px,30vh);inset-block-end:auto;
+    background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.72))}}
+  .land-hero-copy{{padding:calc(min(210px,30vh) + 18px) 16px 22px;max-width:none}}
+  .land-hero-copy h1{{font-size:clamp(25px,7.2vw,31px)}}
+  .land-hero-copy p{{max-width:none}}
+  .land-hero-cta .btn{{flex:1 1 46%}}
+}}
 
 /* Workspace intro — ჰერო ზოლი ფოტოთი და მოტივტივე დამგეგმავი ბარათი */
 .dow-intro{{position:relative;min-height:146px;padding:18px 16px 22px!important;background:#e7eef4!important;overflow:hidden}}
