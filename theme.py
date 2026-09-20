@@ -34,12 +34,14 @@ def css(d):
   --brand-ink:{d['color_brand_ink']};
   --accent:{d['color_accent']};
   --accent-2:{d.get('color_accent_2', d['color_brand_2'])};
+  --accent-ink:{d.get('color_accent_ink', d['color_accent'])};
   --grad:{grad};
   --on-brand:{d.get('color_on_brand', '#ffffff')};
   --ok:{d['color_ok']};
   --radius:{d['radius']}px;
   --maxw:{d['max_width']}px;
   --font:{d['font_family']};
+  --font-display:{d.get('font_display', d['font_family'])};
   --mono:{d.get('font_mono', 'ui-monospace,Consolas,monospace')};
 }}
 
@@ -60,7 +62,7 @@ a:focus-visible{{outline:3px solid var(--accent);outline-offset:2px;border-radiu
 /* Header */
 .site-head{{border-bottom:1px solid var(--line);background:var(--surface);position:sticky;top:0;z-index:20}}
 .head-in{{display:flex;align-items:center;gap:16px;flex-wrap:nowrap;padding:14px 20px;max-width:var(--maxw);margin:0 auto}}
-.logo{{display:flex;align-items:flex-start;gap:8px;font-weight:700;font-size:20px;color:var(--brand-ink);letter-spacing:-.2px}}
+.logo{{font-family:var(--font-display);display:flex;align-items:flex-start;gap:8px;font-weight:700;font-size:20px;color:var(--brand-ink);letter-spacing:-.2px}}
 .logo:hover{{text-decoration:none}}
 .logo img{{width:96px;height:auto;max-width:96px;object-fit:contain;object-position:top left;flex:none}}
 .logo-name{{display:grid;gap:2px;line-height:1.05}}
@@ -87,21 +89,21 @@ nav.main a[aria-current="page"]{{background:var(--brand);color:var(--on-brand)}}
 
 /* Hero */
 .hero{{background:{hero_bg};color:#fff;padding:64px 0 58px}}
-.hero h1{{margin:0 0 16px;font-size:clamp(29px,4.4vw,46px);line-height:1.22;letter-spacing:-.4px;font-weight:700;max-width:20ch}}
+.hero h1{{font-family:var(--font-display);margin:0 0 16px;font-size:clamp(29px,4.4vw,46px);line-height:1.22;letter-spacing:-.4px;font-weight:700;max-width:20ch}}
 .hero .lead{{font-size:clamp(17px,2vw,20px);line-height:1.66;color:#d3e2f0;max-width:66ch;margin:0 0 26px}}
 .hero .kicker{{display:inline-block;font-size:12.5px;letter-spacing:.13em;text-transform:uppercase;color:#8fc0e8;font-weight:600;margin-bottom:14px}}
 .hero-facts{{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:14px;margin-top:34px;padding-top:28px;border-top:1px solid rgba(255,255,255,.18)}}
-.hero-facts b{{display:block;font-size:26px;font-weight:700;color:#fff;line-height:1.25}}
+.hero-facts b{{font-family:var(--font-display);display:block;font-size:26px;font-weight:700;color:#fff;line-height:1.25;font-variant-numeric:tabular-nums}}
 .hero-facts span{{font-size:14px;color:#a9c8e2}}
 
 /* Sections */
 .sec{{padding:48px 0;border-bottom:1px solid var(--line-2)}}
 .sec:last-of-type{{border-bottom:0}}
 .sec.alt{{background:var(--bg-2)}}
-h1{{font-size:clamp(27px,3.6vw,40px);line-height:1.24;letter-spacing:-.3px;margin:0 0 18px;font-weight:700}}
-h2{{font-size:clamp(21px,2.5vw,28px);line-height:1.32;letter-spacing:-.2px;margin:38px 0 14px;font-weight:700;color:var(--brand-ink)}}
+h1{{font-family:var(--font-display);font-size:clamp(27px,3.6vw,40px);line-height:1.24;letter-spacing:-.3px;margin:0 0 18px;font-weight:700}}
+h2{{font-family:var(--font-display);font-size:clamp(21px,2.5vw,28px);line-height:1.32;letter-spacing:-.2px;margin:38px 0 14px;font-weight:700;color:var(--brand-ink)}}
 h2:first-child{{margin-top:0}}
-h3{{font-size:18px;line-height:1.42;margin:26px 0 8px;font-weight:700;color:var(--ink)}}
+h3{{font-family:var(--font-display);font-size:18px;line-height:1.42;margin:26px 0 8px;font-weight:700;color:var(--ink)}}
 p{{margin:0 0 15px;max-width:74ch}}
 ul,ol{{margin:0 0 16px;padding-inline-start:22px;max-width:74ch}}
 li{{margin:0 0 7px}}
@@ -115,6 +117,19 @@ strong{{font-weight:700;color:var(--ink)}}
 
 /* Tables */
 .tbl-wrap{{overflow-x:auto;margin:0 0 22px;border:1px solid var(--line);border-radius:var(--radius)}}
+/* სერიფი სათაურებისა და ფასებისთვისაა. კონტროლი, ფორმა და ცხრილის უჯრა
+   სხეულის შრიფტზე რჩება — 12–14px-ზე სერიფის მოდულაცია ხმაურად იქცევა და
+   ღილაკი, რომელიც სარედაქციო ტექსტივით იკითხება, ღილაკად აღარ იკითხება.
+   ცალკე წესია და არა იმედი: h3 ბარათის შიგნით ან `.facts` ფორმაში ადვილად
+   აღმოჩნდება.
+
+   ცხრილს გაბუნდოვნებული კიდე ვერ მივეცი: სტანდარტული ხერხი ფენებს
+   სკროლერის ფონზე დებს, `table` კი თავად ხატავს `--surface`-ს მთელ
+   სიგანეზე და ფარავს. მუშა ვარიანტი HTML-ის შეცვლას ან JS-ს ითხოვს —
+   ზედმეტია, რადგან შიგთავსი ისედაც მისაწვდომია. ნახევრად მომუშავე ნიშანი
+   არარსებობაზე უარესია. */
+button,input,select,textarea,.btn,.chip,.tag,label,th,td,
+.head-tabs,.nav-more summary,.breadcrumbs{{font-family:var(--font)}}
 table{{border-collapse:collapse;width:100%;font-size:15.5px;background:var(--surface)}}
 caption{{text-align:start;font-size:14px;color:var(--ink-3);padding:12px 14px;border-bottom:1px solid var(--line);background:var(--bg-2);font-weight:500}}
 th,td{{padding:11px 14px;text-align:start;border-bottom:1px solid var(--line-2);vertical-align:top}}
@@ -130,7 +145,7 @@ td:first-child{{font-weight:600;color:var(--ink)}}
 .card p{{font-size:15.5px;color:var(--ink-2);margin:0 0 12px}}
 .card ul{{font-size:15px;margin:0;padding-inline-start:19px;color:var(--ink-2)}}
 .card .tag{{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--brand-2);background:var(--bg-3);padding:3px 9px;border-radius:20px;margin-bottom:10px}}
-.card .price{{font-size:15px;font-weight:700;color:var(--ok);margin-top:12px;display:block}}
+.card .price{{font-family:var(--font-display);font-size:19px;font-weight:700;color:var(--accent-ink);margin-top:12px;display:block;font-variant-numeric:tabular-nums}}
 
 /* Car cards */
 .cars{{display:grid;grid-template-columns:repeat(auto-fit,minmax(288px,1fr));gap:20px;margin:8px 0 26px}}
@@ -145,7 +160,7 @@ td:first-child{{font-weight:600;color:var(--ink)}}
 .car .sub{{font-size:14px;color:var(--ink-3);margin:0 0 12px}}
 .car ul{{font-size:14.5px;margin:0 0 14px;padding-inline-start:18px;color:var(--ink-2)}}
 .car .foot{{margin-top:auto;display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding-top:12px;border-top:1px solid var(--line-2)}}
-.car .p{{font-size:17px;font-weight:700;color:var(--ok)}}
+.car .p{{font-family:var(--font-display);font-size:21px;font-weight:700;color:var(--accent-ink);font-variant-numeric:tabular-nums;line-height:1.2}}
 .car .p small{{font-size:13px;font-weight:500;color:var(--ink-3)}}
 .car .more{{font-size:14.5px;font-weight:600}}
 
@@ -156,14 +171,14 @@ td:first-child{{font-weight:600;color:var(--ink)}}
 .spec{{width:100%;font-size:15.5px}}
 .spec th{{width:48%;font-weight:500;color:var(--ink-3);background:none}}
 .pricebox{{border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;background:var(--bg-2);margin:0 0 18px}}
-.pricebox .big{{font-size:30px;font-weight:700;color:var(--brand-ink);line-height:1.2}}
+.pricebox .big{{font-family:var(--font-display);font-size:30px;font-weight:700;color:var(--brand-ink);line-height:1.2;font-variant-numeric:tabular-nums}}
 .pricebox .big small{{font-size:15px;font-weight:500;color:var(--ink-3)}}
 
 /* Facts */
 .facts{{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin:6px 0 26px}}
 .facts div{{background:var(--surface);padding:16px 18px}}
 .facts dt,.facts .k{{font-size:13px;color:var(--ink-3);margin-bottom:3px}}
-.facts dd,.facts .v{{font-size:17px;font-weight:700;color:var(--brand-ink);margin:0}}
+.facts dd,.facts .v{{font-family:var(--font-display);font-size:17px;font-weight:700;color:var(--brand-ink);margin:0;font-variant-numeric:tabular-nums}}
 
 /* FAQ */
 .faq{{margin:0 0 10px;max-width:80ch}}
@@ -1841,6 +1856,21 @@ body{{padding-inline-start:0!important}}
 .head-tabs{{display:flex;align-items:center;gap:6px;padding:10px 16px;background:#fff;
   border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none}}
 .head-tabs::-webkit-scrollbar{{display:none}}
+/* head-tabs mask — ტელეფონზე ამ რიგიდან ~450 პიქსელი ეკრანს მიღმაა და
+   არაფერი ამბობდა, რომ გაგრძელება აქვს: მოჭრილი ღილაკი უბრალოდ მოჭრილად
+   გამოიყურებოდა და კლიენტი ასკვნიდა, რომ ის გვერდი არ არსებობს.
+
+   ფონის გრადიენტების ხერხი აქ არ გამოდგება — ღილაკებს თავისი
+   გაუმჭვირვალე ფონი აქვთ და ელემენტის ფონს ზემოდან ფარავენ. `mask`
+   თვითონ შიგთავსს ასუსტებს, ღილაკის ჩათვლით, ამიტომ მუშაობს. იგივე
+   ხერხია, რაც `nav.main>ul`-ს უკვე აქვს.
+
+   მუდმივად ორივე კიდეზეა, რაც ზუსტი არ არის: ბოლომდე გასრიალებისასაც
+   რჩება. სამაგიეროდ 900px-ზე ზემოთ რიგი იკეცება და არ სრიალებს — იქ
+   მასკა ცალკე იხსნება, რომ ფართო ეკრანზე ცრუ მინიშნება არ გაჩნდეს. */
+.head-tabs{{
+  -webkit-mask-image:linear-gradient(to right,transparent 0,#000 18px,#000 calc(100% - 18px),transparent 100%);
+  mask-image:linear-gradient(to right,transparent 0,#000 18px,#000 calc(100% - 18px),transparent 100%)}}
 .head-tabs ul{{display:flex;align-items:center;gap:6px;list-style:none;margin:0;padding:0}}
 .head-tabs li{{margin:0;width:auto;display:block}}
 .head-tabs ul a{{display:flex;align-items:center;height:40px;padding:0 14px;border:1px solid var(--line);
@@ -1867,7 +1897,8 @@ body{{padding-inline-start:0!important}}
   white-space:nowrap;text-decoration:none;flex:0 0 auto}}
 .plan-cta:hover{{background:var(--brand);color:#fff;text-decoration:none}}
 @media(min-width:900px){{
-  .head-tabs{{overflow:visible;flex-wrap:wrap}}
+  /* აღარ სრიალებს — მასკაც ზედმეტია. */
+  .head-tabs{{overflow:visible;flex-wrap:wrap;-webkit-mask-image:none;mask-image:none}}
 }}
 @media(max-width:640px){{
   .head-top{{min-height:52px;padding:6px 12px}}

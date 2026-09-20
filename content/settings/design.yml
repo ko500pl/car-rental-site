@@ -9,20 +9,33 @@ theme: light               # dark | light
 color_brand: "#0b2f4d"    # ძირითადი ფერი (ღილაკები, აქცენტები)
 color_brand_2: "#0b5f73"  # hover / ბმულები
 color_brand_ink: "#0e2333" # სათაურების ფერი მუქ ფონზე
-color_accent: "#0d94ae"   # ტეგები, ლოგოს ნიშანი
+color_accent: "#0d94ae"
+# იგივე ფირუზი, ტექსტისთვის გამუქებული. #0d94ae თეთრზე 3.58-ს იძლევა —
+# ჩარჩოსა და შევსებისთვის (ზღვარი 3.0) საკმარისია, წაკითხვადი
+# ტექსტისთვის (ზღვარი 4.5) არა. ფასი ბარათზე ყველაზე მნიშვნელოვანი
+# რიცხვია და ყველაზე ძნელად წასაკითხი ვერ იქნება. 5.50 თეთრზე.
+# იგივე მნიშვნელობა აქვს RentUp Leasor-ის AppColors.accent-ს.
+color_accent_ink: "#0a7387"   # ტეგები, ლოგოს ნიშანი
 color_accent_2: "#0d94ae" # გრადიენტის მეორე ბოლო
 color_ink: "#0e2333"      # ძირითადი ტექსტი
-color_ink_2: "#5a6b7b"    # მეორეხარისხოვანი ტექსტი
+# ერთი და იგივე იდეა ორი მნიშვნელობით — აპში #52677C. 5.85 თეთრზე (იყო 5.49).
+color_ink_2: "#52677c"    # მეორეხარისხოვანი ტექსტი
 color_bg: "#f4f7f9"       # გვერდის ფონი
 color_bg_2: "#ffffff"     # ბარათები / ალტერნატიული სექცია
 color_bg_3: "#eef3f7"     # hover, ჩიპები
 color_line: "#dde5ec"     # ჩარჩოები
-color_ok: "#0b7a55"       # ფასის ფერი
+# იგივე: აპის AppColors.success. 6.39 თეთრზე (იყო 5.34).
+color_ok: "#006d4a"       # ფასის ფერი
 color_on_brand: "#ffffff" # ტექსტი ღია ღილაკზე
 
 font_family: '"Noto Sans Georgian","Noto Sans","Segoe UI",system-ui,sans-serif'
 font_mono: 'ui-monospace,"JetBrains Mono","SFMono-Regular",Consolas,"Liberation Mono",monospace'
-google_fonts: "Noto+Sans+Georgian:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700"
+# სათაურების შრიფტი. ყველა კონკურენტი მთლიანად sans-ით წერია — სერიფის
+# სათაური მაშინვე განსხვავებულად იკითხება და იმავე ენაზე ლაპარაკობს,
+# რაზეც RentUp Leasor-ის აპლიკაცია. ლათინურს და კირილიცას Noto Serif
+# ფარავს, ქართულს — Noto Serif Georgian.
+font_display: '"Noto Serif Georgian","Noto Serif",Georgia,"Times New Roman",serif'
+google_fonts: "Noto+Sans+Georgian:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&family=Noto+Serif+Georgian:wght@600;700&family=Noto+Serif:wght@600;700"
 base_font_size: "16"
 radius: "12"
 max_width: "1200"

@@ -35,6 +35,15 @@ LANG_FONT = {"fa": "Vazirmatn:wght@400;500;600;700",
 LANG_FONT_STACK = {"fa": '"Vazirmatn","Noto Sans Arabic",',
                    "he": '"Noto Sans Hebrew","Noto Sans",',
                    "ar": '"Noto Kufi Arabic","Noto Sans Arabic",'}
+# სათაურების შრიფტი RTL ენებზე. ქართული და ლათინური Noto Serif-ის ოჯახშია,
+# არაბულსა და ებრაულს კი თავისი სჭირდებათ — თორემ სათაური ჩუმად სხვა
+# შრიფტზე გადავიდოდა და გვერდი ორ ხმაზე ილაპარაკებდა.
+LANG_DISPLAY_FONT = {"fa": "Noto+Naskh+Arabic:wght@600;700",
+                     "he": "Noto+Serif+Hebrew:wght@600;700",
+                     "ar": "Noto+Naskh+Arabic:wght@600;700"}
+LANG_DISPLAY_STACK = {"fa": '"Noto Naskh Arabic",',
+                      "he": '"Noto Serif Hebrew",',
+                      "ar": '"Noto Naskh Arabic",'}
 
 BOOKING_TEXT = {
     "ka": {"start": "დაწყება", "end": "დასრულება", "drivers": "მძღოლები", "book": "დაჯავშნის მოთხოვნა"},
@@ -1018,6 +1027,10 @@ def head_html(lang, current, title, desc, keywords, url, alternates, depth, ld,
     gf = DESIGN.get("google_fonts", "")
     if lang in LANG_FONT:
         gf = LANG_FONT[lang] + ("&family=" + gf if gf else "")
+    # …და იმ დამწერლობის სათაურის შრიფტი, თორემ ზემოთ მითითებულ ოჯახს
+    # გვერდი საერთოდ არ ჩამოტვირთავდა.
+    if lang in LANG_DISPLAY_FONT:
+        gf = LANG_DISPLAY_FONT[lang] + ("&family=" + gf if gf else "")
     fonts = (f'<link rel="preconnect" href="https://fonts.googleapis.com">\n'
              f'<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
              f'<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={gf}&display=swap">'
@@ -1169,7 +1182,16 @@ def footer_html(lang):
 def shell(lang, current, head, body, depth, tail=""):
     u = UI[lang]
     fs = LANG_FONT_STACK.get(lang, "")
-    style = (f'<style>:root{{--font:{fs}{DESIGN["font_family"]}}}</style>\n' if fs else "")
+    ds = LANG_DISPLAY_STACK.get(lang, "")
+    # ორივე ტოკენი ერთად ცხადდება: მარტო `--font`-ის გადაფარვა სათაურებს
+    # ქართულ/ლათინურ სერიფზე ტოვებდა, რომელსაც არაბული ან ებრაული ასო
+    # საერთოდ არ აქვს — ბრაუზერი ასო-ასო ცვლიდა და სათაური ისეთი
+    # შრიფტით გამოდიოდა, რომელიც არავის აურჩევია.
+    _vars = "".join(filter(None, [
+        f'--font:{fs}{DESIGN["font_family"]};' if fs else "",
+        f'--font-display:{ds}{DESIGN.get("font_display", DESIGN["font_family"])};' if ds else "",
+    ]))
+    style = (f'<style>:root{{{_vars}}}</style>\n' if _vars else "")
     fb = ""
     if True:
         cfg = {k: AUTH.get(k, "") for k in ("apiKey", "authDomain", "projectId",
