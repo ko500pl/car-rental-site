@@ -964,7 +964,9 @@ nav.main a{{font-size:13.5px;padding:6px 9px}}
 .card-title{{font-size:16px}}
 .card-text{{font-size:13.5px}}
 @media(max-width:760px){{
-  body{{font-size:14px}}
+  /* was a hardcoded 14px, which silently undid the base_font_size
+     token and dropped mobile body text two steps below the 16px floor. */
+  body{{font-size:{d['base_font_size']}px}}
   h1{{font-size:26px}}
   .page-head .lead{{font-size:15px}}
   .sec{{padding:30px 0}}
@@ -1435,7 +1437,7 @@ body.booking-open{{overflow:hidden}}
   --brand:#0d94ae;--brand-2:#0b8399;--brand-ink:#102a32;--accent:#0d94ae;--on-brand:#fff;
   --radius:12px
 }}
-body{{font-size:14px;line-height:1.5;background:var(--bg);color:var(--ink)}}
+body{{font-size:{d['base_font_size']}px;line-height:1.5;background:var(--bg);color:var(--ink)}}
 a{{color:#0d94ae}}
 .site-head{{background:#fff}}
 .btn,.head-tel a{{min-height:42px;padding:9px 16px;border-radius:9px;background:#0d94ae;color:#fff;font-weight:750}}
@@ -1662,7 +1664,7 @@ body{{
   --brand:#0b2f4d;--brand-2:#0d94ae;--brand-ink:#0e2333;--accent:#0d94ae;--on-brand:#fff;
   --ok:#0b7a55;--radius:12px
 }}
-body{{font-size:15px;line-height:1.55;color:var(--ink);
+body{{font-size:{d['base_font_size']}px;line-height:1.55;color:var(--ink);
   background:#f4f7f9;background-image:none;background-attachment:scroll}}
 a{{color:#0b5f73}}
 .site-head{{background:#fff}}
