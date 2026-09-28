@@ -1022,6 +1022,9 @@ tbody tr:nth-child(even){{background:color-mix(in srgb,#fff 3%,transparent)}}
 .gph:hover img{{transform:scale(1.05)}}
 .gph figcaption{{font-size:10.5px;color:var(--ink-3);padding:5px 9px;line-height:1.35}}
 .gph figcaption a{{color:var(--ink-3)}}
+.gkind{{display:inline-block;font-weight:600;font-size:10px;letter-spacing:.02em;padding:1px 6px;border-radius:6px;margin-inline-end:4px;background:var(--surface-3,#eee);color:var(--ink-2)}}
+.gkind-illustration{{background:#fff4d6;color:#7a5200}}
+.gkind-drawing{{background:#e8f1ff;color:#1d4f91}}
 .galstrip{{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:0 0 14px}}
 .galstrip img{{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:8px;display:block}}
 .numpin b{{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;

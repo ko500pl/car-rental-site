@@ -1816,21 +1816,48 @@ def stars_html(r, lang, small=False):
             f'<i>{stars}</i><b>{r:g}</b></span>')
 
 
+KIND_LABEL = {
+    "drawing": {"ka": "აკვარელი (AI)", "en": "Watercolour (AI)", "ru": "Акварель (ИИ)",
+                "fa": "آبرنگ (هوش مصنوعی)", "he": "צבעי מים (בינה מלאכותית)", "ar": "ألوان مائية (ذكاء اصطناعي)"},
+    "illustration": {"ka": "ილუსტრაცია (AI)", "en": "Illustration (AI-generated)", "ru": "Иллюстрация (ИИ)",
+                     "fa": "تصویرسازی (هوش مصنوعی)", "he": "איור (בינה מלאכותית)", "ar": "صورة توضيحية (ذكاء اصطناعي)"},
+}
+
+
+def gallery_kind(x):
+    """'photo' (default) | 'drawing' (commissioned watercolour) | 'illustration' (AI-generated image)."""
+    k = (x.get("kind") if isinstance(x, dict) else None) or "photo"
+    return k if k in KIND_LABEL else "photo"
+
+
+def real_gallery(a):
+    """Gallery items that are real photographs (used for JSON-LD, map popups, previews)."""
+    return [x for x in (a.get("gallery") or []) if isinstance(x, dict) and gallery_kind(x) == "photo"]
+
+
 def gallery_html(a, lang):
     g = a.get("gallery") or []
     if not g:
         return ""
+    # real photos first, then the drawing, then AI illustrations — whatever order the YAML has
+    order = {"photo": 0, "drawing": 1, "illustration": 2}
+    g = sorted(g, key=lambda x: order[gallery_kind(x)])
     cap = tu(lang, "photo_by")
-    figs = "".join(
-        f'<figure class="gph"><img src="{E(x["image"])}" alt="{E(a[lang]["name"])} — {i+1}" '
-        f'loading="lazy" decoding="async">'
-        f'<figcaption>{E(cap)}: '
-        + (f'<a href="{E(x["source"])}" rel="nofollow noopener" target="_blank">{E(x["author"])}</a>'
-           if x.get("source") else E(x["author"]))
-        + (f' · <a href="{E(x["license_url"])}" rel="license nofollow noopener" target="_blank">'
-           f'{E(x["license"])}</a>' if x.get("license_url") else f' · {E(x["license"])}' if x.get("license") else "")
-        + '</figcaption></figure>'
-        for i, x in enumerate(g))
+
+    def fig(i, x):
+        k = gallery_kind(x)
+        badge = (f'<span class="gkind gkind-{k}">{E(KIND_LABEL[k].get(lang, KIND_LABEL[k]["en"]))}</span>'
+                 if k != "photo" else "")
+        credit = ((f'<a href="{E(x["source"])}" rel="nofollow noopener" target="_blank">{E(x["author"])}</a>'
+                   if x.get("source") else E(x["author"]))
+                  + (f' · <a href="{E(x["license_url"])}" rel="license nofollow noopener" target="_blank">'
+                     f'{E(x["license"])}</a>' if x.get("license_url")
+                     else f' · {E(x["license"])}' if x.get("license") else ""))
+        lead = f'{badge} ' if badge else f'{E(cap)}: '
+        return (f'<figure class="gph gph-{k}"><img src="{E(x["image"])}" alt="{E(a[lang]["name"])} — {i+1}" '
+                f'loading="lazy" decoding="async"><figcaption>{lead}{credit}</figcaption></figure>')
+
+    figs = "".join(fig(i, x) for i, x in enumerate(g))
     return f'<div class="gallery"><h2 class="vh">{E(te(lang, "gallery"))}</h2>{figs}</div>'
 
 
@@ -1853,7 +1880,9 @@ def photo_html(a, lang, cls="photo", hero=False):
     lic = c.get("license") or ""
     src = c.get("source") or ""
     lurl = c.get("license_url") or ""
-    cap = f'{E(tu(lang, "photo_by"))}: '
+    k = gallery_kind(c)
+    cap = (f'<span class="gkind gkind-{k}">{E(KIND_LABEL[k].get(lang, KIND_LABEL[k]["en"]))}</span> '
+           if k != "photo" else f'{E(tu(lang, "photo_by"))}: ')
     bits = [f'<a href="{E(src)}" rel="nofollow noopener" target="_blank">{E(who)}</a>' if src
             else E(who)]
     if lic:
@@ -2150,7 +2179,7 @@ def attr_detail(lang, slug, a):
         "u": attr_url(lang, slug, False),
         "short": L["short"],
         "r": a.get("rating") or 0,
-        "gal": [x["image"] for x in (a.get("gallery") or [])[:3]],
+        "gal": [x["image"] for x in real_gallery(a)[:3]],
         "facts": [
             [u["visit_time"], f'{a["visit_hours"]} {u["hrs"]}'],
             [u["from_tbilisi"], f'{a["distance_tbilisi_km"]} {u["km"]} · {a["drive_time_tbilisi"]}'],
@@ -2649,7 +2678,7 @@ def render_attraction(lang, slug, a):
                                 (r[lang]["name"], region_url(lang, a["region"])),
                                 (L["name"], attr_url(lang, slug))])]
     _imgs = [image_object(a.get("image"), a.get("image_credit"), L["name"])]
-    _imgs += [image_object(x.get("image"), x, L["name"]) for x in (a.get("gallery") or [])]
+    _imgs += [image_object(x.get("image"), x, L["name"]) for x in real_gallery(a)]
     graph += [i for i in _imgs if i]
     head = head_html(lang, "map", title, desc,
                      f'{L["name"]}, {tl(lang,"type",a["type"])}, {r[lang]["name"]}',

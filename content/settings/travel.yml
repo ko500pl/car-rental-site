@@ -57,7 +57,7 @@ ka:
     moderate: საშუალო
     hard: რთული
   type:
-    monastery: მონასტერი
+    monastery: ტაძარი და სალოცავი
     fortress: ციხე-სიმაგრე
     cave: გამოქვაბული
     canyon: კანიონი
@@ -207,7 +207,7 @@ en:
     moderate: Moderate
     hard: Hard
   type:
-    monastery: Monastery
+    monastery: Place of worship
     fortress: Fortress
     cave: Cave
     canyon: Canyon
@@ -359,7 +359,7 @@ ru:
     moderate: Средний
     hard: Сложный
   type:
-    monastery: Монастырь
+    monastery: Храм и святыня
     fortress: Крепость
     cave: Пещера
     canyon: Каньон
@@ -510,7 +510,7 @@ fa:
     moderate: متوسط
     hard: دشوار
   type:
-    monastery: صومعه
+    monastery: عبادتگاه
     fortress: قلعه
     cave: غار
     canyon: تنگه
@@ -661,7 +661,7 @@ he:
     moderate: בינוני
     hard: קשה
   type:
-    monastery: מנזר
+    monastery: מקום פולחן
     fortress: מבצר
     cave: מערה
     canyon: קניון
@@ -811,7 +811,7 @@ ar:
     moderate: متوسط
     hard: صعب
   type:
-    monastery: دير
+    monastery: دار عبادة
     fortress: قلعة
     cave: كهف
     canyon: وادٍ سحيق

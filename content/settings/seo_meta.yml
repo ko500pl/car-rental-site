@@ -555,8 +555,8 @@ templates:
           description: "{name} قلعة في {region}، على بعد {km} كم من تبليسي ({drive} قيادة) — التاريخ وحالة الأسوار والطريق الذي ستحتاجه."
       monastery:
         en:
-          title: "{name} Monastery — Visiting Guide, {drive} from Tbilisi | RentUp"
-          description: "{name} is a monastery in {region}, {km} km from Tbilisi ({drive} drive) — visiting hours, what is still active, and how to get there."
+          title: "{name} — Visiting Guide, {drive} from Tbilisi | RentUp"
+          description: "{name} is a place of worship in {region}, {km} km from Tbilisi ({drive} drive) — visiting hours, what is still active, and how to get there."
         ka:
           title: "{name} — მონასტრის სანახავად გზამკვლევი, {drive} თბილისიდან | RentUp"
           description: "{name} — მონასტერი {region_loc}, {km} კმ თბილისიდან ({drive}) — სანახავი საათები, რა ფუნქციონირებს დღემდე და როგორ ჩახვიდეთ ავტომობილით."
