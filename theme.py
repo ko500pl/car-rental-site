@@ -2382,4 +2382,21 @@ main .lead,p.lead{{font-size:15px;color:var(--ink-2)}}
 .keyfacts p:last-child{{margin:0}}
 .keyfacts .meta{{font-size:13px;color:var(--ink-2)}}
 [dir=rtl] .keyfacts{{border-left:0;border-right:4px solid var(--brand)}}
+
+/* ═══ Brand · rentup.ge wordmark (2026-10-15) ═══
+   The wordmark is 3.83:1 and spells the name, so earlier rules that boxed
+   the old square "DO" mark into 96px / 34px must not apply to it. */
+.logo img.logo-word,.head-top .logo img.logo-word{{height:{d.get('logo_height','40')}px;width:auto;
+  max-width:none;flex:none;object-fit:contain;transform:none;filter:none}}
+.head-top .logo{{gap:12px}}
+.logo-sub{{font-family:var(--font);font-size:11px;font-weight:600;line-height:1.25;color:var(--ink-2);
+  letter-spacing:.08em;text-transform:uppercase;padding-inline-start:12px;
+  border-inline-start:1px solid var(--line);max-width:9.5em}}
+@media (max-width:720px){{
+  .logo img.logo-word,.head-top .logo img.logo-word{{height:32px}}
+  .logo-sub{{display:none}}
+}}
+.road-pass-brand img{{width:30cqw;height:7.8cqw;object-fit:contain;object-position:left center;transform:none}}
+html[dir="rtl"] .road-pass-brand img{{object-position:right center}}
+.authbrand{{width:150px;height:46px}}.authbrand img{{width:150px;height:40px}}
 """

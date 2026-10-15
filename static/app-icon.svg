@@ -1,9 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="116" fill="#07111b"/>
-  <rect x="68" y="68" width="376" height="376" rx="100" fill="url(#g)"/>
-  <path d="M124 294h264v58c0 18-14 32-32 32h-19c-17 0-30-13-32-29h-98c-2 16-15 29-32 29h-19c-18 0-32-14-32-32z" fill="#fff"/>
-  <path d="m151 286 32-91c8-24 30-40 56-40h34c26 0 48 16 56 40l32 91z" fill="#0b2030"/>
-  <circle cx="180" cy="342" r="20" fill="#0f4c81"/><circle cx="332" cy="342" r="20" fill="#0f4c81"/>
-  <text x="256" y="258" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="76" fill="#fff">DO</text>
-  <defs><linearGradient id="g" x1="68" y1="68" x2="444" y2="444"><stop stop-color="#25bedb"/><stop offset="1" stop-color="#4385f5"/></linearGradient></defs>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512"><defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="512" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#0a1a2f"/><stop offset="1" stop-color="#07111f"/></linearGradient><linearGradient id="up" x1="0" y1="-1060" x2="0" y2="9" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#15acfe"/><stop offset="1" stop-color="#0e64fb"/></linearGradient></defs><rect width="512" height="512" rx="115.2" fill="url(#bg)"/><g transform="translate(116.36 432.18) scale(0.33527)"><path fill="url(#up)" d="M441 -281C441 -190 395 -153 339 -153C282 -153 249 -186 249 -270V-542H59V-239C59 -67 156 9 289 9C351 9 409 -13 450 -58V0H631V-542H441ZM441 -522L441 -682L298.0 -682L536.0 -1060L774.0 -682L631 -682L631 -522Z"/></g></svg>

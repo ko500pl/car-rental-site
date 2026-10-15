@@ -1109,8 +1109,11 @@ def header_html(lang, current):
                   "fa": "سفر را برنامه‌ریزی کنید", "he": "תכננו נסיעה", "ar": "خطّط رحلتك"}[lang]
     logo_img = DESIGN.get("logo_image")
     mark = DESIGN.get("logo_mark") or "".join(w[0] for w in BRAND.split()[:2]).upper()
-    logo = (f'<img src="{E(logo_img)}" alt="" aria-hidden="true">'
-            f'<span class="logo-name">{E(BRAND)} <small>{E(u["ui"]["logo_sub"])}</small></span>' if logo_img
+    # The wordmark spells the brand itself, so it carries the alt text and the
+    # name is not repeated beside it — only the "travel planner" line is.
+    logo = (f'<img class="logo-word" src="{E(logo_img)}" alt="{E(BRAND)}" '
+            f'width="{round(int(DESIGN.get("logo_height") or 40) * 3.83)}" height="{E(DESIGN.get("logo_height") or "40")}">'
+            f'<span class="logo-sub">{E(u["ui"]["logo_sub"])}</span>' if logo_img
             else f'<span class="mark" aria-hidden="true">{E(mark)}</span>'
                  f'<span class="logo-name">{E(BRAND)} <small>{E(u["ui"]["logo_sub"])}</small></span>')
     return f"""<header class="site-head"><div class="head-top">
@@ -1571,9 +1574,9 @@ def render_business_card(lang):
     body = f'''<main id="main" class="digital-card-page"><div class="digital-card-shell">
 <nav class="card-languages" aria-label="{E(UI[lang]['ui']['lang_label'])}">{card_langs}</nav>
 <article class="road-pass-card" aria-labelledby="card-name">
-<div class="road-pass-top"><span>DRIVE ON • GEORGIA</span><strong>ROAD PASS <span aria-hidden="true">✈</span></strong></div>
+<div class="road-pass-top"><span>RENTUP.GE • GEORGIA</span><strong>ROAD PASS <span aria-hidden="true">✈</span></strong></div>
 <div class="road-pass-body"><div class="road-pass-identity">
-<div class="road-pass-brand"><img src="/assets/do-logo-tight.png" alt=""><b>RentUp</b></div>
+<div class="road-pass-brand"><img src="/assets/brand/rentup-wordmark.svg" alt="RentUp" width="230" height="60"></div>
 <h1 id="card-name">{E(name)}</h1><p class="road-pass-role">{E(role)}</p>
 <a class="card-contact-line" href="tel:+995597555565" aria-label="{E(call)}: +995 597 55 55 65"><span aria-hidden="true">☎</span><bdi dir="ltr">+995 597 55 55 65</bdi></a>
 <a class="card-contact-line card-site" href="https://www.rentup.ge/" aria-label="{E(website)}: www.rentup.ge"><span aria-hidden="true">↗</span><bdi dir="ltr">www.rentup.ge</bdi></a>
@@ -5673,7 +5676,7 @@ def render_app_page(lang):
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#0b2f4d">
+<meta name="theme-color" content="#0a1a2f">
 <meta name="robots" content="noindex">
 <title>RentUp — {E(t["appSub"])}</title>
 <link rel="manifest" href="/assets/manifest.webmanifest">
@@ -5688,7 +5691,7 @@ def render_app_page(lang):
 <div id="doa" style="height:100dvh;max-width:520px;margin:0 auto;display:flex;flex-direction:column;background:#f4f7f9;overflow:hidden;position:relative">
 
   <div style="flex:0 0 auto;display:flex;align-items:center;gap:8px;height:54px;padding:0 12px;padding-top:env(safe-area-inset-top);background:#fff;border-bottom:1px solid #dde5ec">
-    <img src="/assets/do-logo-transparent.png" alt="RentUp" width="92" height="28" style="height:28px;width:auto;display:block">
+    <img src="/assets/brand/rentup-wordmark.svg" alt="RentUp" width="115" height="30" style="height:30px;width:auto;display:block;flex:none">
     <span style="font-size:13px;font-weight:600;color:#5a6b7b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{E(t["appSub"])}</span>
     <div style="flex:1"></div>
     <select id="doalang" aria-label="Language" style="height:44px;padding:0 6px;border:1px solid #dde5ec;border-radius:10px;background:#fff;font-size:13px">{lang_opts}</select>

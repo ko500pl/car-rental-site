@@ -14,7 +14,7 @@
   };
   function carCopy(key, fallback) { return (CAR_COPY[UI_LANG] || CAR_COPY.en)[key] || fallback; }
   window.FH_BRAND_LOGO = window.FH_BRAND_LOGO || new Image();
-  if (!window.FH_BRAND_LOGO.src) window.FH_BRAND_LOGO.src = "/assets/do-logo-tight.png";
+  if (!window.FH_BRAND_LOGO.src) window.FH_BRAND_LOGO.src = "/assets/brand/rentup-wordmark-white-600.png";
   var map, layers = [], DAY_COLORS = ["#0f4c81", "#c8963e", "#1d7a53", "#8e6bb5", "#b5563f",
                                       "#2b8a9e", "#8f2f52", "#4a76b5", "#3f8f5f", "#a0703c"];
 
@@ -692,12 +692,13 @@
       var height = 500 + rows.reduce(function (n, row) { return n + 80 + row.stops.length * 68; }, 0);
       var c = document.createElement("canvas"), ctx = c.getContext("2d"); c.width = 1240; c.height = Math.max(900, height);
       ctx.fillStyle = "#f7fafc"; ctx.fillRect(0, 0, c.width, c.height);
-      ctx.fillStyle = "#07111d"; ctx.fillRect(0, 0, c.width, 180);
+      ctx.fillStyle = "#0a1a2f"; ctx.fillRect(0, 0, c.width, 180);
       var grad = ctx.createLinearGradient(0, 0, 1240, 0); grad.addColorStop(0, "#25bfd1"); grad.addColorStop(1, "#3b82f6");
       var brandLogo = window.FH_BRAND_LOGO;
-      if (brandLogo && brandLogo.complete && brandLogo.naturalWidth) ctx.drawImage(brandLogo, 60, 38, 130, 92);
-      ctx.fillStyle = "#f4f8fc"; ctx.font = "800 40px sans-serif"; ctx.fillText("RentUp", 215, 90);
-      ctx.fillStyle = "#9fb0c4"; ctx.font = "500 22px sans-serif"; ctx.fillText("TRIP SUMMARY", 215, 126);
+      // the wordmark is 3.83:1 and already spells the name
+      if (brandLogo && brandLogo.complete && brandLogo.naturalWidth) ctx.drawImage(brandLogo, 60, 34, 306, 80);
+      else { ctx.fillStyle = "#f4f8fc"; ctx.font = "800 40px sans-serif"; ctx.fillText("rentup.ge", 60, 96); }
+      ctx.fillStyle = "#9fb0c4"; ctx.font = "500 22px sans-serif"; ctx.fillText("TRIP SUMMARY", 62, 150);
       ctx.fillStyle = "#0b1724"; ctx.font = "800 38px sans-serif";
       var y = wrap(ctx, start.n + " · " + res.days.length + " " + T.day, 70, 250, 1100, 48) + 16;
       ctx.font = "600 22px sans-serif"; ctx.fillStyle = "#526274";
