@@ -1,3 +1,4 @@
+import re
 import unittest
 from pathlib import Path
 
@@ -102,6 +103,24 @@ class ProductFeatureTests(unittest.TestCase):
         self.assertIn("'priceSource'", allowed,
                       "booking.js წერს priceSource-ს; hasOnly-ში არ არის — "
                       "ყველა ჯავშანი უარყოფილი იქნება")
+
+    def test_rules_constrain_price_source_to_the_three_values_the_site_writes(self):
+        # priceSource-ს გამქირავებელი კითხულობს, რომ გადაწყვიტოს, ენდოს თუ არა
+        # ჯავშნის ფასს. ყველა სხვა სტრიქონი წესში ტიპითა და ზომით მოწმდება;
+        # ეს მხოლოდ hasOnly-ში იყო, ანუ ხელნაკეთ კლიენტს 'live' + 1 ₾
+        # ან მეგაბაიტიანი მნიშვნელობა გადაჰქონდა.
+        rules = Path("firestore.rules").read_text(encoding="utf-8")
+        booking = Path("static", "booking.js").read_text(encoding="utf-8")
+        create = rules.split("match /bookings/{id}")[1].split("allow update")[0]
+        self.assertIn("hasAny(['priceSource'])", create,
+                      "priceSource-ის მნიშვნელობა წესში არ მოწმდება")
+        clause = create.split("hasAny(['priceSource'])", 1)[1].split("&&", 1)[0]
+        self.assertIn("request.resource.data.priceSource in [", clause)
+        values = set(re.findall(r"'([^']*)'", clause))
+        self.assertEqual(values, {"live", "built", "none"})
+        for value in values:
+            self.assertIn(f"'{value}'", booking,
+                          f"წესი '{value}'-ს უშვებს, booking.js კი არასოდეს წერს")
 
     def test_pwa_has_real_service_worker(self):
         app = Path("static", "app.js").read_text(encoding="utf-8")

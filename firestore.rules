@@ -122,6 +122,13 @@ service cloud.firestore {
         && (!request.resource.data.keys().hasAny(['pageUrl'])
           || (request.resource.data.pageUrl is string
             && request.resource.data.pageUrl.size() <= 400))
+        // priceSource-ს გამქირავებელი კითხულობს, რომ გადაწყვიტოს, ენდოს თუ არა
+        // ჯავშნის ფასს. საიტი სამ მნიშვნელობას წერს: 'live' (ცოცხალი დოკუმენტი),
+        // 'built' (deploy-ის დღის ფასი), 'none' (ფასი არ იყო). სხვა არაფერი
+        // გავა: თავისუფალი სტრიქონი ან ზომა ამ ველში ნდობის სიგნალს გააფუჭებდა.
+        // ველი არასავალდებულოა — ძველ, ქეშირებულ გვერდს ის არ გააქვს.
+        && (!request.resource.data.keys().hasAny(['priceSource'])
+          || request.resource.data.priceSource in ['live', 'built', 'none'])
         && request.resource.data.start.size() == 10
         && request.resource.data.end.size() == 10
         && request.resource.data.status == 'pending'
