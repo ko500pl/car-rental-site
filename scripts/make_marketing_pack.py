@@ -20,7 +20,7 @@ ROOT = Path(__file__).resolve().parents[1]
 LANGS = ("ka", "en", "ru", "fa", "he", "ar")
 SITE_URL = "https://rentup.ge"
 SOURCES = {"gbp", "yandex-maps", "2gis", "apple-maps", "localrent", "discovercars"}
-MEDIUMS = {"maps", "aggregator", "referral", "cpc"}
+MEDIUMS = {"maps", "aggregator", "referral"}  # no paid channels: owner decision 2026-10-17
 PLATFORMS = (("gbp", "Google Business Profile"), ("yandex-maps", "Yandex Business"),
              ("2gis", "2GIS"), ("apple-maps", "Apple Business Connect"))
 FA_DIGITS = str.maketrans("0123456789", "۰۱۲۳۴۵۶۷۸۹")
@@ -32,8 +32,7 @@ def _load(rel: str):
 
 def utm_url(path: str, source: str, medium: str, campaign: str = "") -> str:
     """Absolute rentup.ge URL tagged with the agreed UTM vocabulary only."""
-    ok_source = (source in SOURCES or re.fullmatch(r"partner-[a-z0-9-]+", source)
-                 or re.fullmatch(r"ads-(ka|en|ru|fa|he|ar)", source))
+    ok_source = source in SOURCES or re.fullmatch(r"partner-[a-z0-9-]+", source)
     if not ok_source:
         raise ValueError(f"utm_source not in the agreed vocabulary: {source!r}")
     if medium not in MEDIUMS:
@@ -121,14 +120,15 @@ def listings_pack(site, branches, listings, policy, faq) -> str:
 def utm_conventions() -> str:
     rows = [("gbp", "maps"), ("yandex-maps", "maps"), ("2gis", "maps"), ("apple-maps", "maps"),
             ("localrent", "aggregator"), ("discovercars", "aggregator"),
-            ("partner-<slug>", "referral"), ("ads-<lang>", "cpc")]
+            ("partner-<slug>", "referral")]
     out = ["# UTM conventions", "",
            "Use only these values — the analytics reports group by them.", "",
            "| utm_source | utm_medium | Example |", "|---|---|---|"]
     for src, med in rows:
-        ex_src = src.replace("<slug>", "hotel-example").replace("<lang>", "he")
+        ex_src = src.replace("<slug>", "hotel-example")
         out.append(f"| `{src}` | `{med}` | {utm_url('/', ex_src, med)} |")
-    out += ["", "`utm_campaign` is free text (branch id, partner name, ad set).", ""]
+    out += ["", "`utm_campaign` is free text (branch id, partner name).",
+            "No paid-ads values: the programme runs on a zero budget (owner decision 2026-10-17).", ""]
     return "\n".join(out)
 
 
@@ -158,20 +158,27 @@ def review_templates(branches) -> str:
 
 def owner_steps() -> str:
     return "\n".join([
-        "# Owner steps (each ~5 minutes)", "",
-        "Claude prepares everything; creating accounts and verifying them must be done by you.", "",
-        "1. **Umami Cloud** — cloud.umami.is → sign up → *Add website* → domain `rentup.ge` → copy the *Website ID* "
-        "(a UUID) → send it to Claude, or paste it into `content/settings/site.yml → analytics.website_id`.",
-        "2. **Bing Webmaster Tools** — bing.com/webmasters → sign in → *Import from Google Search Console* → choose rentup.ge.",
-        "3. **Yandex Webmaster** — webmaster.yandex.com → add site → choose *Meta tag* → send the `content=` value "
-        "(goes into `site.yml → verification.yandex`).",
-        "4. **Google Business Profile** — business.google.com → add business → name exactly `RentUp` → paste the fields from "
-        "`LISTINGS_PACK.md` → verify (video or postcard) → send Claude the public Maps link.",
-        "5. **Yandex Business, 2GIS, Apple Business Connect** — same as step 4 with the matching section of the pack.",
-        "6. **Localrent** (first), then **DiscoverCars** — partner sign-up → contract → upload "
-        "`exports/fleet-<platform>.csv` (`python scripts/export_fleet.py localrent`). If their template uses other "
-        "column names, change `COLUMNS[platform]` in `scripts/export_fleet.py` (one line per column).",
-        "7. After every publish: `python scripts/indexnow_submit.py`.", ""])
+        "# მფლობელის ნაბიჯები (თითო ~5 წუთი)", "",
+        "**ყველაფერი უფასოა.** ბიუჯეტი 0 ₾ (გადაწყვეტილება 2026-10-17). ბარათს არსად შეიყვანთ. თუ რომელიმე "
+        "სერვისი ბარათს, „Upgrade“-ს, „Premium“-ს ან „დაწინაურებას“ (Promote / Реклама / Продвижение) "
+        "გთავაზობთ, გამოტოვეთ.", "",
+        "ანგარიშებს და დადასტურებას თქვენ აკეთებთ; Claude ამზადებს ყველა ტექსტს.", "",
+        "1. **Umami Cloud** — cloud.umami.is → რეგისტრაცია **Hobby (უფასო)** გეგმით → *Add website* → `rentup.ge` → "
+        "დააკოპირეთ *Website ID* და გამომიგზავნეთ (ან ჩაწერეთ `content/settings/site.yml → analytics.website_id`). "
+        "ფასიან გეგმაზე არ გადახვიდეთ.",
+        "2. **Bing Webmaster Tools** (უფასო) — bing.com/webmasters → *Import from Google Search Console* → rentup.ge.",
+        "3. **Yandex Webmaster** (უფასო) — webmaster.yandex.com → საიტის დამატება → *Meta tag* → გამომიგზავნეთ "
+        "`content=` მნიშვნელობა (`site.yml → verification.yandex`).",
+        "4. **Google Business Profile** (უფასო) — business.google.com → სახელი ზუსტად `RentUp` → ველები "
+        "`LISTINGS_PACK.md`-დან → დადასტურება → გამომიგზავნეთ რუკის ბმული. Google Ads-ის შეთავაზებას გამოტოვეთ.",
+        "5. **Yandex Business, 2GIS, Apple Business Connect** (საბაზისო ბარათი უფასოა) — იგივე, პაკეტის შესაბამისი "
+        "ნაწილით. „Продвижение“ / „Реклама“ / ფასიანი პაკეტები არ აირჩიოთ.",
+        "6. **Localrent**, შემდეგ **DiscoverCars** — წინასწარ გადასახადს არ ითხოვენ, მაგრამ თითო ჯავშანზე იღებენ "
+        "საკომისიოს (commission) — ანუ იხდით მხოლოდ მაშინ, როცა კლიენტი მოიყვანეს. ხელმოწერამდე ხელშეკრულებაში "
+        "გადაამოწმეთ: საკომისიოს %, აბონემენტი ან რეგისტრაციის საფასური (თუ ითხოვენ — შეჩერდით და მითხარით). "
+        "შემდეგ ატვირთეთ `exports/fleet-<platform>.csv` (`python scripts/export_fleet.py localrent`). თუ მათ შაბლონს "
+        "სხვა სვეტები აქვს, `scripts/export_fleet.py`-ში შეიცვლება `COLUMNS[platform]` (თითო სვეტი — ერთი ხაზი).",
+        "7. ყოველი გამოქვეყნების შემდეგ: `python scripts/indexnow_submit.py` (უფასო).", ""])
 
 
 def main(out_dir: str = "docs/marketing") -> list[Path]:

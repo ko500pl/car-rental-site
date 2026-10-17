@@ -11,6 +11,6 @@ Use only these values — the analytics reports group by them.
 | `localrent` | `aggregator` | https://rentup.ge/?utm_source=localrent&utm_medium=aggregator |
 | `discovercars` | `aggregator` | https://rentup.ge/?utm_source=discovercars&utm_medium=aggregator |
 | `partner-<slug>` | `referral` | https://rentup.ge/?utm_source=partner-hotel-example&utm_medium=referral |
-| `ads-<lang>` | `cpc` | https://rentup.ge/?utm_source=ads-he&utm_medium=cpc |
 
-`utm_campaign` is free text (branch id, partner name, ad set).
+`utm_campaign` is free text (branch id, partner name).
+No paid-ads values: the programme runs on a zero budget (owner decision 2026-10-17).

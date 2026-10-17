@@ -1,11 +1,13 @@
-# Owner steps (each ~5 minutes)
+# მფლობელის ნაბიჯები (თითო ~5 წუთი)
 
-Claude prepares everything; creating accounts and verifying them must be done by you.
+**ყველაფერი უფასოა.** ბიუჯეტი 0 ₾ (გადაწყვეტილება 2026-10-17). ბარათს არსად შეიყვანთ. თუ რომელიმე სერვისი ბარათს, „Upgrade“-ს, „Premium“-ს ან „დაწინაურებას“ (Promote / Реклама / Продвижение) გთავაზობთ, გამოტოვეთ.
 
-1. **Umami Cloud** — cloud.umami.is → sign up → *Add website* → domain `rentup.ge` → copy the *Website ID* (a UUID) → send it to Claude, or paste it into `content/settings/site.yml → analytics.website_id`.
-2. **Bing Webmaster Tools** — bing.com/webmasters → sign in → *Import from Google Search Console* → choose rentup.ge.
-3. **Yandex Webmaster** — webmaster.yandex.com → add site → choose *Meta tag* → send the `content=` value (goes into `site.yml → verification.yandex`).
-4. **Google Business Profile** — business.google.com → add business → name exactly `RentUp` → paste the fields from `LISTINGS_PACK.md` → verify (video or postcard) → send Claude the public Maps link.
-5. **Yandex Business, 2GIS, Apple Business Connect** — same as step 4 with the matching section of the pack.
-6. **Localrent** (first), then **DiscoverCars** — partner sign-up → contract → upload `exports/fleet-<platform>.csv` (`python scripts/export_fleet.py localrent`). If their template uses other column names, change `COLUMNS[platform]` in `scripts/export_fleet.py` (one line per column).
-7. After every publish: `python scripts/indexnow_submit.py`.
+ანგარიშებს და დადასტურებას თქვენ აკეთებთ; Claude ამზადებს ყველა ტექსტს.
+
+1. **Umami Cloud** — cloud.umami.is → რეგისტრაცია **Hobby (უფასო)** გეგმით → *Add website* → `rentup.ge` → დააკოპირეთ *Website ID* და გამომიგზავნეთ (ან ჩაწერეთ `content/settings/site.yml → analytics.website_id`). ფასიან გეგმაზე არ გადახვიდეთ.
+2. **Bing Webmaster Tools** (უფასო) — bing.com/webmasters → *Import from Google Search Console* → rentup.ge.
+3. **Yandex Webmaster** (უფასო) — webmaster.yandex.com → საიტის დამატება → *Meta tag* → გამომიგზავნეთ `content=` მნიშვნელობა (`site.yml → verification.yandex`).
+4. **Google Business Profile** (უფასო) — business.google.com → სახელი ზუსტად `RentUp` → ველები `LISTINGS_PACK.md`-დან → დადასტურება → გამომიგზავნეთ რუკის ბმული. Google Ads-ის შეთავაზებას გამოტოვეთ.
+5. **Yandex Business, 2GIS, Apple Business Connect** (საბაზისო ბარათი უფასოა) — იგივე, პაკეტის შესაბამისი ნაწილით. „Продвижение“ / „Реклама“ / ფასიანი პაკეტები არ აირჩიოთ.
+6. **Localrent**, შემდეგ **DiscoverCars** — წინასწარ გადასახადს არ ითხოვენ, მაგრამ თითო ჯავშანზე იღებენ საკომისიოს (commission) — ანუ იხდით მხოლოდ მაშინ, როცა კლიენტი მოიყვანეს. ხელმოწერამდე ხელშეკრულებაში გადაამოწმეთ: საკომისიოს %, აბონემენტი ან რეგისტრაციის საფასური (თუ ითხოვენ — შეჩერდით და მითხარით). შემდეგ ატვირთეთ `exports/fleet-<platform>.csv` (`python scripts/export_fleet.py localrent`). თუ მათ შაბლონს სხვა სვეტები აქვს, `scripts/export_fleet.py`-ში შეიცვლება `COLUMNS[platform]` (თითო სვეტი — ერთი ხაზი).
+7. ყოველი გამოქვეყნების შემდეგ: `python scripts/indexnow_submit.py` (უფასო).

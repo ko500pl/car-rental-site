@@ -46,14 +46,21 @@ class MarketingPackTests(unittest.TestCase):
                          "https://rentup.ge/en/car-rental/?utm_source=gbp&utm_medium=maps&utm_campaign=tbilisi")
         self.assertEqual(mp.utm_url("/", "partner-hotel-rooms", "referral"),
                          "https://rentup.ge/?utm_source=partner-hotel-rooms&utm_medium=referral")
-        self.assertEqual(mp.utm_url("/he/", "ads-he", "cpc"),
-                         "https://rentup.ge/he/?utm_source=ads-he&utm_medium=cpc")
         with self.assertRaises(ValueError):
             mp.utm_url("/", "facebook", "maps")
         with self.assertRaises(ValueError):
             mp.utm_url("/", "gbp", "social")
-        with self.assertRaises(ValueError):
-            mp.utm_url("/", "ads-xx", "cpc")
+        # owner decision 2026-10-17: zero budget, no paid channels
+        for source, medium in (("ads-he", "cpc"), ("ads-xx", "cpc"), ("gbp", "cpc")):
+            with self.assertRaises(ValueError):
+                mp.utm_url("/", source, medium)
+
+    def test_no_paid_channel_in_pack(self):
+        utm = self.files["UTM_CONVENTIONS.md"]
+        self.assertNotIn("cpc", utm)
+        steps = self.files["OWNER_STEPS.md"]
+        self.assertIn("უფასო", steps)
+        self.assertIn("commission", steps.lower())
 
     def test_prices_come_from_policy(self):
         policy = yaml.safe_load((ROOT / "content/settings/rental_policy.yml").read_text(encoding="utf-8"))
