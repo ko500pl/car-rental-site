@@ -163,8 +163,11 @@
   /* ── რუკა ───────────────────────────────────────────────────────── */
   if (window.L) {
     var map = L.map('tripmap', { scrollWheelZoom: false, minZoom: 6 });
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-      attribution: '&copy; OpenStreetMap, &copy; CARTO', maxZoom: 18, crossOrigin: true
+    /* CARTO's basemaps now answer every keyless request with an "API KEY
+     REQUIRED" tile, which is what the map showed. OSM's own tiles need no
+     key; attribution is required by its tile policy. */
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors', maxZoom: 19, crossOrigin: true
     }).addTo(map);
     var pts = [st.origin].concat(seq).concat([st.origin]);
     var straight = pts.map(function (p) { return [p.la, p.lo]; });
