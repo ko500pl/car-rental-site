@@ -1,14 +1,18 @@
 /* Static-first rental inquiry: contextual WhatsApp plus the Firestore booking request. */
 (function () {
   var TEXT = {
-    ka: { busy: "ამ თარიღებზე ეს მოდელი დაკავებული ჩანს — მოთხოვნას მაინც განვიხილავთ.", choose: "მიუთითეთ დაწყებისა და დასრულების თარიღები.", invalid: "დასრულება დაწყების შემდეგ უნდა იყოს.", days: "დღე", rate: "დღიური ფასი", total: "ქირა", deposit: "დეპოზიტი", due: "გადასახდელი", login: "მოთხოვნის გასაგზავნად შედით ანგარიშში.", sending: "იგზავნება…", success: "მოთხოვნა მიღებულია. ჯავშანი დადასტურებული არ არის, სანამ გადახდა არ შესრულდება.", failed: "მოთხოვნა ვერ გაიგზავნა. სცადეთ ხელახლა.", season: "ივლის–აგვისტოს სეზონური {p}% უკვე ჩათვლილია ქირაში: {s}", seasonPart: "ივლის–აგვისტოს სეზონური {p}% უკვე ჩათვლილია ქირაში: {d} ღამიდან {n} ღამეზე, {s}", young: "{age} წლამდე მძღოლს ემატება ახალგაზრდა მძღოლის დანამატი {min}–{max} ₾ დღეში." },
-    en: { busy: "This model looks fully booked for these dates — we will still review your request.", choose: "Choose start and end dates.", invalid: "End must be after start.", days: "days", rate: "Daily rate", total: "Rental", deposit: "Deposit", due: "Payment due", login: "Sign in to send the request.", sending: "Sending…", success: "Request received. The booking is not confirmed until payment is completed.", failed: "The request could not be sent. Please try again.", season: "The July–August seasonal {p}% is already included in the rental: {s}", seasonPart: "The July–August seasonal {p}% is already included in the rental: {n} of {d} nights, {s}", young: "Drivers under {age} pay a young driver surcharge of {min}–{max} GEL per day." },
+    ka: { busy: "ამ თარიღებზე ეს მოდელი დაკავებული ჩანს — მოთხოვნას მაინც განვიხილავთ.", choose: "მიუთითეთ დაწყებისა და დასრულების თარიღები.", invalid: "დასრულება დაწყების შემდეგ უნდა იყოს.", days: "დღე", rate: "დღიური ფასი", total: "ქირა", deposit: "დეპოზიტი", due: "გადასახდელი", login: "მოთხოვნის გასაგზავნად შედით ანგარიშში.", sending: "იგზავნება…", success: "მოთხოვნა მიღებულია. ჯავშანი დადასტურებული არ არის, სანამ გადახდა არ შესრულდება.", failed: "მოთხოვნა ვერ გაიგზავნა. სცადეთ ხელახლა.", queued: "კავშირი არ არის. მოთხოვნა ამ გვერდზე შენახულია და კავშირის აღდგენისას თავად გაიგზავნება — გვერდი ღია დატოვეთ. თუ დახურავთ, მოთხოვნა დაიკარგება; სასწრაფო შემთხვევაში მოგვწერეთ WhatsApp-ზე.", tooLong: "ერთ მოთხოვნაში მაქსიმუმ 365 ღამეა შესაძლებელი. შეამოკლეთ პერიოდი ან მოგვწერეთ WhatsApp-ზე.", season: "ივლის–აგვისტოს სეზონური {p}% უკვე ჩათვლილია ქირაში: {s}", seasonPart: "ივლის–აგვისტოს სეზონური {p}% უკვე ჩათვლილია ქირაში: {d} ღამიდან {n} ღამეზე, {s}", young: "{age} წლამდე მძღოლს ემატება ახალგაზრდა მძღოლის დანამატი {min}–{max} ₾ დღეში." },
+    en: { busy: "This model looks fully booked for these dates — we will still review your request.", choose: "Choose start and end dates.", invalid: "End must be after start.", days: "days", rate: "Daily rate", total: "Rental", deposit: "Deposit", due: "Payment due", login: "Sign in to send the request.", sending: "Sending…", success: "Request received. The booking is not confirmed until payment is completed.", failed: "The request could not be sent. Please try again.", queued: "No connection right now. Your request is saved on this page and will be sent automatically when the connection returns — keep this page open. If you close it the request is lost; for anything urgent, message us on WhatsApp.", tooLong: "A single request can cover at most 365 nights. Shorten the period or message us on WhatsApp.", season: "The July–August seasonal {p}% is already included in the rental: {s}", seasonPart: "The July–August seasonal {p}% is already included in the rental: {n} of {d} nights, {s}", young: "Drivers under {age} pay a young driver surcharge of {min}–{max} GEL per day." },
     ru: { busy: "На эти даты эта модель занята — мы всё равно рассмотрим ваш запрос.", choose: "Укажите даты начала и окончания.", invalid: "Дата окончания должна быть позже начала.", days: "дн.", rate: "Цена в день", total: "Аренда", deposit: "Депозит", due: "К оплате", login: "Войдите, чтобы отправить запрос.", sending: "Отправка…", success: "Запрос получен. Бронирование не подтверждено до оплаты.", failed: "Не удалось отправить запрос.", season: "Сезонная надбавка июля–августа {p}% уже включена в стоимость аренды: {s}", seasonPart: "Сезонная надбавка июля–августа {p}% уже включена в стоимость аренды: {n} из {d} ночей, {s}", young: "Водителям младше {age} лет начисляется надбавка молодого водителя {min}–{max} лари в сутки." },
     fa: { busy: "در این تاریخ‌ها این خودرو رزرو به نظر می‌رسد — درخواست شما را بررسی می‌کنیم.", choose: "تاریخ شروع و پایان را انتخاب کنید.", invalid: "پایان باید بعد از شروع باشد.", days: "روز", rate: "نرخ روزانه", total: "اجاره", deposit: "ودیعه", due: "مبلغ پرداخت", login: "برای ارسال درخواست وارد شوید.", sending: "در حال ارسال…", success: "درخواست دریافت شد. رزرو تا زمان پرداخت تأیید نمی‌شود.", failed: "ارسال درخواست ناموفق بود.", season: "ضریب فصلی {p}% ژوئیه و اوت در مبلغ اجاره لحاظ شده است: {s}", seasonPart: "ضریب فصلی {p}% ژوئیه و اوت در مبلغ اجاره لحاظ شده است: {n} شب از {d} شب، {s}", young: "رانندگان زیر {age} سال روزانه {min} تا {max} لاری هزینهٔ رانندهٔ جوان می‌پردازند." },
     he: { busy: "בתאריכים אלה הרכב נראה תפוס — נבדוק את הבקשה בכל מקרה.", choose: "בחרו תאריכי התחלה וסיום.", invalid: "הסיום חייב להיות אחרי ההתחלה.", days: "ימים", rate: "מחיר יומי", total: "השכרה", deposit: "פיקדון", due: "לתשלום", login: "יש להתחבר כדי לשלוח בקשה.", sending: "שולח…", success: "הבקשה התקבלה. ההזמנה אינה מאושרת עד להשלמת התשלום.", failed: "לא ניתן לשלוח את הבקשה.", season: "מקדם עונתי של {p}% ליולי–אוגוסט כבר כלול בהשכרה: {s}", seasonPart: "מקדם עונתי של {p}% ליולי–אוגוסט כבר כלול בהשכרה: {n} מתוך {d} לילות, {s}", young: "נהגים מתחת לגיל {age} משלמים תוספת נהג צעיר של {min} עד {max} לארי ליום." },
     ar: { busy: "في هذه التواريخ يبدو الطراز محجوزاً — سنراجع طلبك على أي حال.", choose: "اختر تاريخي البداية والنهاية.", invalid: "يجب أن تكون النهاية بعد البداية.", days: "أيام", rate: "السعر اليومي", total: "الإيجار", deposit: "التأمين", due: "المبلغ المستحق", login: "سجّل الدخول لإرسال الطلب.", sending: "جارٍ الإرسال…", success: "تم استلام الطلب. لا يتأكد الحجز حتى يكتمل الدفع.", failed: "تعذر إرسال الطلب.", season: "المعامل الموسمي {p}% ليوليو وأغسطس محتسب في الإيجار: {s}", seasonPart: "المعامل الموسمي {p}% ليوليو وأغسطس محتسب في الإيجار: {n} من {d} ليلة، {s}", young: "يدفع السائقون دون {age} سنة رسوم سائق شاب من {min} إلى {max} لاري يومياً." }
   };
   function n(v) { v = Number(v); return Number.isFinite(v) ? v : 0; }
+  /* ტექსტი ენაზე; თუ ეს ფრაზა ენას ჯერ არ აქვს (queued, tooLong ახლა მხოლოდ
+     ka/en-ში წერია), ინგლისური ჩანს — ტყუილი „ვერ გაიგზავნა" უარესია, ვიდრე
+     სხვა ენაზე დაწერილი მართალი წინადადება. */
+  function say(t, key) { return t[key] || TEXT.en[key]; }
   /* დღეები UTC-ში: ლოკალური დროით თვლა შემოდგომის საათის გადაწევისას
      25-საათიან დღეს აჩენდა და ceil-ი ზედმეტ დღეს (და ზოგჯერ სხვა ტარიფის
      ზოლს) აბრუნებდა. */
@@ -77,15 +81,28 @@
        1+ / 7+ / 30+ ღამე. დღეები exclusive-ია (წაყვანის დღე არ ითვლება). */
     var quoteBox = root.querySelector('[data-quote]');
     /* ბოლო ფიგურა, რომელიც ეკრანზე დაიხატა — ის, რასაც კლიენტი ხედავს.
-       გაგზავნისას სწორედ ამას ვადარებთ იმას, რასაც ჩავწერთ. */
+       გაგზავნისას სწორედ ამას ვადარებთ იმას, რასაც ჩავწერთ.
+
+       ფიგურაში ფულთან ერთად მანქანა და თარიღებიც შედის: კლიენტმა გაგზავნა
+       კონკრეტულ მანქანაზე და კონკრეტულ დღეებზე დააჭირა. თუ 3-წამიანი
+       ლოდინისას მეორე, იმავე ფასის მანქანა ან იმავე ხანგრძლივობის სხვა
+       პერიოდი აირჩია, ფასი არ შეცვლილა და მხოლოდ ფულის შედარება ჯავშანს
+       იმ მანქანაზე ან დღეებზე დაწერდა, რომელზეც ღილაკი არავის დაუჭერია. */
     var lastQuote = null;
-    function figureOf(q) { return [q.rate, q.rental, q.deposit, q.due].join('|'); }
+    function figureOf(q) { return [q.slug, q.start, q.end, q.rate, q.rental, q.deposit, q.due].join('|'); }
     function drawQuote() {
       if (!quoteBox) return null;
       var q = quoteFor(root);
       lastQuote = q;
       if (!q) { quoteBox.textContent = ''; return null; }
       if (q.slug) fetchLive(q.slug); /* cached; redraws via fh:live-availability */
+      /* წესები days <= 365-ს მოითხოვს. უფრო გრძელ შუალედს ფასი ეწერებოდა,
+         გაგზავნა კი სამუდამოდ „ვერ გაიგზავნა"-ით სრულდებოდა — ამას კლიენტი
+         ფორმის შევსებამდე უნდა გაიგოს. */
+      if (q.days > MAX_DAYS) {
+        quoteBox.textContent = q.days + ' ' + t.days + ' · ' + say(t, 'tooLong');
+        return q;
+      }
       quoteBox.textContent = q.days + ' ' + t.days +
         (q.rate ? ' · ' + t.rate + ': ' + money(q.rate) + ' · ' + t.total + ': ' + money(q.rental) +
           (q.deposit ? ' · ' + t.deposit + ': ' + money(q.deposit) : '') : '');
@@ -133,33 +150,70 @@
        თუ Firebase საერთოდ არ არის ჩართული, ფორმა ისე იქცევა, როგორც აქამდე. */
     if (window.FH && typeof window.FH.firebase === 'function') {
       root.dataset.fhCloud = '1';   /* ajaxifyForms-მა ხელი აღარ ახლოს */
+      /* სერვერმა ჩანაწერი მიიღო. clearForm=false მაშინ, როცა კლიენტმა ამ
+         დროს ფორმა უკვე შეცვალა (ახალი, ჯერ გაუგზავნელი მოთხოვნა) — მის
+         ტექსტს არ ვშლით. */
+      function succeed(clearForm) {
+        status.textContent = t.success;
+        if (window.RentUpAnalytics) window.RentUpAnalytics.track('booking_request', window.RentUpAnalytics.bookingParams(root));
+        forgetRequest(root);   /* შემდეგი ფორმა ახალი ჯავშანია */
+        if (clearForm) {
+          root.reset();
+          if (quoteBox) quoteBox.textContent = '';
+        }
+      }
+      /* 20 წამს გადაცილებული ჩანაწერი რიგში რჩება. მისი ბედი ჩვენთვის მაინც
+         საინტერესოა: დადასტურდა — კლიენტს ვეუბნებით, უარყოფილია — ისიც. */
+      function watchQueued(id, pending) {
+        pending.then(function () {
+          delete QUEUED[id];
+          if (root.dataset.requestId !== id) return;
+          succeed(root.dataset.requestFp === fingerprintOf(root));
+        }, function () {
+          delete QUEUED[id];
+          if (root.dataset.requestId === id) status.textContent = t.failed;
+        });
+      }
       root.addEventListener('submit', function (ev) {
         ev.preventDefault();
         root.querySelector('[name="page_url"]').value = location.href;
         if (!root.reportValidity()) return;
         var button = root.querySelector('[type="submit"]');
+        /* ძალიან გრძელ შუალედს ვერც ერთი ცდა ვერ გაასწორებს — წესები უარყოფს.
+           ვეუბნებით და არაფერს ვგზავნით. */
+        if (lastQuote && lastQuote.days > MAX_DAYS) { status.textContent = say(t, 'tooLong'); return; }
+        /* ჩანაწერი უკვე რიგშია (წინა დაჭერამ 20 წამი დაელოდა და ვადა გავიდა).
+           ახალი ლოდინი არაფერს შეცვლის: პასუხი იგივეა, და მეორე ჩანაწერს
+           რიგში არ ვსვამთ. */
+        var pendingId = requestIdFor(root);
+        if (QUEUED[pendingId] && SENT[pendingId]) { status.textContent = say(t, 'queued'); return; }
         if (button) button.disabled = true;
         status.textContent = t.sending;
-        var cloud = false;
+        var cloud = false, queued = false, rid = '';
         /* ფასს აქ ვწერთ ჯავშანში, ამიტომ ის ახლანდელი უნდა იყოს. drawQuote
            ჩაშენებულ ფასს (deploy-ის დღისას) კითხულობს და ცოცხალ მოთხოვნას
            მხოლოდ ამის მერე იწყებს — ვინც ფორმას სწრაფად ავსებს, იმას ისევ
            ძველი ფასი ეწერებოდა. ამიტომ ცოცხალს ვუცდით (მაქსიმუმ LIVE_WAIT_MS),
            მერე კვლავ ვითვლით: fetchLive FH_CFG.cars-ში თავისი ფასი უკვე ჩაწერა.
 
-           მაგრამ კლიენტმა ფასი ეკრანზე ნახა და ღილაკი იმ ფასზე დააჭირა.
-           თუ ახალი გათვლა სხვა ფიგურას იძლევა, ჯავშანს არ ვწერთ: ახალ ფასს
-           ეკრანზე ვხატავთ და ღილაკს ვხსნით — მეორე დაჭერა უკვე ნანახ ფასზე
-           იქნება. უჩუმრად ჩანაცვლებული ფასი ორივე ძველ ხარვეზზე უარესია.
-           ფიგურა უცვლელია (ჩვეულებრივი შემთხვევა: catalogue.js ცოცხალ ფასს
-           ჩვენამდე ჩადებს) — იგზავნება ერთი დაჭერით.
+           მაგრამ კლიენტმა ფასი ეკრანზე ნახა და ღილაკი იმ ფასზე, იმ მანქანაზე
+           და იმ თარიღებზე დააჭირა. თუ ახალი გათვლა სხვა ფიგურას იძლევა
+           (ფასი, მანქანა ან დღეები — იხ. figureOf), ჯავშანს არ ვწერთ: ახალს
+           ეკრანზე ვხატავთ და ღილაკს ვხსნით — მეორე დაჭერა უკვე ნანახზე
+           იქნება. უჩუმრად ჩანაცვლებული ფასი ან მანქანა ორივე ძველ ხარვეზზე
+           უარესია. ფიგურა უცვლელია (ჩვეულებრივი შემთხვევა: catalogue.js ცოცხალ
+           ფასს ჩვენამდე ჩადებს) — იგზავნება ერთი დაჭერით. თუ ლოდინისას თარიღები
+           გაუქმდა და გათვლა აღარ არსებობს, ესეც შეცვლილი ფიგურაა.
 
            priceSource ჩანაწერში ამბობს, საიდან არის ფასი:
-             'live'  — ამ გაგზავნისას წაკითხული ცოცხალი დოკუმენტი (ახალი,
-                       72 საათის ფანჯარაში);
+             'live'  — ამ გაგზავნისას ცოცხალი დოკუმენტიდან აღებული ფასი: ახალი
+                       (72 საათის ფანჯარაში) და სრული — დღიური ფასიც და
+                       დეპოზიტიც თვითონ მას ეკუთვნის (იხ. fetchLive);
              'built' — ჩაშენებული ფასი: deploy-ის დღისა, ან ისეთი, რომელიც
                        catalogue.js-მა გვერდის გახსნისას ჩადო (წუთებისა) —
-                       ამ გაგზავნისას დადასტურებული არ არის;
+                       ამ გაგზავნისას დადასტურებული არ არის; ასევეა ნაწილობრივი
+                       ცოცხალი დოკუმენტი, რომელსაც ფასის ან დეპოზიტის ნაწილი
+                       აკლია და ეს ნაწილი ჩაშენებულიდან შეივსო;
              'none'  — ფასი საერთოდ არ იყო (კატალოგის მანქანა, რომლის
                        დოკუმენტი 72 საათზე ძველია და ჩაშენებული ფასი არ აქვს).
                        ჩანაწერში 0 ₾ ეწერება და 'built' ტყუილი იქნებოდა:
@@ -174,7 +228,7 @@
         liveWithin(String(new FormData(root).get('car_slug') || ''), LIVE_WAIT_MS)
           .then(function () {
             var q = drawQuote();
-            if (shown && q && figureOf(shown) !== figureOf(q)) {
+            if (shown && (!q || figureOf(shown) !== figureOf(q))) {
               held = true;
               return null;
             }
@@ -184,26 +238,35 @@
             }
             /* ოფლაინში Firestore SDK ჩაწერას რიგში სვამს და არც ჩავარდება, არც
                დასრულდება — ღილაკი სამუდამოდ „იგზავნება…"-ზე რჩებოდა. ამიტომ
-               ვადას ვუწესებთ და კლიენტს ვეუბნებით, რომ ვერ გაიგზავნა. */
-            return withTimeout(sendToCloud(root, q, requestIdFor(root)), SUBMIT_TIMEOUT_MS)
+               ვადას ვუწესებთ. ვადის გასვლა ჩავარდნას არ ნიშნავს: ჩანაწერი
+               SDK-ს რიგში რჩება და კავშირის აღდგენისას თავად მიდის (id
+               მუდმივია, ამიტომ დუბლი არ იქმნება) — ქვემოთ სწორედ ამას ვეუბნებით
+               კლიენტს, და არა „ვერ გაიგზავნა"-ს. */
+            rid = requestIdFor(root);
+            return withTimeout(sendToCloud(root, q, rid), SUBMIT_TIMEOUT_MS)
               .then(function () { cloud = true; });
           })
-          .catch(function (err) { console.warn('[booking] cloud:', err && (err.code || err.message)); })
+          .catch(function (err) {
+            console.warn('[booking] cloud:', err && (err.code || err.message));
+            /* ვადა გავიდა, მაგრამ ჩანაწერი ჯერ არც მიღებულა და არც უარყოფილა:
+               ის რიგშია. */
+            if (err && err.code === 'timeout' && rid && SENT[rid]) {
+              queued = true;
+              QUEUED[rid] = 1;
+              watchQueued(rid, SENT[rid]);
+            }
+          })
           .then(function () {
             /* წარმატება მხოლოდ მაშინ ითქმის, როცა ჩანაწერი მართლა დაიწერა.
                აქამდე ორივე გზის ჩავარდნისას მაინც „მიღებულია" ეწერებოდა და
                ფორმა იშლებოდა — კლიენტი დაჯავშნილი ეგონა, მოთხოვნა კი არსად
-               იყო. */
+               იყო. „რიგშია" წარმატება არ არის: ფორმა სავსე რჩება, ტექსტი კი
+               ამბობს, რომ გვერდი ღია უნდა დარჩეს. */
             if (held) { status.textContent = ''; return; }
-            status.textContent = cloud ? t.success : t.failed;
-            if (cloud && window.RentUpAnalytics) window.RentUpAnalytics.track('booking_request', window.RentUpAnalytics.bookingParams(root));
-            if (cloud) {
-              forgetRequest(root);   /* შემდეგი ფორმა ახალი ჯავშანია */
-              root.reset();
-              if (quoteBox) quoteBox.textContent = '';
-            }
+            if (cloud) { succeed(true); return; }
+            status.textContent = queued ? say(t, 'queued') : t.failed;
           })
-          .catch(function () { status.textContent = cloud ? t.success : t.failed; })
+          .catch(function () { status.textContent = cloud ? t.success : (queued ? say(t, 'queued') : t.failed); })
           .then(function () { if (button) button.disabled = false; });
       });
     } else {
@@ -264,6 +327,7 @@
     var days = utcDays(start, end);
     if (!(days >= 1)) return null;
     var slug = String(fd.get('car_slug') || '');
+    expireLive(slug);
     var c = ((window.FH_CFG || {}).cars || {})[slug];
     if (!c) return { days: days, slug: slug, start: start, end: end, rate: 0, rental: 0, deposit: 0, due: 0, peakNights: 0, seasonPercent: 0, seasonGel: 0 };
     /* ზოლების ჯაჭვი დაცვით: p1 -> p7 -> p30. თუ რომელიმე ზოლი აკლია
@@ -304,7 +368,12 @@
      შეცვალა, ეს უკვე სხვა მოთხოვნაა — ძველ ნომერზე გაგზავნა მას ძველ
      ჩანაწერს დაუბრუნებდა და ახალი ტექსტი უჩუმრად დაიკარგებოდა. */
   var SUBMIT_TIMEOUT_MS = 20000;
-  var SENT = {}, RETRY = {};
+  /* წესებში days <= 365 და carSlug/carName ზომები: კლიენტი ამ ზღვრებს
+     წინასწარ ამოწმებს, რომ გაგზავნა წესებთან სამუდამოდ არ დაეჯახოს. */
+  var MAX_DAYS = 365, MAX_SLUG = 80, MAX_CAR_NAME = 120;
+  /* QUEUED: ვადა გავიდა, მაგრამ SENT-ში მდგარი ჩანაწერი ჯერ არც მიღებულა,
+     არც უარყოფილა — ის SDK-ს რიგშია. */
+  var SENT = {}, RETRY = {}, QUEUED = {};
   function newRequestId() {
     var abc = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     var out = '', bytes = null, c = window.crypto;
@@ -316,10 +385,13 @@
     }
     return out;
   }
-  function requestIdFor(root) {
+  function fingerprintOf(root) {
     var parts = [];
     new FormData(root).forEach(function (v, k) { parts.push(k + '=' + v); });
-    var fp = parts.join('&');
+    return parts.join('&');
+  }
+  function requestIdFor(root) {
+    var fp = fingerprintOf(root);
     if (!root.dataset.requestId || root.dataset.requestFp !== fp) {
       root.dataset.requestId = newRequestId();
       root.dataset.requestFp = fp;
@@ -328,7 +400,7 @@
   }
   function forgetRequest(root) {
     var id = root.dataset.requestId;
-    if (id) { delete SENT[id]; delete RETRY[id]; }
+    if (id) { delete SENT[id]; delete RETRY[id]; delete QUEUED[id]; }
     delete root.dataset.requestId;
     delete root.dataset.requestFp;
   }
@@ -351,6 +423,10 @@
     /* მანქანის გარეშე გახსნილი დიალოგიც იწერება — მოდელს გამქირავებელი
        ირჩევს პროგრამაში. დაკარგული მოთხოვნა უარესია, ვიდრე არასრული. */
     var slug = String(fd.get('car_slug') || '') || 'any';
+    /* წესები carSlug-ს 80 სიმბოლოთი ზღუდავს. ამაზე გრძელი მნიშვნელობა
+       სამუდამოდ უარყოფილი იქნებოდა და მოთხოვნა დაიკარგებოდა; 'any'-ით კი
+       იგზავნება და მოდელს (carName-ით) პატრონი ისედაც ხედავს. */
+    if (slug.length > MAX_SLUG) slug = 'any';
     var p = window.FH.firebase().then(function (fb) {
       var M = fb.M, db = fb.db, auth = fb.auth;
       var signed = auth.currentUser
@@ -360,7 +436,7 @@
         var doc = {
           uid: user.uid,
           carSlug: slug,
-          carName: String(fd.get('requested_car') || ''),
+          carName: String(fd.get('requested_car') || '').slice(0, MAX_CAR_NAME),
           start: String(fd.get('start') || ''),
           end: String(fd.get('end') || ''),
           days: q ? q.days : 1,
@@ -393,14 +469,24 @@
            არარსებული დოკუმენტის წაკითხვაც წესებით უარყოფილია — ეს „არ არის"-ს
            ნიშნავს და ვწერთ. `fromCache` არ ითვლება: ის მხოლოდ ჩვენსავე რიგში
            მდგარი ჩანაწერია და სერვერის დასტური არ არის. */
+        /* ჩანაწერი, რომლის უარყოფაც ჯავშნის არსებობას ნიშნავს: წესები
+           განახლებას კლიენტს უკრძალავს. თუ დოკუმენტი სერვერზე არ არის, ეს
+           ჩვეულებრივი ჩაწერაა; ოფლაინში კი რიგში ჩადგება და ვადა გავა —
+           „რიგშია", და არა „მიღებულია". */
+        function writeOrExists() {
+          return M.db.setDoc(ref, doc).then(null, function (e2) {
+            if (e2 && e2.code === 'permission-denied') return null;
+            throw e2;
+          });
+        }
         return M.db.getDoc(ref).then(function (snap) {
-          /* დოკუმენტი ვიხილეთ — სერვერიდან თუ ქეშიდან — ანუ ჯავშანი არსებობს
-             (ან ჩვენსავე რიგშია). ქეშში მხოლოდ ის ჩანს, რაც ამ გვერდმა დაწერა
-             ან სერვერიდან წაიკითხა; ხელახლა ჩაწერა მხოლოდ განახლება იქნებოდა,
-             რომელსაც წესები უარყოფს, და კლიენტს „ვერ გაიგზავნა" ეთქმოდა
-             არსებულ ჯავშანზე. */
-          if (snap.exists()) return null;
-          return M.db.setDoc(ref, doc);
+          /* მხოლოდ სერვერიდან წაკითხული დოკუმენტი ადასტურებს ჯავშანს.
+             `fromCache` ოფლაინში ჩვენსავე რიგში მდგარი ჩანაწერია: მასზე
+             „მიღებულია" რომ გვეთქვა, კლიენტი წავიდოდა, ჩანაწერი კი (SDK-ს
+             მუდმივობა ჩართული არ არის) ჩანართთან ერთად დაიკარგებოდა. ამიტომ
+             metadata აუცილებლად იკითხება და ქეშის პასუხი „არ ვიცით"-ია. */
+          if (snap.exists() && snap.metadata && snap.metadata.fromCache === false) return null;
+          return writeOrExists();
         }, function (err) {
           /* წესები არარსებული დოკუმენტის წაკითხვასაც კრძალავს, ამიტომ
              „permission-denied" აქ „არ არის"-ს ნიშნავს და ვწერთ. ეს ნამდვილი
@@ -413,10 +499,7 @@
              განახლებას უარყოფს, და ეს უარყოფა აქ ჯავშნის არსებობას ნიშნავს,
              და არა ჩავარდნას (პირველი ცდის უარყოფა RETRY-ს საერთოდ არ ნიშნავს,
              იხ. ქვემოთ — ამიტომ ეს არ შეიძლება წესების ხარვეზის დამალვა იყოს). */
-          return M.db.setDoc(ref, doc).then(null, function (e2) {
-            if (e2 && e2.code === 'permission-denied') return null;
-            throw e2;
-          });
+          return writeOrExists();
         });
       });
     });
@@ -487,6 +570,19 @@
         function(){ clearTimeout(timer); resolve(null); });
     });
   }
+  /* გვერდი 72 საათზე მეტხანს შეიძლება ღია დარჩეს. ცოცხალი დოკუმენტი, რომელიც
+     გახსნისას სანდო იყო, ახლა აღარ არის — მისი ფასი FH_CFG.cars-იდან უნდა
+     წავიდეს და ჩაშენებული დაბრუნდეს, თორემ ფორმა ისევ იმ ფასს ეტყოდა კლიენტს,
+     რომელსაც freshDoc უკვე აღარ ენდობა, და ჯავშანი მას 'live'-ად ჩაიწერდა.
+     იგივე ზღვარი, რაც busyFor-ში და ყველგან — freshDoc. */
+  function expireLive(slug){
+    var d = LIVE_RES[slug];
+    if (!d || !d.priced || freshDoc(d.fleet)) return;
+    d.priced = false;
+    var cfg = window.FH_CFG;
+    if (!cfg || !cfg.cars) return;
+    if (d.prev) cfg.cars[slug] = d.prev; else delete cfg.cars[slug];
+  }
   function fetchLive(slug){
     if (!slug) return Promise.resolve(null);
     if (LIVE[slug]) return LIVE[slug];
@@ -508,19 +604,29 @@
         var cfg = window.FH_CFG = window.FH_CFG || {};
         cfg.cars = cfg.cars || {};
         var prev = cfg.cars[slug] || {};
+        d.prev = cfg.cars[slug] || null;   /* ვადის გასვლისას აქ ვბრუნდებით */
         /* ჯაჭვი გამოთვლილ მნიშვნელობებზე გადის და არა ნედლ დოკუმენტზე:
            p30-ის გარეშე მოსული დოკუმენტი 30+ დღეს 0 ₾-ად აფასებდა და იმ
-           ნულს ჯავშანშიც წერდა. ნულოვანი p1 საერთოდ არ გადაფარავს
-           ჩაშენებულს — ცუდი დოკუმენტი ფასს ვერ შლის. */
-        var p1 = Number(d.fleet.p1) || Number(prev.p1) || 0;
-        var p7 = Number(d.fleet.p7) || p1;
-        var p30 = Number(d.fleet.p30) || p7;
-        if (p1 > 0) {
-          d.priced = true;   /* ჯავშანი ამით იგებს, რომ ფასი ცოცხალია */
-          cfg.cars[slug] = {
-            p1: p1, p7: p7, p30: p30,
-            dep: Number(d.fleet.dep) || Number(prev.dep) || 0
-          };
+           ნულს ჯავშანშიც წერდა.
+
+           ცოცხალ დოკუმენტს მხოლოდ მაშინ ვუშვებთ ფასში, თუ მას თავად აქვს
+           დადებითი p1. p1-ის გარეშე (ან ნულით) მოსული დოკუმენტი ფასს არ
+           ცვლის და არც 'live'-ად ითვლება — წინათ ეს ჯაჭვი ჩაშენებულ p1-ზე
+           ჩამოდიოდა და მაინც `priced`-ს ისახავდა, ანუ ჯავშანი 'live'-ს წერდა
+           deploy-ის დღის ფასზე, რომელიც პატრონს არ დაუდგენია.
+           დეპოზიტიც ფიგურის ნაწილია: 'live' მხოლოდ მაშინ, როცა ისიც
+           დოკუმენტიდან მოვიდა (ან ჩაშენებულშიც არ არის და ჩანაცვლებული არაფერია).
+           ნაწილობრივ ცოცხალი ფასი ფორმაში მაინც ჩანს, მაგრამ 'built'-ად
+           იწერება — ეს ფრთხილი მხარეა: პატრონი ამ რიცხვს დადასტურებულად არ
+           მიიღებს. */
+        var live1 = Number(d.fleet.p1) || 0;
+        if (live1 > 0) {
+          var p7 = Number(d.fleet.p7) || live1;
+          var p30 = Number(d.fleet.p30) || p7;
+          var liveDep = Number(d.fleet.dep) || 0;
+          var dep = liveDep || Number(prev.dep) || 0;
+          d.priced = liveDep > 0 || dep === 0;   /* ჯავშანი ამით იგებს, რომ ფასი ცოცხალია */
+          cfg.cars[slug] = { p1: live1, p7: p7, p30: p30, dep: dep };
         }
       }
       document.dispatchEvent(new CustomEvent('fh:live-availability', { detail: { slug: slug } }));

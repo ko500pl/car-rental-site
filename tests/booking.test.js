@@ -15,16 +15,24 @@
      5. 60 საათის კალენდარი ჯერ კიდევ სანდოა (72-საათიანი ფანჯარა)
      6. 73 საათის კალენდარი უკვე უგულებელყოფილია
      7. „გაგზავნა" ორჯერ ტრანსპორტის შეცდომის შემდეგ ერთ ჯავშანს ქმნის
-     8. ოფლაინ გაგზავნა შეტყობინებით სრულდება და არა უსასრულოდ
+     8. ოფლაინ გაგზავნა „რიგშია"-თი სრულდება და არა უსასრულოდ, არც „ვერ გაიგზავნა"-თი
      9. Netlify-ს მისამართზე არავითარი მოთხოვნა არ გადის
     13. ცოცხალი ფასი ფორმაში ჩანს და ჩანაწერში 'live'-ია
     14. ჩაშენებული ფასი ფორმაში ჩანს და ჩანაწერში 'built'-ია
     15. ფასის გარეშე მანქანა: ფორმაში ციფრი არ ჩანს, იგზავნება, 'none'-ია
     16. ფიგურა უცვლელია — ერთი დაჭერა საკმარისია, 'live'
-    17. ხელახალი დაჭერა: დოკუმენტი ქეშშია — წარმატებაა, ახალი ჩაწერა არ არის
+    17. ხელახალი დაჭერა: დოკუმენტი მხოლოდ ქეშშია — სერვერის დასტური არ არის
     18. ხელახალი დაჭერა: ქსელი არ არის, ჩანაწერი უკვე არსებობს — წარმატებაა
     19. წესების უარყოფა წარმატებად არ ითვლება, ხელახლაც
-    20. ლოდინისას მანქანა შეიცვალა: ეტიკეტი მეორე მანქანის ფასს აღწერს
+    20. ლოდინისას მანქანა შეიცვალა: გაგზავნა ჩერდება, მეორე დაჭერა ახალ მანქანაზეა
+    21. რიგში მდგარი ჩანაწერი მოგვიანებით დასტურდება — ფორმა მაშინ სუფთავდება
+    22. რიგში მდგარი ჩანაწერი უარყოფილია — კლიენტი ამას გაიგებს
+    23. ლოდინისას თარიღები შეიცვალა (იგივე ხანგრძლივობა) — გაგზავნა ჩერდება
+    24. ცოცხალ დოკუმენტს p1 აკლია ან ნულია — 'built', არა 'live'
+    25. ცოცხალ დოკუმენტს დეპოზიტი აკლია — 'built', არა 'live'
+    26. 72 საათზე მეტხანს ღია გვერდი ძველ ფასს 'live'-ად არ აწერს
+    27. 366 ღამე: შეტყობინება ფორმის შევსებამდე, არაფერი იგზავნება
+    28. 80 სიმბოლოზე გრძელი slug / 120-ზე გრძელი სახელი წესებს არ ეჯახება
     10. ძველი (ნდობის ფანჯრის გარეთ) ფასის დოკუმენტი 'live'-ად არ ითვლება */
 
 const assert = require('assert');
@@ -40,6 +48,8 @@ const T = {
   sending: 'იგზავნება…',
   success: 'მოთხოვნა მიღებულია. ჯავშანი დადასტურებული არ არის, სანამ გადახდა არ შესრულდება.',
   failed: 'მოთხოვნა ვერ გაიგზავნა. სცადეთ ხელახლა.',
+  queued: 'კავშირი არ არის. მოთხოვნა ამ გვერდზე შენახულია და კავშირის აღდგენისას თავად გაიგზავნება — გვერდი ღია დატოვეთ. თუ დახურავთ, მოთხოვნა დაიკარგება; სასწრაფო შემთხვევაში მოგვწერეთ WhatsApp-ზე.',
+  tooLong: 'ერთ მოთხოვნაში მაქსიმუმ 365 ღამეა შესაძლებელი. შეამოკლეთ პერიოდი ან მოგვწერეთ WhatsApp-ზე.',
   busy: 'ამ თარიღებზე ეს მოდელი დაკავებული ჩანს — მოთხოვნას მაინც განვიხილავთ.',
 };
 
@@ -123,6 +133,8 @@ const settle = async () => { for (let i = 0; i < 25; i++) await new Promise((r) 
 ///   getMode    — 'cache' | 'unavailable' (default: the server answers)
 ///   fetchAfter — ms (fake clock) before fetch answers; default: at once
 ///   fetchHangs — fetch never answers (a phone in a tunnel)
+///   fleetSlug  — only this slug has live documents; every other one is a 404
+///   offlineAfter — every write after the first hangs, like a lost connection
 async function start(opts) {
   opts = opts || {};
   const fields = Object.assign({
@@ -135,7 +147,7 @@ async function start(opts) {
   let now = 0, seq = 0;
   const timers = [];
   const fetched = [];
-  const db = { docs: {}, setCalls: 0, addCalls: 0 };
+  const db = { docs: {}, setCalls: 0, hung: [] };
   const docListeners = {};
 
   const M = {
@@ -144,22 +156,21 @@ async function start(opts) {
       serverTimestamp() { return 'TS'; },
       collection(_d, name) { return { col: name }; },
       doc(_d, col, id) { return { col: col, id: id }; },
-      addDoc(c, data) {
-        db.addCalls += 1;
-        if (opts.write === 'denied') return Promise.reject({ code: 'permission-denied' });
-        if (opts.write === 'hang') return new Promise(function () {});
-        const id = 'auto' + (++seq);
-        db.docs[c.col + '/' + id] = data;
-        if (opts.write === 'lostAck' && db.addCalls === 1) {
-          return Promise.reject({ code: 'unavailable' });
-        }
-        return Promise.resolve({ id: id });
-      },
       setDoc(ref, data) {
         db.setCalls += 1;
         if (opts.write === 'denied') return Promise.reject({ code: 'permission-denied' });
-        if (opts.write === 'hang') return new Promise(function () {});
         const key = ref.col + '/' + ref.id;
+        // Offline, the real SDK neither resolves nor rejects: the mutation
+        // sits in its queue until the server answers. `offlineAfter` models a
+        // client that lost its connection after the first (rejected) attempt.
+        if (opts.write === 'hang' || (opts.offlineAfter && db.setCalls > 1)) {
+          return new Promise(function (resolve, reject) {
+            db.hung.push({
+              ack() { db.docs[key] = data; resolve(); },
+              nack(code) { reject({ code: code }); },
+            });
+          });
+        }
         // The real rules: a second write to an existing id is an update, and
         // a customer may not update a booking.
         if (db.docs[key]) return Promise.reject({ code: 'permission-denied' });
@@ -214,7 +225,8 @@ async function start(opts) {
       if (opts.fetchHangs) return new Promise(function () {});
       const m = String(url).match(/documents\/(fleet|availability)\/(.+)$/);
       if (!m) return Promise.reject(new TypeError('Failed to fetch'));
-      const f = opts[m[1] === 'fleet' ? 'fleet' : 'avail'];
+      const f = (opts.fleetSlug && m[2] !== opts.fleetSlug) ? null
+        : opts[m[1] === 'fleet' ? 'fleet' : 'avail'];
       const answer = f
         ? { ok: true, json() { return Promise.resolve(fsDocOf(m[1], m[2], f)); } }
         : { ok: false };
@@ -243,6 +255,19 @@ async function start(opts) {
     const f = this.r.fields;
     Object.keys(f).forEach(function (k) { cb(f[k], k); });
   };
+  // A page left open: `h.skew(ms)` moves the page's clock without touching
+  // the timers. Only the zero-argument forms depend on the clock.
+  let skew = 0;
+  const RealDate = Date;
+  function FakeDate() {
+    return arguments.length ? new (Function.prototype.bind.apply(RealDate, [null].concat([].slice.call(arguments))))()
+      : new RealDate(RealDate.now() + skew);
+  }
+  FakeDate.now = function () { return RealDate.now() + skew; };
+  FakeDate.parse = RealDate.parse;
+  FakeDate.UTC = RealDate.UTC;
+  FakeDate.prototype = RealDate.prototype;
+  sandbox.Date = FakeDate;
   sandbox.globalThis = sandbox;
   vm.createContext(sandbox);
   vm.runInContext(SRC, sandbox);
@@ -252,6 +277,10 @@ async function start(opts) {
     root: root, cfg: cfg, db: db, fetched: fetched,
     docs() { return Object.keys(db.docs).map(function (k) { return db.docs[k]; }); },
     submit() { root.fire('submit'); },
+    skew(ms) { skew += ms; },
+    // The server finally answers the writes that were waiting in the queue.
+    ack() { db.hung.splice(0).forEach(function (w) { w.ack(); }); },
+    nack(code) { db.hung.splice(0).forEach(function (w) { w.nack(code); }); },
     async advance(ms) {
       const until = now + ms;
       for (;;) {
@@ -384,27 +413,65 @@ test('„გაგზავნა" ორჯერ ტრანსპორტ�
 
 test('ოფლაინ გაგზავნა შეტყობინებით სრულდება და არა უსასრულოდ', async () => {
   // 8. Firestore SDK ოფლაინში ჩაწერას რიგში სვამს და არ ჩავარდება —
-  // ღილაკი სამუდამოდ დაბლოკილი რჩებოდა, სტატუსი „იგზავნება…"-ზე.
+  // ღილაკი სამუდამოდ დაბლოკილი რჩებოდა, სტატუსი „იგზავნება…"-ზე. ახლა 20
+  // წამის მერე კლიენტი გაიგებს სიმართლეს: ჩანაწერი რიგშია და თავად გაიგზავნება.
+  // „ვერ გაიგზავნა" ტყუილი იქნებოდა: რიგში მდგარი ჩანაწერი კავშირის
+  // აღდგენისას მაინც მივა, ხოლო ვინც წავიდა, მას დაკარგავდა.
   const r = await start({ write: 'hang' });
   r.submit();
   await settle();
   assert.strictEqual(r.root.status.textContent, T.sending);
   await r.advance(30000);
-  assert.strictEqual(r.root.status.textContent, T.failed);
+  assert.strictEqual(r.root.status.textContent, T.queued,
+    'ჩანაწერი რიგშია — კლიენტს „ვერ გაიგზავნა" არ უნდა ეთქვას');
+  assert.notStrictEqual(r.root.status.textContent, T.failed);
   assert.strictEqual(r.root.button.disabled, false);
-  // ხელახლა დაჭერა იმავე რიგში მდგარ ჩაწერას ელოდება და მეორეს არ სვამს.
+  // ხელახლა დაჭერა იმავე რიგში მდგარ ჩაწერას აღარ ელოდება (ახალ 20 წამს) და
+  // მეორეს არ სვამს — პასუხი მაშინვე იგივეა.
+  r.submit();
+  await settle();
+  assert.strictEqual(r.root.status.textContent, T.queued, 'მეორე დაჭერას 20 წამი არ უნდა ელოდოს');
+  assert.strictEqual(r.db.setCalls, 1, 'რიგში ზუსტად ერთი ჩანაწერი უნდა იყოს; ხელახალმა დაჭერამ მეორე ჩადო');
+});
+
+test('რიგში მდგარი ჩანაწერი მოგვიანებით დასტურდება — ფორმა მაშინ სუფთავდება', async () => {
+  // 21. კავშირი დაბრუნდა და სერვერმა ჩანაწერი მიიღო. კლიენტი, რომელმაც
+  // „შენახულია" ნახა და გვერდი ღია დატოვა, ახლა „მიღებულია"-ს ხედავს.
+  const r = await start({ write: 'hang' });
   r.submit();
   await r.advance(30000);
+  assert.strictEqual(r.root.status.textContent, T.queued);
+  assert.strictEqual(r.docs().length, 0, 'სერვერმა ჯერ არაფერი მიიღო');
+  r.ack();
+  await settle();
+  assert.strictEqual(r.docs().length, 1);
+  assert.strictEqual(r.root.status.textContent, T.success);
+  assert.strictEqual(Object.keys(r.root.fields).length, 0, 'ფორმა გასუფთავდა');
+});
+
+test('რიგში მდგარი ჩანაწერი უარყოფილია — კლიენტი ამას გაიგებს', async () => {
+  // 22. სერვერმა ჩანაწერი უარყო (წესები). „შენახულია" ტყუილად დარჩენილი არ უნდა იყოს.
+  const r = await start({ write: 'hang' });
+  r.submit();
+  await r.advance(30000);
+  assert.strictEqual(r.root.status.textContent, T.queued);
+  r.nack('permission-denied');
+  await settle();
   assert.strictEqual(r.root.status.textContent, T.failed);
-  assert.strictEqual(r.db.setCalls + r.db.addCalls, 1, 'ორი ჩანაწერი რიგში');
+  assert.strictEqual(r.docs().length, 0);
 });
 
 test('Netlify-ს მისამართზე არავითარი მოთხოვნა არ გადის', async () => {
   // 9. ის მისამართი 404-ს აბრუნებს და no-cors მის წარუმატებლობას მალავდა.
-  const r = await start();
+  // fetchAfter + fleet: გვერდი ცოცხალ დოკუმენტებს ნამდვილად კითხულობს, ამიტომ
+  // ტესტი ცარიელ სიას არ ამოწმებს — ქვემოთ ვადასტურებთ, რომ fetch მუშაობდა.
+  const r = await start({ fleet: LIVE_FLEET() });
   r.submit();
   await settle();
   assert.strictEqual(r.root.status.textContent, T.success);
+  assert.ok(r.fetched.length >= 2, 'ჰარნესმა fetch საერთოდ არ დააფიქსირა — ტესტი არაფერს ამოწმებს');
+  assert.ok(r.fetched.every(function (u) { return /^https:\/\/firestore\.googleapis\.com\//.test(u); }),
+    'მოულოდნელი მისამართი: ' + r.fetched.join(', '));
   const bad = r.fetched.filter(function (u) { return /netlify/i.test(u); });
   assert.deepStrictEqual(bad, [], 'Netlify-ს გაუგზავნია: ' + bad.join(', '));
 });
@@ -498,18 +565,22 @@ test("ფიგურა უცვლელია — ერთი დაჭე�
   assert.strictEqual(r.root.status.textContent, T.success);
 });
 
-test('ხელახალი დაჭერა: დოკუმენტი ქეშშია — წარმატებაა, ახალი ჩაწერა არ არის', async () => {
-  // 17. ოფლაინში SDK ან ქეშიდან პასუხობს, ან „unavailable"-ს აბრუნებს.
-  // ქეშში ნანახი დოკუმენტი = ჯავშანი არსებობს; „ვერ გაიგზავნა" ტყუილი იქნებოდა.
-  const r = await start({ write: 'lostAck', getMode: 'cache' });
+test('ხელახალი დაჭერა: დოკუმენტი მხოლოდ ქეშშია — სერვერის დასტური არ არის', async () => {
+  // 17. ოფლაინში ქეშში ჩვენსავე რიგში მდგარი ჩანაწერია. `fromCache` სერვერის
+  // დასტური არ არის: „მიღებულია" რომ გვეთქვა, კლიენტი წავიდოდა, ჩანაწერი კი
+  // (მუდმივობის გარეშე) ჩანართის დახურვასთან ერთად დაიკარგებოდა. ამიტომ
+  // ქეშში ნანახი დოკუმენტი წარმატებად არ ითვლება: ვწერთ ხელახლა (ნომერი
+  // იგივეა, დუბლი არ იქმნება) და ოფლაინში ეს „რიგშია"-ს იძლევა.
+  const r = await start({ write: 'lostAck', getMode: 'cache', offlineAfter: true });
   r.submit();
   await settle();
   assert.strictEqual(r.root.status.textContent, T.failed);
   r.submit();
-  await settle();
-  assert.strictEqual(r.root.status.textContent, T.success);
-  assert.strictEqual(r.db.setCalls, 1, 'არსებულ დოკუმენტზე მეორე ჩაწერა რიგში არ ჩადგეს');
-  assert.strictEqual(r.docs().length, 1);
+  await r.advance(30000);
+  assert.notStrictEqual(r.root.status.textContent, T.success,
+    'ქეშიდან წაკითხვა სერვერის დასტური არ არის');
+  assert.strictEqual(r.root.status.textContent, T.queued);
+  assert.strictEqual(r.db.setCalls, 2, 'ქეშის „არსებობა" ჩანაწერის გამოტოვების საფუძველი არ არის');
 });
 
 test('ხელახალი დაჭერა: ქსელი არ არის, ჩანაწერი უკვე არსებობს — წარმატებაა', async () => {
@@ -538,21 +609,127 @@ test('წესების უარყოფა წარმატებად
   assert.strictEqual(r.docs().length, 0);
 });
 
-test('ლოდინისას მანქანა შეიცვალა: ეტიკეტი მეორე მანქანის ფასს აღწერს', async () => {
-  // 20. ორივე მანქანის ჩაშენებული ფასი ერთია, A-ს ცოცხალი დოკუმენტი
-  // მოდის. B-ს ფასი ცოცხალი არ არის — 'live' მისთვის ტყუილი იქნებოდა.
+test('ლოდინისას მანქანა შეიცვალა: ეს უკვე სხვა მოთხოვნაა და გაგზავნა ჩერდება', async () => {
+  // 20. ორივე მანქანის ფასი ერთია, ამიტომ ფიგურა არ შეცვლილა — მაგრამ
+  // კლიენტმა Audi-ზე დააჭირა გაგზავნას და არა BMW-ზე. ფასის გარდა მანქანაც
+  // და თარიღებიც ჯავშნის ნაწილია: შეცვლილი მანქანა ისევე აჩერებს გაგზავნას,
+  // როგორც შეცვლილი ფასი. მეორე დაჭერა უკვე BMW-ს ეხება, და მისი ფასი
+  // ცოცხალი არ არის — 'live' მისთვის ტყუილი იქნებოდა.
   const base = { p1: 100, p7: 90, p30: 80, dep: 500 };
   const same = { name: 'Audi Q5', p1: 100, p7: 90, p30: 80, dep: 500, updatedAt: ago(HOUR) };
   const r = await start({ cars: { 'audi-q5': base, 'bmw-x5': Object.assign({}, base) },
-                          fleet: same, fetchAfter: 500 });
+                          fleet: same, fleetSlug: 'audi-q5', fetchAfter: 500 });
   r.submit();
   r.root.fields.car_slug = 'bmw-x5';
   r.root.fields.requested_car = 'BMW X5';
   await r.advance(500);
+  assert.strictEqual(r.docs().length, 0, 'Audi-ზე დაჭერილი გაგზავნა BMW-ს ჯავშანს არ უნდა წერდეს');
+  assert.strictEqual(r.root.button.disabled, false, 'ღილაკი ისევ უნდა გაიხსნას');
+  assert.notStrictEqual(r.root.status.textContent, T.sending);
+  r.submit();
+  await r.advance(500);
   const doc = r.docs()[0];
-  assert.ok(doc, 'ფიგურა უცვლელია — იგზავნება');
+  assert.ok(doc, 'მეორე დაჭერა უკვე BMW-ზეა');
+  assert.strictEqual(r.docs().length, 1);
   assert.strictEqual(doc.carSlug, 'bmw-x5');
   assert.strictEqual(doc.priceSource, 'built');
+});
+
+test('ლოდინისას თარიღები შეიცვალა: იმავე ხანგრძლივობის ფასიც არ აშავებს', async () => {
+  // 23. თარიღი იმავე ხანგრძლივობით გადაიწია (2 ღამე → 2 ღამე) — ფიგურა
+  // იგივეა, ჯავშანი კი სხვა დღეებზე. კლიენტს ეს ჯერ უნდა დაენახა.
+  const r = await start({ fleet: LIVE_FLEET(), fetchAfter: 500 });
+  await r.advance(500);
+  r.submit();
+  r.root.fields.start = ymd(10);
+  r.root.fields.end = ymd(12);
+  await r.advance(500);
+  assert.strictEqual(r.docs().length, 0, 'კლიენტს ამ თარიღებზე გაგზავნა არ დაუჭერია');
+  assert.strictEqual(r.root.button.disabled, false);
+  r.submit();
+  await r.advance(500);
+  assert.strictEqual(r.docs().length, 1);
+  assert.strictEqual(r.docs()[0].start, ymd(10));
+  assert.strictEqual(r.docs()[0].end, ymd(12));
+});
+
+test('ცოცხალ დოკუმენტს p1 აკლია ან ნულია — ჩაშენებული ფასი \'live\'-ად არ იწერება', async () => {
+  // 24. ნაწილობრივი ღრუბლის დოკუმენტი: ახალია, მაგრამ p1 არ აქვს. ფასი
+  // deploy-ის დღისაა, პატრონს ის არ დაუდგენია — ეტიკეტი ამას უნდა ამბობდეს.
+  for (const bad of [{ p7: 140, p30: 120, dep: 700 }, { p1: 0, p7: 140, p30: 120, dep: 700 }]) {
+    const r = await start({ fleet: Object.assign({ name: 'Audi Q5', updatedAt: ago(HOUR) }, bad), fetchAfter: 500 });
+    await r.advance(500);
+    r.submit();
+    await settle();
+    const doc = r.docs()[0];
+    assert.ok(doc, 'ფასი არ შეცვლილა — ერთი დაჭერა საკმარისია');
+    assert.strictEqual(doc.dailyRateGel, 100, 'ჩაშენებული ფასია');
+    assert.strictEqual(doc.priceSource, 'built', JSON.stringify(bad));
+  }
+});
+
+test('ცოცხალ დოკუმენტს დეპოზიტი აკლია — დეპოზიტი ჩაშენებულია და \'live\' ტყუილია', async () => {
+  // 25. p1 ცოცხალია, დეპოზიტი კი deploy-ის დღისაა. ეტიკეტი 'live' ყველა ციფრს
+  // აღწერდა, ამიტომ ჩანაწერი ამას 'built'-ად უნდა ამბობდეს.
+  const r = await start({ fleet: { name: 'Audi Q5', p1: 150, p7: 140, p30: 120, updatedAt: ago(HOUR) }, fetchAfter: 500 });
+  await r.advance(500);
+  r.submit();
+  await settle();
+  const doc = r.docs()[0];
+  assert.strictEqual(doc.dailyRateGel, 150);
+  assert.strictEqual(doc.depositGel, 500, 'დეპოზიტი ჩაშენებულია');
+  assert.strictEqual(doc.priceSource, 'built');
+});
+
+test('72 საათზე მეტხანს ღია გვერდი ძველ ცოცხალ ფასს \'live\'-ად არ აწერს', async () => {
+  // 26. ცოცხალი დოკუმენტი გვერდის გახსნისას ახალი იყო (70 სთ) და ფორმაში
+  // ჩაჯდა. გვერდი კიდევ 3 საათი ღია დარჩა — დოკუმენტი ახლა 73 საათისაა და
+  // აღარ სანდოა. ფორმა ისევ 150-ს არ უნდა ეუბნებოდეს კლიენტს 'live'-ად.
+  const r = await start({ fleet: Object.assign(LIVE_FLEET(), { updatedAt: ago(70 * HOUR) }) });
+  assert.ok(r.root.quote.textContent.includes('150 ₾'), r.root.quote.textContent);
+  r.skew(3 * HOUR);
+  r.submit();
+  await r.advance(3000);
+  assert.strictEqual(r.docs().length, 0, 'ფასი შეიცვალა — კლიენტმა ჯერ უნდა ნახოს');
+  assert.ok(r.root.quote.textContent.includes('100 ₾'), r.root.quote.textContent);
+  r.submit();
+  await settle();
+  const doc = r.docs()[0];
+  assert.ok(doc);
+  assert.strictEqual(doc.dailyRateGel, 100);
+  assert.strictEqual(doc.priceSource, 'built');
+});
+
+test('366 ღამე: კლიენტი ამას ფორმის შევსებამდე გაიგებს და არაფერი იგზავნება', async () => {
+  // 27. წესები days <= 365-ს მოითხოვს. 366 ღამეს ფასი ეწერებოდა, გაგზავნა კი
+  // სამუდამოდ „ვერ გაიგზავნა"-ით სრულდებოდა — ხელახალი ცდა ვერაფერს შეცვლიდა.
+  const r = await start({ fields: { start: ymd(1), end: ymd(367) } });
+  assert.ok(r.root.quote.textContent.includes(T.tooLong), r.root.quote.textContent);
+  r.submit();
+  await r.advance(5000);
+  assert.strictEqual(r.docs().length, 0);
+  assert.strictEqual(r.root.status.textContent, T.tooLong);
+  assert.strictEqual(r.root.button.disabled, false);
+  // 365 ღამე ჯერ კიდევ გადის.
+  const ok = await start({ fields: { start: ymd(1), end: ymd(366) } });
+  assert.ok(!ok.root.quote.textContent.includes(T.tooLong), ok.root.quote.textContent);
+  ok.submit();
+  await settle();
+  assert.strictEqual(ok.docs().length, 1);
+  assert.strictEqual(ok.docs()[0].days, 365);
+});
+
+test('80 სიმბოლოზე გრძელი slug და 120-ზე გრძელი სახელი წესებს არ ეჯახება', async () => {
+  // 28. წესები carSlug <= 80, carName <= 120. გრძელი მნიშვნელობა სამუდამოდ
+  // უარყოფილი იქნებოდა; მოთხოვნა 'any'-ით იგზავნება (მოდელს პატრონი ირჩევს),
+  // სახელი კი ჭრილდება.
+  const r = await start({ fields: { car_slug: 'x'.repeat(100), requested_car: 'Y'.repeat(200) } });
+  r.submit();
+  await settle();
+  const doc = r.docs()[0];
+  assert.ok(doc, 'მოთხოვნა არ უნდა დაიკარგოს');
+  assert.ok(doc.carSlug.length <= 80, doc.carSlug.length);
+  assert.ok(doc.carName.length <= 120, doc.carName.length);
 });
 
 (async function () {
