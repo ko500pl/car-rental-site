@@ -80,8 +80,13 @@
     return out;
   }
 
+  /* ერთადერთი ადგილი, სადაც ვწყვეტთ, ვიყენებთ თუ არა დოკუმენტს. `retired`
+     აპის საფლავის ქვაა: გაყიდული ან საიტიდან მოხსნილი მანქანის დოკუმენტი არ
+     იშლება (წაშლილი და „არასდროს ყოფილა" ერთნაირად გამოიყურება), მასზე
+     ძველი ფასი რჩება და updatedAt ახალია — სიახლის შემოწმება მას გაატარებდა. */
   function fresh(doc) {
     if (!doc || !doc.updatedAt) return false;
+    if (doc.retired) return false;
     var t = Date.parse(doc.updatedAt);
     return isFinite(t) && (Date.now() - t) < TRUST_MS;
   }

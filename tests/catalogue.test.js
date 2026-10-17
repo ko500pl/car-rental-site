@@ -14,7 +14,8 @@
      6. შეუვსებელი ველი არ იბეჭდება (და არაფერი წერს „0 ადგილს")
      7. ელექტრო გარბენს წერს, ხარჯს — არა
      8. ჯავშნის ფასი `FH_CFG.cars`-ში ჩაჯდება
-     9. HTML-ის ინექცია სახელიდან ვერ გადის                                */
+     9. HTML-ის ინექცია სახელიდან ვერ გადის
+    10. `retired` დოკუმენტი ბარათს აღარ ხატავს (და `retired: false` — ხატავს) */
 
 const assert = require('assert');
 const fs = require('fs');
@@ -209,6 +210,28 @@ test('თვეზე ძველი დოკუმენტი არ ჩნ�
     fsDocOf('sold-car', { name: 'Sold Car', p1: 100, cat: 'suv', updatedAt: OLD }),
   ]);
   assert.strictEqual(r.grids.suv.html, '');
+});
+
+test('retired დოკუმენტი ბარათს აღარ ხატავს', async () => {
+  // 10. გაყიდული მანქანის საფლავის ქვა. აპი დოკუმენტს არ შლის და ძველი p1
+  // მასში რჩება, updatedAt კი ახალია — ანუ ის სიახლისა და ფასის ყველა
+  // შემოწმებას გადის. მხოლოდ `retired` აჩერებს.
+  const r = await run([
+    fsDocOf('audi-q5', { name: 'Audi Q5', p1: 250, cat: 'suv', retired: true,
+                         updatedAt: NOW }),
+  ]);
+  assert.strictEqual(r.grids.suv.html, '', 'გაყიდული მანქანა ბარათად არ ჩანს');
+  assert.ok(!r.cfg.cars['audi-q5'], 'ფასიც არ უნდა ჩაჯდეს ჯავშნის ფორმაში');
+});
+
+test('retired: false დოკუმენტი ჩვეულებრივად ჩნდება', async () => {
+  // აპი ყოველ ცოცხალ დოკუმენტს `retired: false`-ს ატანს (რომ დაბრუნებულ
+  // მანქანას ძველი ნიშანი არ დარჩეს). ეს ველი ბარათს ვერ დამალავს.
+  const r = await run([
+    fsDocOf('audi-q5', { name: 'Audi Q5', p1: 250, cat: 'suv', retired: false,
+                         updatedAt: NOW }),
+  ]);
+  assert.ok(r.grids.suv.html.includes('Audi Q5'));
 });
 
 test('ნულოვანი ფასი შეთავაზებად არ იქცევა', async () => {

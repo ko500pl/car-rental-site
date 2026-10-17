@@ -305,8 +305,14 @@
     Object.keys(json.fields).forEach(function(k){ out[k] = fsValue(json.fields[k]); });
     return out;
   }
+  /* ერთადერთი ადგილი, სადაც ვწყვეტთ, ვიყენებთ თუ არა დოკუმენტს — ფასისთვისაც
+     და კალენდრისთვისაც. `retired` გაყიდული მანქანის საფლავის ქვაა: ძველი
+     ფასი და `free` მასზე რჩება, updatedAt ახალია, ამიტომ სიახლე მას ვერ
+     დაიჭერს. ასეთი დოკუმენტი არარსებულია: ჩაშენებული ფასი უცვლელი რჩება,
+     კალენდარი კი არაფერს ამბობს. */
   function freshDoc(doc){
     if (!doc || !doc.updatedAt) return false;
+    if (doc.retired) return false;
     var t = Date.parse(doc.updatedAt);
     return isFinite(t) && (Date.now() - t) < TRUST_MS;
   }
