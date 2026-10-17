@@ -2399,4 +2399,74 @@ main .lead,p.lead{{font-size:15px;color:var(--ink-2)}}
 .road-pass-brand img{{width:30cqw;height:7.8cqw;object-fit:contain;object-position:left center;transform:none}}
 html[dir="rtl"] .road-pass-brand img{{object-position:right center}}
 .authbrand{{width:150px;height:46px}}.authbrand img{{width:150px;height:40px}}
+
+/* ═══ RentUp AI · chat widget (static/assistant.js) ═══
+   Emitted only when site.yml → ai_assistant.endpoint is set. The button
+   sits above the mobile action bar; the panel is a sheet on phones. */
+.rai{{position:fixed;inset-inline-end:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:880;
+  font-family:var(--font);color:var(--ink)}}
+body.has-actbar .rai{{bottom:calc(84px + env(safe-area-inset-bottom))}}
+@media (min-width:761px){{body.has-actbar .rai{{bottom:calc(16px + env(safe-area-inset-bottom))}}}}
+.rai-fab{{display:flex;align-items:center;gap:9px;min-height:48px;padding:8px 16px 8px 10px;border:0;border-radius:999px;
+  background:#0a1a2f;color:#fff;font:inherit;font-size:14px;font-weight:700;cursor:pointer;
+  box-shadow:0 10px 28px rgba(10,26,47,.32);transition:transform .15s}}
+.rai-fab:hover{{transform:translateY(-1px)}}
+.rai-fab:focus-visible{{outline:3px solid #15acfe;outline-offset:2px}}
+.rai-mark{{width:28px;height:28px;border-radius:8px;display:block;flex:none}}
+.rai-open .rai-fab{{display:none}}
+.rai-panel{{width:min(400px,calc(100vw - 32px));height:min(600px,calc(100dvh - 32px));display:flex;flex-direction:column;
+  background:var(--bg-2);border:1px solid var(--line);border-radius:18px;overflow:hidden;
+  box-shadow:0 24px 60px rgba(10,26,47,.28)}}
+.rai-panel[hidden]{{display:none}}
+.rai-head{{display:flex;align-items:center;gap:10px;padding:10px 10px 10px 14px;background:#0a1a2f;color:#fff}}
+.rai-head>div{{flex:1;min-width:0;line-height:1.15}}
+.rai-head b{{display:block;font-size:15px}}
+.rai-head small{{font-size:11.5px;opacity:.75}}
+.rai-ic{{width:36px;height:36px;border:0;border-radius:10px;background:rgba(255,255,255,.1);color:#fff;font-size:20px;
+  cursor:pointer;display:grid;place-items:center}}
+.rai-ic:hover{{background:rgba(255,255,255,.2)}}
+.rai-log{{flex:1;min-height:0;overflow:auto;padding:14px 12px;display:flex;flex-direction:column;gap:10px;
+  background:var(--bg);overscroll-behavior:contain}}
+.rai-msg{{max-width:88%;font-size:14.5px;line-height:1.5}}
+.rai-text{{white-space:pre-wrap;word-break:break-word}}
+.rai-a{{align-self:flex-start}}
+.rai-a .rai-text{{background:var(--bg-2);border:1px solid var(--line);border-radius:14px 14px 14px 4px;padding:9px 12px}}
+.rai-u{{align-self:flex-end}}
+.rai-u .rai-text{{background:#0a1a2f;color:#fff;border-radius:14px 14px 4px 14px;padding:9px 12px}}
+[dir=rtl] .rai-a .rai-text{{border-radius:14px 14px 4px 14px}}
+[dir=rtl] .rai-u .rai-text{{border-radius:14px 14px 14px 4px}}
+.rai-wait{{color:var(--ink-2);font-size:13px;padding:4px 6px}}
+.rai-plan{{margin-top:8px;background:var(--bg-2);border:1px solid var(--line);border-radius:14px;padding:12px;
+  border-inline-start:4px solid #0e64fb}}
+.rai-plan-h{{display:flex;flex-direction:column;gap:2px;margin-bottom:8px}}
+.rai-plan-h b{{font-size:15px}}
+.rai-plan-h span{{font-size:12.5px;color:var(--ink-2)}}
+.rai-plan ol{{margin:0;padding-inline-start:20px;display:grid;gap:5px}}
+.rai-plan li b{{display:block;font-size:14px;font-weight:600}}
+.rai-plan li small{{color:var(--ink-2);font-size:12px}}
+.rai-car{{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-top:10px;padding:8px 10px;
+  background:var(--bg-3);border-radius:10px;font-size:13.5px}}
+.rai-car b{{white-space:nowrap;color:var(--ok)}}
+.rai-plan-b{{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}}
+.rai-plan-b button{{flex:1 1 auto;min-height:44px;padding:8px 12px;border-radius:10px;font:inherit;font-size:14px;font-weight:700;cursor:pointer}}
+.rai-map{{background:#fff;color:#0a1a2f;border:1.5px solid #0a1a2f}}
+.rai-book{{background:var(--accent);color:#fff;border:0}}
+.rai-book:hover{{background:var(--accent-ink)}}
+.rai-quick{{display:flex;gap:6px;flex-wrap:wrap;padding:0 12px 10px;background:var(--bg)}}
+.rai-quick[hidden]{{display:none}}
+.rai-chip{{border:1px solid var(--line);background:var(--bg-2);color:var(--ink);border-radius:999px;padding:7px 11px;
+  font:inherit;font-size:12.5px;cursor:pointer;min-height:36px}}
+.rai-chip:hover{{border-color:#0e64fb;color:#0e64fb}}
+.rai-form{{display:flex;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));border-top:1px solid var(--line);background:var(--bg-2)}}
+.rai-form textarea{{flex:1;min-width:0;resize:none;max-height:120px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;
+  font:inherit;font-size:14.5px;background:var(--bg);color:var(--ink)}}
+.rai-form textarea:focus{{outline:2px solid #15acfe;border-color:transparent}}
+.rai-form button{{width:46px;min-height:44px;border:0;border-radius:12px;background:#0e64fb;color:#fff;font-size:18px;cursor:pointer;flex:none}}
+.rai-form button:hover{{background:#0b52d1}}
+[dir=rtl] .rai-form button{{transform:scaleX(-1)}}
+@media (max-width:600px){{
+  .rai-open{{inset:0;bottom:0}}
+  .rai-panel{{width:100vw;height:100dvh;border-radius:0;border:0}}
+}}
+@media (prefers-reduced-motion:reduce){{.rai-fab{{transition:none}}}}
 """

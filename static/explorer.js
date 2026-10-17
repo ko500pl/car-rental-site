@@ -1215,4 +1215,16 @@
   renderList();
   route();
   suggestNear();
+
+  /* A plan handed over from the AI assistant on another page:
+     /map/?plan=slug1,slug2&days=2#planner — applied like a standard tour. */
+  try {
+    var qs = new URLSearchParams(location.search);
+    var handed = (qs.get('plan') || '').split(',').map(function (s) { return s.trim(); }).filter(function (s) { return BY[s]; });
+    if (handed.length) {
+      window.FH_TRAVEL_EXPLORER.applyTour(handed, { days: Number(qs.get('days')) || 1 });
+      var anchor = document.getElementById('planner');
+      if (anchor) setTimeout(function () { anchor.scrollIntoView({ block: 'start' }); }, 50);
+    }
+  } catch (e) {}
 })();

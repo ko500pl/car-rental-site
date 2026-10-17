@@ -1295,5 +1295,29 @@
     var tourPre = (D.standardTours || []).filter(function (x) { return x.s === decodeURIComponent(mtour[1]); })[0];
     if (tourPre) applyTour(tourPre);
   }
+
+  /* A plan from the AI assistant (static/assistant.js): a list of place slugs
+     and a day count, applied exactly like a standard tour. Called directly on
+     this page, or via /map/?plan=s1,s2&days=N#planner from any other page. */
+  function applyPlan(slugs, opts) {
+    opts = opts || {};
+    var wp = (slugs || []).filter(function (s) { return BY[s]; });
+    if (!wp.length) return false;
+    applyTour({ s: 'ai-plan', wp: wp, days: Math.max(1, Math.min(14, Number(opts.days) || 1)),
+      dailyHours: Number(opts.dailyHours) || 8, n: opts.name || '' });
+    window.FH_TRAVEL_SELECTION = wp.slice();
+    return true;
+  }
+  window.FH_TRAVEL_WORKSPACE = { applyPlan: applyPlan, selected: function () { return st.selected.slice(); } };
+  try {
+    var qsPlan = new URLSearchParams(location.search).get('plan');
+    if (qsPlan) {
+      var handed = qsPlan.split(',').map(function (s) { return s.trim(); });
+      if (applyPlan(handed, { days: new URLSearchParams(location.search).get('days') })) {
+        var anchor = document.getElementById('planner');
+        if (anchor) setTimeout(function () { anchor.scrollIntoView({ block: 'start' }); }, 80);
+      }
+    }
+  } catch (e) {}
   setTimeout(function () { map.invalidateSize(); }, 120);
 })();

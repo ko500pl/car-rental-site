@@ -66,3 +66,9 @@ analytics:
 # can confirm we own the site. Generated once; changing it means republishing
 # the file. Submit with: python scripts/indexnow_submit.py
 indexnow_key: 'ca8bf56ae2966915fa1138e5451f0615'
+
+# AI trip assistant (chat on every page). The address of the Cloudflare
+# Worker from worker/README.md, e.g. https://rentup-ai.<name>.workers.dev.
+# Empty means no chat button and no script on any page.
+ai_assistant:
+  endpoint: ''

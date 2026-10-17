@@ -1262,6 +1262,11 @@ def shell(lang, current, head, body, depth, tail=""):
         cfg["whatsapp"] = str(SITE.get("whatsapp") or SITE.get("mobile_e164")
                               or SITE.get("phone_e164", "")).replace("+", "").replace(" ", "")
         cfg["siteUrl"] = SITE_URL
+        # AI assistant (static/assistant.js): only when the owner has deployed
+        # the Worker and pasted its address into site.yml → ai_assistant.endpoint.
+        _ai = os.environ.get("AI_ENDPOINT") or (SITE.get("ai_assistant") or {}).get("endpoint", "")
+        if _ai and ASSET.get("assistant"):
+            cfg["ai"] = {"endpoint": str(_ai).rstrip("/"), "lang": lang}
         cfg["t"] = {k: u["ui"][k] for k in (
             "account", "sign_in", "sign_up", "sign_out", "with_google", "or_email", "email",
             "password", "forgot", "reset_sent", "why_account", "legal_note", "please_sign_in",
@@ -1278,7 +1283,8 @@ def shell(lang, current, head, body, depth, tail=""):
                  if _needs_booking else "")
               + (f'\n<script type="module" src="{ASSET.get("community", "/assets/community.js")}"></script>'
                  if _needs_community else "")
-              + f'\n<script defer src="{ASSET.get("app", "/assets/app.js")}"></script>')
+              + f'\n<script defer src="{ASSET.get("app", "/assets/app.js")}"></script>'
+              + (f'\n<script defer src="{ASSET["assistant"]}"></script>' if cfg.get("ai") else ""))
     inquiry = inquiry_widget(lang, current) if current in ("index", "fleet", "map", "planner") else ""
     return (f'<!DOCTYPE html>\n<html lang="{lang}" dir="{LANG_DIR[lang]}">\n<head>\n{head}\n{analytics_html()}\n'
             f'{style}</head>\n<body class="page-{E(current)}">\n'
@@ -6161,10 +6167,16 @@ def main():
                     ("auth.js", "auth"), ("booking.js", "booking"),
                     ("community.js", "community"), ("admin-bookings.js", "admin_bookings"),
                     ("analytics.js", "analytics"), ("app.js", "app"),
-                    ("daytrip.js", "daytrip")):
+                    ("daytrip.js", "daytrip"), ("assistant.js", "assistant")):
         p = os.path.join("static", fn)
         if os.path.exists(p):
             write_hashed(out, fn, open(p, encoding="utf-8").read(), key)
+    # AI assistant knowledge: one compact catalog per language, read by the
+    # Worker (worker/) — built from content/ so the model cannot invent facts.
+    import importlib.util as _ilu
+    _spec = _ilu.spec_from_file_location("build_ai_catalog", os.path.join("scripts", "build_ai_catalog.py"))
+    _bac = _ilu.module_from_spec(_spec); _spec.loader.exec_module(_bac)
+    _bac.write_all(os.path.join(out, "assets"))
     for lang in LANGS:
         payload = ("window.EXP=" + JC(explorer_config(lang, "/")) + ";\n" +
                    "window.PLANNER_DATA=" + JC(workspace_planner_data(lang)) + ";\n")
