@@ -33,3 +33,6 @@ venv/
 deploy-rules.log
 _merge/
 .nbg-usd.json
+
+# Aggregator fleet exports (scripts/export_fleet.py)
+exports/

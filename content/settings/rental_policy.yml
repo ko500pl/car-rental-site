@@ -29,6 +29,13 @@ licence_accepted:               # what we accept at pickup
   - national            # national licence in Latin script
   - idp                 # national licence + International Driving Permit
 passport_required: true
+min_driver_age_by_category:     # transcribed from terms.yml "Age and driving
+  economy: 21                   # experience" table (2026-10-17); read by
+  suv: 23                       # scripts/export_fleet.py
+  minivan: 23
+  business: 25
+  offroad: 25
+  van: 25
 # Owner ask: no field here captures the young-driver surcharge that terms.yml
 # and faq.yml both state (15 GEL/day ages 23–25 on crossover/minivan, 25
 # GEL/day ages 25–27 on business/4x4). Add a field once the schema is wired
@@ -129,6 +136,13 @@ insurance:
                                  # headline category) is stored here as the flat
                                  # value; SCDW brings the excess to 0 GEL on
                                  # every category.
+  excess_gel_by_category:       # transcribed from pricing.yml "Deposit and
+    economy: 300                # excess by category" table (2026-10-17);
+    suv: 600                    # read by scripts/export_fleet.py
+    business: 1000
+    offroad: 1200
+    minivan: 1000
+    van: 800
   # Deliberately NOT claimed: "full coverage".
 
 # ── Cross-border ───────────────────────────────────────────────────────
