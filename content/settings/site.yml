@@ -50,8 +50,8 @@ whatsapp: '995597555565'
 #   Yandex:  webmaster.yandex.com              → matters for the Russian market
 verification:
   google: 'S1S-80iSkMTssLF4iNTtbhbuSj3ogl6iZTrIagQ0NMg'
-  bing: ''
-  yandex: ''
+  bing: '36B20172B07BCB04C3BDAB24BD3F56D6'
+  yandex: '57b4e7ba5fb3ac51'
 
 # Cookieless analytics (Umami Cloud). Paste the website id Umami shows after
 # "Add website" (a UUID). Empty means no analytics markup on any page.

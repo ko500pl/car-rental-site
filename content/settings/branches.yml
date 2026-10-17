@@ -37,7 +37,7 @@
   closes: '21:00'
   phone_e164: '+995597555565'
   maps:
-    google: ''
+    google: 'https://maps.google.com/?cid=9882914386703051093'
     yandex: ''
     twogis: ''
     apple: ''
