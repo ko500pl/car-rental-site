@@ -205,7 +205,11 @@ class BranchTests(unittest.TestCase):
         self.assertTrue(node["@id"].endswith("#branch-tbilisi-vazha-pshavela"))
         self.assertTrue(node["parentOrganization"]["@id"].endswith("#organization"))
         self.assertIn("AutoRental", node["@type"])
-        self.assertNotIn("hasMap", node)
+        google = (build.BRANCHES[0].get("maps") or {}).get("google")
+        if google:
+            self.assertEqual(node["hasMap"], google)
+        else:
+            self.assertNotIn("hasMap", node)
         self.assertEqual(node["address"]["streetAddress"], "71 Vazha-Pshavela Ave.")
 
     def test_branch_node_uses_first_map_link(self):
