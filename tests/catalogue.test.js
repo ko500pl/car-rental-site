@@ -15,7 +15,8 @@
      7. ელექტრო გარბენს წერს, ხარჯს — არა
      8. ჯავშნის ფასი `FH_CFG.cars`-ში ჩაჯდება
      9. HTML-ის ინექცია სახელიდან ვერ გადის
-    10. `retired` დოკუმენტი ბარათს აღარ ხატავს (და `retired: false` — ხატავს) */
+    10. `retired` დოკუმენტი ბარათს აღარ ხატავს (და `retired: false` — ხატავს)
+    11. 29 დღის დოკუმენტი არც ბარათად ჩანს და არც FH_CFG.cars-ში ჩაჯდება */
 
 const assert = require('assert');
 const fs = require('fs');
@@ -232,6 +233,27 @@ test('retired: false დოკუმენტი ჩვეულებრივ�
                          updatedAt: NOW }),
   ]);
   assert.ok(r.grids.suv.html.includes('Audi Q5'));
+});
+
+test('29 დღის დოკუმენტი FH_CFG.cars-ში არ ჩაჯდება', async () => {
+  // 11. ეს ობიექტი ჯავშნის ფორმის ფასის წყაროა. booking.js 72 საათზე ძველ
+  // დოკუმენტს არ ენდობა — აქ მისი ფასი რომ გამოსულიყო, ის, რაც იქ
+  // უარყოფილია, ფორმაში მაინც მოხვდებოდა.
+  const r = await run([
+    fsDocOf('audi-q5', { name: 'Audi Q5', p1: 250, p7: 230, p30: 200, dep: 800,
+                         cat: 'suv', updatedAt: new Date(Date.now() - 29 * 24 * 3600 * 1000).toISOString() }),
+  ]);
+  assert.strictEqual(r.grids.suv.html, '', 'ბარათიც არ ჩანს');
+  assert.ok(!r.cfg.cars['audi-q5'], 'ფასი ჯავშნის ფორმაში არ უნდა მოხვდეს');
+});
+
+test('72 საათზე ახალი დოკუმენტი ჯერ კიდევ ჩაჯდება', async () => {
+  const r = await run([
+    fsDocOf('audi-q5', { name: 'Audi Q5', p1: 250, cat: 'suv',
+                         updatedAt: new Date(Date.now() - 60 * 3600 * 1000).toISOString() }),
+  ]);
+  assert.ok(r.grids.suv.html.includes('Audi Q5'));
+  assert.strictEqual(r.cfg.cars['audi-q5'].p1, 250);
 });
 
 test('ნულოვანი ფასი შეთავაზებად არ იქცევა', async () => {

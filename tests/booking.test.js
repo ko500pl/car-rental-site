@@ -12,6 +12,8 @@
      2. priceSource არის 'live', როცა ცოცხალი დოკუმენტი გამოიყენეს
      3. priceSource არის 'built', როცა ცოცხალი მოთხოვნა დრომ გადაჭრა
      4. არასოდეს პასუხობადი მოთხოვნა გაგზავნას 3 წამზე მეტხანს არ აყოვნებს
+     5. 60 საათის კალენდარი ჯერ კიდევ სანდოა (72-საათიანი ფანჯარა)
+     6. 73 საათის კალენდარი უკვე უგულებელყოფილია
     10. ძველი (ნდობის ფანჯრის გარეთ) ფასის დოკუმენტი 'live'-ად არ ითვლება */
 
 const assert = require('assert');
@@ -120,6 +122,7 @@ async function start(opts) {
   const timers = [];
   const fetched = [];
   const db = { docs: {}, setCalls: 0, addCalls: 0 };
+  const docListeners = {};
 
   const M = {
     auth: { signInAnonymously() { return Promise.resolve({ user: { uid: 'u1' } }); } },
@@ -174,8 +177,10 @@ async function start(opts) {
       querySelectorAll(sel) { return sel === '[data-inquiry]' ? [root] : []; },
       querySelector() { return null; },
       getElementById() { return null; },
-      addEventListener() {},
-      dispatchEvent() { return true; },
+      // The page redraws the quote on `fh:live-availability`; the fake has
+      // to deliver it or the calendar tests would look at a stale box.
+      addEventListener(type, fn) { (docListeners[type] = docListeners[type] || []).push(fn); },
+      dispatchEvent(ev) { (docListeners[ev.type] || []).forEach(function (fn) { fn(ev); }); return true; },
       createElement() { return { setAttribute() {}, style: {} }; },
     },
     location: { href: 'https://rentup.ge/cars/audi-q5/', hostname: 'rentup.ge', search: '', origin: 'https://rentup.ge' },
@@ -292,6 +297,24 @@ test('არასოდეს პასუხობადი მოთხოვ
   assert.strictEqual(r.docs().length, 0, '3 წამამდე ჯერ ელოდება');
   await r.advance(1);
   assert.strictEqual(r.docs().length, 1, '3 წამზე ჩაწერა უნდა მოხდეს');
+});
+
+/// Free units per night, starting today; the two nights the form asks for
+/// (tomorrow and the day after) are sold out.
+const BUSY_CALENDAR = (ageMs) => ({ from: ymd(0), free: [1, 0, 0, 1, 1, 1, 1, 1, 1, 1], updatedAt: ago(ageMs) });
+
+test('60 საათის კალენდარი ჯერ კიდევ სანდოა', async () => {
+  // 5. ტელეფონი სამი დღით უსიგნალოდ იყო — ეს ჯერ კიდევ ერთი ციკლია, და
+  // დაკავებული ღამე ისევ უნდა ჩანდეს.
+  const r = await start({ avail: BUSY_CALENDAR(60 * HOUR) });
+  assert.ok(r.root.quote.textContent.includes(T.busy), r.root.quote.textContent);
+});
+
+test('73 საათის კალენდარი უკვე უგულებელყოფილია', async () => {
+  // 6. ფანჯარას გადაცილებული კალენდარი თავისუფალ მანქანას მალავს — გვერდი
+  // ისე იქცევა, როგორც კალენდრის გარეშე.
+  const r = await start({ avail: BUSY_CALENDAR(73 * HOUR) });
+  assert.ok(!r.root.quote.textContent.includes(T.busy), r.root.quote.textContent);
 });
 
 test("ნდობის ფანჯრის გარეთ მყოფი ფასი 'live'-ად არ ითვლება", async () => {
