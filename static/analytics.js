@@ -24,9 +24,18 @@
   function ready() {
     return !!(window.umami && typeof window.umami.track === "function");
   }
+  /* The URL section says what the page is about; <body class="page-*"> only
+     says which nav item is highlighted (every place page is "page-map"). */
+  var SECTIONS = { attractions: "attraction", guides: "guide", regions: "region", routes: "route",
+    tours: "tour", itineraries: "itinerary", "day-trip": "day-trip", "car-rental": "car-rental",
+    contact: "contact", faq: "faq", pricing: "pricing", terms: "terms", about: "about", blog: "blog",
+    map: "map", planner: "planner", "trip-planner": "planner", trip: "trip", community: "community" };
   function pageType() {
-    var m = /(?:^|\s)page-(\S+)/.exec((document.body && document.body.className) || "");
-    return m ? m[1] : "other";
+    var parts = String((window.location && window.location.pathname) || "/").split("/").filter(Boolean);
+    if (/^(ka|en|ru|fa|he|ar)$/.test(parts[0] || "")) parts.shift();
+    if (!parts.length) return "home";
+    if (parts[0] === "fleet") return parts.length > 1 ? "car" : "fleet";
+    return SECTIONS[parts[0]] || "other";
   }
   function track(name, params) {
     if (!ready()) return false;
@@ -82,8 +91,7 @@
     if (!target) return;
     var href = String((target.getAttribute && target.getAttribute("href")) || "");
     if (/^tel:/i.test(href)) track("call_click", { href_kind: "tel" });
-    else if (/wa\.me\//i.test(href) || (target.matches && target.matches("[data-inquiry-wa]")))
-      track("whatsapp_click", {});
+    else if (/wa\.me\//i.test(href)) track("whatsapp_click", { source: "link" });
     else if (target.matches && target.matches("[data-car-search]")) track("car_search", carParams(target));
     else if (target.matches && target.matches("[data-booking-open]")) track("booking_started", carParams(target));
   });

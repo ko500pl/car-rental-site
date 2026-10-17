@@ -737,7 +737,7 @@
       add("trailer\n<< /Size 6 /Root 1 0 R >>\nstartxref\n"+xref+"\n%%EOF"); saveBlob(new Blob(parts,{type:"application/pdf"}),"fleet-house-trip.pdf");
     }
     var jpg=document.getElementById("tourjpg"),pdf=document.getElementById("tourpdf"),print=document.getElementById("tourprint"); if(jpg)jpg.onclick=saveJpg;if(pdf)pdf.onclick=savePdf;if(print)print.onclick=function(){window.print();};
-    var plannerWa=document.getElementById("plannerwa");if(plannerWa)plannerWa.onclick=function(){var cfg=window.FH_CFG||{},num=String(cfg.whatsapp||"").replace(/\D/g,"");if(!num)return;var msg="Hello, I want to rent "+(rentalCar?rentalCar.n:"a suitable car")+" for "+tripName+". Route: "+planSlugs(res).join(", ")+". Distance: "+Math.round(totKm)+" km. Page: "+location.href;window.open("https://wa.me/"+num+"?text="+encodeURIComponent(msg),"_blank","noopener");};
+    var plannerWa=document.getElementById("plannerwa");if(plannerWa)plannerWa.onclick=function(){var cfg=window.FH_CFG||{},num=String(cfg.whatsapp||"").replace(/\D/g,"");if(!num)return;var msg="Hello, I want to rent "+(rentalCar?rentalCar.n:"a suitable car")+" for "+tripName+". Route: "+planSlugs(res).join(", ")+". Distance: "+Math.round(totKm)+" km. Page: "+location.href;window.RentUpAnalytics&&window.RentUpAnalytics.track("whatsapp_click",{source:"planner"});window.open("https://wa.me/"+num+"?text="+encodeURIComponent(msg),"_blank","noopener");};
     flashMoved(box);
     var sv = document.getElementById("savetrip");
     if (sv) sv.onclick = function () {

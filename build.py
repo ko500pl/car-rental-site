@@ -13,7 +13,7 @@ from pathlib import Path
 
 import yaml
 import markdown as md
-from sitegen.validation import is_public, validate
+from sitegen.validation import is_public, validate, validate_branches
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 os.chdir(ROOT)
@@ -6114,6 +6114,7 @@ def main():
     with_docs = "--with-docs" in sys.argv
     report = validate(SITE, CARS_ALL, REGIONS_ALL, ATTRACTIONS_ALL, ROUTES_ALL,
                       PAGES, POSTS_ALL)
+    report.errors.extend(validate_branches(BRANCHES))
     for warning in report.warnings:
         print(f"WARNING: {warning}")
     if report.errors or (strict and report.warnings):

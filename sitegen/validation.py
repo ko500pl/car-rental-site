@@ -1,3 +1,4 @@
+import re
 from dataclasses import dataclass, field
 
 LANGS = ("ka", "en", "ru", "fa", "he", "ar")
@@ -76,3 +77,33 @@ def validate(site, cars, regions, attractions, routes, pages, posts):
     if missing_images:
         r.warnings.append(f"cars: {missing_images} published records have no main image")
     return r
+
+
+BRANCH_LANGS = ("ka", "en", "ru", "fa", "he", "ar")
+
+
+def validate_branches(branches):
+    """Errors for content/settings/branches.yml.
+
+    Unquoted YAML turns 10:00 into 600 and 0170 into 120 without complaint,
+    so hours and zip must arrive as strings in the exact shape."""
+    errors = []
+    for i, b in enumerate(branches or []):
+        where = f"settings/branches.yml[{b.get('id', i)}]"
+        for key in ("opens", "closes"):
+            v = b.get(key)
+            if not (isinstance(v, str) and re.fullmatch(r"\d{2}:\d{2}", v)):
+                errors.append(f"{where}: {key} must be a quoted 'HH:MM' string, got {v!r}")
+        z = b.get("zip")
+        if not (isinstance(z, str) and re.fullmatch(r"\d{4}", z)):
+            errors.append(f"{where}: zip must be a quoted 4-digit string, got {z!r}")
+        for lang in BRANCH_LANGS:
+            if not (b.get("name") or {}).get(lang):
+                errors.append(f"{where}: name.{lang} is missing")
+            a = (b.get("address") or {}).get(lang) or {}
+            if not (a.get("street") and a.get("city")):
+                errors.append(f"{where}: address.{lang} needs street and city")
+        for key in ("lat", "lon"):
+            if not isinstance(b.get(key), (int, float)):
+                errors.append(f"{where}: {key} must be a number")
+    return errors

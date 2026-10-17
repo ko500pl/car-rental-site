@@ -23,7 +23,7 @@ function childOf(a) {
   return { tagName: 'SPAN', closest: (sel) => (sel === 'a' ? a : null) };
 }
 
-function load({ umami = true, lang = 'en', bodyClass = 'page-home' } = {}) {
+function load({ umami = true, lang = 'en', bodyClass = 'page-home', pathname = '/' } = {}) {
   const calls = [];
   const handlers = {};
   const document = {
@@ -33,7 +33,7 @@ function load({ umami = true, lang = 'en', bodyClass = 'page-home' } = {}) {
     addEventListener: (type, fn) => { (handlers[type] = handlers[type] || []).push(fn); },
     querySelector: () => null,
   };
-  const window = { document, location: { href: 'https://rentup.ge/', pathname: '/', search: '' } };
+  const window = { document, location: { href: 'https://rentup.ge' + pathname, pathname, search: '' } };
   if (umami) window.umami = { track: (name, data) => calls.push([name, data]) };
   window.window = window;
   const ctx = vm.createContext({ window, document, location: window.location, URLSearchParams, WeakMap, Object, String, Number, Math, Date, console });
@@ -52,7 +52,7 @@ const tests = {
     assert.strictEqual(window.RentUpAnalytics.track('call_click', {}), false);
   },
   'track forwards name and adds lang/page_type'() {
-    const { window, calls } = load({ lang: 'he', bodyClass: 'page-attraction foo' });
+    const { window, calls } = load({ lang: 'he', bodyClass: 'page-map foo', pathname: '/he/attractions/kazbegi/' });
     assert.strictEqual(window.RentUpAnalytics.track('call_click', { href_kind: 'tel' }), true);
     // objects come from the vm realm, so compare their JSON, not prototypes
     assert.strictEqual(JSON.stringify(calls), JSON.stringify([['call_click', { href_kind: 'tel', lang: 'he', page_type: 'attraction' }]]));
@@ -80,8 +80,26 @@ const tests = {
     const blocked = load({ umami: false });
     assert.strictEqual(blocked.click(anchor('tel:+995597555565')).prevented, false);
   },
+  'page_type comes from the URL section, not the nav highlight'() {
+    const cases = { '/': 'home', '/ka/': 'home', '/fleet/': 'fleet', '/fleet/bmw-5-series/': 'car',
+      '/ru/car-rental/one-way/': 'car-rental', '/guides/kazbegi-road/': 'guide', '/ar/regions/kakheti/': 'region',
+      '/routes/x/': 'route', '/tours/x/': 'tour', '/itineraries/x/': 'itinerary', '/day-trip/x/': 'day-trip',
+      '/fa/contact/': 'contact', '/faq/': 'faq' };
+    for (const [pathname, want] of Object.entries(cases)) {
+      const { window, calls } = load({ bodyClass: 'page-map', pathname });
+      window.RentUpAnalytics.track('call_click', {});
+      assert.strictEqual(calls[0][1].page_type, want, pathname);
+    }
+  },
+  'tap on the inquiry WhatsApp button is left to booking.js (it may fail validation)'() {
+    const { calls, click } = load();
+    const btn = { tagName: 'BUTTON', getAttribute: () => null, matches: (sel) => sel === '[data-inquiry-wa]' };
+    btn.closest = (sel) => (sel === 'button' ? btn : null);
+    click(btn);
+    assert.strictEqual(calls.length, 0);
+  },
   'page_type falls back to other'() {
-    const { window, calls } = load({ bodyClass: '' });
+    const { window, calls } = load({ bodyClass: '', pathname: '/unknown-section/' });
     window.RentUpAnalytics.track('booking_request', {});
     assert.strictEqual(calls[0][1].page_type, 'other');
   },

@@ -57,7 +57,7 @@
       draw();
     }); });
     function context(){var x=draw(),fd=new FormData(root);if(!x||x.invalid)return null;return "Hello, I want to rent "+root.dataset.carName+" from "+x.start+" to "+x.end+" ("+x.days+" days), pickup at "+(fd.get("pickup")||"not specified")+", return at "+(fd.get("return_location")||fd.get("pickup")||"not specified")+". Travellers: "+(fd.get("travellers")||1)+". Estimated rental: "+money(x.rental)+". Page: "+location.href+(fd.get("notes")?". Notes: "+fd.get("notes"):"");}
-    if(wa)wa.addEventListener("click",function(){var msg=context();if(!msg)return;var cfg=window.FH_CFG||{},num=String(cfg.whatsapp||"").replace(/\D/g,"");if(!num){out.textContent=t.failed;return;}window.open("https://wa.me/"+num+"?text="+encodeURIComponent(msg),"_blank","noopener");});
+    if(wa)wa.addEventListener("click",function(){var msg=context();if(!msg)return;var cfg=window.FH_CFG||{},num=String(cfg.whatsapp||"").replace(/\D/g,"");if(!num){out.textContent=t.failed;return;}window.RentUpAnalytics&&window.RentUpAnalytics.track("whatsapp_click",{source:"booking"});window.open("https://wa.me/"+num+"?text="+encodeURIComponent(msg),"_blank","noopener");});
     root.addEventListener("submit",function(e){var x=draw();if(!x||x.invalid){e.preventDefault();return;}root.querySelector('[name="page_url"]').value=location.href;});
     draw();
   }
@@ -70,7 +70,7 @@
     function message(){var fd=new FormData(root),lang=root.dataset.lang||'en';return (lang==='ka'?'გამარჯობა, მსურს ავტომობილის დაჯავშნა. ':'Hello, I would like to book a car. ')+
       (fd.get('requested_car')?'Car: '+fd.get('requested_car')+'. ':'')+(fd.get('start')||'-')+' — '+(fd.get('end')||'-')+'. '+
       'Name: '+(fd.get('name')||'-')+'. Phone: '+(fd.get('phone')||'-')+'. Page: '+location.href+(fd.get('notes')?'. Notes: '+fd.get('notes'):'');}
-    root.querySelector('[data-inquiry-wa]').addEventListener('click',function(){if(!root.reportValidity())return;var num=String((window.FH_CFG||{}).whatsapp||'').replace(/\D/g,'');if(!num){status.textContent='WhatsApp is not configured.';return;}window.open('https://wa.me/'+num+'?text='+encodeURIComponent(message()),'_blank','noopener');});
+    root.querySelector('[data-inquiry-wa]').addEventListener('click',function(){if(!root.reportValidity())return;var num=String((window.FH_CFG||{}).whatsapp||'').replace(/\D/g,'');if(!num){status.textContent='WhatsApp is not configured.';return;}window.RentUpAnalytics&&window.RentUpAnalytics.track("whatsapp_click",{source:"inquiry"});window.open('https://wa.me/'+num+'?text='+encodeURIComponent(message()),'_blank','noopener');});
 
     /* ── ფასის შეფასება დიალოგში ────────────────────────────────────────
        ბენდები ზუსტად ისეთია, როგორიც გამქირავებლის პროგრამაშია:
@@ -424,6 +424,7 @@
           parts.push(k+': '+String(v).trim());
         });
         var msg='Message from '+location.href+'\n'+parts.join('\n');
+        window.RentUpAnalytics&&window.RentUpAnalytics.track("whatsapp_click",{source:"contact-form"});
         window.open('https://wa.me/'+num+'?text='+encodeURIComponent(msg),'_blank','noopener');
         var l=f.dataset.lang||document.documentElement.lang||'en';
         st.textContent=(l==='ka')?'გაგრძელება WhatsApp-შია — გაგზავნე იქ გახსნილი წერილი':'Continue in WhatsApp — send the message that just opened';
