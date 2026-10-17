@@ -95,6 +95,13 @@ class ProductFeatureTests(unittest.TestCase):
         self.assertIn("data-join", community)
         self.assertIn("memberIds:(row.memberIds||[]).concat([u.uid])", community)
 
+    def test_rules_allow_the_price_source_field(self):
+        rules = Path("firestore.rules").read_text(encoding="utf-8")
+        create = rules.split("match /bookings/{id}")[1].split("allow update")[0]
+        self.assertIn("'priceSource'", create,
+                      "booking.js წერს priceSource-ს; hasOnly-ში არ არის — "
+                      "ყველა ჯავშანი უარყოფილი იქნება")
+
     def test_pwa_has_real_service_worker(self):
         app = Path("static", "app.js").read_text(encoding="utf-8")
         worker = Path("static", "sw.js").read_text(encoding="utf-8")
