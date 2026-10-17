@@ -1,4 +1,4 @@
-/* Static-first rental inquiry: contextual WhatsApp plus Netlify Forms fallback. */
+/* Static-first rental inquiry: contextual WhatsApp plus the Firestore booking request. */
 (function () {
   var TEXT = {
     ka: { busy: "ამ თარიღებზე ეს მოდელი დაკავებული ჩანს — მოთხოვნას მაინც განვიხილავთ.", choose: "მიუთითეთ დაწყებისა და დასრულების თარიღები.", invalid: "დასრულება დაწყების შემდეგ უნდა იყოს.", days: "დღე", rate: "დღიური ფასი", total: "ქირა", deposit: "დეპოზიტი", due: "გადასახდელი", login: "მოთხოვნის გასაგზავნად შედით ანგარიშში.", sending: "იგზავნება…", success: "მოთხოვნა მიღებულია. ჯავშანი დადასტურებული არ არის, სანამ გადახდა არ შესრულდება.", failed: "მოთხოვნა ვერ გაიგზავნა. სცადეთ ხელახლა.", season: "ივლის–აგვისტოს სეზონური {p}% უკვე ჩათვლილია ქირაში: {s}", seasonPart: "ივლის–აგვისტოს სეზონური {p}% უკვე ჩათვლილია ქირაში: {d} ღამიდან {n} ღამეზე, {s}", young: "{age} წლამდე მძღოლს ემატება ახალგაზრდა მძღოლის დანამატი {min}–{max} ₾ დღეში." },
@@ -121,9 +121,10 @@
     drawQuote();
 
     /* ── გაგზავნა ───────────────────────────────────────────────────────
-       ორი მისამართით ერთდროულად:
-         1. Firestore `bookings` — აქედან კითხულობს გამქირავებლის პროგრამა
-         2. Netlify Forms — ლიდი არ იკარგება მაშინაც, თუ Firebase ვერ მუშაობს
+       ერთი მისამართი: Firestore `bookings` — აქედან კითხულობს გამქირავებლის
+       პროგრამა. Netlify Forms-ის ასლი წაიშალა: ის მისამართი 404-ს აბრუნებდა,
+       no-cors კი ამ წარუმატებლობას მალავდა — „ლიდი არ იკარგება" ტყუილი იყო
+       და მხოლოდ იმას ქმნიდა, რომ ჩავარდნა არავის ეტყობოდა.
        თუ Firebase საერთოდ არ არის ჩართული, ფორმა ისე იქცევა, როგორც აქამდე. */
     if (window.FH && typeof window.FH.firebase === 'function') {
       root.dataset.fhCloud = '1';   /* ajaxifyForms-მა ხელი აღარ ახლოს */
@@ -147,13 +148,13 @@
           .then(function (live) {
             var q = drawQuote();
             if (q) q.priceSource = (live && live.priced) ? 'live' : 'built';
-            return sendToCloud(root, q);
+            /* ოფლაინში Firestore SDK ჩაწერას რიგში სვამს და არც ჩავარდება, არც
+               დასრულდება — ღილაკი სამუდამოდ „იგზავნება…"-ზე რჩებოდა. ამიტომ
+               ვადას ვუწესებთ და კლიენტს ვეუბნებით, რომ ვერ გაიგზავნა. */
+            return withTimeout(sendToCloud(root, q, requestIdFor(root)), SUBMIT_TIMEOUT_MS);
           })
           .then(function () { cloud = true; })
           .catch(function (err) { console.warn('[booking] cloud:', err && (err.code || err.message)); })
-          /* Netlify-ს ასლი მიდის, მაგრამ no-cors პასუხი 404-ზეც „წარმატებაა" —
-             ამიტომ ის აღარასოდეს ითვლება მიწოდების დასტურად. */
-          .then(function () { return postForm(root).catch(function () { return null; }); })
           .then(function () {
             /* წარმატება მხოლოდ მაშინ ითქმის, როცა ჩანაწერი მართლა დაიწერა.
                აქამდე ორივე გზის ჩავარდნისას მაინც „მიღებულია" ეწერებოდა და
@@ -162,6 +163,7 @@
             status.textContent = cloud ? t.success : t.failed;
             if (cloud && window.RentUpAnalytics) window.RentUpAnalytics.track('booking_request', window.RentUpAnalytics.bookingParams(root));
             if (cloud) {
+              forgetRequest(root);   /* შემდეგი ფორმა ახალი ჯავშანია */
               root.reset();
               if (quoteBox) quoteBox.textContent = '';
             }
@@ -249,12 +251,72 @@
     return { days: days, slug: slug, start: start, end: end, rate: rate, rental: rental, deposit: deposit, due: rental + deposit, peakNights: peak, seasonPercent: pct, seasonGel: seasonGel };
   }
 
-  function sendToCloud(root, q) {
+  /* ── ერთი ჯავშანი — ერთი ნომერი ──────────────────────────────────────
+     ჩავარდნის მერე ფორმა სავსე რჩება და კლიენტი ხელახლა აჭერს. თუ სერვერმა
+     პირველი ჩანაწერი მართლა მიიღო და მხოლოდ პასუხი დაიკარგა, მეორე დაჭერა
+     ახალ ჯავშანს არ უნდა ქმნიდეს — გამქირავებელი ერთსა და იმავე კლიენტს ორ
+     მანქანას დაუჯავშნიდა. ამიტომ ჯავშნის დოკუმენტის სახელი კლიენტზე
+     იქმნება და ყოველ ცდაზე იგივეა.
+
+     ნომერი ფორმის `dataset`-შია: ფორმა გვერდის სიცოცხლის განმავლობაში ერთია
+     და ერთი მოთხოვნის სავსე მდგომარეობასაც ის ინახავს; ცალკე ცვლადი ან
+     sessionStorage მეორე ფორმას (ან დაბლოკილ საცავს) უნდა ითვალისწინებდეს.
+     გვერდის გადატვირთვა ნომერს კარგავს — ეს მისაღებია, რადგან გადატვირთვაზე
+     ფორმაც ცარიელდება. `bookings` წესებში ცალკე ველი ამისთვის არ არსებობს
+     (hasOnly), ამიტომ ნომერი დოკუმენტის id-ია და არა ველი.
+
+     თითი: ფორმის შიგთავსი. თუ კლიენტმა ჩავარდნის მერე თარიღი ან ტელეფონი
+     შეცვალა, ეს უკვე სხვა მოთხოვნაა — ძველ ნომერზე გაგზავნა მას ძველ
+     ჩანაწერს დაუბრუნებდა და ახალი ტექსტი უჩუმრად დაიკარგებოდა. */
+  var SUBMIT_TIMEOUT_MS = 20000;
+  var SENT = {}, RETRY = {};
+  function newRequestId() {
+    var abc = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var out = '', bytes = null, c = window.crypto;
+    if (c && typeof c.getRandomValues === 'function') {
+      bytes = c.getRandomValues(new Uint8Array(20));
+    }
+    for (var i = 0; i < 20; i++) {
+      out += abc.charAt((bytes ? bytes[i] : Math.floor(Math.random() * 256)) % abc.length);
+    }
+    return out;
+  }
+  function requestIdFor(root) {
+    var parts = [];
+    new FormData(root).forEach(function (v, k) { parts.push(k + '=' + v); });
+    var fp = parts.join('&');
+    if (!root.dataset.requestId || root.dataset.requestFp !== fp) {
+      root.dataset.requestId = newRequestId();
+      root.dataset.requestFp = fp;
+    }
+    return root.dataset.requestId;
+  }
+  function forgetRequest(root) {
+    var id = root.dataset.requestId;
+    if (id) { delete SENT[id]; delete RETRY[id]; }
+    delete root.dataset.requestId;
+    delete root.dataset.requestFp;
+  }
+  function withTimeout(p, ms) {
+    return new Promise(function (resolve, reject) {
+      var timer = setTimeout(function () {
+        var e = new Error('timeout'); e.code = 'timeout'; reject(e);
+      }, ms);
+      p.then(function (v) { clearTimeout(timer); resolve(v); },
+        function (e) { clearTimeout(timer); reject(e); });
+    });
+  }
+
+  function sendToCloud(root, q, requestId) {
+    /* იგივე ნომრის ჩაწერა უკვე გზაშია (ან დასრულდა) — ახალს არ ვაგზავნით,
+       იმავეს ვუცდით. ოფლაინში ჩაწერა SDK-ს რიგშია და მეორე დაჭერამ მეორე
+       ასლი რიგში არ უნდა ჩადოს. */
+    if (SENT[requestId]) return SENT[requestId];
     var fd = new FormData(root);
     /* მანქანის გარეშე გახსნილი დიალოგიც იწერება — მოდელს გამქირავებელი
        ირჩევს პროგრამაში. დაკარგული მოთხოვნა უარესია, ვიდრე არასრული. */
     var slug = String(fd.get('car_slug') || '') || 'any';
-    return window.FH.firebase().then(function (fb) {
+    var p = window.FH.firebase().then(function (fb) {
       var M = fb.M, db = fb.db, auth = fb.auth;
       var signed = auth.currentUser
         ? Promise.resolve(auth.currentUser)
@@ -288,9 +350,23 @@
           source: 'site',
           pageUrl: location.href.slice(0, 400)
         };
-        return M.db.addDoc(M.db.collection(db, 'bookings'), doc);
+        var ref = M.db.doc(db, 'bookings', requestId);
+        if (!RETRY[requestId]) return M.db.setDoc(ref, doc);
+        /* წინა ცდა ჩავარდა — შეიძლება სერვერამდე მაინც მივიდა. წესები
+           არსებულ ჯავშანზე განახლებას კლიენტს უკრძალავს, ამიტომ ხელახლა
+           ჩაწერა „უარყოფილი" იქნებოდა, თუმცა ჯავშანი არსებობს: ჯერ ვკითხულობთ.
+           არარსებული დოკუმენტის წაკითხვაც წესებით უარყოფილია — ეს „არ არის"-ს
+           ნიშნავს და ვწერთ. `fromCache` არ ითვლება: ის მხოლოდ ჩვენსავე რიგში
+           მდგარი ჩანაწერია და სერვერის დასტური არ არის. */
+        return M.db.getDoc(ref).then(function (snap) {
+          var onServer = snap.exists() && !(snap.metadata && snap.metadata.fromCache);
+          return onServer ? null : M.db.setDoc(ref, doc);
+        }, function () { return M.db.setDoc(ref, doc); });
       });
     });
+    SENT[requestId] = p;
+    p.catch(function () { delete SENT[requestId]; RETRY[requestId] = 1; });
+    return p;
   }
 
   /* ── ცოცხალი ფასები და კალენდარი ─────────────────────────────────────
@@ -430,17 +506,6 @@
     ['datefrom','dateto','expday'].forEach(function(id){var el=document.getElementById(id);if(el)el.addEventListener('change',rememberDates);});
   }
   function bootInquiry(){document.querySelectorAll('[data-inquiry]').forEach(initInquiry);bootDialog();}
-  /* GitHub Pages-ზე ფორმის POST-ს მიმღები არ აქვს — Netlify Forms-ს AJAX-ით
-     ვაწვდით ძველი Netlify მისამართიდან, რომ ლიდები ისევ შეგროვდეს. */
-  var NETLIFY_ORIGIN='https://subtle-naiad-c2db5d.netlify.app';
-  /* ლიდის ასლი Netlify Forms-ში. Firestore-ის ჩაწერის შემდეგაც იგზავნება —
-     ორივე ერთდროულად რომ არ ჩავარდეს. */
-  function postForm(f){
-    var origin=(location.hostname.indexOf('netlify.app')>=0)?location.origin:NETLIFY_ORIGIN;
-    return fetch(origin+'/',{method:'POST',mode:'no-cors',
-      headers:{'Content-Type':'application/x-www-form-urlencoded'},
-      body:new URLSearchParams(new FormData(f)).toString()});
-  }
   function ajaxifyForms(){
     /* ძველი Netlify-მისამართი მკვდარია (404, ფორმები არ აქვს) და no-cors
        პასუხით ამის გაგება შეუძლებელი იყო — ფორმა „გაგზავნილია"-ს წერდა და

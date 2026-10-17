@@ -14,6 +14,9 @@
      4. არასოდეს პასუხობადი მოთხოვნა გაგზავნას 3 წამზე მეტხანს არ აყოვნებს
      5. 60 საათის კალენდარი ჯერ კიდევ სანდოა (72-საათიანი ფანჯარა)
      6. 73 საათის კალენდარი უკვე უგულებელყოფილია
+     7. „გაგზავნა" ორჯერ ტრანსპორტის შეცდომის შემდეგ ერთ ჯავშანს ქმნის
+     8. ოფლაინ გაგზავნა შეტყობინებით სრულდება და არა უსასრულოდ
+     9. Netlify-ს მისამართზე არავითარი მოთხოვნა არ გადის
     10. ძველი (ნდობის ფანჯრის გარეთ) ფასის დოკუმენტი 'live'-ად არ ითვლება */
 
 const assert = require('assert');
@@ -185,6 +188,7 @@ async function start(opts) {
     },
     location: { href: 'https://rentup.ge/cars/audi-q5/', hostname: 'rentup.ge', search: '', origin: 'https://rentup.ge' },
     FormData: function (r) { this.r = r; },
+    URLSearchParams: URLSearchParams,
     CustomEvent: function (name, init) { this.type = name; this.detail = (init || {}).detail; },
     fetch: function (url) {
       fetched.push(String(url));
@@ -326,6 +330,77 @@ test("ნდობის ფანჯრის გარეთ მყოფი �
   const doc = r.docs()[0];
   assert.strictEqual(doc.priceSource, 'built');
   assert.strictEqual(doc.dailyRateGel, 100);
+});
+
+test('„გაგზავნა" ორჯერ ტრანსპორტის შეცდომის შემდეგ ერთ ჯავშანს ქმნის', async () => {
+  // 7. სერვერმა ჩანაწერი მიიღო, პასუხი კი გზაში დაიკარგა. ფორმა სავსე
+  // რჩება, კლიენტი ხელახლა აჭერს — და ახალი ჯავშანი არ უნდა შეიქმნას.
+  const r = await start({ write: 'lostAck' });
+  r.submit();
+  await settle();
+  assert.strictEqual(r.root.status.textContent, T.failed);
+  assert.strictEqual(r.root.button.disabled, false, 'ღილაკი ისევ უნდა გაიხსნას');
+  assert.strictEqual(r.docs().length, 1, 'სერვერმა პირველი ჩანაწერი მიიღო');
+  r.submit();
+  await settle();
+  assert.strictEqual(r.docs().length, 1, 'მეორე დაჭერამ დუბლი შექმნა');
+  assert.strictEqual(r.root.status.textContent, T.success,
+    'ჯავშანი არსებობს — კლიენტს „ვერ გაიგზავნა" არ უნდა ეთქვას');
+});
+
+test('ოფლაინ გაგზავნა შეტყობინებით სრულდება და არა უსასრულოდ', async () => {
+  // 8. Firestore SDK ოფლაინში ჩაწერას რიგში სვამს და არ ჩავარდება —
+  // ღილაკი სამუდამოდ დაბლოკილი რჩებოდა, სტატუსი „იგზავნება…"-ზე.
+  const r = await start({ write: 'hang' });
+  r.submit();
+  await settle();
+  assert.strictEqual(r.root.status.textContent, T.sending);
+  await r.advance(30000);
+  assert.strictEqual(r.root.status.textContent, T.failed);
+  assert.strictEqual(r.root.button.disabled, false);
+  // ხელახლა დაჭერა იმავე რიგში მდგარ ჩაწერას ელოდება და მეორეს არ სვამს.
+  r.submit();
+  await r.advance(30000);
+  assert.strictEqual(r.root.status.textContent, T.failed);
+  assert.strictEqual(r.db.setCalls + r.db.addCalls, 1, 'ორი ჩანაწერი რიგში');
+});
+
+test('Netlify-ს მისამართზე არავითარი მოთხოვნა არ გადის', async () => {
+  // 9. ის მისამართი 404-ს აბრუნებს და no-cors მის წარუმატებლობას მალავდა.
+  const r = await start();
+  r.submit();
+  await settle();
+  assert.strictEqual(r.root.status.textContent, T.success);
+  const bad = r.fetched.filter(function (u) { return /netlify/i.test(u); });
+  assert.deepStrictEqual(bad, [], 'Netlify-ს გაუგზავნია: ' + bad.join(', '));
+});
+
+test('წარმატებული ჯავშნის შემდეგ ახალი ფორმა ახალი ჯავშანია', async () => {
+  // 11. მოთხოვნის ნომერი ერთ ჯავშანს ეკუთვნის: წარმატების მერე მეორე
+  // მოთხოვნა (სხვა მანქანა, სხვა თარიღი) დუბლად არ უნდა ჩაითვალოს.
+  const r = await start();
+  r.submit();
+  await settle();
+  assert.strictEqual(r.docs().length, 1);
+  Object.assign(r.root.fields, { start: ymd(10), end: ymd(12), car_slug: 'audi-q5',
+    name: 'Nino Beridze', phone: '+995555123456' });
+  r.submit();
+  await settle();
+  assert.strictEqual(r.docs().length, 2);
+});
+
+test('შეცდომის შემდეგ შეცვლილი ფორმა ახალი მოთხოვნაა', async () => {
+  // 12. კლიენტმა ჩავარდნის მერე თარიღი შეცვალა — ძველ ნომერზე გაგზავნა
+  // ძველ ჩანაწერს დაუბრუნებდა პასუხს და ახალი თარიღი დაიკარგებოდა.
+  const r = await start({ write: 'lostAck' });
+  r.submit();
+  await settle();
+  r.root.fields.end = ymd(5);
+  r.submit();
+  await settle();
+  const ends = r.docs().map(function (d) { return d.end; }).sort();
+  assert.deepStrictEqual(ends, [ymd(3), ymd(5)].sort());
+  assert.strictEqual(r.root.status.textContent, T.success);
 });
 
 (async function () {
