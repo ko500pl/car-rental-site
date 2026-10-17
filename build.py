@@ -936,21 +936,23 @@ def verification_html():
 
 
 def analytics_html():
-    """Build-time GA4 config. Empty IDs intentionally produce a client-side no-op.
+    """Cookieless Umami analytics, configured in site.yml → analytics.
 
-    `static/analytics.js` is optional. Emitting the tag unconditionally shipped a
-    404 on every page, so the loader is only linked once the file is actually
-    written into dist/ by write_hashed().
-
-    The id comes from site.yml first and the environment second: CI never set
-    GA_MEASUREMENT_ID, so analytics has been switched off on every deploy."""
-    src = ASSET.get("analytics")
-    if not src:
+    An empty or malformed website id emits nothing at all: no tag, no loader.
+    When the id is set, the Umami script records page views itself and the
+    hashed `analytics.js` (when written into dist/) adds the call, WhatsApp
+    and booking-request events through `window.RentUpAnalytics`."""
+    cfg = SITE.get("analytics") or {}
+    wid = str(cfg.get("website_id") or "").strip()
+    if not re.fullmatch(r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}", wid, re.I):
         return ""
-    measurement_id = (str(SITE.get("ga_measurement_id", "")).strip()
-                      or os.environ.get("GA_MEASUREMENT_ID", "").strip())
-    return (f'<script>window.FH_ANALYTICS_CONFIG={{"measurementId":{J(measurement_id)}}};</script>\n'
-            f'<script defer src="{src}"></script>')
+    script_url = str(cfg.get("script_url") or "https://cloud.umami.is/script.js").strip()
+    out = (f'<script defer src="{E(script_url)}" data-website-id="{E(wid)}" '
+           f'data-do-not-track="true"></script>')
+    src = ASSET.get("analytics")
+    if src:
+        out += f'\n<script defer src="{src}"></script>'
+    return out
 
 
 def _hash(data):

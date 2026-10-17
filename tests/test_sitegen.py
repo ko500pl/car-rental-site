@@ -158,3 +158,27 @@ class ProductFeatureTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class AnalyticsTagTests(unittest.TestCase):
+    def setUp(self):
+        self._saved = dict(build.SITE.get("analytics") or {})
+
+    def tearDown(self):
+        build.SITE["analytics"] = self._saved
+
+    def test_empty_id_emits_nothing(self):
+        build.SITE["analytics"] = {"provider": "umami", "website_id": "", "script_url": "https://cloud.umami.is/script.js"}
+        self.assertEqual(build.analytics_html(), "")
+
+    def test_non_uuid_emits_nothing(self):
+        build.SITE["analytics"] = {"provider": "umami", "website_id": "G-ABC123", "script_url": "https://cloud.umami.is/script.js"}
+        self.assertEqual(build.analytics_html(), "")
+
+    def test_uuid_emits_umami_tag(self):
+        wid = "5b8c1d2e-1111-4a2b-9c3d-123456789abc"
+        build.SITE["analytics"] = {"provider": "umami", "website_id": wid, "script_url": "https://cloud.umami.is/script.js"}
+        out = build.analytics_html()
+        self.assertIn('src="https://cloud.umami.is/script.js"', out)
+        self.assertIn(f'data-website-id="{wid}"', out)
+        self.assertNotIn("googletagmanager", out)

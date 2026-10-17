@@ -53,8 +53,12 @@ verification:
   bing: ''
   yandex: ''
 
-# GA4 property id, e.g. G-XXXXXXXXXX. Empty means analytics stays switched off.
-ga_measurement_id: ''
+# Cookieless analytics (Umami Cloud). Paste the website id Umami shows after
+# "Add website" (a UUID). Empty means no analytics markup on any page.
+analytics:
+  provider: umami
+  website_id: ''
+  script_url: https://cloud.umami.is/script.js
 
 # IndexNow — tells Bing, Yandex, Seznam and Naver about new or changed pages
 # within hours instead of waiting weeks for a crawl. The key is a public token,
