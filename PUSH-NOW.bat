@@ -3,7 +3,7 @@ chcp 65001 >nul
 
 rem ===========================================================
 rem   RentUp  >>  GitHub (main)
-rem   Design pass: one voice across the app and the site
+rem   Bridge reliability: the design spec and the 21-task plan
 rem ===========================================================
 rem
 rem Fixed path on purpose. There are several worktrees of this
@@ -11,13 +11,13 @@ rem repository under C:\Projects\car-rental-site and they share one
 rem .git, so running a copy of this file from one of them is how the
 rem branch got reset to an already-pushed commit once before.
 set REPO=C:\Projects\car-rental-site\car-rental-site
-set WANT=44dabc99606f9e349eff212d0e0ff827b2a0a1e7
+set WANT=d40df7c82fcc0ace7b8a9af4d6ac639746cec910
 
 cd /d "%REPO%" || (echo Cannot find %REPO% & timeout /t 20 & exit /b 1)
 
 echo ============================================================
 echo   RentUp  ^>^>  GitHub (main)
-echo   Design pass: one voice across the app and the site
+echo   Bridge reliability: spec + plan (docs only, no site change)
 echo   Repo: %REPO%
 echo ============================================================
 echo.
