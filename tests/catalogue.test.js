@@ -248,6 +248,13 @@ test('29 დღის დოკუმენტი ბარათად ჩა�
   ]);
   assert.ok(r.grids.suv.html.includes('Audi Q5'), 'ბარათი უნდა ჩანდეს');
   assert.ok(!r.cfg.cars['audi-q5'], 'ფასი ჯავშნის ფორმაში არ უნდა მოხვდეს');
+  // ბარათზე დაბეჭდილი რიცხვი კლიენტისთვის შეთავაზებაა. ფორმა ამ მანქანას არ
+  // ითვლის, ამიტომ ბარათიც ფასს არ ასახელებს — ერთი მანქანა ორ პასუხს არ იძლევა.
+  assert.ok(!r.grids.suv.html.includes('₾'), 'ძველი ფასი ბარათზე არ იბეჭდება: ' + r.grids.suv.html);
+  assert.ok(!r.grids.suv.html.includes('250'), 'p1 ბარათზე არ ჩანს');
+  assert.ok(!r.grids.suv.html.includes('230') && !r.grids.suv.html.includes('200'), 'ზოლები არ ჩანს');
+  assert.ok(!r.grids.suv.html.includes('data-price'), 'data-price ანალიტიკაში არ გადადის');
+  assert.ok(r.grids.suv.html.includes('data-booking-open'), 'ღილაკი მუშაობს');
 });
 
 test('31 დღის დოკუმენტი არც ბარათად ჩანს და არც ფასად შედის', async () => {
@@ -267,6 +274,7 @@ test('72 საათზე ახალი დოკუმენტი ჯე�
   ]);
   assert.ok(r.grids.suv.html.includes('Audi Q5'));
   assert.strictEqual(r.cfg.cars['audi-q5'].p1, 250);
+  assert.ok(r.grids.suv.html.includes('250 ₾'), 'ფორმა ფასს ითვლის — ბარათიც ასახელებს');
 });
 
 test('ნულოვანი ფასი შეთავაზებად არ იქცევა', async () => {
