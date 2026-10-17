@@ -135,7 +135,20 @@
         if (button) button.disabled = true;
         status.textContent = t.sending;
         var cloud = false;
-        sendToCloud(root, drawQuote())
+        /* ფასს აქ ვწერთ ჯავშანში, ამიტომ ის ახლანდელი უნდა იყოს. drawQuote
+           ჩაშენებულ ფასს (deploy-ის დღისას) კითხულობს და ცოცხალ მოთხოვნას
+           მხოლოდ ამის მერე იწყებს — ვინც ფორმას სწრაფად ავსებს, იმას ისევ
+           ძველი ფასი ეწერებოდა. ამიტომ ცოცხალს ვუცდით (მაქსიმუმ LIVE_WAIT_MS),
+           მერე კვლავ ვითვლით: fetchLive FH_CFG.cars-ში თავისი ფასი უკვე ჩაწერა.
+           თუ ვერ მოასწრო, ჩაშენებულით ვაგზავნით და priceSource='built' ამას
+           ჯავშანშივე ამბობს — უკეთესია მოთხოვნა ძველი ფასით, ვიდრე არცერთი. */
+        var first = drawQuote();
+        liveWithin(first && first.slug, LIVE_WAIT_MS)
+          .then(function (live) {
+            var q = drawQuote();
+            if (q) q.priceSource = (live && live.priced) ? 'live' : 'built';
+            return sendToCloud(root, q);
+          })
           .then(function () { cloud = true; })
           .catch(function (err) { console.warn('[booking] cloud:', err && (err.code || err.message)); })
           /* Netlify-ს ასლი მიდის, მაგრამ no-cors პასუხი 404-ზეც „წარმატებაა" —
@@ -259,6 +272,7 @@
           rentalGel: q ? q.rental : 0,
           depositGel: q ? q.deposit : 0,
           paymentDueGel: q ? q.due : 0,
+          priceSource: (q && q.priceSource === 'live') ? 'live' : 'built',
           currency: 'GEL',
           status: 'pending',
           paymentStatus: 'required',
@@ -316,6 +330,18 @@
     var t = Date.parse(doc.updatedAt);
     return isFinite(t) && (Date.now() - t) < TRUST_MS;
   }
+  /* ცოცხალ ფასს ველოდებით, მაგრამ არა უსასრულოდ: ტუნელში მყოფ ტელეფონს
+     fetch არასოდეს დაუბრუნდება, ფორმა კი „იგზავნება…"-ზე არ უნდა გაჩერდეს.
+     fetchLive-ის დაქეშილ promise-ს არ ვეხებით — დაგვიანებული პასუხი ისევ
+     ჩაიწერება FH_CFG.cars-ში და შემდეგ გათვლას გამოადგება. */
+  var LIVE_WAIT_MS = 3000;
+  function liveWithin(slug, ms){
+    return new Promise(function(resolve){
+      var timer = setTimeout(function(){ resolve(null); }, ms);
+      fetchLive(slug).then(function(d){ clearTimeout(timer); resolve(d); },
+        function(){ clearTimeout(timer); resolve(null); });
+    });
+  }
   function fetchLive(slug){
     if (!slug) return Promise.resolve(null);
     if (LIVE[slug]) return LIVE[slug];
@@ -345,6 +371,7 @@
         var p7 = Number(d.fleet.p7) || p1;
         var p30 = Number(d.fleet.p30) || p7;
         if (p1 > 0) {
+          d.priced = true;   /* ჯავშანი ამით იგებს, რომ ფასი ცოცხალია */
           cfg.cars[slug] = {
             p1: p1, p7: p7, p30: p30,
             dep: Number(d.fleet.dep) || Number(prev.dep) || 0
