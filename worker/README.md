@@ -5,7 +5,9 @@
 
 ## ერთჯერადი გაშვება (მფლობელი, ~10 წუთი)
 
-ყველა ბრძანება ამ საქაღალდოდან (`worker/`), Windows-ის Terminal-ში.
+უმარტივესი გზა: ორჯერ დააწკაპუნეთ `worker/DEPLOY.bat`-ზე — ის ქვემოთ
+აღწერილ 3–5 ნაბიჯს თავად გაივლის და ბოლოს მისამართს დაწერს.
+ხელით — ყველა ბრძანება ამ საქაღალდოდან (`worker/`), Windows-ის Terminal-ში.
 
 1. **Anthropic API გასაღები** — <https://console.anthropic.com> → API Keys →
    Create Key. დააყენეთ თვიური ლიმიტი (Settings → Limits), მაგალითად $20.
@@ -15,15 +17,15 @@
 
        npx wrangler login
 
-4. გასაღების ჩაწერა (ბრძანება მოგთხოვთ, ჩასვით და Enter — ეკრანზე არ ჩანს):
-
-       npx wrangler secret put ANTHROPIC_API_KEY
-
-5. გაშვება:
+4. გაშვება:
 
        npx wrangler deploy
 
    ბოლოს დაწერს მისამართს, მაგ. `https://rentup-ai.<თქვენი-სახელი>.workers.dev`.
+
+5. გასაღების ჩაწერა (ბრძანება მოგთხოვთ, ჩასვით და Enter — ეკრანზე არ ჩანს):
+
+       npx wrangler secret put ANTHROPIC_API_KEY
 
 6. ეს მისამართი ჩაწერეთ `content/settings/site.yml`-ში:
 
