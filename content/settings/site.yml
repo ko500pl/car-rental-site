@@ -57,7 +57,7 @@ verification:
 # "Add website" (a UUID). Empty means no analytics markup on any page.
 analytics:
   provider: umami
-  website_id: ''
+  website_id: '3e17b168-42cf-4b54-be9d-520357af865d'
   script_url: https://cloud.umami.is/script.js
 
 # IndexNow — tells Bing, Yandex, Seznam and Naver about new or changed pages
