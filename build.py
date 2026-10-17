@@ -83,6 +83,7 @@ PLANNER_LANGS = set(load("content/settings/planner.yml"))
 MAPS = load("content/settings/maps.yml") if os.path.exists("content/settings/maps.yml") else {}
 BOOKING = load("content/settings/booking.yml") if os.path.exists("content/settings/booking.yml") else {}
 HOME_HERO = load("content/settings/home_hero.yml")
+BRANCHES = (load("content/settings/branches.yml") or []) if os.path.exists("content/settings/branches.yml") else []
 CATS = load("content/settings/categories.yml")["categories"]
 
 
@@ -779,6 +780,55 @@ def org_node(lang):
     return node
 
 
+def branch_node(branch, lang):
+    """One staffed office as its own LocalBusiness, tied to the organisation."""
+    a = branch["address"][lang]
+    node = {
+        "@type": ["AutoRental", "LocalBusiness"],
+        "@id": SITE_URL + "/#branch-" + branch["id"],
+        "name": branch["name"][lang],
+        "parentOrganization": {"@id": SITE_URL + "/#organization"},
+        "telephone": branch["phone_e164"],
+        "address": {"@type": "PostalAddress", "streetAddress": a["street"],
+                    "addressLocality": a["city"], "postalCode": str(branch["zip"]),
+                    "addressCountry": "GE"},
+        "geo": {"@type": "GeoCoordinates", "latitude": branch["lat"], "longitude": branch["lon"]},
+        "openingHoursSpecification": [{
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday",
+                          "Friday", "Saturday", "Sunday"],
+            "opens": branch["opens"], "closes": branch["closes"]}],
+    }
+    maps = branch.get("maps") or {}
+    first = next((maps[k] for k in ("google", "yandex", "twogis", "apple") if maps.get(k)), "")
+    if first:
+        node["hasMap"] = first
+    return node
+
+
+BRANCH_MAP_LABELS = {"google": "Google Maps", "yandex": "Yandex Maps", "twogis": "2GIS", "apple": "Apple Maps"}
+
+
+def branches_html(lang):
+    """Office list for the contact page. Empty when there is nothing the
+    contact facts do not already show: no branches, or a single branch with no
+    map listing yet."""
+    if not BRANCHES:
+        return ""
+    if len(BRANCHES) == 1 and not any((BRANCHES[0].get("maps") or {}).values()):
+        return ""
+    items = []
+    for b in BRANCHES:
+        a = b["address"][lang]
+        maps = b.get("maps") or {}
+        links = " · ".join(f'<a href="{E(maps[k])}" rel="noopener" target="_blank">{E(BRANCH_MAP_LABELS[k])}</a>'
+                           for k in ("google", "yandex", "twogis", "apple") if maps.get(k))
+        items.append(f'<li><b>{E(a["street"])}, {E(a["city"])}</b> · {E(b["opens"])}–{E(b["closes"])} · '
+                     f'<a dir="ltr" href="tel:{E(b["phone_e164"])}">{E(b["phone_e164"])}</a>'
+                     + (f'<br>{links}' if links else "") + '</li>')
+    return f'<ul class="branches">{"".join(items)}</ul>'
+
+
 def _num(v, default=0):
     try:
         return int(str(v).strip())
@@ -1449,6 +1499,7 @@ def render_static_page(lang, page):
             +
             f'<div><dt class="k">{E(contact_tx[4])}</dt><dd class="v">{E(addr["street"])}, {E(addr["city"])} {E(SITE["address_zip"])}</dd></div>'
             f'<div><dt class="k">{E(contact_tx[5])}</dt><dd class="v">{E(SITE["opens"])}–{E(SITE["closes"])}</dd></div></dl>'
+            + branches_html(lang) +
             f'<p>{E(contact_tx[6])}</p><h2>{E(uu["f_title"])}</h2>'
             f'<form class="cform" name="contact" method="POST" data-netlify="true" '
             f'netlify-honeypot="bot-field" action="?sent=1">'
@@ -1503,6 +1554,8 @@ def render_static_page(lang, page):
     trail = [(u["nav"]["index"], page_url(lang, "index"))]
     if page != "index":
         trail.append((u["nav"][page], page_url(lang, page)))
+    if page == "contact":
+        graph.extend(branch_node(b, lang) for b in BRANCHES)
     graph.append(crumbs_node(lang, trail))
     f = faq_node(p["blocks"])
     if f:

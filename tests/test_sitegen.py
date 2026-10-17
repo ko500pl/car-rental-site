@@ -182,3 +182,43 @@ class AnalyticsTagTests(unittest.TestCase):
         self.assertIn('src="https://cloud.umami.is/script.js"', out)
         self.assertIn(f'data-website-id="{wid}"', out)
         self.assertNotIn("googletagmanager", out)
+
+
+class BranchTests(unittest.TestCase):
+    def test_branch_matches_site_nap(self):
+        b = build.BRANCHES[0]
+        self.assertEqual(b["phone_e164"], build.SITE["phone_e164"])
+        self.assertEqual(b["address"], build.SITE["address"])
+        self.assertEqual(float(b["lat"]), float(build.SITE["geo_lat"]))
+        self.assertEqual(float(b["lon"]), float(build.SITE["geo_lon"]))
+
+    def test_branch_node_shape(self):
+        node = build.branch_node(build.BRANCHES[0], "en")
+        self.assertTrue(node["@id"].endswith("#branch-tbilisi-vazha-pshavela"))
+        self.assertTrue(node["parentOrganization"]["@id"].endswith("#organization"))
+        self.assertIn("AutoRental", node["@type"])
+        self.assertNotIn("hasMap", node)
+        self.assertEqual(node["address"]["streetAddress"], "71 Vazha-Pshavela Ave.")
+
+    def test_branch_node_uses_first_map_link(self):
+        b = dict(build.BRANCHES[0], maps={"google": "", "yandex": "https://yandex.com/maps/org/1", "twogis": "", "apple": ""})
+        self.assertEqual(build.branch_node(b, "ru")["hasMap"], "https://yandex.com/maps/org/1")
+
+    def test_no_branches_is_harmless(self):
+        saved = build.BRANCHES
+        try:
+            build.BRANCHES = []
+            self.assertEqual(build.branches_html("en"), "")
+            self.assertEqual(build.org_node("en")["address"]["streetAddress"], "71 Vazha-Pshavela Ave.")
+        finally:
+            build.BRANCHES = saved
+
+    def test_branches_html_lists_map_links(self):
+        saved = build.BRANCHES
+        try:
+            build.BRANCHES = [dict(saved[0], maps={"google": "https://maps.google.com/?cid=1", "yandex": "", "twogis": "", "apple": ""})]
+            out = build.branches_html("he")
+            self.assertIn('class="branches"', out)
+            self.assertIn('href="https://maps.google.com/?cid=1"', out)
+        finally:
+            build.BRANCHES = saved

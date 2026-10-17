@@ -1,0 +1,43 @@
+# Staffed physical offices only — one entry per place a customer can walk in.
+# Airports and delivery points are NOT branches (they are served, not staffed):
+# map platforms suspend listings for addresses without staff.
+# Single source for name/address/phone on map listings and in JSON-LD.
+# maps.*: paste each listing's public URL once the owner has verified it.
+- id: tbilisi-vazha-pshavela
+  name:
+    ka: RentUp
+    en: RentUp
+    ru: RentUp
+    fa: RentUp
+    he: RentUp
+    ar: RentUp
+  address:
+    ka:
+      street: ვაჟა-ფშაველას გამზირი 71
+      city: თბილისი
+    en:
+      street: 71 Vazha-Pshavela Ave.
+      city: Tbilisi
+    ru:
+      street: пр. Важа-Пшавела 71
+      city: Тбилиси
+    fa:
+      street: خیابان وژا-پشاولا 71
+      city: تفلیس
+    he:
+      street: שדרות ואז'ה-פשאוולה 71
+      city: טביליסי
+    ar:
+      street: جادة فاجا-بشافيلا 71
+      city: تبليسي
+  zip: 0186
+  lat: 41.7245
+  lon: 44.7509
+  opens: 09:00
+  closes: '21:00'
+  phone_e164: '+995597555565'
+  maps:
+    google: ''
+    yandex: ''
+    twogis: ''
+    apple: ''
