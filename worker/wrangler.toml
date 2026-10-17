@@ -1,0 +1,20 @@
+name = "rentup-ai"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+
+# Public configuration. The API key is NOT here: set it once with
+#   npx wrangler secret put ANTHROPIC_API_KEY
+[vars]
+SITE_URL = "https://rentup.ge"
+ALLOWED_ORIGINS = "https://rentup.ge,https://www.rentup.ge"
+MODEL = "claude-haiku-5-5"
+
+# 30 requests per minute per visitor IP. Free on every plan.
+[[unsafe.bindings]]
+name = "RATE_LIMITER"
+type = "ratelimit"
+namespace_id = "1001"
+simple = { limit = 30, period = 60 }
+
+[observability]
+enabled = true

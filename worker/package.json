@@ -1,0 +1,14 @@
+{
+  "name": "rentup-ai-worker",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "fixtures": "python ../scripts/build_ai_catalog.py test/fixtures",
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4"
+  }
+}
