@@ -147,7 +147,7 @@
                ფორმა იშლებოდა — კლიენტი დაჯავშნილი ეგონა, მოთხოვნა კი არსად
                იყო. */
             status.textContent = cloud ? t.success : t.failed;
-            if (cloud && window.RentUpAnalytics) window.RentUpAnalytics.track('booking_submitted', window.RentUpAnalytics.bookingParams(root));
+            if (cloud && window.RentUpAnalytics) window.RentUpAnalytics.track('booking_request', window.RentUpAnalytics.bookingParams(root));
             if (cloud) {
               root.reset();
               if (quoteBox) quoteBox.textContent = '';

@@ -1,9 +1,11 @@
-/* RentUp GA4 tracking. Safe no-op when GA_MEASUREMENT_ID is not configured. */
+/* RentUp analytics — cookieless Umami events.
+   The Umami tag (emitted by build.py only when site.yml → analytics.website_id
+   is set) records page views. This file adds the events the business cares
+   about: call_click, whatsapp_click and booking_request, each tagged with the
+   page language and page type. Every call is a safe no-op when Umami is
+   absent, blocked or still loading, and never blocks a link's navigation. */
 (function () {
   if (window.RentUpAnalytics) return;
-  var cfg = window.FH_ANALYTICS_CONFIG || {};
-  var measurementId = String(cfg.measurementId || "").trim();
-  var enabled = /^G-[A-Z0-9]+$/i.test(measurementId);
   var onceKeys = Object.create(null), searchTimers = new WeakMap(), lastSearches = new WeakMap();
 
   function clean(params) {
@@ -19,10 +21,22 @@
     }
     return out;
   }
+  function ready() {
+    return !!(window.umami && typeof window.umami.track === "function");
+  }
+  function pageType() {
+    var m = /(?:^|\s)page-(\S+)/.exec((document.body && document.body.className) || "");
+    return m ? m[1] : "other";
+  }
   function track(name, params) {
-    if (!enabled || typeof window.gtag !== "function") return false;
-    window.gtag("event", name, clean(params));
-    return true;
+    if (!ready()) return false;
+    try {
+      var data = clean(params);
+      data.lang = (document.documentElement && document.documentElement.lang) || "";
+      data.page_type = pageType();
+      window.umami.track(name, data);
+      return true;
+    } catch (e) { return false; }
   }
   function once(key, name, params) {
     if (onceKeys[key]) return false;
@@ -59,41 +73,32 @@
     return clean(params);
   }
 
-  window.RentUpAnalytics = { enabled: enabled, track: track, once: once, carParams: carParams, bookingParams: bookingParams };
-  if (!enabled) return;
-  window.dataLayer = window.dataLayer || [];
-  window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
-  var debugMode = new URLSearchParams(location.search).get("ga_debug") === "1";
-  window.gtag("js", new Date());
-  window.gtag("config", measurementId, { send_page_view: false, debug_mode: debugMode });
-  var gaScript = document.createElement("script");
-  gaScript.async = true;
-  gaScript.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(measurementId);
-  document.head.appendChild(gaScript);
-  once("page_view:" + location.href, "page_view", { page_title: document.title, page_location: location.href,
-    page_path: location.pathname + location.search, debug_mode: debugMode || undefined });
+  window.RentUpAnalytics = { get enabled() { return ready(); }, track: track, once: once,
+    carParams: carParams, bookingParams: bookingParams };
 
-  document.addEventListener("DOMContentLoaded", function () {
+  document.addEventListener("click", function (event) {
+    var target = event.target && event.target.closest ? event.target.closest("a") : null;
+    if (!target) target = event.target && event.target.closest ? event.target.closest("button") : null;
+    if (!target) return;
+    var href = String((target.getAttribute && target.getAttribute("href")) || "");
+    if (/^tel:/i.test(href)) track("call_click", { href_kind: "tel" });
+    else if (/wa\.me\//i.test(href) || (target.matches && target.matches("[data-inquiry-wa]")))
+      track("whatsapp_click", {});
+    else if (target.matches && target.matches("[data-car-search]")) track("car_search", carParams(target));
+    else if (target.matches && target.matches("[data-booking-open]")) track("booking_started", carParams(target));
+  });
+
+  function onReady() {
     var viewedCar = document.querySelector("[data-analytics-car-view]");
     if (viewedCar) once("car_view:" + location.pathname, "car_view", carParams(viewedCar));
     if (new URLSearchParams(location.search).get("booking_sent") === "1") {
       try {
         var submitted = JSON.parse(sessionStorage.getItem("rentup_pending_booking") || "{}");
         sessionStorage.removeItem("rentup_pending_booking");
-        once("booking_submitted:native:" + location.href, "booking_submitted", submitted);
+        once("booking_request:native:" + location.href, "booking_request", submitted);
       } catch (e) {}
     }
-    document.addEventListener("click", function (event) {
-      var target = event.target.closest("a, button");
-      if (!target) return;
-      var href = String(target.getAttribute("href") || "");
-      if (target.matches("[data-car-search]")) track("car_search", carParams(target));
-      else if (target.matches("[data-booking-open]")) track("booking_started", carParams(target));
-      else if (target.matches("[data-inquiry-wa]") || /wa\.me|whatsapp/i.test(href)) track("whatsapp_click", bookingParams(target));
-      else if (/^tel:/i.test(href)) track("phone_click", carParams(target));
-      else if (/^mailto:/i.test(href) || /\/contact\/?(?:[?#]|$)/i.test(href)) track("contact_click", carParams(target));
-    });
-    document.querySelectorAll('[data-car-search-input]').forEach(function (input) {
+    (document.querySelectorAll ? document.querySelectorAll("[data-car-search-input]") : []).forEach(function (input) {
       input.addEventListener("input", function () {
         clearTimeout(searchTimers.get(input));
         searchTimers.set(input, setTimeout(function () {
@@ -104,5 +109,7 @@
         }, 700));
       });
     });
-  });
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", onReady);
+  else onReady();
 }());
