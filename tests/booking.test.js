@@ -17,6 +17,9 @@
      7. „გაგზავნა" ორჯერ ტრანსპორტის შეცდომის შემდეგ ერთ ჯავშანს ქმნის
      8. ოფლაინ გაგზავნა შეტყობინებით სრულდება და არა უსასრულოდ
      9. Netlify-ს მისამართზე არავითარი მოთხოვნა არ გადის
+    13. ცოცხალი ფასი ფორმაში ჩანს და ჩანაწერში 'live'-ია
+    14. ჩაშენებული ფასი ფორმაში ჩანს და ჩანაწერში 'built'-ია
+    15. ფასის გარეშე მანქანა: ფორმაში ციფრი არ ჩანს, იგზავნება, 'none'-ია
     10. ძველი (ნდობის ფანჯრის გარეთ) ფასის დოკუმენტი 'live'-ად არ ითვლება */
 
 const assert = require('assert');
@@ -110,6 +113,7 @@ const settle = async () => { for (let i = 0; i < 25; i++) await new Promise((r) 
 ///   built      — the price baked into FH_CFG.cars at build time
 ///   fleet      — fields of the live fleet document (null = 404)
 ///   avail      — fields of the live availability document (null = 404)
+///   cars       — the whole FH_CFG.cars map (default: one baked car, audi-q5)
 ///   fetchAfter — ms (fake clock) before fetch answers; default: at once
 ///   fetchHangs — fetch never answers (a phone in a tunnel)
 async function start(opts) {
@@ -168,7 +172,7 @@ async function start(opts) {
 
   const cfg = {
     projectId: 'p', whatsapp: '',
-    cars: { 'audi-q5': opts.built || { p1: 100, p7: 90, p30: 80, dep: 500 } },
+    cars: opts.cars || { 'audi-q5': opts.built || { p1: 100, p7: 90, p30: 80, dep: 500 } },
   };
   const sandbox = {
     window: {
@@ -401,6 +405,51 @@ test('შეცდომის შემდეგ შეცვლილი ფ�
   const ends = r.docs().map(function (d) { return d.end; }).sort();
   assert.deepStrictEqual(ends, [ymd(3), ymd(5)].sort());
   assert.strictEqual(r.root.status.textContent, T.success);
+});
+
+test("ცოცხალი ფასი ფორმაში ჩანს და ჩანაწერში 'live'-ია", async () => {
+  // 13. ცოცხალი დოკუმენტი ახალია — კლიენტი მას ხედავს და ჯავშანიც მას წერს.
+  const r = await start({ fleet: LIVE_FLEET(), fetchAfter: 500 });
+  await r.advance(500);
+  assert.ok(r.root.quote.textContent.includes('150 ₾'), r.root.quote.textContent);
+  r.submit();
+  await settle();
+  const doc = r.docs()[0];
+  assert.strictEqual(doc.priceSource, 'live');
+  assert.strictEqual(doc.dailyRateGel, 150);
+});
+
+test("ჩაშენებული ფასი ფორმაში ჩანს და ჩანაწერში 'built'-ია", async () => {
+  // 14. გვერდის მქონე მანქანა, ცოცხალი დოკუმენტი არ არის: ისე, როგორც
+  // აქამდე — ჩაშენებული ფასი, ოღონდ ახლა ჩანაწერი ამას ამბობს.
+  const r = await start({ fleet: null });
+  assert.ok(r.root.quote.textContent.includes('100 ₾'), r.root.quote.textContent);
+  r.submit();
+  await settle();
+  const doc = r.docs()[0];
+  assert.strictEqual(doc.priceSource, 'built');
+  assert.strictEqual(doc.dailyRateGel, 100);
+  assert.strictEqual(doc.rentalGel, 200);
+});
+
+test("ფასის გარეშე მანქანა: ციფრი არ ჩანს, იგზავნება, 'none'-ია", async () => {
+  // 15. კატალოგის მანქანა, რომლის დოკუმენტი 72 საათზე ძველია და
+  // ჩაშენებული ფასი არ აქვს. „0 ₾" უფასო ქირის დაპირებად იკითხება, ამიტომ
+  // ფასი არ იწერება; მოთხოვნა კი არ იკარგება.
+  const r = await start({
+    cars: {},
+    fields: { car_slug: 'jaguar-xf', requested_car: 'Jaguar XF' },
+    fleet: Object.assign(LIVE_FLEET(), { updatedAt: ago(100 * HOUR) }),
+  });
+  assert.ok(r.root.quote.textContent.length > 0, 'დღეების რაოდენობა ჩანს');
+  assert.ok(!r.root.quote.textContent.includes('₾'), r.root.quote.textContent);
+  r.submit();
+  await settle();
+  assert.strictEqual(r.root.status.textContent, T.success, 'მოთხოვნა არ უნდა დაიკარგოს');
+  const doc = r.docs()[0];
+  assert.strictEqual(doc.priceSource, 'none');
+  assert.strictEqual(doc.carSlug, 'jaguar-xf');
+  assert.strictEqual(doc.rentalGel, 0);
 });
 
 (async function () {

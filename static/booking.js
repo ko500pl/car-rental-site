@@ -142,12 +142,17 @@
            ძველი ფასი ეწერებოდა. ამიტომ ცოცხალს ვუცდით (მაქსიმუმ LIVE_WAIT_MS),
            მერე კვლავ ვითვლით: fetchLive FH_CFG.cars-ში თავისი ფასი უკვე ჩაწერა.
            თუ ვერ მოასწრო, ჩაშენებულით ვაგზავნით და priceSource='built' ამას
-           ჯავშანშივე ამბობს — უკეთესია მოთხოვნა ძველი ფასით, ვიდრე არცერთი. */
+           ჯავშანშივე ამბობს — უკეთესია მოთხოვნა ძველი ფასით, ვიდრე არცერთი.
+           მესამე შემთხვევა: ფასი საერთოდ არ არის (კატალოგის მანქანა, რომლის
+           დოკუმენტი 72 საათზე ძველია და ჩაშენებული ფასი არ აქვს). მაშინ
+           ჩანაწერში 0 ₾ ეწერება და 'built' ტყუილი იქნებოდა — ის „deploy-ის
+           დღის ფასს" ნიშნავს. ამიტომ 'none': გამქირავებელი ხედავს, რომ ფასი
+           არავის უნახავს და მოთხოვნაზე პასუხისას თავად ასახელებს. */
         var first = drawQuote();
         liveWithin(first && first.slug, LIVE_WAIT_MS)
           .then(function (live) {
             var q = drawQuote();
-            if (q) q.priceSource = (live && live.priced) ? 'live' : 'built';
+            if (q) q.priceSource = (live && live.priced) ? 'live' : (q.rate > 0 ? 'built' : 'none');
             /* ოფლაინში Firestore SDK ჩაწერას რიგში სვამს და არც ჩავარდება, არც
                დასრულდება — ღილაკი სამუდამოდ „იგზავნება…"-ზე რჩებოდა. ამიტომ
                ვადას ვუწესებთ და კლიენტს ვეუბნებით, რომ ვერ გაიგზავნა. */
@@ -334,7 +339,7 @@
           rentalGel: q ? q.rental : 0,
           depositGel: q ? q.deposit : 0,
           paymentDueGel: q ? q.due : 0,
-          priceSource: (q && q.priceSource === 'live') ? 'live' : 'built',
+          priceSource: (q && (q.priceSource === 'live' || q.priceSource === 'built')) ? q.priceSource : 'none',
           currency: 'GEL',
           status: 'pending',
           paymentStatus: 'required',
