@@ -1,0 +1,53 @@
+# Copy for map listings (Google Business Profile, Yandex Business, 2GIS,
+# Apple Business Connect). The business name on every platform is exactly
+# "RentUp" — never append keywords (Google suspends keyword-stuffed names).
+# Each description ≤ 750 characters (Google's limit). Facts must match
+# rental_policy.yml; prices are NOT written here — make_marketing_pack.py reads
+# them from rental_policy.yml so the listing can never drift from the site.
+# {fleet} and {places} are filled from site.yml and the published attractions.
+category: Car rental agency
+faq_count: 10          # first N Q&A of content/pages/faq.yml, per language
+description:
+  ka: >-
+    RentUp ავტომობილების გაქირავების კომპანიაა თბილისში, ვაჟა-ფშაველას გამზირზე. {fleet} ავტომობილი:
+    ეკონომიდან ბიზნესამდე, კროსოვერები, ჯიპები და მინივენები. CDW დაზღვევა ფასში შედის.
+    ავტომობილს მოგაწვდით თბილისის, ქუთაისისა და ბათუმის აეროპორტებში, შესაძლებელია
+    ცალმხრივი ქირაობა ამ ქალაქებს შორის და ქირაობა მძღოლით. ჩვენს საიტზე {places} ადგილის
+    გზის მდგომარეობაა აღწერილი: სად საკმარისია ჩვეულებრივი ავტომობილი და სად გჭირდებათ
+    4×4. ვმუშაობთ ყოველდღე 09:00–21:00. დაგვირეკეთ ან მოგვწერეთ WhatsApp-ზე.
+  en: >-
+    RentUp is a car rental company in Tbilisi, on Vazha-Pshavela Avenue. {fleet} cars, from
+    economy to business class, plus crossovers, 4x4s and minivans. CDW insurance is
+    included in the price. We deliver to Tbilisi, Kutaisi and Batumi airports, offer
+    one-way rentals between these cities and rentals with a driver. Our website
+    describes road conditions for {places} places in Georgia, so you know where a regular car
+    is enough and where you need a 4x4. Open daily 09:00–21:00. Call us or message us
+    on WhatsApp.
+  ru: >-
+    RentUp предлагает прокат автомобилей в Тбилиси, на проспекте Важа-Пшавела. {fleet} машин: от
+    эконом- до бизнес-класса, кроссоверы, внедорожники и минивэны. Страховка CDW
+    включена в цену. Доставляем авто в аэропорты Тбилиси, Кутаиси и Батуми, есть аренда
+    в одну сторону между этими городами и аренда с водителем. На нашем сайте описаны
+    дороги к {places} местам Грузии: где хватит обычной машины, а где нужен полный привод.
+    Работаем ежедневно 09:00–21:00. Звоните или пишите в WhatsApp.
+  fa: >-
+    RentUp شرکت اجارهٔ خودرو در تفلیس، در خیابان وژا-پشاولا است. {fleet} خودرو از کلاس
+    اقتصادی تا تجاری، به‌همراه کراس‌اوور، شاسی‌بلند ۴×۴ و مینی‌ون. بیمهٔ CDW در قیمت
+    گنجانده شده است. خودرو را در فرودگاه‌های تفلیس، کوتائیسی و باتومی تحویل می‌دهیم؛
+    اجارهٔ یک‌طرفه میان این شهرها و اجاره با راننده هم ممکن است. در وب‌سایت ما وضعیت
+    جاده برای {places} مکان در گرجستان شرح داده شده است. هر روز از ۰۹:۰۰ تا ۲۱:۰۰ پاسخگو
+    هستیم. تماس بگیرید یا در واتس‌اپ پیام دهید.
+  he: >-
+    RentUp היא חברת השכרת רכב בטביליסי, בשדרות ואז'ה-פשאוולה. {fleet} רכבים, ממחלקת
+    חיסכון ועד מחלקת עסקים, וגם קרוסאוברים, רכבי 4x4 ומיניוואנים. ביטוח CDW כלול
+    במחיר. אנחנו מוסרים רכבים בשדות התעופה של טביליסי, קוטאיסי ובטומי, ואפשר להשכיר
+    בכיוון אחד בין הערים האלה או עם נהג. באתר שלנו מתוארים תנאי הדרך ל-{places} מקומות
+    בגאורגיה: איפה מספיק רכב רגיל ואיפה צריך 4x4. פתוח כל יום 09:00–21:00. התקשרו
+    או כתבו לנו ב-WhatsApp.
+  ar: >-
+    RentUp شركة لتأجير السيارات في تبليسي، في جادة فاجا-بشافيلا. لدينا {fleet} سيارة من
+    الفئة الاقتصادية حتى فئة رجال الأعمال، إضافة إلى سيارات كروس أوفر ودفع رباعي
+    وميني فان. تأمين CDW مشمول في السعر. نسلّم السيارات في مطارات تبليسي وكوتايسي
+    وباتومي، ونوفّر التأجير باتجاه واحد بين هذه المدن والتأجير مع سائق. يصف موقعنا
+    حالة الطرق إلى {places} مكانًا في جورجيا: أين تكفي سيارة عادية وأين تحتاج إلى دفع
+    رباعي. نعمل يوميًا من 09:00 إلى 21:00. اتصل بنا أو راسلنا عبر واتساب.
