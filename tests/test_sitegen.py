@@ -98,7 +98,8 @@ class ProductFeatureTests(unittest.TestCase):
     def test_rules_allow_the_price_source_field(self):
         rules = Path("firestore.rules").read_text(encoding="utf-8")
         create = rules.split("match /bookings/{id}")[1].split("allow update")[0]
-        self.assertIn("'priceSource'", create,
+        allowed = create.split("hasOnly([", 1)[1].split("])", 1)[0]
+        self.assertIn("'priceSource'", allowed,
                       "booking.js წერს priceSource-ს; hasOnly-ში არ არის — "
                       "ყველა ჯავშანი უარყოფილი იქნება")
 
