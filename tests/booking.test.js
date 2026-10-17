@@ -20,6 +20,11 @@
     13. ცოცხალი ფასი ფორმაში ჩანს და ჩანაწერში 'live'-ია
     14. ჩაშენებული ფასი ფორმაში ჩანს და ჩანაწერში 'built'-ია
     15. ფასის გარეშე მანქანა: ფორმაში ციფრი არ ჩანს, იგზავნება, 'none'-ია
+    16. ფიგურა უცვლელია — ერთი დაჭერა საკმარისია, 'live'
+    17. ხელახალი დაჭერა: დოკუმენტი ქეშშია — წარმატებაა, ახალი ჩაწერა არ არის
+    18. ხელახალი დაჭერა: ქსელი არ არის, ჩანაწერი უკვე არსებობს — წარმატებაა
+    19. წესების უარყოფა წარმატებად არ ითვლება, ხელახლაც
+    20. ლოდინისას მანქანა შეიცვალა: ეტიკეტი მეორე მანქანის ფასს აღწერს
     10. ძველი (ნდობის ფანჯრის გარეთ) ფასის დოკუმენტი 'live'-ად არ ითვლება */
 
 const assert = require('assert');
@@ -114,6 +119,8 @@ const settle = async () => { for (let i = 0; i < 25; i++) await new Promise((r) 
 ///   fleet      — fields of the live fleet document (null = 404)
 ///   avail      — fields of the live availability document (null = 404)
 ///   cars       — the whole FH_CFG.cars map (default: one baked car, audi-q5)
+///   write      — 'hang' | 'lostAck' | 'denied' (default: accepted)
+///   getMode    — 'cache' | 'unavailable' (default: the server answers)
 ///   fetchAfter — ms (fake clock) before fetch answers; default: at once
 ///   fetchHangs — fetch never answers (a phone in a tunnel)
 async function start(opts) {
@@ -139,6 +146,7 @@ async function start(opts) {
       doc(_d, col, id) { return { col: col, id: id }; },
       addDoc(c, data) {
         db.addCalls += 1;
+        if (opts.write === 'denied') return Promise.reject({ code: 'permission-denied' });
         if (opts.write === 'hang') return new Promise(function () {});
         const id = 'auto' + (++seq);
         db.docs[c.col + '/' + id] = data;
@@ -149,6 +157,7 @@ async function start(opts) {
       },
       setDoc(ref, data) {
         db.setCalls += 1;
+        if (opts.write === 'denied') return Promise.reject({ code: 'permission-denied' });
         if (opts.write === 'hang') return new Promise(function () {});
         const key = ref.col + '/' + ref.id;
         // The real rules: a second write to an existing id is an update, and
@@ -162,6 +171,12 @@ async function start(opts) {
       },
       getDoc(ref) {
         const key = ref.col + '/' + ref.id;
+        // `getMode` models what an offline client does: answer from its
+        // cache, or fail with `unavailable` when the cache has nothing.
+        if (opts.getMode === 'cache') {
+          return Promise.resolve({ exists() { return true; }, metadata: { fromCache: true } });
+        }
+        if (opts.getMode === 'unavailable') return Promise.reject({ code: 'unavailable' });
         // The real rules read `resource.data`, so asking for a document that
         // is not there is itself denied.
         if (!db.docs[key]) return Promise.reject({ code: 'permission-denied' });
@@ -242,9 +257,11 @@ async function start(opts) {
       for (;;) {
         timers.sort(function (a, b) { return a.at - b.at; });
         if (!timers.length || timers[0].at > until) break;
-        const t = timers.shift();
-        now = t.at;
-        t.fn();
+        // Everything due at the same instant fires in the same tick, as
+        // two real timers expiring together would.
+        const at = timers[0].at;
+        now = at;
+        while (timers.length && timers[0].at === at) timers.shift().fn();
         await settle();
       }
       now = until;
@@ -261,18 +278,29 @@ const LIVE_FLEET = () => ({ name: 'Audi Q5', p1: 150, p7: 140, p30: 120, dep: 70
 const tests = [];
 function test(name, fn) { tests.push([name, fn]); }
 
-test('გაგზავნა ცოცხალ ფასს ელოდება და სწორედ მას წერს', async () => {
-  // 1. ფორმა ივსება წამებში, ცოცხალი მოთხოვნა კი ჯერ გზაშია. ჩაშენებული
-  // ფასი (100) deploy-ის დღისაა; ცოცხალი (150) — დღევანდელი. ჯავშანში
-  // მეორე უნდა მოხვდეს.
+test('გაგზავნა ცოცხალ ფასს ელოდება; შეცვლილ ფასს კლიენტი ჯერ ხედავს', async () => {
+  // 1. ფორმა ივსება წამებში, ცოცხალი მოთხოვნა კი ჯერ გზაშია. ეკრანზე
+  // ჩაშენებული ფასია (100). ცოცხალი (150) დღევანდელია, მაგრამ კლიენტმა 100
+  // ნახა და ღილაკი მასზე დააჭირა — ჯავშანი ჩუმად 150-ით არ იწერება.
+  // ახალი ფასი ეკრანზე გამოდის, ღილაკი იხსნება, და მეორე დაჭერა უკვე
+  // ნანახ ფასზეა.
   const r = await start({ fleet: LIVE_FLEET(), fetchAfter: 500 });
+  assert.ok(r.root.quote.textContent.includes('100 ₾'), r.root.quote.textContent);
   r.submit();
   await settle();
   assert.strictEqual(r.docs().length, 0, 'ცოცხალ პასუხამდე არაფერი იწერება');
   await r.advance(500);
+  assert.strictEqual(r.docs().length, 0, 'ფასი შეიცვალა — კლიენტმა ჯერ უნდა ნახოს');
+  assert.ok(r.root.quote.textContent.includes('150 ₾'), r.root.quote.textContent);
+  assert.strictEqual(r.root.button.disabled, false, 'ღილაკი ისევ უნდა გაიხსნას');
+  assert.notStrictEqual(r.root.status.textContent, T.sending, '„იგზავნება…" არ უნდა დარჩეს');
+  assert.notStrictEqual(r.root.status.textContent, T.success);
+  r.submit();
+  await settle();
   const doc = r.docs()[0];
-  assert.ok(doc, 'ჯავშანი უნდა ჩაწერილიყო');
-  assert.strictEqual(doc.dailyRateGel, 150, 'ჩაშენებული ფასი დაიწერა');
+  assert.ok(doc, 'მეორე დაჭერაზე ჯავშანი უნდა ჩაწერილიყო');
+  assert.strictEqual(r.docs().length, 1);
+  assert.strictEqual(doc.dailyRateGel, 150);
   assert.strictEqual(doc.rentalGel, 150 * 2);
   assert.strictEqual(doc.depositGel, 700);
   assert.strictEqual(doc.paymentDueGel, 150 * 2 + 700);
@@ -282,7 +310,9 @@ test('გაგზავნა ცოცხალ ფასს ელოდე�
 test("priceSource არის 'live', როცა ცოცხალი დოკუმენტი გამოიყენეს", async () => {
   const r = await start({ fleet: LIVE_FLEET(), fetchAfter: 500 });
   r.submit();
-  await r.advance(500);
+  await r.advance(500);      // ფასი შეიცვალა — პირველი დაჭერა არ წერს
+  r.submit();
+  await settle();
   assert.strictEqual(r.docs()[0].priceSource, 'live');
 });
 
@@ -379,31 +409,35 @@ test('Netlify-ს მისამართზე არავითარი მ
   assert.deepStrictEqual(bad, [], 'Netlify-ს გაუგზავნია: ' + bad.join(', '));
 });
 
-test('წარმატებული ჯავშნის შემდეგ ახალი ფორმა ახალი ჯავშანია', async () => {
-  // 11. მოთხოვნის ნომერი ერთ ჯავშანს ეკუთვნის: წარმატების მერე მეორე
-  // მოთხოვნა (სხვა მანქანა, სხვა თარიღი) დუბლად არ უნდა ჩაითვალოს.
+test('წარმატებული ჯავშნის შემდეგ იდენტური გაგზავნა ახალი ჯავშანია', async () => {
+  // 11. მოთხოვნის ნომერი ერთ ჯავშანს ეკუთვნის. წარმატების მერე იგივე
+  // კლიენტი იგივე მანქანას იგივე თარიღებზე ხელახლა ჯავშნის (სხვა მიზეზით,
+  // ან პირველი დაავიწყდა) — ეს ახალი მოთხოვნაა და არა დუბლი. თარიღის
+  // შეცვლა აქ არაფერს ამოწმებდა: თითი თვითონ ცვლიდა ნომერს.
   const r = await start();
+  const same = Object.assign({}, r.root.fields);
   r.submit();
   await settle();
   assert.strictEqual(r.docs().length, 1);
-  Object.assign(r.root.fields, { start: ymd(10), end: ymd(12), car_slug: 'audi-q5',
-    name: 'Nino Beridze', phone: '+995555123456' });
+  assert.strictEqual(Object.keys(r.root.fields).length, 0, 'ფორმა გასუფთავდა');
+  Object.assign(r.root.fields, same);
   r.submit();
   await settle();
   assert.strictEqual(r.docs().length, 2);
 });
 
 test('შეცდომის შემდეგ შეცვლილი ფორმა ახალი მოთხოვნაა', async () => {
-  // 12. კლიენტმა ჩავარდნის მერე თარიღი შეცვალა — ძველ ნომერზე გაგზავნა
-  // ძველ ჩანაწერს დაუბრუნებდა პასუხს და ახალი თარიღი დაიკარგებოდა.
+  // 12. კლიენტმა ჩავარდნის მერე ტელეფონი გაასწორა — ძველ ნომერზე გაგზავნა
+  // ძველ ჩანაწერს დაუბრუნებდა პასუხს და გასწორებული ნომერი დაიკარგებოდა.
+  // (თარიღის შეცვლა ფასსაც ცვლის და იმ შემთხვევას 1-ლი ტესტი ფარავს.)
   const r = await start({ write: 'lostAck' });
   r.submit();
   await settle();
-  r.root.fields.end = ymd(5);
+  r.root.fields.phone = '+995599000111';
   r.submit();
   await settle();
-  const ends = r.docs().map(function (d) { return d.end; }).sort();
-  assert.deepStrictEqual(ends, [ymd(3), ymd(5)].sort());
+  const phones = r.docs().map(function (d) { return d.phone; }).sort();
+  assert.deepStrictEqual(phones, ['+995555123456', '+995599000111'].sort());
   assert.strictEqual(r.root.status.textContent, T.success);
 });
 
@@ -450,6 +484,75 @@ test("ფასის გარეშე მანქანა: ციფრი 
   assert.strictEqual(doc.priceSource, 'none');
   assert.strictEqual(doc.carSlug, 'jaguar-xf');
   assert.strictEqual(doc.rentalGel, 0);
+});
+
+test("ფიგურა უცვლელია — ერთი დაჭერა საკმარისია, 'live'", async () => {
+  // 16. ცოცხალი დოკუმენტი ეკრანზე ნანახ ფასს ემთხვევა (ჩვეულებრივი შემთხვევა:
+  // catalogue.js უკვე ჩადო). მეორე დაჭერა არ მოითხოვება.
+  const same = { name: 'Audi Q5', p1: 100, p7: 90, p30: 80, dep: 500, updatedAt: ago(HOUR) };
+  const r = await start({ fleet: same, fetchAfter: 500 });
+  r.submit();
+  await r.advance(500);
+  assert.strictEqual(r.docs().length, 1);
+  assert.strictEqual(r.docs()[0].priceSource, 'live');
+  assert.strictEqual(r.root.status.textContent, T.success);
+});
+
+test('ხელახალი დაჭერა: დოკუმენტი ქეშშია — წარმატებაა, ახალი ჩაწერა არ არის', async () => {
+  // 17. ოფლაინში SDK ან ქეშიდან პასუხობს, ან „unavailable"-ს აბრუნებს.
+  // ქეშში ნანახი დოკუმენტი = ჯავშანი არსებობს; „ვერ გაიგზავნა" ტყუილი იქნებოდა.
+  const r = await start({ write: 'lostAck', getMode: 'cache' });
+  r.submit();
+  await settle();
+  assert.strictEqual(r.root.status.textContent, T.failed);
+  r.submit();
+  await settle();
+  assert.strictEqual(r.root.status.textContent, T.success);
+  assert.strictEqual(r.db.setCalls, 1, 'არსებულ დოკუმენტზე მეორე ჩაწერა რიგში არ ჩადგეს');
+  assert.strictEqual(r.docs().length, 1);
+});
+
+test('ხელახალი დაჭერა: ქსელი არ არის, ჩანაწერი უკვე არსებობს — წარმატებაა', async () => {
+  // 18. წაკითხვა „unavailable"-ით ვარდება — არ ვიცით. ვწერთ, წესები
+  // განახლებას უარყოფს, და ეს უარყოფა ჯავშნის არსებობაა და არა ჩავარდნა.
+  const r = await start({ write: 'lostAck', getMode: 'unavailable' });
+  r.submit();
+  await settle();
+  assert.strictEqual(r.root.status.textContent, T.failed);
+  r.submit();
+  await settle();
+  assert.strictEqual(r.root.status.textContent, T.success);
+  assert.strictEqual(r.docs().length, 1);
+});
+
+test('წესების უარყოფა წარმატებად არ ითვლება, ხელახლაც', async () => {
+  // 19. თუ წესები ჩანაწერსაც უარყოფს, ორი დაჭერის მერეც ჩავარდნაა — ეს
+  // „არსებული ჯავშნის" ლოგიკით არ უნდა დაიმალოს.
+  const r = await start({ write: 'denied', getMode: 'unavailable' });
+  r.submit();
+  await settle();
+  assert.strictEqual(r.root.status.textContent, T.failed);
+  r.submit();
+  await settle();
+  assert.strictEqual(r.root.status.textContent, T.failed);
+  assert.strictEqual(r.docs().length, 0);
+});
+
+test('ლოდინისას მანქანა შეიცვალა: ეტიკეტი მეორე მანქანის ფასს აღწერს', async () => {
+  // 20. ორივე მანქანის ჩაშენებული ფასი ერთია, A-ს ცოცხალი დოკუმენტი
+  // მოდის. B-ს ფასი ცოცხალი არ არის — 'live' მისთვის ტყუილი იქნებოდა.
+  const base = { p1: 100, p7: 90, p30: 80, dep: 500 };
+  const same = { name: 'Audi Q5', p1: 100, p7: 90, p30: 80, dep: 500, updatedAt: ago(HOUR) };
+  const r = await start({ cars: { 'audi-q5': base, 'bmw-x5': Object.assign({}, base) },
+                          fleet: same, fetchAfter: 500 });
+  r.submit();
+  r.root.fields.car_slug = 'bmw-x5';
+  r.root.fields.requested_car = 'BMW X5';
+  await r.advance(500);
+  const doc = r.docs()[0];
+  assert.ok(doc, 'ფიგურა უცვლელია — იგზავნება');
+  assert.strictEqual(doc.carSlug, 'bmw-x5');
+  assert.strictEqual(doc.priceSource, 'built');
 });
 
 (async function () {
