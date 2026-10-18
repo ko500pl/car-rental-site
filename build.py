@@ -2536,6 +2536,21 @@ html,body{{height:100%;margin:0}}body{{display:grid;place-items:center;backgroun
     return shell(lang, "map", head, crumbs + f'<main id="main">{body}</main>', depth, js)
 
 
+PLAN_IN_REGION = {
+    "ka": "დაგეგმე მოგზაურობა — {r}", "en": "Plan a trip in {r}", "ru": "Спланировать поездку: {r}",
+    "fa": "برنامه‌ریزی سفر در {r}", "he": "לתכנן טיול ב{r}", "ar": "خطّط رحلة في {r}",
+}
+
+
+def plan_in_region_btn(lang, key, name, cls="btn"):
+    """The region page used to show places with no way to plan with them —
+    the visitor had to go back to the planner and find the region again.
+    This opens the planner already filtered to the region (workspace.js
+    reads ?region=)."""
+    return (f'<a class="{cls}" href="{page_url(lang, "map", False)}?region={E(key)}#planner">'
+            f'{E(PLAN_IN_REGION[lang].format(r=name))}</a>')
+
+
 def render_region(lang, key, r):
     L = r[lang]
     u = UI[lang]
@@ -2562,17 +2577,19 @@ def render_region(lang, key, r):
     desc = _sd or re.sub(r"\s+", " ", L["short"] + " " + L["body"])[:158].rsplit(" ", 1)[0]
     body = (
         f'<section class="page-head"><div class="wrap"><h1>{E(L["name"])}</h1>'
-        f'<p class="lead">{E(L["short"])}</p></div></section>'
+        f'<p class="lead">{E(L["short"])}</p>'
+        f'<div class="row region-plan">{plan_in_region_btn(lang, key, L["name"])}</div></div></section>'
         f'<section class="sec"><div class="wrap">{mp}</div></section>'
         f'<section class="sec alt"><div class="wrap"><div class="article">{render_md(L["body"], lang)}</div>'
         f'<h2>{E(tu(lang,"best_for"))}</h2><ul>{best}</ul></div></section>'
         f'<section class="sec"><div class="wrap"><h2>{E(tu(lang,"driving_title"))}</h2>'
         f'<div class="article">{render_md(L["driving"], lang)}</div></div></section>'
         f'<section class="sec alt"><div class="wrap"><h2>{E(tu(lang,"in_region"))} — '
-        f'{len(sub)} {E(tu(lang,"obj"))}</h2><div class="cards">{cards}</div></div></section>'
+        f'{len(sub)} {E(tu(lang,"obj"))}</h2><div class="cards">{cards}</div>'
+        f'<div class="row region-plan">{plan_in_region_btn(lang, key, L["name"])}</div></div></section>'
         f'<section class="sec"><div class="wrap"><div class="cta">'
         f'<h2>{E(u["ui"]["book_title"])}</h2><p>{E(TRIP_CTA_TEXT[lang])}</p>'
-        f'<div class="row">{booking_open_btn(lang)}'
+        f'<div class="row">{plan_in_region_btn(lang, key, L["name"], "btn ghost")}{booking_open_btn(lang)}'
         f'<a class="btn ghost" href="{page_url(lang,"fleet",False)}">{E(u["nav"]["fleet"])}</a>'
         f'<a class="btn ghost" href="{page_url(lang,"contact",False)}">{E(u["nav"]["contact"])}</a>'
         f'</div></div></div></section>')

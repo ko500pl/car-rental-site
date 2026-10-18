@@ -2469,4 +2469,8 @@ body.has-actbar .rai{{bottom:calc(84px + env(safe-area-inset-bottom))}}
   .rai-panel{{width:100vw;height:100dvh;border-radius:0;border:0}}
 }}
 @media (prefers-reduced-motion:reduce){{.rai-fab{{transition:none}}}}
+
+/* Region page → planner: the one button that turns "look" into "plan". */
+.region-plan{{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}}
+.page-head .region-plan .btn{{min-height:46px;padding:10px 18px;font-size:15px}}
 """

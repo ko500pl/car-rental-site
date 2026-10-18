@@ -1308,7 +1308,32 @@
     window.FH_TRAVEL_SELECTION = wp.slice();
     return true;
   }
-  window.FH_TRAVEL_WORKSPACE = { applyPlan: applyPlan, selected: function () { return st.selected.slice(); } };
+  /* A region handed over from a region page ("Plan a trip in Kakheti"):
+     /map/?region=kakheti#planner — the planner opens filtered to that region
+     and the map frames its places, so the visitor starts ticking at once. */
+  function setRegion(key) {
+    var sel = $('dowreg');
+    if (!sel || !key) return false;
+    var ok = false;
+    for (var i = 0; i < sel.options.length; i++) if (sel.options[i].value === key) ok = true;
+    if (!ok) return false;
+    st.reg = key; sel.value = key;
+    render();
+    var pts = ALL.filter(function (p) { return p.g === key && isFinite(Number(p.la)) && isFinite(Number(p.lo)); });
+    if (pts.length) setTimeout(function () {
+      map.invalidateSize();
+      map.fitBounds(L.latLngBounds(pts.map(function (p) { return [Number(p.la), Number(p.lo)]; })).pad(0.12), { maxZoom: 10 });
+    }, 60);
+    return true;
+  }
+  window.FH_TRAVEL_WORKSPACE = { applyPlan: applyPlan, setRegion: setRegion, selected: function () { return st.selected.slice(); } };
+  try {
+    var qsRegion = new URLSearchParams(location.search).get('region');
+    if (qsRegion && setRegion(qsRegion)) {
+      var ranchor = document.getElementById('planner');
+      if (ranchor) setTimeout(function () { ranchor.scrollIntoView({ block: 'start' }); }, 80);
+    }
+  } catch (e) {}
   try {
     var qsPlan = new URLSearchParams(location.search).get('plan');
     if (qsPlan) {
