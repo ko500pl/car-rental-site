@@ -36,3 +36,12 @@ _merge/
 
 # Aggregator fleet exports (scripts/export_fleet.py)
 exports/
+
+# აპის წყაროს არქივები და ხელმოწერის გასაღებები — არასდროს GitHub-ზე.
+# leasor-*-src.tgz შიგნით android/carrental-release.jks და key.properties აქვს:
+# ამ გასაღების გარეშე ხელახლა აწყობილი APK განახლებად ვერ დაჯდება, ხოლო
+# გასაჯაროებული გასაღებით სხვას შეუძლია შენი აპის სახელით ხელმოწერა.
+*.tgz
+*.tar.gz
+*.jks
+key.properties
