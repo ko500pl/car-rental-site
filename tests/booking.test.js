@@ -33,6 +33,8 @@
     26. 72 საათზე მეტხანს ღია გვერდი ძველ ფასს 'live'-ად არ აწერს
     27. 366 ღამე: შეტყობინება ფორმის შევსებამდე, არაფერი იგზავნება
     28. 80 სიმბოლოზე გრძელი slug / 120-ზე გრძელი სახელი წესებს არ ეჯახება
+    29. ნაწილობრივი ცოცხალი ფასი (დეპოზიტის გარეშე) ვადის გასვლისას იხსნება
+    30. რიგში მდგარი ჩანაწერის დასტური გადაწერილ ფორმას „მიღებულია"-ს არ აწერს
     10. ძველი (ნდობის ფანჯრის გარეთ) ფასის დოკუმენტი 'live'-ად არ ითვლება */
 
 const assert = require('assert');
@@ -722,14 +724,56 @@ test('366 ღამე: კლიენტი ამას ფორმის �
 test('80 სიმბოლოზე გრძელი slug და 120-ზე გრძელი სახელი წესებს არ ეჯახება', async () => {
   // 28. წესები carSlug <= 80, carName <= 120. გრძელი მნიშვნელობა სამუდამოდ
   // უარყოფილი იქნებოდა; მოთხოვნა 'any'-ით იგზავნება (მოდელს პატრონი ირჩევს),
-  // სახელი კი ჭრილდება.
-  const r = await start({ fields: { car_slug: 'x'.repeat(100), requested_car: 'Y'.repeat(200) } });
+  // სახელი კი პირველ 120 სიმბოლომდე ჭრილდება. ტესტი ზუსტ მნიშვნელობებს
+  // ამოწმებს და არა მხოლოდ სიგრძეს — ცარიელი ველი სიგრძეს გაივლიდა.
+  const r = await start({ fields: { car_slug: 'x'.repeat(81), requested_car: 'Y'.repeat(200) } });
   r.submit();
   await settle();
   const doc = r.docs()[0];
   assert.ok(doc, 'მოთხოვნა არ უნდა დაიკარგოს');
-  assert.ok(doc.carSlug.length <= 80, doc.carSlug.length);
-  assert.ok(doc.carName.length <= 120, doc.carName.length);
+  assert.strictEqual(doc.carSlug, 'any');
+  assert.strictEqual(doc.carName, 'Y'.repeat(120));
+  // საზღვარი: ზუსტად 80 და 120 უცვლელი რჩება.
+  const edge = await start({ fields: { car_slug: 'x'.repeat(80), requested_car: 'Z'.repeat(120) } });
+  edge.submit();
+  await settle();
+  assert.strictEqual(edge.docs()[0].carSlug, 'x'.repeat(80));
+  assert.strictEqual(edge.docs()[0].carName, 'Z'.repeat(120));
+});
+
+test('ნაწილობრივი ცოცხალი ფასი (დეპოზიტის გარეშე) ვადის გასვლისას ძველი ფასით აღარ იგზავნება', async () => {
+  // 29. p1 ცოცხალია, დეპოზიტი ჩაშენებული — d.priced=false, მაგრამ ფასი მაინც
+  // დოკუმენტიდან არის FH_CFG.cars-ში. ვადა 'live'-ობის ეტიკეტზე არ
+  // არის დამოკიდებული: 72 საათს გადაცილებული დოკუმენტის 150 ₾ ფორმაში არ რჩება.
+  const r = await start({ fleet: { name: 'Audi Q5', p1: 150, p7: 140, p30: 120, updatedAt: ago(70 * HOUR) } });
+  assert.ok(r.root.quote.textContent.includes('150 ₾'), r.root.quote.textContent);
+  r.skew(3 * HOUR);
+  r.submit();
+  await r.advance(3000);
+  assert.strictEqual(r.docs().length, 0, 'ფასი შეიცვალა — კლიენტმა ჯერ უნდა ნახოს');
+  assert.ok(r.root.quote.textContent.includes('100 ₾'), r.root.quote.textContent);
+  r.submit();
+  await settle();
+  assert.strictEqual(r.docs()[0].dailyRateGel, 100);
+  assert.strictEqual(r.docs()[0].priceSource, 'built');
+});
+
+test('რიგში მდგარი ჩანაწერის დასტური გადაწერილ ფორმას „მიღებულია"-ს არ აწერს', async () => {
+  // 30. კლიენტმა „რიგშია" ნახა და ტელეფონი გაასწორა. მერე ძველი ჩანაწერი
+  // დადასტურდა. დასტური იმ მოთხოვნას ეკუთვნის, რომელიც რიგში ჩადგა; ახალი
+  // ტექსტით სავსე ფორმაზე „მიღებულია" ტყუილი იქნებოდა, ფორმის გასუფთავება
+  // კი კლიენტის ახალ ტექსტს წაშლიდა. ამიტომ ფორმას და სტატუსს არ ვეხებით.
+  const r = await start({ write: 'hang' });
+  r.submit();
+  await r.advance(30000);
+  assert.strictEqual(r.root.status.textContent, T.queued);
+  r.root.fields.phone = '+995599000111';
+  r.ack();
+  await settle();
+  assert.strictEqual(r.docs().length, 1, 'ძველი მოთხოვნა სერვერზე მივიდა');
+  assert.notStrictEqual(r.root.status.textContent, T.success, 'ახალი ტექსტი ჯერ არ გაგზავნილა');
+  assert.strictEqual(r.root.fields.phone, '+995599000111', 'კლიენტის ახალი ტექსტი არ იშლება');
+  assert.strictEqual(r.root.fields.name, 'Nino Beridze');
 });
 
 (async function () {

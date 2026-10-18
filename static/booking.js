@@ -150,28 +150,34 @@
        თუ Firebase საერთოდ არ არის ჩართული, ფორმა ისე იქცევა, როგორც აქამდე. */
     if (window.FH && typeof window.FH.firebase === 'function') {
       root.dataset.fhCloud = '1';   /* ajaxifyForms-მა ხელი აღარ ახლოს */
-      /* სერვერმა ჩანაწერი მიიღო. clearForm=false მაშინ, როცა კლიენტმა ამ
-         დროს ფორმა უკვე შეცვალა (ახალი, ჯერ გაუგზავნელი მოთხოვნა) — მის
-         ტექსტს არ ვშლით. */
-      function succeed(clearForm) {
+      /* სერვერმა ჩანაწერი მიიღო და ფორმა ისევ იმ მოთხოვნას შეიცავს. */
+      function succeed() {
         status.textContent = t.success;
         if (window.RentUpAnalytics) window.RentUpAnalytics.track('booking_request', window.RentUpAnalytics.bookingParams(root));
         forgetRequest(root);   /* შემდეგი ფორმა ახალი ჯავშანია */
-        if (clearForm) {
-          root.reset();
-          if (quoteBox) quoteBox.textContent = '';
-        }
+        root.reset();
+        if (quoteBox) quoteBox.textContent = '';
       }
       /* 20 წამს გადაცილებული ჩანაწერი რიგში რჩება. მისი ბედი ჩვენთვის მაინც
          საინტერესოა: დადასტურდა — კლიენტს ვეუბნებით, უარყოფილია — ისიც. */
       function watchQueued(id, pending) {
+        /* დასტური (ან უარყოფა) იმ მოთხოვნას ეკუთვნის, რომელიც რიგში ჩადგა.
+           თუ კლიენტმა ამასობაში ფორმა გადაწერა, ფორმაში უკვე სხვა, ჯერ
+           გაუგზავნელი ტექსტია: მასზე „მიღებულია" (ან „ვერ გაიგზავნა") ტყუილი
+           იქნებოდა, გასუფთავება კი მის ახალ ტექსტს წაშლიდა. ამიტომ ფორმასა და
+           სტატუსს არ ვეხებით. ძველი მოთხოვნა სერვერზე მაინც მივიდა — ახალი
+           დაჭერა ახალ ნომერს მიიღებს (თითი შეიცვალა). analytics-ს აქ არ
+           ვაგზავნით: bookingParams ახლანდელ ფორმას კითხულობს და სხვა მოთხოვნის
+           მონაცემებს ჩაწერდა. */
+        function sameRequest() {
+          return root.dataset.requestId === id && root.dataset.requestFp === fingerprintOf(root);
+        }
         pending.then(function () {
           delete QUEUED[id];
-          if (root.dataset.requestId !== id) return;
-          succeed(root.dataset.requestFp === fingerprintOf(root));
+          if (sameRequest()) succeed();
         }, function () {
           delete QUEUED[id];
-          if (root.dataset.requestId === id) status.textContent = t.failed;
+          if (sameRequest()) status.textContent = t.failed;
         });
       }
       root.addEventListener('submit', function (ev) {
@@ -263,7 +269,7 @@
                იყო. „რიგშია" წარმატება არ არის: ფორმა სავსე რჩება, ტექსტი კი
                ამბობს, რომ გვერდი ღია უნდა დარჩეს. */
             if (held) { status.textContent = ''; return; }
-            if (cloud) { succeed(true); return; }
+            if (cloud) { succeed(); return; }
             status.textContent = queued ? say(t, 'queued') : t.failed;
           })
           .catch(function () { status.textContent = cloud ? t.success : (queued ? say(t, 'queued') : t.failed); })
@@ -574,10 +580,18 @@
      გახსნისას სანდო იყო, ახლა აღარ არის — მისი ფასი FH_CFG.cars-იდან უნდა
      წავიდეს და ჩაშენებული დაბრუნდეს, თორემ ფორმა ისევ იმ ფასს ეტყოდა კლიენტს,
      რომელსაც freshDoc უკვე აღარ ენდობა, და ჯავშანი მას 'live'-ად ჩაიწერდა.
-     იგივე ზღვარი, რაც busyFor-ში და ყველგან — freshDoc. */
+     იგივე ზღვარი, რაც busyFor-ში და ყველგან — freshDoc.
+
+     ვადა `overlaid`-ზე არის დამოკიდებული და არა `priced`-ზე: ეს ორი სხვადასხვა
+     კითხვაა. `overlaid` — დოკუმენტის ფასი FH_CFG.cars-ში ზის (და ასაკი მას
+     ეხება); `priced` — ფიგურა მთლიანად მისგანაა და 'live' ეტიკეტს იმსახურებს.
+     ცოცხალი p1 ჩაშენებული დეპოზიტით overlaid-ია, priced კი არა — და 72
+     საათის მერე მისი ფასიც უნდა წავიდეს, თორემ მხოლოდ 'built' ეტიკეტი
+     დარჩებოდა გაძველებული ციფრის წინაშე. */
   function expireLive(slug){
     var d = LIVE_RES[slug];
-    if (!d || !d.priced || freshDoc(d.fleet)) return;
+    if (!d || !d.overlaid || freshDoc(d.fleet)) return;
+    d.overlaid = false;
     d.priced = false;
     var cfg = window.FH_CFG;
     if (!cfg || !cfg.cars) return;
@@ -626,6 +640,7 @@
           var liveDep = Number(d.fleet.dep) || 0;
           var dep = liveDep || Number(prev.dep) || 0;
           d.priced = liveDep > 0 || dep === 0;   /* ჯავშანი ამით იგებს, რომ ფასი ცოცხალია */
+          d.overlaid = true;                     /* ფასი დოკუმენტიდან ზის და ასაკს ექვემდებარება */
           cfg.cars[slug] = { p1: live1, p7: p7, p30: p30, dep: dep };
         }
       }
