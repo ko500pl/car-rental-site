@@ -3,7 +3,7 @@ chcp 65001 >nul
 
 rem ===========================================================
 rem   RentUp  >>  GitHub (main)
-rem   Bridge reliability: the design spec and the 21-task plan
+rem   Bridge reliability: the whole plan (12 commits)
 rem ===========================================================
 rem
 rem Fixed path on purpose. There are several worktrees of this
@@ -11,13 +11,13 @@ rem repository under C:\Projects\car-rental-site and they share one
 rem .git, so running a copy of this file from one of them is how the
 rem branch got reset to an already-pushed commit once before.
 set REPO=C:\Projects\car-rental-site\car-rental-site
-set WANT=d40df7c82fcc0ace7b8a9af4d6ac639746cec910
+set WANT=4f34e03
 
 cd /d "%REPO%" || (echo Cannot find %REPO% & timeout /t 20 & exit /b 1)
 
 echo ============================================================
 echo   RentUp  ^>^>  GitHub (main)
-echo   Bridge reliability: spec + plan (docs only, no site change)
+echo   Bridge reliability: live price, trust windows, idempotency, rules
 echo   Repo: %REPO%
 echo ============================================================
 echo.
@@ -37,15 +37,13 @@ rem origin/main; if GitHub has moved since, forcing the branch to it
 rem would fail anyway, or be "fixed" later with a force push that drops
 rem somebody else's work. Another agent has been committing to this
 rem repository today, so this check is not theoretical.
-for /f %%i in ('git rev-parse "%WANT%^"') do set PARENT=%%i
-for /f %%i in ('git rev-parse origin/main') do set REMOTE=%%i
-
-if not "%PARENT%"=="%REMOTE%" (
+git merge-base --is-ancestor origin/main "%WANT%"
+if errorlevel 1 (
   echo   ============================================================
   echo   STOP - GitHub has moved on since this commit was prepared.
   echo.
-  echo   commit is built on: %PARENT%
-  echo   origin/main is now: %REMOTE%
+  echo   origin/main is not an ancestor of the commit to push,
+  echo   so this would not be a fast-forward.
   echo.
   echo   Nothing was changed and nothing was pushed. Tell Claude and
   echo   it will rebuild the commit on the current origin/main.
