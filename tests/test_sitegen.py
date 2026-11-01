@@ -221,7 +221,7 @@ class BranchTests(unittest.TestCase):
 
     def test_branch_node_shape(self):
         node = build.branch_node(build.BRANCHES[0], "en")
-        self.assertTrue(node["@id"].endswith("#branch-tbilisi-vazha-pshavela"))
+        self.assertTrue(node["@id"].endswith("#branch-tbilisi-kasteli"))
         self.assertTrue(node["parentOrganization"]["@id"].endswith("#organization"))
         self.assertIn("AutoRental", node["@type"])
         google = (build.BRANCHES[0].get("maps") or {}).get("google")
@@ -229,7 +229,16 @@ class BranchTests(unittest.TestCase):
             self.assertEqual(node["hasMap"], google)
         else:
             self.assertNotIn("hasMap", node)
-        self.assertEqual(node["address"]["streetAddress"], "71 Vazha-Pshavela Ave.")
+        self.assertEqual(node["address"]["streetAddress"], "145 Kristepore Kasteli St.")
+
+    def test_unknown_postal_code_is_omitted_not_empty(self):
+        """The office moved on 2026-11-01 and the new postal code is not
+        confirmed. An empty postalCode fails Google's rich-result validator;
+        a missing one is simply absent, so '' must drop the key."""
+        a = {"street": "x", "city": "y"}
+        self.assertNotIn("postalCode", build.postal_address(a, ""))
+        self.assertNotIn("postalCode", build.postal_address(a, None))
+        self.assertEqual(build.postal_address(a, "0131")["postalCode"], "0131")
 
     def test_branch_node_uses_first_map_link(self):
         b = dict(build.BRANCHES[0], maps={"google": "", "yandex": "https://yandex.com/maps/org/1", "twogis": "", "apple": ""})
@@ -240,7 +249,7 @@ class BranchTests(unittest.TestCase):
         try:
             build.BRANCHES = []
             self.assertEqual(build.branches_html("en"), "")
-            self.assertEqual(build.org_node("en")["address"]["streetAddress"], "71 Vazha-Pshavela Ave.")
+            self.assertEqual(build.org_node("en")["address"]["streetAddress"], "145 Kristepore Kasteli St.")
         finally:
             build.BRANCHES = saved
 

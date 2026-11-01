@@ -100,7 +100,7 @@ def listings_pack(site, branches, listings, policy, faq) -> str:
         for src, label in PLATFORMS:
             out += [f"## {label} — {a['street']}, {a['city']}", "",
                     "**Name:** RentUp", f"**Category:** {listings['category']}",
-                    f"**Address:** {a['street']}, {a['city']} {b['zip']}, Georgia",
+                    f"**Address:** {a['street']}, {a['city']}{(' ' + str(b['zip'])) if str(b.get('zip') or '').strip() else ''}, Georgia",
                     f"**Coordinates:** {b['lat']}, {b['lon']}",
                     f"**Hours:** every day {b['opens']}–{b['closes']}",
                     f"**Phone / WhatsApp:** {b['phone_e164']}",

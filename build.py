@@ -730,6 +730,18 @@ def render_md(text, lang):
 
 
 # ══════════════════════════════════════════════════════════════ JSON-LD
+def postal_address(a, zip_code):
+    """schema.org PostalAddress. An unknown postal code is left out: an empty
+    or wrong postalCode is a validation error in Google's rich-result tests,
+    a missing one is merely absent (office moved 2026-11, code not yet confirmed)."""
+    node = {"@type": "PostalAddress", "streetAddress": a["street"],
+            "addressLocality": a["city"], "addressCountry": "GE"}
+    z = str(zip_code or "").strip()
+    if z:
+        node["postalCode"] = z
+    return node
+
+
 def org_node(lang):
     a = SITE["address"][lang]
     node = {
@@ -750,9 +762,7 @@ def org_node(lang):
         "currenciesAccepted": "GEL, USD, EUR",
         "paymentAccepted": META[lang]["payments"],
         "areaServed": {"@type": "Country", "name": META[lang]["country"]},
-        "address": {"@type": "PostalAddress", "streetAddress": a["street"],
-                    "addressLocality": a["city"], "postalCode": SITE["address_zip"],
-                    "addressCountry": "GE"},
+        "address": postal_address(a, SITE.get("address_zip")),
         "geo": {"@type": "GeoCoordinates", "latitude": SITE["geo_lat"],
                 "longitude": SITE["geo_lon"]},
         "openingHoursSpecification": [{
@@ -789,9 +799,7 @@ def branch_node(branch, lang):
         "name": branch["name"][lang],
         "parentOrganization": {"@id": SITE_URL + "/#organization"},
         "telephone": branch["phone_e164"],
-        "address": {"@type": "PostalAddress", "streetAddress": a["street"],
-                    "addressLocality": a["city"], "postalCode": str(branch["zip"]),
-                    "addressCountry": "GE"},
+        "address": postal_address(a, branch.get("zip")),
         "geo": {"@type": "GeoCoordinates", "latitude": branch["lat"], "longitude": branch["lon"]},
         "openingHoursSpecification": [{
             "@type": "OpeningHoursSpecification",
@@ -1503,7 +1511,7 @@ def render_static_page(lang, page):
             + (f'<div><dt class="k">{E(contact_tx[3])}</dt><dd class="v"><a href="mailto:{E(SITE["email"])}">{E(SITE["email"])}</a></dd></div>'
                if SITE.get("email") else "")
             +
-            f'<div><dt class="k">{E(contact_tx[4])}</dt><dd class="v">{E(addr["street"])}, {E(addr["city"])} {E(SITE["address_zip"])}</dd></div>'
+            f'<div><dt class="k">{E(contact_tx[4])}</dt><dd class="v">{E(addr["street"])}, {E(addr["city"])}{(" " + E(str(SITE["address_zip"]))) if str(SITE.get("address_zip") or "").strip() else ""}</dd></div>'
             f'<div><dt class="k">{E(contact_tx[5])}</dt><dd class="v">{E(SITE["opens"])}–{E(SITE["closes"])}</dd></div></dl>'
             + branches_html(lang) +
             f'<p>{E(contact_tx[6])}</p><h2>{E(uu["f_title"])}</h2>'
@@ -3648,8 +3656,9 @@ def llms_txt():
     out += [f"- [{LANG_LABEL[l]}]({SITE_URL + lang_root(l)})" for l in LANGS]
     out += ["", "## Contact", "", f"- Phone: {SITE['phone']}", f"- Mobile: {SITE['mobile']}",
             f"- Email: {SITE['email']}",
-            f"- Address: {SITE['address']['en']['street']}, {SITE['address']['en']['city']} "
-            f"{SITE['address_zip']}, Georgia", "", f"Last updated: {TODAY}", ""]
+            f"- Address: {SITE['address']['en']['street']}, {SITE['address']['en']['city']}"
+            f"{(' ' + str(SITE['address_zip'])) if str(SITE.get('address_zip') or '').strip() else ''}, Georgia",
+            "", f"Last updated: {TODAY}", ""]
     return "\n".join(out).replace("''", "'")
 
 

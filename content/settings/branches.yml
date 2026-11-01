@@ -3,7 +3,7 @@
 # map platforms suspend listings for addresses without staff.
 # Single source for name/address/phone on map listings and in JSON-LD.
 # maps.*: paste each listing's public URL once the owner has verified it.
-- id: tbilisi-vazha-pshavela
+- id: tbilisi-kasteli
   name:
     ka: RentUp
     en: RentUp
@@ -13,26 +13,26 @@
     ar: RentUp
   address:
     ka:
-      street: ვაჟა-ფშაველას გამზირი 71
+      street: ქრისტეფორე კასტელის ქუჩა 145
       city: თბილისი
     en:
-      street: 71 Vazha-Pshavela Ave.
+      street: 145 Kristepore Kasteli St.
       city: Tbilisi
     ru:
-      street: пр. Важа-Пшавела 71
+      street: ул. Кристефоре Кастели 145
       city: Тбилиси
     fa:
-      street: خیابان وژا-پشاولا 71
+      street: خیابان کریستفوره کاستلی 145
       city: تفلیس
     he:
-      street: שדרות ואז'ה-פשאוולה 71
+      street: רחוב כריסטפורה קסטלי 145
       city: טביליסי
     ar:
-      street: جادة فاجا-بشافيلا 71
+      street: شارع كريستيفوري كاستيلي 145
       city: تبليسي
-  zip: '0186'
-  lat: 41.7245
-  lon: 44.7509
+  zip: ''   # TODO owner: postal code for Kasteli St 145
+  lat: 41.79003
+  lon: 44.72675
   opens: '09:00'
   closes: '21:00'
   phone_e164: '+995597555565'

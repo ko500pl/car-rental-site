@@ -95,8 +95,10 @@ def validate_branches(branches):
             if not (isinstance(v, str) and re.fullmatch(r"\d{2}:\d{2}", v)):
                 errors.append(f"{where}: {key} must be a quoted 'HH:MM' string, got {v!r}")
         z = b.get("zip")
-        if not (isinstance(z, str) and re.fullmatch(r"\d{4}", z)):
-            errors.append(f"{where}: zip must be a quoted 4-digit string, got {z!r}")
+        # '' is allowed: the office moved (2026-11) and the new postal code is
+        # not confirmed yet; JSON-LD then omits postalCode rather than lying.
+        if not (isinstance(z, str) and (z == "" or re.fullmatch(r"\d{4}", z))):
+            errors.append(f"{where}: zip must be a quoted 4-digit string or '', got {z!r}")
         for lang in BRANCH_LANGS:
             if not (b.get("name") or {}).get(lang):
                 errors.append(f"{where}: name.{lang} is missing")
